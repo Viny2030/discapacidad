@@ -1,60 +1,37 @@
-# Observatorio de Discapacidad Argentina
+# Módulo CUD — Trámite y Beneficios
 
-API FastAPI con datos estadísticos y médicos sobre discapacidad en Argentina.
+Guía completa del Certificado Único de Discapacidad (Argentina).
 
-## Módulos
+## Endpoints
 
-- **Estadístico**: CUD por provincia, CABA por comunas, evolución histórica, mapas GeoJSON
-- **Médico**: Artículos PubMed, ensayos clínicos (ClinicalTrials.gov), tratamientos por tipo
+```
+GET /api/cud                          → info general
+GET /api/cud/formularios              → formularios para descargar
+GET /api/cud/requisitos               → requisitos generales
+GET /api/cud/requisitos?tipo=motora   → requisitos por tipo
+GET /api/cud/pasos                    → paso a paso del trámite
+GET /api/cud/beneficios               → todos los beneficios
+GET /api/cud/juntas                   → juntas evaluadoras por provincia
+GET /api/cud/juntas?provincia=CABA    → junta específica
+GET /api/cud/faq                      → preguntas frecuentes
+GET /api/cud/consulta-estado          → cómo consultar el estado
+GET /api/cud/sube                     → registrar CUD en SUBE
+GET /api/cud/obras-sociales           → derechos ante obras sociales
+```
 
-## Fuentes
-
-| Fuente | Dato | Acceso |
-|--------|------|--------|
-| ANDIS | CUD vigentes por provincia | Informes PDF |
-| INDEC | Estudio Nacional 2018 + Censo 2022 | CSV directo |
-| Georef AR | Provincias y comunas CABA | API REST gratuita |
-| PubMed (NIH) | 35M+ papers médicos | API E-utilities gratuita |
-| ClinicalTrials.gov | Ensayos clínicos activos | API v2 gratuita |
-| SciELO Argentina | Ciencia latinoamericana | OAI-PMH gratuito |
-
-## Correr local
+## Correr
 
 ```bash
 pip install -r requirements.txt
-cp .env.example .env
 python main.py
-# http://localhost:8000
-# http://localhost:8000/docs
+# http://localhost:8001
 ```
 
-## Deploy Railway
+## Integrar al Observatorio principal
 
-1. Push al repo GitHub
-2. Railway → nuevo proyecto → conectar repo
-3. Railway detecta el Dockerfile automáticamente
-4. Variables de entorno: `DATABASE_URL`, `PUBMED_API_KEY` (opcional)
-
-## Endpoints principales
-
-```
-GET /api/resumen                    → KPIs nacionales
-GET /api/provincias                 → CUD por provincia
-GET /api/evolucion                  → Evolución histórica
-GET /api/tipos                      → CUD por tipo de discapacidad
-GET /api/caba/comunas               → CABA por comunas
-GET /api/mapa/provincias            → GeoJSON para mapa coroplético
-GET /api/articulos?tipo=motora      → Artículos PubMed por tipo
-GET /api/ensayos?tipo=visual        → Ensayos clínicos activos
-GET /api/tratamientos/intelectual   → Resumen + artículos + ensayos
-GET /api/buscar?q=exoesqueleto      → Búsqueda libre en PubMed
+```python
+from cud_tramite.scripts.api_cud import router as router_cud
+app.include_router(router_cud)
 ```
 
-## Actualización automática
-
-APScheduler ejecuta los ETL cada 15 días automáticamente.
-Como fallback, configurar GitHub Actions con cron `0 6 1,15 * *`.
-
-## Autor
-
-Ph.D. Vicente Humberto Monteverde · vhmonte@retina.ar
+Fuente oficial: ANDIS · argentina.gob.ar/andis · Ley 22.431 · Ley 24.901
