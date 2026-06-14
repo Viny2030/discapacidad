@@ -20,7 +20,10 @@ def _load_csv(nombre: str) -> list[dict]:
     path = PROC_DIR / nombre
     if not path.exists():
         return []
-    return pd.read_csv(path).to_dict("records")
+    df = pd.read_csv(path)
+    # NaN no es JSON-serializable -> lo convertimos a None antes de exportar.
+    df = df.astype(object).where(pd.notna(df), None)
+    return df.to_dict("records")
 
 
 def _load_json(nombre: str) -> dict:

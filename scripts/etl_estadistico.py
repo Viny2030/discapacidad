@@ -194,7 +194,10 @@ def construir_df_provincias() -> pd.DataFrame:
 def construir_df_evolucion() -> pd.DataFrame:
     """Construye DataFrame de evolución histórica del CUD."""
     df = pd.DataFrame(EVOLUCION_CUD)
-    df["variacion_pct"] = df["total"].pct_change() * 100
+    variacion = df["total"].pct_change() * 100
+    # pct_change() da NaN en la primera fila (sin año anterior).
+    # NaN no es JSON-serializable -> lo convertimos a None.
+    df["variacion_pct"] = variacion.round(2).astype(object).where(variacion.notna(), None)
     df.to_csv(PROC_DIR / "evolucion_cud.csv", index=False)
     log.info(f"  ✓ evolucion_cud.csv — {len(df)} años")
     return df
