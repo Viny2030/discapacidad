@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Observatorio de Discapacidad</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:system-ui,sans-serif;background:#f8f7fb;color:#212529;
+         padding-top:56px;line-height:1.6}
+
+    nav{position:fixed;top:0;left:0;right:0;height:56px;background:#4a2d8c;
+        display:flex;align-items:center;justify-content:center;gap:.5rem;
+        z-index:100;box-shadow:0 1px 6px rgba(0,0,0,.15);
+        overflow-x:auto;white-space:nowrap;padding:0 1rem}
+    nav button{color:#e9e1fb;font-size:.85rem;font-weight:600;
+          padding:.5rem .9rem;border-radius:6px;transition:background .15s;
+          background:transparent;border:none;cursor:pointer;font-family:inherit}
+    nav button:hover{background:#5e3aa8;color:#fff}
+    nav button.active{background:#7c4dff;color:#fff}
+    nav a.docs{color:#cbb8f5;text-decoration:none;font-size:.78rem;font-weight:600;
+          padding:.5rem .8rem;border-radius:6px;background:#2d1b54;margin-left:.4rem}
+    nav a.docs:hover{background:#3d2570;color:#fff}
+
+    header{background:#5e35b1;color:white;padding:2.5rem 1rem;text-align:center}
+    header h1{font-size:1.9rem;margin-bottom:.5rem}
+    header p{opacity:.9}
+
+    .wrap{max-width:760px;margin:0 auto;padding:2rem 1.2rem}
+
+    .card{background:white;border-radius:10px;padding:1.5rem;
+          box-shadow:0 1px 4px rgba(0,0,0,.08);
+          border-top:3px solid #7c4dff;margin-bottom:1.2rem}
+    .card h2{color:#4a2d8c;margin-bottom:.8rem;font-size:1.2rem}
+    .card h3{color:#4a2d8c;margin:1.1rem 0 .6rem;font-size:1rem}
+    .card h4{color:#4a2d8c;margin-bottom:.4rem;font-size:.95rem}
+    .card h5{color:#4a2d8c;margin:.8rem 0 .4rem;font-size:.88rem}
+    .card p{font-size:.9rem;margin-bottom:.7rem}
+    .muted{color:#888;font-size:.82rem}
+
+    a{color:#5e35b1;text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    /* tarjetas resumen home */
+    .home-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+               gap:1rem}
+    .home-card{background:white;border-radius:10px;padding:1.3rem;
+               box-shadow:0 1px 4px rgba(0,0,0,.08);border-top:3px solid #7c4dff;
+               display:flex;flex-direction:column;gap:.6rem}
+    .home-card h3{color:#4a2d8c;font-size:1rem}
+    .home-card p{font-size:.85rem;color:#555;flex-grow:1}
+    .go-btn{align-self:flex-start;background:#5e35b1;color:white;border:none;
+            padding:.5rem 1rem;border-radius:6px;font-size:.82rem;font-weight:600;
+            cursor:pointer;font-family:inherit}
+    .go-btn:hover{background:#4a2d8c}
+    .home-card.donate{border-top-color:#d4a017}
+    .home-card.donate .go-btn{background:#b9890a}
+    .home-card.donate .go-btn:hover{background:#947009}
+
+    /* selects y forms */
+    select, input[type=text]{font-family:inherit;font-size:.88rem;padding:.5rem .7rem;
+           border:1px solid #d8d2ee;border-radius:6px;background:white;color:#212529;
+           width:100%;max-width:320px}
+    select:focus, input[type=text]:focus{outline:2px solid #7c4dff;border-color:#7c4dff}
+    .form-row{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;margin-bottom:1rem}
+    .btn-sm{background:#5e35b1;color:white;border:none;padding:.5rem 1rem;
+            border-radius:6px;font-size:.85rem;font-weight:600;cursor:pointer;
+            font-family:inherit}
+    .btn-sm:hover{background:#4a2d8c}
+
+    /* resultados renderizados */
+    .result-box{margin-top:.8rem}
+    .kv-row{display:flex;gap:.6rem;padding:.35rem 0;border-bottom:1px solid #f0edf8;
+            font-size:.85rem;flex-wrap:wrap}
+    .kv-row:last-child{border-bottom:none}
+    .kv-row dt{color:#4a2d8c;font-weight:600;min-width:140px}
+    .kv-row dd{color:#333;flex:1}
+    .list-items{display:flex;flex-direction:column;gap:.4rem;margin-top:.3rem}
+    .list-item{background:#f8f7fb;border-radius:6px;padding:.6rem .8rem}
+    .simple-list{padding-left:1.2rem;font-size:.85rem;margin-top:.2rem}
+    .simple-list li{margin-bottom:.3rem}
+
+    .article-card{background:#f8f7fb;border-radius:6px;padding:.7rem .9rem;
+                   margin-bottom:.6rem}
+    .article-card a{font-weight:600;font-size:.88rem}
+    .article-card .muted{margin-top:.2rem;display:block}
+
+    .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+               gap:.8rem;margin-top:.6rem}
+    .stat-box{background:#efe7fd;border-radius:8px;padding:.9rem;text-align:center}
+    .stat-box .num{font-size:1.4rem;font-weight:700;color:#4a2d8c}
+    .stat-box .label{font-size:.75rem;color:#5e35b1;margin-top:.2rem}
+
+    .bar-row{display:flex;align-items:center;gap:.6rem;margin-bottom:.5rem;font-size:.85rem}
+    .bar-label{min-width:140px;color:#3d2570}
+    .bar-track{flex:1;background:#efe7fd;border-radius:4px;height:10px;overflow:hidden}
+    .bar-fill{background:#7c4dff;height:100%}
+    .bar-pct{min-width:42px;text-align:right;color:#5e35b1;font-weight:600}
+
+    table.tbl{width:100%;font-size:.85rem;border-collapse:collapse;margin-top:.4rem}
+    table.tbl th{text-align:left;color:#4a2d8c;font-weight:600;padding:.4rem .5rem;
+                  border-bottom:2px solid #efe7fd}
+    table.tbl td{padding:.4rem .5rem;border-bottom:1px solid #f0edf8}
+
+    /* tratamientos vanguardia */
+    .treat-card{background:#f8f7fb;border-radius:8px;padding:1rem;margin-bottom:.8rem}
+    .treat-head{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;margin-bottom:.4rem}
+    .treat-head h5{margin:0;color:#3d2570;font-size:.95rem}
+    .badge{font-size:.72rem;font-weight:600;padding:.2rem .5rem;border-radius:4px;
+           background:#efe7fd;color:#4a2d8c}
+    .small-disclaimer{background:#fdf3e0;color:#7d6608;font-size:.78rem;
+           padding:.5rem .7rem;border-radius:6px;margin-top:.5rem}
+
+    .disclaimer{background:#fdf3e0;border-left:3px solid #7d6608;
+         padding:.8rem 1rem;margin-bottom:1.2rem;font-size:.82rem;
+         color:#5c4a08;border-radius:4px;line-height:1.5}
+    .tag-warn{background:#fdf3e0;color:#7d6608;border-radius:4px;
+         padding:2px 6px;font-size:.72rem;font-weight:600}
+
+    .loading{color:#9b8fc7;font-size:.85rem;font-style:italic}
+
+    /* versiculos */
+    .verses{max-width:360px;margin:.9rem 0 0 1rem;padding:.9rem 1.1rem;
+            background:#efe7fd;border-left:3px solid #7c4dff;
+            border-radius:8px;font-size:.76rem;font-style:italic;
+            color:#4a2d8c;line-height:1.65}
+    .verses strong{font-style:normal;color:#3d2570}
+    .verses p{margin-bottom:.6rem;font-size:inherit}
+    .verses p:last-child{margin-bottom:0}
+
+    /* info legal / autor / footer */
+    .info-section{max-width:760px;margin:0 auto;padding:0 1.2rem 2rem;
+                   display:flex;flex-direction:column;gap:1.2rem}
+    .notice{background:#fdf3e0;border-left:4px solid #d4a017;
+            padding:1rem 1.2rem;border-radius:8px;font-size:.85rem;
+            line-height:1.6;color:#5c4a08}
+    .legal{background:#efe7fd;border-left:4px solid #7c4dff;
+           padding:1.2rem 1.4rem;border-radius:8px;font-size:.85rem;
+           line-height:1.7;color:#3d2570}
+    .legal h3{color:#4a2d8c;font-size:1rem;margin-bottom:.7rem}
+    .legal p{margin-bottom:.7rem;font-size:inherit}
+    .legal p:last-child{margin-bottom:0}
+    .legal strong{color:#4a2d8c}
+    .author{background:#2d1b54;color:#e9e1fb;border-radius:10px;
+            padding:1.4rem;display:flex;gap:1.2rem;align-items:flex-start}
+    .author img{width:64px;height:64px;border-radius:50%;flex-shrink:0;
+                 object-fit:cover;border:2px solid #7c4dff}
+    .author h3{font-size:1.05rem;margin-bottom:.5rem;color:#fff}
+    .author p{font-size:.85rem;line-height:1.6;margin-bottom:.6rem;color:#cbb8f5}
+    .author-links{display:flex;gap:1rem;flex-wrap:wrap;margin-top:.4rem}
+    .author-links a{background:#4a2d8c;color:#e9e1fb;padding:.4rem .8rem;
+                     border-radius:6px;font-size:.78rem}
+    .author-links a:hover{background:#5e3aa8;text-decoration:none}
+    @media (max-width:600px){.author{flex-direction:column;align-items:center;text-align:center}}
+
+    footer{text-align:center;padding:2rem;color:#888;font-size:.82rem}
+
+    /* donaciones */
+    .bank-card{background:#f8f7fb;border-radius:8px;padding:1.1rem 1.2rem;margin-bottom:1rem;
+               border-left:4px solid #d4a017}
+    .bank-card h4{color:#b9890a;margin-bottom:.6rem;font-size:.95rem}
+    .bank-row{display:flex;justify-content:space-between;align-items:center;
+              gap:.6rem;padding:.3rem 0;border-bottom:1px solid #efe7fd;font-size:.85rem}
+    .bank-row:last-child{border-bottom:none}
+    .bank-row .v{font-weight:600;color:#3d2570;word-break:break-all;text-align:right}
+    .copy-btn{background:#efe7fd;color:#5e35b1;border:none;border-radius:5px;
+              padding:.25rem .55rem;font-size:.72rem;font-weight:600;cursor:pointer;
+              flex-shrink:0;font-family:inherit}
+    .copy-btn:hover{background:#7c4dff;color:#fff}
+    .copy-btn.copied{background:#639922;color:#fff}
+
+    /* boton flotante de contacto */
+    .fab{position:fixed;bottom:1.2rem;right:1.2rem;width:54px;height:54px;
+         border-radius:50%;background:#5e35b1;color:#fff;border:none;
+         font-size:1.4rem;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,.25);
+         z-index:200;display:flex;align-items:center;justify-content:center}
+    .fab:hover{background:#4a2d8c}
+
+    .modal-overlay{position:fixed;inset:0;background:rgba(45,27,84,.45);
+         display:none;align-items:center;justify-content:center;z-index:300;
+         padding:1rem}
+    .modal-overlay.visible{display:flex}
+    .modal-box{background:#fff;border-radius:10px;padding:1.5rem;
+         max-width:420px;width:100%;box-shadow:0 4px 24px rgba(0,0,0,.25)}
+    .modal-box h3{color:#4a2d8c;margin-bottom:.3rem;font-size:1.1rem}
+    .modal-box p.muted{margin-bottom:.9rem}
+    .modal-box label{display:block;font-size:.82rem;color:#4a2d8c;
+         font-weight:600;margin-bottom:.3rem;margin-top:.7rem}
+    .modal-box input, .modal-box select, .modal-box textarea{width:100%;max-width:100%}
+    .modal-box textarea{font-family:inherit;font-size:.88rem;padding:.5rem .7rem;
+         border:1px solid #d8d2ee;border-radius:6px;resize:vertical;min-height:90px}
+    .modal-actions{display:flex;justify-content:flex-end;gap:.6rem;margin-top:1.1rem}
+    .btn-cancel{background:transparent;color:#5e35b1;border:1px solid #d8d2ee;
+         padding:.5rem 1rem;border-radius:6px;font-size:.85rem;font-weight:600;
+         cursor:pointer;font-family:inherit}
+    .btn-cancel:hover{background:#f8f7fb}
+
+    /* mapas */
+    .map-container{height:420px;border-radius:8px;overflow:hidden;margin-top:.6rem;
+                    border:1px solid #e8e3f7}
+    .map-legend{display:flex;align-items:center;gap:.6rem;margin-top:.6rem;
+                 font-size:.78rem;color:#5e35b1;flex-wrap:wrap}
+    .legend-bar{height:10px;width:160px;border-radius:4px;
+                 background:linear-gradient(to right,#cbb8f5,#3d2570)}
+    .legend-note{font-size:.78rem;color:#888;margin-top:.4rem}
+    .leaflet-popup-content{font-size:.82rem;line-height:1.5}
+
+    .panel{display:none}
+    .panel.visible{display:block}
+  </style>
+</head>
+<body>
+
+  <nav>
+    <button class="tab-btn active" data-panel="inicio">Inicio</button>
+    <button class="tab-btn" data-panel="cud">CUD</button>
+    <button class="tab-btn" data-panel="medico">Medico</button>
+    <button class="tab-btn" data-panel="estadistico">Estadistico</button>
+    <button class="tab-btn" data-panel="vanguardia">Vanguardia</button>
+    <button class="tab-btn" data-panel="donaciones">Donaciones</button>
+    <a href="/docs" class="docs" target="_blank" rel="noopener">API Docs</a>
+  </nav>
+
+  <div class="verses">
+    <p>
+      &ldquo;<strong>Mateo 22:37-39</strong><br>
+      &sup3;&#8311; Jes&uacute;s le dijo: Amar&aacute;s al Se&ntilde;or tu Dios
+      con todo tu coraz&oacute;n, y con toda tu alma, y con toda tu mente.
+      &sup3;&#8312; Este es el primero y grande mandamiento. Y el segundo es
+      semejante: Amar&aacute;s a tu pr&oacute;jimo como a ti mismo.
+    </p>
+    <p>
+      <strong>Juan 3:17</strong><br>
+      &sup1;&#8311; Pero el que tiene bienes de este mundo y ve a su hermano
+      tener necesidad, y cierra contra &eacute;l su coraz&oacute;n,
+      &iquest;c&oacute;mo mora el amor de Dios en &eacute;l?
+    </p>
+    <p>
+      <strong>Lucas 14:13-14</strong><br>
+      &sup1;&#179; Mas cuando hagas banquete, llama a los pobres, los mancos,
+      los cojos y los ciegos; &sup1;&#8308; y ser&aacute;s bienaventurado;
+      porque ellos no te pueden recompensar, pero te ser&aacute;
+      recompensado en la resurrecci&oacute;n de los justos.&rdquo;
+    </p>
+  </div>
+
+  <header>
+    <h1>Observatorio de Discapacidad</h1>
+    <p>CUD - Evidencia medica - Estadisticas oficiales (ANDIS/INDEC)</p>
+  </header>
+
+  <!-- ====================== INICIO ====================== -->
+  <div class="panel visible" id="panel-inicio">
+    <div class="wrap">
+      <div class="home-grid">
+        <div class="home-card">
+          <h3>Certificado Unico de Discapacidad (CUD)</h3>
+          <p>Que es, como se tramita, requisitos, beneficios y la junta evaluadora
+             de tu provincia con datos de contacto.</p>
+          <button class="go-btn" onclick="switchTab('cud')">Ver guia</button>
+        </div>
+        <div class="home-card">
+          <h3>Evidencia medica</h3>
+          <p>Investigaciones recientes y ensayos clinicos por tipo de discapacidad,
+             explicados en lenguaje simple, con fuentes verificables.</p>
+          <button class="go-btn" onclick="switchTab('medico')">Explorar</button>
+        </div>
+        <div class="home-card">
+          <h3>Estadisticas oficiales</h3>
+          <p>Cifras de ANDIS e INDEC sobre CUD vigentes, evolucion y distribucion
+             por provincia y tipo de discapacidad.</p>
+          <button class="go-btn" onclick="switchTab('estadistico')">Ver datos</button>
+        </div>
+        <div class="home-card">
+          <h3>Tratamientos de vanguardia</h3>
+          <p>Avances medicos recientes (terapias genicas, implantes, neurotecnologia)
+             con su estado de aprobacion y disponibilidad en Argentina.</p>
+          <button class="go-btn" onclick="switchTab('vanguardia')">Ver avances</button>
+        </div>
+        <div class="home-card donate">
+          <h3>&#128156; Apoyar este proyecto</h3>
+          <p>Este observatorio se mantiene con trabajo voluntario. Si te resulta
+             util, podes colaborar con una donacion.</p>
+          <button class="go-btn" onclick="switchTab('donaciones')">Donar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================== CUD ====================== -->
+  <div class="panel" id="panel-cud">
+    <div class="wrap">
+
+      <div class="card">
+        <h2>Certificado Unico de Discapacidad (CUD)</h2>
+        <p>
+          El CUD es un documento <strong>gratuito y obligatorio</strong> emitido
+          por el Estado argentino que certifica la existencia de una discapacidad.
+          No tiene vencimiento si la discapacidad es permanente. Permite acceder a
+          beneficios en salud, transporte, impuestos y educacion, entre otros.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>Como se tramita</h2>
+        <div id="cud-pasos" class="result-box"><p class="loading">Cargando pasos...</p></div>
+      </div>
+
+      <div class="card">
+        <h2>Requisitos</h2>
+        <div id="cud-requisitos" class="result-box"><p class="loading">Cargando requisitos...</p></div>
+      </div>
+
+      <div class="card">
+        <h2>Beneficios</h2>
+        <div id="cud-beneficios" class="result-box"><p class="loading">Cargando beneficios...</p></div>
+      </div>
+
+      <div class="card">
+        <h2>Junta evaluadora en tu provincia</h2>
+        <p>Eleg&iacute; tu provincia para ver el organismo a cargo, tel&eacute;fono,
+           email, turnos online y sedes.</p>
+        <div class="form-row">
+          <select id="cud-provincia-select" onchange="loadJunta()">
+            <option value="">Seleccion&aacute; una provincia...</option>
+          </select>
+        </div>
+        <div id="cud-junta-result" class="result-box"></div>
+      </div>
+
+      <div class="card">
+        <h2>Preguntas frecuentes</h2>
+        <div id="cud-faq" class="result-box"><p class="loading">Cargando preguntas frecuentes...</p></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ====================== MEDICO ====================== -->
+  <div class="panel" id="panel-medico">
+    <div class="wrap">
+
+      <div class="card">
+        <h2>Evidencia medica</h2>
+        <p>
+          Esta secci&oacute;n resume investigaci&oacute;n cient&iacute;fica reciente
+          (PubMed/NIH) y ensayos cl&iacute;nicos activos (ClinicalTrials.gov) sobre
+          tratamientos y rehabilitaci&oacute;n para distintos tipos de discapacidad.
+          Es informaci&oacute;n <strong>educativa</strong>, no reemplaza la consulta
+          con un profesional de la salud.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>Explorar por tipo de discapacidad</h2>
+        <div class="form-row">
+          <select id="medico-tipo-select" onchange="loadTratamiento()">
+            <option value="">Seleccion&aacute; un tipo...</option>
+            <option value="motora">Motora</option>
+            <option value="visual">Visual</option>
+            <option value="auditiva">Auditiva</option>
+            <option value="intelectual">Intelectual</option>
+            <option value="psicosocial">Psicosocial</option>
+            <option value="visceral">Visceral</option>
+          </select>
+        </div>
+        <div id="medico-tipo-result" class="result-box"></div>
+      </div>
+
+      <div class="card">
+        <h2>Buscar en evidencia medica</h2>
+        <p>Busc&aacute; por palabra clave (ej: "exoesqueleto", "implante coclear",
+           "terapia genica").</p>
+        <div class="form-row">
+          <input type="text" id="medico-buscar-input" placeholder="Termino de busqueda...">
+          <button class="btn-sm" onclick="loadBuscar()">Buscar</button>
+        </div>
+        <div id="medico-buscar-result" class="result-box"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ====================== ESTADISTICO ====================== -->
+  <div class="panel" id="panel-estadistico">
+    <div class="wrap">
+
+      <div class="card">
+        <h2>Estadisticas oficiales</h2>
+        <p>
+          Datos del &uacute;ltimo informe de <strong>ANDIS</strong> (noviembre 2023)
+          y proyecciones de poblaci&oacute;n del <strong>INDEC</strong> (Censo 2022).
+        </p>
+        <div id="estad-resumen" class="result-box"><p class="loading">Cargando resumen...</p></div>
+      </div>
+
+      <div class="card">
+        <h2>CUD por tipo de discapacidad</h2>
+        <div id="estad-tipos" class="result-box"><p class="loading">Cargando...</p></div>
+      </div>
+
+      <div class="card">
+        <h2>Provincias con mas CUD vigentes</h2>
+        <div id="estad-provincias" class="result-box"><p class="loading">Cargando...</p></div>
+      </div>
+
+      <div class="card">
+        <h2>Distribucion en CABA por comuna</h2>
+        <div id="estad-caba" class="result-box"><p class="loading">Cargando...</p></div>
+      </div>
+
+      <div class="card">
+        <h2>Mapa de Argentina por provincia</h2>
+        <p class="muted">El tama&ntilde;o del circulo representa el total de CUD
+           vigentes y el color representa la tasa de prevalencia (a mayor color,
+           mayor porcentaje de poblacion con CUD). Las posiciones son centroides
+           aproximados de cada provincia, no limites administrativos exactos.</p>
+        <div id="map-provincias" class="map-container"></div>
+        <div class="map-legend">
+          <span>Tasa de prevalencia:</span>
+          <span class="legend-bar"></span>
+          <span id="legend-prov-min">-</span>
+          <span style="flex:1"></span>
+          <span id="legend-prov-max">-</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Mapa de CABA por comuna</h2>
+        <p class="muted">Mismo criterio: tama&ntilde;o = CUD vigentes,
+           color = tasa estimada. Posiciones aproximadas (centroides de comuna).</p>
+        <div id="map-caba" class="map-container"></div>
+        <div class="map-legend">
+          <span>Tasa estimada:</span>
+          <span class="legend-bar"></span>
+          <span id="legend-caba-min">-</span>
+          <span style="flex:1"></span>
+          <span id="legend-caba-max">-</span>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+  <!-- ====================== VANGUARDIA ====================== -->
+  <div class="panel" id="panel-vanguardia">
+    <div class="wrap">
+
+      <div class="card">
+        <h2>Tratamientos de vanguardia</h2>
+        <div class="disclaimer">
+          <span class="tag-warn">AVISO</span> Informacion educativa sobre
+          tratamientos de vanguardia. No constituye consejo medico ni
+          recomendacion de tratamiento. Toda decision terapeutica debe ser
+          tomada junto a un profesional de la salud habilitado.
+        </div>
+        <div class="form-row">
+          <select id="vang-tipo-select" onchange="loadVanguardia()">
+            <option value="">Seleccion&aacute; un tipo...</option>
+            <option value="motora">Motora</option>
+            <option value="visual">Visual</option>
+            <option value="auditiva">Auditiva</option>
+            <option value="intelectual">Intelectual</option>
+            <option value="psicosocial">Psicosocial</option>
+            <option value="visceral">Visceral</option>
+          </select>
+        </div>
+        <div id="vang-result" class="result-box"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ====================== DONACIONES ====================== -->
+  <div class="panel" id="panel-donaciones">
+    <div class="wrap">
+
+      <div class="card">
+        <h2>&#128156; Apoyar este proyecto &mdash; Donaciones voluntarias</h2>
+        <p>Si este proyecto te resulta &uacute;til, pod&eacute;s apoyarlo con una
+           donaci&oacute;n voluntaria.</p>
+
+        <div class="bank-card">
+          <h4>&#127462;&#127479; Argentina &middot; Pesos (ARS)</h4>
+          <div class="bank-row"><span>Tipo</span><span class="v">Caja de Ahorro</span></div>
+          <div class="bank-row"><span>CBU</span>
+            <span class="v" id="cbu-ars">0140005203400552652310</span>
+            <button class="copy-btn" onclick="copyText('cbu-ars', this)">Copiar</button>
+          </div>
+          <div class="bank-row"><span>Alias</span>
+            <span class="v" id="alias-ars">ALGORIT.MONTE.PESOS</span>
+            <button class="copy-btn" onclick="copyText('alias-ars', this)">Copiar</button>
+          </div>
+          <div class="bank-row"><span>Titular</span><span class="v">Vicente Humberto Monteverde</span></div>
+          <div class="bank-row"><span>CUIL/CUIT</span><span class="v">20-12034411-1</span></div>
+        </div>
+
+        <div class="bank-card">
+          <h4>&#127462;&#127479; Argentina &middot; D&oacute;lares (USD)</h4>
+          <div class="bank-row"><span>Tipo</span><span class="v">Caja de Ahorro D&oacute;lares</span></div>
+          <div class="bank-row"><span>CBU</span>
+            <span class="v" id="cbu-usd">0140005204400550329709</span>
+            <button class="copy-btn" onclick="copyText('cbu-usd', this)">Copiar</button>
+          </div>
+          <div class="bank-row"><span>Alias</span>
+            <span class="v" id="alias-usd">ALGO.MONTE.DOLARES</span>
+            <button class="copy-btn" onclick="copyText('alias-usd', this)">Copiar</button>
+          </div>
+          <div class="bank-row"><span>Titular</span><span class="v">Vicente Humberto Monteverde</span></div>
+          <div class="bank-row"><span>CUIL/CUIT</span><span class="v">20-12034411-1</span></div>
+        </div>
+
+        <div class="bank-card">
+          <h4>&#127760; Desde el exterior (USD Wire)</h4>
+          <div class="bank-row"><span>Banco</span><span class="v">Banco Santander Rio</span></div>
+          <div class="bank-row"><span>Beneficiario</span><span class="v">Vicente Humberto Monteverde</span></div>
+          <div class="bank-row"><span>Direcci&oacute;n</span><span class="v">Av. Directorio 3024 PB DTO 04</span></div>
+          <div class="bank-row"><span>Cuenta USD</span>
+            <span class="v" id="cta-usd">005200183500</span>
+            <button class="copy-btn" onclick="copyText('cta-usd', this)">Copiar</button>
+          </div>
+          <div class="bank-row"><span>SWIFT / BIC</span>
+            <span class="v" id="swift">BSCHUYMM</span>
+            <button class="copy-btn" onclick="copyText('swift', this)">Copiar</button>
+          </div>
+          <div class="bank-row"><span>CUIT</span><span class="v">20-12034411-1</span></div>
+        </div>
+
+        <p class="muted">Gracias por tu apoyo. Cualquier consulta sobre donaciones:
+          <a href="mailto:vhmonte@retina.ar">vhmonte@retina.ar</a></p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ====================== INFO LEGAL / AUTOR ====================== -->
+  <div class="info-section">
+
+    <div class="notice">
+      <strong>&#9888;&#65039; Nota:</strong> Este observatorio es de car&aacute;cter
+      <strong>educativo e informativo</strong>. Los datos provienen de fuentes
+      p&uacute;blicas oficiales (ANDIS, INDEC, Georef) y de bases cient&iacute;ficas
+      internacionales (PubMed/NIH, ClinicalTrials.gov). La informaci&oacute;n
+      m&eacute;dica y sobre tratamientos de vanguardia <strong>no constituye
+      consejo m&eacute;dico ni recomendaci&oacute;n de tratamiento</strong>.
+      Toda decisi&oacute;n terap&eacute;utica debe ser tomada junto a un
+      profesional de la salud habilitado.
+    </div>
+
+    <div class="legal">
+      <h3>Marco legal y fuentes de datos</h3>
+      <p>
+        Los datos publicados en este portal provienen exclusivamente de fuentes
+        oficiales del Estado argentino (<strong>ANDIS</strong> &mdash;
+        Agencia Nacional de Discapacidad, <strong>INDEC</strong>,
+        <strong>Georef</strong>/datos.gob.ar) y de organismos cient&iacute;ficos
+        internacionales de acceso p&uacute;blico (<strong>PubMed/NIH</strong>,
+        <strong>ClinicalTrials.gov</strong>). Su reutilizaci&oacute;n est&aacute;
+        amparada por la <strong>Ley 27.275 de Acceso a la Informaci&oacute;n
+        P&uacute;blica</strong> y el <strong>Decreto 1172/2003</strong> sobre
+        libre acceso a la informaci&oacute;n p&uacute;blica en el Poder
+        Ejecutivo Nacional.
+      </p>
+      <p>
+        El marco normativo de referencia sobre discapacidad es la
+        <strong>Ley 22.431</strong> (Sistema de Protecci&oacute;n Integral de
+        las Personas con Discapacidad) y la <strong>Ley 24.901</strong>
+        (Sistema de Prestaciones B&aacute;sicas), junto con las resoluciones
+        vigentes de ANDIS.
+      </p>
+      <p>
+        La informaci&oacute;n del m&oacute;dulo m&eacute;dico (art&iacute;culos,
+        ensayos cl&iacute;nicos y tratamientos de vanguardia) es de
+        car&aacute;cter <strong>educativo</strong> y se obtiene en tiempo real
+        de bases p&uacute;blicas internacionales. No reemplaza la consulta
+        con profesionales de la salud ni los canales oficiales de ANDIS.
+        Para consultas sobre el tratamiento de datos:
+        <a href="mailto:vhmonte@retina.ar">vhmonte@retina.ar</a>.
+      </p>
+    </div>
+
+    <div class="author">
+      <img src="https://avatars.githubusercontent.com/u/59251479?v=4" alt="Foto de perfil">
+      <div>
+        <h3>Ph.D. Vicente Humberto Monteverde</h3>
+        <p>
+          Investigador en econom&iacute;a pol&iacute;tica y pol&iacute;ticas
+          p&uacute;blicas. Doctor en Ciencias Econ&oacute;micas. Desarrollador
+          del Observatorio de Discapacidad como herramienta de
+          informaci&oacute;n y transparencia sobre el acceso a derechos,
+          evidencia m&eacute;dica y estad&iacute;sticas oficiales en Argentina.
+        </p>
+        <p>
+          Publicaciones en <em>Journal of Financial Crime</em> (Emerald
+          Publishing). Asesor en transparencia y an&aacute;lisis de datos
+          p&uacute;blicos.
+        </p>
+        <div class="author-links">
+          <a href="mailto:vhmonte@retina.ar">&#9993; vhmonte@retina.ar</a>
+          <a href="mailto:viny01958@gmail.com">&#9993; viny01958@gmail.com</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    Informacion oficial basada en normativa ANDIS - Ley 22.431 - Ley 24.901<br>
+    Para consultas oficiales: <a href="https://www.argentina.gob.ar/andis">argentina.gob.ar/andis</a>
+    - 0800-333-ANDIS
+  </footer>
+
+  <!-- ====================== CONTACTO (flotante) ====================== -->
+  <button class="fab" onclick="openContacto()" aria-label="Enviar mensaje o sugerencia" title="Mensajes, sugerencias y errores">
+    &#9993;
+  </button>
+
+  <div class="modal-overlay" id="contacto-overlay">
+    <div class="modal-box">
+      <h3>Mensajes, sugerencias y errores</h3>
+      <p class="muted">Tu comentario se enviar&aacute; por email al equipo del observatorio.</p>
+
+      <label for="contacto-nombre">Nombre y apellido</label>
+      <input type="text" id="contacto-nombre" placeholder="Tu nombre y apellido">
+
+      <label for="contacto-email">Email</label>
+      <input type="text" id="contacto-email" placeholder="tu@email.com">
+
+      <label for="contacto-tipo">Tipo de mensaje</label>
+      <select id="contacto-tipo">
+        <option value="Sugerencia">Sugerencia</option>
+        <option value="Error">Reporte de error</option>
+        <option value="Consulta">Consulta general</option>
+      </select>
+
+      <label for="contacto-mensaje">Mensaje</label>
+      <textarea id="contacto-mensaje" placeholder="Escribi tu mensaje aqui..."></textarea>
+
+      <div class="modal-actions">
+        <button class="btn-cancel" onclick="closeContacto()">Cancelar</button>
+        <button class="btn-sm" onclick="enviarContacto()">Enviar</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* ---------- contacto: modal ---------- */
+    function openContacto() {
+      document.getElementById('contacto-overlay').classList.add('visible');
+    }
+    function closeContacto() {
+      document.getElementById('contacto-overlay').classList.remove('visible');
+    }
+    function enviarContacto() {
+      const nombre = document.getElementById('contacto-nombre').value.trim();
+      const email  = document.getElementById('contacto-email').value.trim();
+      const tipo   = document.getElementById('contacto-tipo').value;
+      const msg    = document.getElementById('contacto-mensaje').value.trim();
+
+      if (!nombre || !email || !msg) {
+        alert('Por favor completa nombre, email y mensaje.');
+        return;
+      }
+
+      const subject = '[Observatorio Discapacidad] ' + tipo + ' de ' + nombre;
+      const body =
+        'Nombre y apellido: ' + nombre + '\n' +
+        'Email de contacto: ' + email + '\n' +
+        'Tipo: ' + tipo + '\n\n' +
+        'Mensaje:\n' + msg;
+
+      const mailto = 'mailto:vhmonte@retina.ar' +
+        '?subject=' + encodeURIComponent(subject) +
+        '&body=' + encodeURIComponent(body);
+
+      window.location.href = mailto;
+      closeContacto();
+    }
+
+    document.getElementById('contacto-overlay').addEventListener('click', (e) => {
+      if (e.target.id === 'contacto-overlay') closeContacto();
+    });
+
+    /* ---------- navegacion entre pestanas ---------- */
+    const buttons = document.querySelectorAll('.tab-btn');
+    const panels  = document.querySelectorAll('.panel');
+    const loaded  = {};
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = btn.dataset.panel;
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        panels.forEach(p => p.classList.toggle('visible', p.id === 'panel-' + target));
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        onTabOpen(target);
+      });
+    });
+
+    function switchTab(name) {
+      const btn = document.querySelector('.tab-btn[data-panel="' + name + '"]');
+      if (btn) btn.click();
+    }
+
+    function onTabOpen(name) {
+      if (loaded[name]) return;
+      loaded[name] = true;
+      if (name === 'cud') initCud();
+      if (name === 'estadistico') initEstadistico();
+    }
+
+    /* ---------- helpers ---------- */
+    function escapeHtml(s) {
+      return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    }
+
+    function renderJSON(data) {
+      if (data === null || data === undefined) return '<span class="muted">Sin datos</span>';
+      if (Array.isArray(data)) {
+        if (data.length === 0) return '<span class="muted">Sin datos</span>';
+        if (typeof data[0] === 'object') {
+          return '<div class="list-items">' +
+            data.map(item => '<div class="list-item">' + renderJSON(item) + '</div>').join('') +
+            '</div>';
+        }
+        return '<ul class="simple-list">' +
+          data.map(v => '<li>' + escapeHtml(v) + '</li>').join('') + '</ul>';
+      }
+      if (typeof data === 'object') {
+        return '<dl>' + Object.entries(data).map(([k, v]) => {
+          const label = k.replace(/_/g, ' ');
+          if (v !== null && typeof v === 'object') {
+            return '<div class="kv-row"><dt>' + escapeHtml(label) + '</dt><dd>' + renderJSON(v) + '</dd></div>';
+          }
+          return '<div class="kv-row"><dt>' + escapeHtml(label) + '</dt><dd>' + escapeHtml(v) + '</dd></div>';
+        }).join('') + '</dl>';
+      }
+      return escapeHtml(data);
+    }
+
+    async function fetchJSON(url) {
+      const r = await fetch(url);
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.json();
+    }
+
+    async function loadInto(url, targetId, renderer) {
+      const el = document.getElementById(targetId);
+      try {
+        const data = await fetchJSON(url);
+        el.innerHTML = (renderer || renderJSON)(data);
+      } catch (e) {
+        el.innerHTML = '<p class="muted">No se pudo cargar esta informacion ahora. ' +
+          '<a href="' + url + '" target="_blank" rel="noopener">Ver datos</a></p>';
+      }
+    }
+
+    /* ---------- CUD ---------- */
+    const PROVINCIAS = ["Buenos Aires","CABA","Catamarca","Chaco","Chubut","C\u00f3rdoba",
+      "Corrientes","Entre R\u00edos","Formosa","Jujuy","La Pampa","La Rioja","Mendoza",
+      "Misiones","Neuqu\u00e9n","R\u00edo Negro","Salta","San Juan","San Luis",
+      "Santa Cruz","Santa Fe","Santiago del Estero","Tierra del Fuego","Tucum\u00e1n"];
+
+    function initCud() {
+      loadInto('/api/cud/pasos', 'cud-pasos');
+      loadInto('/api/cud/requisitos', 'cud-requisitos');
+      loadInto('/api/cud/beneficios', 'cud-beneficios');
+      loadInto('/api/cud/faq', 'cud-faq');
+
+      const sel = document.getElementById('cud-provincia-select');
+      PROVINCIAS.forEach(p => {
+        const opt = document.createElement('option');
+        opt.value = p; opt.textContent = p;
+        sel.appendChild(opt);
+      });
+    }
+
+    function renderJunta(data) {
+      if (data.error) return '<p class="muted">' + escapeHtml(data.error) + '</p>';
+      let html = '';
+      if (data.nombre_organismo) html += '<h4>' + escapeHtml(data.nombre_organismo) + '</h4>';
+      if (data.nota) html += '<p>' + escapeHtml(data.nota) + '</p>';
+      if (data.telefono) html += '<div class="kv-row"><dt>Telefono</dt><dd>' + escapeHtml(data.telefono) + '</dd></div>';
+      if (data.email) html += '<div class="kv-row"><dt>Email</dt><dd>' + escapeHtml(data.email) + '</dd></div>';
+      if (data.tiempo_espera_estimado) html += '<div class="kv-row"><dt>Tiempo de espera</dt><dd>' + escapeHtml(data.tiempo_espera_estimado) + '</dd></div>';
+      if (data.url_turno) html += '<div class="kv-row"><dt>Turno online</dt><dd><a href="' + escapeHtml(data.url_turno) + '" target="_blank" rel="noopener">Sacar turno</a></dd></div>';
+      if (Array.isArray(data.sedes) && data.sedes.length) {
+        html += '<h5>Sedes</h5><div class="list-items">';
+        data.sedes.forEach(s => {
+          html += '<div class="list-item"><strong>' + escapeHtml(s.nombre || '') + '</strong>';
+          if (s.tipo) html += ' <span class="badge">' + escapeHtml(s.tipo) + '</span>';
+          if (s.direccion) html += '<br><span class="muted">' + escapeHtml(s.direccion) + '</span>';
+          if (s.telefono) html += '<br><span class="muted">Tel: ' + escapeHtml(s.telefono) + '</span>';
+          html += '</div>';
+        });
+        html += '</div>';
+      }
+      return html || renderJSON(data);
+    }
+
+    function loadJunta() {
+      const prov = document.getElementById('cud-provincia-select').value;
+      const target = document.getElementById('cud-junta-result');
+      if (!prov) { target.innerHTML = ''; return; }
+      target.innerHTML = '<p class="loading">Buscando...</p>';
+      loadInto('/api/cud/juntas?provincia=' + encodeURIComponent(prov), 'cud-junta-result', renderJunta);
+    }
+
+    /* ---------- MEDICO ---------- */
+    function renderArticulos(articulos) {
+      if (!articulos || !articulos.length) return '<p class="muted">No se encontraron articulos.</p>';
+      return articulos.map(a => {
+        let h = '<div class="article-card">';
+        h += '<a href="' + escapeHtml(a.url || '#') + '" target="_blank" rel="noopener">' + escapeHtml(a.titulo || 'Sin titulo') + '</a>';
+        const meta = [a.revista, a.fecha_pub, a.tipo_estudio].filter(Boolean).join(' &middot; ');
+        if (meta) h += '<span class="muted">' + meta + '</span>';
+        h += '</div>';
+        return h;
+      }).join('');
+    }
+
+    function renderTratamiento(data) {
+      let html = '';
+      if (data.descripcion) html += '<p>' + escapeHtml(data.descripcion) + '</p>';
+      if (typeof data.ensayos_activos === 'number') {
+        html += '<div class="stat-grid"><div class="stat-box"><div class="num">' +
+          data.ensayos_activos + '</div><div class="label">ensayos clinicos activos<br>(ClinicalTrials.gov)</div></div></div>';
+      }
+      if (data.articulos_top && data.articulos_top.length) {
+        html += '<h5>Articulos recientes</h5>' + renderArticulos(data.articulos_top);
+      }
+      return html || renderJSON(data);
+    }
+
+    function loadTratamiento() {
+      const tipo = document.getElementById('medico-tipo-select').value;
+      const target = document.getElementById('medico-tipo-result');
+      if (!tipo) { target.innerHTML = ''; return; }
+      target.innerHTML = '<p class="loading">Buscando evidencia para ' + escapeHtml(tipo) + '...</p>';
+      loadInto('/api/tratamientos/' + encodeURIComponent(tipo), 'medico-tipo-result', renderTratamiento);
+    }
+
+    function renderBuscarResult(data) {
+      let html = '';
+      if (typeof data.total === 'number') html += '<p class="muted">' + data.total + ' resultados</p>';
+      html += renderArticulos(data.articulos);
+      return html;
+    }
+
+    function loadBuscar() {
+      const q = document.getElementById('medico-buscar-input').value.trim();
+      const target = document.getElementById('medico-buscar-result');
+      if (!q) { target.innerHTML = '<p class="muted">Escribi un termino de busqueda.</p>'; return; }
+      if (q.length < 3) { target.innerHTML = '<p class="muted">Escribi al menos 3 caracteres.</p>'; return; }
+      target.innerHTML = '<p class="loading">Buscando...</p>';
+      loadInto('/api/buscar?q=' + encodeURIComponent(q), 'medico-buscar-result', renderBuscarResult);
+    }
+
+    /* ---------- ESTADISTICO ---------- */
+    function initEstadistico() {
+      loadInto('/api/resumen', 'estad-resumen', renderResumen);
+      loadInto('/api/tipos', 'estad-tipos', renderTiposBars);
+      loadInto('/api/provincias', 'estad-provincias', renderProvinciasTable);
+      loadInto('/api/caba/comunas', 'estad-caba', renderCabaTable);
+      loadMapaProvincias();
+      loadMapaCaba();
+    }
+
+    /* ---------- helpers de mapas ---------- */
+    function normName(s) {
+      return String(s || '')
+        .toLowerCase()
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+        .replace(/^(provincia de|ciudad autonoma de)\s+/, '')
+        .trim();
+    }
+
+    function colorForValue(value, min, max) {
+      if (max <= min) return '#7c4dff';
+      const t = Math.max(0, Math.min(1, (value - min) / (max - min)));
+      const c1 = [203, 184, 245];   // #cbb8f5
+      const c2 = [61, 37, 112];     // #3d2570
+      const r = Math.round(c1[0] + (c2[0] - c1[0]) * t);
+      const g = Math.round(c1[1] + (c2[1] - c1[1]) * t);
+      const b = Math.round(c1[2] + (c2[2] - c1[2]) * t);
+      return 'rgb(' + r + ',' + g + ',' + b + ')';
+    }
+
+    function radiusForValue(value, max) {
+      if (!max) return 6;
+      const t = Math.max(0, Math.min(1, value / max));
+      return 6 + Math.sqrt(t) * 22;
+    }
+
+    function getPointCoords(geom) {
+      if (!geom) return null;
+      const t = geom.type;
+      const c = geom.coordinates;
+      if (t === 'Point') return c;
+      if (t === 'MultiPoint' && c && c.length) return c[0];
+      if (t === 'Polygon' && c && c[0] && c[0].length) {
+        let sx = 0, sy = 0, n = c[0].length;
+        c[0].forEach(p => { sx += p[0]; sy += p[1]; });
+        return [sx / n, sy / n];
+      }
+      if (t === 'MultiPolygon' && c && c[0] && c[0][0] && c[0][0].length) {
+        let sx = 0, sy = 0, n = c[0][0].length;
+        c[0][0].forEach(p => { sx += p[0]; sy += p[1]; });
+        return [sx / n, sy / n];
+      }
+      return null;
+    }
+
+    // Centroides aproximados de respaldo (lat, lon) por si el GeoJSON
+    // no trae geometria valida para alguna provincia
+    const PROVINCIA_COORDS = {
+      'buenos aires': [-36.5, -61.0],
+      'caba': [-34.61, -58.44],
+      'catamarca': [-28.0, -67.0],
+      'chaco': [-26.5, -60.5],
+      'chubut': [-43.5, -68.5],
+      'cordoba': [-32.0, -64.0],
+      'corrientes': [-28.5, -58.0],
+      'entre rios': [-32.0, -59.0],
+      'formosa': [-25.0, -60.0],
+      'jujuy': [-23.5, -65.5],
+      'la pampa': [-37.0, -65.5],
+      'la rioja': [-29.5, -67.0],
+      'mendoza': [-34.5, -68.5],
+      'misiones': [-27.0, -54.5],
+      'neuquen': [-38.5, -70.0],
+      'rio negro': [-40.5, -68.0],
+      'salta': [-24.5, -64.5],
+      'san juan': [-30.5, -68.8],
+      'san luis': [-33.5, -66.0],
+      'santa cruz': [-48.5, -70.0],
+      'santa fe': [-30.5, -61.0],
+      'santiago del estero': [-27.5, -63.5],
+      'tierra del fuego': [-54.0, -68.3],
+      'tucuman': [-27.0, -65.5],
+    };
+
+    async function loadMapaProvincias() {
+      const el = document.getElementById('map-provincias');
+      try {
+        const [geo, stats] = await Promise.all([
+          fetchJSON('/api/mapa/provincias'),
+          fetchJSON('/api/provincias'),
+        ]);
+        const statsArr = Array.isArray(stats) ? stats : (stats.provincias || []);
+        const byName = {};
+        statsArr.forEach(s => { byName[normName(s.provincia)] = s; });
+
+        const tasas = statsArr.map(s => s.tasa_prevalencia || 0).filter(v => v > 0);
+        const cuds   = statsArr.map(s => s.cud_vigentes || 0);
+        const tasaMin = tasas.length ? Math.min(...tasas) : 0;
+        const tasaMax = tasas.length ? Math.max(...tasas) : 1;
+        const cudMax  = cuds.length ? Math.max(...cuds) : 1;
+
+        document.getElementById('legend-prov-min').textContent = tasaMin.toFixed(1) + '%';
+        document.getElementById('legend-prov-max').textContent = tasaMax.toFixed(1) + '%';
+
+        const map = L.map('map-provincias', { scrollWheelZoom: false });
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; OpenStreetMap',
+          maxZoom: 8,
+        }).addTo(map);
+
+        const bounds = [];
+        const plotted = new Set();
+
+        function plotMarker(name, lat, lon, stat) {
+          const cud   = stat ? (stat.cud_vigentes || 0) : 0;
+          const tasa  = stat ? (stat.tasa_prevalencia || 0) : null;
+          const color = tasa != null ? colorForValue(tasa, tasaMin, tasaMax) : '#b4b2a9';
+          const radius = radiusForValue(cud, cudMax);
+
+          const marker = L.circleMarker([lat, lon], {
+            radius: radius,
+            fillColor: color,
+            color: '#3d2570',
+            weight: 1,
+            fillOpacity: 0.75,
+          }).addTo(map);
+
+          const dentroDeRango = lat >= -56 && lat <= -21 && lon >= -74 && lon <= -52;
+          if (dentroDeRango) bounds.push([lat, lon]);
+
+          let popup = '<strong>' + escapeHtml(name) + '</strong><br>';
+          if (stat) {
+            popup += 'CUD vigentes: ' + cud.toLocaleString('es-AR') + '<br>';
+            popup += 'Tasa de prevalencia: ' + tasa + '%';
+          } else {
+            popup += '<span class="muted">Sin datos estadisticos</span>';
+          }
+          marker.bindPopup(popup);
+        }
+
+        const features = (geo.features || []);
+        features.forEach(f => {
+          const coords = getPointCoords(f.geometry);
+          if (!coords) return;
+          const props = f.properties || {};
+          const name = props.nombre || props.provincia || props.name || '';
+          const key = normName(name);
+          const stat = byName[key];
+          if (stat) plotted.add(key);
+          plotMarker(name, coords[1], coords[0], stat);
+        });
+
+        // Provincias con datos en /api/provincias que no se pudieron
+        // dibujar desde el GeoJSON: se ubican con coordenadas de respaldo
+        statsArr.forEach(s => {
+          const key = normName(s.provincia);
+          if (plotted.has(key)) return;
+          const coords = PROVINCIA_COORDS[key];
+          if (!coords) return;
+          plotMarker(s.provincia, coords[0], coords[1], s);
+          plotted.add(key);
+        });
+
+        if (bounds.length) {
+          map.fitBounds(bounds, { padding: [20, 20], maxZoom: 6 });
+        } else {
+          map.setView([-38.5, -64], 4);
+        }
+      } catch (e) {
+        el.innerHTML = '<p class="muted">No se pudo cargar el mapa. ' +
+          '<a href="/api/mapa/provincias" target="_blank" rel="noopener">Ver GeoJSON</a></p>';
+      }
+    }
+
+    async function loadMapaCaba() {
+      const el = document.getElementById('map-caba');
+      try {
+        const [geo, stats] = await Promise.all([
+          fetchJSON('/api/mapa/caba'),
+          fetchJSON('/api/caba/comunas'),
+        ]);
+        const statsArr = Array.isArray(stats) ? stats : (stats.comunas || []);
+        const features = (geo.features || []);
+
+        const getNum = (obj, keys) => {
+          for (const k of keys) {
+            if (obj[k] != null) {
+              const m = String(obj[k]).match(/(\d+)/);
+              if (m) return parseInt(m[1], 10);
+            }
+          }
+          return null;
+        };
+        const statKeys = ['comuna', 'nro_comuna', 'numero', 'id', 'nombre'];
+        const geoKeys   = ['comuna', 'nro_comuna', 'numero', 'id', 'nombre', 'name'];
+
+        const byComuna = {};
+        statsArr.forEach((s, i) => {
+          let n = getNum(s, statKeys);
+          if (n == null && statsArr.length === 15) n = i + 1; // fallback posicional
+          if (n != null) byComuna[n] = s;
+        });
+
+        const cudsArr  = statsArr.map(s => s.cud || 0);
+        const tasasArr = statsArr.map(s => s.tasa_estimada || 0).filter(v => v > 0);
+        const cudMax   = cudsArr.length ? Math.max(...cudsArr) : 1;
+        const tasaMin  = tasasArr.length ? Math.min(...tasasArr) : 0;
+        const tasaMax  = tasasArr.length ? Math.max(...tasasArr) : 1;
+
+        document.getElementById('legend-caba-min').textContent = tasaMin.toFixed(1) + '%';
+        document.getElementById('legend-caba-max').textContent = tasaMax.toFixed(1) + '%';
+
+        const map = L.map('map-caba', { scrollWheelZoom: false }).setView([-34.61, -58.44], 11);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; OpenStreetMap',
+          maxZoom: 16,
+        }).addTo(map);
+
+        features.forEach((f, idx) => {
+          const coords = getPointCoords(f.geometry);
+          if (!coords) return;
+          const props = f.properties || {};
+          let num = getNum(props, geoKeys);
+          if (num == null && features.length === 15) num = idx + 1; // fallback posicional
+          const stat = num != null ? byComuna[num] : null;
+          const name = props.nombre || props.comuna || props.name ||
+                       (num != null ? ('Comuna ' + num) : 'Comuna');
+
+          const cud  = stat ? (stat.cud || 0) : 0;
+          const tasa = stat ? (stat.tasa_estimada || 0) : null;
+          const color = tasa != null ? colorForValue(tasa, tasaMin, tasaMax) : '#b4b2a9';
+          const radius = radiusForValue(cud, cudMax);
+
+          const marker = L.circleMarker([coords[1], coords[0]], {
+            radius: radius,
+            fillColor: color,
+            color: '#3d2570',
+            weight: 1,
+            fillOpacity: 0.75,
+          }).addTo(map);
+
+          let popup = '<strong>' + escapeHtml(name) + '</strong><br>';
+          if (stat) {
+            popup += 'CUD: ' + cud.toLocaleString('es-AR') + '<br>';
+            popup += 'Tasa estimada: ' + tasa + '%';
+          } else {
+            popup += '<span class="muted">Sin datos estadisticos</span>';
+          }
+          marker.bindPopup(popup);
+        });
+      } catch (e) {
+        el.innerHTML = '<p class="muted">No se pudo cargar el mapa. ' +
+          '<a href="/api/mapa/caba" target="_blank" rel="noopener">Ver GeoJSON</a></p>';
+      }
+    }
+
+    function renderResumen(data) {
+      const items = [
+        [data.total_cud_vigentes, 'CUD vigentes (total nacional)'],
+        [data.porcentaje_poblacion + '%', 'de la poblacion'],
+        [data.provincia_mayor, 'provincia con mas CUD'],
+        [data.tipo_mas_frecuente, 'tipo mas frecuente'],
+        [data.variacion_anual_pct + '%', 'variacion ultimo ano'],
+        [data.total_provincias, 'provincias con junta evaluadora'],
+      ];
+      let html = '<div class="stat-grid">';
+      items.forEach(([num, label]) => {
+        if (num === undefined || num === null) return;
+        html += '<div class="stat-box"><div class="num">' + escapeHtml(num) + '</div><div class="label">' + escapeHtml(label) + '</div></div>';
+      });
+      html += '</div>';
+      if (data.fuente) html += '<p class="muted" style="margin-top:.6rem">Fuente: ' + escapeHtml(data.fuente) + '</p>';
+      return html;
+    }
+
+    function renderTiposBars(data) {
+      const arr = Array.isArray(data) ? data : (data.tipos || []);
+      if (!arr.length) return renderJSON(data);
+      const max = Math.max(...arr.map(t => t.porcentaje || 0));
+      return arr.map(t => {
+        const pct = t.porcentaje || 0;
+        const width = max ? (pct / max * 100) : 0;
+        return '<div class="bar-row"><div class="bar-label">' + escapeHtml(t.tipo || '') +
+          '</div><div class="bar-track"><div class="bar-fill" style="width:' + width + '%"></div></div>' +
+          '<div class="bar-pct">' + pct + '%</div></div>';
+      }).join('');
+    }
+
+    function renderProvinciasTable(data) {
+      const arr = Array.isArray(data) ? data : (data.provincias || []);
+      if (!arr.length) return renderJSON(data);
+      let html = '<table class="tbl"><tr><th>Provincia</th><th>CUD vigentes</th><th>Tasa prevalencia</th></tr>';
+      arr.slice(0, 8).forEach(p => {
+        html += '<tr><td>' + escapeHtml(p.provincia || '') + '</td><td>' +
+          escapeHtml(p.cud_vigentes != null ? p.cud_vigentes.toLocaleString('es-AR') : '') +
+          '</td><td>' + escapeHtml(p.tasa_prevalencia != null ? p.tasa_prevalencia + '%' : '') + '</td></tr>';
+      });
+      html += '</table>';
+      return html;
+    }
+
+    function renderCabaTable(data) {
+      const arr = Array.isArray(data) ? data : (data.comunas || []);
+      if (!arr.length) return renderJSON(data);
+      let html = '<table class="tbl"><tr><th>Comuna</th><th>CUD</th><th>Tasa estimada</th></tr>';
+      arr.forEach(c => {
+        html += '<tr><td>' + escapeHtml((c.comuna != null ? c.comuna + ' - ' : '') + (c.nombre || '')) + '</td><td>' +
+          escapeHtml(c.cud != null ? c.cud.toLocaleString('es-AR') : '') + '</td><td>' +
+          escapeHtml(c.tasa_estimada != null ? c.tasa_estimada + '%' : '') + '</td></tr>';
+      });
+      html += '</table>';
+      return html;
+    }
+
+    /* ---------- VANGUARDIA ---------- */
+    function renderVanguardiaTipo(data) {
+      let html = '';
+      if (data.nota_importante) html += '<p class="muted">' + escapeHtml(data.nota_importante) + '</p>';
+      if (!data.tratamientos || !data.tratamientos.length) return html + '<p class="muted">Sin datos para este tipo.</p>';
+      data.tratamientos.forEach(t => {
+        html += '<div class="treat-card"><div class="treat-head">';
+        html += '<span class="badge">' + (t.estado_icon || '') + ' ' + escapeHtml(t.estado_label || '') + '</span>';
+        html += '<h5>' + escapeHtml(t.nombre || '') + '</h5></div>';
+        if (t.descripcion_simple) html += '<p>' + escapeHtml(t.descripcion_simple) + '</p>';
+        if (t.disponibilidad_ar) html += '<p class="muted"><strong>Disponibilidad en AR:</strong> ' + escapeHtml(t.disponibilidad_ar) + '</p>';
+        if (t.disclaimer_especifico) html += '<div class="small-disclaimer">' + escapeHtml(t.disclaimer_especifico) + '</div>';
+        if (t.url_pubmed) html += '<p style="margin-top:.5rem"><a href="' + escapeHtml(t.url_pubmed) + '" target="_blank" rel="noopener">Ver evidencia en PubMed</a></p>';
+        html += '</div>';
+      });
+      return html;
+    }
+
+    function loadVanguardia() {
+      const tipo = document.getElementById('vang-tipo-select').value;
+      const target = document.getElementById('vang-result');
+      if (!tipo) { target.innerHTML = ''; return; }
+      target.innerHTML = '<p class="loading">Cargando tratamientos...</p>';
+      loadInto('/api/vanguardia/tipo/' + encodeURIComponent(tipo), 'vang-result', renderVanguardiaTipo);
+    }
+
+    /* ---------- DONACIONES: copiar al portapapeles ---------- */
+    function copyText(elId, btn) {
+      const text = document.getElementById(elId).textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        const original = btn.textContent;
+        btn.textContent = 'Copiado!';
+        btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = original; btn.classList.remove('copied'); }, 1500);
+      });
+    }
+  </script>
+</body>
+</html>
