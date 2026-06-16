@@ -126,6 +126,8 @@ TRATAMIENTOS = [
         "año_inicio": 2019,
         "organismos_aprobacion": ["FDA (2019)", "EMA (2020)", "ANMAT (2021)"],
         "tags": ["SMA", "atrofia muscular", "terapia génica", "Zolgensma", "pediátrico"],
+        "url_resolucion_ar": "https://www.boletinoficial.gob.ar/detalleAviso/primera/259428/20211026",
+        "resolucion_label": "Disposición ANMAT 7875/2021 (BO 26/10/2021)",
     },
 
     # ── VISUAL ────────────────────────────────────────────────────────────────
@@ -233,6 +235,8 @@ TRATAMIENTOS = [
         "año_inicio": 1985,
         "organismos_aprobacion": ["FDA", "CE Mark", "ANMAT"],
         "tags": ["implante coclear", "sordera", "hipoacusia", "Cochlear Nucleus", "MED-EL"],
+        "url_resolucion_ar": "https://www.argentina.gob.ar/normativa/nacional/resoluci%C3%B3n-428-2019-325001",
+        "resolucion_label": "Res. MS 428/2019 — Cobertura obligatoria Ley 24.901 + Disposición ANMAT 3544/2004",
     },
 
     # ── INTELECTUAL ───────────────────────────────────────────────────────────
@@ -287,6 +291,8 @@ TRATAMIENTOS = [
         "año_inicio": 1987,
         "organismos_aprobacion": ["ANMAT", "OPS/OMS", "Academia Americana de Pediatría"],
         "tags": ["TEA", "autismo", "ABA", "EIBI", "intervención temprana"],
+        "url_resolucion_ar": "https://www.argentina.gob.ar/normativa/nacional/ley-27043-239095",
+        "resolucion_label": "Ley 27.043/2014 — Cobertura obligatoria para TEA + Res. MS 1/2019",
     },
 
     # ── PSICOSOCIAL ───────────────────────────────────────────────────────────
@@ -315,6 +321,8 @@ TRATAMIENTOS = [
         "año_inicio": 2008,
         "organismos_aprobacion": ["FDA (2008)", "ANMAT"],
         "tags": ["TMS", "depresión", "neuromodulación", "TOC", "resistente a tratamiento"],
+        "url_resolucion_ar": "https://www.argentina.gob.ar/anmat/boletin/boletin-anmat-diciembre-2018",
+        "resolucion_label": "Disposición ANMAT 9358/2018 — Aprobación dispositivos TMS",
     },
     {
         "id": "psi-002",
@@ -394,6 +402,8 @@ TRATAMIENTOS = [
         "año_inicio": 2017,
         "organismos_aprobacion": ["FDA", "CE Mark", "ANMAT"],
         "tags": ["páncreas artificial", "diabetes tipo 1", "bomba de insulina", "CGM", "circuito cerrado"],
+        "url_resolucion_ar": "https://www.argentina.gob.ar/normativa/nacional/resoluci%C3%B3n-310-2004-97081",
+        "resolucion_label": "Res. MS 310/2004 + Disposición ANMAT 4730/2022 — Cobertura obligatoria sistemas CGM y bombas de insulina",
     },
 ]
 

@@ -86,6 +86,8 @@
                    margin-bottom:.6rem}
     .article-card a{font-weight:600;font-size:.88rem}
     .article-card .muted{margin-top:.2rem;display:block}
+    .article-resumen{font-size:.82rem;color:#444;margin-top:.4rem;line-height:1.5;
+                     border-left:3px solid #c4b3f0;padding-left:.6rem;margin-left:.1rem}
 
     .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
                gap:.8rem;margin-top:.6rem}
@@ -122,13 +124,18 @@
     .loading{color:#9b8fc7;font-size:.85rem;font-style:italic}
 
     /* versiculos */
-    .verses{max-width:360px;margin:.9rem 0 0 1rem;padding:.9rem 1.1rem;
-            background:#efe7fd;border-left:3px solid #7c4dff;
-            border-radius:8px;font-size:.76rem;font-style:italic;
-            color:#4a2d8c;line-height:1.65}
-    .verses strong{font-style:normal;color:#3d2570}
-    .verses p{margin-bottom:.6rem;font-size:inherit}
-    .verses p:last-child{margin-bottom:0}
+    .verses{width:100%;margin:.6rem 0 0;padding:0}
+    .verses-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;
+                 padding:.7rem 1rem}
+    .verse-item{background:#efe7fd;border-left:3px solid #7c4dff;
+                border-radius:8px;padding:.7rem .9rem;
+                font-size:.74rem;font-style:italic;
+                color:#4a2d8c;line-height:1.6}
+    .verse-item strong{font-style:normal;color:#3d2570;display:block;
+                       margin-bottom:.2rem}
+    @media(max-width:640px){
+      .verses-grid{grid-template-columns:1fr}
+    }
 
     /* info legal / autor / footer */
     .info-section{max-width:760px;margin:0 auto;padding:0 1.2rem 2rem;
@@ -224,26 +231,28 @@
   </nav>
 
   <div class="verses">
-    <p>
-      &ldquo;<strong>Mateo 22:37-39</strong><br>
-      &sup3;&#8311; Jes&uacute;s le dijo: Amar&aacute;s al Se&ntilde;or tu Dios
-      con todo tu coraz&oacute;n, y con toda tu alma, y con toda tu mente.
-      &sup3;&#8312; Este es el primero y grande mandamiento. Y el segundo es
-      semejante: Amar&aacute;s a tu pr&oacute;jimo como a ti mismo.
-    </p>
-    <p>
-      <strong>Juan 3:17</strong><br>
-      &sup1;&#8311; Pero el que tiene bienes de este mundo y ve a su hermano
-      tener necesidad, y cierra contra &eacute;l su coraz&oacute;n,
-      &iquest;c&oacute;mo mora el amor de Dios en &eacute;l?
-    </p>
-    <p>
-      <strong>Lucas 14:13-14</strong><br>
-      &sup1;&#179; Mas cuando hagas banquete, llama a los pobres, los mancos,
-      los cojos y los ciegos; &sup1;&#8308; y ser&aacute;s bienaventurado;
-      porque ellos no te pueden recompensar, pero te ser&aacute;
-      recompensado en la resurrecci&oacute;n de los justos.&rdquo;
-    </p>
+    <div class="verses-grid">
+      <div class="verse-item">
+        <strong>Mateo 22:37-39</strong>
+        &sup3;&#8311; Jes&uacute;s le dijo: Amar&aacute;s al Se&ntilde;or tu Dios
+        con todo tu coraz&oacute;n, y con toda tu alma, y con toda tu mente.
+        &sup3;&#8312; Este es el primero y grande mandamiento. Y el segundo es
+        semejante: Amar&aacute;s a tu pr&oacute;jimo como a ti mismo.
+      </div>
+      <div class="verse-item">
+        <strong>Juan 3:17</strong>
+        &sup1;&#8311; Pero el que tiene bienes de este mundo y ve a su hermano
+        tener necesidad, y cierra contra &eacute;l su coraz&oacute;n,
+        &iquest;c&oacute;mo mora el amor de Dios en &eacute;l?
+      </div>
+      <div class="verse-item">
+        <strong>Lucas 14:13-14</strong>
+        &sup1;&#179; Mas cuando hagas banquete, llama a los pobres, los mancos,
+        los cojos y los ciegos; &sup1;&#8308; y ser&aacute;s bienaventurado;
+        porque ellos no te pueden recompensar, pero te ser&aacute;
+        recompensado en la resurrecci&oacute;n de los justos.
+      </div>
+    </div>
   </div>
 
   <header>
@@ -301,6 +310,11 @@
           No tiene vencimiento si la discapacidad es permanente. Permite acceder a
           beneficios en salud, transporte, impuestos y educacion, entre otros.
         </p>
+      </div>
+
+      <div class="card">
+        <h2>Formularios para descargar</h2>
+        <div id="cud-formularios" class="result-box"><p class="loading">Cargando formularios...</p></div>
       </div>
 
       <div class="card">
@@ -516,6 +530,7 @@
         <div class="bank-card">
           <h4>&#127760; Desde el exterior (USD Wire)</h4>
           <div class="bank-row"><span>Banco</span><span class="v">Banco Santander Rio</span></div>
+          <div class="bank-row"><span>Sucursal</span><span class="v">Colonia, Uruguay (005)</span></div>
           <div class="bank-row"><span>Beneficiario</span><span class="v">Vicente Humberto Monteverde</span></div>
           <div class="bank-row"><span>Direcci&oacute;n</span><span class="v">Av. Directorio 3024 PB DTO 04</span></div>
           <div class="bank-row"><span>Cuenta USD</span>
@@ -764,11 +779,112 @@
       "Misiones","Neuqu\u00e9n","R\u00edo Negro","Salta","San Juan","San Luis",
       "Santa Cruz","Santa Fe","Santiago del Estero","Tierra del Fuego","Tucum\u00e1n"];
 
+    function renderPasos(data) {
+      const pasos = data.pasos || [];
+      if (!pasos.length) return renderJSON(data);
+      let html = '<ol style="padding-left:1.2rem;margin:0">';
+      pasos.forEach(p => {
+        html += '<li style="margin-bottom:.7rem">';
+        html += '<strong>' + escapeHtml(p.titulo || '') + '</strong>';
+        if (p.descripcion) html += '<br><span class="muted">' + escapeHtml(p.descripcion) + '</span>';
+        if (p.duracion_estimada) html += '<br><span class="muted">⏱ ' + escapeHtml(p.duracion_estimada) + '</span>';
+        html += '</li>';
+      });
+      html += '</ol>';
+      return html;
+    }
+
+    function renderRequisitos(data) {
+      const items = data.generales || [];
+      if (!items.length) return renderJSON(data);
+      let html = '<ul style="padding-left:1.2rem;margin:0">';
+      items.forEach(r => {
+        html += '<li style="margin-bottom:.5rem">';
+        html += '<strong>' + escapeHtml(r.documento || '') + '</strong>';
+        if (r.detalle) html += '<br><span class="muted">' + escapeHtml(r.detalle) + '</span>';
+        if (!r.obligatorio) html += ' <span class="badge">opcional</span>';
+        html += '</li>';
+      });
+      html += '</ul>';
+      if (data.tipos_disponibles) {
+        html += '<p class="muted" style="margin-top:.6rem">Tipos de discapacidad: ' + escapeHtml(data.tipos_disponibles.join(', ')) + '</p>';
+      }
+      return html;
+    }
+
+    // Links oficiales a InfoLEG por normativa (Tarea —)
+    const NORMATIVA_URLS = {
+      "Ley 24.901":            "https://www.argentina.gob.ar/normativa/nacional/ley-24901-141332",
+      "Ley 22.431":            "https://www.argentina.gob.ar/normativa/nacional/ley-22431-23752",
+      "Ley 22.431 art. 8":     "https://www.argentina.gob.ar/normativa/nacional/ley-22431-23752",
+      "Ley 22.431 / CNRT":     "https://www.argentina.gob.ar/normativa/nacional/ley-22431-23752",
+      "Ley 26.206 / Ley 24.901":"https://www.argentina.gob.ar/normativa/nacional/ley-26206-123542",
+      "Ley 24.714":            "https://www.argentina.gob.ar/normativa/nacional/ley-24714-40030",
+      "Ley 20.628":            "https://www.argentina.gob.ar/normativa/nacional/ley-20628-2348",
+      "Ley 18.910":            "https://www.argentina.gob.ar/normativa/nacional/ley-18910-27727",
+      "Ley 24.314":            "https://www.argentina.gob.ar/normativa/nacional/ley-24314-703",
+      "Resolución ANAC":       "https://www.anac.gob.ar/anac/web/index.php/1/1509/0/2134",
+      "Varía por provincia":   "https://www.argentina.gob.ar/andis",
+    };
+
+    function renderBeneficios(data) {
+      const cats = data.categorias || [];
+      if (!cats.length) return renderJSON(data);
+      let html = '';
+      cats.forEach(cat => {
+        html += '<div style="margin-bottom:.9rem">';
+        html += '<strong>' + (cat.icono ? cat.icono + ' ' : '') + escapeHtml(cat.categoria || '') + '</strong>';
+        html += '<ul style="padding-left:1.2rem;margin:.3rem 0 0">';
+        (cat.beneficios || []).forEach(b => {
+          if (typeof b === 'string') {
+            html += '<li style="margin-bottom:.3rem"><span class="muted">' + escapeHtml(b) + '</span></li>';
+          } else {
+            const url = NORMATIVA_URLS[b.normativa] || null;
+            html += '<li style="margin-bottom:.4rem">';
+            html += '<strong>' + escapeHtml(b.nombre || '') + '</strong>';
+            if (b.detalle) html += '<br><span class="muted">' + escapeHtml(b.detalle) + '</span>';
+            if (b.normativa) {
+              html += ' ';
+              if (url) {
+                html += '<a href="' + escapeHtml(url) + '" target="_blank" rel="noopener" '
+                  + 'style="font-size:.75rem" title="Ver normativa oficial">'
+                  + escapeHtml(b.normativa) + ' ↗</a>';
+              } else {
+                html += '<span class="badge">' + escapeHtml(b.normativa) + '</span>';
+              }
+            }
+            html += '</li>';
+          }
+        });
+        html += '</ul></div>';
+      });
+      return html;
+    }
+
+    function renderFormularios(data) {
+      const forms = data.formularios || [];
+      if (!forms.length) return '<p class="muted">No hay formularios disponibles.</p>';
+      let html = '';
+      forms.forEach(f => {
+        html += '<div class="article-card">';
+        html += '<strong>' + escapeHtml(f.nombre || '') + '</strong>';
+        if (f.obligatorio) html += ' <span class="badge">obligatorio</span>';
+        if (f.descripcion) html += '<br><span class="muted">' + escapeHtml(f.descripcion) + '</span>';
+        html += '<br><span class="muted">Formato: ' + escapeHtml(f.formato || '') + '</span>';
+        html += '<br style="margin-top:.4rem">';
+        if (f.url) html += '<a href="' + escapeHtml(f.url) + '" target="_blank" rel="noopener">📋 Acceder al formulario</a>';
+        if (f.url_online && f.url_online !== f.url) html += ' &nbsp; <a href="' + escapeHtml(f.url_online) + '" target="_blank" rel="noopener">🌐 Trámite online</a>';
+        html += '</div>';
+      });
+      return html;
+    }
+
     function initCud() {
-      loadInto('/api/cud/pasos', 'cud-pasos');
-      loadInto('/api/cud/requisitos', 'cud-requisitos');
-      loadInto('/api/cud/beneficios', 'cud-beneficios');
-      loadInto('/api/cud/faq', 'cud-faq');
+      loadInto('/api/cud/pasos', 'cud-pasos', renderPasos);
+      loadInto('/api/cud/requisitos', 'cud-requisitos', renderRequisitos);
+      loadInto('/api/cud/beneficios', 'cud-beneficios', renderBeneficios);
+      loadInto('/api/cud/faq', 'cud-faq', renderFaq);
+      loadInto('/api/cud/formularios', 'cud-formularios', renderFormularios);
 
       const sel = document.getElementById('cud-provincia-select');
       PROVINCIAS.forEach(p => {
@@ -776,6 +892,19 @@
         opt.value = p; opt.textContent = p;
         sel.appendChild(opt);
       });
+    }
+
+    function renderFaq(data) {
+      const preguntas = data.preguntas || [];
+      if (!preguntas.length) return renderJSON(data);
+      let html = '';
+      preguntas.forEach(p => {
+        html += '<details style="margin-bottom:.5rem;border-bottom:1px solid #ede9f8;padding-bottom:.5rem">';
+        html += '<summary style="cursor:pointer;font-weight:600;color:#3d2570">' + escapeHtml(p.pregunta || '') + '</summary>';
+        html += '<p style="margin:.4rem 0 0;color:#444">' + escapeHtml(p.respuesta || '') + '</p>';
+        html += '</details>';
+      });
+      return html;
     }
 
     function renderJunta(data) {
@@ -817,6 +946,9 @@
         h += '<a href="' + escapeHtml(a.url || '#') + '" target="_blank" rel="noopener">' + escapeHtml(a.titulo || 'Sin titulo') + '</a>';
         const meta = [a.revista, a.fecha_pub, a.tipo_estudio].filter(Boolean).join(' &middot; ');
         if (meta) h += '<span class="muted">' + meta + '</span>';
+        // Resumen en español (Tarea 8) — mostrar si existe, sino el inglés truncado
+        const resumen = a.resumen_es || (a.resumen ? a.resumen.slice(0, 300) + (a.resumen.length > 300 ? '…' : '') : '');
+        if (resumen) h += '<p class="article-resumen">' + escapeHtml(resumen) + '</p>';
         h += '</div>';
         return h;
       }).join('');
@@ -969,47 +1101,87 @@
           maxZoom: 8,
         }).addTo(map);
 
+        // Detectar si el GeoJSON tiene polígonos (choropleth) o puntos (círculos)
+        const features = (geo.features || []);
+        const tienePoligonos = features.length > 0 &&
+          ['Polygon','MultiPolygon'].includes((features[0].geometry || {}).type);
+
         const bounds = [];
         const plotted = new Set();
 
-        function plotMarker(name, lat, lon, stat) {
-          const cud   = stat ? (stat.cud_vigentes || 0) : 0;
-          const tasa  = stat ? (stat.tasa_prevalencia || 0) : null;
-          const color = tasa != null ? colorForValue(tasa, tasaMin, tasaMax) : '#b4b2a9';
-          const radius = radiusForValue(cud, cudMax);
-
-          const marker = L.circleMarker([lat, lon], {
-            radius: radius,
-            fillColor: color,
-            color: '#3d2570',
-            weight: 1,
-            fillOpacity: 0.75,
+        if (tienePoligonos) {
+          // ── Choropleth real con L.geoJSON (Tarea 10) ──────────────────────
+          L.geoJSON(geo, {
+            style: function(feat) {
+              const props = feat.properties || {};
+              const name  = props.nombre || props.provincia || props.name || '';
+              const stat  = byName[normName(name)];
+              const tasa  = stat ? (stat.tasa_prevalencia || 0) : null;
+              const color = tasa != null ? colorForValue(tasa, tasaMin, tasaMax) : '#d0cde8';
+              return {
+                fillColor: color,
+                color: '#3d2570',
+                weight: 1,
+                fillOpacity: 0.75,
+              };
+            },
+            onEachFeature: function(feat, layer) {
+              const props = feat.properties || {};
+              const name  = props.nombre || props.provincia || props.name || '';
+              const stat  = byName[normName(name)];
+              const cud   = stat ? (stat.cud_vigentes || 0) : 0;
+              const tasa  = stat ? (stat.tasa_prevalencia || 0) : null;
+              let popup = '<strong>' + escapeHtml(name) + '</strong><br>';
+              if (stat) {
+                popup += 'CUD vigentes: ' + cud.toLocaleString('es-AR') + '<br>';
+                popup += 'Tasa de prevalencia: ' + tasa + '%';
+              } else {
+                popup += '<span class="muted">Sin datos estadisticos</span>';
+              }
+              layer.bindPopup(popup);
+              plotted.add(normName(name));
+              // Para fitBounds necesitamos recopilar coordenadas
+              try {
+                const b = layer.getBounds();
+                if (b.isValid()) bounds.push(b);
+              } catch(e) {}
+            }
           }).addTo(map);
 
-          const dentroDeRango = lat >= -56 && lat <= -21 && lon >= -74 && lon <= -52;
-          if (dentroDeRango) bounds.push([lat, lon]);
-
-          let popup = '<strong>' + escapeHtml(name) + '</strong><br>';
-          if (stat) {
-            popup += 'CUD vigentes: ' + cud.toLocaleString('es-AR') + '<br>';
-            popup += 'Tasa de prevalencia: ' + tasa + '%';
-          } else {
-            popup += '<span class="muted">Sin datos estadisticos</span>';
+        } else {
+          // ── Fallback: círculos proporcionales (cuando hay sólo centroides) ─
+          function plotMarker(name, lat, lon, stat) {
+            const cud   = stat ? (stat.cud_vigentes || 0) : 0;
+            const tasa  = stat ? (stat.tasa_prevalencia || 0) : null;
+            const color = tasa != null ? colorForValue(tasa, tasaMin, tasaMax) : '#b4b2a9';
+            const radius = radiusForValue(cud, cudMax);
+            const marker = L.circleMarker([lat, lon], {
+              radius: radius, fillColor: color,
+              color: '#3d2570', weight: 1, fillOpacity: 0.75,
+            }).addTo(map);
+            const dentroDeRango = lat >= -56 && lat <= -21 && lon >= -74 && lon <= -52;
+            if (dentroDeRango) bounds.push([lat, lon]);
+            let popup = '<strong>' + escapeHtml(name) + '</strong><br>';
+            if (stat) {
+              popup += 'CUD vigentes: ' + cud.toLocaleString('es-AR') + '<br>';
+              popup += 'Tasa de prevalencia: ' + tasa + '%';
+            } else {
+              popup += '<span class="muted">Sin datos estadisticos</span>';
+            }
+            marker.bindPopup(popup);
           }
-          marker.bindPopup(popup);
-        }
 
-        const features = (geo.features || []);
-        features.forEach(f => {
-          const coords = getPointCoords(f.geometry);
-          if (!coords) return;
-          const props = f.properties || {};
-          const name = props.nombre || props.provincia || props.name || '';
-          const key = normName(name);
-          const stat = byName[key];
-          if (stat) plotted.add(key);
-          plotMarker(name, coords[1], coords[0], stat);
-        });
+          features.forEach(f => {
+            const coords = getPointCoords(f.geometry);
+            if (!coords) return;
+            const props = f.properties || {};
+            const name = props.nombre || props.provincia || props.name || '';
+            const key = normName(name);
+            const stat = byName[key];
+            if (stat) plotted.add(key);
+            plotMarker(name, coords[1], coords[0], stat);
+          });
+        }
 
         // Provincias con datos en /api/provincias que no se pudieron
         // dibujar desde el GeoJSON: se ubican con coordenadas de respaldo
@@ -1018,12 +1190,28 @@
           if (plotted.has(key)) return;
           const coords = PROVINCIA_COORDS[key];
           if (!coords) return;
-          plotMarker(s.provincia, coords[0], coords[1], s);
+          const cud   = s.cud_vigentes || 0;
+          const tasa  = s.tasa_prevalencia || 0;
+          const color = colorForValue(tasa, tasaMin, tasaMax);
+          const radius = radiusForValue(cud, cudMax);
+          const marker = L.circleMarker([coords[0], coords[1]], {
+            radius, fillColor: color, color: '#3d2570', weight: 1, fillOpacity: 0.75,
+          }).addTo(map);
+          marker.bindPopup('<strong>' + escapeHtml(s.provincia) + '</strong><br>'
+            + 'CUD vigentes: ' + cud.toLocaleString('es-AR') + '<br>'
+            + 'Tasa de prevalencia: ' + tasa + '%');
           plotted.add(key);
+          bounds.push([coords[0], coords[1]]);
         });
 
         if (bounds.length) {
-          map.fitBounds(bounds, { padding: [20, 20], maxZoom: 6 });
+          if (tienePoligonos) {
+            // bounds es array de L.LatLngBounds — calcular extensión total
+            const total = bounds.reduce((acc, b) => acc.extend(b), L.latLngBounds(bounds[0]));
+            map.fitBounds(total, { padding: [20, 20] });
+          } else {
+            map.fitBounds(bounds, { padding: [20, 20], maxZoom: 6 });
+          }
         } else {
           map.setView([-38.5, -64], 4);
         }
@@ -1184,6 +1372,14 @@
         html += '<h5>' + escapeHtml(t.nombre || '') + '</h5></div>';
         if (t.descripcion_simple) html += '<p>' + escapeHtml(t.descripcion_simple) + '</p>';
         if (t.disponibilidad_ar) html += '<p class="muted"><strong>Disponibilidad en AR:</strong> ' + escapeHtml(t.disponibilidad_ar) + '</p>';
+        // Link a resolución/disposición oficial argentina
+        if (t.url_resolucion_ar) {
+          html += '<p style="margin-top:.4rem;font-size:.82rem">'
+            + '📋 <strong>Normativa argentina:</strong> '
+            + '<a href="' + escapeHtml(t.url_resolucion_ar) + '" target="_blank" rel="noopener" '
+            + 'title="Ver resolución oficial">' + escapeHtml(t.resolucion_label || 'Ver resolución') + '</a>'
+            + '</p>';
+        }
         if (t.disclaimer_especifico) html += '<div class="small-disclaimer">' + escapeHtml(t.disclaimer_especifico) + '</div>';
         if (t.url_pubmed) html += '<p style="margin-top:.5rem"><a href="' + escapeHtml(t.url_pubmed) + '" target="_blank" rel="noopener">Ver evidencia en PubMed</a></p>';
         html += '</div>';
@@ -1212,3 +1408,4 @@
   </script>
 </body>
 </html>
+

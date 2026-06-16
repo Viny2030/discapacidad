@@ -1,9 +1,20 @@
+# Python
 .venv/
 __pycache__/
 *.pyc
+*.pyo
+
+# Variables de entorno
 .env
+
+# Datos cacheados (se regeneran con el ETL)
 data/raw/
 data/processed/
-*.db
 
+# IDE
 .idea/
+.vscode/
+*.iml
+
+# Railway ignora esto, pero localmente no subir
+*.db

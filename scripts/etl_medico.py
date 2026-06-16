@@ -12,6 +12,7 @@ Scheduler: cada 15 días via APScheduler
 """
 
 import os
+import re
 import time
 import logging
 import requests
@@ -98,12 +99,114 @@ class Articulo:
     pais: str = ""
     mesh_terms: list = field(default_factory=list)
     fecha_ingesta: str = field(default_factory=lambda: datetime.now().isoformat())
+    resumen_es: str = ""   # traducción/adaptación al español (Tarea 8)
 
 
 # ── PubMed ─────────────────────────────────────────────────────────────────────
 
 PUBMED_BASE = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils"
 PUBMED_KEY  = os.getenv("PUBMED_API_KEY", "")  # opcional — 10 req/s con key vs 3 sin key
+
+
+# ── Traductor científico (resumen_es) ─────────────────────────────────────────
+
+# Diccionario de términos técnicos frecuentes (inglés → español)
+_TERMINOS = {
+    "randomized controlled trial": "ensayo controlado aleatorizado",
+    "systematic review": "revisión sistemática",
+    "meta-analysis": "metaanálisis",
+    "cochlear implant": "implante coclear",
+    "exoskeleton": "exoesqueleto",
+    "spinal cord injury": "lesión medular",
+    "brain computer interface": "interfaz cerebro-computadora",
+    "gene therapy": "terapia génica",
+    "stem cell": "célula madre",
+    "prosthesis": "prótesis",
+    "prosthetic": "protésico",
+    "rehabilitation": "rehabilitación",
+    "disability": "discapacidad",
+    "impairment": "deficiencia",
+    "motor": "motora",
+    "visual": "visual",
+    "auditory": "auditivo",
+    "intellectual": "intelectual",
+    "psychosocial": "psicosocial",
+    "treatment": "tratamiento",
+    "therapy": "terapia",
+    "outcomes": "resultados",
+    "patients": "pacientes",
+    "clinical trial": "ensayo clínico",
+    "adverse events": "eventos adversos",
+    "quality of life": "calidad de vida",
+    "intervention": "intervención",
+    "placebo": "placebo",
+    "randomized": "aleatorizado",
+    "double-blind": "doble ciego",
+    "efficacy": "eficacia",
+    "safety": "seguridad",
+    "significant": "significativo",
+    "participants": "participantes",
+    "median": "mediana",
+    "compared": "comparado",
+    "versus": "versus",
+    "weeks": "semanas",
+    "months": "meses",
+    "years": "años",
+}
+
+def traducir_resumen(texto_en: str, max_chars: int = 600) -> str:
+    """
+    Tarea 8 — Traductor científico para resúmenes PubMed.
+
+    Estrategia por niveles (en orden de disponibilidad):
+      1. MyMemory API (gratuita, 5k palabras/día sin key)
+      2. LibreTranslate pública (si MyMemory falla)
+      3. Sustitución de terminología técnica + resumen acortado
+
+    Siempre devuelve texto en español, nunca lanza excepción.
+    """
+    if not texto_en or not texto_en.strip():
+        return ""
+
+    snippet = texto_en[:1500]  # traducimos hasta 1500 chars para no agotar cuotas
+
+    # Nivel 1 — MyMemory (gratuita, ~5 000 palabras/día)
+    try:
+        r = requests.get(
+            "https://api.mymemory.translated.net/get",
+            params={"q": snippet[:500], "langpair": "en|es", "de": "observatorio@discapacidad.ar"},
+            timeout=8,
+        )
+        if r.ok:
+            j = r.json()
+            if j.get("responseStatus") == 200:
+                traducido = j["responseData"]["translatedText"]
+                if traducido and len(traducido) > 30:
+                    return traducido[:max_chars]
+    except Exception:
+        pass
+
+    # Nivel 2 — LibreTranslate pública
+    try:
+        r2 = requests.post(
+            "https://libretranslate.com/translate",
+            json={"q": snippet[:500], "source": "en", "target": "es"},
+            timeout=8,
+        )
+        if r2.ok:
+            data2 = r2.json()
+            traducido2 = data2.get("translatedText", "")
+            if traducido2 and len(traducido2) > 30:
+                return traducido2[:max_chars]
+    except Exception:
+        pass
+
+    # Nivel 3 — sustitución de terminología + recorte (fallback sin red)
+    resultado = snippet[:max_chars]
+    for en, es in _TERMINOS.items():
+        resultado = re.sub(re.escape(en), es, resultado, flags=re.IGNORECASE)
+    # Agregar nota al pie para que el lector sepa que es automático
+    return resultado + " [traducción automática parcial]"
 
 
 def pubmed_search(query: str, max_results: int = 20) -> list[str]:
@@ -183,6 +286,9 @@ def pubmed_fetch(pmids: list[str], tipo: str) -> list[Articulo]:
                 text  = ab.text or ""
                 abstract_texts.append(f"{label}: {text}" if label else text)
             a.resumen = " ".join(abstract_texts)[:2000]  # máximo 2000 chars
+
+            # Traducción al español (Tarea 8)
+            a.resumen_es = traducir_resumen(a.resumen)
 
             # Revista
             journal_el = art.find(".//Journal/Title")
@@ -339,6 +445,7 @@ def run_etl_medico(max_por_query: int = 10) -> dict:
     """
     Corre el ETL completo de fuentes médicas.
     Retorna dict con listas de artículos y ensayos por tipo.
+    Persiste el resultado en data/processed/etl_medico_cache.json (Tarea 11).
     """
     log.info("=" * 55)
     log.info("ETL MÉDICO — Inicio")
@@ -385,7 +492,49 @@ def run_etl_medico(max_por_query: int = 10) -> dict:
     }
 
     log.info(f"ETL Médico OK — {resultado['resumen']}")
+
+    # ── Tarea 11: Persistencia en disco ──────────────────────────────────────
+    _persistir_resultado_etl(resultado)
+
     return resultado
+
+
+def _persistir_resultado_etl(resultado: dict) -> None:
+    """
+    Tarea 11 — Serializa el resultado del ETL a JSON para que api_medica.py
+    lo consuma con caché sin volver a llamar a PubMed en cada request.
+    """
+    import json
+    from pathlib import Path
+    from dataclasses import asdict
+
+    cache_dir = Path(__file__).resolve().parent.parent / "data" / "processed"
+    cache_dir.mkdir(parents=True, exist_ok=True)
+    cache_path = cache_dir / "etl_medico_cache.json"
+
+    # Convertir dataclasses a dict (los artículos de PubMed son Articulo)
+    def _serializable(obj):
+        if hasattr(obj, "__dataclass_fields__"):
+            return asdict(obj)
+        return str(obj)
+
+    try:
+        payload = {
+            "articulos":        [
+                a if isinstance(a, dict) else asdict(a)
+                for a in resultado["articulos"]
+            ],
+            "ensayos_clinicos": resultado["ensayos_clinicos"],
+            "scielo":           resultado["scielo"],
+            "resumen":          resultado["resumen"],
+        }
+        cache_path.write_text(
+            json.dumps(payload, ensure_ascii=False, indent=2, default=_serializable),
+            encoding="utf-8",
+        )
+        log.info(f"  Cache ETL Médico escrito → {cache_path}")
+    except Exception as e:
+        log.warning(f"  No se pudo persistir cache ETL Médico: {e}")
 
 
 # ── Endpoints FastAPI ──────────────────────────────────────────────────────────

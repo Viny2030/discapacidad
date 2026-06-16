@@ -34,11 +34,18 @@ FUENTES = {
     # Proyecciones de población INDEC por provincia (Censo 2022 base)
     "poblacion_provincias": "https://infra.datos.gob.ar/catalog/siempre/dataset/2/distribution/2.5/download/estimaciones-y-proyecciones-2010-2040-total-del-pais.csv",
 
-    # Georef — provincias con geometría
-    "georef_provincias": "https://apis.datos.gob.ar/georef/api/v2.0/provincias?formato=geojson&max=100",
+    # Georef — provincias con geometría COMPLETA (polígonos para choropleth real)
+    # aplanar=false → devuelve geometría MultiPolygon, no sólo centroide
+    "georef_provincias": (
+        "https://apis.datos.gob.ar/georef/api/v2.0/provincias"
+        "?formato=geojson&max=100&aplanar=false"
+    ),
 
-    # Georef — comunas CABA
-    "georef_comunas_caba": "https://apis.datos.gob.ar/georef/api/v2.0/departamentos?provincia=02&formato=geojson&max=20",
+    # Georef — comunas CABA con geometría completa
+    "georef_comunas_caba": (
+        "https://apis.datos.gob.ar/georef/api/v2.0/departamentos"
+        "?provincia=02&formato=geojson&max=20&aplanar=false"
+    ),
 }
 
 # Datos ANDIS noviembre 2023 (publicados en informe PDF — hardcodeados del último informe oficial)
@@ -127,17 +134,38 @@ CABA_POR_COMUNA = {
 
 
 def descargar_georef_provincias() -> dict:
-    """Descarga GeoJSON de provincias desde Georef."""
+    """
+    Descarga GeoJSON de provincias desde Georef con geometría COMPLETA (Tarea 10).
+    Invalida caché si el archivo contiene geometría tipo Point (sólo centroide).
+    """
+    import json as _json
     cache = RAW_DIR / "georef_provincias.geojson"
+
+    def _es_solo_centroide(data: dict) -> bool:
+        """Devuelve True si el GeoJSON tiene geometría Point en vez de polígonos."""
+        features = data.get("features", [])
+        if not features:
+            return False
+        geom_type = (features[0].get("geometry") or {}).get("type", "")
+        return geom_type == "Point"
+
     if cache.exists():
-        log.info("Georef provincias: caché local")
-        import json
-        return json.loads(cache.read_text())
+        try:
+            data = _json.loads(cache.read_text())
+            if not _es_solo_centroide(data):
+                log.info("Georef provincias: caché local (polígonos OK)")
+                return data
+            else:
+                log.info("Georef provincias: caché tiene sólo centroides → refrescando")
+                cache.unlink()
+        except Exception:
+            pass
+
     try:
         r = requests.get(FUENTES["georef_provincias"], timeout=20)
         r.raise_for_status()
         cache.write_text(r.text)
-        log.info("Georef provincias: descargado")
+        log.info("Georef provincias: descargado con geometría completa")
         return r.json()
     except Exception as e:
         log.warning(f"Georef error: {e}")
@@ -145,17 +173,37 @@ def descargar_georef_provincias() -> dict:
 
 
 def descargar_georef_comunas() -> dict:
-    """Descarga GeoJSON de comunas de CABA desde Georef."""
+    """
+    Descarga GeoJSON de comunas de CABA desde Georef con geometría completa (Tarea 10).
+    Invalida caché si el archivo contiene sólo centroides.
+    """
+    import json as _json
     cache = RAW_DIR / "georef_comunas_caba.geojson"
+
+    def _es_solo_centroide(data: dict) -> bool:
+        features = data.get("features", [])
+        if not features:
+            return False
+        geom_type = (features[0].get("geometry") or {}).get("type", "")
+        return geom_type == "Point"
+
     if cache.exists():
-        log.info("Georef comunas CABA: caché local")
-        import json
-        return json.loads(cache.read_text())
+        try:
+            data = _json.loads(cache.read_text())
+            if not _es_solo_centroide(data):
+                log.info("Georef comunas CABA: caché local (polígonos OK)")
+                return data
+            else:
+                log.info("Georef comunas CABA: caché tiene sólo centroides → refrescando")
+                cache.unlink()
+        except Exception:
+            pass
+
     try:
         r = requests.get(FUENTES["georef_comunas_caba"], timeout=20)
         r.raise_for_status()
         cache.write_text(r.text)
-        log.info("Georef comunas CABA: descargado")
+        log.info("Georef comunas CABA: descargado con geometría completa")
         return r.json()
     except Exception as e:
         log.warning(f"Georef comunas error: {e}")

@@ -18,6 +18,16 @@ import requests
 import xml.etree.ElementTree as ET
 import html
 import os
+import json
+from pathlib import Path
+from datetime import datetime
+
+# Importar traductor del ETL (Tarea 8 — para búsquedas en vivo)
+try:
+    from scripts.etl_medico import traducir_resumen as _traducir
+except ImportError:
+    def _traducir(texto: str, max_chars: int = 600) -> str:  # fallback silencioso
+        return ""
 
 router = APIRouter(prefix="/api", tags=["médico"])
 
@@ -27,6 +37,45 @@ PUBMED_KEY  = os.getenv("PUBMED_API_KEY", "")
 
 TIPOS_VALIDOS = {"motora", "visual", "auditiva", "intelectual", "psicosocial", "visceral"}
 
+# ── Caché ETL Médico (Tarea 11) ───────────────────────────────────────────────
+
+_ETL_CACHE_PATH = Path(__file__).resolve().parent.parent / "data" / "processed" / "etl_medico_cache.json"
+_ETL_CACHE_TTL_DIAS = 15  # coincide con el scheduler
+
+_etl_cache_mem: dict | None = None      # memoria de la sesión (se resetea al reiniciar)
+_etl_cache_ts: float = 0.0              # epoch del último load
+
+
+def _load_etl_cache(force: bool = False) -> dict | None:
+    """
+    Carga el cache JSON del ETL.
+    - Primero intenta la caché en memoria (válida durante la sesión).
+    - Luego lee el archivo JSON escrito por run_etl_medico().
+    - Devuelve None si el archivo no existe o es más viejo que TTL.
+    """
+    global _etl_cache_mem, _etl_cache_ts
+    import time
+
+    if not force and _etl_cache_mem is not None:
+        return _etl_cache_mem
+
+    if not _ETL_CACHE_PATH.exists():
+        return None
+
+    try:
+        data = json.loads(_ETL_CACHE_PATH.read_text(encoding="utf-8"))
+        fecha_str = data.get("resumen", {}).get("fecha", "")
+        if fecha_str:
+            from datetime import timedelta
+            edad = datetime.now() - datetime.fromisoformat(fecha_str)
+            if edad.days > _ETL_CACHE_TTL_DIAS:
+                return None  # expirado → que el endpoint llame a PubMed en vivo
+        _etl_cache_mem = data
+        _etl_cache_ts  = __import__("time").time()
+        return _etl_cache_mem
+    except Exception:
+        return None
+
 # ── Modelos de respuesta ───────────────────────────────────────────────────────
 
 class ArticuloOut(BaseModel):
@@ -34,6 +83,7 @@ class ArticuloOut(BaseModel):
     titulo: str
     autores: str
     resumen: str
+    resumen_es: str = ""   # Tarea 8 — traducción al español
     revista: str
     fecha_pub: Optional[str]
     doi: Optional[str]
@@ -116,10 +166,12 @@ def _pubmed_search_live(query: str, max_results: int = 10) -> list[dict]:
                 tipo_estudio = "Clinical Trial"
             else:
                 tipo_estudio = "Original"
+            resumen_texto = " ".join(abstract_texts)[:1500]
             results.append({
                 "pmid": pmid, "titulo": titulo,
                 "autores": "; ".join(autores[:5]),
-                "resumen": " ".join(abstract_texts)[:1500],
+                "resumen": resumen_texto,
+                "resumen_es": _traducir(resumen_texto),
                 "revista": revista,
                 "fecha_pub": f"{year}-{month}" if year else None,
                 "doi": doi, "url": f"https://pubmed.ncbi.nlm.nih.gov/{pmid}/",
@@ -155,14 +207,33 @@ async def listar_articulos(
     tipo: Optional[str] = Query(None, description="motora|visual|auditiva|intelectual|psicosocial|visceral"),
     q:    Optional[str] = Query(None, description="Búsqueda por keyword"),
     limit: int          = Query(10, ge=1, le=50),
+    fuente: Optional[str] = Query(None, description="pubmed|scielo|clinicaltrials"),
 ):
     """
-    Lista artículos médicos desde PubMed.
-    Filtra por tipo de discapacidad o búsqueda libre.
+    Lista artículos médicos.
+    Prioriza la caché del ETL (Tarea 11); si no hay caché, consulta PubMed en vivo.
     """
     if tipo and tipo not in TIPOS_VALIDOS:
-        raise HTTPException(400, f"tipo debe ser uno de: {', '.join(TIPOS_VALIDOS)}")
+        raise HTTPException(400, f"tipo debe ser uno de: {', '.join(sorted(TIPOS_VALIDOS))}")
 
+    # ── Tarea 11: intentar servir desde caché ETL ─────────────────────────────
+    cache = _load_etl_cache()
+    if cache and not q:
+        articulos_cache = cache.get("articulos", [])
+        if fuente:
+            articulos_cache = [a for a in articulos_cache if a.get("fuente") == fuente]
+        if tipo:
+            articulos_cache = [a for a in articulos_cache if a.get("tipo_discapacidad") == tipo]
+        if articulos_cache:
+            return {
+                "total":  len(articulos_cache[:limit]),
+                "tipo":   tipo or "general",
+                "fuente_datos": "cache_etl",
+                "fecha_cache": cache.get("resumen", {}).get("fecha", ""),
+                "articulos": articulos_cache[:limit],
+            }
+
+    # ── Fallback: PubMed en vivo ──────────────────────────────────────────────
     if q:
         query = q
         tipo_final = tipo or "general"
@@ -176,7 +247,7 @@ async def listar_articulos(
     arts = _pubmed_search_live(query, max_results=limit)
     for a in arts:
         a["tipo_discapacidad"] = tipo_final
-    return {"total": len(arts), "tipo": tipo_final, "articulos": arts}
+    return {"total": len(arts), "tipo": tipo_final, "fuente_datos": "pubmed_live", "articulos": arts}
 
 
 @router.get("/articulos/{pmid}")
@@ -232,6 +303,10 @@ async def listar_ensayos(
     limit:  int           = Query(10, ge=1, le=30),
 ):
     """Ensayos clínicos activos desde ClinicalTrials.gov."""
+    # Tarea 9: mismo chequeo de tipo que /api/articulos
+    if tipo and tipo not in TIPOS_VALIDOS:
+        raise HTTPException(400, f"tipo debe ser uno de: {', '.join(sorted(TIPOS_VALIDOS))}")
+
     query = QUERIES_DEFAULT.get(tipo, "disability treatment") if tipo else "disability treatment"
     params = {
         "query.cond":           query,
