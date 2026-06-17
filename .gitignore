@@ -7,14 +7,17 @@ __pycache__/
 # Variables de entorno
 .env
 
-# Datos cacheados (se regeneran con el ETL)
-data/raw/
-data/processed/
-
 # IDE
 .idea/
 .vscode/
 *.iml
 
-# Railway ignora esto, pero localmente no subir
+# Railway — data se genera en build, no commitear cache médico (es grande)
+data/processed/etl_medico_cache.json
+
+# DB local
 *.db
+
+# Scripts temporales
+fix_scielo.py
+test_scielo.py
