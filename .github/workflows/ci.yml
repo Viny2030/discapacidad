@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configurar Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt pytest pytest-asyncio httpx
+
+      - name: Correr tests
+        run: pytest tests/ -v --tb=short
+
+      - name: Verificar imports críticos
+        run: |
+          python -c "from scripts.datos_cud import BENEFICIOS, JUNTAS_POR_PROVINCIA, FAQ, REQUISITOS_POR_TIPO; print('✅ datos_cud OK')"
+          python -c "from scripts.etl_estadistico import run_etl_estadistico; print('✅ etl_estadistico OK')"
+          python -c "from scripts.api_cud import router; print('✅ api_cud OK')"
+          python -c "from scripts.api_estadistica import router; print('✅ api_estadistica OK')"
+          python -c "from scripts.api_medica import router; print('✅ api_medica OK')"
+          python -c "from scripts.tratamientos_vanguardia import router; print('✅ tratamientos_vanguardia OK')"
+          python -c "from main import app; print('✅ main OK')"

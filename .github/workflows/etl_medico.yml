@@ -1,0 +1,61 @@
+name: ETL Médico semanal
+
+on:
+  schedule:
+    # Todos los miércoles a las 06:00 UTC (03:00 Argentina)
+    # Desfasado del estadístico para no sobrecargar al mismo tiempo
+    - cron: "0 6 * * 3"
+  workflow_dispatch:
+
+jobs:
+  etl-medico:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configurar Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
+
+      - name: Crear directorios de datos
+        run: mkdir -p data/raw data/processed
+
+      - name: Correr ETL médico
+        run: python -c "
+from scripts.etl_medico import run_etl_medico
+import json
+resultado = run_etl_medico(max_por_query=5)
+print('Artículos procesados:', resultado.get('total_articulos', 0))
+print('Ensayos clínicos:', resultado.get('total_ensayos', 0))
+"
+        env:
+          PUBMED_API_KEY: ${{ secrets.PUBMED_API_KEY }}
+
+      - name: Verificar archivos generados
+        run: |
+          echo "=== Archivos médicos generados ==="
+          ls -lh data/processed/ | grep -E "medic|articul|ensayo" || echo "Archivos médicos no encontrados"
+          echo "=== Total archivos processed ==="
+          ls data/processed/ | wc -l
+
+      - name: Commit y push de datos actualizados
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/
+          git diff --staged --quiet || git commit -m "data: ETL médico automático $(date -u '+%Y-%m-%d')"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Notificar fallo
+        if: failure()
+        run: |
+          echo "❌ ETL médico falló el $(date -u '+%Y-%m-%d %H:%M UTC')" >> $GITHUB_STEP_SUMMARY
+          echo "Logs: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" >> $GITHUB_STEP_SUMMARY
