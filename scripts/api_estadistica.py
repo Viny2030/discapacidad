@@ -30,7 +30,7 @@ def _load_json(nombre: str) -> dict:
     path = RAW_DIR / nombre
     if not path.exists():
         return {}
-    return json.loads(path.read_text())
+    return json.loads(path.read_bytes())
 
 
 # ── Endpoints ──────────────────────────────────────────────────────────────────
