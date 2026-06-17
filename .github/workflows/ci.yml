@@ -20,7 +20,7 @@ jobs:
           cache: "pip"
 
       - name: Instalar dependencias
-        run: pip install -r requirements.txt pytest pytest-asyncio httpx
+        run: pip install -r requirements.txt
 
       - name: Correr tests
         run: pytest tests/ -v --tb=short
