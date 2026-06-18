@@ -30,7 +30,12 @@ def _load_json(nombre: str) -> dict:
     path = RAW_DIR / nombre
     if not path.exists():
         return {}
-    return json.loads(path.read_bytes())
+    raw = path.read_bytes()
+    try:
+        text = raw.decode("utf-8")
+    except UnicodeDecodeError:
+        text = raw.decode("latin-1")
+    return json.loads(text)
 
 
 # ── Endpoints ──────────────────────────────────────────────────────────────────
