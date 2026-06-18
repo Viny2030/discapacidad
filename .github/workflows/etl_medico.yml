@@ -3,9 +3,13 @@ name: ETL Médico semanal
 on:
   schedule:
     # Todos los miércoles a las 06:00 UTC (03:00 Argentina)
-    # Desfasado del estadístico para no sobrecargar al mismo tiempo
     - cron: "0 6 * * 3"
   workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'scripts/etl_medico.py'
 
 jobs:
   etl-medico:
@@ -27,12 +31,14 @@ jobs:
         run: mkdir -p data/raw data/processed
 
       - name: Correr ETL médico
-        run: python -c "
+        run: |
+          python -c "
+import sys
+sys.path.insert(0, '.')
 from scripts.etl_medico import run_etl_medico
-import json
 resultado = run_etl_medico(max_por_query=5)
-print('Artículos procesados:', resultado.get('total_articulos', 0))
-print('Ensayos clínicos:', resultado.get('total_ensayos', 0))
+print('Artículos procesados:', resultado['resumen'].get('total_articulos', 0))
+print('Ensayos clínicos:', resultado['resumen'].get('total_ensayos', 0))
 "
         env:
           PUBMED_API_KEY: ${{ secrets.PUBMED_API_KEY }}
