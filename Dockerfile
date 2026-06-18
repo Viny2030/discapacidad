@@ -22,4 +22,4 @@ RUN python -c "from scripts.etl_estadistico import run_etl_estadistico; run_etl_
 ENV PORT=8001
 EXPOSE $PORT
 
-CMD uvicorn main:app --host 0.0.0.0 --port $PORT
+CMD ["sh", "-c", "uvicorn main:app --host 0.0.0.0 --port ${PORT:-8001}"]
