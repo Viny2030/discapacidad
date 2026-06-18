@@ -27,15 +27,7 @@ jobs:
       - name: Correr ETL médico
         env:
           PUBMED_API_KEY: ${{ secrets.PUBMED_API_KEY }}
-        run: |
-          python - << 'EOF'
-import sys
-sys.path.insert(0, '.')
-from scripts.etl_medico import run_etl_medico
-resultado = run_etl_medico(max_por_query=5)
-print('Artículos procesados:', resultado['resumen'].get('total_articulos', 0))
-print('Ensayos clínicos:', resultado['resumen'].get('total_ensayos', 0))
-EOF
+        run: python scripts/run_etl_medico.py
 
       - name: Verificar archivos generados
         run: |
@@ -57,5 +49,5 @@ EOF
       - name: Notificar fallo
         if: failure()
         run: |
-          echo "❌ ETL médico falló el $(date -u '+%Y-%m-%d %H:%M UTC')" >> $GITHUB_STEP_SUMMARY
+          echo "ETL médico falló el $(date -u '+%Y-%m-%d %H:%M UTC')" >> $GITHUB_STEP_SUMMARY
           echo "Logs: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" >> $GITHUB_STEP_SUMMARY
