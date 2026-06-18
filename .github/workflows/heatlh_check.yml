@@ -20,7 +20,7 @@ jobs:
           fi
 
           echo "Chequeando $URL/health ..."
-          STATUS=$(curl -s -o /tmp/health_resp.json -w "%{http_code}" "$URL/health" --max-time 15)
+          STATUS=$(curl -L -s -o /tmp/health_resp.json -w "%{http_code}" "$URL/health" --max-time 15)
 
           echo "HTTP Status: $STATUS"
           cat /tmp/health_resp.json
@@ -47,7 +47,7 @@ jobs:
 
           FALLOS=0
           for EP in "${ENDPOINTS[@]}"; do
-            STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$URL$EP" --max-time 10)
+            STATUS=$(curl -L -s -o /dev/null -w "%{http_code}" "$URL$EP" --max-time 10)
             if [ "$STATUS" = "200" ]; then
               echo "✅ $EP → $STATUS"
             else
