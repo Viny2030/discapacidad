@@ -4,7 +4,12 @@ on:
   schedule:
     # Todos los lunes a las 06:00 UTC (03:00 Argentina)
     - cron: "0 6 * * 1"
-  workflow_dispatch:  # permite correrlo manualmente desde GitHub Actions
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'scripts/etl_estadistico.py'
 
 jobs:
   etl-estadistico:
@@ -26,9 +31,11 @@ jobs:
         run: mkdir -p data/raw data/processed
 
       - name: Correr ETL estadístico
-        run: python -c "
+        run: |
+          python -c "
+import sys, json
+sys.path.insert(0, '.')
 from scripts.etl_estadistico import run_etl_estadistico
-import json
 resultado = run_etl_estadistico()
 print(json.dumps(resultado['resumen'], indent=2, ensure_ascii=False))
 "
@@ -39,7 +46,6 @@ print(json.dumps(resultado['resumen'], indent=2, ensure_ascii=False))
           ls -lh data/processed/ || echo "Sin archivos procesados"
           echo "=== Archivos raw ==="
           ls -lh data/raw/ || echo "Sin archivos raw"
-          # Falla si no se generó el CSV principal
           test -f data/processed/prevalencia_provincias.csv || (echo "❌ prevalencia_provincias.csv no generado" && exit 1)
           echo "✅ ETL estadístico completado correctamente"
 
@@ -48,13 +54,12 @@ print(json.dumps(resultado['resumen'], indent=2, ensure_ascii=False))
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/
-          # Solo hace commit si hay cambios reales
           git diff --staged --quiet || git commit -m "data: ETL estadístico automático $(date -u '+%Y-%m-%d')"
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Notificar fallo por email
+      - name: Notificar fallo
         if: failure()
         run: |
           echo "ETL estadístico falló el $(date -u '+%Y-%m-%d %H:%M UTC')" >> $GITHUB_STEP_SUMMARY
