@@ -172,8 +172,35 @@ def test_sube(client):
     r = client.get("/api/cud/sube")
     assert r.status_code == 200
     data = r.json()
-    assert "url_registro" in data
-    assert "sube.gob.ar" in data["url_registro"] or "argentina.gob.ar" in data["url_registro"]
+    # estructura SUBE_INFO completa
+    assert "beneficio" in data
+    assert "canales" in data
+    assert "requisitos" in data
+    assert "activacion" in data
+    assert "contacto" in data
+    # al menos 3 canales de registro
+    assert len(data["canales"]) >= 3
+    # descuento 100%
+    assert data["beneficio"]["descuento"] == "100%"
+    # algún canal tiene URL de sube o argentina.gob.ar
+    urls = [c.get("url", "") or "" for c in data["canales"]]
+    assert any("sube.gob.ar" in u or "argentina.gob.ar" in u for u in urls)
+    # contacto telefónico
+    assert data["contacto"]["telefono"] == "0800-777-7823"
+
+
+def test_sube_canal_filtrado(client):
+    r = client.get("/api/cud/sube?canal=online")
+    assert r.status_code == 200
+    data = r.json()
+    assert len(data["canales"]) == 1
+    canal = data["canales"][0]["canal"].lower()
+    assert "sube.gob.ar" in canal or "online" in canal
+
+
+def test_sube_canal_invalido(client):
+    r = client.get("/api/cud/sube?canal=invalido")
+    assert r.status_code == 400
 
 
 def test_obras_sociales(client):
