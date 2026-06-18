@@ -18,6 +18,7 @@ from scripts.datos_cud import (
     BENEFICIOS,
     JUNTAS_POR_PROVINCIA,
     FAQ,
+    SUBE_INFO,
 )
 
 router = APIRouter(prefix="/api/cud", tags=["CUD"])
@@ -173,22 +174,25 @@ async def consulta_estado():
 
 
 @router.get("/sube")
-async def sube():
-    """Cómo registrar el CUD en la tarjeta SUBE para transporte gratuito."""
-    transporte = next((c for c in BENEFICIOS if c["categoria"] == "Transporte"), None)
-    beneficio_transporte = None
-    if transporte:
-        beneficio_transporte = next(
-            (b for b in transporte["beneficios"] if "Transporte público" in b["nombre"]),
-            transporte["beneficios"][0] if transporte["beneficios"] else None,
-        )
-    faq_sube = _buscar_faq("SUBE")
+async def sube(canal: Optional[str] = Query(None, description="online|terminal|andis — filtra por canal de registro")):
+    """
+    Guía completa para vincular el CUD a la tarjeta SUBE.
 
-    return {
-        "beneficio": beneficio_transporte,
-        "como_registrar": faq_sube["respuesta"] if faq_sube else None,
-        "url_registro": "https://www.argentina.gob.ar/servicio/registrar-certificado-unico-de-discapacidad-cud-en-la-sube",
-    }
+    El registro del CUD en la SUBE es un trámite OBLIGATORIO e independiente:
+    sin este paso el descuento del 100% en transporte público no se activa
+    aunque ya tengas el CUD.
+
+    Parámetro opcional `canal`: online | terminal | andis
+    """
+    if canal:
+        mapa = {"online": "Online — sube.gob.ar", "terminal": "Terminal SUBE (presencial)", "andis": "Centro de atención ANDIS"}
+        nombre_canal = mapa.get(canal.lower())
+        if not nombre_canal:
+            raise HTTPException(400, "canal debe ser: online | terminal | andis")
+        canales = [c for c in SUBE_INFO["canales"] if c["canal"] == nombre_canal]
+        return {**SUBE_INFO, "canales": canales}
+
+    return SUBE_INFO
 
 
 @router.get("/obras-sociales")

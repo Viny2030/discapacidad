@@ -673,3 +673,134 @@ FAQ = [{'pregunta': '¿El trámite del CUD es gratuito?',
  {'pregunta': '¿Cuánto tiempo tarda el trámite?',
   'respuesta': 'Entre 30 y 90 días hábiles desde la evaluación según la provincia. CABA y Buenos '
                'Aires suelen tener mayor demanda.'}]
+
+# ── SUBE_INFO ─────────────────────────────────────────────────────────────────
+# Registro del CUD en la tarjeta SUBE para transporte público gratuito.
+# Fuente: Ministerio de Transporte / SUBE — sube.gob.ar
+# Normativa: Ley 22.431 art. 22 / Resolución CNRT 1018/2018
+SUBE_INFO = {
+    'titulo': 'Registro del CUD en la tarjeta SUBE',
+    'descripcion': (
+        'El registro del CUD en la tarjeta SUBE es un trámite OBLIGATORIO e independiente '
+        'del CUD. Sin este paso el descuento en transporte público NO se activa aunque '
+        'ya tengas el CUD en mano.'
+    ),
+    'beneficio': {
+        'descuento': '100%',
+        'medios': ['colectivo', 'tren', 'subte', 'premetro'],
+        'alcance': 'Todo el país (red SUBE nacional)',
+        'acompanante': (
+            'El titular puede viajar con un acompañante con el mismo descuento '
+            'cuando lo necesite por razón de su discapacidad (acreditar con CUD).'
+        ),
+        'normativa': 'Ley 22.431 art. 22 / Resolución CNRT 1018/2018',
+    },
+    'requisitos': [
+        'Tener el CUD otorgado (número de CUD o DNI vinculado)',
+        'Tarjeta SUBE registrada a nombre del titular (no puede ser una SUBE anónima)',
+        'Número de tarjeta SUBE (impreso en el reverso, 16 dígitos)',
+        'Cuenta en argentina.gob.ar para el trámite online (opcional — también se puede hacer presencialmente)',
+    ],
+    'canales': [
+        {
+            'canal': 'Online — sube.gob.ar',
+            'url': 'https://www.sube.gob.ar',
+            'pasos': [
+                'Ingresá a sube.gob.ar',
+                'Iniciá sesión con tu cuenta de argentina.gob.ar (podés crearla gratis)',
+                'Seleccioná "Registrar beneficio por discapacidad"',
+                'Ingresá el número de CUD y el número de SUBE (16 dígitos del reverso)',
+                'Confirmá los datos y enviá el formulario',
+                'El descuento se activa en la próxima carga o uso de la tarjeta (24-48 hs)',
+            ],
+        },
+        {
+            'canal': 'Trámite oficial Argentina.gob.ar',
+            'url': 'https://www.argentina.gob.ar/servicio/registrar-certificado-unico-de-discapacidad-cud-en-la-sube',
+            'pasos': [
+                'Ingresá al trámite oficial en argentina.gob.ar',
+                'Completá el formulario con datos del CUD y la SUBE',
+                'El sistema vincula el beneficio automáticamente',
+            ],
+        },
+        {
+            'canal': 'Terminal SUBE (presencial)',
+            'url': None,
+            'pasos': [
+                'Acercate a cualquier terminal SUBE habilitada (kioscos, supermercados, Correo Argentino)',
+                'Apoyá la tarjeta SUBE en el lector',
+                'Seleccioná la opción "Beneficios por discapacidad"',
+                'Seguí las instrucciones en pantalla ingresando tu número de CUD',
+                'El descuento queda registrado en la tarjeta al instante',
+            ],
+        },
+        {
+            'canal': 'Centro de atención ANDIS',
+            'url': 'https://www.argentina.gob.ar/tramites/sacar-turno-andis',
+            'pasos': [
+                'Sacá turno en ANDIS',
+                'Presentá DNI y tarjeta SUBE',
+                'El agente realiza el registro durante la atención',
+            ],
+        },
+    ],
+    'activacion': {
+        'online': '24 a 48 horas después del registro',
+        'terminal': 'Inmediata',
+        'centro_andis': 'Inmediata durante la atención',
+        'nota': (
+            'Si el descuento no se activa luego de 72 hs del registro online, '
+            'llamar a la línea SUBE: 0800-777-7823 (gratuito, lun-vie 8-20 hs).'
+        ),
+    },
+    'renovacion': (
+        'Como el CUD ya no vence (Resolución ANDIS 322/2023), el beneficio SUBE '
+        'tampoco vence. Solo deberás actualizarlo si cambiás de tarjeta SUBE.'
+    ),
+    'sube_perdida_o_robo': {
+        'pasos': [
+            'Bloqueá la SUBE en sube.gob.ar o llamando al 0800-777-7823',
+            'Solicitá una nueva tarjeta SUBE registrada',
+            'Repetí el registro del beneficio por discapacidad con la nueva tarjeta',
+        ],
+        'nota': 'El saldo y el beneficio de discapacidad se transfieren a la nueva tarjeta.',
+    },
+    'contacto': {
+        'telefono': '0800-777-7823',
+        'horario': 'Lunes a viernes de 8 a 20 hs',
+        'gratuito': True,
+        'web': 'https://www.sube.gob.ar',
+    },
+    'preguntas_frecuentes': [
+        {
+            'pregunta': '¿Puedo usar la SUBE de otra persona para el descuento?',
+            'respuesta': (
+                'No. El beneficio se vincula a UNA tarjeta SUBE registrada a nombre del titular. '
+                'El uso de la tarjeta de otra persona implica la pérdida del beneficio.'
+            ),
+        },
+        {
+            'pregunta': '¿El descuento aplica a cualquier colectivo del país?',
+            'respuesta': (
+                'Sí, en todos los servicios de transporte público que operen con SUBE: '
+                'colectivos urbanos e interurbanos, trenes del AMBA y subte de CABA. '
+                'Para servicios de larga distancia consultá con la empresa de transporte.'
+            ),
+        },
+        {
+            'pregunta': '¿Qué pasa si ya tengo SUBE pero no está registrada?',
+            'respuesta': (
+                'Primero tenés que registrar la tarjeta a tu nombre en sube.gob.ar. '
+                'Una SUBE anónima no puede recibir el beneficio de discapacidad.'
+            ),
+        },
+        {
+            'pregunta': '¿El acompañante también viaja gratis?',
+            'respuesta': (
+                'Sí, cuando la persona con discapacidad necesita asistencia para viajar, '
+                'un acompañante también viaja sin cargo. El titular debe presentar el CUD '
+                'al chofer o guarda si se lo solicitan.'
+            ),
+        },
+    ],
+}
