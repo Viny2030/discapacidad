@@ -230,6 +230,7 @@
     <button class="tab-btn" data-panel="pensiones">Pensiones</button>
     <button class="tab-btn" data-panel="comparador">Comparador</button>
     <button class="tab-btn" data-panel="donaciones">Donaciones</button>
+    <button class="tab-btn" data-panel="about">About (EN)</button>
     <a href="/docs" class="docs" target="_blank" rel="noopener">API Docs</a>
   </nav>
 
@@ -730,6 +731,337 @@
       </div>
 
     </div>
+  </div>
+
+  <!-- ====================== ABOUT (EN) ====================== -->
+  <div class="panel" id="panel-about">
+    <style>
+      /* Scoped tokens — namespaced so they never leak into the rest of the site */
+      #panel-about{--navy:#0A2540;--navy-soft:#143654;--paper:#F7F5F0;--paper-line:#E3DDCB;
+        --ink:#1E1E1E;--ink-soft:#52514c;--seal:#2D8C72;--seal-dark:#1F6B57;
+        font-family:'IBM Plex Sans',system-ui,sans-serif;color:var(--ink);background:#fff;
+        margin:-1.5rem -1rem 0;}
+      #panel-about *{box-sizing:border-box;}
+      #panel-about h2,#panel-about h3,#panel-about h4{font-family:'Source Serif 4',Georgia,serif;
+        font-weight:600;margin:0;letter-spacing:-0.01em;}
+      #panel-about .mono{font-family:'IBM Plex Mono',monospace;}
+      #panel-about .a-wrap{max-width:1080px;margin:0 auto;padding:0 22px;}
+      #panel-about a{color:inherit;}
+
+      #panel-about .a-bar{background:var(--navy);color:#cfe0ee;font-family:'IBM Plex Mono',monospace;
+        font-size:12px;letter-spacing:.02em;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.08);}
+      #panel-about .a-bar .a-wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;}
+      #panel-about .a-bar .dim{color:#7d97ad;}
+
+      #panel-about .a-hero{background:var(--navy);color:#fff;padding:56px 0 72px;}
+      #panel-about .a-hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:start;}
+      #panel-about .a-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;
+        text-transform:uppercase;color:var(--seal);background:rgba(45,140,114,.12);
+        border:1px solid rgba(45,140,114,.4);display:inline-block;padding:5px 11px;
+        border-radius:3px;margin-bottom:18px;}
+      #panel-about .a-hero h2{font-size:clamp(1.7rem,3.6vw,2.6rem);line-height:1.1;color:#fff;}
+      #panel-about .a-hero h2 em{font-style:normal;color:var(--seal);
+        background:linear-gradient(transparent 62%,rgba(45,140,114,.28) 62%);}
+      #panel-about .a-hero p.lede{font-size:1rem;color:#c7d6e3;max-width:46ch;margin-top:18px;}
+      #panel-about .a-ctas{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap;}
+      #panel-about .a-btn{font-family:'IBM Plex Mono',monospace;font-size:13px;padding:11px 18px;
+        border-radius:3px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;
+        border:1px solid transparent;}
+      #panel-about .a-btn-primary{background:var(--seal);color:var(--navy);font-weight:600;}
+      #panel-about .a-btn-ghost{border-color:rgba(255,255,255,.3);color:#e7eef4;}
+      #panel-about .a-stats{display:flex;gap:22px;margin-top:34px;flex-wrap:wrap;font-family:'IBM Plex Mono',monospace;}
+      #panel-about .a-stats .num{font-size:1.3rem;color:#fff;font-weight:500;display:block;}
+      #panel-about .a-stats .lbl{font-size:10.5px;color:#88a2b8;text-transform:uppercase;letter-spacing:.05em;}
+
+      #panel-about .a-ticket{background:var(--paper);color:var(--ink);border-radius:2px;
+        box-shadow:0 24px 50px -18px rgba(0,0,0,.5);}
+      #panel-about .a-t-top{display:flex;justify-content:space-between;align-items:flex-start;
+        padding:16px 18px 12px;border-bottom:1px dashed var(--paper-line);}
+      #panel-about .a-t-top .label{font-family:'IBM Plex Mono',monospace;font-size:10.5px;
+        text-transform:uppercase;letter-spacing:.07em;color:var(--ink-soft);}
+      #panel-about .a-t-top h4{font-size:.98rem;margin-top:4px;}
+      #panel-about .a-stamp{border:2px solid var(--seal-dark);color:var(--seal-dark);border-radius:50%;
+        width:50px;height:50px;display:flex;align-items:center;justify-content:center;text-align:center;
+        font-family:'IBM Plex Mono',monospace;font-size:8.5px;font-weight:600;letter-spacing:.02em;
+        text-transform:uppercase;transform:rotate(8deg);line-height:1.1;flex-shrink:0;}
+      #panel-about .a-t-body{padding:14px 18px;}
+      #panel-about .a-req{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--seal-dark);
+        margin-bottom:8px;word-break:break-all;}
+      #panel-about .a-req .verb{background:var(--seal-dark);color:var(--paper);padding:2px 6px;
+        border-radius:2px;margin-right:6px;font-weight:500;}
+      #panel-about pre.a-resp{background:#11202c;color:#d6e8da;font-family:'IBM Plex Mono',monospace;
+        font-size:10.8px;line-height:1.55;padding:12px 14px;border-radius:3px;overflow-x:auto;margin:0;}
+      #panel-about pre.a-resp .k{color:#7fc9a8;}
+      #panel-about pre.a-resp .s{color:#e3c98f;}
+      #panel-about pre.a-resp .b{color:#82a8d6;}
+      #panel-about .a-t-foot{display:flex;justify-content:space-between;align-items:center;
+        padding:11px 18px;border-top:1px dashed var(--paper-line);font-family:'IBM Plex Mono',monospace;
+        font-size:10.5px;color:var(--ink-soft);}
+      #panel-about .a-live-dot{width:7px;height:7px;border-radius:50%;background:var(--seal);
+        display:inline-block;margin-right:6px;box-shadow:0 0 0 3px rgba(45,140,114,.25);}
+
+      #panel-about .a-sec{padding:56px 0;}
+      #panel-about .a-sec-head{max-width:62ch;margin-bottom:36px;}
+      #panel-about .a-sec-head .a-eyebrow{background:none;border:none;padding:0;color:var(--seal-dark);
+        margin-bottom:10px;}
+      #panel-about .a-sec-head h3{font-size:clamp(1.35rem,2.6vw,1.8rem);color:var(--navy);}
+      #panel-about .a-sec-head p{color:var(--ink-soft);margin-top:12px;font-size:.98rem;}
+
+      #panel-about .a-case{background:var(--paper);border:1px solid var(--paper-line);}
+      #panel-about .a-case-grid{display:grid;grid-template-columns:1fr 1fr;}
+      #panel-about .a-case-col{padding:30px 28px;}
+      #panel-about .a-case-col+.a-case-col{border-left:1px dashed var(--paper-line);}
+      #panel-about .a-case-col .tag{font-family:'IBM Plex Mono',monospace;font-size:10.5px;
+        text-transform:uppercase;letter-spacing:.07em;color:var(--ink-soft);display:block;margin-bottom:12px;}
+      #panel-about .a-case-col.solved .tag{color:var(--seal-dark);}
+      #panel-about .a-case-col h4{font-size:1.12rem;color:var(--navy);margin-bottom:12px;}
+      #panel-about .a-case-col ul{margin:0;padding-left:18px;color:var(--ink-soft);}
+      #panel-about .a-case-col li{margin-bottom:8px;}
+      #panel-about .a-case-col.solved li{color:var(--ink);}
+
+      #panel-about .a-ledger{border-top:1px solid var(--navy);}
+      #panel-about .a-ledger-row{display:grid;grid-template-columns:36px 1fr 1.4fr 170px;gap:18px;
+        align-items:center;padding:16px 0;border-bottom:1px solid var(--paper-line);}
+      #panel-about .a-ledger-row .idx{font-family:'IBM Plex Mono',monospace;color:var(--seal-dark);
+        font-size:12.5px;font-weight:500;}
+      #panel-about .a-ledger-row h4{font-size:1.02rem;color:var(--navy);}
+      #panel-about .a-ledger-row p{margin:0;color:var(--ink-soft);font-size:.9rem;}
+      #panel-about .a-ledger-row .ep{font-family:'IBM Plex Mono',monospace;font-size:10.8px;
+        color:var(--seal-dark);background:rgba(45,140,114,.08);padding:5px 9px;border-radius:3px;
+        text-align:center;word-break:break-all;}
+
+      #panel-about .a-sources{background:var(--navy);color:#cfe0ee;}
+      #panel-about .a-sources .a-wrap{display:flex;flex-wrap:wrap;align-items:center;
+        justify-content:space-between;gap:22px;padding:30px 22px;}
+      #panel-about .a-sources .lead-mini{font-family:'IBM Plex Mono',monospace;font-size:10.8px;
+        text-transform:uppercase;letter-spacing:.07em;color:#7d97ad;}
+      #panel-about .a-source-list{display:flex;gap:24px;flex-wrap:wrap;font-family:'IBM Plex Mono',monospace;
+        font-size:12.5px;}
+      #panel-about .a-source-list span.bul{color:#5d7b94;margin-right:5px;}
+
+      #panel-about .a-stack-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+        background:var(--paper-line);border:1px solid var(--paper-line);}
+      #panel-about .a-stack-cell{background:#fff;padding:22px 18px;}
+      #panel-about .a-stack-cell .tag{font-family:'IBM Plex Mono',monospace;font-size:10px;
+        text-transform:uppercase;letter-spacing:.07em;color:var(--ink-soft);display:block;margin-bottom:8px;}
+      #panel-about .a-stack-cell strong{font-family:'Source Serif 4',Georgia,serif;font-size:1rem;
+        color:var(--navy);display:block;margin-bottom:5px;}
+      #panel-about .a-stack-cell p{margin:0;font-size:.86rem;color:var(--ink-soft);}
+
+      #panel-about .a-closing{background:var(--paper);padding:64px 0 56px;}
+      #panel-about .a-closing-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:end;}
+      #panel-about .a-closing h3{font-size:clamp(1.4rem,2.8vw,1.9rem);color:var(--navy);line-height:1.15;}
+      #panel-about .a-closing p{color:var(--ink-soft);max-width:50ch;margin-top:14px;}
+      #panel-about .a-closing-ctas{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap;}
+      #panel-about .a-btn-dark{background:var(--navy);color:#fff;font-family:'IBM Plex Mono',monospace;
+        font-size:13px;padding:11px 18px;border-radius:3px;text-decoration:none;display:inline-flex;
+        align-items:center;gap:8px;font-weight:600;}
+      #panel-about .a-btn-outline{border:1px solid var(--navy);color:var(--navy);
+        font-family:'IBM Plex Mono',monospace;font-size:13px;padding:10px 17px;border-radius:3px;
+        text-decoration:none;}
+      #panel-about .a-colophon{border-top:1px solid var(--paper-line);margin-top:40px;padding-top:20px;
+        display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;
+        font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-soft);}
+
+      @media (max-width:880px){
+        #panel-about .a-hero-grid{grid-template-columns:1fr;gap:34px;}
+        #panel-about .a-case-grid{grid-template-columns:1fr;}
+        #panel-about .a-case-col+.a-case-col{border-left:none;border-top:1px dashed var(--paper-line);}
+        #panel-about .a-ledger-row{grid-template-columns:28px 1fr;row-gap:5px;}
+        #panel-about .a-ledger-row .ep{grid-column:1/-1;text-align:left;}
+        #panel-about .a-ledger-row p{grid-column:1/-1;}
+        #panel-about .a-stack-grid{grid-template-columns:1fr 1fr;}
+        #panel-about .a-closing-grid{grid-template-columns:1fr;}
+      }
+      @media (max-width:540px){
+        #panel-about .a-stack-grid{grid-template-columns:1fr;}
+      }
+    </style>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <div class="a-bar">
+      <div class="a-wrap">
+        <span>FILE No. AR—DISC—2026 <span class="dim">/ public registry demo</span></span>
+        <span class="dim">api.discapacidad-production.up.railway.app</span>
+      </div>
+    </div>
+
+    <header class="a-hero">
+      <div class="a-wrap a-hero-grid">
+        <div>
+          <span class="a-eyebrow">● Live in production</span>
+          <h2>Argentina's disability bureaucracy, <em>turned into an API.</em></h2>
+          <p class="lede">One certificate, a dozen agencies, hundreds of pages of regulation. The Disability Observatory reads it all so a person doesn't have to — and exposes it as twelve open endpoints anyone can build on.</p>
+          <div class="a-ctas">
+            <a class="a-btn a-btn-primary" href="/" onclick="switchTab('inicio');return false;">Explore the site →</a>
+            <a class="a-btn a-btn-ghost" href="/docs" target="_blank" rel="noopener">Browse the API docs</a>
+          </div>
+          <div class="a-stats">
+            <div><span class="num">12</span><span class="lbl">REST endpoints</span></div>
+            <div><span class="num">24</span><span class="lbl">Provincial boards mapped</span></div>
+            <div><span class="num">6</span><span class="lbl">Disability types covered</span></div>
+            <div><span class="num">2</span><span class="lbl">Official data sources</span></div>
+          </div>
+        </div>
+
+        <div class="a-ticket">
+          <div class="a-t-top">
+            <div><span class="label">Request — sample</span><h4>CUD overview lookup</h4></div>
+            <div class="a-stamp">VERIFIED<br>LIVE</div>
+          </div>
+          <div class="a-t-body">
+            <div class="a-req"><span class="verb">GET</span>/api/cud</div>
+            <pre class="a-resp">{
+  <span class="k">"nombre"</span>: <span class="s">"Certificado Único de Discapacidad"</span>,
+  <span class="k">"gratuito"</span>: <span class="b">true</span>,
+  <span class="k">"vence"</span>: <span class="b">false</span>,
+  <span class="k">"tipos_discapacidad"</span>: [
+    <span class="s">"motora"</span>, <span class="s">"visual"</span>,
+    <span class="s">"auditiva"</span>, <span class="s">"intelectual"</span> …
+  ],
+  <span class="k">"total_provincias_con_junta"</span>: <span class="b">24</span>,
+  <span class="k">"fuente"</span>: <span class="s">"ANDIS — argentina.gob.ar"</span>
+}</pre>
+          </div>
+          <div class="a-t-foot">
+            <span><span class="a-live-dot"></span>200 OK · real response, fetched from production</span>
+            <span>~120ms</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="a-sec">
+      <div class="a-wrap">
+        <div class="a-sec-head">
+          <span class="a-eyebrow">The case</span>
+          <h3>Rights that exist on paper rarely survive contact with the process.</h3>
+        </div>
+        <div class="a-case a-case-grid">
+          <div class="a-case-col">
+            <span class="tag">Before — open 9 tabs</span>
+            <h4>The certificate is free. Finding out how to get it isn't.</h4>
+            <ul>
+              <li>Requirements differ by disability type, scattered across PDFs.</li>
+              <li>24 provinces, 24 different evaluating boards, 24 contact methods.</li>
+              <li>Benefits (transport, tax, education, health) live in separate laws nobody cross-references.</li>
+              <li>Disability statistics from ANDIS and INDEC are published, but never joined together.</li>
+            </ul>
+          </div>
+          <div class="a-case-col solved">
+            <span class="tag">After — one query</span>
+            <h4>One observatory. Structured, queryable, current.</h4>
+            <ul>
+              <li>Every requirement, form, and step served as structured JSON, by disability type.</li>
+              <li>All 24 provincial boards, with phone, email and address, in one lookup.</li>
+              <li>A benefits calculator that cross-references province, disability type and work status.</li>
+              <li>Official CUD figures and census projections merged into one comparable dataset.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="a-sec" style="padding-top:0;">
+      <div class="a-wrap">
+        <div class="a-sec-head">
+          <span class="a-eyebrow">What's inside</span>
+          <h3>Eight modules, one underlying registry.</h3>
+          <p>Each module is its own FastAPI router, independently callable — built so the disability-rights module can be dropped into any other civic project.</p>
+        </div>
+        <div class="a-ledger">
+          <div class="a-ledger-row"><span class="idx">01</span>
+            <div><h4>CUD — Procedure &amp; Benefits</h4><p>Requirements, forms, steps and FAQ for the national disability certificate.</p></div>
+            <span class="ep">GET /api/cud</span></div>
+          <div class="a-ledger-row"><span class="idx">02</span>
+            <div><h4>Evaluating boards</h4><p>Contact data and online booking for all 24 provincial boards.</p></div>
+            <span class="ep">GET /api/cud/juntas</span></div>
+          <div class="a-ledger-row"><span class="idx">03</span>
+            <div><h4>Benefits calculator</h4><p>Province + disability type + work status → exact entitlements.</p></div>
+            <span class="ep">interactive widget</span></div>
+          <div class="a-ledger-row"><span class="idx">04</span>
+            <div><h4>Non-contributory pensions</h4><p>Eligibility, current amounts and the ANDIS application flow.</p></div>
+            <span class="ep">live ANDIS links</span></div>
+          <div class="a-ledger-row"><span class="idx">05</span>
+            <div><h4>Provincial comparator</h4><p>Side-by-side benefits, labor quotas and board data for any two provinces.</p></div>
+            <span class="ep">interactive widget</span></div>
+          <div class="a-ledger-row"><span class="idx">06</span>
+            <div><h4>Official statistics</h4><p>ANDIS prevalence figures joined with INDEC census projections, mapped by province.</p></div>
+            <span class="ep">ANDIS + INDEC</span></div>
+          <div class="a-ledger-row"><span class="idx">07</span>
+            <div><h4>Medical evidence</h4><p>Recent research and active clinical trials, summarized in plain language.</p></div>
+            <span class="ep">PubMed + ClinicalTrials.gov</span></div>
+          <div class="a-ledger-row"><span class="idx">08</span>
+            <div><h4>Frontier treatments</h4><p>Gene therapy, implants and neurotech: approval status and availability in Argentina.</p></div>
+            <span class="ep">educational, sourced</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="a-sec" style="background:var(--paper);border-top:1px solid var(--paper-line);border-bottom:1px solid var(--paper-line);">
+      <div class="a-wrap">
+        <div class="a-sec-head">
+          <span class="a-eyebrow">Under the hood</span>
+          <h3>Built to be cloned, forked, and extended.</h3>
+        </div>
+        <div class="a-stack-grid">
+          <div class="a-stack-cell"><span class="tag">Backend</span><strong>Python · FastAPI</strong>
+            <p>Modular routers per topic; auto-generated OpenAPI docs at <code>/docs</code>.</p></div>
+          <div class="a-stack-cell"><span class="tag">Data</span><strong>ANDIS · INDEC · Georef</strong>
+            <p>Official government sources only, no scraped or unverifiable figures.</p></div>
+          <div class="a-stack-cell"><span class="tag">Research layer</span><strong>PubMed · ClinicalTrials.gov</strong>
+            <p>Real-time pulls from international public science databases.</p></div>
+          <div class="a-stack-cell"><span class="tag">Deployment</span><strong>Docker · Railway</strong>
+            <p>Single Dockerfile, deployed and publicly reachable today.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="a-sources">
+      <div class="a-wrap">
+        <span class="lead-mini">Grounded exclusively in</span>
+        <div class="a-source-list">
+          <span><span class="bul">—</span>ANDIS, Agencia Nacional de Discapacidad</span>
+          <span><span class="bul">—</span>INDEC, Censo 2022</span>
+          <span><span class="bul">—</span>Ley 22.431 &amp; Ley 24.901</span>
+          <span><span class="bul">—</span>Georef / datos.gob.ar</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="a-closing">
+      <div class="a-wrap">
+        <div class="a-closing-grid">
+          <div>
+            <h3>An access-to-rights problem, solved like an infrastructure problem.</h3>
+            <p>The Disability Observatory doesn't replace ANDIS — it makes ANDIS's own data and procedures usable. Free, certificate-based, and already serving real requests in production.</p>
+            <div class="a-closing-ctas">
+              <a class="a-btn-dark" href="/" onclick="switchTab('inicio');return false;">Explore the site →</a>
+              <a class="a-btn-outline" href="https://github.com/Viny2030/discapacidad" target="_blank" rel="noopener">View source on GitHub ↗</a>
+            </div>
+          </div>
+          <div>
+            <pre class="a-resp" style="background:var(--navy);">
+<span class="k">"endpoints_disponibles"</span>: [
+  <span class="s">"/api/cud"</span>,
+  <span class="s">"/api/cud/formularios"</span>,
+  <span class="s">"/api/cud/requisitos"</span>,
+  <span class="s">"/api/cud/pasos"</span>,
+  <span class="s">"/api/cud/beneficios"</span>,
+  <span class="s">"/api/cud/juntas"</span>,
+  <span class="s">"/api/cud/faq"</span>, …
+]</pre>
+          </div>
+        </div>
+        <div class="a-colophon">
+          <span>Built by Vicente Monteverde · <a href="https://github.com/Viny2030/discapacidad" target="_blank" rel="noopener">github.com/Viny2030/discapacidad</a></span>
+          <span>Educational &amp; informational use · not a substitute for official ANDIS channels</span>
+        </div>
+      </div>
+    </section>
   </div>
 
   <!-- ====================== INFO LEGAL / AUTOR ====================== -->
@@ -1765,5 +2097,4 @@
   </script>
 </body>
 </html>
-
 
