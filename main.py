@@ -19,6 +19,7 @@ from scripts.api_cud import router as router_cud
 from scripts.api_medica import router as router_medica
 from scripts.api_estadistica import router as router_estadistica
 from scripts.tratamientos_vanguardia import router as router_vanguardia
+from scripts.api_contacto import router as router_contacto
 from scripts.scheduler import create_scheduler
 
 logging.basicConfig(level=logging.INFO, format="[OBSERVATORIO] %(message)s")
@@ -50,6 +51,7 @@ app.include_router(router_cud)
 app.include_router(router_medica)
 app.include_router(router_estadistica)
 app.include_router(router_vanguardia)
+app.include_router(router_contacto)
 
 
 @app.get("/{filename}.html", response_class=HTMLResponse)
