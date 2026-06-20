@@ -1182,7 +1182,7 @@
     function closeContacto() {
       document.getElementById('contacto-overlay').classList.remove('visible');
     }
-    function enviarContacto() {
+    async function enviarContacto() {
       const nombre = document.getElementById('contacto-nombre').value.trim();
       const email  = document.getElementById('contacto-email').value.trim();
       const tipo   = document.getElementById('contacto-tipo').value;
@@ -1193,19 +1193,31 @@
         return;
       }
 
-      const subject = '[Observatorio Discapacidad] ' + tipo + ' de ' + nombre;
-      const body =
-        'Nombre y apellido: ' + nombre + '\n' +
-        'Email de contacto: ' + email + '\n' +
-        'Tipo: ' + tipo + '\n\n' +
-        'Mensaje:\n' + msg;
+      const btn = document.querySelector('#contacto-overlay .btn-sm');
+      const textoOriginal = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = 'Enviando...';
 
-      const mailto = 'mailto:vhmonte@retina.ar' +
-        '?subject=' + encodeURIComponent(subject) +
-        '&body=' + encodeURIComponent(body);
+      try {
+        const r = await fetch('/api/contacto', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ nombre, email, tipo, mensaje: msg })
+        });
 
-      window.location.href = mailto;
-      closeContacto();
+        if (!r.ok) throw new Error('fallo el envio');
+
+        alert('Gracias, tu mensaje fue enviado correctamente.');
+        document.getElementById('contacto-nombre').value = '';
+        document.getElementById('contacto-email').value = '';
+        document.getElementById('contacto-mensaje').value = '';
+        closeContacto();
+      } catch (err) {
+        alert('No se pudo enviar el mensaje. Por favor intenta nuevamente en unos minutos.');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = textoOriginal;
+      }
     }
 
     document.getElementById('contacto-overlay').addEventListener('click', (e) => {
@@ -2097,4 +2109,3 @@
   </script>
 </body>
 </html>
-
