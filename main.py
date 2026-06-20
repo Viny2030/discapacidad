@@ -52,6 +52,21 @@ app.include_router(router_estadistica)
 app.include_router(router_vanguardia)
 
 
+@app.get("/{filename}.html", response_class=HTMLResponse)
+async def google_verification(filename: str):
+    """
+    Sirve el archivo de verificacion de Google Search Console.
+    Lee GOOGLE_FILENAME y GOOGLE_CONTENT desde las variables de entorno
+    (ya cargadas en Railway). No interfiere con ninguna otra ruta porque
+    solo responde 200 si el filename pedido coincide con GOOGLE_FILENAME;
+    cualquier otro .html pedido cae en 404 y sigue de largo.
+    """
+    google_filename = os.getenv("GOOGLE_FILENAME", "")
+    if f"{filename}.html" == google_filename:
+        return os.getenv("GOOGLE_CONTENT", "")
+    return HTMLResponse(status_code=404, content="Not found")
+
+
 @app.get("/", response_class=HTMLResponse)
 async def landing():
     return FileResponse("templates/index.html")
