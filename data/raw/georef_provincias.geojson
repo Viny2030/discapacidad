@@ -10,7 +10,7 @@
       }, 
       "properties": {
         "id": "02", 
-        "nombre": "Ciudad Autónoma de Buenos Aires"
+        "nombre": "Ciudad AutÃ³noma de Buenos Aires"
       }, 
       "type": "Feature"
     }, 
@@ -24,7 +24,7 @@
       }, 
       "properties": {
         "id": "58", 
-        "nombre": "Neuquén"
+        "nombre": "NeuquÃ©n"
       }, 
       "type": "Feature"
     }, 
@@ -94,7 +94,7 @@
       }, 
       "properties": {
         "id": "90", 
-        "nombre": "Tucumán"
+        "nombre": "TucumÃ¡n"
       }, 
       "type": "Feature"
     }, 
@@ -178,7 +178,7 @@
       }, 
       "properties": {
         "id": "30", 
-        "nombre": "Entre Ríos"
+        "nombre": "Entre RÃ­os"
       }, 
       "type": "Feature"
     }, 
@@ -234,7 +234,7 @@
       }, 
       "properties": {
         "id": "62", 
-        "nombre": "Río Negro"
+        "nombre": "RÃ­o Negro"
       }, 
       "type": "Feature"
     }, 
@@ -290,7 +290,7 @@
       }, 
       "properties": {
         "id": "14", 
-        "nombre": "Córdoba"
+        "nombre": "CÃ³rdoba"
       }, 
       "type": "Feature"
     }, 
@@ -332,7 +332,7 @@
       }, 
       "properties": {
         "id": "94", 
-        "nombre": "Tierra del Fuego, Antártida e Islas del Atlántico Sur"
+        "nombre": "Tierra del Fuego, AntÃ¡rtida e Islas del AtlÃ¡ntico Sur"
       }, 
       "type": "Feature"
     }
