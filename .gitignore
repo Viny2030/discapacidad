@@ -21,3 +21,8 @@ data/processed/etl_medico_cache.json
 # Scripts temporales
 fix_scielo.py
 test_scielo.py
+reporte_codigo.pdf
+repo_descargado.zip
+repo_extraido_temp/
+
+exportar_pdf.py
