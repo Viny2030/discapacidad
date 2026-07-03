@@ -141,23 +141,17 @@ def descargar_georef_provincias() -> dict:
     import json as _json
     cache = RAW_DIR / "georef_provincias.geojson"
 
-    def _es_solo_centroide(data: dict) -> bool:
-        """Devuelve True si el GeoJSON tiene geometría Point en vez de polígonos."""
-        features = data.get("features", [])
-        if not features:
-            return False
-        geom_type = (features[0].get("geometry") or {}).get("type", "")
-        return geom_type == "Point"
-
+    # NOTA (verificado 2026-07-03): la API Georef v2.0 devuelve geometría
+    # Point (centroides) aunque se pida aplanar=false — no entrega polígonos.
+    # El frontend está diseñado para puntos (getPointCoords + circleMarkers),
+    # así que un caché con centroides es VÁLIDO y no debe borrarse. La lógica
+    # anterior de "invalidar si es Point" borraba el archivo en cada build.
     if cache.exists():
         try:
             data = _json.loads(cache.read_text())
-            if not _es_solo_centroide(data):
-                log.info("Georef provincias: caché local (polígonos OK)")
+            if data.get("features"):
+                log.info("Georef provincias: usando caché local")
                 return data
-            else:
-                log.info("Georef provincias: caché tiene sólo centroides → refrescando")
-                cache.unlink()
         except Exception:
             pass
 
@@ -165,7 +159,7 @@ def descargar_georef_provincias() -> dict:
         r = requests.get(FUENTES["georef_provincias"], timeout=20)
         r.raise_for_status()
         cache.write_text(r.text)
-        log.info("Georef provincias: descargado con geometría completa")
+        log.info("Georef provincias: descargado")
         return r.json()
     except Exception as e:
         log.warning(f"Georef error: {e}")
@@ -180,22 +174,16 @@ def descargar_georef_comunas() -> dict:
     import json as _json
     cache = RAW_DIR / "georef_comunas_caba.geojson"
 
-    def _es_solo_centroide(data: dict) -> bool:
-        features = data.get("features", [])
-        if not features:
-            return False
-        geom_type = (features[0].get("geometry") or {}).get("type", "")
-        return geom_type == "Point"
-
+    # NOTA (verificado 2026-07-03): Georef v2.0 sólo entrega centroides
+    # (geometría Point) — el frontend está diseñado para eso. No invalidar
+    # el caché por ser Point: eso borraba el archivo committeado en cada
+    # build de Railway y dejaba el mapa sin datos.
     if cache.exists():
         try:
             data = _json.loads(cache.read_text())
-            if not _es_solo_centroide(data):
-                log.info("Georef comunas CABA: caché local (polígonos OK)")
+            if data.get("features"):
+                log.info("Georef comunas CABA: usando caché local")
                 return data
-            else:
-                log.info("Georef comunas CABA: caché tiene sólo centroides → refrescando")
-                cache.unlink()
         except Exception:
             pass
 
@@ -203,7 +191,7 @@ def descargar_georef_comunas() -> dict:
         r = requests.get(FUENTES["georef_comunas_caba"], timeout=20)
         r.raise_for_status()
         cache.write_text(r.text)
-        log.info("Georef comunas CABA: descargado con geometría completa")
+        log.info("Georef comunas CABA: descargado")
         return r.json()
     except Exception as e:
         log.warning(f"Georef comunas error: {e}")
