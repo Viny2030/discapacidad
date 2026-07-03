@@ -29,6 +29,23 @@ def _load_csv(nombre: str) -> list[dict]:
 def _load_json(nombre: str) -> dict:
     path = RAW_DIR / nombre
     if not path.exists():
+        # Auto-reparación en runtime: si el GeoJSON no vino en el deploy
+        # (p. ej. falló el ETL durante el build de Railway), lo descargamos
+        # y cacheamos acá mismo en el primer pedido, en vez de devolver
+        # {"error": ...} para siempre.
+        try:
+            if nombre == "georef_comunas_caba.geojson":
+                from scripts.etl_estadistico import descargar_georef_comunas
+                data = descargar_georef_comunas()
+                if data:
+                    return data
+            elif nombre == "georef_provincias.geojson":
+                from scripts.etl_estadistico import descargar_georef_provincias
+                data = descargar_georef_provincias()
+                if data:
+                    return data
+        except Exception:
+            pass
         return {}
     raw = path.read_bytes()
     try:
