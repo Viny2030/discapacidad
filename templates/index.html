@@ -172,7 +172,8 @@
     .author-links a:hover{background:#5e3aa8;text-decoration:none}
     @media (max-width:600px){.author{flex-direction:column;align-items:center;text-align:center}}
 
-    footer{text-align:center;padding:2rem;color:#888;font-size:.82rem}
+    footer{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;text-align:left;padding:2rem;color:#888;font-size:.82rem}
+    @media (max-width:600px){footer{justify-content:center;text-align:center}}
 
     /* donaciones */
     .bank-card{background:#f8f7fb;border-radius:8px;padding:1.1rem 1.2rem;margin-bottom:1rem;
@@ -1149,9 +1150,12 @@
   </div>
 
   <footer>
-    Informacion oficial basada en normativa ANDIS - Ley 22.431 - Ley 24.901<br>
-    Para consultas oficiales: <a href="https://www.argentina.gob.ar/andis">argentina.gob.ar/andis</a>
-    - 0800-333-ANDIS
+    <div>&copy; 2026 Vicente H. Monteverde | Observatorio_discapacidad. Todos los derechos reservados.</div>
+    <div>
+      Informacion oficial basada en normativa ANDIS - Ley 22.431 - Ley 24.901<br>
+      Para consultas oficiales: <a href="https://www.argentina.gob.ar/andis">argentina.gob.ar/andis</a>
+      - 0800-333-ANDIS
+    </div>
   </footer>
 
   <!-- ====================== CONTACTO (flotante) ====================== -->
