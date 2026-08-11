@@ -68,7 +68,7 @@ Todo lo que necesitás saber sobre el trámite del CUD en un solo lugar.
 ### Opción 2 — Trámite oficial Argentina.gob.ar
 
 Ingresá directamente al trámite oficial:
-**[argentina.gob.ar/servicio/registrar-cud-en-la-sube](https://www.argentina.gob.ar/servicio/registrar-certificado-unico-de-discapacidad-cud-en-la-sube)**
+**[argentina.gob.ar/salud/senadis/asociar-el-certificado-unico-de-discapacidad-cud-la-tarjeta-sube](https://www.argentina.gob.ar/salud/senadis/asociar-el-certificado-unico-de-discapacidad-cud-la-tarjeta-sube)**
 
 Completá el formulario con los datos del CUD y la SUBE. El sistema vincula el beneficio automáticamente (24-48 hs).
 
@@ -86,7 +86,7 @@ Completá el formulario con los datos del CUD y la SUBE. El sistema vincula el b
 
 ### Opción 4 — Centro de atención ANDIS
 
-1. Sacá turno en ANDIS: [argentina.gob.ar/tramites/sacar-turno-andis](https://www.argentina.gob.ar/tramites/sacar-turno-andis)
+1. Sacá turno: [argentina.gob.ar/turnos](https://www.argentina.gob.ar/turnos)
 2. Presentate con DNI y tarjeta SUBE
 3. El agente realiza el registro durante la atención — activación **inmediata**
 
@@ -251,7 +251,7 @@ Botón **✉** flotante en la esquina inferior derecha del sitio para contactar 
 
 | Organismo | Teléfono | Web |
 |---|---|---|
-| Secretaría Nacional de Discapacidad (ex ANDIS) | 0800-333-2634 (gratuito) | [argentina.gob.ar/andis](https://www.argentina.gob.ar/andis) |
+| Secretaría Nacional de Discapacidad (ex ANDIS) | 0800-555-3472 (gratuito) | [argentina.gob.ar/andis](https://www.argentina.gob.ar/andis) |
 | SUBE | 0800-777-7823 (gratuito, lun-vie 8-20 hs) | [sube.gob.ar](https://www.sube.gob.ar) |
 | Superintendencia de Salud (reclamos obras sociales) | 0800-222-72583 | — |
 

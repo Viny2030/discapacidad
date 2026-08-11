@@ -100,7 +100,7 @@ Fuente estática curada desde ANDIS, Ley 22.431, Ley 24.901 y Resolución ANDIS 
 | Canal | Cómo | Activación |
 |---|---|---|
 | Online | [sube.gob.ar](https://www.sube.gob.ar) | 24-48 hs |
-| Trámite oficial | [argentina.gob.ar/servicio/registrar-cud-en-la-sube](https://www.argentina.gob.ar/servicio/registrar-certificado-unico-de-discapacidad-cud-en-la-sube) | 24-48 hs |
+| Trámite oficial | [argentina.gob.ar/salud/senadis/asociar-el-certificado-unico-de-discapacidad-cud-la-tarjeta-sube](https://www.argentina.gob.ar/salud/senadis/asociar-el-certificado-unico-de-discapacidad-cud-la-tarjeta-sube) | 24-48 hs |
 | Terminal SUBE | Kioscos, supermercados, Correo Argentino | Inmediata |
 | Centro ANDIS | Con turno previo | Inmediata |
 

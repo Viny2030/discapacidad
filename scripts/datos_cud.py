@@ -20,7 +20,7 @@ FORMULARIOS = [{'id': 'solicitud_cud',
   'descripcion': 'Requerida para solicitar la Pensión No Contributiva por Discapacidad para Protección Social '
                  '(Ley 27.793, reglamentada por el Decreto 84/2026). Se descarga desde el portal de la '
                  'Secretaría Nacional de Discapacidad según el tipo de discapacidad.',
-  'url': 'https://www.argentina.gob.ar/andis/pensiones-no-contributivas-por-invalidez',
+  'url': 'https://www.argentina.gob.ar/salud/senadis/pensiones-informacion-y-tramites',
   'url_online': 'https://www.argentina.gob.ar/andis',
   'formato': 'PDF (disponible en la junta evaluadora)',
   'obligatorio': False},
@@ -57,10 +57,10 @@ REQUISITOS_GENERALES = [{'orden': 1,
   'obligatorio': True},
  {'orden': 6,
   'documento': 'Turno previo',
-  'detalle': 'Sacar turno online en argentina.gob.ar/tramites/sacar-turno-cud o llamar al 0800 de '
-             'ANDIS.',
+  'detalle': 'Sacar turno online en argentina.gob.ar/cud/consulta-de-requisitos-para-tramitar-el-cud o '
+             'llamar al 0800-555-3472 de la Secretaría Nacional de Discapacidad.',
   'obligatorio': True,
-  'url': 'https://www.argentina.gob.ar/tramites/sacar-turno-cud'}]
+  'url': 'https://www.argentina.gob.ar/cud/consulta-de-requisitos-para-tramitar-el-cud'}]
 
 
 REQUISITOS_POR_TIPO = {'motora': {'nombre': 'Discapacidad motora',
@@ -138,7 +138,7 @@ PASOS_TRAMITE = [{'paso': 1,
   'titulo': 'Sacar turno en la Junta Evaluadora',
   'descripcion': 'Sacá turno online o llamá al 0800 de tu provincia.',
   'duracion_estimada': '1 a 30 días según provincia',
-  'url': 'https://www.argentina.gob.ar/tramites/sacar-turno-cud',
+  'url': 'https://www.argentina.gob.ar/cud/consulta-de-requisitos-para-tramitar-el-cud',
   'tip': 'Sacar el turno mientras juntás los documentos para no perder tiempo.'},
  {'paso': 3,
   'titulo': 'Presentarse a la Junta Evaluadora',
@@ -186,7 +186,7 @@ BENEFICIOS = [{'categoria': 'Salud',
                   'detalle': '100% de descuento en colectivos, trenes y subtes de todo el país. '
                              'Registrar CUD en SUBE.',
                   'normativa': 'Ley 22.431 / CNRT',
-                  'url': 'https://www.argentina.gob.ar/servicio/registrar-certificado-unico-de-discapacidad-cud-en-la-sube'},
+                  'url': 'https://www.argentina.gob.ar/salud/senadis/asociar-el-certificado-unico-de-discapacidad-cud-la-tarjeta-sube'},
                  {'nombre': 'Franquicia aerocomercial',
                   'detalle': 'Descuento en pasajes aéreos de cabotaje para la persona y un '
                              'acompañante.',
@@ -225,7 +225,7 @@ BENEFICIOS = [{'categoria': 'Salud',
                              'pendientes de acuerdo entre la Secretaría Nacional de Discapacidad y el '
                              'Consejo Federal de Discapacidad.',
                   'normativa': 'Ley 27.793 / Decreto 84/2026 (Anexo I y Anexo II)',
-                  'url': 'https://www.argentina.gob.ar/andis/pensiones'},
+                  'url': 'https://www.argentina.gob.ar/salud/senadis/pensiones-informacion-y-tramites'},
                  {'nombre': 'Moratoria impositiva para prestadores de la Ley 24.901',
                   'detalle': 'Régimen de regularización de deudas impositivas, aduaneras y de la '
                              'seguridad social vencidas al 31/12/2025, con condonación de hasta el '
@@ -742,7 +742,7 @@ SUBE_INFO = {
         },
         {
             'canal': 'Trámite oficial Argentina.gob.ar',
-            'url': 'https://www.argentina.gob.ar/servicio/registrar-certificado-unico-de-discapacidad-cud-en-la-sube',
+            'url': 'https://www.argentina.gob.ar/salud/senadis/asociar-el-certificado-unico-de-discapacidad-cud-la-tarjeta-sube',
             'pasos': [
                 'Ingresá al trámite oficial en argentina.gob.ar',
                 'Completá el formulario con datos del CUD y la SUBE',
@@ -762,7 +762,7 @@ SUBE_INFO = {
         },
         {
             'canal': 'Centro de atención ANDIS',
-            'url': 'https://www.argentina.gob.ar/tramites/sacar-turno-andis',
+            'url': 'https://www.argentina.gob.ar/turnos',
             'pasos': [
                 'Sacá turno en ANDIS',
                 'Presentá DNI y tarjeta SUBE',
