@@ -148,7 +148,7 @@ Artículos de PubMed y ensayos clínicos de ClinicalTrials.gov, actualizados aut
 
 ---
 
-## 📊 Estadístico — Datos oficiales ANDIS / INDEC
+## 📊 Estadístico — Datos oficiales Secretaría Nacional de Discapacidad / INDEC
 
 Visualizaciones con actualización automática semanal.
 
@@ -188,17 +188,21 @@ Cruza tu situación personal con la normativa vigente para mostrarte exactamente
 
 ---
 
-## 💵 Pensiones no contributivas por invalidez
+## 💵 Pensión No Contributiva por Discapacidad para Protección Social
 
-Información completa sobre las pensiones por invalidez que administra ANDIS.
+Desde el Decreto 84/2026 (reglamentario de la Ley 27.793), la sección de pensiones refleja el nuevo régimen que reemplaza a la ex "pensión por invalidez".
 
-**Requisitos principales:** más del 76% de incapacidad laboral, sin ingresos propios ni familiares, sin obra social ni jubilación, argentino/a nativo/a o naturalizado/a con más de 10 años de residencia.
+**Si ya tenías una pensión no contributiva:** la conversión al nuevo régimen es automática ("de oficio", Art. 9° Anexo I) — no hay que volver a tramitarla. Mientras se verifica, se sigue cobrando el beneficio anterior sin interrupciones.
 
-**Paso a paso:** 5 pasos desde el CUD hasta el cobro por Banco Nación o CBU propio.
+**Qué está reglamentado:** apoderados y representantes, obligaciones del beneficiario, pago a cargo de ANSES, causales de suspensión y caducidad, rehabilitación, recursos administrativos (reconsideración 60 días / jerárquico 90 días) y características de la prestación (inembargable, personalísima, intransferible).
 
-**Cobertura adicional:** obra social ANDIS, medicamentos gratuitos vinculados a la discapacidad, y SUBE con 100% de descuento.
+**Qué falta reglamentar:** los criterios sustantivos de acceso (porcentaje de incapacidad, tope de ingresos) están pendientes de acuerdo entre la Secretaría Nacional de Discapacidad y el Consejo Federal de Discapacidad (Art. 3° del Decreto 84/2026).
 
-Links a formularios, turno ANDIS y calendario de cobro incluidos en la sección.
+**Cobertura adicional:** obra social, medicamentos gratuitos vinculados a la discapacidad, y SUBE con 100% de descuento.
+
+**Moratoria impositiva (prestadores Ley 24.901):** el mismo decreto creó un régimen de condonación de intereses y multas por deudas tributarias, aduaneras y de seguridad social vencidas al 31/12/2025, administrado por ARCA.
+
+Links a formularios, turno y calendario de cobro incluidos en la sección.
 
 ---
 
@@ -247,7 +251,7 @@ Botón **✉** flotante en la esquina inferior derecha del sitio para contactar 
 
 | Organismo | Teléfono | Web |
 |---|---|---|
-| ANDIS | 0800-333-2634 (gratuito) | [argentina.gob.ar/andis](https://www.argentina.gob.ar/andis) |
+| Secretaría Nacional de Discapacidad (ex ANDIS) | 0800-333-2634 (gratuito) | [argentina.gob.ar/andis](https://www.argentina.gob.ar/andis) |
 | SUBE | 0800-777-7823 (gratuito, lun-vie 8-20 hs) | [sube.gob.ar](https://www.sube.gob.ar) |
 | Superintendencia de Salud (reclamos obras sociales) | 0800-222-72583 | — |
 

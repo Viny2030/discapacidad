@@ -2,7 +2,7 @@
 
 **Versión 1.0 · 2026**
 
-API integral sobre discapacidad en Argentina: trámite del CUD (incluida la vinculación obligatoria con la tarjeta SUBE para transporte gratuito), evidencia médica actualizada desde PubMed y ClinicalTrials, estadísticas oficiales de ANDIS/INDEC, y tratamientos de vanguardia con disclaimers clínicos.
+API integral sobre discapacidad en Argentina: trámite del CUD (incluida la vinculación obligatoria con la tarjeta SUBE para transporte gratuito), evidencia médica actualizada desde PubMed y ClinicalTrials, estadísticas oficiales de la Secretaría Nacional de Discapacidad/INDEC, la Pensión No Contributiva por Discapacidad para Protección Social (Ley 27.793 / Decreto 84/2026) y tratamientos de vanguardia con disclaimers clínicos.
 
 Deployado en [Railway](https://railway.app). Frontend incluido como Single Page Application en `templates/index.html`.
 
@@ -230,9 +230,11 @@ El repositorio incluye `railway.toml` con la configuración necesaria. El `Docke
 
 - Ley 22.431 — Sistema de Protección Integral de los Discapacitados
 - Ley 24.901 — Sistema de Prestaciones Básicas
+- Ley 27.793 — Emergencia Nacional en Discapacidad
+- Decreto 84/2026 (Anexo I y Anexo II) — Reglamentación de la Ley 27.793 y nuevas normas de la Pensión No Contributiva por Discapacidad para Protección Social
 - Resolución ANDIS 322/2023 — CUD sin vencimiento
 - Resolución CNRT 1018/2018 — Beneficio SUBE para personas con discapacidad
-- [ANDIS](https://www.argentina.gob.ar/andis) — datos estadísticos y tramitación
+- [Secretaría Nacional de Discapacidad](https://www.argentina.gob.ar/andis) (ex ANDIS, Ministerio de Salud) — datos estadísticos y tramitación
 - [SUBE](https://www.sube.gob.ar) — registro del beneficio de transporte
 - [PubMed](https://pubmed.ncbi.nlm.nih.gov) / [ClinicalTrials.gov](https://clinicaltrials.gov) — evidencia médica
 - [API Georef](https://georef-ar-api.readthedocs.io) — polígonos provinciales

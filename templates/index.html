@@ -272,7 +272,7 @@
 
   <header>
     <h1>Observatorio de Discapacidad</h1>
-    <p>CUD - Evidencia medica - Estadisticas oficiales (ANDIS/INDEC)</p>
+    <p>CUD - Evidencia medica - Estadisticas oficiales (Secretaría Nacional de Discapacidad/INDEC)</p>
   </header>
 
   <!-- ====================== INICIO ====================== -->
@@ -293,7 +293,7 @@
         </div>
         <div class="home-card">
           <h3>Estadisticas oficiales</h3>
-          <p>Cifras de ANDIS e INDEC sobre CUD vigentes, evolucion y distribucion
+          <p>Cifras de la Secretaría Nacional de Discapacidad e INDEC sobre CUD vigentes, evolucion y distribucion
              por provincia y tipo de discapacidad.</p>
           <button class="go-btn" onclick="switchTab('estadistico')">Ver datos</button>
         </div>
@@ -310,7 +310,7 @@
         </div>
         <div class="home-card">
           <h3>💵 Pensiones no contributivas</h3>
-          <p>Montos actualizados, requisitos y cómo tramitar la pensión por invalidez de ANDIS.</p>
+          <p>Régimen 2026 de la Pensión No Contributiva por Discapacidad para Protección Social (Ley 27.793 / Decreto 84/2026) y conversión de oficio de las pensiones anteriores.</p>
           <button class="go-btn" onclick="switchTab('pensiones')">Ver pensiones</button>
         </div>
         <div class="home-card">
@@ -588,59 +588,105 @@
   <!-- ====================== PENSIONES ====================== -->
   <div class="panel" id="panel-pensiones">
     <div class="wrap">
-      <div class="card">
-        <h2>💵 Pensiones no contributivas por invalidez</h2>
-        <p>Las pensiones no contributivas (PNC) son prestaciones económicas que otorga el Estado a personas en situación de vulnerabilidad. Las administra ANDIS (antes ANSES).</p>
+      <div class="card" style="border-left:4px solid #f5a623">
+        <h2>🆕 Nuevo régimen — Decreto 84/2026</h2>
+        <p>Desde el <strong>03/02/2026</strong>, el <strong>Decreto 84/2026</strong> reglamentó la <strong>Ley de Emergencia Nacional en Discapacidad N° 27.793</strong> y creó la <strong>Pensión No Contributiva por Discapacidad para Protección Social</strong>, que reemplaza a la antigua "pensión por invalidez" (Ley 18.910) para las personas con discapacidad.</p>
+        <p>La autoridad de aplicación es la <strong>SECRETARÍA NACIONAL DE DISCAPACIDAD del MINISTERIO DE SALUD</strong> (ex ANDIS, incorporada al Ministerio de Salud por Decreto 942/25). El pago y la liquidación están a cargo de <strong>ANSES</strong>.</p>
+      </div>
 
-        <h3>¿Quiénes pueden acceder?</h3>
+      <div class="card" style="border-left:4px solid #2e7d32">
+        <h2>🔄 ¿Ya tenías una pensión no contributiva? — Conversión de oficio</h2>
+        <p>Si ya cobrabas una pensión no contributiva otorgada <strong>antes</strong> de la vigencia de la Ley 27.793, <strong>no tenés que hacer ningún trámite</strong>: la conversión es automática ("de oficio").</p>
         <ul style="padding-left:1.2rem;margin:.5rem 0 1rem">
-          <li style="margin-bottom:.4rem">Personas con discapacidad mayor al <strong>76%</strong> de incapacidad laboral</li>
-          <li style="margin-bottom:.4rem">Sin ingresos propios ni familiares a cargo que puedan sustentarlas</li>
-          <li style="margin-bottom:.4rem">Sin obra social ni jubilación o pensión de ningún tipo</li>
-          <li style="margin-bottom:.4rem">Ser argentino/a nativo/a o naturalizado/a con más de 10 años de residencia</li>
-          <li style="margin-bottom:.4rem">Edad: cualquier edad (incluye menores de 18 con representante legal)</li>
+          <li style="margin-bottom:.4rem">La Secretaría Nacional de Discapacidad debía iniciar el proceso dentro de los <strong>15 días hábiles</strong> desde la publicación de la reglamentación (04/02/2026).</li>
+          <li style="margin-bottom:.4rem">Se verifica si todavía cumplís los requisitos vigentes al momento en que te otorgaron la pensión.</li>
+          <li style="margin-bottom:.4rem">Si no los cumplís, tenés derecho a intervenir en el expediente y presentar la información que consideres necesaria antes de que se resuelva nada (derecho de defensa).</li>
+          <li style="margin-bottom:.4rem">Mientras se tramita la conversión, <strong>seguís cobrando el beneficio que ya tenías</strong>, sin interrupciones.</li>
         </ul>
-
-        <h3>Monto y actualización</h3>
-        <div class="kv-row"><dt>Haber mensual</dt><dd>Equivalente al 70% del haber mínimo jubilatorio vigente (se actualiza con cada actualización previsional)</dd></div>
-        <div class="kv-row"><dt>Actualización</dt><dd>Trimestral, siguiendo la movilidad jubilatoria (Ley 27.609)</dd></div>
-        <div class="kv-row"><dt>Monto actual</dt><dd><a href="https://www.argentina.gob.ar/andis/pensiones" target="_blank" rel="noopener">Ver monto vigente en ANDIS ↗</a></dd></div>
-
-        <h3>¿Cómo tramitarla?</h3>
-        <ol style="padding-left:1.2rem;margin:.5rem 0 1rem">
-          <li style="margin-bottom:.5rem">Obtener el <strong>CUD</strong> (Certificado Único de Discapacidad) — primer paso obligatorio</li>
-          <li style="margin-bottom:.5rem">Sacar turno en ANDIS: <a href="https://www.argentina.gob.ar/tramites/sacar-turno-andis" target="_blank" rel="noopener">argentina.gob.ar/tramites/sacar-turno-andis ↗</a></li>
-          <li style="margin-bottom:.5rem">Presentar: DNI, CUD, declaración jurada de ingresos, constancia de CUIL y datos bancarios (CBU)</li>
-          <li style="margin-bottom:.5rem">ANDIS evalúa la situación socioeconómica (puede hacer visita domiciliaria)</li>
-          <li style="margin-bottom:.5rem">Si se aprueba, el cobro se realiza por <strong>Banco Nación</strong> o CBU propio</li>
-        </ol>
-
-        <h3>Calendario de cobro</h3>
-        <p>El calendario se publica mensualmente según terminación de DNI. Consultalo directamente en ANDIS:</p>
-        <a class="btn-sm" href="https://www.argentina.gob.ar/andis/pensiones/calendario-de-pago" target="_blank" rel="noopener" style="display:inline-block;margin-top:.5rem">📅 Ver calendario de cobro ANDIS ↗</a>
-
-        <h3 style="margin-top:1.2rem">Links oficiales</h3>
-        <div style="display:flex;flex-direction:column;gap:.6rem;margin-top:.5rem">
-          <a href="https://www.argentina.gob.ar/andis/pensiones" target="_blank" rel="noopener">🏛 Información general de pensiones — ANDIS</a>
-          <a href="https://www.argentina.gob.ar/andis/pensiones-no-contributivas-por-invalidez" target="_blank" rel="noopener">📋 Requisitos y formularios PNC por invalidez</a>
-          <a href="https://www.argentina.gob.ar/andis/pensiones/calendario-de-pago" target="_blank" rel="noopener">📅 Calendario de pago</a>
-          <a href="https://www.argentina.gob.ar/tramites/sacar-turno-andis" target="_blank" rel="noopener">🗓 Sacar turno ANDIS</a>
-          <a href="tel:0800-333-2634">📞 0800-333-ANDIS (2634) — gratuito</a>
-        </div>
-
-        <p class="muted" style="margin-top:1rem">Normativa: Ley 18.910 / Decreto 432/97 / Ley 27.609 (movilidad)</p>
+        <p class="muted">Base normativa: Art. 9° Ley 27.793 y Art. 9° Anexo I del Decreto 84/2026.</p>
       </div>
 
       <div class="card">
-        <h2>💊 Medicamentos y cobertura adicional con PNC</h2>
-        <p>Las personas con PNC por invalidez tienen derecho a:</p>
+        <h2>💵 Pensión No Contributiva por Discapacidad para Protección Social</h2>
+        <p>Prestación económica no contributiva creada por la Ley 27.793 para personas con discapacidad en situación de vulnerabilidad social.</p>
+
+        <h3>⚠️ Qué está definido y qué falta todavía</h3>
+        <p>El Decreto 84/2026 reglamenta los aspectos <strong>administrativos</strong> de la pensión (pago, suspensión, caducidad, recursos). Los <strong>criterios sustantivos de acceso</strong> — porcentaje de incapacidad, tope de ingresos y demás condiciones de evaluación socioeconómica — todavía deben acordarse entre la Secretaría Nacional de Discapacidad y el <strong>Consejo Federal de Discapacidad</strong> (Art. 3° del Decreto 84/2026), por lo que pueden no coincidir con los requisitos históricos de la ex "pensión por invalidez".</p>
+        <p class="muted">Las Pensiones No Contributivas por Invalidez Laboral y por Vejez (categorías distintas, no específicas de discapacidad) siguen rigiéndose por el Decreto 432/97, sin cambios (Art. 5° Anexo I).</p>
+
+        <h3>Apoderados y representantes</h3>
+        <ul style="padding-left:1.2rem;margin:.5rem 0 1rem">
+          <li style="margin-bottom:.4rem">Se pueden designar apoderados para el cobro mediante poder o carta poder ante la Secretaría Nacional de Discapacidad, renovable <strong>anualmente</strong> presentando fe de vida.</li>
+          <li style="margin-bottom:.4rem">Si el beneficiario es menor de edad o fue declarado incapaz por sentencia judicial, cobra el padre, madre, tutor, guardador o curador.</li>
+        </ul>
+
+        <h3>Obligaciones del beneficiario</h3>
+        <ul style="padding-left:1.2rem;margin:.5rem 0 1rem">
+          <li style="margin-bottom:.4rem">Presentar declaraciones juradas, informes y documentación que pida la Secretaría, y permitir inspecciones, auditorías y encuestas socioeconómicas.</li>
+          <li style="margin-bottom:.4rem">Avisar dentro de los <strong>15 días hábiles</strong> cualquier cambio de salud, situación económica, domicilio u otra circunstancia que afecte el derecho a la prestación. No hacerlo genera responsabilidad por lo cobrado indebidamente.</li>
+        </ul>
+
+        <h3>Pago</h3>
+        <div class="kv-row"><dt>A cargo de</dt><dd>ANSES, por entidades financieras autorizadas por el BCRA</dd></div>
+        <div class="kv-row"><dt>Devengamiento</dt><dd>Desde el primer día del mes siguiente al acto administrativo que otorga la pensión</dd></div>
+
+        <h3>Suspensión del pago</h3>
+        <ul style="padding-left:1.2rem;margin:.5rem 0 1rem">
+          <li style="margin-bottom:.4rem">Incumplimiento de las obligaciones del beneficiario o sus representantes</li>
+          <li style="margin-bottom:.4rem">Inasistencia injustificada a una citación relacionada con los requisitos del beneficio</li>
+          <li style="margin-bottom:.4rem">Percepción indebida de haberes</li>
+          <li style="margin-bottom:.4rem">Citaciones que no pudieron entregarse por datos declarados incorrectos o desactualizados</li>
+        </ul>
+
+        <h3>Caducidad y rehabilitación</h3>
+        <p>La pensión <strong>caduca</strong> por: muerte o fallecimiento presunto, renuncia, abandono del país (más de 3 meses sin registrar reingreso), 3 mensualidades consecutivas sin cobrar sin causa justificada, incompatibilidad con otras prestaciones, desaparición de las causas que motivaron el beneficio, o condena a más de 3 años de prisión.</p>
+        <p>Se puede pedir la <strong>rehabilitación</strong> de una pensión caduca o suspendida probando el derecho; puede requerir una nueva verificación socioeconómica. Si se hace lugar, el pago se retoma desde el mes siguiente, sin cobrar lo caído (salvo que la suspensión/caducidad haya sido improcedente).</p>
+
+        <h3>Recursos si te la niegan, suspenden o caducan</h3>
+        <div class="kv-row"><dt>Reconsideración</dt><dd>Dentro de los 60 días de notificado</dd></div>
+        <div class="kv-row"><dt>Jerárquico</dt><dd>Dentro de los 90 días de notificado</dd></div>
+        <p class="muted">Se tramitan según el Reglamento de Procedimientos Administrativos — Decreto 1759/72 (T.O. 2017).</p>
+
+        <h3>Características de la prestación</h3>
+        <ul style="padding-left:1.2rem;margin:.5rem 0 1rem">
+          <li style="margin-bottom:.4rem">Es <strong>inembargable</strong></li>
+          <li style="margin-bottom:.4rem">Es <strong>personalísima</strong>: solo corresponde al propio beneficiario</li>
+          <li style="margin-bottom:.4rem">No puede cederse ni afectarse a terceros</li>
+          <li style="margin-bottom:.4rem">Se mantiene mientras subsistan las causas que la originaron</li>
+        </ul>
+
+        <h3 style="margin-top:1.2rem">Links oficiales</h3>
+        <div style="display:flex;flex-direction:column;gap:.6rem;margin-top:.5rem">
+          <a href="https://www.boletinoficial.gob.ar/#!DetalleNorma/338137/QR" target="_blank" rel="noopener">📄 Decreto 84/2026 — Boletín Oficial ↗</a>
+          <a href="https://www.argentina.gob.ar/andis/pensiones" target="_blank" rel="noopener">🏛 Información de pensiones — Secretaría Nacional de Discapacidad ↗</a>
+          <a href="https://www.argentina.gob.ar/tramites/sacar-turno-andis" target="_blank" rel="noopener">🗓 Sacar turno</a>
+          <a href="tel:0800-333-2634">📞 0800-333-2634 — gratuito</a>
+        </div>
+
+        <p class="muted" style="margin-top:1rem">Normativa: Ley 27.793 / Decreto 84/2026 (Anexo I y Anexo II) / Decreto 1759/72 T.O. 2017</p>
+      </div>
+
+      <div class="card">
+        <h2>💊 Medicamentos y cobertura adicional con la pensión</h2>
+        <p>Las personas titulares de la Pensión No Contributiva por Discapacidad para Protección Social tienen derecho a:</p>
         <ul style="padding-left:1.2rem;margin:.5rem 0">
-          <li style="margin-bottom:.4rem"><strong>Obra social ANDIS</strong>: cobertura médica para titular y grupo familiar</li>
+          <li style="margin-bottom:.4rem"><strong>Obra social</strong>: cobertura médica para titular y grupo familiar</li>
           <li style="margin-bottom:.4rem"><strong>Medicamentos</strong> gratuitos vinculados a la discapacidad</li>
           <li style="margin-bottom:.4rem"><strong>Prestaciones de rehabilitación</strong> al 100% (Ley 24.901)</li>
           <li style="margin-bottom:.4rem">SUBE con descuento del 100% para transporte público</li>
         </ul>
-        <a href="https://www.argentina.gob.ar/andis/obras-social" target="_blank" rel="noopener">Ver obra social ANDIS ↗</a>
+        <a href="https://www.argentina.gob.ar/andis/obras-social" target="_blank" rel="noopener">Ver obra social ↗</a>
+      </div>
+
+      <div class="card">
+        <h2>🧾 Moratoria impositiva para prestadores (Ley 24.901)</h2>
+        <p>El Decreto 84/2026 (Art. 4° inciso b, Anexo I) creó un régimen de regularización de deudas tributarias, aduaneras y de la seguridad social vencidas al <strong>31/12/2025</strong> para los prestadores comprendidos en la Ley 24.901.</p>
+        <ul style="padding-left:1.2rem;margin:.5rem 0 1rem">
+          <li style="margin-bottom:.4rem">Condonación de hasta el <strong>100%</strong> de intereses resarcitorios y punitorios</li>
+          <li style="margin-bottom:.4rem">Condonación de multas por infracciones formales no firmes, si se regulariza la obligación</li>
+          <li style="margin-bottom:.4rem">La nómina de prestadores habilitados la remite la Secretaría Nacional de Discapacidad a <strong>ARCA</strong> (ex AFIP)</li>
+        </ul>
+        <p class="muted">ARCA debía dictar las normas operativas del régimen dentro de los 15 días hábiles desde la vigencia de la reglamentación.</p>
       </div>
     </div>
   </div>
@@ -1961,8 +2007,8 @@
     // Beneficios adicionales según situación laboral
     const BENEFICIOS_LABORALES = {
       desocupado: [
-        { nombre: 'Pensión no contributiva por invalidez', detalle: 'Si tenés más del 76% de incapacidad y no tenés ingresos, podés solicitar PNC en ANDIS.', url: 'https://www.argentina.gob.ar/andis/pensiones' },
-        { nombre: 'Seguro de desempleo especial', detalle: 'Consultá en ANDIS por apoyos económicos específicos para personas con discapacidad desocupadas.' },
+        { nombre: 'Pensión No Contributiva por Discapacidad para Protección Social', detalle: 'Si no tenés ingresos propios ni familiares que te sostengan, podés consultar si accedés a la nueva pensión creada por la Ley 27.793 (Decreto 84/2026).', url: 'https://www.argentina.gob.ar/andis/pensiones' },
+        { nombre: 'Seguro de desempleo especial', detalle: 'Consultá en la Secretaría Nacional de Discapacidad por apoyos económicos específicos para personas con discapacidad desocupadas.' },
         { nombre: 'Cupo laboral estatal (4%)', detalle: 'Tenés prioridad para ingresar al Estado. El 4% de los cargos están reservados (Ley 22.431 art. 8).', url: 'https://www.argentina.gob.ar/normativa/nacional/ley-22431-23752' },
       ],
       empleado_privado: [
@@ -1981,7 +2027,7 @@
         { nombre: 'Microcréditos accesibles', detalle: 'Programas de financiamiento para emprendedores con discapacidad. Consultá en Ministerio de Desarrollo Social.' },
       ],
       jubilado: [
-        { nombre: 'Pensión graciable adicional', detalle: 'En algunos casos podés acumular jubilación y PNC. Consultá en ANDIS.' },
+        { nombre: 'Pensión graciable adicional', detalle: 'En algunos casos podés acumular jubilación y pensión no contributiva. Consultá en la Secretaría Nacional de Discapacidad.' },
         { nombre: 'Obra social PAMI', detalle: 'Si sos jubilado ANSES, tenés cobertura PAMI con beneficios adicionales por discapacidad.' },
         { nombre: 'Medicamentos gratuitos PAMI', detalle: 'PAMI cubre medicamentos al 100% para jubilados con discapacidad certificada.', url: 'https://www.pami.org.ar' },
       ],
@@ -2045,9 +2091,9 @@
         if (laboral === 'desocupado') {
           cardPension.style.display = 'block';
           document.getElementById('calc-pension-info').innerHTML =
-            '<p>Si tu porcentaje de incapacidad es mayor al <strong>76%</strong> y no tenés ingresos propios ni familiares que te sostengan, podés solicitar la <strong>Pensión No Contributiva por Invalidez</strong> en ANDIS.</p>' +
+            '<p>Si no tenés ingresos propios ni familiares que te sostengan, podés consultar si accedés a la <strong>Pensión No Contributiva por Discapacidad para Protección Social</strong> (Ley 27.793, reglamentada por el Decreto 84/2026). Si ya cobrabas la ex pensión por invalidez, la conversión es automática y no necesitás volver a tramitarla.</p>' +
             '<div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.8rem">' +
-            '<a class="btn-sm" href="https://www.argentina.gob.ar/andis/pensiones" target="_blank" rel="noopener">Ver info en ANDIS ↗</a>' +
+            '<a class="btn-sm" href="https://www.argentina.gob.ar/andis/pensiones" target="_blank" rel="noopener">Ver info oficial ↗</a>' +
             '<a class="btn-sm" href="https://www.argentina.gob.ar/tramites/sacar-turno-andis" target="_blank" rel="noopener">Sacar turno ↗</a>' +
             '</div>';
         } else {

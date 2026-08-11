@@ -3,8 +3,9 @@ api_cud.py
 Endpoints FastAPI para el módulo CUD (Certificado Único de Discapacidad)
 del Observatorio de Discapacidad.
 
-Fuente de datos: scripts/datos_cud.py (ANDIS — argentina.gob.ar/andis,
-Ley 22.431, Ley 24.901, Resolución ANDIS 322/2023).
+Fuente de datos: scripts/datos_cud.py (Secretaría Nacional de Discapacidad,
+ex ANDIS — argentina.gob.ar/andis, Ley 22.431, Ley 24.901, Ley 27.793,
+Decreto 84/2026, Resolución ANDIS 322/2023).
 """
 
 from fastapi import APIRouter, Query, HTTPException
@@ -44,8 +45,8 @@ async def info_general():
         "normativa_vencimiento": "Resolución ANDIS 322/2023",
         "tipos_discapacidad": list(REQUISITOS_POR_TIPO.keys()),
         "total_provincias_con_junta": len(JUNTAS_POR_PROVINCIA),
-        "normativa_base": ["Ley 22.431", "Ley 24.901", "Resolución ANDIS 322/2023"],
-        "fuente": "ANDIS — argentina.gob.ar/andis",
+        "normativa_base": ["Ley 22.431", "Ley 24.901", "Ley 27.793", "Decreto 84/2026", "Resolución ANDIS 322/2023"],
+        "fuente": "Secretaría Nacional de Discapacidad (ex ANDIS) — argentina.gob.ar/andis",
         "endpoints_disponibles": [
             "/api/cud",
             "/api/cud/formularios",

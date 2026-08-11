@@ -1,8 +1,11 @@
 """
 datos_cud.py
 Base de datos del trámite CUD — requisitos, juntas, beneficios, formularios.
-Fuente: ANDIS argentina.gob.ar/andis + PDF oficial Ministerio de Transporte
+Fuente: Secretaría Nacional de Discapacidad del Ministerio de Salud (ex ANDIS,
+argentina.gob.ar/andis) + PDF oficial Ministerio de Transporte.
 Juntas evaluadoras: 24 provincias completas — datos oficiales 2024.
+Actualizado con la Ley 27.793 (Emergencia Nacional en Discapacidad) y su
+Reglamentación, Decreto 84/2026 (Anexo I y Anexo II).
 """
 
 FORMULARIOS = [{'id': 'solicitud_cud',
@@ -14,7 +17,9 @@ FORMULARIOS = [{'id': 'solicitud_cud',
   'obligatorio': True},
  {'id': 'declaracion_jurada',
   'nombre': 'Declaración Jurada de Ingresos',
-  'descripcion': 'Requerida para solicitar pensión no contributiva por invalidez. Se descarga desde el portal ANDIS según el tipo de discapacidad.',
+  'descripcion': 'Requerida para solicitar la Pensión No Contributiva por Discapacidad para Protección Social '
+                 '(Ley 27.793, reglamentada por el Decreto 84/2026). Se descarga desde el portal de la '
+                 'Secretaría Nacional de Discapacidad según el tipo de discapacidad.',
   'url': 'https://www.argentina.gob.ar/andis/pensiones-no-contributivas-por-invalidez',
   'url_online': 'https://www.argentina.gob.ar/andis',
   'formato': 'PDF (disponible en la junta evaluadora)',
@@ -212,11 +217,21 @@ BENEFICIOS = [{'categoria': 'Salud',
                   'detalle': 'Las personas con CUD pueden estar exentas del impuesto a las '
                              'ganancias.',
                   'normativa': 'Ley 20.628'},
-                 {'nombre': 'Pensión no contributiva por invalidez',
-                  'detalle': 'Para personas sin obra social ni ingresos suficientes con '
-                             'discapacidad mayor al 76%.',
-                  'normativa': 'Ley 18.910',
+                 {'nombre': 'Pensión No Contributiva por Discapacidad para Protección Social',
+                  'detalle': 'Para personas con discapacidad sin obra social ni ingresos suficientes. '
+                             'Reemplaza a la ex "pensión por invalidez"; quienes ya cobraban esta última '
+                             'pasan de forma automática (conversión de oficio) al nuevo régimen. Los '
+                             'criterios de acceso (porcentaje de incapacidad, tope de ingresos) están '
+                             'pendientes de acuerdo entre la Secretaría Nacional de Discapacidad y el '
+                             'Consejo Federal de Discapacidad.',
+                  'normativa': 'Ley 27.793 / Decreto 84/2026 (Anexo I y Anexo II)',
                   'url': 'https://www.argentina.gob.ar/andis/pensiones'},
+                 {'nombre': 'Moratoria impositiva para prestadores de la Ley 24.901',
+                  'detalle': 'Régimen de regularización de deudas impositivas, aduaneras y de la '
+                             'seguridad social vencidas al 31/12/2025, con condonación de hasta el '
+                             '100% de intereses y de determinadas multas. Lo administra ARCA (ex AFIP) '
+                             'sobre la nómina que remite la Secretaría Nacional de Discapacidad.',
+                  'normativa': 'Decreto 84/2026, Art. 4° inciso b) Anexo I'},
                  {'nombre': 'Exención en patente de vehículos',
                   'detalle': 'Exención o reducción en el pago de patente del vehículo adaptado.',
                   'normativa': 'Varía por provincia'}]},
@@ -654,9 +669,20 @@ FAQ = [{'pregunta': '¿El trámite del CUD es gratuito?',
  {'pregunta': '¿Qué pasa si me rechazan el CUD?',
   'respuesta': 'Podés apelar la resolución dentro de los 30 días hábiles ante la misma Junta o el '
                'organismo provincial. Es recomendable presentar documentación adicional.'},
- {'pregunta': '¿El CUD es lo mismo que la pensión por invalidez?',
-  'respuesta': 'No. El CUD certifica la discapacidad. La pensión es una prestación económica '
-               'diferente que puede solicitarse con el CUD pero tiene requisitos propios.'},
+ {'pregunta': '¿El CUD es lo mismo que la pensión por discapacidad?',
+  'respuesta': 'No. El CUD certifica la discapacidad. La Pensión No Contributiva por Discapacidad para '
+               'Protección Social (Ley 27.793 / Decreto 84/2026) es una prestación económica diferente '
+               'que puede solicitarse con el CUD pero tiene requisitos propios.'},
+ {'pregunta': '¿Tengo que volver a tramitar mi pensión por invalidez con la nueva ley?',
+  'respuesta': 'No. Si ya cobrabas una pensión no contributiva otorgada antes de la Ley 27.793, la '
+               'conversión a la nueva Pensión No Contributiva por Discapacidad para Protección Social es '
+               'automática ("de oficio"), a cargo de la Secretaría Nacional de Discapacidad. Mientras se '
+               'tramita, seguís cobrando el beneficio que ya tenías (Art. 9° Anexo I, Decreto 84/2026).'},
+ {'pregunta': '¿Cambiaron los criterios para certificar el CUD con el Decreto 84/2026?',
+  'respuesta': 'Todavía no. El Art. 11 del Anexo I del Decreto 84/2026 establece que la Secretaría '
+               'Nacional de Discapacidad dictará nuevos lineamientos de certificación, previa '
+               'intervención del Consejo Federal de Discapacidad, pero al momento no modificó los '
+               'criterios vigentes de la Resolución ANDIS 322/2023.'},
  {'pregunta': '¿Puedo tener CUD y trabajar?',
   'respuesta': 'Sí. Tener CUD no impide trabajar. El cupo laboral del 4% en el Estado está pensado '
                'para personas con CUD que buscan empleo.'},
