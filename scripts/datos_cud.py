@@ -244,7 +244,7 @@ BENEFICIOS = [{'categoria': 'Salud',
 
 JUNTAS_POR_PROVINCIA = {'Buenos Aires': {'nombre_organismo': 'Dirección Provincial de Discapacidad — Provincia de Buenos '
                                       'Aires',
-                  'url_turno': 'https://www.gba.gob.ar/discapacidad',
+                  'url_turno': 'https://www.argentina.gob.ar/andis/juntas-evaluadoras-cud',
                   'telefono': '0800-222-2427',
                   'email': 'discapacidad@gba.gob.ar',
                   'turno_online': True,
@@ -273,7 +273,7 @@ JUNTAS_POR_PROVINCIA = {'Buenos Aires': {'nombre_organismo': 'Dirección Provinc
                              'telefono': '0291-5506000'}]},
  'CABA': {'nombre_organismo': 'COPIDIS — Comisión para la Plena Participación e Inclusión de las '
                               'Personas con Discapacidad',
-          'url_turno': 'https://www.buenosaires.gob.ar/copidis/certificacion-de-discapacidad',
+          'url_turno': 'https://buenosaires.gob.ar/tramites/solicitud-del-certificado-unico-de-discapacidad-cud',
           'telefono': '0800-999-2727 opción 3',
           'email': 'discapacidadba@buenosaires.gob.ar',
           'turno_online': True,
