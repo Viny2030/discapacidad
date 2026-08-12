@@ -65,10 +65,6 @@
             padding:.5rem 1rem;border-radius:6px;font-size:.82rem;font-weight:600;
             cursor:pointer;font-family:inherit}
     .go-btn:hover{background:#4a2d8c}
-    .home-card.donate{border-top-color:#d4a017}
-    .home-card.donate .go-btn{background:#b9890a}
-    .home-card.donate .go-btn:hover{background:#947009}
-
     /* selects y forms */
     select, input[type=text]{font-family:inherit;font-size:.88rem;padding:.5rem .7rem;
            border:1px solid #d8d2ee;border-radius:6px;background:white;color:#212529;
@@ -175,20 +171,6 @@
     footer{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;text-align:left;padding:2rem;color:#888;font-size:.82rem}
     @media (max-width:600px){footer{justify-content:center;text-align:center}}
 
-    /* donaciones */
-    .bank-card{background:#f8f7fb;border-radius:8px;padding:1.1rem 1.2rem;margin-bottom:1rem;
-               border-left:4px solid #d4a017}
-    .bank-card h4{color:#b9890a;margin-bottom:.6rem;font-size:.95rem}
-    .bank-row{display:flex;justify-content:space-between;align-items:center;
-              gap:.6rem;padding:.3rem 0;border-bottom:1px solid #efe7fd;font-size:.85rem}
-    .bank-row:last-child{border-bottom:none}
-    .bank-row .v{font-weight:600;color:#3d2570;word-break:break-all;text-align:right}
-    .copy-btn{background:#efe7fd;color:#5e35b1;border:none;border-radius:5px;
-              padding:.25rem .55rem;font-size:.72rem;font-weight:600;cursor:pointer;
-              flex-shrink:0;font-family:inherit}
-    .copy-btn:hover{background:#7c4dff;color:#fff}
-    .copy-btn.copied{background:#639922;color:#fff}
-
     /* boton flotante de contacto */
     .fab{position:fixed;bottom:1.2rem;right:1.2rem;width:54px;height:54px;
          border-radius:50%;background:#5e35b1;color:#fff;border:none;
@@ -240,7 +222,6 @@
     <button class="tab-btn" data-panel="calculadora">Calculadora</button>
     <button class="tab-btn" data-panel="pensiones">Pensiones</button>
     <button class="tab-btn" data-panel="comparador">Comparador</button>
-    <button class="tab-btn" data-panel="donaciones">Donaciones</button>
     <button class="tab-btn" data-panel="about">About (EN)</button>
     <a href="/docs" class="docs" target="_blank" rel="noopener">API Docs</a>
   </nav>
@@ -327,12 +308,6 @@
           <h3>📰 Alertas Boletín Oficial</h3>
           <p>Monitoreo de normativa de discapacidad en el Boletín Oficial. Accedé a los datos abiertos del gobierno.</p>
           <a class="go-btn" href="https://datos.gob.ar/dataset?q=boletin+oficial" target="_blank" rel="noopener">Ver en datos.gob.ar ↗</a>
-        </div>
-        <div class="home-card donate">
-          <h3>&#128156; Apoyar este proyecto</h3>
-          <p>Este observatorio se mantiene con trabajo voluntario. Si te resulta
-             util, podes colaborar con una donacion.</p>
-          <button class="go-btn" onclick="switchTab('donaciones')">Donar</button>
         </div>
       </div>
     </div>
@@ -752,69 +727,6 @@
           <div id="comp-tabla" style="overflow-x:auto"></div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <!-- ====================== DONACIONES ====================== -->
-  <div class="panel" id="panel-donaciones">
-    <div class="wrap">
-
-      <div class="card">
-        <h2>&#128156; Apoyar este proyecto &mdash; Donaciones voluntarias</h2>
-        <p>Si este proyecto te resulta &uacute;til, pod&eacute;s apoyarlo con una
-           donaci&oacute;n voluntaria.</p>
-
-        <div class="bank-card">
-          <h4>&#127462;&#127479; Argentina &middot; Pesos (ARS)</h4>
-          <div class="bank-row"><span>Tipo</span><span class="v">Caja de Ahorro</span></div>
-          <div class="bank-row"><span>CBU</span>
-            <span class="v" id="cbu-ars">0140005203400552652310</span>
-            <button class="copy-btn" onclick="copyText('cbu-ars', this)">Copiar</button>
-          </div>
-          <div class="bank-row"><span>Alias</span>
-            <span class="v" id="alias-ars">ALGORIT.MONTE.PESOS</span>
-            <button class="copy-btn" onclick="copyText('alias-ars', this)">Copiar</button>
-          </div>
-          <div class="bank-row"><span>Titular</span><span class="v">Vicente Humberto Monteverde</span></div>
-          <div class="bank-row"><span>CUIL/CUIT</span><span class="v">20-12034411-1</span></div>
-        </div>
-
-        <div class="bank-card">
-          <h4>&#127462;&#127479; Argentina &middot; D&oacute;lares (USD)</h4>
-          <div class="bank-row"><span>Tipo</span><span class="v">Caja de Ahorro D&oacute;lares</span></div>
-          <div class="bank-row"><span>CBU</span>
-            <span class="v" id="cbu-usd">0140005204400550329709</span>
-            <button class="copy-btn" onclick="copyText('cbu-usd', this)">Copiar</button>
-          </div>
-          <div class="bank-row"><span>Alias</span>
-            <span class="v" id="alias-usd">ALGO.MONTE.DOLARES</span>
-            <button class="copy-btn" onclick="copyText('alias-usd', this)">Copiar</button>
-          </div>
-          <div class="bank-row"><span>Titular</span><span class="v">Vicente Humberto Monteverde</span></div>
-          <div class="bank-row"><span>CUIL/CUIT</span><span class="v">20-12034411-1</span></div>
-        </div>
-
-        <div class="bank-card">
-          <h4>&#127760; Desde el exterior (USD Wire)</h4>
-          <div class="bank-row"><span>Banco</span><span class="v">Banco Santander Rio</span></div>
-          <div class="bank-row"><span>Sucursal</span><span class="v">Colonia, Uruguay (005)</span></div>
-          <div class="bank-row"><span>Beneficiario</span><span class="v">Vicente Humberto Monteverde</span></div>
-          <div class="bank-row"><span>Direcci&oacute;n</span><span class="v">Av. Directorio 3024 PB DTO 04</span></div>
-          <div class="bank-row"><span>Cuenta USD</span>
-            <span class="v" id="cta-usd">005200183500</span>
-            <button class="copy-btn" onclick="copyText('cta-usd', this)">Copiar</button>
-          </div>
-          <div class="bank-row"><span>SWIFT / BIC</span>
-            <span class="v" id="swift">BSCHUYMM</span>
-            <button class="copy-btn" onclick="copyText('swift', this)">Copiar</button>
-          </div>
-          <div class="bank-row"><span>CUIT</span><span class="v">20-12034411-1</span></div>
-        </div>
-
-        <p class="muted">Gracias por tu apoyo. Cualquier consulta sobre donaciones:
-          <a href="mailto:vhmonte@retina.ar">vhmonte@retina.ar</a></p>
-      </div>
-
     </div>
   </div>
 
@@ -2009,17 +1921,6 @@
       if (!tipo) { target.innerHTML = ''; return; }
       target.innerHTML = '<p class="loading">Cargando tratamientos...</p>';
       loadInto('/api/vanguardia/tipo/' + encodeURIComponent(tipo), 'vang-result', renderVanguardiaTipo);
-    }
-
-    /* ---------- DONACIONES: copiar al portapapeles ---------- */
-    function copyText(elId, btn) {
-      const text = document.getElementById(elId).textContent;
-      navigator.clipboard.writeText(text).then(() => {
-        const original = btn.textContent;
-        btn.textContent = 'Copiado!';
-        btn.classList.add('copied');
-        setTimeout(() => { btn.textContent = original; btn.classList.remove('copied'); }, 1500);
-      });
     }
 
     /* ---------- CALCULADORA ---------- */
