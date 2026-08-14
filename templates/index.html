@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Observatorio de Discapacidad</title>
+  <title>Asesoria Movil en Discapacidad</title>
 
   <!-- Google Analytics (GA4) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0JK8GYT9GT"></script>
@@ -39,6 +39,7 @@
     header p{opacity:.9}
 
     .wrap{max-width:760px;margin:0 auto;padding:2rem 1.2rem}
+    .wrap-wide{max-width:1100px}
 
     .card{background:white;border-radius:10px;padding:1.5rem;
           box-shadow:0 1px 4px rgba(0,0,0,.08);
@@ -200,6 +201,10 @@
     /* mapas */
     .map-container{height:420px;border-radius:8px;overflow:hidden;margin-top:.6rem;
                     border:1px solid #e8e3f7}
+    .sheet-embed-container{height:700px;border-radius:8px;overflow:hidden;margin-top:.6rem;
+                    border:1px solid #e8e3f7;background:#fff}
+    .sheet-embed-container iframe{width:100%;height:100%;border:0}
+    @media (max-width:600px){.sheet-embed-container{height:480px}}
     .map-legend{display:flex;align-items:center;gap:.6rem;margin-top:.6rem;
                  font-size:.78rem;color:#5e35b1;flex-wrap:wrap}
     .legend-bar{height:10px;width:160px;border-radius:4px;
@@ -209,6 +214,18 @@
 
     .panel{display:none}
     .panel.visible{display:block}
+
+    /* pestana GCBA - sub-links */
+    .gcba-links{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.8rem}
+    .gcba-link-btn{background:#f1ecfb;color:#4a2d8c;border:1px solid #d8c9f7;
+         padding:.55rem 1rem;border-radius:8px;font-size:.85rem;font-weight:600;
+         cursor:pointer;font-family:inherit}
+    .gcba-link-btn:hover{background:#e5d9fb}
+    .gcba-link-btn.active{background:#7c4dff;color:#fff;border-color:#7c4dff}
+    .gcba-sub{display:none}
+    .gcba-sub.visible{display:block}
+    .legend-dot{display:inline-block;width:10px;height:10px;border-radius:50%;
+         margin-right:.35rem;vertical-align:middle}
   </style>
 </head>
 <body>
@@ -223,6 +240,8 @@
     <button class="tab-btn" data-panel="pensiones">Pensiones</button>
     <button class="tab-btn" data-panel="comparador">Comparador</button>
     <button class="tab-btn" data-panel="about">About (EN)</button>
+    <button class="tab-btn" data-panel="gcba">GCBA</button>
+    <button class="tab-btn" data-panel="comuna_07">Comuna_07</button>
     <a href="/docs" class="docs" target="_blank" rel="noopener">API Docs</a>
   </nav>
 
@@ -252,7 +271,7 @@
   </div>
 
   <header>
-    <h1>Observatorio de Discapacidad</h1>
+    <h1>Asesoria Movil en Discapacidad</h1>
     <p>CUD - Evidencia medica - Estadisticas oficiales (Secretaría Nacional de Discapacidad/INDEC)</p>
   </header>
 
@@ -1135,6 +1154,90 @@
 
   </div>
 
+  <!-- ====================== GCBA ====================== -->
+  <div class="panel" id="panel-gcba">
+    <div class="wrap">
+
+      <div class="card">
+        <h2>GCBA &mdash; Recursos de la Ciudad</h2>
+        <p>
+          Listados y mapas de establecimientos del Gobierno de la Ciudad de
+          Buenos Aires vinculados a discapacidad.
+        </p>
+        <div class="gcba-links">
+          <button class="gcba-link-btn active" data-gcba="educacion">Educaci&oacute;n especial</button>
+          <button class="gcba-link-btn" data-gcba="salud">Mapa de salud</button>
+        </div>
+      </div>
+
+      <div class="gcba-sub visible" id="gcba-educacion">
+        <div class="card">
+          <h2>Escuelas de educaci&oacute;n especial &mdash; Nivel primario</h2>
+          <p class="muted">
+            Escuelas de educaci&oacute;n especial estatales y privadas incorporadas
+            a la ense&ntilde;anza oficial que ofrecen nivel primario especial en CABA.
+            Fuente: <a href="https://data.buenosaires.gob.ar/dataset/establecimientos-educativos" target="_blank" rel="noopener">Buenos Aires Data &mdash; Padr&oacute;n de Establecimientos Educativos</a> (Ministerio de Educaci&oacute;n GCBA).
+          </p>
+          <div id="map-edu-especial" class="map-container"></div>
+          <div class="map-legend">
+            <span><span class="legend-dot" style="background:#7c4dff"></span>Estatal</span>
+            <span><span class="legend-dot" style="background:#ff8a65"></span>Privada</span>
+          </div>
+          <div id="lista-edu-especial" class="result-box"><p class="loading">Cargando listado...</p></div>
+        </div>
+      </div>
+
+      <div class="gcba-sub" id="gcba-salud">
+        <div class="card">
+          <h2>Establecimientos de salud &mdash; Discapacidad</h2>
+          <p class="muted">
+            Hospitales y establecimientos p&uacute;blicos del GCBA (Buenos Aires Data)
+            y una selecci&oacute;n de instituciones privadas de referencia en
+            rehabilitaci&oacute;n/discapacidad en CABA. Los marcados con &#9733; est&aacute;n
+            especializados en rehabilitaci&oacute;n f&iacute;sica o salud mental.
+            Fuentes: <a href="https://data.buenosaires.gob.ar/dataset/hospitales" target="_blank" rel="noopener">Buenos Aires Data &mdash; Hospitales</a> y sitios oficiales de cada instituci&oacute;n privada.
+          </p>
+          <div id="map-salud" class="map-container"></div>
+          <div class="map-legend">
+            <span><span class="legend-dot" style="background:#3d8c6a"></span>P&uacute;blico</span>
+            <span><span class="legend-dot" style="background:#ff8a65"></span>Privado</span>
+            <span>&#9733; Especializado en rehabilitaci&oacute;n/discapacidad</span>
+          </div>
+          <div id="lista-salud" class="result-box"><p class="loading">Cargando listado...</p></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ====================== COMUNA_07 ====================== -->
+  <div class="panel" id="panel-comuna_07">
+    <div class="wrap wrap-wide">
+
+      <div class="card">
+        <h2>Comuna 07 &mdash; Dashboard</h2>
+        <p class="muted">
+          Gr&aacute;ficos del dashboard web (Google Sheets).
+          <a href="https://docs.google.com/spreadsheets/d/1liqbU5GcCpZ85TSMZNQAlF5MVpQTo1A8SAT6XyQ0BSo/edit?gid=237140928#gid=237140928" target="_blank" rel="noopener">Abrir la hoja completa en Google Sheets &#8599;</a>
+        </p>
+        <div class="sheet-embed-container">
+          <iframe
+            src="https://docs.google.com/spreadsheets/d/1liqbU5GcCpZ85TSMZNQAlF5MVpQTo1A8SAT6XyQ0BSo/edit?usp=sharing&amp;rm=minimal&amp;gid=237140928&amp;widget=true&amp;headers=false"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <p class="legend-note">
+          Este panel muestra la hoja de c&aacute;lculo en vivo. Si no carga o
+          pide acceso, verific&aacute; que la hoja siga compartida como
+          &quot;Cualquiera con el enlace &ndash; Lector&quot; en Google Sheets.
+        </p>
+      </div>
+
+    </div>
+  </div>
+
   <footer>
     <div>&copy; 2026 Vicente H. Monteverde | Observatorio_discapacidad. Todos los derechos reservados.</div>
     <div>
@@ -1253,6 +1356,7 @@
       loaded[name] = true;
       if (name === 'cud') initCud();
       if (name === 'estadistico') initEstadistico();
+      if (name === 'gcba') initGcba();
     }
 
     /* ---------- helpers ---------- */
@@ -2097,7 +2201,89 @@
       }
     }
 
-    // Registrar handlers nuevos en onTabOpen — sin override
+    /* ---------- GCBA: educacion especial + salud ---------- */
+    const ESCUELAS_ESPECIAL = [{"nombre":"ESC. PARA NIÑOS Y NIÑAS CON DISCAPACIDAD MENTAL Nº 14 CONSTANCIO C. VIGIL","sector":"Estatal","direccion":"Independencia Av. 668","barrio":"San Telmo","comuna":1,"lat":-34.617467,"lon":-58.375398},{"nombre":"ESCUELA PARA NIÑOS,NIÑAS,JOVENES Y ADULTOS CON DISCAPACIDAD MENTAL Y FORMACION INTEGRAL Nº 09 DR.LUIS R MAC KAY DE 06","sector":"Estatal","direccion":"Calvo, Carlos 3176","barrio":"San Cristobal","comuna":3,"lat":-34.622777,"lon":-58.410252},{"nombre":"ESC. PARA NIÑOS, NIÑAS CON DISCAPACIDAD MENTAL Nº 05 DR.ANGEL S.ARDAIZ DE 19","sector":"Estatal","direccion":"Ferre 1957","barrio":"Nueva Pompeya","comuna":4,"lat":-34.659693,"lon":-58.423583},{"nombre":"ESC. PARA NIÑOS, NIÑAS Y JOVENES CON DISCAPACIDAD VISUAL Nº 33 SANTA CECILIA DE 08","sector":"Estatal","direccion":"Senillosa 650","barrio":"Caballito","comuna":6,"lat":-34.624405,"lon":-58.428614},{"nombre":"ESC. PARA NIÑOS, NIÑAS Y JOVENES CON DISCAPACIDAD VISUAL Nº 35 JOSE MANUEL ESTRADA DE 08","sector":"Estatal","direccion":"Alberdi, Juan Bautista Av. 1083","barrio":"Caballito","comuna":6,"lat":-34.622758,"lon":-58.443454},{"nombre":"ESC. PARA NIÑOS,NIÑAS, JOVENES Y ADULTOS CON DISCAPACIDAD MENTAL Y FORMACIÓN INTEGRAL Nº 1 ALFONSINA STORNI DE 08","sector":"Estatal","direccion":"Mitre, Emilio 1087","barrio":"Parque Chacabuco","comuna":7,"lat":-34.63353,"lon":-58.440497},{"nombre":"ESC. PARA NIÑOS, NIÑAS Y JOVENES CON DISCAPACIDAD MENTAL Y DE FORMACIÓN INTEGRAL Nº 7 JUAN XXIII DE 19","sector":"Estatal","direccion":"Acosta, Mariano 2936","barrio":"Villa Soldati","comuna":8,"lat":-34.660221,"lon":-58.448716},{"nombre":"ESC. BILINGÜE PARA NIÑOS,NIÑAS, JOVENES Y ADULTOS CON DISCAPACIDAD AUDITIVA Y FORMACIÓN INTEGRAL Nº 29 DR OSVALDO MAGNASCO DE 18","sector":"Estatal","direccion":"Chivilcoy 1820","barrio":"Monte Castro","comuna":10,"lat":-34.617381,"lon":-58.495899},{"nombre":"ESC. PARA NIÑOS,NIÑAS, JOVENES Y ADULTOS CON DISCAPACIDAD MENTAL Y FORMACIÓN INTEGRAL Nº 6 CLELIA AMELIA C.SESSA DE 18","sector":"Estatal","direccion":"Moron 4460","barrio":"Velez Sarsfield","comuna":10,"lat":-34.629885,"lon":-58.491968},{"nombre":"ESC. BILINGÜE PARA NIÑOS,NIÑAS, JOVENES Y ADULTOS CON DISCAPACIDAD AUDITIVA Y FORMACIÓN Nº 28 BARTOLOME AYROLO DE 16","sector":"Estatal","direccion":"Cubas, Jose 4182 - Lincoln Av. 4325","barrio":"Villa Devoto","comuna":11,"lat":-34.598868,"lon":-58.51561},{"nombre":"ESC. PARA NIÑOS,NIÑAS, JOVENES Y ADULTOS CON DISCAPACIDAD MENTAL Y FORMACIÓN INTEGRAL Nº 2 DOMINGO FAUSTINO SARMIENTO DE 17","sector":"Estatal","direccion":"Lozano, Pedro 3056","barrio":"Villa Del Parque","comuna":11,"lat":-34.600364,"lon":-58.493254},{"nombre":"ESC.PARA NIÑOS,NIÑAS,JOVENES Y ADULTOS CON DISCAPACIDAD MENTAL Y FORMACIÓN INTEGRAL Nº 3 MARIA DOLORES NAVALIES DE TOBAR GARCIA DE 17","sector":"Estatal","direccion":"Beiro, Francisco Av. 4418","barrio":"Villa Devoto","comuna":11,"lat":-34.606874,"lon":-58.513141},{"nombre":"ESC. PARA NIÑOS, NIÑAS Y JOVENES CON PLURIDISCAPACIDAD MOTORA Nº 11 DR. AQUILES GAREISO DE 15","sector":"Estatal","direccion":"Quesada 4357","barrio":"Villa Urquiza","comuna":12,"lat":-34.564346,"lon":-58.482713},{"nombre":"ESC. PARA NIÑOS,NIÑAS, JOVENES Y ADULTOS CON DISCAPACIDAD MENTAL Y FORMACIÓN INTEGRAL Nº 21 ROSARIO VERA PEÑALOZA DE 16","sector":"Estatal","direccion":"Obispo San Alberto 2379","barrio":"Villa Pueyrredon","comuna":12,"lat":-34.578467,"lon":-58.500056},{"nombre":"ESC. PARA NIÑOS Y NIÑAS CON DISCAPACIDAD MENTAL Nº 25 MACACHA GUEMES DE 09","sector":"Estatal","direccion":"Guemes 4059","barrio":"Palermo","comuna":14,"lat":-34.585525,"lon":-58.418001},{"nombre":"ESC. PARA NIÑOS Y NIÑAS CON SEVEROS TRANSTORNOS DE LA PERSONALIDAD Nº 17 ARMINDA ABERASTURY DE 09","sector":"Estatal","direccion":"Scalabrini Ortiz, Raul 2760","barrio":"Palermo","comuna":14,"lat":-34.583648,"lon":-58.413893},{"nombre":"ESC. PARA NIÑOS, NIÑAS Y JOVENES CON PLURIDISCAPACIDAD Nº 26 DR. JORGE GARBER DE 09","sector":"Estatal","direccion":"Darregueyra 2460","barrio":"Palermo","comuna":14,"lat":-34.58028,"lon":-58.424183},{"nombre":"ESC. PARA NIÑOS,NIÑAS, JOVENES Y ADULTOS CON DISCAPACIDAD MENTAL Y FORMACIÓN INTEGRAL Nº 4 DR. RAFAEL LUIS ARCONE DE 9","sector":"Estatal","direccion":"Nicaragua 5732","barrio":"Palermo","comuna":14,"lat":-34.580707,"lon":-58.434929},{"nombre":"ESCUELA DOMICILIARIA PARA NIÑOS, NIÑAS Y JOVENES CON DISCAPACIDAD Nº 8 CIUDAD DE BUENOS AIRES DE 09","sector":"Estatal","direccion":"Bonpland 1314","barrio":"Palermo","comuna":14,"lat":-34.586594,"lon":-58.441347},{"nombre":"INSTITUTO LOS ANGELES","sector":"Privada","direccion":"Entre Rios Av. 1956","barrio":"Constitucion","comuna":1,"lat":-34.63101,"lon":-58.390529},{"nombre":"ESCUELA TERAPEUTICA ZOE","sector":"Privada","direccion":"Laprida 1138","barrio":"Recoleta","comuna":2,"lat":-34.595615,"lon":-58.408345},{"nombre":"ESCUELA MI LUGAR (HAMAKOM SHELI)","sector":"Privada","direccion":"Tucuman 3070","barrio":"Balvanera","comuna":3,"lat":-34.601038,"lon":-58.408677},{"nombre":"INSTITUTO ORAL MODELO","sector":"Privada","direccion":"Peron, Juan Domingo, Tte. General 2239","barrio":"Balvanera","comuna":3,"lat":-34.607164,"lon":-58.398432},{"nombre":"INSTITUTO PRIVADO DE LA SALLE","sector":"Privada","direccion":"Riobamba 650","barrio":"Balvanera","comuna":3,"lat":-34.601457,"lon":-58.394287},{"nombre":"INSTITUTO VITRA","sector":"Privada","direccion":"Montes De Oca, Manuel Av. 110","barrio":"Barracas","comuna":4,"lat":-34.629771,"lon":-58.376914},{"nombre":"CENTRO PSICOPEDAGOGICO ACUARELA","sector":"Privada","direccion":"Pringles 738","barrio":"Almagro","comuna":5,"lat":-34.603652,"lon":-58.427406},{"nombre":"ESCUELA LIWEN","sector":"Privada","direccion":"Calvo, Carlos Av. 3893","barrio":"Boedo","comuna":5,"lat":-34.624563,"lon":-58.420218},{"nombre":"INST. DE EDUCACIÓN ESPECIAL ESSERE","sector":"Privada","direccion":"Republica Bolivariana De Venezuela 3648","barrio":"Almagro","comuna":5,"lat":-34.617592,"lon":-58.417476},{"nombre":"INSTITUTO GRUPO CAMINANTES","sector":"Privada","direccion":"Bathurst 3323","barrio":"Boedo","comuna":5,"lat":-34.636034,"lon":-58.411318},{"nombre":"INSTITUTO INFANCIAS","sector":"Privada","direccion":"Pringles 939","barrio":"Almagro","comuna":5,"lat":-34.600936,"lon":-58.426637},{"nombre":"INST. TOBAR GARCIA DINAD","sector":"Privada","direccion":"Yerbal 351","barrio":"Caballito","comuna":6,"lat":-34.616241,"lon":-58.435317},{"nombre":"INSTITUTO ANTONIO PROVOLO","sector":"Privada","direccion":"Alberdi, Juan Bautista Av. 1679","barrio":"Caballito","comuna":6,"lat":-34.627531,"lon":-58.45247},{"nombre":"INSTITUTO MODELO PROYECTO 2000","sector":"Privada","direccion":"Planes 1150","barrio":"Caballito","comuna":6,"lat":-34.61245,"lon":-58.449827},{"nombre":"INSTITUTO EL GALILEO","sector":"Privada","direccion":"Bonifacio, Jose 2562","barrio":"Flores","comuna":7,"lat":-34.633251,"lon":-58.463476},{"nombre":"INST. AYELEN","sector":"Privada","direccion":"Boyaca 1440","barrio":"Villa Gral. Mitre","comuna":11,"lat":-34.613107,"lon":-58.466648},{"nombre":"INSTITUTO EDUCATIVO CREAR","sector":"Privada","direccion":"Juramento 4751","barrio":"Villa Urquiza","comuna":12,"lat":-34.575037,"lon":-58.479131},{"nombre":"INSTITUTO MI MAÑANA","sector":"Privada","direccion":"Valdenegro 3470","barrio":"Villa Urquiza","comuna":12,"lat":-34.562617,"lon":-58.489883},{"nombre":"INSTITUTO PEDAGOGICO MI AMANECER","sector":"Privada","direccion":"Terrada 5547","barrio":"Villa Pueyrredon","comuna":12,"lat":-34.578749,"lon":-58.50704},{"nombre":"INSTITUTO PIEDRA LIBRE","sector":"Privada","direccion":"Achega 3515","barrio":"Villa Urquiza","comuna":12,"lat":-34.568681,"lon":-58.504292},{"nombre":"INSTITUTO SAINT JEAN","sector":"Privada","direccion":"Rivera, Pedro I., Dr. 5445","barrio":"Villa Urquiza","comuna":12,"lat":-34.574148,"lon":-58.49235},{"nombre":"INSTITUTO \"JORGE NEWBERY\"","sector":"Privada","direccion":"Garcia, Teodoro 2449","barrio":"Colegiales","comuna":13,"lat":-34.570114,"lon":-58.446196},{"nombre":"INSTITUTO PSICOPEDAGOGICO SENDEROS","sector":"Privada","direccion":"Aguilar 2845","barrio":"Colegiales","comuna":13,"lat":-34.572687,"lon":-58.45066},{"nombre":"INSTITUTO FEDERICO DOMINICK","sector":"Privada","direccion":"Gorriti 4079","barrio":"Palermo","comuna":14,"lat":-34.595209,"lon":-58.42247},{"nombre":"CENTRO EDUCATIVO TERAPEUTICO \"LAZOS-FUPA\"","sector":"Privada","direccion":"Segui, F. J., Alte. 2272","barrio":"Paternal","comuna":15,"lat":-34.600063,"lon":-58.462012},{"nombre":"CEPPLA","sector":"Privada","direccion":"Palpa 3773","barrio":"Chacarita","comuna":15,"lat":-34.582176,"lon":-58.455431},{"nombre":"INSTITUTO COMPRENDER","sector":"Privada","direccion":"Lemos, Juan Gregorio, Gral. 184","barrio":"Chacarita","comuna":15,"lat":-34.589337,"lon":-58.448237},{"nombre":"INSTITUTO GENESIS","sector":"Privada","direccion":"Gurruchaga 1160","barrio":"Villa Crespo","comuna":15,"lat":-34.592455,"lon":-58.434433},{"nombre":"INSTITUTO LECANNE","sector":"Privada","direccion":"Giribone 1055","barrio":"Chacarita","comuna":15,"lat":-34.579844,"lon":-58.45707},{"nombre":"INSTITUTO PRIVADO BELGRANO","sector":"Privada","direccion":"Lacroze, Federico Av. 3743","barrio":"Chacarita","comuna":15,"lat":-34.582757,"lon":-58.452608},{"nombre":"INSTITUTO W PRINGLE MORGAN","sector":"Privada","direccion":"Thames 1078","barrio":"Villa Crespo","comuna":15,"lat":-34.591553,"lon":-58.4368}];
+    const SALUD_DISCAPACIDAD = [{"nombre":"FLENI (Sede Belgrano)","tipo":"Privado","especialidad":"Neurología, neurocirugía y rehabilitación neurológica","direccion":"Montañeses 2325","barrio":"Belgrano","comuna":13,"destacado":true,"lat":-34.554919,"lon":-58.450496},{"nombre":"Hospital Alemán","tipo":"Privado","especialidad":"Medicina física y rehabilitación, cartilla de discapacidad","direccion":"Av. Pueyrredón 1640","barrio":"Recoleta","comuna":2,"destacado":true,"lat":-34.591817,"lon":-58.401967},{"nombre":"Hospital Italiano de Buenos Aires","tipo":"Privado","especialidad":"Medicina física y rehabilitación, atención de personas con discapacidad","direccion":"Tte. Gral. Juan D. Perón 4190","barrio":"Almagro","comuna":5,"destacado":true,"lat":-34.606587,"lon":-58.42562},{"nombre":"Hospital Especializado de Rehabilitacion M. Rocca","tipo":"Publico","especialidad":"Med. Fisica - Rehabilitacion","direccion":"Segurola Av. 1949","barrio":"Monte Castro","comuna":"10","destacado":true,"lat":-34.617987,"lon":-58.502145},{"nombre":"Hospital General de Agudos D. Velez Sarsfield","tipo":"Publico","especialidad":"Basicas - Criticas - Otras","direccion":"Calderon De La Barca, Pedro 1550","barrio":"Monte Castro","comuna":"10","destacado":false,"lat":-34.625342,"lon":-58.507615},{"nombre":"Hospital Especializado Oftalmologico Dr. P. Lagleyze","tipo":"Publico","especialidad":"Oftalmologia","direccion":"Justo, Juan B. Av. 4151","barrio":"Villa Gral. Mitre","comuna":"11","destacado":false,"lat":-34.605439,"lon":-58.460187},{"nombre":"Hospital General de Agudos A. Zubizarreta","tipo":"Publico","especialidad":"Basicas - Criticas - Otras","direccion":"Nueva York 3952","barrio":"Villa Devoto","comuna":"11","destacado":false,"lat":-34.599985,"lon":-58.511052},{"nombre":"Hospital General de Agudos Dr. I. Pirovano","tipo":"Publico","especialidad":"Basicas - Criticas - Otras","direccion":"Monroe Av. 3555","barrio":"Coghlan","comuna":"12","destacado":false,"lat":-34.565058,"lon":-58.47108},{"nombre":"Instituto de Rehabilitacion Psicofisica (I.R.E.P.)","tipo":"Publico","especialidad":"Med. Fisica - Rehabilitacion","direccion":"Echeverria 955","barrio":"Belgrano","comuna":"13","destacado":true,"lat":-34.553903,"lon":-58.440991},{"nombre":"Hospital General de Agudos Dr. J. A. Fernandez","tipo":"Publico","especialidad":"Basicas - Criticas - Otras","direccion":"Cerviño Av. 3356","barrio":"Palermo","comuna":"14","destacado":false,"lat":-34.581147,"lon":-58.406898},{"nombre":"Hospital Especializado de Emerg Psiquiatricas Torcuato de Alvear","tipo":"Publico","especialidad":"Salud Mental","direccion":"Warnes Av. 2630","barrio":"Paternal","comuna":"15","destacado":true,"lat":-34.597215,"lon":-58.47526},{"nombre":"Hospital General de Agudos Dr. E. Tornu","tipo":"Publico","especialidad":"Basicas - Criticas - Otras","direccion":"Combatientes De Malvinas Av. 3002","barrio":"Parque Chas","comuna":"15","destacado":false,"lat":-34.587397,"lon":-58.471119},{"nombre":"Hospital Especializado Odontologico Dr. R. Carrillo (Ex Nacional)","tipo":"Publico","especialidad":"Odontologia","direccion":"Sanchez De Bustamante 2529","barrio":"Recoleta","comuna":"2","destacado":false,"lat":-34.584466,"lon":-58.402651},{"nombre":"Hospital General de Agudos B. Rivadavia","tipo":"Publico","especialidad":"Basicas - Criticas - Otras","direccion":"Las Heras General Av. 2670","barrio":"Recoleta","comuna":"2","destacado":false,"lat":-34.584771,"lon":-58.400518},{"nombre":"Hospital General de Niños R. Gutierrez","tipo":"Publico","especialidad":"Pediatria","direccion":"Gallo 1330","barrio":"Recoleta","comuna":"2","destacado":false,"lat":-34.594197,"lon":-58.412074},{"nombre":"Hospital Especializado de Oftalmologia Santa Lucia","tipo":"Publico","especialidad":"Oftalmologia","direccion":"San Juan Av. 2021","barrio":"San Cristobal","comuna":"3","destacado":false,"lat":-34.622786,"lon":-58.394461},{"nombre":"Hospital General de Agudos J. M. Ramos Mejia","tipo":"Publico","especialidad":"Basicas - Criticas - Otras","direccion":"Urquiza, Gral. 609","barrio":"Balvanera","comuna":"3","destacado":false,"lat":-34.617665,"lon":-58.409614},{"nombre":"Hospital de Pediatria Dr. J. Garrahan","tipo":"Publico","especialidad":"Pediatria","direccion":"Combate De Los Pozos 1881","barrio":"Parque Patricios","comuna":"4","destacado":false,"lat":-34.62995,"lon":-58.391884},{"nombre":"Hospital Especializado de Gastroenterologia B. Udaondo","tipo":"Publico","especialidad":"Enf. Apar. Digestivo","direccion":"Caseros Av. 2061","barrio":"Parque Patricios","comuna":"4","destacado":false,"lat":-34.634158,"lon":-58.391316},{"nombre":"Hospital Especializado de Infecciosas F. Muñiz","tipo":"Publico","especialidad":"Infectologia","direccion":"Uspallata 2272","barrio":"Parque Patricios","comuna":"4","destacado":false,"lat":-34.637519,"lon":-58.393733},{"nombre":"Hospital Especializado de Odontologia Infantil Don Benito Quinquela Martin","tipo":"Publico","especialidad":"Odontologia","direccion":"Don Pedro De Mendoza Av. 1795","barrio":"Boca","comuna":"4","destacado":false,"lat":-34.638878,"lon":-58.360126},{"nombre":"Hospital Especializado de Rehabilitacion Respiratoria Maria Ferrer","tipo":"Publico","especialidad":"Neumonologia","direccion":"Finochietto Enrique Dr. 849","barrio":"Barracas","comuna":"4","destacado":false,"lat":-34.630215,"lon":-58.375848},{"nombre":"Hospital Especializado de Salud Mental Braulio Moyano","tipo":"Publico","especialidad":"Salud Mental","direccion":"Brandsen 2570","barrio":"Barracas","comuna":"4","destacado":true,"lat":-34.639408,"lon":-58.38516},{"nombre":"Hospital Especializado de Salud Mental J. Borda","tipo":"Publico","especialidad":"Salud Mental","direccion":"Carrillo, Ramon, Dr. 375","barrio":"Barracas","comuna":"4","destacado":true,"lat":-34.636439,"lon":-58.382133},{"nombre":"Hospital Especializado Infanto Juvenil C. Tobar Garcia","tipo":"Publico","especialidad":"Salud Mental","direccion":"Carrillo, Ramon, Dr. 315","barrio":"Barracas","comuna":"4","destacado":true,"lat":-34.635706,"lon":-58.382333},{"nombre":"Hospital Especializado Materno Infantil R. Sarda","tipo":"Publico","especialidad":"Materno-Infantil","direccion":"Luca, Esteban De 2151","barrio":"Parque Patricios","comuna":"4","destacado":false,"lat":-34.634861,"lon":-58.402754},{"nombre":"Hospital General de Agudos Dr C. Argerich","tipo":"Publico","especialidad":"Basicas - Criticas - Otras","direccion":"Pi Y Margall 750","barrio":"Boca","comuna":"4","destacado":false,"lat":-34.627848,"lon":-58.36594},{"nombre":"Hospital General de Agudos J. A. Penna","tipo":"Publico","especialidad":"Basicas - Criticas - Otras","direccion":"Chutro, Pedro, Prof., Dr. 3380","barrio":"Parque Patricios","comuna":"4","destacado":false,"lat":-34.643121,"lon":-58.410864},{"nombre":"Hospital General de Niños P. de Elizalde","tipo":"Publico","especialidad":"Pediatria","direccion":"Montes De Oca, Manuel Av. 40","barrio":"Barracas","comuna":"4","destacado":false,"lat":-34.628852,"lon":-58.377556},{"nombre":"Talleres Protegidos de Rehabilitacion Psiquiatrica","tipo":"Publico","especialidad":"Salud Mental","direccion":"Suarez Av. 2215","barrio":"Barracas","comuna":"4","destacado":true,"lat":-34.64227,"lon":-58.38311},{"nombre":"Hospital Especializado de Odontologia  J. Dueñas","tipo":"Publico","especialidad":"Odontologia","direccion":"Muñiz 15","barrio":"Almagro","comuna":"5","destacado":false,"lat":-34.61464,"lon":-58.427663},{"nombre":"Hospital Especializado de Quemados Dr. Arturo Umberto Illia","tipo":"Publico","especialidad":"Quemados","direccion":"Goyena, Pedro Av. 369","barrio":"Caballito","comuna":"6","destacado":false,"lat":-34.625508,"lon":-58.432399},{"nombre":"Hospital General de Agudos Dr. C. Durand","tipo":"Publico","especialidad":"Basicas - Criticas - Otras","direccion":"Diaz Velez Av. 5044","barrio":"Caballito","comuna":"6","destacado":false,"lat":-34.608978,"lon":-58.437984},{"nombre":"Hospital Municipal de Oncologia M. Curie","tipo":"Publico","especialidad":"Oncologia","direccion":"Patricias Argentinas Av. 150","barrio":"Caballito","comuna":"6","destacado":false,"lat":-34.607071,"lon":-58.433075},{"nombre":"Inst. de Zoonosis L. Pasteur","tipo":"Publico","especialidad":"Zoonosis","direccion":"Diaz Velez Av. 4821","barrio":"Caballito","comuna":"6","destacado":false,"lat":-34.608477,"lon":-58.434946},{"nombre":"Hospital General de Agudos Dr. T. Alvarez","tipo":"Publico","especialidad":"Basicas - Criticas - Otras","direccion":"Aranguren, Juan F., Dr. 2701","barrio":"Flores","comuna":"7","destacado":false,"lat":-34.624175,"lon":-58.469503},{"nombre":"Hospital General de Agudos P. Piñero","tipo":"Publico","especialidad":"Basicas - Criticas - Otras","direccion":"Varela Av. 1301","barrio":"Flores","comuna":"7","destacado":false,"lat":-34.643898,"lon":-58.454118},{"nombre":"Hospital General de Agudos Cecilia Grierson","tipo":"Publico","especialidad":"Atencion general","direccion":"Fernandez De La Cruz, F., Gral. Av. 4402","barrio":"Villa Soldati","comuna":"8","destacado":false,"lat":-34.671757,"lon":-58.456808},{"nombre":"Hospital General de Agudos Donacion F. Santojanni","tipo":"Publico","especialidad":"Basicas - Criticas - Otras","direccion":"Pilar 950","barrio":"Liniers","comuna":"9","destacado":false,"lat":-34.649191,"lon":-58.515628}];
+
+    let mapEducacionInit = false;
+    let mapSaludInit = false;
+
+    function initGcba() {
+      document.querySelectorAll('.gcba-link-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.gcba-link-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const target = btn.dataset.gcba;
+          document.querySelectorAll('.gcba-sub').forEach(s => {
+            s.classList.toggle('visible', s.id === 'gcba-' + target);
+          });
+          if (target === 'educacion') renderEducacionEspecial();
+          if (target === 'salud') renderSalud();
+        });
+      });
+      renderEducacionEspecial();
+    }
+
+    function renderEducacionEspecial() {
+      const listEl = document.getElementById('lista-edu-especial');
+      listEl.innerHTML = '<div class="list-items">' + ESCUELAS_ESPECIAL.map(e =>
+        '<div class="list-item"><strong>' + escapeHtml(e.nombre) + '</strong><br>' +
+        '<span class="muted">' + escapeHtml(e.sector) + ' &middot; ' + escapeHtml(e.direccion) +
+        ', ' + escapeHtml(e.barrio) + ' (Comuna ' + e.comuna + ')</span></div>'
+      ).join('') + '</div>';
+
+      if (mapEducacionInit) return;
+      mapEducacionInit = true;
+      const map = L.map('map-edu-especial', { scrollWheelZoom: false }).setView([-34.61, -58.44], 11);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap',
+        maxZoom: 18,
+      }).addTo(map);
+
+      const bounds = [];
+      ESCUELAS_ESPECIAL.forEach(e => {
+        const color = e.sector === 'Estatal' ? '#7c4dff' : '#ff8a65';
+        const marker = L.circleMarker([e.lat, e.lon], {
+          radius: 6, fillColor: color, color: '#3d2570', weight: 1, fillOpacity: 0.85,
+        }).addTo(map);
+        marker.bindPopup('<strong>' + escapeHtml(e.nombre) + '</strong><br>' +
+          escapeHtml(e.sector) + '<br>' + escapeHtml(e.direccion) + ', ' + escapeHtml(e.barrio));
+        bounds.push([e.lat, e.lon]);
+      });
+      if (bounds.length) map.fitBounds(bounds, { padding: [20, 20] });
+      setTimeout(() => map.invalidateSize(), 250);
+    }
+
+    function renderSalud() {
+      const listEl = document.getElementById('lista-salud');
+      listEl.innerHTML = '<div class="list-items">' + SALUD_DISCAPACIDAD.map(s =>
+        '<div class="list-item"><strong>' + (s.destacado ? '&#9733; ' : '') + escapeHtml(s.nombre) + '</strong><br>' +
+        '<span class="muted">' + escapeHtml(s.tipo) + ' &middot; ' + escapeHtml(s.especialidad) + '<br>' +
+        escapeHtml(s.direccion) + ', ' + escapeHtml(s.barrio) + ' (Comuna ' + s.comuna + ')</span></div>'
+      ).join('') + '</div>';
+
+      if (mapSaludInit) return;
+      mapSaludInit = true;
+      const map = L.map('map-salud', { scrollWheelZoom: false }).setView([-34.61, -58.44], 11);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap',
+        maxZoom: 18,
+      }).addTo(map);
+
+      const bounds = [];
+      SALUD_DISCAPACIDAD.forEach(s => {
+        const color = s.tipo === 'Publico' ? '#3d8c6a' : '#ff8a65';
+        const marker = L.circleMarker([s.lat, s.lon], {
+          radius: s.destacado ? 8 : 6, fillColor: color, color: '#3d2570', weight: 1, fillOpacity: 0.85,
+        }).addTo(map);
+        marker.bindPopup('<strong>' + (s.destacado ? '&#9733; ' : '') + escapeHtml(s.nombre) + '</strong><br>' +
+          escapeHtml(s.tipo) + ' &middot; ' + escapeHtml(s.especialidad) + '<br>' +
+          escapeHtml(s.direccion) + ', ' + escapeHtml(s.barrio));
+        bounds.push([s.lat, s.lon]);
+      });
+      if (bounds.length) map.fitBounds(bounds, { padding: [20, 20] });
+      setTimeout(() => map.invalidateSize(), 250);
+    }
   </script>
 </body>
 </html>
