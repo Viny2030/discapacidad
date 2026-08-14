@@ -16,6 +16,7 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.5.0/chart.umd.min.js"></script>
   <style>
     *{box-sizing:border-box;margin:0;padding:0}
     body{font-family:system-ui,sans-serif;background:#f8f7fb;color:#212529;
@@ -201,10 +202,11 @@
     /* mapas */
     .map-container{height:420px;border-radius:8px;overflow:hidden;margin-top:.6rem;
                     border:1px solid #e8e3f7}
-    .sheet-embed-container{height:700px;border-radius:8px;overflow:hidden;margin-top:.6rem;
-                    border:1px solid #e8e3f7;background:#fff}
-    .sheet-embed-container iframe{width:100%;height:100%;border:0}
-    @media (max-width:600px){.sheet-embed-container{height:480px}}
+    /* comuna 07 - graficos */
+    .comuna-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));
+                 gap:1.2rem;margin-top:1.2rem}
+    .chart-box{position:relative;margin-top:.6rem}
+    @media (max-width:480px){.comuna-grid{grid-template-columns:1fr}}
     .map-legend{display:flex;align-items:center;gap:.6rem;margin-top:.6rem;
                  font-size:.78rem;color:#5e35b1;flex-wrap:wrap}
     .legend-bar{height:10px;width:160px;border-radius:4px;
@@ -1083,6 +1085,115 @@
     </section>
   </div>
 
+  <!-- ====================== GCBA ====================== -->
+  <div class="panel" id="panel-gcba">
+    <div class="wrap">
+
+      <div class="card">
+        <h2>GCBA &mdash; Recursos de la Ciudad</h2>
+        <p>
+          Listados y mapas de establecimientos del Gobierno de la Ciudad de
+          Buenos Aires vinculados a discapacidad.
+        </p>
+        <div class="gcba-links">
+          <button class="gcba-link-btn active" data-gcba="educacion">Educaci&oacute;n especial</button>
+          <button class="gcba-link-btn" data-gcba="salud">Mapa de salud</button>
+        </div>
+      </div>
+
+      <div class="gcba-sub visible" id="gcba-educacion">
+        <div class="card">
+          <h2>Escuelas de educaci&oacute;n especial &mdash; Nivel primario</h2>
+          <p class="muted">
+            Escuelas de educaci&oacute;n especial estatales y privadas incorporadas
+            a la ense&ntilde;anza oficial que ofrecen nivel primario especial en CABA.
+            Fuente: <a href="https://data.buenosaires.gob.ar/dataset/establecimientos-educativos" target="_blank" rel="noopener">Buenos Aires Data &mdash; Padr&oacute;n de Establecimientos Educativos</a> (Ministerio de Educaci&oacute;n GCBA).
+          </p>
+          <div id="map-edu-especial" class="map-container"></div>
+          <div class="map-legend">
+            <span><span class="legend-dot" style="background:#7c4dff"></span>Estatal</span>
+            <span><span class="legend-dot" style="background:#ff8a65"></span>Privada</span>
+          </div>
+          <div id="lista-edu-especial" class="result-box"><p class="loading">Cargando listado...</p></div>
+        </div>
+      </div>
+
+      <div class="gcba-sub" id="gcba-salud">
+        <div class="card">
+          <h2>Establecimientos de salud &mdash; Discapacidad</h2>
+          <p class="muted">
+            Hospitales y establecimientos p&uacute;blicos del GCBA (Buenos Aires Data)
+            y una selecci&oacute;n de instituciones privadas de referencia en
+            rehabilitaci&oacute;n/discapacidad en CABA. Los marcados con &#9733; est&aacute;n
+            especializados en rehabilitaci&oacute;n f&iacute;sica o salud mental.
+            Fuentes: <a href="https://data.buenosaires.gob.ar/dataset/hospitales" target="_blank" rel="noopener">Buenos Aires Data &mdash; Hospitales</a> y sitios oficiales de cada instituci&oacute;n privada.
+          </p>
+          <div id="map-salud" class="map-container"></div>
+          <div class="map-legend">
+            <span><span class="legend-dot" style="background:#3d8c6a"></span>P&uacute;blico</span>
+            <span><span class="legend-dot" style="background:#ff8a65"></span>Privado</span>
+            <span>&#9733; Especializado en rehabilitaci&oacute;n/discapacidad</span>
+          </div>
+          <div id="lista-salud" class="result-box"><p class="loading">Cargando listado...</p></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ====================== COMUNA_07 ====================== -->
+  <div class="panel" id="panel-comuna_07">
+    <div class="wrap wrap-wide">
+
+      <div class="card">
+        <h2>Comuna 07 &mdash; Diagn&oacute;stico participativo sobre discapacidad</h2>
+        <p>
+          Resultados de un relevamiento a <strong>165 personas</strong> con
+          discapacidad de la Comuna 7 (Flores, Parque Chacabuco y barrios
+          populares de la zona: Illia, Juan XXIII, Padre Ricciardelli, Fonavi,
+          Rivadavia). Datos extra&iacute;dos del
+          <a href="https://docs.google.com/spreadsheets/d/1liqbU5GcCpZ85TSMZNQAlF5MVpQTo1A8SAT6XyQ0BSo/edit?gid=237140928#gid=237140928" target="_blank" rel="noopener">dashboard original en Google Sheets &#8599;</a>.
+        </p>
+      </div>
+
+      <div class="comuna-grid">
+        <div class="card">
+          <h3>Tipo de discapacidad</h3>
+          <div class="chart-box" style="height:420px"><canvas id="chart-tipo"></canvas></div>
+        </div>
+        <div class="card">
+          <h3>Barrio</h3>
+          <div class="chart-box" style="height:280px"><canvas id="chart-barrio"></canvas></div>
+        </div>
+        <div class="card">
+          <h3>Nivel de estudios</h3>
+          <div class="chart-box" style="height:400px"><canvas id="chart-estudios"></canvas></div>
+        </div>
+        <div class="card">
+          <h3>Condici&oacute;n laboral</h3>
+          <div class="chart-box" style="height:140px"><canvas id="chart-laboral"></canvas></div>
+        </div>
+        <div class="card">
+          <h3>Sexo</h3>
+          <div class="chart-box" style="height:140px"><canvas id="chart-sexo"></canvas></div>
+        </div>
+        <div class="card">
+          <h3>Certificado &Uacute;nico de Discapacidad (CUD)</h3>
+          <div class="chart-box" style="height:140px"><canvas id="chart-cud"></canvas></div>
+        </div>
+        <div class="card">
+          <h3>Pensi&oacute;n por discapacidad</h3>
+          <div class="chart-box" style="height:200px"><canvas id="chart-pension"></canvas></div>
+        </div>
+        <div class="card">
+          <h3>Conectividad (acceso a internet)</h3>
+          <div class="chart-box" style="height:170px"><canvas id="chart-conectividad"></canvas></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
   <!-- ====================== INFO LEGAL / AUTOR ====================== -->
   <div class="info-section">
 
@@ -1152,90 +1263,6 @@
       </div>
     </div>
 
-  </div>
-
-  <!-- ====================== GCBA ====================== -->
-  <div class="panel" id="panel-gcba">
-    <div class="wrap">
-
-      <div class="card">
-        <h2>GCBA &mdash; Recursos de la Ciudad</h2>
-        <p>
-          Listados y mapas de establecimientos del Gobierno de la Ciudad de
-          Buenos Aires vinculados a discapacidad.
-        </p>
-        <div class="gcba-links">
-          <button class="gcba-link-btn active" data-gcba="educacion">Educaci&oacute;n especial</button>
-          <button class="gcba-link-btn" data-gcba="salud">Mapa de salud</button>
-        </div>
-      </div>
-
-      <div class="gcba-sub visible" id="gcba-educacion">
-        <div class="card">
-          <h2>Escuelas de educaci&oacute;n especial &mdash; Nivel primario</h2>
-          <p class="muted">
-            Escuelas de educaci&oacute;n especial estatales y privadas incorporadas
-            a la ense&ntilde;anza oficial que ofrecen nivel primario especial en CABA.
-            Fuente: <a href="https://data.buenosaires.gob.ar/dataset/establecimientos-educativos" target="_blank" rel="noopener">Buenos Aires Data &mdash; Padr&oacute;n de Establecimientos Educativos</a> (Ministerio de Educaci&oacute;n GCBA).
-          </p>
-          <div id="map-edu-especial" class="map-container"></div>
-          <div class="map-legend">
-            <span><span class="legend-dot" style="background:#7c4dff"></span>Estatal</span>
-            <span><span class="legend-dot" style="background:#ff8a65"></span>Privada</span>
-          </div>
-          <div id="lista-edu-especial" class="result-box"><p class="loading">Cargando listado...</p></div>
-        </div>
-      </div>
-
-      <div class="gcba-sub" id="gcba-salud">
-        <div class="card">
-          <h2>Establecimientos de salud &mdash; Discapacidad</h2>
-          <p class="muted">
-            Hospitales y establecimientos p&uacute;blicos del GCBA (Buenos Aires Data)
-            y una selecci&oacute;n de instituciones privadas de referencia en
-            rehabilitaci&oacute;n/discapacidad en CABA. Los marcados con &#9733; est&aacute;n
-            especializados en rehabilitaci&oacute;n f&iacute;sica o salud mental.
-            Fuentes: <a href="https://data.buenosaires.gob.ar/dataset/hospitales" target="_blank" rel="noopener">Buenos Aires Data &mdash; Hospitales</a> y sitios oficiales de cada instituci&oacute;n privada.
-          </p>
-          <div id="map-salud" class="map-container"></div>
-          <div class="map-legend">
-            <span><span class="legend-dot" style="background:#3d8c6a"></span>P&uacute;blico</span>
-            <span><span class="legend-dot" style="background:#ff8a65"></span>Privado</span>
-            <span>&#9733; Especializado en rehabilitaci&oacute;n/discapacidad</span>
-          </div>
-          <div id="lista-salud" class="result-box"><p class="loading">Cargando listado...</p></div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- ====================== COMUNA_07 ====================== -->
-  <div class="panel" id="panel-comuna_07">
-    <div class="wrap wrap-wide">
-
-      <div class="card">
-        <h2>Comuna 07 &mdash; Dashboard</h2>
-        <p class="muted">
-          Gr&aacute;ficos del dashboard web (Google Sheets).
-          <a href="https://docs.google.com/spreadsheets/d/1liqbU5GcCpZ85TSMZNQAlF5MVpQTo1A8SAT6XyQ0BSo/edit?gid=237140928#gid=237140928" target="_blank" rel="noopener">Abrir la hoja completa en Google Sheets &#8599;</a>
-        </p>
-        <div class="sheet-embed-container">
-          <iframe
-            src="https://docs.google.com/spreadsheets/d/1liqbU5GcCpZ85TSMZNQAlF5MVpQTo1A8SAT6XyQ0BSo/edit?usp=sharing&amp;rm=minimal&amp;gid=237140928&amp;widget=true&amp;headers=false"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            allowfullscreen>
-          </iframe>
-        </div>
-        <p class="legend-note">
-          Este panel muestra la hoja de c&aacute;lculo en vivo. Si no carga o
-          pide acceso, verific&aacute; que la hoja siga compartida como
-          &quot;Cualquiera con el enlace &ndash; Lector&quot; en Google Sheets.
-        </p>
-      </div>
-
-    </div>
   </div>
 
   <footer>
@@ -1357,6 +1384,7 @@
       if (name === 'cud') initCud();
       if (name === 'estadistico') initEstadistico();
       if (name === 'gcba') initGcba();
+      if (name === 'comuna_07') initComuna07();
     }
 
     /* ---------- helpers ---------- */
@@ -2283,6 +2311,68 @@
       });
       if (bounds.length) map.fitBounds(bounds, { padding: [20, 20] });
       setTimeout(() => map.invalidateSize(), 250);
+    }
+
+    /* ---------- Comuna 07: diagnostico participativo ---------- */
+    const COMUNA07_DATA = {"tipo_discapacidad":{"labels":["Cognitiva","Motriz","Visceral","Visual","Multiple","Auditiva","Cognitiva, Visceral","Desconoce","Cognitiva, Auditiva, Multiple","Cognitiva, Motriz","Cognitiva, Motriz, Auditiva","Motriz, Auditiva","Motriz, Visceral","Visual, Cognitiva","Visual, Motriz, Auditiva"],"values":[102,27,10,6,4,3,3,3,1,1,1,1,1,1,1]},"nivel_estudios":{"labels":["Primario común incompleto","Primario común completo","Secundario común Incompleto","Secundario común completo","Primario Especial Incompleto","Secundario Integrado Incompleto","Nivel INICIAL","Secundario Integrado completo","Universitario Incompleto","Centro de Formación Profesional/Educación No Formal/Cursos en general completo","Primario Especial completo","Terciario completo","Universitario","Universitario completo"],"values":[66,27,22,13,14,5,7,3,3,1,1,1,1,1]},"barrio":{"labels":["Barrio Padre Ricciardelli","Flores Sur","Flores Norte","Parque Chacabuco","Rivadavia 1 y 2","otro","Barrio Illia","Fonavi","Barrio Juan 23"],"values":[56,46,19,18,11,9,4,1,1]},"condicion_laboral":{"labels":["No","Sí"],"values":[97,65]},"sexo":{"labels":["Varón","Mujer"],"values":[96,69]},"cud":{"labels":["Sí tiene CUD","No tiene CUD"],"values":[111,54]},"pension":{"labels":["No","Sí. Pensión no contributiva","Sí. Jubilación por invalidez","No sabe si le corresponde"],"values":[113,46,5,1]},"conectividad":{"labels":["Sí","No","Bastante dificultad"],"values":[146,18,1]}};
+
+    function renderBarChart(canvasId, labels, values, opts) {
+      opts = opts || {};
+      const el = document.getElementById(canvasId);
+      if (!el || !window.Chart) return;
+      new Chart(el, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [{
+            data: values,
+            backgroundColor: opts.color || '#7c4dff',
+            borderRadius: 4,
+            barThickness: opts.thick || 16,
+          }],
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: '#3d2570',
+              padding: 8,
+              callbacks: {
+                label: (ctx) => ctx.parsed.x + ' personas',
+              },
+            },
+          },
+          scales: {
+            x: {
+              beginAtZero: true,
+              grid: { color: '#eee7fb' },
+              ticks: { color: '#888', font: { size: 11 } },
+            },
+            y: {
+              grid: { display: false },
+              ticks: { color: '#4a2d8c', font: { size: 11 } },
+            },
+          },
+        },
+      });
+    }
+
+    let comuna07Init = false;
+    function initComuna07() {
+      if (comuna07Init) return;
+      comuna07Init = true;
+      const d = COMUNA07_DATA;
+      renderBarChart('chart-tipo', d.tipo_discapacidad.labels, d.tipo_discapacidad.values);
+      renderBarChart('chart-barrio', d.barrio.labels, d.barrio.values, { color: '#ff8a65' });
+      renderBarChart('chart-estudios', d.nivel_estudios.labels, d.nivel_estudios.values);
+      renderBarChart('chart-laboral', d.condicion_laboral.labels, d.condicion_laboral.values, { color: '#3d8c6a', thick: 22 });
+      renderBarChart('chart-sexo', d.sexo.labels, d.sexo.values, { color: '#3d8c6a', thick: 22 });
+      renderBarChart('chart-cud', d.cud.labels, d.cud.values, { color: '#3d8c6a', thick: 22 });
+      renderBarChart('chart-pension', d.pension.labels, d.pension.values, { color: '#ff8a65', thick: 20 });
+      renderBarChart('chart-conectividad', d.conectividad.labels, d.conectividad.values, { color: '#ff8a65', thick: 22 });
     }
   </script>
 </body>
