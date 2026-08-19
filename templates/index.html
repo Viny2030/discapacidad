@@ -63,6 +63,9 @@
                display:flex;flex-direction:column;gap:.6rem}
     .home-card h3{color:#4a2d8c;font-size:1rem}
     .home-card p{font-size:.85rem;color:#555;flex-grow:1}
+    .home-intro{background:#efe7fd;border-left:4px solid #7c4dff;border-radius:8px;
+         padding:1.2rem 1.4rem;margin-bottom:1.2rem;font-size:.95rem;line-height:1.7;
+         color:#3d2570;font-weight:600;text-align:left;max-width:720px}
     .go-btn{align-self:flex-start;background:#5e35b1;color:white;border:none;
             padding:.5rem 1rem;border-radius:6px;font-size:.82rem;font-weight:600;
             cursor:pointer;font-family:inherit}
@@ -207,6 +210,25 @@
                  gap:1.2rem;margin-top:1.2rem}
     .chart-box{position:relative;margin-top:.6rem}
     @media (max-width:480px){.comuna-grid{grid-template-columns:1fr}}
+    .survey-team p{margin:.3rem 0}
+    .survey-fields{margin-top:1rem}
+    .survey-fields summary{cursor:pointer;font-weight:600;color:#5e35b1;padding:.4rem 0}
+    .survey-fields ul{margin:.6rem 0 0;padding-left:1.2rem;line-height:1.6}
+    .survey-form{display:flex;flex-direction:column;gap:1rem;margin-top:1rem}
+    .survey-field label{display:block;font-size:.85rem;color:#4a2d8c;
+         font-weight:600;margin-bottom:.3rem}
+    .survey-field input, .survey-field select, .survey-field textarea{
+         width:100%;max-width:100%;font-family:inherit;font-size:.88rem;
+         padding:.5rem .7rem;border:1px solid #d8d2ee;border-radius:6px;
+         background:#fff;color:#212529;box-sizing:border-box}
+    .survey-field textarea{resize:vertical;min-height:64px}
+    .survey-field input:focus, .survey-field select:focus, .survey-field textarea:focus{
+         outline:2px solid #7c4dff;border-color:#7c4dff}
+    .survey-required{color:#c0392b}
+    .survey-status{margin-top:.8rem;font-size:.85rem;font-weight:600;min-height:1.2em}
+    .survey-status.ok{color:#2e7d32}
+    .survey-status.err{color:#c0392b}
+    .survey-submit-row{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
     .map-legend{display:flex;align-items:center;gap:.6rem;margin-top:.6rem;
                  font-size:.78rem;color:#5e35b1;flex-wrap:wrap}
     .legend-bar{height:10px;width:160px;border-radius:4px;
@@ -280,6 +302,15 @@
   <!-- ====================== INICIO ====================== -->
   <div class="panel visible" id="panel-inicio">
     <div class="wrap">
+      <div class="home-intro">
+        <p>
+          Esta p&aacute;gina tiene como finalidad aportar datos sobre discapacidad
+          en Argentina, en la Ciudad de Buenos Aires y en la Comuna 7. A su vez
+          intentamos que sea una herramienta de utilidad para consultas de las
+          personas con discapacidad, organizaciones del sector y profesionales
+          que trabajan la tem&aacute;tica.
+        </p>
+      </div>
       <div class="home-grid">
         <div class="home-card">
           <h3>Certificado Unico de Discapacidad (CUD)</h3>
@@ -1156,6 +1187,586 @@
         </p>
       </div>
 
+      <div class="card">
+        <h2>Encuesta en Discapacidad. Comuna 7 - Papa Francisco</h2>
+        <p>
+          Esta encuesta es parte del trabajo del &Aacute;rea de Discapacidad de la Comuna 7
+          para los barrios de Flores, Bajo Flores y Parque Chacabuco.
+        </p>
+        <p>
+          La producci&oacute;n de la misma surge de la articulaci&oacute;n entre la
+          Consultor&iacute;a para Personas con Discapacidad de nuestra Comuna, el
+          Programa Universidad, Discapacidad e Igualdad de Oportunidades de la UBA,
+          el Consejo Consultivo de la Discapacidad del Senado de la Naci&oacute;n y
+          la Comisi&oacute;n de Discapacidad del Consejo Consultivo de la Comuna 7.
+        </p>
+
+        <h3>&iquest;Para qu&eacute; realizar esta encuesta?</h3>
+        <p>
+          El equipo de trabajo planific&oacute; una herramienta que permitiese
+          visibilizar la realidad de las Personas con Discapacidad que viven en
+          nuestro territorio y las problem&aacute;ticas cotidianas que atraviesan
+          sus familias. Intentamos con ella, obtener progresivamente una muestra
+          significativa que d&eacute; cuenta sobre cantidades poblacionales en
+          franjas de sexo, edad y tipo de discapacidad pero especialmente nos
+          ayude a conocer sobre condiciones de vida: acceso a los servicios
+          b&aacute;sicos, acceso a los derechos a la salud y a la educaci&oacute;n,
+          cu&aacute;ntas de estas personas han podido acceder a un trabajo y a una
+          vivienda digna.
+        </p>
+        <p>
+          Con nuestro equipo queremos pensar junto a la comunidad alternativas que
+          promuevan el acceso a derechos, acompa&ntilde;ar reclamos y escuchar
+          propuestas. Por eso esta encuesta tiene dos objetivos: por un lado,
+          conocer el estado de la poblaci&oacute;n de nuestro territorio que tiene
+          la condici&oacute;n de discapacidad y, por otro, a partir de conocer:
+          proyectar propuestas concretas para la Comuna y la Ciudad.
+        </p>
+        <p>
+          Estamos seguros que conoci&eacute;ndonos m&aacute;s y mejor, podremos
+          lograr una comuna m&aacute;s igualitaria y accesible para todos y todas.
+        </p>
+
+        <div class="survey-team">
+          <p><strong>Prof. Leonardo Militello</strong> &mdash; Comunero</p>
+          <p><strong>Coordinaci&oacute;n de la Consultor&iacute;a y Encuesta Comunal:</strong> Fabiana Galv&aacute;n</p>
+          <p>
+            <strong>Asesoramiento t&eacute;cnico y profesional:</strong><br>
+            Contador Vicente Monteverde<br>
+            Lic. Fabiola Carcar<br>
+            Lic. Elena Garos
+          </p>
+          <p>
+            <strong>Equipo de trabajo:</strong><br>
+            Virginia Caceres<br>
+            Prof. Martin Coldman
+          </p>
+          <p><strong>Editor:</strong> Mariano Militello</p>
+        </div>
+
+        <details class="survey-fields">
+          <summary>Ver las preguntas del formulario de la encuesta</summary>
+          <ul>
+            <li>Timestamp</li>
+            <li>CORREO</li>
+            <li>Persona con Discapacidad con CUD (Certificado con Discapacidad)</li>
+            <li>Si no lo tiene o no se encuentra vigente especifique por qu&eacute;</li>
+            <li>Si marc&oacute; otros cu&eacute;ntenos el motivo</li>
+            <li>En su familia &iquest;Hay alguna otra persona con discapacidad?</li>
+            <li>Si marc&oacute; otro cu&eacute;ntenos con cu&aacute;ntas otras personas</li>
+            <li>&iquest;Qu&eacute; nivel de estudios alcanz&oacute;?</li>
+            <li>Si marc&oacute; otro, cu&aacute;l, contanos</li>
+            <li>&iquest;Sabe leer y escribir?</li>
+            <li>Si marc&oacute; otro, aclare cu&aacute;l idioma</li>
+            <li>&iquest;Tiene conectividad para realizar tr&aacute;mites en l&iacute;nea?</li>
+            <li>&iquest;Participa de actividades recreativas?</li>
+            <li>Si contest&oacute; s&iacute; u otro, cu&eacute;ntenos d&oacute;nde lo hace y si cuenta con accesibilidad para manejarse</li>
+            <li>En caso que no realice actividad recreativa alguna, &iquest;qu&eacute; le gustar&iacute;a hacer?</li>
+            <li>&iquest;Si marc&oacute; otra, puede especificar cu&aacute;l?</li>
+            <li>&iquest;Recibe alguna pensi&oacute;n por su condici&oacute;n de discapacidad?</li>
+            <li>&iquest;Trabaja actualmente?</li>
+            <li>&iquest;Asiste a alg&uacute;n comedor comunitario, merendero o instituci&oacute;n que le brinde ayuda alimentaria?</li>
+            <li>&iquest;Cu&aacute;l?</li>
+            <li>&iquest;Recibe alguna de estas prestaciones?</li>
+            <li>Si marc&oacute; otro, cu&aacute;l ser&iacute;a</li>
+            <li>&iquest;En qu&eacute; barrio vive?</li>
+            <li>&iquest;En qu&eacute; lugar vive actualmente?</li>
+            <li>Si marc&oacute; otro, cu&eacute;ntenos d&oacute;nde vive</li>
+            <li>En donde vive, &iquest;tiene cubiertos los servicios b&aacute;sicos para el desarrollo de su vida diaria?</li>
+            <li>En caso de que s&iacute;, indique cu&aacute;l</li>
+            <li>Si tu respuesta fue otro, cont&aacute; qu&eacute; necesita para mejorar la accesibilidad</li>
+            <li>Si utiliza apoyo t&eacute;cnico para su vida diaria, indique cu&aacute;l</li>
+            <li>Si marc&oacute; otro, aclare cu&aacute;les</li>
+            <li>Sexo</li>
+            <li>Si pone otro, deje su comentario</li>
+            <li>&iquest;Qu&eacute; tipo de discapacidad tiene?</li>
+            <li>Deje su comentario sobre el tipo de discapacidad</li>
+            <li>&iquest;Recib&iacute;s informaci&oacute;n acerca de los derechos de las personas con discapacidad?</li>
+            <li>Para realizar este formulario, &iquest;necesit&oacute; ayuda o lo realiz&oacute; s&oacute;lo?</li>
+            <li>Si marc&oacute; &ldquo;OTRO&rdquo; indique qui&eacute;n lo ayud&oacute;</li>
+            <li>Si contest&oacute; &ldquo;NO&rdquo;, y lo desea, puede contarnos brevemente el motivo</li>
+            <li>&iquest;Posee alguna otra enfermedad?</li>
+            <li>&iquest;Tiene relaci&oacute;n con la discapacidad?</li>
+            <li>Para realizar dicha actividad, &iquest;necesita apoyo?</li>
+            <li>&iquest;La actividad la realiza cerca de su domicilio o tiene que viajar?</li>
+            <li>En su vida diaria, &iquest;cu&aacute;l es la forma en que se desplaza para llegar a los lugares donde debe ir?</li>
+            <li>&iquest;Es cong&eacute;nita o adquirida?</li>
+            <li>&iquest;Posee Certificado &Uacute;nico de Discapacidad?</li>
+            <li>&iquest;Tiene cobertura social?</li>
+            <li>Si marc&oacute; otra y lo desea, puede aclarar cu&aacute;l</li>
+            <li>&iquest;Recibe prestaciones de salud?</li>
+            <li>Si marc&oacute; &ldquo;OTRO&rdquo; indique cu&aacute;l es el faltante</li>
+            <li>En caso de marcar &ldquo;SOLO TENGO&rdquo;, si lo desea puede detallar brevemente cu&aacute;l es</li>
+            <li>En su hogar, &iquest;cuenta con accesibilidad?</li>
+            <li>En caso de que su respuesta sea &ldquo;NO&rdquo;, detalle por qu&eacute;</li>
+            <li>En caso de estar actualmente con empleo, indique qu&eacute; tipo</li>
+            <li>Indique qu&eacute; edad tiene usted o la persona con discapacidad en su hogar</li>
+            <li>Si quer&eacute;s que te enviemos informaci&oacute;n sobre estos y otros temas, marc&aacute; la opci&oacute;n &ldquo;S&Iacute;&rdquo;</li>
+            <li>&iquest;Tiene?</li>
+            <li>La zona donde viv&iacute;s, tiene&hellip;</li>
+            <li>Si quiere recibir informaci&oacute;n, dejanos una v&iacute;a de contacto (mail o WhatsApp)</li>
+            <li>&iquest;Si posee alguna otra enfermedad? Describa tipo</li>
+            <li>Detallanos tu necesidad</li>
+          </ul>
+        </details>
+      </div>
+
+      <div class="card">
+        <h2>Completa la encuesta</h2>
+        <p>
+          Complet&aacute; el formulario con tus datos y tus respuestas.
+          Se env&iacute;a directamente por email al equipo de la Consultor&iacute;a
+          para Personas con Discapacidad de la Comuna 7. Los campos marcados con
+          <span class="survey-required">*</span> son obligatorios.
+        </p>
+
+        <form id="form-encuesta-comuna07" novalidate onsubmit="event.preventDefault(); enviarEncuestaComuna07(); return false;">
+
+          <div class="survey-field">
+            <label for="enc-nombre">Nombre y apellido <span class="survey-required">*</span></label>
+            <input type="text" id="enc-nombre" required autocomplete="name" placeholder="Tu nombre y apellido">
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-correo">CORREO</label>
+            <input type="email" id="enc-correo" autocomplete="email" placeholder="tu@email.com">
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-1">Persona con Discapacidad con CUD (Certificado &Uacute;nico de Discapacidad)</label>
+            <select id="enc-1" data-q="Persona con Discapacidad con CUD (Certificado con Discapacidad)">
+              <option value="">Seleccion&aacute; una opci&oacute;n...</option>
+              <option value="S&iacute;, vigente">S&iacute;, vigente</option>
+              <option value="S&iacute;, pero no vigente">S&iacute;, pero no vigente</option>
+              <option value="No">No</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-2">Si no lo tiene o no se encuentra vigente, especifique por qu&eacute;</label>
+            <textarea id="enc-2" data-q="Si no lo tiene o no se encuentra vigente especifique por qu&eacute;"></textarea>
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-3">Si marc&oacute; otros, cu&eacute;ntenos el motivo</label>
+            <textarea id="enc-3" data-q="Si marc&oacute; otros cu&eacute;ntenos el motivo"></textarea>
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-4">En su familia &iquest;hay alguna otra persona con discapacidad?</label>
+            <select id="enc-4" data-q="En su familia &iquest;Hay alguna otra persona con discapacidad?">
+              <option value="">Seleccion&aacute; una opci&oacute;n...</option>
+              <option value="S&iacute;">S&iacute;</option>
+              <option value="No">No</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-5">Si marc&oacute; otro, cu&eacute;ntenos con cu&aacute;ntas otras personas</label>
+            <input type="number" min="0" id="enc-5" data-q="Si marc&oacute; otro cu&eacute;ntenos con cuantas otras personas">
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-6">&iquest;Qu&eacute; nivel de estudios alcanz&oacute;?</label>
+            <select id="enc-6" data-q="&iquest;Qu&eacute; nivel de estudios alcanz&oacute;?">
+              <option value="">Seleccion&aacute; una opci&oacute;n...</option>
+              <option value="Sin estudios">Sin estudios</option>
+              <option value="Primario incompleto">Primario incompleto</option>
+              <option value="Primario completo">Primario completo</option>
+              <option value="Secundario incompleto">Secundario incompleto</option>
+              <option value="Secundario completo">Secundario completo</option>
+              <option value="Terciario/Universitario incompleto">Terciario/Universitario incompleto</option>
+              <option value="Terciario/Universitario completo">Terciario/Universitario completo</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-7">Si marc&oacute; otro, cu&aacute;l, contanos</label>
+            <input type="text" id="enc-7" data-q="Si marco otro, cual, contanos">
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-8">&iquest;Sabe leer y escribir?</label>
+            <select id="enc-8" data-q="&iquest;Sabe leer y escribir?">
+              <option value="">Seleccion&aacute; una opci&oacute;n...</option>
+              <option value="S&iacute;">S&iacute;</option>
+              <option value="No">No</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-9">Si marc&oacute; otro, aclare cu&aacute;l idioma</label>
+            <input type="text" id="enc-9" data-q="Si marc&oacute; otro, aclare cual idioma">
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-10">&iquest;Tiene conectividad para realizar tr&aacute;mites en l&iacute;nea?</label>
+            <select id="enc-10" data-q="&iquest;tiene conectividad para realizar tramites en linea?">
+              <option value="">Seleccion&aacute; una opci&oacute;n...</option>
+              <option value="S&iacute;">S&iacute;</option>
+              <option value="No">No</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-11">&iquest;Participa de actividades recreativas?</label>
+            <select id="enc-11" data-q="&iquest;Participa de actividades recreativas?">
+              <option value="">Seleccion&aacute; una opci&oacute;n...</option>
+              <option value="S&iacute;">S&iacute;</option>
+              <option value="No">No</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-12">Si contest&oacute; s&iacute; u otro, cu&eacute;ntenos d&oacute;nde lo hace y si cuenta con accesibilidad para manejarse</label>
+            <textarea id="enc-12" data-q="Si contesto si u otro cuentenos donde lo hace, y si cuenta con accesibilidad para manejarse"></textarea>
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-13">En caso que no realice actividad recreativa alguna, &iquest;qu&eacute; le gustar&iacute;a hacer?</label>
+            <textarea id="enc-13" data-q="En caso que No realice actividad recreativa alguna, &iquest;Qu&eacute; le gustar&iacute;a hacer?"></textarea>
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-14">&iquest;Si marc&oacute; otra, puede especificar cu&aacute;l?</label>
+            <input type="text" id="enc-14" data-q="&iquest;Si marco otra, puede especificar cu&aacute;l?">
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-15">&iquest;Recibe alguna pensi&oacute;n por su condici&oacute;n de discapacidad?</label>
+            <select id="enc-15" data-q="&iquest;Recibe alguna pensi&oacute;n por su condici&oacute;n de discapacidad?">
+              <option value="">Seleccion&aacute; una opci&oacute;n...</option>
+              <option value="S&iacute;">S&iacute;</option>
+              <option value="No">No</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-16">&iquest;Trabaja actualmente?</label>
+            <select id="enc-16" data-q="&iquest;Trabaja Actualmente?">
+              <option value="">Seleccion&aacute; una opci&oacute;n...</option>
+              <option value="S&iacute;">S&iacute;</option>
+              <option value="No">No</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-17">&iquest;Asiste a alg&uacute;n comedor comunitario, merendero o instituci&oacute;n que le brinde ayuda alimentaria?</label>
+            <select id="enc-17" data-q="&iquest;Asiste a alg&uacute;n comedor comunitario, merendero o instituci&oacute;n que le brinde ayuda alimentaria?">
+              <option value="">Seleccion&aacute; una opci&oacute;n...</option>
+              <option value="S&iacute;">S&iacute;</option>
+              <option value="No">No</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-18">&iquest;Cu&aacute;l?</label>
+            <input type="text" id="enc-18" data-q="&iquest;Cu&aacute;l? (comedor / merendero / instituci&oacute;n)">
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-19">&iquest;Recibe alguna de estas prestaciones?</label>
+            <input type="text" id="enc-19" data-q="&iquest;Recibe alguna de estas prestaciones?">
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-20">Si marc&oacute; otro, cu&aacute;l ser&iacute;a</label>
+            <input type="text" id="enc-20" data-q="Si Marco otro cual seria">
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-21">&iquest;En qu&eacute; barrio vive?</label>
+            <input type="text" id="enc-21" data-q="&iquest;En qu&eacute; barrio vive?">
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-22">&iquest;En qu&eacute; lugar vive actualmente?</label>
+            <select id="enc-22" data-q="&iquest;En que lugar vive actualmente?">
+              <option value="">Seleccion&aacute; una opci&oacute;n...</option>
+              <option value="Vivienda propia">Vivienda propia</option>
+              <option value="Vivienda alquilada">Vivienda alquilada</option>
+              <option value="Con familiares">Con familiares</option>
+              <option value="Situaci&oacute;n de calle">Situaci&oacute;n de calle</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-23">Si marc&oacute; otro, cu&eacute;ntenos d&oacute;nde vive</label>
+            <input type="text" id="enc-23" data-q="Si marc&oacute; otro cu&eacute;ntenos donde vive">
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-24">En donde vive, &iquest;tiene cubiertos los servicios b&aacute;sicos para el desarrollo de su vida diaria?</label>
+            <select id="enc-24" data-q="En donde vive &iquest;Tiene cubierto los servicios b&aacute;sicos para el desarrollo de su vida diaria?">
+              <option value="">Seleccion&aacute; una opci&oacute;n...</option>
+              <option value="S&iacute;">S&iacute;</option>
+              <option value="No">No</option>
+              <option value="Parcialmente">Parcialmente</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-25">En caso de que s&iacute;, indique cu&aacute;l</label>
+            <input type="text" id="enc-25" data-q="En caso de que S&iacute;, indique cu&aacute;l.">
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-26">Si tu respuesta fue otro, cont&aacute; qu&eacute; necesita para mejorar la accesibilidad</label>
+            <textarea id="enc-26" data-q="Si tu respuesta fue otro cuente que necesita para mejorar la accesibilidad"></textarea>
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-27">Si utiliza apoyo t&eacute;cnico para su vida diaria, indique cu&aacute;l</label>
+            <input type="text" id="enc-27" data-q="Si utiliza Apoyo T&eacute;cnico para su vida diaria, indique cu&aacute;l.">
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-28">Si marc&oacute; otro, aclare cu&aacute;les</label>
+            <input type="text" id="enc-28" data-q="Si marco otro aclare cuales">
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-29">Sexo</label>
+            <select id="enc-29" data-q="Sexo">
+              <option value="">Seleccion&aacute; una opci&oacute;n...</option>
+              <option value="Femenino">Femenino</option>
+              <option value="Masculino">Masculino</option>
+              <option value="Otro">Otro</option>
+              <option value="Prefiero no decir">Prefiero no decir</option>
+            </select>
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-30">Si pone otro, deje su comentario</label>
+            <input type="text" id="enc-30" data-q="Si pone otro deje su comentario">
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-31">&iquest;Qu&eacute; tipo de discapacidad tiene?</label>
+            <select id="enc-31" data-q="&iquest;Qu&eacute; tipo de Discapacidad tiene?">
+              <option value="">Seleccion&aacute; una opci&oacute;n...</option>
+              <option value="Motora">Motora</option>
+              <option value="Visual">Visual</option>
+              <option value="Auditiva">Auditiva</option>
+              <option value="Intelectual">Intelectual</option>
+              <option value="Psicosocial">Psicosocial</option>
+              <option value="Visceral">Visceral</option>
+              <option value="M&uacute;ltiple">M&uacute;ltiple</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-32">Deje su comentario sobre el tipo de discapacidad</label>
+            <textarea id="enc-32" data-q="Deje su comentario sobre el tipo de Discapacidad"></textarea>
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-33">&iquest;Recib&iacute;s informaci&oacute;n acerca de los derechos de las personas con discapacidad?</label>
+            <select id="enc-33" data-q="&iquest;Recib&iacute;s informaci&oacute;n acerca de los derechos de las personas con discapacidad?">
+              <option value="">Seleccion&aacute; una opci&oacute;n...</option>
+              <option value="S&iacute;">S&iacute;</option>
+              <option value="No">No</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-34">Para realizar este formulario, &iquest;necesit&oacute; ayuda o lo realiz&oacute; s&oacute;lo?</label>
+            <select id="enc-34" data-q="Para realizar este formulario, &iquest;necesit&oacute; ayuda o lo realiz&oacute; s&oacute;lo?">
+              <option value="">Seleccion&aacute; una opci&oacute;n...</option>
+              <option value="Solo">Solo</option>
+              <option value="Con ayuda">Con ayuda</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-35">Si marc&oacute; &ldquo;OTRO&rdquo; indique qui&eacute;n lo ayud&oacute;</label>
+            <input type="text" id="enc-35" data-q="Si marc&oacute; &quot;OTRO&quot; indique quien lo ayud&oacute;">
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-36">Si contest&oacute; &ldquo;NO&rdquo;, y lo desea, puede contarnos brevemente el motivo</label>
+            <textarea id="enc-36" data-q="Si contesto &quot;NO&quot;, y lo desea puede contarnos brevemente el motivo."></textarea>
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-37">&iquest;Posee alguna otra enfermedad?</label>
+            <select id="enc-37" data-q="&iquest;Posee alguna otra enfermedad?">
+              <option value="">Seleccion&aacute; una opci&oacute;n...</option>
+              <option value="S&iacute;">S&iacute;</option>
+              <option value="No">No</option>
+            </select>
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-38">&iquest;Tiene relaci&oacute;n con la discapacidad?</label>
+            <select id="enc-38" data-q="&iquest;Tiene relaci&oacute;n con la discapacidad?">
+              <option value="">Seleccion&aacute; una opci&oacute;n...</option>
+              <option value="S&iacute;">S&iacute;</option>
+              <option value="No">No</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-39">Para realizar dicha actividad, &iquest;necesita apoyo?</label>
+            <select id="enc-39" data-q="Para realizar dicha actividad, &iquest;necesita apoyo?">
+              <option value="">Seleccion&aacute; una opci&oacute;n...</option>
+              <option value="S&iacute;">S&iacute;</option>
+              <option value="No">No</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-40">&iquest;La actividad la realiza cerca de su domicilio o tiene que viajar?</label>
+            <select id="enc-40" data-q="&iquest;La actividad la realiza cerca de su domicilio o tiene que viajar?">
+              <option value="">Seleccion&aacute; una opci&oacute;n...</option>
+              <option value="Cerca de su domicilio">Cerca de su domicilio</option>
+              <option value="Tiene que viajar">Tiene que viajar</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-41">En su vida diaria, &iquest;cu&aacute;l es la forma en que se desplaza para llegar a los lugares donde debe ir?</label>
+            <input type="text" id="enc-41" data-q="En su vida diaria, &iquest;Cu&aacute;l es la forma en que se desplaza para llegar a los lugares donde debe ir?">
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-42">&iquest;Es cong&eacute;nita o adquirida?</label>
+            <select id="enc-42" data-q="&iquest;Es cong&eacute;nita o adquirida?">
+              <option value="">Seleccion&aacute; una opci&oacute;n...</option>
+              <option value="Cong&eacute;nita">Cong&eacute;nita</option>
+              <option value="Adquirida">Adquirida</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-43">&iquest;Posee Certificado &Uacute;nico de Discapacidad?</label>
+            <select id="enc-43" data-q="&iquest;Posee Certificado &Uacute;nico de Discapacidad?">
+              <option value="">Seleccion&aacute; una opci&oacute;n...</option>
+              <option value="S&iacute;">S&iacute;</option>
+              <option value="No">No</option>
+              <option value="En tr&aacute;mite">En tr&aacute;mite</option>
+            </select>
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-44">&iquest;Tiene cobertura social?</label>
+            <select id="enc-44" data-q="&iquest;Tiene Cobertura Social?">
+              <option value="">Seleccion&aacute; una opci&oacute;n...</option>
+              <option value="S&iacute;">S&iacute;</option>
+              <option value="No">No</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-45">Si marc&oacute; otra y lo desea, puede aclarar cu&aacute;l</label>
+            <input type="text" id="enc-45" data-q="Si Marc&oacute; otra y lo desea, puede aclarar cu&aacute;l.">
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-46">&iquest;Recibe prestaciones de salud?</label>
+            <select id="enc-46" data-q="&iquest;Recibe prestaciones de salud?">
+              <option value="">Seleccion&aacute; una opci&oacute;n...</option>
+              <option value="S&iacute;">S&iacute;</option>
+              <option value="No">No</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-47">Si marc&oacute; &ldquo;OTRO&rdquo; indique cu&aacute;l es el faltante</label>
+            <input type="text" id="enc-47" data-q="Si marc&oacute; &quot;OTRO&quot; indique cu&aacute;l es el faltante">
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-48">En caso de marcar &ldquo;SOLO TENGO&rdquo;, si lo desea puede detallar brevemente cu&aacute;l es</label>
+            <input type="text" id="enc-48" data-q="En caso de marcar &quot;SOLO TENGO&quot;, si lo desea puede detallar brevemente &iquest;Cu&aacute;l es?">
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-49">En su hogar, &iquest;cuenta con accesibilidad?</label>
+            <select id="enc-49" data-q="En su hogar, &iquest;Cuenta con Accesibilidad?">
+              <option value="">Seleccion&aacute; una opci&oacute;n...</option>
+              <option value="S&iacute;">S&iacute;</option>
+              <option value="No">No</option>
+              <option value="Parcialmente">Parcialmente</option>
+            </select>
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-50">En caso de que su respuesta sea &ldquo;NO&rdquo;, detalle por qu&eacute;</label>
+            <textarea id="enc-50" data-q="En caso de que su respuesta sea &quot;NO&quot;, detalle porque"></textarea>
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-51">En caso de estar actualmente con empleo, indique qu&eacute; tipo</label>
+            <input type="text" id="enc-51" data-q="En caso de estar actualmente con Empleo, indique qu&eacute; tipo">
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-52">Indique qu&eacute; edad tiene usted o la persona con discapacidad en su hogar</label>
+            <input type="number" min="0" max="120" id="enc-52" data-q="Indique qu&eacute; edad tiene usted o la persona con discapacidad en su hogar.">
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-53">Si quer&eacute;s que te enviemos informaci&oacute;n sobre estos y otros temas, marc&aacute; la opci&oacute;n &ldquo;S&Iacute;&rdquo;</label>
+            <select id="enc-53" data-q="Si quer&eacute;s que te enviemos informaci&oacute;n sobre estos y otros temas, marca la opci&oacute;n &quot;S&Iacute;&quot;">
+              <option value="">Seleccion&aacute; una opci&oacute;n...</option>
+              <option value="S&iacute;">S&iacute;</option>
+              <option value="No">No</option>
+            </select>
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-54">&iquest;Tiene?</label>
+            <input type="text" id="enc-54" data-q="&iquest;tiene?">
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-55">La zona donde viv&iacute;s, &iquest;tiene...?</label>
+            <input type="text" id="enc-55" data-q="La zona donde vivis, tiene....">
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-56">Si quer&eacute;s recibir informaci&oacute;n, dejanos una v&iacute;a de contacto (mail o WhatsApp)</label>
+            <input type="text" id="enc-56" data-q="Si quiere recibir informaci&oacute;n dejanos una v&iacute;a de contacto (mail o WhatsApp)">
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-57">&iquest;Si posee alguna otra enfermedad? Describa tipo</label>
+            <textarea id="enc-57" data-q="&iquest;Si Posee alguna otra enfermedad? Describa tipo"></textarea>
+          </div>
+
+          <div class="survey-field">
+            <label for="enc-58">Detallanos tu necesidad</label>
+            <textarea id="enc-58" data-q="Detallanos tu necesidad."></textarea>
+          </div>
+
+          <div class="survey-submit-row">
+            <button type="submit" class="btn-sm" id="encuesta-submit-btn">Enviar respuesta</button>
+            <span class="survey-status" id="encuesta-status" role="status" aria-live="polite"></span>
+          </div>
+        </form>
+      </div>
+
       <div class="comuna-grid">
         <div class="card">
           <h3>Tipo de discapacidad</h3>
@@ -1356,6 +1967,54 @@
     document.getElementById('contacto-overlay').addEventListener('click', (e) => {
       if (e.target.id === 'contacto-overlay') closeContacto();
     });
+
+    /* ---------- encuesta Comuna 7: formulario ---------- */
+    async function enviarEncuestaComuna07() {
+      const form   = document.getElementById('form-encuesta-comuna07');
+      const nombre = document.getElementById('enc-nombre').value.trim();
+      const correo = document.getElementById('enc-correo').value.trim();
+      const statusEl = document.getElementById('encuesta-status');
+      const btn = document.getElementById('encuesta-submit-btn');
+
+      if (!nombre) {
+        statusEl.textContent = 'Por favor completá tu nombre y apellido.';
+        statusEl.className = 'survey-status err';
+        document.getElementById('enc-nombre').focus();
+        return;
+      }
+
+      const respuestas = {};
+      form.querySelectorAll('[data-q]').forEach(el => {
+        const val = (el.value || '').trim();
+        if (val) respuestas[el.dataset.q] = val;
+      });
+
+      const textoOriginal = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = 'Enviando...';
+      statusEl.textContent = '';
+      statusEl.className = 'survey-status';
+
+      try {
+        const r = await fetch('/api/encuesta-comuna07', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ nombre_apellido: nombre, correo, respuestas })
+        });
+
+        if (!r.ok) throw new Error('fallo el envio');
+
+        statusEl.textContent = '¡Gracias! Tu respuesta fue enviada correctamente.';
+        statusEl.className = 'survey-status ok';
+        form.reset();
+      } catch (err) {
+        statusEl.textContent = 'No se pudo enviar la encuesta. Por favor intentá nuevamente en unos minutos.';
+        statusEl.className = 'survey-status err';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = textoOriginal;
+      }
+    }
 
     /* ---------- navegacion entre pestanas ---------- */
     const buttons = document.querySelectorAll('.tab-btn');
