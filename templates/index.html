@@ -183,6 +183,19 @@
          z-index:200;display:flex;align-items:center;justify-content:center}
     .fab:hover{background:#4a2d8c}
 
+    /* boton flotante de lectura en voz alta (accesibilidad para no videntes) */
+    .fab-listen{position:fixed;bottom:1.2rem;left:1.2rem;height:54px;
+         border-radius:27px;background:#5e35b1;color:#fff;border:none;
+         font-size:.85rem;font-weight:600;font-family:inherit;cursor:pointer;
+         box-shadow:0 2px 10px rgba(0,0,0,.25);z-index:200;display:flex;
+         align-items:center;gap:.5rem;padding:0 1.1rem}
+    .fab-listen:hover{background:#4a2d8c}
+    .fab-listen.speaking{background:#c0392b}
+    .fab-listen.speaking:hover{background:#a5311f}
+    .fab-listen .fab-listen-icon{font-size:1.15rem}
+    @media (max-width:640px){.fab-listen span:not(.fab-listen-icon){display:none}
+         .fab-listen{width:54px;padding:0;justify-content:center}}
+
     .modal-overlay{position:fixed;inset:0;background:rgba(45,27,84,.45);
          display:none;align-items:center;justify-content:center;z-index:300;
          padding:1rem}
@@ -1885,6 +1898,12 @@
     </div>
   </footer>
 
+  <!-- ====================== LECTURA EN VOZ ALTA (flotante, accesibilidad) ====================== -->
+  <button class="fab-listen" id="btn-listen" onclick="toggleListen()" aria-pressed="false" title="Escucha el contenido de esta seccion en voz alta">
+    <span class="fab-listen-icon" aria-hidden="true">&#128266;</span>
+    <span id="listen-label">Escuchar esta p&aacute;gina</span>
+  </button>
+
   <!-- ====================== CONTACTO (flotante) ====================== -->
   <button class="fab" onclick="openContacto()" aria-label="Enviar mensaje o sugerencia" title="Mensajes, sugerencias y errores">
     &#9993;
@@ -2016,6 +2035,87 @@
       }
     }
 
+    /* ---------- lectura en voz alta (accesibilidad para no videntes) ---------- */
+    const speechSoportado = 'speechSynthesis' in window;
+    let leyendoEnVoz = false;
+    let keepAliveTimer = null;
+
+    function textoDelPanelActivo() {
+      const panel = document.querySelector('.panel.visible');
+      if (!panel) return '';
+      const selector = 'h1, h2, h3, h4, h5, p, li, dt, dd, td, th, label, .verse-item, .kv-row';
+      const nodos = Array.from(panel.querySelectorAll(selector));
+      const nodoSet = new Set(nodos);
+      const partes = [];
+      nodos.forEach(el => {
+        let ancestro = el.parentElement;
+        let anidado = false;
+        while (ancestro && ancestro !== panel) {
+          if (nodoSet.has(ancestro)) { anidado = true; break; }
+          ancestro = ancestro.parentElement;
+        }
+        if (anidado) return;
+        const txt = (el.innerText || el.textContent || '').trim();
+        if (txt) partes.push(txt);
+      });
+      return partes.join('. ');
+    }
+
+    function actualizarBotonEscuchar(hablando) {
+      leyendoEnVoz = hablando;
+      const btn = document.getElementById('btn-listen');
+      const label = document.getElementById('listen-label');
+      const icon = btn.querySelector('.fab-listen-icon');
+      btn.classList.toggle('speaking', hablando);
+      btn.setAttribute('aria-pressed', hablando ? 'true' : 'false');
+      label.textContent = hablando ? 'Detener lectura' : 'Escuchar esta página';
+      icon.innerHTML = hablando ? '&#9209;' : '&#128266;';
+    }
+
+    function detenerLectura() {
+      if (keepAliveTimer) { clearInterval(keepAliveTimer); keepAliveTimer = null; }
+      if (speechSoportado) window.speechSynthesis.cancel();
+      if (leyendoEnVoz) actualizarBotonEscuchar(false);
+    }
+
+    function toggleListen() {
+      if (!speechSoportado) {
+        alert('Tu navegador no soporta la lectura en voz alta.');
+        return;
+      }
+      if (leyendoEnVoz) {
+        detenerLectura();
+        return;
+      }
+      const texto = textoDelPanelActivo();
+      if (!texto.trim()) {
+        alert('No hay contenido para leer en esta sección.');
+        return;
+      }
+      window.speechSynthesis.cancel();
+      const utter = new SpeechSynthesisUtterance(texto);
+      utter.lang = 'es-AR';
+      utter.rate = 1;
+      utter.onend = () => detenerLectura();
+      utter.onerror = () => detenerLectura();
+      window.speechSynthesis.speak(utter);
+      actualizarBotonEscuchar(true);
+      /* workaround: en Chrome la sintesis de voz se pausa sola en textos
+         largos (bug conocido); se fuerza un resume periodico mientras dura */
+      keepAliveTimer = setInterval(() => {
+        if (!window.speechSynthesis.speaking) { detenerLectura(); return; }
+        window.speechSynthesis.pause();
+        window.speechSynthesis.resume();
+      }, 10000);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (!speechSoportado) {
+        const btn = document.getElementById('btn-listen');
+        if (btn) btn.style.display = 'none';
+      }
+    });
+
     /* ---------- navegacion entre pestanas ---------- */
     const buttons = document.querySelectorAll('.tab-btn');
     const panels  = document.querySelectorAll('.panel');
@@ -2028,6 +2128,7 @@
         btn.classList.add('active');
         panels.forEach(p => p.classList.toggle('visible', p.id === 'panel-' + target));
         window.scrollTo({ top: 0, behavior: 'smooth' });
+        detenerLectura();
         onTabOpen(target);
       });
     });
