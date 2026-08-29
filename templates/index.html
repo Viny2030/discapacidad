@@ -2439,18 +2439,22 @@
       if (data.recursos_por_discapacidad && data.recursos_por_discapacidad.length) {
         html += '<h3 style="margin-top:1rem">🎧 Recursos sonoros por tipo de discapacidad</h3>';
         data.recursos_por_discapacidad.forEach(grp => {
-          html += '<div class="article-card">';
-          html += '<strong>' + escapeHtml(grp.discapacidad || '') + '</strong>';
-          if (grp.tecnica) html += '<br><span style="color:#7c4dff;font-weight:600">' + escapeHtml(grp.tecnica) + '</span>';
-          if (grp.descripcion) html += '<br><span class="muted">' + escapeHtml(grp.descripcion) + '</span>';
-          if (grp.recursos && grp.recursos.length) {
-            html += '<div style="display:flex;flex-direction:column;gap:.3rem;margin-top:.5rem">';
-            grp.recursos.forEach(r => {
-              html += '<a href="' + escapeHtml(r.url) + '" target="_blank" rel="noopener">▶ ' + escapeHtml(r.nombre)
-                + (r.tipo ? ' <span class="muted">(' + escapeHtml(r.tipo) + ')</span>' : '') + ' ↗</a>';
-            });
+          html += '<div class="article-card" style="border-left:3px solid #ff6f91;padding-left:.8rem">';
+          html += '<h4 style="margin:0 0 .4rem">' + escapeHtml(grp.nombre || grp.tipo_discapacidad || '') + '</h4>';
+          (grp.tecnicas || []).forEach(t => {
+            html += '<div style="margin:.6rem 0">';
+            html += '<span style="color:#7c4dff;font-weight:600">' + escapeHtml(t.nombre || '') + '</span>';
+            if (t.descripcion) html += '<br><span class="muted">' + escapeHtml(t.descripcion) + '</span>';
+            if (t.recursos && t.recursos.length) {
+              html += '<div style="display:flex;flex-direction:column;gap:.3rem;margin-top:.4rem">';
+              t.recursos.forEach(r => {
+                html += '<a href="' + escapeHtml(r.url) + '" target="_blank" rel="noopener">▶ ' + escapeHtml(r.nombre)
+                  + (r.tipo ? ' <span class="muted">(' + escapeHtml(r.tipo) + ')</span>' : '') + ' ↗</a>';
+              });
+              html += '</div>';
+            }
             html += '</div>';
-          }
+          });
           html += '</div>';
         });
       }

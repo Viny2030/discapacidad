@@ -1021,62 +1021,186 @@ MUSICOTERAPIA_INFO = {
                             'neurodesarrollo y discapacidad.',
         },
     ],
-    # Recursos sonoros organizados por tipo de discapacidad / técnica clínica aplicable.
+    # Recursos sonoros 100% YouTube (sin Spotify: requiere cuenta paga para playlists
+    # completas), organizados por los mismos 6 tipos de discapacidad que usa el resto
+    # de la plataforma (ver REQUISITOS_POR_TIPO), cada uno con varias técnicas/temas
+    # musicales aplicables. Los recursos "YouTube (búsqueda)" apuntan a una búsqueda
+    # curada en vez de un video puntual, para no depender de que un único video
+    # puntual seguido siga disponible.
     'recursos_por_discapacidad': [
         {
-            'discapacidad': 'Motriz — rehabilitación de la marcha y coordinación',
-            'tecnica': 'Estimulación Auditiva Rítmica (RAS — Rhythmic Auditory Stimulation)',
-            'descripcion': 'Pistas con pulso isócrono a BPM fijo, usadas en reentrenamiento de '
-                            'la marcha y coordinación motriz.',
-            'recursos': [
-                {'nombre': 'Metrónomo con música estructurada a 60 BPM', 'tipo': 'YouTube',
-                 'url': 'https://www.youtube.com/watch?v=kQW8Spw744M'},
-                {'nombre': 'Patrón rítmico isócrono a 80 BPM para entrenamiento de paso', 'tipo': 'YouTube',
-                 'url': 'https://www.youtube.com/watch?v=y2hKk-lQ_a4'},
-                {'nombre': 'Ritmo constante a 100 BPM para coordinación motriz', 'tipo': 'YouTube',
-                 'url': 'https://www.youtube.com/watch?v=G6P8c3W6r4g'},
-                {'nombre': 'Búsqueda YouTube — Rhythmic Auditory Stimulation / metrónomo', 'tipo': 'YouTube (búsqueda)',
-                 'url': 'https://www.youtube.com/results?search_query=Rhythmic+Auditory+Stimulation+metronome'},
-                {'nombre': 'Spotify — Pistas y playlists RAS', 'tipo': 'Spotify (búsqueda)',
-                 'url': 'https://open.spotify.com/search/Rhythmic%20Auditory%20Stimulation'},
-                {'nombre': 'Spotify — Playlist de ritmos y tiempos constantes', 'tipo': 'Spotify (playlist)',
-                 'url': 'https://open.spotify.com/playlist/37i9dQZF1DX8Uebhn9wzrS'},
+            'tipo_discapacidad': 'motora',
+            'nombre': 'Discapacidad motora',
+            'tecnicas': [
+                {
+                    'nombre': 'Estimulación Auditiva Rítmica (RAS) — marcha y coordinación',
+                    'descripcion': 'Pistas con pulso isócrono a BPM fijo, usadas en '
+                                    'reentrenamiento de la marcha y coordinación motriz.',
+                    'recursos': [
+                        {'nombre': 'Metrónomo con música estructurada a 60 BPM', 'tipo': 'YouTube',
+                         'url': 'https://www.youtube.com/watch?v=kQW8Spw744M'},
+                        {'nombre': 'Patrón rítmico isócrono a 80 BPM para entrenamiento de paso', 'tipo': 'YouTube',
+                         'url': 'https://www.youtube.com/watch?v=y2hKk-lQ_a4'},
+                        {'nombre': 'Ritmo constante a 100 BPM para coordinación motriz', 'tipo': 'YouTube',
+                         'url': 'https://www.youtube.com/watch?v=G6P8c3W6r4g'},
+                        {'nombre': 'Búsqueda — Rhythmic Auditory Stimulation / metrónomo por BPM', 'tipo': 'YouTube (búsqueda)',
+                         'url': 'https://www.youtube.com/results?search_query=Rhythmic+Auditory+Stimulation+metronome+bpm'},
+                    ],
+                },
+                {
+                    'nombre': 'Percusión activa — motricidad fina y miembros superiores',
+                    'descripcion': 'Ejercicios de tocar tambor/percusión guiados por video, usados '
+                                    'en rehabilitación de manos, brazos y motricidad fina.',
+                    'recursos': [
+                        {'nombre': 'Búsqueda — ejercicios de percusión para rehabilitación de manos', 'tipo': 'YouTube (búsqueda)',
+                         'url': 'https://www.youtube.com/results?search_query=drum+therapy+hand+rehabilitation+exercises'},
+                        {'nombre': 'Búsqueda — Active Music Therapy motricidad fina', 'tipo': 'YouTube (búsqueda)',
+                         'url': 'https://www.youtube.com/results?search_query=active+music+therapy+fine+motor+skills'},
+                    ],
+                },
+                {
+                    'nombre': 'Terapia de Entonación Melódica (MIT) — habla post-ACV, afasias y apraxias',
+                    'descripcion': 'Usa el canto y la entonación melódica para facilitar la '
+                                    'recuperación del habla tras un ACV u otra lesión neurológica.',
+                    'recursos': [
+                        {'nombre': 'PubMed — evidencia clínica de MIT', 'tipo': 'Evidencia científica',
+                         'url': 'https://pubmed.ncbi.nlm.nih.gov/?term=Melodic+Intonation+Therapy'},
+                        {'nombre': 'Búsqueda — Melodic Intonation Therapy ejercicios en video', 'tipo': 'YouTube (búsqueda)',
+                         'url': 'https://www.youtube.com/results?search_query=Melodic+Intonation+Therapy+exercises+aphasia'},
+                    ],
+                },
             ],
         },
         {
-            'discapacidad': 'Habla y lenguaje — afasias y apraxias',
-            'tecnica': 'Terapia de Entonación Melódica (MIT — Melodic Intonation Therapy)',
-            'descripcion': 'Técnica que usa el canto y la entonación melódica para facilitar la '
-                            'recuperación del habla en personas con afasia o apraxia.',
-            'recursos': [
-                {'nombre': 'PubMed — evidencia clínica de MIT', 'tipo': 'Evidencia científica',
-                 'url': 'https://pubmed.ncbi.nlm.nih.gov/?term=Melodic+Intonation+Therapy'},
+            'tipo_discapacidad': 'visual',
+            'nombre': 'Discapacidad visual',
+            'tecnicas': [
+                {
+                    'nombre': 'Orientación y movilidad guiadas por audio',
+                    'descripcion': 'Señales sonoras espaciales y ejercicios rítmicos que refuerzan '
+                                    'la orientación y la movilidad independiente.',
+                    'recursos': [
+                        {'nombre': 'Búsqueda — audio orientation and mobility training blind', 'tipo': 'YouTube (búsqueda)',
+                         'url': 'https://www.youtube.com/results?search_query=audio+orientation+and+mobility+training+blind'},
+                    ],
+                },
+                {
+                    'nombre': 'Percusión y canto — desarrollo espacial auditivo (método Orff)',
+                    'descripcion': 'Actividades de percusión corporal e instrumental (Orff-Schulwerk) '
+                                    'usadas para desarrollar la discriminación y ubicación sonora.',
+                    'recursos': [
+                        {'nombre': 'Búsqueda — Orff Schulwerk música para discapacidad visual', 'tipo': 'YouTube (búsqueda)',
+                         'url': 'https://www.youtube.com/results?search_query=Orff+Schulwerk+music+therapy+visually+impaired'},
+                    ],
+                },
             ],
         },
         {
-            'discapacidad': 'TEA / sensorial — regulación de sobrecarga sensorial',
-            'tecnica': 'Música de baja estimulación (Sensory Regulation)',
-            'descripcion': 'Ambientes sonoros continuos, sin cambios bruscos ni percusión '
-                            'marcada, diseñados para modular sobrecargas sensoriales.',
-            'recursos': [
-                {'nombre': 'Sesión continua de baja estimulación para reducción de sobrecarga sensorial',
-                 'tipo': 'YouTube', 'url': 'https://www.youtube.com/watch?v=WPni755-Krg'},
-                {'nombre': 'Paisaje sonoro suave sin percusión para calma y foco',
-                 'tipo': 'YouTube', 'url': 'https://www.youtube.com/watch?v=1ZYbU82GVz4'},
-                {'nombre': 'Búsqueda YouTube — Low stimulation music / sensory / autismo', 'tipo': 'YouTube (búsqueda)',
-                 'url': 'https://www.youtube.com/results?search_query=Low+stimulation+music+sensory+autism'},
+            'tipo_discapacidad': 'auditiva',
+            'nombre': 'Discapacidad auditiva',
+            'tecnicas': [
+                {
+                    'nombre': 'Musicoterapia vibroacústica — percepción por vibración',
+                    'descripcion': 'Uso de graves fuertes y superficies vibrátiles (no percepción '
+                                    'auditiva) para que la música se sienta como vibración corporal.',
+                    'recursos': [
+                        {'nombre': 'Búsqueda — vibroacoustic therapy deaf hard of hearing', 'tipo': 'YouTube (búsqueda)',
+                         'url': 'https://www.youtube.com/results?search_query=vibroacoustic+therapy+deaf+hard+of+hearing'},
+                        {'nombre': 'Búsqueda — música con subwoofer / bajos para sentir el ritmo', 'tipo': 'YouTube (búsqueda)',
+                         'url': 'https://www.youtube.com/results?search_query=feel+the+bass+vibration+music+deaf'},
+                    ],
+                },
+                {
+                    'nombre': 'Música interpretada en Lengua de Señas Argentina (LSA)',
+                    'descripcion': 'Canciones interpretadas en LSA, que combinan ritmo visual y '
+                                    'vibración con el componente comunitario/cultural de la música.',
+                    'recursos': [
+                        {'nombre': 'Búsqueda — canciones en Lengua de Señas Argentina', 'tipo': 'YouTube (búsqueda)',
+                         'url': 'https://www.youtube.com/results?search_query=canciones+en+lengua+de+se%C3%B1as+argentina'},
+                    ],
+                },
             ],
         },
         {
-            'discapacidad': 'Cognitiva / atención — foco, concentración y relajación',
-            'tecnica': 'Música de enfoque y relajación (ondas alfa, tempo estable)',
-            'descripcion': 'Playlists de fondo sin cambios bruscos de volumen ni ritmo, usadas '
-                            'como apoyo a la concentración y la regulación emocional.',
-            'recursos': [
-                {'nombre': 'Spotify — Playlist Deep Focus', 'tipo': 'Spotify (playlist)',
-                 'url': 'https://open.spotify.com/playlist/37i9dQZF1DWZeKCadgRdKQ'},
-                {'nombre': 'Spotify — Playlist Peaceful Piano', 'tipo': 'Spotify (playlist)',
-                 'url': 'https://open.spotify.com/playlist/37i9dQZF1DX4sWSpwq3LiO'},
+            'tipo_discapacidad': 'intelectual',
+            'nombre': 'Discapacidad intelectual (incluye TEA — ver también Plan Nacional TEA)',
+            'tecnicas': [
+                {
+                    'nombre': 'Música de baja estimulación — regulación sensorial (TEA)',
+                    'descripcion': 'Ambientes sonoros continuos, sin cambios bruscos ni percusión '
+                                    'marcada, diseñados para modular sobrecargas sensoriales.',
+                    'recursos': [
+                        {'nombre': 'Sesión continua de baja estimulación para reducción de sobrecarga sensorial',
+                         'tipo': 'YouTube', 'url': 'https://www.youtube.com/watch?v=WPni755-Krg'},
+                        {'nombre': 'Paisaje sonoro suave sin percusión para calma y foco',
+                         'tipo': 'YouTube', 'url': 'https://www.youtube.com/watch?v=1ZYbU82GVz4'},
+                        {'nombre': 'Búsqueda — Low stimulation music / sensory regulation autismo', 'tipo': 'YouTube (búsqueda)',
+                         'url': 'https://www.youtube.com/results?search_query=Low+stimulation+music+sensory+autism'},
+                    ],
+                },
+                {
+                    'nombre': 'Canciones estructuradas y repetitivas — aprendizaje y rutinas',
+                    'descripcion': 'Canciones con estructura predecible (repetición, secuencia '
+                                    'clara) usadas para reforzar rutinas, vocabulario y transiciones.',
+                    'recursos': [
+                        {'nombre': 'Búsqueda — canciones estructuradas para rutinas y aprendizaje', 'tipo': 'YouTube (búsqueda)',
+                         'url': 'https://www.youtube.com/results?search_query=structured+songs+routines+special+education'},
+                    ],
+                },
+            ],
+        },
+        {
+            'tipo_discapacidad': 'psicosocial',
+            'nombre': 'Discapacidad psicosocial (salud mental)',
+            'tecnicas': [
+                {
+                    'nombre': 'Música para regulación emocional y ansiedad',
+                    'descripcion': 'Pistas de tempo estable y sin sobresaltos usadas como apoyo '
+                                    'para bajar niveles de ansiedad y regular el estado de ánimo.',
+                    'recursos': [
+                        {'nombre': 'Búsqueda — música para ansiedad y regulación emocional', 'tipo': 'YouTube (búsqueda)',
+                         'url': 'https://www.youtube.com/results?search_query=music+for+anxiety+and+emotional+regulation'},
+                        {'nombre': 'Búsqueda — Deep Focus / música de enfoque sin letra', 'tipo': 'YouTube (búsqueda)',
+                         'url': 'https://www.youtube.com/results?search_query=deep+focus+music+no+lyrics'},
+                        {'nombre': 'Búsqueda — Peaceful Piano / piano relajante', 'tipo': 'YouTube (búsqueda)',
+                         'url': 'https://www.youtube.com/results?search_query=peaceful+piano+relaxing+music'},
+                    ],
+                },
+                {
+                    'nombre': 'Mindfulness sonoro y respiración guiada con música',
+                    'descripcion': 'Sesiones de respiración pautada por música, usadas como '
+                                    'herramienta de autorregulación en crisis de ansiedad o estrés.',
+                    'recursos': [
+                        {'nombre': 'Búsqueda — mindfulness sonoro respiración guiada', 'tipo': 'YouTube (búsqueda)',
+                         'url': 'https://www.youtube.com/results?search_query=guided+breathing+music+mindfulness'},
+                    ],
+                },
+            ],
+        },
+        {
+            'tipo_discapacidad': 'visceral',
+            'nombre': 'Discapacidad visceral (enfermedades no evidentes: cardíacas, respiratorias, oncológicas, inmunológicas)',
+            'tecnicas': [
+                {
+                    'nombre': 'Música para manejo del dolor crónico y reducción de estrés',
+                    'descripcion': 'Usada como coadyuvante no farmacológico en dolor crónico y '
+                                    'contextos oncológicos, junto al tratamiento médico indicado.',
+                    'recursos': [
+                        {'nombre': 'Búsqueda — music therapy chronic pain management', 'tipo': 'YouTube (búsqueda)',
+                         'url': 'https://www.youtube.com/results?search_query=music+therapy+chronic+pain+management'},
+                        {'nombre': 'Búsqueda — sound healing / cuencos tibetanos para dolor y estrés', 'tipo': 'YouTube (búsqueda)',
+                         'url': 'https://www.youtube.com/results?search_query=sound+healing+singing+bowls+pain+stress'},
+                    ],
+                },
+                {
+                    'nombre': 'Respiración guiada con música — condiciones respiratorias y cardíacas',
+                    'descripcion': 'Ejercicios de respiración pautados musicalmente, usados como '
+                                    'apoyo (no reemplazo) en rehabilitación respiratoria y cardíaca.',
+                    'recursos': [
+                        {'nombre': 'Búsqueda — breathing exercises music pulmonary rehabilitation', 'tipo': 'YouTube (búsqueda)',
+                         'url': 'https://www.youtube.com/results?search_query=breathing+exercises+music+pulmonary+rehabilitation'},
+                    ],
+                },
             ],
         },
     ],
@@ -1094,7 +1218,7 @@ MUSICOTERAPIA_INFO = {
         },
     ],
     'nota': (
-        'Los recursos externos (YouTube, Spotify, bancos de audio) son de terceros y se listan '
+        'Los recursos externos (YouTube, bancos de audio libres de derechos) son de terceros y se listan '
         'a título orientativo: no reemplazan la indicación de un/a musicoterapeuta matriculado/a. '
         'Verificar siempre la vigencia de los enlaces, ya que el contenido de plataformas de '
         'terceros puede modificarse o discontinuarse.'
