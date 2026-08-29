@@ -12,6 +12,7 @@ from scripts.datos_cud import (
     BENEFICIOS,
     JUNTAS_POR_PROVINCIA,
     FAQ,
+    PLAN_TEA_INFO,
 )
 
 
@@ -142,6 +143,27 @@ def test_faq_cubre_temas_clave():
     assert "vence" in preguntas, "FAQ no cubre vencimiento del CUD"
     assert "gratuito" in preguntas, "FAQ no cubre costo del trámite"
     assert "sube" in preguntas, "FAQ no cubre SUBE"
+
+
+# ── Plan Nacional TEA ─────────────────────────────────────────────────────────
+
+def test_plan_tea_normativa():
+    assert "1115/2026" in PLAN_TEA_INFO["normativa"]
+    assert PLAN_TEA_INFO["boletin_oficial_url"].startswith("http")
+
+
+def test_plan_tea_ejes():
+    assert len(PLAN_TEA_INFO["ejes"]) == 6
+    for eje in PLAN_TEA_INFO["ejes"]:
+        assert eje.get("nombre")
+        assert eje.get("descripcion")
+
+
+def test_plan_tea_marco_normativo_incluye_ley_27043():
+    normas = [n["norma"] for n in PLAN_TEA_INFO["marco_normativo"]]
+    assert any("27.043" in n for n in normas)
+    assert any("777/2019" in n for n in normas)
+    assert any("2641/2019" in n for n in normas)
 
 
 # ── Health del servidor ───────────────────────────────────────────────────────

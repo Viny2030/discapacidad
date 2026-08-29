@@ -210,3 +210,16 @@ def test_obras_sociales(client):
     assert data["normativa"] == "Ley 24.901"
     assert "denuncias" in data
     assert data["denuncias"]["telefono"] == "0800-222-72583"
+
+
+# ── /api/cud/tea ──────────────────────────────────────────────────────────────
+
+def test_plan_tea(client):
+    r = client.get("/api/cud/tea")
+    assert r.status_code == 200
+    data = r.json()
+    assert "1115/2026" in data["normativa"]
+    assert len(data["ejes"]) == 6
+    assert "marco_normativo" in data
+    assert "relacion_con_cud" in data
+    assert data["boletin_oficial_url"].startswith("http")

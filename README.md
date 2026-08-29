@@ -2,7 +2,7 @@
 
 **Versión 1.0 · 2026**
 
-API integral sobre discapacidad en Argentina: trámite del CUD (incluida la vinculación obligatoria con la tarjeta SUBE para transporte gratuito), evidencia médica actualizada desde PubMed y ClinicalTrials, estadísticas oficiales de la Secretaría Nacional de Discapacidad/INDEC, la Pensión No Contributiva por Discapacidad para Protección Social (Ley 27.793 / Decreto 84/2026) y tratamientos de vanguardia con disclaimers clínicos.
+API integral sobre discapacidad en Argentina: trámite del CUD (incluida la vinculación obligatoria con la tarjeta SUBE para transporte gratuito), evidencia médica actualizada desde PubMed y ClinicalTrials, estadísticas oficiales de la Secretaría Nacional de Discapacidad/INDEC, la Pensión No Contributiva por Discapacidad para Protección Social (Ley 27.793 / Decreto 84/2026), el Plan Nacional del Trastorno del Espectro Autista — TEA (Resolución 1115/2026) y tratamientos de vanguardia con disclaimers clínicos.
 
 Deployado en [Railway](https://railway.app). Frontend incluido como Single Page Application en `templates/index.html`.
 
@@ -84,6 +84,7 @@ Fuente estática curada desde ANDIS, Ley 22.431, Ley 24.901 y Resolución ANDIS 
 | `GET /api/cud/sube` | **Guía completa CUD → SUBE (4 canales, requisitos, FAQ)** |
 | `GET /api/cud/sube?canal=online` | Pasos para el canal específico: `online` / `terminal` / `andis` |
 | `GET /api/cud/obras-sociales` | Derechos frente a obras sociales (Ley 24.901) |
+| `GET /api/cud/tea` | **Plan Nacional del TEA (Resolución 1115/2026): ejes, marco normativo, relación con el CUD** |
 
 ---
 
@@ -109,6 +110,20 @@ Fuente estática curada desde ANDIS, Ley 22.431, Ley 24.901 y Resolución ANDIS 
 **Consultas:** 0800-777-7823 (gratuito, lun-vie 8-20 hs)
 
 El endpoint `GET /api/cud/sube` devuelve la guía completa con pasos por canal, requisitos, tiempos de activación, qué hacer ante pérdida/robo de la SUBE y FAQ específica.
+
+---
+
+### 🧩 Plan Nacional del Trastorno del Espectro Autista (TEA)
+
+> El Ministerio de Salud aprobó el **Plan Nacional del TEA** mediante la **Resolución 1115/2026** (BO 24/08/2026), en el marco de la Ley 27.043 (Interés Nacional del abordaje del autismo) y su Decreto Reglamentario 777/2019.
+
+**Autoridad de aplicación:** Dirección Nacional de Abordaje Integral de Salud Mental (Ministerio de Salud).
+
+**6 ejes estratégicos:** promoción y prevención · formación de recursos humanos · apoyo integral a personas y familias · investigación e innovación · coordinación intersectorial · diagnóstico epidemiológico.
+
+**Relación con el CUD:** el TEA no es un tipo de discapacidad aparte en el trámite del CUD — se evalúa dentro de la categoría `intelectual` (`GET /api/cud/requisitos?tipo=intelectual`). El plan no modifica esos requisitos; establece lineamientos de política sanitaria (formación, detección temprana, investigación) sobre la base del Consenso de Diagnóstico y Tratamiento aprobado por la Resolución 2641/2019.
+
+El endpoint `GET /api/cud/tea` devuelve el detalle completo: ejes, marco normativo con enlaces oficiales, autoridad de aplicación y su vínculo con el trámite del CUD.
 
 ---
 
@@ -234,6 +249,9 @@ El repositorio incluye `railway.toml` con la configuración necesaria. El `Docke
 - Decreto 84/2026 (Anexo I y Anexo II) — Reglamentación de la Ley 27.793 y nuevas normas de la Pensión No Contributiva por Discapacidad para Protección Social
 - Resolución ANDIS 322/2023 — CUD sin vencimiento
 - Resolución CNRT 1018/2018 — Beneficio SUBE para personas con discapacidad
+- Ley 27.043 y Decreto Reglamentario 777/2019 — Interés Nacional del abordaje integral e interdisciplinario del TEA
+- Resolución 2641/2019 (Ministerio de Salud) — Consenso sobre Diagnóstico y Tratamiento de Personas con TEA
+- Resolución 1115/2026 (Ministerio de Salud) — Plan Nacional del Trastorno del Espectro Autista (TEA)
 - [Secretaría Nacional de Discapacidad](https://www.argentina.gob.ar/andis) (ex ANDIS, Ministerio de Salud) — datos estadísticos y tramitación
 - [SUBE](https://www.sube.gob.ar) — registro del beneficio de transporte
 - [PubMed](https://pubmed.ncbi.nlm.nih.gov) / [ClinicalTrials.gov](https://clinicaltrials.gov) — evidencia médica

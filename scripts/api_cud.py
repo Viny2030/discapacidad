@@ -20,6 +20,7 @@ from scripts.datos_cud import (
     JUNTAS_POR_PROVINCIA,
     FAQ,
     SUBE_INFO,
+    PLAN_TEA_INFO,
 )
 
 router = APIRouter(prefix="/api/cud", tags=["CUD"])
@@ -61,6 +62,7 @@ async def info_general():
             "/api/cud/consulta-estado",
             "/api/cud/sube",
             "/api/cud/obras-sociales",
+            "/api/cud/tea",
         ],
     }
 
@@ -212,3 +214,16 @@ async def obras_sociales():
             "telefono": "0800-222-72583",
         },
     }
+
+
+@router.get("/tea")
+async def plan_tea():
+    """
+    Plan Nacional del Trastorno del Espectro Autista (TEA).
+
+    Aprobado por la Resolución 1115/2026 del Ministerio de Salud (BO 24/08/2026),
+    en el marco de la Ley 27.043 y su Decreto Reglamentario 777/2019. Devuelve
+    los ejes estratégicos del plan, su marco normativo, la autoridad de
+    aplicación y su relación con el trámite del CUD.
+    """
+    return PLAN_TEA_INFO

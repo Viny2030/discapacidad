@@ -279,6 +279,7 @@
     <button class="tab-btn" data-panel="vanguardia">Vanguardia</button>
     <button class="tab-btn" data-panel="calculadora">Calculadora</button>
     <button class="tab-btn" data-panel="pensiones">Pensiones</button>
+    <button class="tab-btn" data-panel="tea">Plan TEA</button>
     <button class="tab-btn" data-panel="comparador">Comparador</button>
     <button class="tab-btn" data-panel="about">About (EN)</button>
     <button class="tab-btn" data-panel="gcba">GCBA</button>
@@ -337,6 +338,11 @@
           <h3>💵 Pensiones no contributivas</h3>
           <p>Régimen 2026 de la Pensión No Contributiva por Discapacidad para Protección Social (Ley 27.793 / Decreto 84/2026) y conversión de oficio de las pensiones anteriores.</p>
           <button class="go-btn" onclick="switchTab('pensiones')">Ver pensiones</button>
+        </div>
+        <div class="home-card">
+          <h3>🧩 Plan Nacional TEA</h3>
+          <p>Plan Nacional del Trastorno del Espectro Autista aprobado por el Ministerio de Salud (Resolución 1115/2026): ejes, marco normativo y su relación con el CUD.</p>
+          <button class="go-btn" onclick="switchTab('tea')">Ver el plan</button>
         </div>
         <div class="home-card">
           <h3>⚖️ Comparador provincial</h3>
@@ -734,6 +740,31 @@
         <p class="muted">ARCA debía dictar las normas operativas del régimen dentro de los 15 días hábiles desde la vigencia de la reglamentación.</p>
         <p>Además, el Art. 13° del Anexo I habilitó una <strong>compensación de emergencia</strong> para prestadores por lo facturado entre diciembre de 2023 y diciembre de 2024, tramitable por la Plataforma Trámites a Distancia (TAD):</p>
         <a class="btn-sm" href="https://www.argentina.gob.ar/servicio/solicitud-de-compensacion-de-emergencia-para-prestadores" target="_blank" rel="noopener" style="display:inline-block;margin-top:.4rem">🧾 Solicitar compensación de emergencia ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================== TEA ====================== -->
+  <div class="panel" id="panel-tea">
+    <div class="wrap">
+      <div class="card" style="border-left:4px solid #7c4dff">
+        <h2>🧩 Plan Nacional del Trastorno del Espectro Autista (TEA)</h2>
+        <p>El Ministerio de Salud aprobó el <strong>Plan Nacional del TEA</strong> mediante la <strong>Resolución 1115/2026</strong> (BO 24/08/2026), en el marco de la <strong>Ley 27.043</strong> y su <strong>Decreto Reglamentario 777/2019</strong>, que declaran de Interés Nacional el abordaje integral e interdisciplinario de las personas con Trastorno del Espectro Autista.</p>
+        <p>La autoridad de aplicación es la <strong>Dirección Nacional de Abordaje Integral de Salud Mental</strong> del Ministerio de Salud, con intervención de la Secretaría Nacional de Discapacidad.</p>
+        <div id="tea-info" class="result-box"><p class="loading">Cargando información del plan...</p></div>
+      </div>
+
+      <div class="card">
+        <h2>🪪 Relación con el trámite del CUD</h2>
+        <p>El TEA <strong>no es, por sí solo, un tipo de discapacidad separado</strong> en el trámite del Certificado Único de Discapacidad: se evalúa dentro de la categoría <strong>"Discapacidad intelectual"</strong>. El informe diagnóstico con escala DSM-5 o CIE-11 es la documentación habitualmente requerida, y el CUD puede otorgarse aunque no haya compromiso intelectual asociado — lo relevante es documentar las dificultades en la vida cotidiana.</p>
+        <p class="muted">El Plan Nacional del TEA no modifica estos requisitos: establece lineamientos de política sanitaria (formación, detección temprana, investigación) sobre la base del Consenso de Diagnóstico y Tratamiento aprobado por la Resolución 2641/2019.</p>
+        <button class="go-btn" onclick="switchTab('cud')">Ver requisitos del CUD por tipo de discapacidad</button>
+      </div>
+
+      <div class="card">
+        <h2>🔬 Evidencia médica y tratamientos sobre TEA</h2>
+        <p>El módulo Médico del Observatorio incluye artículos y ensayos clínicos recientes sobre discapacidad intelectual, que incluye al TEA (síndrome de Down, TEA, TDAH).</p>
+        <button class="go-btn" onclick="switchTab('medico')">Ver evidencia médica</button>
       </div>
     </div>
   </div>
@@ -2151,6 +2182,7 @@
       if (name === 'estadistico') initEstadistico();
       if (name === 'gcba') initGcba();
       if (name === 'comuna_07') initComuna07();
+      if (name === 'tea') initTea();
     }
 
     /* ---------- helpers ---------- */
@@ -2303,6 +2335,60 @@
         html += '</div>';
       });
       return html;
+    }
+
+    /* ---------- Plan Nacional TEA ---------- */
+    function renderTea(data) {
+      let html = '';
+      html += '<div class="kv-row"><dt>Normativa</dt><dd>' + escapeHtml(data.normativa || '') + '</dd></div>';
+      html += '<div class="kv-row"><dt>Publicación BO</dt><dd>' + escapeHtml(data.fecha_publicacion_bo || '') + '</dd></div>';
+      html += '<div class="kv-row"><dt>Autoridad de aplicación</dt><dd>' + escapeHtml(data.autoridad_aplicacion || '') + '</dd></div>';
+
+      if (data.objetivo_general) {
+        html += '<h3 style="margin-top:1rem">Objetivo general</h3><p>' + escapeHtml(data.objetivo_general) + '</p>';
+      }
+      if (data.perspectiva) {
+        html += '<p class="muted">' + escapeHtml(data.perspectiva) + '</p>';
+      }
+      if (data.ejes && data.ejes.length) {
+        html += '<h3 style="margin-top:1rem">Ejes estratégicos</h3><ol style="padding-left:1.2rem;margin:.4rem 0">';
+        data.ejes.forEach(e => {
+          html += '<li style="margin-bottom:.5rem"><strong>' + escapeHtml(e.nombre || '') + '</strong>';
+          if (e.descripcion) html += '<br><span class="muted">' + escapeHtml(e.descripcion) + '</span>';
+          html += '</li>';
+        });
+        html += '</ol>';
+      }
+      if (data.marco_normativo && data.marco_normativo.length) {
+        html += '<h3 style="margin-top:1rem">Marco normativo</h3><ul style="padding-left:1.2rem;margin:.4rem 0">';
+        data.marco_normativo.forEach(n => {
+          html += '<li style="margin-bottom:.5rem">';
+          if (n.url) {
+            html += '<a href="' + escapeHtml(n.url) + '" target="_blank" rel="noopener"><strong>'
+              + escapeHtml(n.norma || '') + '</strong> ↗</a>';
+          } else {
+            html += '<strong>' + escapeHtml(n.norma || '') + '</strong>';
+          }
+          if (n.descripcion) html += '<br><span class="muted">' + escapeHtml(n.descripcion) + '</span>';
+          html += '</li>';
+        });
+        html += '</ul>';
+      }
+      if (data.financiamiento) {
+        html += '<p class="muted" style="margin-top:.8rem">💰 ' + escapeHtml(data.financiamiento) + '</p>';
+      }
+      if (data.links_oficiales && data.links_oficiales.length) {
+        html += '<h3 style="margin-top:1rem">Links oficiales</h3><div style="display:flex;flex-direction:column;gap:.4rem">';
+        data.links_oficiales.forEach(l => {
+          html += '<a href="' + escapeHtml(l.url) + '" target="_blank" rel="noopener">📄 ' + escapeHtml(l.nombre) + ' ↗</a>';
+        });
+        html += '</div>';
+      }
+      return html;
+    }
+
+    function initTea() {
+      loadInto('/api/cud/tea', 'tea-info', renderTea);
     }
 
     function initCud() {

@@ -830,3 +830,145 @@ SUBE_INFO = {
         },
     ],
 }
+
+# ── PLAN_TEA_INFO ────────────────────────────────────────────────────────────
+# Plan Nacional del Trastorno del Espectro Autista (TEA).
+# Fuente: Resolución 1115/2026 (RESOL-2026-1115-APN-MS), Ministerio de Salud
+# (BO 24/08/2026), y su marco normativo (Ley 27.043, Decreto Reglamentario
+# 777/2019, Resolución 2641/2019, Resolución 3050/2025).
+PLAN_TEA_INFO = {
+    'titulo': 'Plan Nacional del Trastorno del Espectro Autista (TEA)',
+    'normativa': 'Resolución 1115/2026 (RESOL-2026-1115-APN-MS) — Ministerio de Salud',
+    'fecha_resolucion': '21/08/2026',
+    'fecha_publicacion_bo': '24/08/2026',
+    'boletin_oficial_url': 'https://www.boletinoficial.gob.ar/detalleAviso/primera/346272/20260824',
+    'autoridad_aplicacion': (
+        'Dirección Nacional de Abordaje Integral de Salud Mental — Subsecretaría de Institutos '
+        'y Fiscalización, Secretaría de Gestión Sanitaria (Ministerio de Salud)'
+    ),
+    'organismos_intervinientes': [
+        'Dirección Nacional de Abordaje por Curso de Vida',
+        'Dirección Nacional de Calidad y Desarrollo del Talento en Salud',
+        'Secretaría Nacional de Discapacidad',
+    ],
+    'descripcion': (
+        'El Plan Nacional del TEA fija la referencia técnica a nivel nacional sobre los '
+        'principales trastornos neurológicos asociados a la salud mental, para el trabajo '
+        'conjunto con las jurisdicciones locales, organismos públicos y privados y la '
+        'comunidad del campo de la Salud Mental.'
+    ),
+    'objetivo_general': (
+        'Impulsar la mejora continua en la calidad de la atención, el tratamiento, la '
+        'rehabilitación, recuperación y continuidad de cuidados destinados a las personas '
+        'con TEA y sus familias, promoviendo el diagnóstico y la detección temprana, la '
+        'intervención oportuna y el acceso a tratamientos adecuados, en concordancia con '
+        'los estándares clínicos nacionales e internacionales vigentes.'
+    ),
+    'perspectiva': (
+        'El TEA se reconoce desde una perspectiva del neurodesarrollo, como una condición '
+        'que se configura en el curso del desarrollo y que debe comprenderse en relación '
+        'con las trayectorias evolutivas de las personas (Decreto Reglamentario 777/2019).'
+    ),
+    'ejes': [
+        {
+            'numero': 1,
+            'nombre': 'Promoción y prevención',
+            'descripcion': 'Campañas nacionales de sensibilización y reducción del estigma.',
+        },
+        {
+            'numero': 2,
+            'nombre': 'Formación de recursos humanos',
+            'descripcion': 'Capacitación en detección temprana y abordaje interdisciplinario, '
+                            'en línea con el Programa Nacional de Formación en Salud Mental '
+                            '(Resolución 3050/2025).',
+        },
+        {
+            'numero': 3,
+            'nombre': 'Apoyo integral',
+            'descripcion': 'Atención psicológica, psiquiátrica y social a las personas con '
+                            'TEA y sus familias.',
+        },
+        {
+            'numero': 4,
+            'nombre': 'Investigación e innovación',
+            'descripcion': 'Estudios epidemiológicos y sistemas de información sobre TEA.',
+        },
+        {
+            'numero': 5,
+            'nombre': 'Coordinación intersectorial',
+            'descripcion': 'Articulación entre salud, educación y otros sectores, y con las '
+                            'jurisdicciones locales.',
+        },
+        {
+            'numero': 6,
+            'nombre': 'Diagnóstico epidemiológico',
+            'descripcion': 'Vigilancia y mapeo de la situación nacional del TEA.',
+        },
+    ],
+    'financiamiento': (
+        'El dictado e implementación de la medida no implica erogación presupuestaria '
+        'alguna para la jurisdicción (Arts. 2° y 3°, Resolución 1115/2026): se desarrolla '
+        'en el marco de los recursos y programas ya existentes del Ministerio de Salud.'
+    ),
+    'relacion_con_cud': (
+        'El TEA no es, por sí solo, un tipo de discapacidad separado en el trámite del CUD: '
+        'se evalúa dentro de la categoría "intelectual" (ver /api/cud/requisitos?tipo=intelectual). '
+        'El informe diagnóstico con escala DSM-5 o CIE-11 es la documentación habitualmente '
+        'requerida, y el CUD puede otorgarse aunque no haya compromiso intelectual asociado, '
+        'documentando las dificultades en la vida cotidiana.'
+    ),
+    'marco_normativo': [
+        {
+            'norma': 'Ley 27.043',
+            'descripcion': 'Declara de Interés Nacional el abordaje integral e interdisciplinario '
+                            'de las personas con Trastornos del Espectro Autista (TEA).',
+            'url': 'https://www.argentina.gob.ar/normativa/nacional/ley-27043-240452',
+        },
+        {
+            'norma': 'Decreto Reglamentario 777/2019',
+            'descripcion': 'Reglamenta la Ley 27.043 y establece la perspectiva del '
+                            'neurodesarrollo para comprender el TEA.',
+            'url': 'https://www.argentina.gob.ar/normativa/nacional/decreto-777-2019-331886',
+        },
+        {
+            'norma': 'Resolución 2641/2019 (Ministerio de Salud)',
+            'descripcion': 'Aprueba el Consenso sobre Diagnóstico y Tratamiento de Personas '
+                            'con Trastorno del Espectro Autista.',
+            'url': 'https://www.argentina.gob.ar/normativa/nacional/resoluci%C3%B3n-2641-2019-330297',
+        },
+        {
+            'norma': 'Resolución 3050/2025 (Ministerio de Salud)',
+            'descripcion': 'Aprueba el Programa Nacional de Formación en Salud Mental, marco '
+                            'en el que se inscribe la formación prevista por el Plan TEA.',
+            'url': None,
+        },
+        {
+            'norma': 'Resolución 1115/2026 (Ministerio de Salud)',
+            'descripcion': 'Aprueba el Plan Nacional del Trastorno del Espectro Autista (TEA).',
+            'url': 'https://www.boletinoficial.gob.ar/detalleAviso/primera/346272/20260824',
+        },
+    ],
+    'links_oficiales': [
+        {
+            'nombre': 'Resolución 1115/2026 — Boletín Oficial',
+            'url': 'https://www.boletinoficial.gob.ar/detalleAviso/primera/346272/20260824',
+        },
+        {
+            'nombre': 'Ley 27.043 — Argentina.gob.ar',
+            'url': 'https://www.argentina.gob.ar/normativa/nacional/ley-27043-240452',
+        },
+        {
+            'nombre': 'Decreto Reglamentario 777/2019 — Argentina.gob.ar',
+            'url': 'https://www.argentina.gob.ar/normativa/nacional/decreto-777-2019-331886',
+        },
+        {
+            'nombre': 'Resolución 2641/2019 — Consenso Diagnóstico y Tratamiento TEA',
+            'url': 'https://www.argentina.gob.ar/normativa/nacional/resoluci%C3%B3n-2641-2019-330297',
+        },
+    ],
+    'nota': (
+        'El Anexo I con el detalle técnico completo del Plan (IF-2026-79614776-APN-DNAISM#MS) '
+        'se publica en la edición web del Boletín Oficial (boletinoficial.gob.ar) y todavía no '
+        'está disponible como texto consolidado en argentina.gob.ar/normativa.'
+    ),
+}
