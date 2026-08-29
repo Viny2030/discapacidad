@@ -972,3 +972,131 @@ PLAN_TEA_INFO = {
         'está disponible como texto consolidado en argentina.gob.ar/normativa.'
     ),
 }
+
+# ── MUSICOTERAPIA_INFO ──────────────────────────────────────────────────────
+# Organizaciones profesionales, evidencia científica y recursos sonoros de
+# musicoterapia, organizados por tipo de discapacidad/técnica clínica.
+MUSICOTERAPIA_INFO = {
+    'titulo': 'Musicoterapia — Organizaciones, Evidencia y Recursos Sonoros',
+    'descripcion': (
+        'La musicoterapia es una disciplina clínica que utiliza intervenciones sonoras y '
+        'musicales estructuradas —con base en evidencia— para el abordaje de necesidades '
+        'motrices, comunicacionales, cognitivas y sensoriales en personas con discapacidad. '
+        'Esta sección reúne organizaciones profesionales de referencia, evidencia científica '
+        'y recursos sonoros funcionales organizados según la técnica y el tipo de discapacidad '
+        'a la que se aplican.'
+    ),
+    'organizaciones_profesionales': [
+        {
+            'nombre': 'World Federation of Music Therapy (WFMT)',
+            'url': 'https://www.wfmt.info',
+            'descripcion': 'Información global, comités clínicos y directrices internacionales.',
+        },
+        {
+            'nombre': 'Asociación Argentina de Musicoterapia (ASAM)',
+            'url': 'https://musicoterapia.org.ar',
+            'descripcion': 'Padrón de profesionales matriculados y marco normativo local.',
+        },
+        {
+            'nombre': 'American Music Therapy Association (AMTA)',
+            'url': 'https://www.musictherapy.org',
+            'descripcion': 'Guías clínicas, fichas informativas por diagnóstico y estándares de práctica.',
+        },
+    ],
+    'evidencia_cientifica': [
+        {
+            'nombre': 'PubMed — Musicoterapia Neurológica (NMT)',
+            'url': 'https://pubmed.ncbi.nlm.nih.gov/?term=Neurologic+Music+Therapy',
+            'descripcion': 'Ensayos clínicos y revisiones sobre rehabilitación motora y cognitiva.',
+        },
+        {
+            'nombre': 'PubMed — Terapia de Entonación Melódica (MIT)',
+            'url': 'https://pubmed.ncbi.nlm.nih.gov/?term=Melodic+Intonation+Therapy',
+            'descripcion': 'Estudios de recuperación del habla, afasias y apraxias.',
+        },
+        {
+            'nombre': 'SciELO — Musicoterapia en Iberoamérica',
+            'url': 'https://search.scielo.org/?q=musicoterapia+discapacidad',
+            'descripcion': 'Investigaciones y estudios de caso en español y portugués sobre '
+                            'neurodesarrollo y discapacidad.',
+        },
+    ],
+    # Recursos sonoros organizados por tipo de discapacidad / técnica clínica aplicable.
+    'recursos_por_discapacidad': [
+        {
+            'discapacidad': 'Motriz — rehabilitación de la marcha y coordinación',
+            'tecnica': 'Estimulación Auditiva Rítmica (RAS — Rhythmic Auditory Stimulation)',
+            'descripcion': 'Pistas con pulso isócrono a BPM fijo, usadas en reentrenamiento de '
+                            'la marcha y coordinación motriz.',
+            'recursos': [
+                {'nombre': 'Metrónomo con música estructurada a 60 BPM', 'tipo': 'YouTube',
+                 'url': 'https://www.youtube.com/watch?v=kQW8Spw744M'},
+                {'nombre': 'Patrón rítmico isócrono a 80 BPM para entrenamiento de paso', 'tipo': 'YouTube',
+                 'url': 'https://www.youtube.com/watch?v=y2hKk-lQ_a4'},
+                {'nombre': 'Ritmo constante a 100 BPM para coordinación motriz', 'tipo': 'YouTube',
+                 'url': 'https://www.youtube.com/watch?v=G6P8c3W6r4g'},
+                {'nombre': 'Búsqueda YouTube — Rhythmic Auditory Stimulation / metrónomo', 'tipo': 'YouTube (búsqueda)',
+                 'url': 'https://www.youtube.com/results?search_query=Rhythmic+Auditory+Stimulation+metronome'},
+                {'nombre': 'Spotify — Pistas y playlists RAS', 'tipo': 'Spotify (búsqueda)',
+                 'url': 'https://open.spotify.com/search/Rhythmic%20Auditory%20Stimulation'},
+                {'nombre': 'Spotify — Playlist de ritmos y tiempos constantes', 'tipo': 'Spotify (playlist)',
+                 'url': 'https://open.spotify.com/playlist/37i9dQZF1DX8Uebhn9wzrS'},
+            ],
+        },
+        {
+            'discapacidad': 'Habla y lenguaje — afasias y apraxias',
+            'tecnica': 'Terapia de Entonación Melódica (MIT — Melodic Intonation Therapy)',
+            'descripcion': 'Técnica que usa el canto y la entonación melódica para facilitar la '
+                            'recuperación del habla en personas con afasia o apraxia.',
+            'recursos': [
+                {'nombre': 'PubMed — evidencia clínica de MIT', 'tipo': 'Evidencia científica',
+                 'url': 'https://pubmed.ncbi.nlm.nih.gov/?term=Melodic+Intonation+Therapy'},
+            ],
+        },
+        {
+            'discapacidad': 'TEA / sensorial — regulación de sobrecarga sensorial',
+            'tecnica': 'Música de baja estimulación (Sensory Regulation)',
+            'descripcion': 'Ambientes sonoros continuos, sin cambios bruscos ni percusión '
+                            'marcada, diseñados para modular sobrecargas sensoriales.',
+            'recursos': [
+                {'nombre': 'Sesión continua de baja estimulación para reducción de sobrecarga sensorial',
+                 'tipo': 'YouTube', 'url': 'https://www.youtube.com/watch?v=WPni755-Krg'},
+                {'nombre': 'Paisaje sonoro suave sin percusión para calma y foco',
+                 'tipo': 'YouTube', 'url': 'https://www.youtube.com/watch?v=1ZYbU82GVz4'},
+                {'nombre': 'Búsqueda YouTube — Low stimulation music / sensory / autismo', 'tipo': 'YouTube (búsqueda)',
+                 'url': 'https://www.youtube.com/results?search_query=Low+stimulation+music+sensory+autism'},
+            ],
+        },
+        {
+            'discapacidad': 'Cognitiva / atención — foco, concentración y relajación',
+            'tecnica': 'Música de enfoque y relajación (ondas alfa, tempo estable)',
+            'descripcion': 'Playlists de fondo sin cambios bruscos de volumen ni ritmo, usadas '
+                            'como apoyo a la concentración y la regulación emocional.',
+            'recursos': [
+                {'nombre': 'Spotify — Playlist Deep Focus', 'tipo': 'Spotify (playlist)',
+                 'url': 'https://open.spotify.com/playlist/37i9dQZF1DWZeKCadgRdKQ'},
+                {'nombre': 'Spotify — Playlist Peaceful Piano', 'tipo': 'Spotify (playlist)',
+                 'url': 'https://open.spotify.com/playlist/37i9dQZF1DX4sWSpwq3LiO'},
+            ],
+        },
+    ],
+    'bancos_audio_libres': [
+        {
+            'nombre': 'Free Music Archive — Ambient / Minimalista',
+            'url': 'https://freemusicarchive.org/genre/Ambient/',
+            'descripcion': 'Pistas libres de derechos para uso terapéutico propio.',
+        },
+        {
+            'nombre': 'Incompetech',
+            'url': 'https://incompetech.com/music/royalty-free/music.html',
+            'descripcion': 'Pistas libres de derechos filtrables por BPM exacto, útiles para '
+                            'ejercicios motores con tempo controlado.',
+        },
+    ],
+    'nota': (
+        'Los recursos externos (YouTube, Spotify, bancos de audio) son de terceros y se listan '
+        'a título orientativo: no reemplazan la indicación de un/a musicoterapeuta matriculado/a. '
+        'Verificar siempre la vigencia de los enlaces, ya que el contenido de plataformas de '
+        'terceros puede modificarse o discontinuarse.'
+    ),
+}

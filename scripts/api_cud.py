@@ -21,6 +21,7 @@ from scripts.datos_cud import (
     FAQ,
     SUBE_INFO,
     PLAN_TEA_INFO,
+    MUSICOTERAPIA_INFO,
 )
 
 router = APIRouter(prefix="/api/cud", tags=["CUD"])
@@ -63,6 +64,7 @@ async def info_general():
             "/api/cud/sube",
             "/api/cud/obras-sociales",
             "/api/cud/tea",
+            "/api/cud/musicoterapia",
         ],
     }
 
@@ -227,3 +229,15 @@ async def plan_tea():
     aplicación y su relación con el trámite del CUD.
     """
     return PLAN_TEA_INFO
+
+
+@router.get("/musicoterapia")
+async def musicoterapia():
+    """
+    Musicoterapia: organizaciones profesionales, evidencia científica y
+    recursos sonoros (YouTube, Spotify, bancos de audio libres de derechos),
+    organizados por tipo de discapacidad y técnica clínica aplicable
+    (RAS para rehabilitación motriz, MIT para habla/afasias, música de baja
+    estimulación para TEA/sensorial, música de enfoque para lo cognitivo).
+    """
+    return MUSICOTERAPIA_INFO

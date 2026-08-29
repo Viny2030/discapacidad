@@ -280,6 +280,7 @@
     <button class="tab-btn" data-panel="calculadora">Calculadora</button>
     <button class="tab-btn" data-panel="pensiones">Pensiones</button>
     <button class="tab-btn" data-panel="tea">Plan TEA</button>
+    <button class="tab-btn" data-panel="musicoterapia">Musicoterapia</button>
     <button class="tab-btn" data-panel="comparador">Comparador</button>
     <button class="tab-btn" data-panel="about">About (EN)</button>
     <button class="tab-btn" data-panel="gcba">GCBA</button>
@@ -343,6 +344,11 @@
           <h3>🧩 Plan Nacional TEA</h3>
           <p>Plan Nacional del Trastorno del Espectro Autista aprobado por el Ministerio de Salud (Resolución 1115/2026): ejes, marco normativo y su relación con el CUD.</p>
           <button class="go-btn" onclick="switchTab('tea')">Ver el plan</button>
+        </div>
+        <div class="home-card">
+          <h3>🎵 Musicoterapia</h3>
+          <p>Organizaciones profesionales, evidencia científica y recursos sonoros (RAS, MIT, baja estimulación) organizados por tipo de discapacidad.</p>
+          <button class="go-btn" onclick="switchTab('musicoterapia')">Ver recursos</button>
         </div>
         <div class="home-card">
           <h3>⚖️ Comparador provincial</h3>
@@ -765,6 +771,17 @@
         <h2>🔬 Evidencia médica y tratamientos sobre TEA</h2>
         <p>El módulo Médico del Observatorio incluye artículos y ensayos clínicos recientes sobre discapacidad intelectual, que incluye al TEA (síndrome de Down, TEA, TDAH).</p>
         <button class="go-btn" onclick="switchTab('medico')">Ver evidencia médica</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================== MUSICOTERAPIA ====================== -->
+  <div class="panel" id="panel-musicoterapia">
+    <div class="wrap">
+      <div class="card" style="border-left:4px solid #ff6f91">
+        <h2>🎵 Musicoterapia</h2>
+        <p>La musicoterapia usa intervenciones sonoras y musicales estructuradas —con base en evidencia— para abordar necesidades motrices, comunicacionales, cognitivas y sensoriales en personas con discapacidad. Organizaciones profesionales, evidencia científica y recursos sonoros según el tipo de discapacidad y la técnica clínica aplicable.</p>
+        <div id="musicoterapia-info" class="result-box"><p class="loading">Cargando recursos de musicoterapia...</p></div>
       </div>
     </div>
   </div>
@@ -2183,6 +2200,7 @@
       if (name === 'gcba') initGcba();
       if (name === 'comuna_07') initComuna07();
       if (name === 'tea') initTea();
+      if (name === 'musicoterapia') initMusicoterapia();
     }
 
     /* ---------- helpers ---------- */
@@ -2389,6 +2407,72 @@
 
     function initTea() {
       loadInto('/api/cud/tea', 'tea-info', renderTea);
+    }
+
+    /* ---------- Musicoterapia ---------- */
+    function renderMusicoterapia(data) {
+      let html = '';
+      if (data.descripcion) {
+        html += '<p>' + escapeHtml(data.descripcion) + '</p>';
+      }
+
+      if (data.organizaciones_profesionales && data.organizaciones_profesionales.length) {
+        html += '<h3 style="margin-top:1rem">🏛️ Organizaciones y colegios profesionales</h3>';
+        data.organizaciones_profesionales.forEach(o => {
+          html += '<div class="article-card">';
+          html += '<a href="' + escapeHtml(o.url) + '" target="_blank" rel="noopener"><strong>' + escapeHtml(o.nombre) + '</strong> ↗</a>';
+          if (o.descripcion) html += '<br><span class="muted">' + escapeHtml(o.descripcion) + '</span>';
+          html += '</div>';
+        });
+      }
+
+      if (data.evidencia_cientifica && data.evidencia_cientifica.length) {
+        html += '<h3 style="margin-top:1rem">🔬 Evidencia científica y artículos clínicos</h3>';
+        data.evidencia_cientifica.forEach(e => {
+          html += '<div class="article-card">';
+          html += '<a href="' + escapeHtml(e.url) + '" target="_blank" rel="noopener"><strong>' + escapeHtml(e.nombre) + '</strong> ↗</a>';
+          if (e.descripcion) html += '<br><span class="muted">' + escapeHtml(e.descripcion) + '</span>';
+          html += '</div>';
+        });
+      }
+
+      if (data.recursos_por_discapacidad && data.recursos_por_discapacidad.length) {
+        html += '<h3 style="margin-top:1rem">🎧 Recursos sonoros por tipo de discapacidad</h3>';
+        data.recursos_por_discapacidad.forEach(grp => {
+          html += '<div class="article-card">';
+          html += '<strong>' + escapeHtml(grp.discapacidad || '') + '</strong>';
+          if (grp.tecnica) html += '<br><span style="color:#7c4dff;font-weight:600">' + escapeHtml(grp.tecnica) + '</span>';
+          if (grp.descripcion) html += '<br><span class="muted">' + escapeHtml(grp.descripcion) + '</span>';
+          if (grp.recursos && grp.recursos.length) {
+            html += '<div style="display:flex;flex-direction:column;gap:.3rem;margin-top:.5rem">';
+            grp.recursos.forEach(r => {
+              html += '<a href="' + escapeHtml(r.url) + '" target="_blank" rel="noopener">▶ ' + escapeHtml(r.nombre)
+                + (r.tipo ? ' <span class="muted">(' + escapeHtml(r.tipo) + ')</span>' : '') + ' ↗</a>';
+            });
+            html += '</div>';
+          }
+          html += '</div>';
+        });
+      }
+
+      if (data.bancos_audio_libres && data.bancos_audio_libres.length) {
+        html += '<h3 style="margin-top:1rem">🎼 Bancos de audio libres de derechos</h3>';
+        data.bancos_audio_libres.forEach(b => {
+          html += '<div class="article-card">';
+          html += '<a href="' + escapeHtml(b.url) + '" target="_blank" rel="noopener"><strong>' + escapeHtml(b.nombre) + '</strong> ↗</a>';
+          if (b.descripcion) html += '<br><span class="muted">' + escapeHtml(b.descripcion) + '</span>';
+          html += '</div>';
+        });
+      }
+
+      if (data.nota) {
+        html += '<p class="muted" style="margin-top:.8rem">⚠️ ' + escapeHtml(data.nota) + '</p>';
+      }
+      return html;
+    }
+
+    function initMusicoterapia() {
+      loadInto('/api/cud/musicoterapia', 'musicoterapia-info', renderMusicoterapia);
     }
 
     function initCud() {
