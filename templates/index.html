@@ -2226,6 +2226,30 @@
       return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
     }
 
+    // Si la URL es un video puntual de YouTube (watch?v=...), devuelve la miniatura
+    // oficial que sirve YouTube (img.youtube.com) para poder mostrar una imagen en
+    // vez de solo un link de texto. Los links de "búsqueda" (search_query=...) no
+    // tienen miniatura porque no apuntan a un video puntual.
+    function youtubeThumbUrl(url) {
+      const m = /(?:youtube\.com\/watch\?v=|youtu\.be\/)([\w-]{6,})/.exec(url || '');
+      return m ? 'https://img.youtube.com/vi/' + m[1] + '/hqdefault.jpg' : null;
+    }
+
+    // Arma el bloque de un recurso: miniatura (si es un video puntual de YouTube) + link.
+    function recursoConImagenHtml(r) {
+      const thumb = youtubeThumbUrl(r.url);
+      const etiqueta = r.tipo ? ' <span class="muted">(' + escapeHtml(r.tipo) + ')</span>' : '';
+      if (thumb) {
+        return '<a href="' + escapeHtml(r.url) + '" target="_blank" rel="noopener" '
+          + 'style="display:flex;align-items:center;gap:.6rem;text-decoration:none">'
+          + '<img src="' + thumb + '" alt="" loading="lazy" '
+          + 'style="width:100px;height:56px;object-fit:cover;border-radius:6px;flex-shrink:0" '
+          + 'onerror="this.style.display=\'none\'">'
+          + '<span>▶ ' + escapeHtml(r.nombre) + etiqueta + ' ↗</span></a>';
+      }
+      return '<a href="' + escapeHtml(r.url) + '" target="_blank" rel="noopener">' + escapeHtml(r.nombre) + etiqueta + ' ↗</a>';
+    }
+
     function renderJSON(data) {
       if (data === null || data === undefined) return '<span class="muted">Sin datos</span>';
       if (Array.isArray(data)) {
@@ -2464,11 +2488,8 @@
             html += '<span style="color:#7c4dff;font-weight:600">' + escapeHtml(t.nombre || '') + '</span>';
             if (t.descripcion) html += '<br><span class="muted">' + escapeHtml(t.descripcion) + '</span>';
             if (t.recursos && t.recursos.length) {
-              html += '<div style="display:flex;flex-direction:column;gap:.3rem;margin-top:.4rem">';
-              t.recursos.forEach(r => {
-                html += '<a href="' + escapeHtml(r.url) + '" target="_blank" rel="noopener">▶ ' + escapeHtml(r.nombre)
-                  + (r.tipo ? ' <span class="muted">(' + escapeHtml(r.tipo) + ')</span>' : '') + ' ↗</a>';
-              });
+              html += '<div style="display:flex;flex-direction:column;gap:.4rem;margin-top:.4rem">';
+              t.recursos.forEach(r => { html += recursoConImagenHtml(r); });
               html += '</div>';
             }
             html += '</div>';
@@ -2530,11 +2551,8 @@
           const items = t[campo];
           if (items && items.length) {
             html += '<p style="margin:.5rem 0 .2rem"><strong>' + titulo + '</strong></p>';
-            html += '<div style="display:flex;flex-direction:column;gap:.3rem">';
-            items.forEach(r => {
-              html += '<a href="' + escapeHtml(r.url) + '" target="_blank" rel="noopener">' + escapeHtml(r.nombre)
-                + (r.tipo ? ' <span class="muted">(' + escapeHtml(r.tipo) + ')</span>' : '') + ' ↗</a>';
-            });
+            html += '<div style="display:flex;flex-direction:column;gap:.4rem">';
+            items.forEach(r => { html += recursoConImagenHtml(r); });
             html += '</div>';
           }
         });
