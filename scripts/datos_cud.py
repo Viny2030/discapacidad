@@ -1224,3 +1224,239 @@ MUSICOTERAPIA_INFO = {
         'terceros puede modificarse o discontinuarse.'
     ),
 }
+
+# ── TRATAMIENTOS_VISUALES_INFO ──────────────────────────────────────────────
+# Tratamientos y tecnologías basadas en estimulación/retroalimentación visual,
+# etiquetados por tipo de discapacidad (misma taxonomía que REQUISITOS_POR_TIPO).
+TRATAMIENTOS_VISUALES_INFO = {
+    'titulo': 'Tratamientos y Tecnologías Visuales — Rehabilitación y Comunicación',
+    'descripcion': (
+        'Conjunto de técnicas y tecnologías que usan la vía visual —ilusión óptica, '
+        'pistas proyectadas, seguimiento ocular, pictogramas o entornos multisensoriales— '
+        'para la rehabilitación motora, la comunicación y la regulación sensorial en '
+        'distintos tipos de discapacidad.'
+    ),
+    'tratamientos': [
+        {
+            'nombre': 'Terapia de Espejo (Mirror Therapy)',
+            'aplica_a': ['motora'],
+            'objetivo': 'Rehabilitación motora en miembros afectados tras accidentes '
+                         'cerebrovasculares (ACV), hemiparesia o dolor del miembro fantasma.',
+            'como_funciona': 'Se coloca un espejo vertical en la línea media del cuerpo; al '
+                              'mover la extremidad sana, el reflejo crea la ilusión óptica de '
+                              'que el lado parético se mueve correctamente, reactivando '
+                              'circuitos motores en la corteza cerebral.',
+            'evidencia': [
+                {'nombre': 'PubMed — Evidencia clínica de Mirror Therapy',
+                 'url': 'https://pubmed.ncbi.nlm.nih.gov/29993119/'},
+                {'nombre': 'Búsqueda PubMed — Mirror Therapy stroke rehabilitation',
+                 'url': 'https://pubmed.ncbi.nlm.nih.gov/?term=mirror+therapy+stroke+rehabilitation'},
+                {'nombre': 'Búsqueda PubMed — Mirror Therapy miembro fantasma (phantom limb pain)',
+                 'url': 'https://pubmed.ncbi.nlm.nih.gov/?term=mirror+therapy+phantom+limb+pain'},
+            ],
+            'recursos': [
+                {'nombre': 'Búsqueda — cómo hacer terapia de espejo en casa (guía en video)',
+                 'tipo': 'YouTube (búsqueda)',
+                 'url': 'https://www.youtube.com/results?search_query=mirror+therapy+for+stroke+how+to'},
+            ],
+        },
+        {
+            'nombre': 'Pistas y Guías Visuales (Visual Cueing)',
+            'aplica_a': ['motora'],
+            'objetivo': 'Superar el bloqueo de la marcha (freezing) e inestabilidad en '
+                         'personas con Parkinson o alteraciones del control motor.',
+            'como_funciona': 'Se proyectan líneas transversales en el suelo o marcas visuales '
+                              '(mediante láseres en el calzado o bastones adaptados) para que '
+                              'el cerebro utilice la corteza visual consciente y ejecute el '
+                              'paso, saltando los ganglios basales dañados.',
+            'evidencia': [
+                {'nombre': 'Búsqueda PubMed — pistas visuales para la marcha en Parkinson',
+                 'url': 'https://pubmed.ncbi.nlm.nih.gov/?term=visual+cueing+parkinson+gait'},
+                {'nombre': 'Búsqueda PubMed — laser cane / shoe cueing Parkinson freezing of gait',
+                 'url': 'https://pubmed.ncbi.nlm.nih.gov/?term=laser+cue+freezing+of+gait+parkinson'},
+            ],
+            'recursos': [
+                {'nombre': 'Búsqueda — laser cane / bastón láser para freezing of gait',
+                 'tipo': 'YouTube (búsqueda)',
+                 'url': 'https://www.youtube.com/results?search_query=laser+cane+freezing+of+gait+parkinson'},
+            ],
+        },
+        {
+            'nombre': 'Seguimiento Ocular (Eye-Tracking) y Control por la Mirada',
+            'aplica_a': ['motora', 'visceral'],
+            'objetivo': 'Comunicación, acceso digital y rehabilitación en personas con '
+                         'tetraplejía, parálisis cerebral severa o ELA (Esclerosis Lateral '
+                         'Amiotrófica).',
+            'como_funciona': 'Cámaras infrarrojas calibran el movimiento de la pupila sobre '
+                              'una pantalla para que el usuario escriba, hable mediante '
+                              'síntesis de voz o interactúe solo con fijar la mirada.',
+            'evidencia': [
+                {'nombre': 'Búsqueda PubMed — eye-tracking augmentative communication ALS',
+                 'url': 'https://pubmed.ncbi.nlm.nih.gov/?term=eye+tracking+augmentative+communication+ALS'},
+                {'nombre': 'Búsqueda PubMed — eye-tracking cerebral palsy assistive technology',
+                 'url': 'https://pubmed.ncbi.nlm.nih.gov/?term=eye+tracking+cerebral+palsy+assistive+technology'},
+                {'nombre': 'Búsqueda PubMed — eye gaze communication tetraplegia',
+                 'url': 'https://pubmed.ncbi.nlm.nih.gov/?term=eye+gaze+communication+tetraplegia'},
+            ],
+            'sistemas_y_software': [
+                {'nombre': 'Tobii Dynavox (soluciones de comunicación por mirada)',
+                 'url': 'https://es.tobiidynavox.com/'},
+                {'nombre': 'Búsqueda — software libre de eye-tracking de bajo costo', 'tipo': 'YouTube (búsqueda)',
+                 'url': 'https://www.youtube.com/results?search_query=low+cost+eye+tracking+communication+ALS+DIY'},
+            ],
+            'recursos': [],
+        },
+        {
+            'nombre': 'Comunicación Aumentativa y Alternativa con Apoyo Visual (CAA / PECS)',
+            'aplica_a': ['intelectual', 'motora'],
+            'objetivo': 'Facilitar la comunicación y estructuración cognitiva en personas con '
+                         'Trastorno del Espectro Autista (TEA), afasia o discapacidad '
+                         'intelectual.',
+            'como_funciona': 'Uso de agendas visuales, tableros estructurados y pictogramas '
+                              'estandarizados para anticipar rutinas, formular peticiones y '
+                              'reducir niveles de frustración conductual.',
+            'evidencia': [
+                {'nombre': 'Búsqueda PubMed — PECS picture exchange communication system autism',
+                 'url': 'https://pubmed.ncbi.nlm.nih.gov/?term=PECS+picture+exchange+communication+system+autism'},
+                {'nombre': 'Búsqueda PubMed — augmentative alternative communication aphasia',
+                 'url': 'https://pubmed.ncbi.nlm.nih.gov/?term=augmentative+alternative+communication+aphasia'},
+                {'nombre': 'Búsqueda PubMed — visual schedules autism spectrum disorder',
+                 'url': 'https://pubmed.ncbi.nlm.nih.gov/?term=visual+schedules+autism+spectrum+disorder'},
+            ],
+            'repositorios': [
+                {'nombre': 'ARASAAC — Portal Aragonés de Comunicación Aumentativa (banco de pictogramas)',
+                 'url': 'https://arasaac.org'},
+            ],
+            'recursos': [
+                {'nombre': 'Búsqueda — cómo armar un tablero PECS / agenda visual', 'tipo': 'YouTube (búsqueda)',
+                 'url': 'https://www.youtube.com/results?search_query=como+armar+tablero+PECS+agenda+visual+TEA'},
+            ],
+        },
+        {
+            'nombre': 'Estimulación Multisensorial y Salas Snoezelen',
+            'aplica_a': ['intelectual', 'psicosocial'],
+            'objetivo': 'Modulación del procesamiento sensorial, relajación y estimulación '
+                         'cognitiva en parálisis cerebral profunda, demencias o autismo.',
+            'como_funciona': 'Espacios controlados con columnas de burbujas, haces de fibra '
+                              'óptica que cambian de color, proyectores de efectos ópticos y '
+                              'paneles interactivos causa-efecto.',
+            'evidencia': [
+                {'nombre': 'Búsqueda PubMed — Snoezelen multisensory stimulation',
+                 'url': 'https://pubmed.ncbi.nlm.nih.gov/?term=Snoezelen+multisensory+stimulation'},
+                {'nombre': 'Búsqueda PubMed — multisensory environment dementia behavior',
+                 'url': 'https://pubmed.ncbi.nlm.nih.gov/?term=multisensory+environment+dementia+behavior'},
+            ],
+            'organizacion_internacional': [
+                {'nombre': 'ISNA-MSE — Asociación Internacional Snoezelen',
+                 'url': 'https://www.isna-mse.org/'},
+            ],
+            'recursos': [
+                {'nombre': 'Búsqueda — recorrido por una sala Snoezelen', 'tipo': 'YouTube (búsqueda)',
+                 'url': 'https://www.youtube.com/results?search_query=sala+snoezelen+estimulacion+multisensorial'},
+            ],
+        },
+        {
+            'nombre': 'Lectura Fácil y Pictogramas',
+            'aplica_a': ['intelectual', 'auditiva'],
+            'objetivo': 'Facilitar la comprensión lectora y el acceso a la información en '
+                         'personas con discapacidad intelectual o hipoacusia con lengua '
+                         'materna visual (LSA), adaptando textos a un formato de fácil lectura.',
+            'como_funciona': 'Reescritura de textos con oraciones cortas, vocabulario simple y '
+                              'apoyo pictográfico, siguiendo pautas internacionales de '
+                              '"Lectura Fácil" / "Easy-to-Read".',
+            'evidencia': [
+                {'nombre': 'Búsqueda PubMed — easy-to-read text comprehension intellectual disability',
+                 'url': 'https://pubmed.ncbi.nlm.nih.gov/?term=easy-to-read+text+comprehension+intellectual+disability'},
+                {'nombre': 'Búsqueda PubMed — pictogram supported communication comprehension',
+                 'url': 'https://pubmed.ncbi.nlm.nih.gov/?term=pictogram+supported+communication+comprehension'},
+            ],
+            'repositorios': [
+                {'nombre': 'ARASAAC — materiales en Lectura Fácil con pictogramas',
+                 'url': 'https://arasaac.org'},
+            ],
+            'recursos': [],
+        },
+        {
+            'nombre': 'Videointerpretación y Subtitulado en Lengua de Señas',
+            'aplica_a': ['auditiva'],
+            'objetivo': 'Garantizar el acceso a la información y a los medios audiovisuales '
+                         'de personas sordas o hipoacúsicas.',
+            'como_funciona': 'Incorporación de ventana de intérprete en Lengua de Señas '
+                              'Argentina (LSA) y subtitulado descriptivo sincronizado en '
+                              'contenido audiovisual y videollamadas.',
+            'evidencia': [
+                {'nombre': 'Búsqueda PubMed — sign language interpreting access deaf television',
+                 'url': 'https://pubmed.ncbi.nlm.nih.gov/?term=sign+language+interpreting+access+deaf+television'},
+                {'nombre': 'Búsqueda PubMed — closed captioning comprehension deaf hard of hearing',
+                 'url': 'https://pubmed.ncbi.nlm.nih.gov/?term=closed+captioning+comprehension+deaf+hard+of+hearing'},
+            ],
+            'recursos': [
+                {'nombre': 'Búsqueda — canal de noticias con interpretación en LSA', 'tipo': 'YouTube (búsqueda)',
+                 'url': 'https://www.youtube.com/results?search_query=noticias+interpretadas+lengua+de+se%C3%B1as+argentina'},
+                {'nombre': 'Búsqueda — curso básico de Lengua de Señas Argentina', 'tipo': 'YouTube (búsqueda)',
+                 'url': 'https://www.youtube.com/results?search_query=curso+basico+lengua+de+se%C3%B1as+argentina'},
+            ],
+        },
+        {
+            'nombre': 'Prótesis Visuales e Implantes Retinianos',
+            'aplica_a': ['visual'],
+            'objetivo': 'Restaurar una percepción visual funcional básica (formas, contrastes, '
+                         'movimiento) en personas con ceguera por degeneración retiniana '
+                         '(ej. retinosis pigmentaria).',
+            'como_funciona': 'Un implante retiniano (ej. Argus II) capta imágenes con una '
+                              'microcámara externa y las convierte en impulsos eléctricos que '
+                              'estimulan directamente las células retinianas remanentes.',
+            'evidencia': [
+                {'nombre': 'Búsqueda PubMed — retinal implant Argus II visual prosthesis',
+                 'url': 'https://pubmed.ncbi.nlm.nih.gov/?term=retinal+implant+Argus+II+visual+prosthesis'},
+            ],
+            'recursos': [
+                {'nombre': 'Búsqueda — cómo funciona un implante retiniano (explicación en video)',
+                 'tipo': 'YouTube (búsqueda)',
+                 'url': 'https://www.youtube.com/results?search_query=how+retinal+implant+works+bionic+eye'},
+            ],
+        },
+        {
+            'nombre': 'Magnificación de Pantalla y Lectores con Resaltado Visual',
+            'aplica_a': ['visual'],
+            'objetivo': 'Facilitar el acceso a dispositivos digitales en personas con baja '
+                         'visión (no ceguera total), ampliando y resaltando el contenido en '
+                         'pantalla.',
+            'como_funciona': 'Software de magnificación (zoom de pantalla, alto contraste, '
+                              'resaltado de foco/cursor) integrado en sistemas operativos '
+                              '(ej. Lupa de Windows, Zoom de macOS/iOS, TalkBack/Magnificación '
+                              'en Android) o como programas dedicados.',
+            'evidencia': [
+                {'nombre': 'Búsqueda PubMed — screen magnification low vision accessibility',
+                 'url': 'https://pubmed.ncbi.nlm.nih.gov/?term=screen+magnification+low+vision+accessibility'},
+            ],
+            'recursos': [
+                {'nombre': 'Búsqueda — tutorial de magnificador de pantalla / accesibilidad visual',
+                 'tipo': 'YouTube (búsqueda)',
+                 'url': 'https://www.youtube.com/results?search_query=screen+magnifier+low+vision+accessibility+tutorial'},
+            ],
+        },
+        {
+            'nombre': 'Terapia de Realidad Virtual con retroalimentación visual',
+            'aplica_a': ['motora', 'psicosocial'],
+            'objetivo': 'Rehabilitación motora gamificada tras ACV o lesión medular, y '
+                         'exposición gradual controlada para fobias o ansiedad.',
+            'como_funciona': 'Entornos virtuales inmersivos que dan retroalimentación visual '
+                              'inmediata del movimiento (rehabilitación) o exponen de forma '
+                              'gradual y controlada a estímulos ansiógenos (salud mental).',
+            'evidencia': [
+                {'nombre': 'Búsqueda PubMed — virtual reality stroke rehabilitation',
+                 'url': 'https://pubmed.ncbi.nlm.nih.gov/?term=virtual+reality+stroke+rehabilitation'},
+                {'nombre': 'Búsqueda PubMed — virtual reality exposure therapy anxiety',
+                 'url': 'https://pubmed.ncbi.nlm.nih.gov/?term=virtual+reality+exposure+therapy+anxiety'},
+            ],
+            'recursos': [],
+        },
+    ],
+    'nota': (
+        'Estos tratamientos y tecnologías son de carácter informativo y no reemplazan la '
+        'evaluación ni la indicación de un/a profesional de la salud (fisiatría, neurología, '
+        'fonoaudiología, terapia ocupacional, psicología). Los enlaces a sitios y repositorios '
+        'de terceros pueden modificarse; verificar siempre su vigencia.'
+    ),
+}

@@ -22,6 +22,7 @@ from scripts.datos_cud import (
     SUBE_INFO,
     PLAN_TEA_INFO,
     MUSICOTERAPIA_INFO,
+    TRATAMIENTOS_VISUALES_INFO,
 )
 
 router = APIRouter(prefix="/api/cud", tags=["CUD"])
@@ -65,6 +66,7 @@ async def info_general():
             "/api/cud/obras-sociales",
             "/api/cud/tea",
             "/api/cud/musicoterapia",
+            "/api/cud/tratamientos-visuales",
         ],
     }
 
@@ -241,3 +243,14 @@ async def musicoterapia():
     estimulación para TEA/sensorial, música de enfoque para lo cognitivo).
     """
     return MUSICOTERAPIA_INFO
+
+
+@router.get("/tratamientos-visuales")
+async def tratamientos_visuales():
+    """
+    Tratamientos y tecnologías basadas en estimulación/retroalimentación visual
+    (terapia de espejo, pistas visuales, eye-tracking, CAA/PECS, salas Snoezelen,
+    lectura fácil, LSA, realidad virtual), etiquetados por tipo de discapacidad
+    al que aplican (misma taxonomía que /api/cud/requisitos).
+    """
+    return TRATAMIENTOS_VISUALES_INFO

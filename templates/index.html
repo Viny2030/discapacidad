@@ -281,6 +281,7 @@
     <button class="tab-btn" data-panel="pensiones">Pensiones</button>
     <button class="tab-btn" data-panel="tea">Plan TEA</button>
     <button class="tab-btn" data-panel="musicoterapia">Musicoterapia</button>
+    <button class="tab-btn" data-panel="tratamientos-visuales">Tratamientos Visuales</button>
     <button class="tab-btn" data-panel="comparador">Comparador</button>
     <button class="tab-btn" data-panel="about">About (EN)</button>
     <button class="tab-btn" data-panel="gcba">GCBA</button>
@@ -349,6 +350,11 @@
           <h3>🎵 Musicoterapia</h3>
           <p>Organizaciones profesionales, evidencia científica y recursos sonoros (RAS, MIT, baja estimulación) organizados por tipo de discapacidad.</p>
           <button class="go-btn" onclick="switchTab('musicoterapia')">Ver recursos</button>
+        </div>
+        <div class="home-card">
+          <h3>👁️ Tratamientos visuales</h3>
+          <p>Terapia de espejo, pistas visuales, eye-tracking, CAA/PECS, salas Snoezelen, prótesis retinianas y más, organizados por tipo de discapacidad.</p>
+          <button class="go-btn" onclick="switchTab('tratamientos-visuales')">Ver tratamientos</button>
         </div>
         <div class="home-card">
           <h3>⚖️ Comparador provincial</h3>
@@ -782,6 +788,17 @@
         <h2>🎵 Musicoterapia</h2>
         <p>La musicoterapia usa intervenciones sonoras y musicales estructuradas —con base en evidencia— para abordar necesidades motrices, comunicacionales, cognitivas y sensoriales en personas con discapacidad. Organizaciones profesionales, evidencia científica y recursos sonoros según el tipo de discapacidad y la técnica clínica aplicable.</p>
         <div id="musicoterapia-info" class="result-box"><p class="loading">Cargando recursos de musicoterapia...</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================== TRATAMIENTOS VISUALES ====================== -->
+  <div class="panel" id="panel-tratamientos-visuales">
+    <div class="wrap">
+      <div class="card" style="border-left:4px solid #2d8cff">
+        <h2>👁️ Tratamientos y Tecnologías Visuales</h2>
+        <p>Técnicas y tecnologías que usan la vía visual —ilusión óptica, pistas proyectadas, seguimiento ocular, pictogramas o entornos multisensoriales— para la rehabilitación motora, la comunicación y la regulación sensorial en distintos tipos de discapacidad.</p>
+        <div id="tratamientos-visuales-info" class="result-box"><p class="loading">Cargando tratamientos visuales...</p></div>
       </div>
     </div>
   </div>
@@ -2201,6 +2218,7 @@
       if (name === 'comuna_07') initComuna07();
       if (name === 'tea') initTea();
       if (name === 'musicoterapia') initMusicoterapia();
+      if (name === 'tratamientos-visuales') initTratamientosVisuales();
     }
 
     /* ---------- helpers ---------- */
@@ -2477,6 +2495,59 @@
 
     function initMusicoterapia() {
       loadInto('/api/cud/musicoterapia', 'musicoterapia-info', renderMusicoterapia);
+    }
+
+    /* ---------- Tratamientos Visuales ---------- */
+    const TIPO_DISCAPACIDAD_LABEL = {
+      motora: 'Motora', visual: 'Visual', auditiva: 'Auditiva',
+      intelectual: 'Intelectual', psicosocial: 'Psicosocial', visceral: 'Visceral',
+    };
+
+    function renderTratamientosVisuales(data) {
+      let html = '';
+      if (data.descripcion) {
+        html += '<p>' + escapeHtml(data.descripcion) + '</p>';
+      }
+      (data.tratamientos || []).forEach(t => {
+        html += '<div class="article-card" style="border-left:3px solid #2d8cff;padding-left:.8rem;margin-top:.8rem">';
+        html += '<h4 style="margin:0 0 .3rem">' + escapeHtml(t.nombre || '') + '</h4>';
+        if (t.aplica_a && t.aplica_a.length) {
+          html += '<div style="margin-bottom:.4rem">' + t.aplica_a.map(a =>
+            '<span class="badge" style="margin-right:.3rem">' + escapeHtml(TIPO_DISCAPACIDAD_LABEL[a] || a) + '</span>'
+          ).join('') + '</div>';
+        }
+        if (t.objetivo) html += '<p><strong>Objetivo:</strong> ' + escapeHtml(t.objetivo) + '</p>';
+        if (t.como_funciona) html += '<p><strong>Cómo funciona:</strong> ' + escapeHtml(t.como_funciona) + '</p>';
+
+        const listasExtra = [
+          ['evidencia', '🔬 Evidencia e investigación'],
+          ['sistemas_y_software', '💻 Sistemas y software'],
+          ['repositorios', '📚 Repositorios'],
+          ['organizacion_internacional', '🌐 Organización internacional'],
+          ['recursos', '▶ Recursos'],
+        ];
+        listasExtra.forEach(([campo, titulo]) => {
+          const items = t[campo];
+          if (items && items.length) {
+            html += '<p style="margin:.5rem 0 .2rem"><strong>' + titulo + '</strong></p>';
+            html += '<div style="display:flex;flex-direction:column;gap:.3rem">';
+            items.forEach(r => {
+              html += '<a href="' + escapeHtml(r.url) + '" target="_blank" rel="noopener">' + escapeHtml(r.nombre)
+                + (r.tipo ? ' <span class="muted">(' + escapeHtml(r.tipo) + ')</span>' : '') + ' ↗</a>';
+            });
+            html += '</div>';
+          }
+        });
+        html += '</div>';
+      });
+      if (data.nota) {
+        html += '<p class="muted" style="margin-top:.8rem">⚠️ ' + escapeHtml(data.nota) + '</p>';
+      }
+      return html;
+    }
+
+    function initTratamientosVisuales() {
+      loadInto('/api/cud/tratamientos-visuales', 'tratamientos-visuales-info', renderTratamientosVisuales);
     }
 
     function initCud() {
