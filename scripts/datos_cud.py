@@ -1460,3 +1460,220 @@ TRATAMIENTOS_VISUALES_INFO = {
         'de terceros pueden modificarse; verificar siempre su vigencia.'
     ),
 }
+
+# ── OTRAS_TERAPIAS_INFO ──────────────────────────────────────────────────────
+# Terapias y tecnologías complementarias que no encajan en musicoterapia ni en
+# tratamientos visuales: canal táctil/vibrotáctil, terapia ocupacional y
+# tecnología de asistencia, terapia asistida con animales, robótica y
+# exoesqueletos, hidroterapia, arteterapia e integración sensorial (Ayres).
+# Misma forma que TRATAMIENTOS_VISUALES_INFO (clave 'tratamientos') para poder
+# reutilizar el mismo renderer en el frontend.
+OTRAS_TERAPIAS_INFO = {
+    'titulo': 'Otras Terapias y Tecnologías de Asistencia',
+    'descripcion': (
+        'Terapias complementarias que se suman a la musicoterapia y los tratamientos '
+        'visuales: canal táctil/vibrotáctil, terapia ocupacional y tecnología de '
+        'asistencia, terapia asistida con animales, robótica y exoesqueletos de '
+        'rehabilitación, hidroterapia, arteterapia e integración sensorial (método '
+        'Ayres). Organizaciones profesionales y evidencia científica de referencia, '
+        'etiquetadas por tipo de discapacidad (misma taxonomía que /api/cud/requisitos).'
+    ),
+    'tratamientos': [
+        {
+            'nombre': 'Terapia Táctil / Vibrotáctil',
+            'aplica_a': ['auditiva', 'visual', 'intelectual'],
+            'objetivo': 'Habilitar un canal de percepción alternativo cuando el auditivo o '
+                         'el visual están comprometidos, y regular el procesamiento sensorial '
+                         'en el Trastorno del Espectro Autista (TEA).',
+            'como_funciona': 'Dispositivos hápticos (vibración codificada), lectoescritura '
+                              'en Braille, estimulación vibrotáctil de graves y superficies '
+                              'vibrátiles para sordera profunda, y materiales con distintas '
+                              'texturas para actividades de integración sensorial en TEA.',
+            'organizaciones': [
+                {'nombre': 'American Printing House for the Blind (APH)',
+                 'url': 'https://www.aph.org/',
+                 'descripcion': 'Materiales, tecnología y recursos de Braille y lectoescritura táctil.'},
+                {'nombre': 'STAR Institute for Sensory Processing',
+                 'url': 'https://sensoryhealth.org/',
+                 'descripcion': 'Evaluación e intervención en procesamiento sensorial, incluida la vía táctil.'},
+            ],
+            'evidencia': [
+                {'nombre': 'Búsqueda PubMed — vibrotactile stimulation profound deafness',
+                 'url': 'https://pubmed.ncbi.nlm.nih.gov/?term=vibrotactile+stimulation+profound+deafness'},
+                {'nombre': 'Búsqueda PubMed — haptic device rehabilitation',
+                 'url': 'https://pubmed.ncbi.nlm.nih.gov/?term=haptic+device+rehabilitation'},
+                {'nombre': 'Búsqueda PubMed — tactile sensory integration autism',
+                 'url': 'https://pubmed.ncbi.nlm.nih.gov/?term=tactile+sensory+integration+autism'},
+            ],
+            'recursos': [],
+        },
+        {
+            'nombre': 'Terapia Ocupacional y Tecnología de Asistencia',
+            'aplica_a': ['motora', 'visceral', 'intelectual', 'visual'],
+            'objetivo': 'Preservar o recuperar la autonomía en actividades de la vida diaria '
+                         '(higiene, alimentación, vestido, tareas del hogar) y facilitar el '
+                         'acceso al entorno mediante ayudas técnicas.',
+            'como_funciona': 'Adaptación de rutinas y objetos cotidianos, domótica accesible '
+                              '(control por voz, interruptores adaptados, automatización del '
+                              'hogar) y ayudas técnicas específicas evaluadas por un/a '
+                              'terapista ocupacional según cada caso.',
+            'organizaciones': [
+                {'nombre': 'World Federation of Occupational Therapists (WFOT)',
+                 'url': 'https://wfot.org',
+                 'descripcion': 'Estándares internacionales de práctica en terapia ocupacional.'},
+                {'nombre': 'Asociación Argentina de Terapistas Ocupacionales (AATO)',
+                 'url': 'https://terapia-ocupacional.org.ar/',
+                 'descripcion': 'Padrón de profesionales matriculados y recursos locales.'},
+                {'nombre': 'Programa de Apoyos Técnicos para Personas con Discapacidad (ANDIS)',
+                 'url': 'https://www.argentina.gob.ar/servicio/programa-de-apoyos-tecnicos-para-personas-con-discapacidad',
+                 'descripcion': 'Trámite oficial argentino para acceder a ayudas técnicas.'},
+            ],
+            'evidencia': [
+                {'nombre': 'Búsqueda PubMed — assistive technology activities of daily living',
+                 'url': 'https://pubmed.ncbi.nlm.nih.gov/?term=assistive+technology+activities+of+daily+living'},
+                {'nombre': 'Búsqueda PubMed — smart home accessibility disability',
+                 'url': 'https://pubmed.ncbi.nlm.nih.gov/?term=smart+home+accessibility+disability'},
+            ],
+            'recursos': [],
+        },
+        {
+            'nombre': 'Terapia Asistida con Animales',
+            'aplica_a': ['motora', 'psicosocial', 'visual', 'auditiva', 'visceral'],
+            'objetivo': 'Rehabilitación motora y psicosocial (equinoterapia) y apoyo a la '
+                         'autonomía e independencia mediante perros entrenados: perros guía '
+                         '(discapacidad visual), de señalización (discapacidad auditiva), de '
+                         'alerta médica (epilepsia) y de servicio psiquiátrico.',
+            'como_funciona': 'La equinoterapia usa el movimiento tridimensional del caballo al '
+                              'paso para estimular el control postural, el equilibrio y la '
+                              'integración sensorial, además de sus efectos psicosociales. Los '
+                              'perros de servicio y de alerta se entrenan para tareas '
+                              'específicas (guiado, aviso de sonidos, detección de una crisis '
+                              'antes de que ocurra, interrupción de conductas de ansiedad).',
+            'organizaciones': [
+                {'nombre': 'PATH International (equinoterapia)',
+                 'url': 'https://pathintl.org/',
+                 'descripcion': 'Estándares y centros certificados de equitación terapéutica.'},
+                {'nombre': 'Fundación Argentina de Equinoterapia',
+                 'url': 'https://equinoterapia.org.ar/',
+                 'descripcion': 'Equinoterapia motora y psicosocial en Argentina.'},
+                {'nombre': 'Assistance Dogs International (ADI)',
+                 'url': 'https://assistancedogsinternational.org/',
+                 'descripcion': 'Estándares y directorio de organizaciones de perros de servicio y alerta acreditadas.'},
+            ],
+            'evidencia': [
+                {'nombre': 'Búsqueda PubMed — equine assisted therapy cerebral palsy',
+                 'url': 'https://pubmed.ncbi.nlm.nih.gov/?term=equine+assisted+therapy+cerebral+palsy'},
+                {'nombre': 'Búsqueda PubMed — service dogs seizure alert epilepsy',
+                 'url': 'https://pubmed.ncbi.nlm.nih.gov/?term=service+dogs+seizure+alert+epilepsy'},
+                {'nombre': 'Búsqueda PubMed — psychiatric service dog PTSD',
+                 'url': 'https://pubmed.ncbi.nlm.nih.gov/?term=psychiatric+service+dog+PTSD'},
+            ],
+            'recursos': [],
+        },
+        {
+            'nombre': 'Robótica y Exoesqueletos de Rehabilitación',
+            'aplica_a': ['motora'],
+            'objetivo': 'Reentrenamiento intensivo de la marcha y de miembros superiores tras '
+                         'un accidente cerebrovascular (ACV), lesión medular u otras causas de '
+                         'debilidad motora severa.',
+            'como_funciona': 'Dispositivos robóticos portables (exoesqueletos) o de banco '
+                              '(sistemas robóticos de miembro superior) que asisten o guían el '
+                              'movimiento de forma repetitiva y controlada, continuando la '
+                              'línea de "tratamientos de vanguardia" del sitio pero enfocados '
+                              'específicamente en rehabilitación motora robótica.',
+            'organizaciones': [
+                {'nombre': 'Ekso Bionics — Ekso Health',
+                 'url': 'https://eksobionics.com/eksohealth/',
+                 'descripcion': 'Exoesqueletos de rehabilitación de la marcha usados en centros clínicos.'},
+            ],
+            'evidencia': [
+                {'nombre': 'Búsqueda PubMed — robotic exoskeleton gait rehabilitation stroke',
+                 'url': 'https://pubmed.ncbi.nlm.nih.gov/?term=robotic+exoskeleton+gait+rehabilitation+stroke'},
+                {'nombre': 'Búsqueda PubMed — exoskeleton spinal cord injury rehabilitation',
+                 'url': 'https://pubmed.ncbi.nlm.nih.gov/?term=exoskeleton+spinal+cord+injury+rehabilitation'},
+            ],
+            'recursos': [],
+        },
+        {
+            'nombre': 'Hidroterapia / Terapia Acuática',
+            'aplica_a': ['motora', 'psicosocial'],
+            'objetivo': 'Rehabilitación motora de bajo impacto (equilibrio, fuerza, marcha) '
+                         'aprovechando la flotación y la resistencia del agua, con beneficios '
+                         'adicionales en cuadros psicosociales por su efecto relajante.',
+            'como_funciona': 'Técnicas como Ai Chi (movimientos lentos y respiración guiada en '
+                              'agua tibia) y ejercicio acuático estructurado reducen la carga '
+                              'articular y el riesgo de caídas frente al ejercicio en seco, '
+                              'permitiendo mayor rango de movimiento con menor dolor.',
+            'organizaciones': [
+                {'nombre': 'AIDEA — Asociación de docentes e investigadores en actividades acuáticas',
+                 'url': 'https://www.asociacionaidea.com/',
+                 'descripcion': 'Artículos e investigación en español sobre terapia acuática y Ai Chi.'},
+            ],
+            'evidencia': [
+                {'nombre': 'Búsqueda PubMed — aquatic therapy Ai Chi balance falls',
+                 'url': 'https://pubmed.ncbi.nlm.nih.gov/?term=aquatic+therapy+Ai+Chi+balance+falls'},
+                {'nombre': 'Búsqueda PubMed — hydrotherapy cerebral palsy',
+                 'url': 'https://pubmed.ncbi.nlm.nih.gov/?term=hydrotherapy+cerebral+palsy'},
+                {'nombre': 'Búsqueda PubMed — aquatic exercise mental health',
+                 'url': 'https://pubmed.ncbi.nlm.nih.gov/?term=aquatic+exercise+mental+health'},
+            ],
+            'recursos': [],
+        },
+        {
+            'nombre': 'Arteterapia',
+            'aplica_a': ['psicosocial', 'intelectual'],
+            'objetivo': 'Expresión emocional, regulación conductual y desarrollo de '
+                         'habilidades comunicacionales en discapacidad psicosocial, '
+                         'intelectual y TEA, como complemento de la musicoterapia.',
+            'como_funciona': 'Uso guiado de artes plásticas y expresión corporal, en sesiones '
+                              'estructuradas conducidas por un/a arteterapeuta, para canalizar '
+                              'emociones que resultan difíciles de verbalizar.',
+            'organizaciones': [
+                {'nombre': 'American Art Therapy Association (AATA)',
+                 'url': 'https://arttherapy.org/',
+                 'descripcion': 'Guías clínicas y estándares de práctica en arteterapia.'},
+                {'nombre': 'Asociación Argentina de Arteterapia',
+                 'url': 'http://www.asoarteterapia.org.ar/',
+                 'descripcion': 'Actividades y profesionales de arteterapia en Argentina.'},
+            ],
+            'evidencia': [
+                {'nombre': 'Búsqueda PubMed — art therapy autism spectrum disorder',
+                 'url': 'https://pubmed.ncbi.nlm.nih.gov/?term=art+therapy+autism+spectrum+disorder'},
+                {'nombre': 'Búsqueda PubMed — art therapy mental health disability',
+                 'url': 'https://pubmed.ncbi.nlm.nih.gov/?term=art+therapy+mental+health+disability'},
+            ],
+            'recursos': [],
+        },
+        {
+            'nombre': 'Integración Sensorial (Método Ayres)',
+            'aplica_a': ['intelectual', 'psicosocial', 'auditiva', 'visual'],
+            'objetivo': 'Mejorar el procesamiento y la modulación de estímulos táctiles, '
+                         'propioceptivos y vestibulares en TEA y discapacidad intelectual; es '
+                         'transversal a las demás terapias de este apartado (comparte base con '
+                         'la vía táctil y con las salas Snoezelen de Tratamientos Visuales).',
+            'como_funciona': 'Sesiones clínicas individuales (Ayres Sensory Integration®) '
+                              'guiadas por un/a terapista ocupacional especializado/a, con '
+                              'actividades que combinan estimulación táctil, propioceptiva '
+                              '(peso/presión) y vestibular (movimiento) en un entorno lúdico y '
+                              'graduado según la tolerancia sensorial de cada persona.',
+            'organizaciones': [
+                {'nombre': 'STAR Institute for Sensory Processing',
+                 'url': 'https://sensoryhealth.org/',
+                 'descripcion': 'Formación, evaluación e intervención en integración sensorial (método Ayres).'},
+            ],
+            'evidencia': [
+                {'nombre': 'Búsqueda PubMed — Ayres Sensory Integration autism',
+                 'url': 'https://pubmed.ncbi.nlm.nih.gov/?term=Ayres+Sensory+Integration+autism'},
+                {'nombre': 'Búsqueda PubMed — sensory integration therapy intellectual disability',
+                 'url': 'https://pubmed.ncbi.nlm.nih.gov/?term=sensory+integration+therapy+intellectual+disability'},
+            ],
+            'recursos': [],
+        },
+    ],
+    'nota': (
+        'Se sugiere que las personas con discapacidad consulten a su médico de cabecera '
+        'sobre estos tratamientos antes de iniciarlos. Esta sección es informativa y no '
+        'reemplaza la evaluación ni la indicación de un/a profesional de la salud. Los '
+        'enlaces a sitios de terceros pueden modificarse; verificar siempre su vigencia.'
+    ),
+}

@@ -265,6 +265,15 @@
     .gcba-link-btn.active{background:#7c4dff;color:#fff;border-color:#7c4dff}
     .gcba-sub{display:none}
     .gcba-sub.visible{display:block}
+    .trat-btn{background:#f1ecfb;color:#4a2d8c;border:1px solid #d8c9f7;
+         padding:.55rem 1rem;border-radius:8px;font-size:.85rem;font-weight:600;
+         cursor:pointer;font-family:inherit}
+    .trat-btn:hover{background:#e5d9fb}
+    .trat-btn.active{background:#7c4dff;color:#fff;border-color:#7c4dff}
+    .trat-sub{display:none}
+    .trat-sub.visible{display:block}
+    .aviso-medico{background:#fff4e0;border:1px solid #f5c876;color:#7a4a00;
+         border-radius:10px;padding:.7rem 1rem;font-size:.9rem;margin-top:.8rem}
     .legend-dot{display:inline-block;width:10px;height:10px;border-radius:50%;
          margin-right:.35rem;vertical-align:middle}
   </style>
@@ -280,8 +289,7 @@
     <button class="tab-btn" data-panel="calculadora">Calculadora</button>
     <button class="tab-btn" data-panel="pensiones">Pensiones</button>
     <button class="tab-btn" data-panel="tea">Plan TEA</button>
-    <button class="tab-btn" data-panel="musicoterapia">Musicoterapia</button>
-    <button class="tab-btn" data-panel="tratamientos-visuales">Tratamientos Visuales</button>
+    <button class="tab-btn" data-panel="tratamientos">Tratamientos</button>
     <button class="tab-btn" data-panel="comparador">Comparador</button>
     <button class="tab-btn" data-panel="about">About (EN)</button>
     <button class="tab-btn" data-panel="gcba">GCBA</button>
@@ -347,14 +355,9 @@
           <button class="go-btn" onclick="switchTab('tea')">Ver el plan</button>
         </div>
         <div class="home-card">
-          <h3>🎵 Musicoterapia</h3>
-          <p>Organizaciones profesionales, evidencia científica y recursos sonoros (RAS, MIT, baja estimulación) organizados por tipo de discapacidad.</p>
-          <button class="go-btn" onclick="switchTab('musicoterapia')">Ver recursos</button>
-        </div>
-        <div class="home-card">
-          <h3>👁️ Tratamientos visuales</h3>
-          <p>Terapia de espejo, pistas visuales, eye-tracking, CAA/PECS, salas Snoezelen, prótesis retinianas y más, organizados por tipo de discapacidad.</p>
-          <button class="go-btn" onclick="switchTab('tratamientos-visuales')">Ver tratamientos</button>
+          <h3>🩺 Tratamientos</h3>
+          <p>Musicoterapia, tratamientos visuales y otras terapias (táctil/vibrotáctil, ocupacional y tecnología de asistencia, asistida con animales, robótica y exoesqueletos, hidroterapia, arteterapia, integración sensorial), con organizaciones y evidencia científica por tipo de discapacidad.</p>
+          <button class="go-btn" onclick="switchTab('tratamientos')">Ver tratamientos</button>
         </div>
         <div class="home-card">
           <h3>⚖️ Comparador provincial</h3>
@@ -781,24 +784,42 @@
     </div>
   </div>
 
-  <!-- ====================== MUSICOTERAPIA ====================== -->
-  <div class="panel" id="panel-musicoterapia">
+  <!-- ====================== TRATAMIENTOS ====================== -->
+  <div class="panel" id="panel-tratamientos">
     <div class="wrap">
-      <div class="card" style="border-left:4px solid #ff6f91">
-        <h2>🎵 Musicoterapia</h2>
-        <p>La musicoterapia usa intervenciones sonoras y musicales estructuradas —con base en evidencia— para abordar necesidades motrices, comunicacionales, cognitivas y sensoriales en personas con discapacidad. Organizaciones profesionales, evidencia científica y recursos sonoros según el tipo de discapacidad y la técnica clínica aplicable.</p>
-        <div id="musicoterapia-info" class="result-box"><p class="loading">Cargando recursos de musicoterapia...</p></div>
+      <div class="card" style="border-left:4px solid #7c4dff">
+        <h2>🩺 Tratamientos</h2>
+        <p>Musicoterapia, tratamientos visuales y otras terapias complementarias para personas con discapacidad, organizadas por técnica y tipo de discapacidad, con organizaciones profesionales y evidencia científica de referencia.</p>
+        <p class="aviso-medico">⚕️ <strong>Se sugiere que las personas con discapacidad consulten a su médico de cabecera</strong> sobre estos tratamientos antes de iniciarlos: esta sección es informativa y no reemplaza la indicación de un/a profesional.</p>
+        <div class="gcba-links" id="tratamientos-pills" style="margin-top:1rem">
+          <button class="trat-btn active" data-trat="musicoterapia">🎵 Musicoterapia</button>
+          <button class="trat-btn" data-trat="visuales">👁️ Tratamientos visuales</button>
+          <button class="trat-btn" data-trat="otras">🩹 Otras terapias</button>
+        </div>
       </div>
-    </div>
-  </div>
 
-  <!-- ====================== TRATAMIENTOS VISUALES ====================== -->
-  <div class="panel" id="panel-tratamientos-visuales">
-    <div class="wrap">
-      <div class="card" style="border-left:4px solid #2d8cff">
-        <h2>👁️ Tratamientos y Tecnologías Visuales</h2>
-        <p>Técnicas y tecnologías que usan la vía visual —ilusión óptica, pistas proyectadas, seguimiento ocular, pictogramas o entornos multisensoriales— para la rehabilitación motora, la comunicación y la regulación sensorial en distintos tipos de discapacidad.</p>
-        <div id="tratamientos-visuales-info" class="result-box"><p class="loading">Cargando tratamientos visuales...</p></div>
+      <div class="trat-sub visible" id="trat-musicoterapia">
+        <div class="card" style="border-left:4px solid #ff6f91">
+          <h2>🎵 Musicoterapia</h2>
+          <p>La musicoterapia usa intervenciones sonoras y musicales estructuradas —con base en evidencia— para abordar necesidades motrices, comunicacionales, cognitivas y sensoriales en personas con discapacidad. Organizaciones profesionales, evidencia científica y recursos sonoros según el tipo de discapacidad y la técnica clínica aplicable.</p>
+          <div id="musicoterapia-info" class="result-box"><p class="loading">Cargando recursos de musicoterapia...</p></div>
+        </div>
+      </div>
+
+      <div class="trat-sub" id="trat-visuales">
+        <div class="card" style="border-left:4px solid #2d8cff">
+          <h2>👁️ Tratamientos y Tecnologías Visuales</h2>
+          <p>Técnicas y tecnologías que usan la vía visual —ilusión óptica, pistas proyectadas, seguimiento ocular, pictogramas o entornos multisensoriales— para la rehabilitación motora, la comunicación y la regulación sensorial en distintos tipos de discapacidad.</p>
+          <div id="tratamientos-visuales-info" class="result-box"><p class="loading">Cargando tratamientos visuales...</p></div>
+        </div>
+      </div>
+
+      <div class="trat-sub" id="trat-otras">
+        <div class="card" style="border-left:4px solid #3d8c6a">
+          <h2>🩹 Otras terapias</h2>
+          <p>Terapia táctil/vibrotáctil, terapia ocupacional y tecnología de asistencia, terapia asistida con animales, robótica y exoesqueletos de rehabilitación, hidroterapia, arteterapia e integración sensorial (método Ayres), con organizaciones profesionales y evidencia científica por tipo de discapacidad.</p>
+          <div id="otras-terapias-info" class="result-box"><p class="loading">Cargando otras terapias...</p></div>
+        </div>
       </div>
     </div>
   </div>
@@ -2217,8 +2238,12 @@
       if (name === 'gcba') initGcba();
       if (name === 'comuna_07') initComuna07();
       if (name === 'tea') initTea();
-      if (name === 'musicoterapia') initMusicoterapia();
-      if (name === 'tratamientos-visuales') initTratamientosVisuales();
+      if (name === 'tratamientos') {
+        initMusicoterapia();
+        initTratamientosVisuales();
+        initOtrasTerapias();
+        initTratamientosPills();
+      }
     }
 
     /* ---------- helpers ---------- */
@@ -2542,6 +2567,7 @@
 
         const listasExtra = [
           ['evidencia', '🔬 Evidencia e investigación'],
+          ['organizaciones', '🏛️ Organizaciones y referencias'],
           ['sistemas_y_software', '💻 Sistemas y software'],
           ['repositorios', '📚 Repositorios'],
           ['organizacion_internacional', '🌐 Organización internacional'],
@@ -2566,6 +2592,28 @@
 
     function initTratamientosVisuales() {
       loadInto('/api/cud/tratamientos-visuales', 'tratamientos-visuales-info', renderTratamientosVisuales);
+    }
+
+    /* ---------- Otras terapias (reusa el render de Tratamientos Visuales: misma forma de datos) ---------- */
+    function initOtrasTerapias() {
+      loadInto('/api/cud/otras-terapias', 'otras-terapias-info', renderTratamientosVisuales);
+    }
+
+    /* ---------- Pestañas internas del panel Tratamientos ---------- */
+    let tratamientosPillsInit = false;
+    function initTratamientosPills() {
+      if (tratamientosPillsInit) return;
+      tratamientosPillsInit = true;
+      document.querySelectorAll('#tratamientos-pills .trat-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('#tratamientos-pills .trat-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const target = btn.dataset.trat;
+          document.querySelectorAll('#panel-tratamientos .trat-sub').forEach(s => {
+            s.classList.toggle('visible', s.id === 'trat-' + target);
+          });
+        });
+      });
     }
 
     function initCud() {

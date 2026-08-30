@@ -23,6 +23,7 @@ from scripts.datos_cud import (
     PLAN_TEA_INFO,
     MUSICOTERAPIA_INFO,
     TRATAMIENTOS_VISUALES_INFO,
+    OTRAS_TERAPIAS_INFO,
 )
 
 router = APIRouter(prefix="/api/cud", tags=["CUD"])
@@ -67,6 +68,7 @@ async def info_general():
             "/api/cud/tea",
             "/api/cud/musicoterapia",
             "/api/cud/tratamientos-visuales",
+            "/api/cud/otras-terapias",
         ],
     }
 
@@ -254,3 +256,16 @@ async def tratamientos_visuales():
     al que aplican (misma taxonomía que /api/cud/requisitos).
     """
     return TRATAMIENTOS_VISUALES_INFO
+
+
+@router.get("/otras-terapias")
+async def otras_terapias():
+    """
+    Otras terapias y tecnologías de asistencia que complementan a la musicoterapia
+    y los tratamientos visuales: terapia táctil/vibrotáctil, terapia ocupacional y
+    tecnología de asistencia, terapia asistida con animales, robótica y
+    exoesqueletos de rehabilitación, hidroterapia/terapia acuática, arteterapia e
+    integración sensorial (método Ayres). Etiquetadas por tipo de discapacidad
+    (misma taxonomía que /api/cud/requisitos).
+    """
+    return OTRAS_TERAPIAS_INFO
