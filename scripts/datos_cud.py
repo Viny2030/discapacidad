@@ -1677,3 +1677,152 @@ OTRAS_TERAPIAS_INFO = {
         'enlaces a sitios de terceros pueden modificarse; verificar siempre su vigencia.'
     ),
 }
+
+# ── CREDENCIALES_TEA ─────────────────────────────────────────────────────────
+# Credenciales/programas de identificación y atención prioritaria para personas
+# con TEA emitidos por MUNICIPIOS y/o GOBIERNOS PROVINCIALES (distintos e
+# independientes del CUD nacional, aunque en la práctica lo complementan).
+#
+# A diferencia del CUD (que es nacional, único y con juntas evaluadoras en las
+# 24 provincias), estas credenciales son iniciativas locales, heterogéneas y
+# todavía poco extendidas en Argentina: no hay un registro único ni un mapa
+# oficial completo. Esta lista es CURADA y NO EXHAUSTIVA — incluye únicamente
+# programas que pudieron confirmarse en una fuente oficial (sitio del
+# municipio/provincia) al momento de la verificación indicada en cada entrada.
+# Se puede ampliar agregando nuevas entradas a 'programas' con el mismo formato.
+CREDENCIALES_TEA = {
+    'titulo': 'Credenciales TEA de municipios y gobiernos provinciales',
+    'descripcion': (
+        'Además del Certificado Único de Discapacidad (CUD), que es nacional, '
+        'algunos municipios y provincias argentinas emiten sus propias '
+        'credenciales o carnets para personas con TEA, orientados sobre todo '
+        'a garantizar atención prioritaria en dependencias locales. Son '
+        'trámites locales, independientes del CUD, aunque generalmente piden '
+        'el CUD como requisito para tramitarlos.'
+    ),
+    'nota_alcance': (
+        'No existe todavía en Argentina un registro nacional único de estas '
+        'credenciales: cada municipio o provincia que las ofrece define su '
+        'propio circuito. Esta sección reúne los programas que pudieron '
+        'confirmarse en una fuente oficial; si tu municipio o provincia tiene '
+        'un programa similar y no aparece listado, puede deberse a que aún no '
+        'fue relevado — se puede sumar informando la fuente oficial.'
+    ),
+    'relacion_con_cud': (
+        'Estas credenciales son un beneficio ADICIONAL y local: no reemplazan '
+        'al CUD ni a su trámite (ver /api/cud), y la mayoría de los programas '
+        'pide el CUD vigente como requisito de solicitud.'
+    ),
+    'programas': [
+        {
+            'id': 'lanus-tarjeta-azul',
+            'tipo_jurisdiccion': 'municipal',
+            'jurisdiccion': 'Municipio de Lanús',
+            'provincia': 'Buenos Aires',
+            'nombre_programa': 'Tarjeta Azul — Programa "Lanús TEAbraza"',
+            'estado_normativo': (
+                'Creada como programa municipal; según la página oficial del '
+                'programa, existe además un proyecto de ordenanza municipal '
+                'para formalizar la creación de la Tarjeta Azul.'
+            ),
+            'descripcion': (
+                'La Tarjeta Azul se suma a la credencial del CUD y permite '
+                'acceso preferencial en áreas clave del Municipio, '
+                'garantizando prioridad en la atención al público. Forma '
+                'parte del programa "Lanús TEAbraza", que también incluye '
+                '"Paradas Inclusivas" (pictogramas de Comunicación '
+                'Aumentativa y Alternativa en paradas de colectivo) y un '
+                'espacio recreativo para niñeces y adolescencias con '
+                'desafíos del neurodesarrollo.'
+            ),
+            'requisitos': [
+                'Nombre y apellido',
+                'DNI de la persona titular',
+                'Certificado Único de Discapacidad (CUD) vigente',
+                'Teléfono celular de contacto',
+                'Correo electrónico',
+            ],
+            'beneficios': [
+                'Acceso preferencial en áreas clave del Municipio',
+                'Prioridad en la atención al público en dependencias municipales',
+            ],
+            'tramite': {
+                'modalidad': 'Formulario online',
+                'canal': 'Formulario en la página oficial del programa',
+                'direccion_atencion': (
+                    'Dirección General de Discapacidad — Dr. Luis A. Maspero 35, '
+                    'Remedios de Escalada (lunes, miércoles y viernes de 14 a 19 h)'
+                ),
+                'contacto': '0800-333-5268 / WhatsApp 11 5914-7826',
+            },
+            'fuente_oficial': {
+                'nombre': 'Municipio de Lanús — Programa TEAbraza',
+                'url': 'https://www.lanus.gob.ar/TEAbraza',
+            },
+            'fecha_verificacion': '2026-09-13',
+        },
+        {
+            'id': 'moreno-mi-muni-azul',
+            'tipo_jurisdiccion': 'municipal',
+            'jurisdiccion': 'Municipio de Moreno',
+            'provincia': 'Buenos Aires',
+            'nombre_programa': 'Mi Muni Azul',
+            'estado_normativo': 'Programa municipal en funcionamiento.',
+            'descripcion': (
+                'Credencial diseñada junto con la Asociación de Familias TEA '
+                'de Cuartel V que permite atención prioritaria a niños y '
+                'adultos con Trastorno del Espectro Autista (TEA), Trastorno '
+                'Específico del Lenguaje (TEL), Trastorno por Déficit de '
+                'Atención e Hiperactividad (TDAH) y Trastorno Obsesivo '
+                'Compulsivo (TOC).'
+            ),
+            'requisitos': [
+                'DNI de la persona titular',
+                'Certificado Único de Discapacidad (CUD)',
+                'DNI de la persona referente/acompañante',
+            ],
+            'beneficios': [
+                'Atención preferencial en todas las dependencias municipales, '
+                'sin necesidad de esperar',
+                'Apoyo especializado durante trámites o gestiones',
+                'Asesoramiento personalizado',
+            ],
+            'tramite': {
+                'modalidad': 'Presencial',
+                'canal': 'Dirección de Políticas Inclusivas',
+                'direccion_atencion': 'Alcorta 2430, Moreno',
+                'contacto': 'WhatsApp (solo mensajes): 11 3924-3076',
+            },
+            'fuente_oficial': {
+                'nombre': 'Municipio de Moreno — Dirección de Políticas Inclusivas',
+                'url': 'https://zonales.com/moreno-autismo-muni-azul-atencion-tea/',
+            },
+            'fecha_verificacion': '2026-09-13',
+        },
+    ],
+    'otros_recursos': [
+        {
+            'id': 'caba-oficina-tramites-accesibles-tea-cea',
+            'tipo_jurisdiccion': 'provincial',
+            'jurisdiccion': 'Ciudad Autónoma de Buenos Aires (CABA)',
+            'provincia': 'CABA',
+            'nombre': 'Oficina de trámites accesibles para personas con diversidad cognitiva y autismo (TEA/CEA)',
+            'descripcion': (
+                'No es una credencial: es un circuito adaptado dentro del '
+                'Registro Civil porteño para tramitar DNI y pasaporte, con '
+                'materiales de apoyo visual (pictogramas) para anticipar el '
+                'trámite a personas con diversidad cognitiva y TEA/CEA.'
+            ),
+            'tramite': {
+                'modalidad': 'Presencial, con turno previo',
+                'direccion_atencion': 'Uruguay 753, CABA (lunes a viernes de 7.30 a 19 h)',
+                'contacto': 'Línea 147 (atención ciudadana)',
+            },
+            'fuente_oficial': {
+                'nombre': 'Gobierno de la Ciudad de Buenos Aires',
+                'url': 'https://buenosaires.gob.ar/tramites/oficina-de-tramites-accesibles-personas-con-diversidad-cognitiva-y-autismo-teacea',
+            },
+            'fecha_verificacion': '2026-09-13',
+        },
+    ],
+}

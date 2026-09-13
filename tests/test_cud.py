@@ -223,3 +223,49 @@ def test_plan_tea(client):
     assert "marco_normativo" in data
     assert "relacion_con_cud" in data
     assert data["boletin_oficial_url"].startswith("http")
+
+
+# ── /api/cud/credenciales-tea ─────────────────────────────────────────────────
+
+def test_credenciales_tea(client):
+    r = client.get("/api/cud/credenciales-tea")
+    assert r.status_code == 200
+    data = r.json()
+    assert data["total_programas"] >= 1
+    assert "nota_alcance" in data
+    assert "relacion_con_cud" in data
+    for p in data["programas"]:
+        assert "nombre_programa" in p
+        assert "jurisdiccion" in p
+        assert "fuente_oficial" in p
+
+
+def test_credenciales_tea_filtro_provincia(client):
+    r = client.get("/api/cud/credenciales-tea?provincia=Buenos Aires")
+    assert r.status_code == 200
+    data = r.json()
+    assert data["total_programas"] >= 1
+    for p in data["programas"]:
+        assert p["provincia"] == "Buenos Aires"
+
+
+def test_credenciales_tea_filtro_sin_resultados(client):
+    r = client.get("/api/cud/credenciales-tea?provincia=Tierra del Fuego")
+    assert r.status_code == 200
+    data = r.json()
+    assert data["total_programas"] == 0
+    assert data["programas"] == []
+
+
+def test_credenciales_tea_filtro_jurisdiccion(client):
+    r = client.get("/api/cud/credenciales-tea?jurisdiccion=Lanús")
+    assert r.status_code == 200
+    data = r.json()
+    assert data["total_programas"] == 1
+    assert "Lanús" in data["programas"][0]["jurisdiccion"]
+
+
+def test_credenciales_tea_en_endpoints_disponibles(client):
+    r = client.get("/api/cud")
+    assert r.status_code == 200
+    assert "/api/cud/credenciales-tea" in r.json()["endpoints_disponibles"]

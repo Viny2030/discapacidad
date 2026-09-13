@@ -200,6 +200,196 @@ DESCRIPCIONES = {
     "visceral":    "Afecta órganos internos. Incluye insuficiencia renal, cardíaca, diabetes, enfermedades raras.",
 }
 
+# ── Condiciones específicas (búsqueda curada) ─────────────────────────────────
+# Capa ADICIONAL y opcional a los 6 tipos de discapacidad de arriba: permite
+# buscar evidencia médica por condición/diagnóstico puntual (más específico
+# que "motora" o "intelectual"), incluyendo el síndrome de Tourette. Cada
+# condición queda igualmente asociada a uno de los 6 tipos ya existentes
+# (mismo campo "tipo" que usan /api/articulos, /api/tratamientos/{tipo}, etc.)
+# para no romper esa taxonomía. No modifica QUERIES_DEFAULT ni DESCRIPCIONES.
+CONDICIONES_ESPECIFICAS: dict[str, dict] = {
+    "tourette": {
+        "nombre": "Síndrome de Tourette",
+        "tipo": "intelectual",
+        "descripcion": "Trastorno del neurodesarrollo caracterizado por tics motores "
+                       "y vocales involuntarios, recurrentes y crónicos.",
+        "query_pubmed": "Tourette syndrome tic disorder treatment 2023 2024 2025",
+    },
+    "tdah": {
+        "nombre": "TDAH (Trastorno por Déficit de Atención e Hiperactividad)",
+        "tipo": "intelectual",
+        "descripcion": "Patrón persistente de inatención y/o hiperactividad-impulsividad "
+                       "que interfiere con el funcionamiento o desarrollo.",
+        "query_pubmed": "ADHD attention deficit hyperactivity disorder treatment 2023 2024 2025",
+    },
+    "sindrome_down": {
+        "nombre": "Síndrome de Down",
+        "tipo": "intelectual",
+        "descripcion": "Trastorno genético por trisomía del cromosoma 21, con "
+                       "discapacidad intelectual y rasgos físicos característicos.",
+        "query_pubmed": "Down syndrome trisomy 21 intervention treatment 2023 2024 2025",
+    },
+    "ela": {
+        "nombre": "Esclerosis Lateral Amiotrófica (ELA)",
+        "tipo": "motora",
+        "descripcion": "Enfermedad neurodegenerativa que afecta las neuronas motoras, "
+                       "con pérdida progresiva de la fuerza muscular.",
+        "query_pubmed": "amyotrophic lateral sclerosis ALS treatment therapy 2023 2024 2025",
+    },
+    "esclerosis_multiple": {
+        "nombre": "Esclerosis Múltiple",
+        "tipo": "motora",
+        "descripcion": "Enfermedad autoinmune que afecta el sistema nervioso central "
+                       "y puede causar discapacidad motora progresiva.",
+        "query_pubmed": "multiple sclerosis treatment disease modifying therapy 2023 2024 2025",
+    },
+    "parkinson": {
+        "nombre": "Enfermedad de Parkinson",
+        "tipo": "motora",
+        "descripcion": "Trastorno neurodegenerativo que afecta el control motor, "
+                       "con temblor, rigidez y bradicinesia.",
+        "query_pubmed": "Parkinson disease treatment rehabilitation 2023 2024 2025",
+    },
+    "paralisis_cerebral": {
+        "nombre": "Parálisis Cerebral",
+        "tipo": "motora",
+        "descripcion": "Grupo de trastornos permanentes del movimiento y la postura "
+                       "atribuidos a alteraciones no progresivas del cerebro en desarrollo.",
+        "query_pubmed": "cerebral palsy rehabilitation treatment 2023 2024 2025",
+    },
+    "espectro_autista": {
+        "nombre": "Trastorno del Espectro Autista (TEA)",
+        "tipo": "intelectual",
+        "descripcion": "Condición del neurodesarrollo que afecta la comunicación "
+                       "social y presenta patrones restringidos/repetitivos de conducta.",
+        "query_pubmed": "autism spectrum disorder intervention treatment 2023 2024 2025",
+    },
+    "retinosis_pigmentaria": {
+        "nombre": "Retinosis Pigmentaria",
+        "tipo": "visual",
+        "descripcion": "Grupo de enfermedades genéticas de la retina que provocan "
+                       "pérdida progresiva de la visión.",
+        "query_pubmed": "retinitis pigmentosa treatment gene therapy 2023 2024 2025",
+    },
+    "glaucoma": {
+        "nombre": "Glaucoma",
+        "tipo": "visual",
+        "descripcion": "Grupo de enfermedades oculares que dañan el nervio óptico, "
+                       "asociadas frecuentemente a presión intraocular elevada.",
+        "query_pubmed": "glaucoma treatment management 2023 2024 2025",
+    },
+    "hipoacusia": {
+        "nombre": "Hipoacusia / Pérdida auditiva",
+        "tipo": "auditiva",
+        "descripcion": "Disminución de la capacidad auditiva, de grado y origen variable "
+                       "(congénita o adquirida).",
+        "query_pubmed": "hearing loss cochlear implant treatment 2023 2024 2025",
+    },
+    "esquizofrenia": {
+        "nombre": "Esquizofrenia",
+        "tipo": "psicosocial",
+        "descripcion": "Trastorno psiquiátrico grave que afecta el pensamiento, la "
+                       "percepción y el comportamiento.",
+        "query_pubmed": "schizophrenia treatment antipsychotic 2023 2024 2025",
+    },
+    "trastorno_bipolar": {
+        "nombre": "Trastorno Bipolar",
+        "tipo": "psicosocial",
+        "descripcion": "Trastorno del estado de ánimo con episodios de manía/hipomanía "
+                       "y depresión.",
+        "query_pubmed": "bipolar disorder treatment management 2023 2024 2025",
+    },
+    "toc": {
+        "nombre": "Trastorno Obsesivo Compulsivo (TOC)",
+        "tipo": "psicosocial",
+        "descripcion": "Trastorno de ansiedad caracterizado por obsesiones y/o "
+                       "compulsiones recurrentes.",
+        "query_pubmed": "obsessive compulsive disorder OCD treatment 2023 2024 2025",
+    },
+    "diabetes_tipo1": {
+        "nombre": "Diabetes tipo 1",
+        "tipo": "visceral",
+        "descripcion": "Enfermedad autoinmune crónica con destrucción de las células "
+                       "beta pancreáticas y dependencia de insulina exógena.",
+        "query_pubmed": "type 1 diabetes management treatment 2023 2024 2025",
+    },
+    "fibrosis_quistica": {
+        "nombre": "Fibrosis Quística",
+        "tipo": "visceral",
+        "descripcion": "Enfermedad genética que afecta principalmente los pulmones y "
+                       "el sistema digestivo por producción de moco espeso.",
+        "query_pubmed": "cystic fibrosis treatment CFTR modulator 2023 2024 2025",
+    },
+    "insuficiencia_renal": {
+        "nombre": "Insuficiencia Renal Crónica",
+        "tipo": "visceral",
+        "descripcion": "Pérdida progresiva e irreversible de la función renal.",
+        "query_pubmed": "chronic kidney disease treatment dialysis 2023 2024 2025",
+    },
+}
+
+# ── Especialidades médicas (taxonomía en paralelo) ────────────────────────────
+# Segunda capa, independiente de "tipo" y de CONDICIONES_ESPECIFICAS: agrupa
+# por especialidad médica (a qué profesional consultar), enlazando hacia las
+# condiciones curadas de arriba. Tampoco modifica nada existente.
+ESPECIALIDADES_MEDICAS: dict[str, dict] = {
+    "neurologia": {
+        "nombre": "Neurología",
+        "descripcion": "Diagnóstico y tratamiento de enfermedades del sistema "
+                       "nervioso central y periférico.",
+        "condiciones_relacionadas": [
+            "tourette", "ela", "esclerosis_multiple", "parkinson", "paralisis_cerebral",
+        ],
+    },
+    "psiquiatria": {
+        "nombre": "Psiquiatría",
+        "descripcion": "Diagnóstico y tratamiento de trastornos mentales y de la "
+                       "conducta.",
+        "condiciones_relacionadas": ["tdah", "toc", "esquizofrenia", "trastorno_bipolar"],
+    },
+    "genetica": {
+        "nombre": "Genética médica",
+        "descripcion": "Diagnóstico y asesoramiento sobre condiciones de origen "
+                       "genético o cromosómico.",
+        "condiciones_relacionadas": ["sindrome_down", "fibrosis_quistica"],
+    },
+    "fisiatria": {
+        "nombre": "Medicina Física y Rehabilitación (Fisiatría)",
+        "descripcion": "Rehabilitación funcional de personas con discapacidad "
+                       "motora u otras limitaciones físicas.",
+        "condiciones_relacionadas": ["ela", "esclerosis_multiple", "parkinson", "paralisis_cerebral"],
+    },
+    "oftalmologia": {
+        "nombre": "Oftalmología",
+        "descripcion": "Diagnóstico y tratamiento de enfermedades de los ojos y la "
+                       "vía visual.",
+        "condiciones_relacionadas": ["retinosis_pigmentaria", "glaucoma"],
+    },
+    "otorrinolaringologia": {
+        "nombre": "Otorrinolaringología",
+        "descripcion": "Diagnóstico y tratamiento de enfermedades del oído, nariz "
+                       "y garganta.",
+        "condiciones_relacionadas": ["hipoacusia"],
+    },
+    "endocrinologia": {
+        "nombre": "Endocrinología",
+        "descripcion": "Diagnóstico y tratamiento de enfermedades hormonales y "
+                       "metabólicas.",
+        "condiciones_relacionadas": ["diabetes_tipo1"],
+    },
+    "neumologia": {
+        "nombre": "Neumología",
+        "descripcion": "Diagnóstico y tratamiento de enfermedades del aparato "
+                       "respiratorio.",
+        "condiciones_relacionadas": ["fibrosis_quistica"],
+    },
+    "nefrologia": {
+        "nombre": "Nefrología",
+        "descripcion": "Diagnóstico y tratamiento de enfermedades renales.",
+        "condiciones_relacionadas": ["insuficiencia_renal"],
+    },
+}
+
 # ── Endpoints ──────────────────────────────────────────────────────────────────
 
 @router.get("/articulos")
@@ -387,3 +577,82 @@ async def buscar(
     """Búsqueda libre en PubMed en tiempo real."""
     arts = _pubmed_search_live(q, max_results=limit)
     return {"query": q, "total": len(arts), "articulos": arts}
+
+
+# ── Condiciones específicas (búsqueda curada, incluye Tourette) ──────────────
+
+@router.get("/condiciones")
+async def listar_condiciones():
+    """
+    Lista las condiciones/diagnósticos específicos disponibles para búsqueda
+    curada (más puntual que los 6 tipos generales de /api/articulos), como el
+    síndrome de Tourette, TDAH, síndrome de Down, ELA, esclerosis múltiple,
+    Parkinson, entre otras.
+    """
+    condiciones = [{"id": cid, **datos} for cid, datos in CONDICIONES_ESPECIFICAS.items()]
+    return {"total": len(condiciones), "condiciones": condiciones}
+
+
+@router.get("/condiciones/{condicion}")
+async def buscar_por_condicion(condicion: str, limit: int = Query(10, ge=1, le=30)):
+    """
+    Evidencia médica (PubMed en vivo) para una condición específica curada,
+    por ejemplo `/api/condiciones/tourette`. Ver `/api/condiciones` para el
+    listado completo de IDs disponibles.
+    """
+    datos = CONDICIONES_ESPECIFICAS.get(condicion.lower())
+    if not datos:
+        disponibles = ", ".join(sorted(CONDICIONES_ESPECIFICAS))
+        raise HTTPException(404, f"Condición '{condicion}' no encontrada. Disponibles: {disponibles}")
+
+    arts = _pubmed_search_live(datos["query_pubmed"], max_results=limit)
+    for a in arts:
+        a["tipo_discapacidad"] = datos["tipo"]
+
+    return {
+        "condicion": condicion.lower(),
+        "nombre": datos["nombre"],
+        "tipo_discapacidad": datos["tipo"],
+        "descripcion": datos["descripcion"],
+        "total": len(arts),
+        "articulos": arts,
+    }
+
+
+# ── Especialidades médicas (taxonomía en paralelo a "tipo") ──────────────────
+
+@router.get("/especialidades")
+async def listar_especialidades():
+    """
+    Lista las especialidades médicas relacionadas con los distintos tipos de
+    discapacidad (neurología, psiquiatría, genética, fisiatría, oftalmología,
+    otorrinolaringología, endocrinología, neumología, nefrología), cada una
+    con las condiciones específicas que agrupa.
+    """
+    especialidades = [{"id": eid, **datos} for eid, datos in ESPECIALIDADES_MEDICAS.items()]
+    return {"total": len(especialidades), "especialidades": especialidades}
+
+
+@router.get("/especialidades/{especialidad}")
+async def detalle_especialidad(especialidad: str):
+    """
+    Detalle de una especialidad médica: descripción y condiciones específicas
+    relacionadas (cada una con su propia ficha, ver `/api/condiciones/{id}`).
+    """
+    datos = ESPECIALIDADES_MEDICAS.get(especialidad.lower())
+    if not datos:
+        disponibles = ", ".join(sorted(ESPECIALIDADES_MEDICAS))
+        raise HTTPException(404, f"Especialidad '{especialidad}' no encontrada. Disponibles: {disponibles}")
+
+    condiciones = [
+        {"id": cid, **CONDICIONES_ESPECIFICAS[cid]}
+        for cid in datos["condiciones_relacionadas"]
+        if cid in CONDICIONES_ESPECIFICAS
+    ]
+
+    return {
+        "especialidad": especialidad.lower(),
+        "nombre": datos["nombre"],
+        "descripcion": datos["descripcion"],
+        "condiciones": condiciones,
+    }

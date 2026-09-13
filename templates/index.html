@@ -474,6 +474,34 @@
         <div id="medico-buscar-result" class="result-box"></div>
       </div>
 
+      <div class="card">
+        <h2>Buscar por condición específica</h2>
+        <p>Búsqueda curada de evidencia médica para condiciones puntuales
+           (incluye el s&iacute;ndrome de Tourette y otras condiciones
+           frecuentemente asociadas a discapacidad), más específica que los
+           6 tipos generales de arriba.</p>
+        <div class="form-row">
+          <select id="medico-condicion-select" onchange="loadCondicion()">
+            <option value="">Selecciona una condicion...</option>
+          </select>
+        </div>
+        <div id="medico-condicion-result" class="result-box"></div>
+      </div>
+
+      <div class="card">
+        <h2>Explorar por especialidad médica</h2>
+        <p>Especialidades médicas relacionadas con los distintos tipos de
+           discapacidad (neurolog&iacute;a, psiquiatr&iacute;a, gen&eacute;tica,
+           fisiatr&iacute;a, y m&aacute;s), con las condiciones espec&iacute;ficas
+           que agrupa cada una.</p>
+        <div class="form-row">
+          <select id="medico-especialidad-select" onchange="loadEspecialidad()">
+            <option value="">Selecciona una especialidad...</option>
+          </select>
+        </div>
+        <div id="medico-especialidad-result" class="result-box"></div>
+      </div>
+
     </div>
   </div>
 
@@ -780,6 +808,12 @@
         <h2>🔬 Evidencia médica y tratamientos sobre TEA</h2>
         <p>El módulo Médico del Observatorio incluye artículos y ensayos clínicos recientes sobre discapacidad intelectual, que incluye al TEA (síndrome de Down, TEA, TDAH).</p>
         <button class="go-btn" onclick="switchTab('medico')">Ver evidencia médica</button>
+      </div>
+
+      <div class="card">
+        <h2>🪪 Credenciales TEA de municipios y provincias</h2>
+        <p>Además del CUD nacional, algunos municipios y provincias emiten sus propias credenciales o carnets para personas con TEA, orientados a garantizar atención prioritaria en dependencias locales. Es un listado curado y no exhaustivo, con fuente oficial en cada caso.</p>
+        <div id="credenciales-tea-info" class="result-box"><p class="loading">Cargando credenciales TEA...</p></div>
       </div>
     </div>
   </div>
@@ -2238,6 +2272,7 @@
       if (name === 'gcba') initGcba();
       if (name === 'comuna_07') initComuna07();
       if (name === 'tea') initTea();
+      if (name === 'medico') initMedicoExtra();
       if (name === 'tratamientos') {
         initMusicoterapia();
         initTratamientosVisuales();
@@ -2474,6 +2509,58 @@
 
     function initTea() {
       loadInto('/api/cud/tea', 'tea-info', renderTea);
+      loadInto('/api/cud/credenciales-tea', 'credenciales-tea-info', renderCredencialesTea);
+    }
+
+    /* ---------- Credenciales TEA (municipios/provincias) ---------- */
+    function renderCredencialesTea(data) {
+      let html = '';
+      if (data.nota_alcance) html += '<p class="muted">' + escapeHtml(data.nota_alcance) + '</p>';
+
+      const programas = data.programas || [];
+      if (programas.length) {
+        html += '<h3 style="margin-top:1rem">Programas confirmados</h3>';
+        programas.forEach(p => {
+          html += '<div class="article-card">';
+          html += '<strong>' + escapeHtml(p.nombre_programa || '') + '</strong>';
+          html += ' <span class="badge">' + escapeHtml(p.jurisdiccion || '') + '</span>';
+          if (p.descripcion) html += '<p class="article-resumen">' + escapeHtml(p.descripcion) + '</p>';
+          if (p.requisitos && p.requisitos.length) {
+            html += '<span class="muted">Requisitos: ' + p.requisitos.map(escapeHtml).join(', ') + '</span><br>';
+          }
+          if (p.beneficios && p.beneficios.length) {
+            html += '<span class="muted">Beneficios: ' + p.beneficios.map(escapeHtml).join(', ') + '</span><br>';
+          }
+          if (p.estado_normativo) {
+            html += '<span class="muted">Estado: ' + escapeHtml(p.estado_normativo) + '</span><br>';
+          }
+          if (p.fuente_oficial && p.fuente_oficial.url) {
+            html += '<a href="' + escapeHtml(p.fuente_oficial.url) + '" target="_blank" rel="noopener">🔗 '
+              + escapeHtml(p.fuente_oficial.nombre || 'Fuente oficial') + ' ↗</a>';
+          }
+          html += '</div>';
+        });
+      } else {
+        html += '<p class="muted">No se encontraron programas para el filtro aplicado.</p>';
+      }
+
+      const otros = data.otros_recursos || [];
+      if (otros.length) {
+        html += '<h3 style="margin-top:1rem">Otros recursos relacionados</h3>';
+        otros.forEach(r => {
+          html += '<div class="article-card">';
+          html += '<strong>' + escapeHtml(r.nombre || '') + '</strong>';
+          if (r.jurisdiccion) html += ' <span class="badge">' + escapeHtml(r.jurisdiccion) + '</span>';
+          if (r.descripcion) html += '<p class="article-resumen">' + escapeHtml(r.descripcion) + '</p>';
+          if (r.fuente_oficial && r.fuente_oficial.url) {
+            html += '<a href="' + escapeHtml(r.fuente_oficial.url) + '" target="_blank" rel="noopener">🔗 '
+              + escapeHtml(r.fuente_oficial.nombre || 'Fuente oficial') + ' ↗</a>';
+          }
+          html += '</div>';
+        });
+      }
+
+      return html || renderJSON(data);
     }
 
     /* ---------- Musicoterapia ---------- */
@@ -2726,6 +2813,68 @@
       if (q.length < 3) { target.innerHTML = '<p class="muted">Escribi al menos 3 caracteres.</p>'; return; }
       target.innerHTML = '<p class="loading">Buscando...</p>';
       loadInto('/api/buscar?q=' + encodeURIComponent(q), 'medico-buscar-result', renderBuscarResult);
+    }
+
+    /* ---------- Condiciones especificas (incluye Tourette) y especialidades ---------- */
+    function initMedicoExtra() {
+      fetchJSON('/api/condiciones').then(data => {
+        const sel = document.getElementById('medico-condicion-select');
+        (data.condiciones || []).forEach(c => {
+          const opt = document.createElement('option');
+          opt.value = c.id;
+          opt.textContent = c.nombre;
+          sel.appendChild(opt);
+        });
+      }).catch(() => {});
+
+      fetchJSON('/api/especialidades').then(data => {
+        const sel = document.getElementById('medico-especialidad-select');
+        (data.especialidades || []).forEach(e => {
+          const opt = document.createElement('option');
+          opt.value = e.id;
+          opt.textContent = e.nombre;
+          sel.appendChild(opt);
+        });
+      }).catch(() => {});
+    }
+
+    function renderCondicionResult(data) {
+      let html = '';
+      if (data.descripcion) html += '<p>' + escapeHtml(data.descripcion) + '</p>';
+      if (typeof data.total === 'number') html += '<p class="muted">' + data.total + ' resultados</p>';
+      html += renderArticulos(data.articulos);
+      return html;
+    }
+
+    function loadCondicion() {
+      const id = document.getElementById('medico-condicion-select').value;
+      const target = document.getElementById('medico-condicion-result');
+      if (!id) { target.innerHTML = ''; return; }
+      target.innerHTML = '<p class="loading">Buscando evidencia...</p>';
+      loadInto('/api/condiciones/' + encodeURIComponent(id), 'medico-condicion-result', renderCondicionResult);
+    }
+
+    function renderEspecialidad(data) {
+      let html = '';
+      if (data.descripcion) html += '<p>' + escapeHtml(data.descripcion) + '</p>';
+      if (data.condiciones && data.condiciones.length) {
+        html += '<h5>Condiciones relacionadas</h5>';
+        data.condiciones.forEach(c => {
+          html += '<div class="article-card">';
+          html += '<strong>' + escapeHtml(c.nombre || '') + '</strong>';
+          if (c.descripcion) html += '<p class="article-resumen">' + escapeHtml(c.descripcion) + '</p>';
+          html += '</div>';
+        });
+      }
+      return html || renderJSON(data);
+    }
+
+    function loadEspecialidad() {
+      const id = document.getElementById('medico-especialidad-select').value;
+      const target = document.getElementById('medico-especialidad-result');
+      if (!id) { target.innerHTML = ''; return; }
+      target.innerHTML = '<p class="loading">Cargando...</p>';
+      loadInto('/api/especialidades/' + encodeURIComponent(id), 'medico-especialidad-result', renderEspecialidad);
     }
 
     /* ---------- ESTADISTICO ---------- */

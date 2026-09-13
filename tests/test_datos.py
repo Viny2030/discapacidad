@@ -13,6 +13,7 @@ from scripts.datos_cud import (
     JUNTAS_POR_PROVINCIA,
     FAQ,
     PLAN_TEA_INFO,
+    CREDENCIALES_TEA,
 )
 
 
@@ -164,6 +165,41 @@ def test_plan_tea_marco_normativo_incluye_ley_27043():
     assert any("27.043" in n for n in normas)
     assert any("777/2019" in n for n in normas)
     assert any("2641/2019" in n for n in normas)
+
+
+# ── Credenciales TEA (municipios/provincias) ──────────────────────────────────
+
+def test_credenciales_tea_no_vacio():
+    assert len(CREDENCIALES_TEA["programas"]) >= 1
+
+
+def test_credenciales_tea_campos_obligatorios():
+    campos = [
+        "id", "tipo_jurisdiccion", "jurisdiccion", "provincia", "nombre_programa",
+        "descripcion", "requisitos", "beneficios", "tramite", "fuente_oficial",
+        "fecha_verificacion",
+    ]
+    for p in CREDENCIALES_TEA["programas"]:
+        for c in campos:
+            assert c in p, f"Programa '{p.get('id')}' sin campo '{c}'"
+        assert isinstance(p["descripcion"], str), f"Programa '{p['id']}': descripcion no es str"
+
+
+def test_credenciales_tea_fuente_oficial_tiene_url():
+    for p in CREDENCIALES_TEA["programas"]:
+        assert p["fuente_oficial"].get("url", "").startswith("http"), \
+            f"Programa '{p['id']}' sin URL de fuente oficial"
+
+
+def test_credenciales_tea_requisitos_y_beneficios_no_vacios():
+    for p in CREDENCIALES_TEA["programas"]:
+        assert len(p["requisitos"]) >= 1, f"Programa '{p['id']}' sin requisitos"
+        assert len(p["beneficios"]) >= 1, f"Programa '{p['id']}' sin beneficios"
+
+
+def test_credenciales_tea_ids_unicos():
+    ids = [p["id"] for p in CREDENCIALES_TEA["programas"]]
+    assert len(ids) == len(set(ids))
 
 
 # ── Health del servidor ───────────────────────────────────────────────────────

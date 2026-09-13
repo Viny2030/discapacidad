@@ -85,6 +85,9 @@ Fuente estática curada desde ANDIS, Ley 22.431, Ley 24.901 y Resolución ANDIS 
 | `GET /api/cud/sube?canal=online` | Pasos para el canal específico: `online` / `terminal` / `andis` |
 | `GET /api/cud/obras-sociales` | Derechos frente a obras sociales (Ley 24.901) |
 | `GET /api/cud/tea` | **Plan Nacional del TEA (Resolución 1115/2026): ejes, marco normativo, relación con el CUD** |
+| `GET /api/cud/credenciales-tea` | **Credenciales TEA emitidas por municipios/provincias (distintas del CUD nacional)** |
+| `GET /api/cud/credenciales-tea?provincia=Buenos Aires` | Credenciales TEA filtradas por provincia |
+| `GET /api/cud/credenciales-tea?jurisdiccion=Lanús` | Credenciales TEA filtradas por municipio/jurisdicción (búsqueda parcial) |
 
 ---
 
@@ -127,6 +130,22 @@ El endpoint `GET /api/cud/tea` devuelve el detalle completo: ejes, marco normati
 
 ---
 
+### 🪪 Credenciales TEA de municipios y gobiernos provinciales
+
+> Distintas e independientes del CUD nacional (aunque en general lo piden como requisito): son credenciales o carnets locales que suelen otorgar **atención prioritaria en dependencias municipales/provinciales**.
+
+No existe todavía en Argentina un registro nacional único de estas credenciales — cada municipio o provincia que las ofrece define su propio circuito. El endpoint `GET /api/cud/credenciales-tea` reúne una lista **curada y no exhaustiva** de los programas confirmados en una fuente oficial, entre ellos:
+
+| Programa | Jurisdicción | Fuente oficial |
+|---|---|---|
+| Tarjeta Azul (Programa "Lanús TEAbraza") | Municipio de Lanús (Buenos Aires) | [lanus.gob.ar/TEAbraza](https://www.lanus.gob.ar/TEAbraza) |
+| Mi Muni Azul | Municipio de Moreno (Buenos Aires) | Dirección de Políticas Inclusivas |
+| Oficina de trámites accesibles TEA/CEA (no es una credencial; circuito adaptado de DNI/pasaporte) | CABA | [buenosaires.gob.ar](https://buenosaires.gob.ar/tramites/oficina-de-tramites-accesibles-personas-con-diversidad-cognitiva-y-autismo-teacea) |
+
+Se puede filtrar por `provincia` y/o `jurisdiccion` (búsqueda parcial). Si tu municipio o provincia tiene un programa similar que no aparece listado, se puede sumar agregando una entrada a `CREDENCIALES_TEA` en `scripts/datos_cud.py` con el mismo formato (requisitos, beneficios, trámite y fuente oficial).
+
+---
+
 ### 2. Estadístico — ANDIS / INDEC (`/api`)
 
 ETL automático que descarga datos de ANDIS y Georef (API del Estado).
@@ -155,6 +174,30 @@ ETL que consulta PubMed y ClinicalTrials.gov con queries por tipo de discapacida
 | `GET /api/medico/ensayos` | Ensayos clínicos activos |
 | `GET /api/medico/tratamientos/{tipo}` | Tratamientos por tipo de discapacidad |
 | `GET /api/medico/buscar` | Búsqueda libre en artículos y ensayos |
+
+> **Nota sobre prefijos:** los endpoints médicos anteriores están montados en el router con prefijo `/api` (no `/api/medico`); las rutas reales son `/api/articulos`, `/api/ensayos`, `/api/tratamientos/{tipo}` y `/api/buscar`. Los endpoints nuevos de abajo siguen el mismo prefijo real.
+
+#### Búsqueda curada por condición específica (incluye Tourette)
+
+Capa adicional y opcional a los 6 tipos generales de arriba, para buscar evidencia médica por diagnóstico puntual en vez de por categoría amplia.
+
+| Endpoint | Descripción |
+|---|---|
+| `GET /api/condiciones` | Lista las condiciones específicas disponibles (Tourette, TDAH, síndrome de Down, ELA, esclerosis múltiple, Parkinson, parálisis cerebral, TEA, retinosis pigmentaria, glaucoma, hipoacusia, esquizofrenia, trastorno bipolar, TOC, diabetes tipo 1, fibrosis quística, insuficiencia renal crónica) |
+| `GET /api/condiciones/tourette` | Evidencia médica (PubMed en vivo) específica sobre síndrome de Tourette |
+| `GET /api/condiciones/{condicion}` | Evidencia médica para cualquier otra condición de la lista |
+
+#### Especialidades médicas (taxonomía en paralelo)
+
+Agrupa las condiciones anteriores por especialidad médica (a qué profesional consultar): neurología, psiquiatría, genética médica, fisiatría, oftalmología, otorrinolaringología, endocrinología, neumología y nefrología.
+
+| Endpoint | Descripción |
+|---|---|
+| `GET /api/especialidades` | Lista las especialidades médicas disponibles |
+| `GET /api/especialidades/neurologia` | Detalle de una especialidad (descripción + condiciones relacionadas, incluye Tourette) |
+| `GET /api/especialidades/{especialidad}` | Detalle de cualquier otra especialidad de la lista |
+
+Ninguno de estos endpoints nuevos modifica el comportamiento de `/api/articulos`, `/api/ensayos`, `/api/tratamientos/{tipo}` ni `/api/buscar`.
 
 ---
 
@@ -252,6 +295,9 @@ El repositorio incluye `railway.toml` con la configuración necesaria. El `Docke
 - Ley 27.043 y Decreto Reglamentario 777/2019 — Interés Nacional del abordaje integral e interdisciplinario del TEA
 - Resolución 2641/2019 (Ministerio de Salud) — Consenso sobre Diagnóstico y Tratamiento de Personas con TEA
 - Resolución 1115/2026 (Ministerio de Salud) — Plan Nacional del Trastorno del Espectro Autista (TEA)
+- [Municipio de Lanús — Programa TEAbraza / Tarjeta Azul](https://www.lanus.gob.ar/TEAbraza)
+- Municipio de Moreno — Dirección de Políticas Inclusivas (Mi Muni Azul)
+- [GCBA — Oficina de trámites accesibles TEA/CEA](https://buenosaires.gob.ar/tramites/oficina-de-tramites-accesibles-personas-con-diversidad-cognitiva-y-autismo-teacea)
 - [Secretaría Nacional de Discapacidad](https://www.argentina.gob.ar/andis) (ex ANDIS, Ministerio de Salud) — datos estadísticos y tramitación
 - [SUBE](https://www.sube.gob.ar) — registro del beneficio de transporte
 - [PubMed](https://pubmed.ncbi.nlm.nih.gov) / [ClinicalTrials.gov](https://clinicaltrials.gov) — evidencia médica

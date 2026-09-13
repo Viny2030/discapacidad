@@ -24,6 +24,7 @@ from scripts.datos_cud import (
     MUSICOTERAPIA_INFO,
     TRATAMIENTOS_VISUALES_INFO,
     OTRAS_TERAPIAS_INFO,
+    CREDENCIALES_TEA,
 )
 
 router = APIRouter(prefix="/api/cud", tags=["CUD"])
@@ -69,6 +70,8 @@ async def info_general():
             "/api/cud/musicoterapia",
             "/api/cud/tratamientos-visuales",
             "/api/cud/otras-terapias",
+            "/api/cud/credenciales-tea",
+            "/api/cud/credenciales-tea?provincia=Buenos Aires",
         ],
     }
 
@@ -269,3 +272,47 @@ async def otras_terapias():
     (misma taxonomía que /api/cud/requisitos).
     """
     return OTRAS_TERAPIAS_INFO
+
+
+@router.get("/credenciales-tea")
+async def credenciales_tea(
+    provincia: Optional[str] = Query(
+        None,
+        description="Filtra los programas por provincia, ej: Buenos Aires, CABA",
+    ),
+    jurisdiccion: Optional[str] = Query(
+        None,
+        description="Filtra por nombre de municipio/jurisdicción (búsqueda parcial)",
+    ),
+):
+    """
+    Credenciales y programas de identificación TEA emitidos por municipios y/o
+    gobiernos provinciales (distintos e independientes del CUD nacional, aunque
+    generalmente lo piden como requisito).
+
+    Lista curada y no exhaustiva: incluye los programas que pudieron
+    confirmarse en una fuente oficial. Se puede filtrar por `provincia` y/o
+    `jurisdiccion` (búsqueda parcial, case-insensitive).
+    """
+    programas = CREDENCIALES_TEA["programas"]
+    otros_recursos = CREDENCIALES_TEA["otros_recursos"]
+
+    if provincia:
+        pl = provincia.lower()
+        programas = [p for p in programas if p["provincia"].lower() == pl]
+        otros_recursos = [r for r in otros_recursos if r["provincia"].lower() == pl]
+
+    if jurisdiccion:
+        jl = jurisdiccion.lower()
+        programas = [p for p in programas if jl in p["jurisdiccion"].lower()]
+        otros_recursos = [r for r in otros_recursos if jl in r["jurisdiccion"].lower()]
+
+    return {
+        "titulo": CREDENCIALES_TEA["titulo"],
+        "descripcion": CREDENCIALES_TEA["descripcion"],
+        "nota_alcance": CREDENCIALES_TEA["nota_alcance"],
+        "relacion_con_cud": CREDENCIALES_TEA["relacion_con_cud"],
+        "total_programas": len(programas),
+        "programas": programas,
+        "otros_recursos": otros_recursos,
+    }
