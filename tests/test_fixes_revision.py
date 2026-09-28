@@ -104,3 +104,46 @@ def test_lectura_en_voz_alta_por_fragmentos():
     html = (ROOT / "templates" / "index.html").read_text(encoding="utf-8")
     assert "function fragmentarTexto(" in html and "function elegirVozEspanol(" in html
     assert "window.speechSynthesis.pause();" not in html
+
+
+# ── Traducciones persistentes (data/processed/traducciones_es.json) ──────────
+def test_archivo_de_traducciones_valido():
+    import json
+    datos = json.loads((ROOT / "data" / "processed" / "traducciones_es.json").read_text(encoding="utf-8"))
+    assert len(datos) >= 200
+    for pmid, es in datos.items():
+        assert pmid.isdigit()
+        assert es and "parcial]" not in es and "Ã" not in es
+
+
+def test_traduccion_guardada_por_pmid():
+    etl_medico._TRAD_PMID["999999001"] = "Traducción guardada de prueba"
+    assert etl_medico.traduccion_guardada("999999001") == "Traducción guardada de prueba"
+    assert etl_medico.traduccion_guardada(None) == ""
+
+
+def test_guardar_traducciones_agrega_sin_pisar(tmp_path, monkeypatch):
+    import json
+    falso = tmp_path / "scripts" / "etl_medico.py"
+    falso.parent.mkdir()
+    (tmp_path / "data" / "processed").mkdir(parents=True)
+    ruta = tmp_path / "data" / "processed" / "traducciones_es.json"
+    ruta.write_text(json.dumps({"1": "existente"}), encoding="utf-8")
+    monkeypatch.setattr(etl_medico, "__file__", str(falso))
+    n = etl_medico.guardar_traducciones([
+        {"pmid": "1", "resumen_es": "no debe pisar"},
+        {"pmid": "2", "resumen_es": "nueva"},
+        {"pmid": "3", "resumen_es": "texto [traducción automática parcial]"},
+        {"pmid": "4", "resumen_es": ""},
+    ])
+    assert n == 1
+    assert json.loads(ruta.read_text(encoding="utf-8")) == {"1": "existente", "2": "nueva"}
+
+
+def test_etl_inicial_si_falta_cache(monkeypatch, tmp_path):
+    from scripts import scheduler as sc
+    falso = tmp_path / "scripts" / "scheduler.py"
+    falso.parent.mkdir()
+    monkeypatch.setattr(sc, "__file__", str(falso))  # data/processed/ vacío -> sin caché
+    s = sc.create_scheduler()
+    assert s.get_job("etl_medico_inicial") is not None

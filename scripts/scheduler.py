@@ -53,4 +53,26 @@ def create_scheduler() -> BackgroundScheduler:
         replace_existing=True,
     )
 
+    # FIX: la caché médica (data/processed/etl_medico_cache.json) no está en el
+    # repo y se pierde en cada despliegue/reinicio de Railway; el ETL recién la
+    # regeneraba a los 15 días y mientras tanto cada visita consultaba PubMed y
+    # el traductor en vivo. Si falta, se genera una vez 30 s después de arrancar
+    # (en segundo plano: no demora el inicio ni el healthcheck).
+    try:
+        from datetime import timedelta, timezone
+        from pathlib import Path
+        cache = Path(__file__).resolve().parent.parent / "data" / "processed" / "etl_medico_cache.json"
+        if not cache.exists():
+            scheduler.add_job(
+                job_etl_medico,
+                trigger="date",
+                run_date=datetime.now(timezone.utc) + timedelta(seconds=30),  # con zona: el scheduler usa hora AR
+                id="etl_medico_inicial",
+                name="ETL Médico inicial (caché ausente)",
+                replace_existing=True,
+            )
+            log.info("[SCHEDULER] Caché médica ausente: ETL Médico programado en 30 s")
+    except Exception as e:
+        log.warning(f"[SCHEDULER] No se pudo programar el ETL inicial: {e}")
+
     return scheduler

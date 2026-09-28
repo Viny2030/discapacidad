@@ -160,6 +160,7 @@ _TERMINOS = {
 # corrida y ~56% terminaba en el fallback parcial).
 _MARCA_FALLBACK = "[traducción automática parcial]"
 _TRAD_MEMO: dict = {}
+_TRAD_PMID: dict = {}   # traducciones guardadas en el repo (data/processed/traducciones_es.json)
 _TRAD_MEMO_CARGADA = False
 _MYMEMORY_AGOTADO = False
 
@@ -175,6 +176,16 @@ def _precargar_traducciones() -> None:
     _TRAD_MEMO_CARGADA = True
     import json
     from pathlib import Path
+    # Traducciones persistentes (versionadas en el repo): sobreviven a cada
+    # despliegue de Railway, a diferencia de etl_medico_cache.json.
+    try:
+        ruta_pmid = Path(__file__).resolve().parent.parent / "data" / "processed" / "traducciones_es.json"
+        if ruta_pmid.exists():
+            for pmid, es in json.loads(ruta_pmid.read_text(encoding="utf-8")).items():
+                if es and "parcial]" not in es:
+                    _TRAD_PMID[str(pmid)] = es
+    except Exception:
+        pass
     try:
         ruta = Path(__file__).resolve().parent.parent / "data" / "processed" / "etl_medico_cache.json"
         if not ruta.exists():
@@ -186,6 +197,43 @@ def _precargar_traducciones() -> None:
                 _TRAD_MEMO[_clave_trad(a["resumen"])] = es
     except Exception:
         pass
+
+
+def traduccion_guardada(pmid) -> str:
+    """Devuelve la traducción ya guardada para un PMID, o "" si no hay."""
+    if not pmid:
+        return ""
+    _precargar_traducciones()
+    return _TRAD_PMID.get(str(pmid), "")
+
+
+def guardar_traducciones(articulos) -> int:
+    """
+    Agrega a data/processed/traducciones_es.json las traducciones nuevas y
+    válidas (no el fallback parcial). No borra ni reemplaza las existentes.
+    Devuelve cuántas se agregaron.
+    """
+    import json
+    from pathlib import Path
+    ruta = Path(__file__).resolve().parent.parent / "data" / "processed" / "traducciones_es.json"
+    try:
+        datos = json.loads(ruta.read_text(encoding="utf-8")) if ruta.exists() else {}
+    except Exception:
+        return 0
+    nuevas = 0
+    for a in articulos or []:
+        d = a if isinstance(a, dict) else getattr(a, "__dict__", {})
+        pmid = str(d.get("pmid") or "")
+        es = d.get("resumen_es") or ""
+        if pmid and es and "parcial]" not in es and pmid not in datos:
+            datos[pmid] = es
+            _TRAD_PMID[pmid] = es
+            nuevas += 1
+    if nuevas:
+        ruta.parent.mkdir(parents=True, exist_ok=True)
+        ruta.write_text(json.dumps(dict(sorted(datos.items())), ensure_ascii=False, indent=1),
+                        encoding="utf-8")
+    return nuevas
 
 
 def traducir_resumen(texto_en: str, max_chars: int = 600) -> str:
@@ -333,7 +381,8 @@ def pubmed_fetch(pmids: list[str], tipo: str) -> list[Articulo]:
             a.resumen = " ".join(abstract_texts)[:2000]  # máximo 2000 chars
 
             # Traducción al español (Tarea 8)
-            a.resumen_es = traducir_resumen(a.resumen)
+            # FIX: primero se usa la traducción guardada en el repo (si existe)
+            a.resumen_es = traduccion_guardada(a.pmid) or traducir_resumen(a.resumen)
 
             # Revista
             journal_el = art.find(".//Journal/Title")
@@ -550,6 +599,14 @@ def _persistir_resultado_etl(resultado: dict) -> None:
         log.info(f"  Cache ETL Médico escrito → {cache_path}")
     except Exception as e:
         log.warning(f"  No se pudo persistir cache ETL Médico: {e}")
+
+    # FIX: conservar las traducciones nuevas en data/processed/traducciones_es.json
+    # (el workflow semanal etl_medico.yml lo commitea con `git add data/`).
+    try:
+        n = guardar_traducciones(resultado.get("articulos", []))
+        log.info(f"  Traducciones nuevas guardadas: {n}")
+    except Exception as e:
+        log.warning(f"  No se pudieron guardar las traducciones: {e}")
 
 
 # ── Endpoints FastAPI ──────────────────────────────────────────────────────────

@@ -28,6 +28,12 @@ try:
 except ImportError:
     def _traducir(texto: str, max_chars: int = 600) -> str:  # fallback silencioso
         return ""
+try:
+    # FIX: traducciones persistentes (data/processed/traducciones_es.json)
+    from scripts.etl_medico import traduccion_guardada as _traduccion_guardada
+except ImportError:
+    def _traduccion_guardada(pmid) -> str:
+        return ""
 
 router = APIRouter(prefix="/api", tags=["médico"])
 
@@ -96,7 +102,8 @@ def _load_etl_cache(force: bool = False) -> dict | None:
             if edad.days > _ETL_CACHE_TTL_DIAS:
                 return None  # expirado → que el endpoint llame a PubMed en vivo
         for _a in data.get("articulos", []) or []:
-            _a["resumen_es"] = _limpiar_traduccion(_a.get("resumen_es", ""))
+            _a["resumen_es"] = (_limpiar_traduccion(_a.get("resumen_es", ""))
+                                or _traduccion_guardada(_a.get("pmid")))
         _etl_cache_mem = data
         _etl_cache_ts  = max(mtime, __import__("time").time())
         return _etl_cache_mem
@@ -234,7 +241,7 @@ def _pubmed_search_live(query: str, max_results: int = 10) -> list[dict]:
                 "pmid": pmid, "titulo": titulo,
                 "autores": "; ".join(autores[:5]),
                 "resumen": resumen_texto,
-                "resumen_es": _limpiar_traduccion(_traducir(resumen_texto)),
+                "resumen_es": _traduccion_guardada(pmid) or _limpiar_traduccion(_traducir(resumen_texto)),
                 "revista": revista,
                 "fecha_pub": f"{year}-{month}" if year else None,
                 "doi": doi, "url": f"https://pubmed.ncbi.nlm.nih.gov/{pmid}/",
