@@ -2253,6 +2253,23 @@
       return out.filter(Boolean);
     }
 
+    /* FIX: la voz leía los emojis en voz alta ("estetoscopio", "flecha hacia
+       arriba a la derecha"...): ~2 s de ruido por cada uno (48 en Tratamientos).
+       Se quitan solo para la lectura; en pantalla se siguen viendo. */
+    function limpiarParaVoz(texto) {
+      try {
+        return texto
+          .replace(/[\p{Extended_Pictographic}\u{1F1E6}-\u{1F1FF}\u2190-\u21FF\uFE0F\u200D]/gu, ' ')
+          .replace(/[ \t]+/g, ' ');
+      } catch (e) {
+        return texto;  // navegadores muy viejos sin soporte de \p{...}
+      }
+    }
+
+    function tieneContenido(fragmento) {
+      return /[A-Za-z0-9\u00C0-\u024F]/.test(fragmento);
+    }
+
     function leerSiguiente() {
       if (!leyendoEnVoz) return;
       const frag = colaLectura.shift();
@@ -2286,7 +2303,7 @@
       }
       window.speechSynthesis.cancel();
       if (!vozEspanol) elegirVozEspanol();
-      colaLectura = fragmentarTexto(texto, 220);
+      colaLectura = fragmentarTexto(limpiarParaVoz(texto), 220).filter(tieneContenido);
       actualizarBotonEscuchar(true);
       leerSiguiente();
     }

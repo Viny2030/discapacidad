@@ -147,3 +147,9 @@ def test_etl_inicial_si_falta_cache(monkeypatch, tmp_path):
     monkeypatch.setattr(sc, "__file__", str(falso))  # data/processed/ vacío -> sin caché
     s = sc.create_scheduler()
     assert s.get_job("etl_medico_inicial") is not None
+
+
+def test_lectura_en_voz_alta_salta_emojis():
+    html = (ROOT / "templates" / "index.html").read_text(encoding="utf-8")
+    assert "function limpiarParaVoz(" in html and "function tieneContenido(" in html
+    assert "fragmentarTexto(limpiarParaVoz(texto), 220).filter(tieneContenido)" in html
