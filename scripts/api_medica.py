@@ -31,6 +31,25 @@ except ImportError:
 
 router = APIRouter(prefix="/api", tags=["médico"])
 
+# FIX: los endpoints que consultan PubMed/ClinicalTrials se declaran con `def`
+# (no `async def`). Usan `requests` (bloqueante): dentro de `async def`
+# congelaban TODO el servidor ~6 s por búsqueda (la portada y /health también).
+# Con `def`, FastAPI los ejecuta en un hilo aparte. La respuesta es idéntica.
+
+
+def _limpiar_traduccion(texto: str) -> str:
+    """
+    FIX: si la traducción falló, el traductor devolvía el resumen en inglés con
+    unas pocas palabras sustituidas y la marca "[traducción automática parcial]"
+    (que además salía con acentos corruptos). Eso no es una traducción: se
+    devuelve vacío y la página muestra el resumen original en inglés con un aviso.
+    """
+    if not texto:
+        return ""
+    if "parcial]" in texto:
+        return ""
+    return texto
+
 PUBMED_BASE = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils"
 CT_BASE     = "https://clinicaltrials.gov/api/v2/studies"
 PUBMED_KEY  = os.getenv("PUBMED_API_KEY", "")
@@ -56,11 +75,17 @@ def _load_etl_cache(force: bool = False) -> dict | None:
     global _etl_cache_mem, _etl_cache_ts
     import time
 
-    if not force and _etl_cache_mem is not None:
-        return _etl_cache_mem
-
     if not _ETL_CACHE_PATH.exists():
         return None
+
+    # FIX: antes la caché en memoria no se refrescaba nunca; si el scheduler
+    # corría el ETL, los datos nuevos no se veían hasta reiniciar el servidor.
+    try:
+        mtime = _ETL_CACHE_PATH.stat().st_mtime
+    except OSError:
+        mtime = 0.0
+    if not force and _etl_cache_mem is not None and mtime <= _etl_cache_ts:
+        return _etl_cache_mem
 
     try:
         data = json.loads(_ETL_CACHE_PATH.read_text(encoding="utf-8"))
@@ -70,8 +95,10 @@ def _load_etl_cache(force: bool = False) -> dict | None:
             edad = datetime.now() - datetime.fromisoformat(fecha_str)
             if edad.days > _ETL_CACHE_TTL_DIAS:
                 return None  # expirado → que el endpoint llame a PubMed en vivo
+        for _a in data.get("articulos", []) or []:
+            _a["resumen_es"] = _limpiar_traduccion(_a.get("resumen_es", ""))
         _etl_cache_mem = data
-        _etl_cache_ts  = __import__("time").time()
+        _etl_cache_ts  = max(mtime, __import__("time").time())
         return _etl_cache_mem
     except Exception:
         return None
@@ -113,18 +140,54 @@ class TratamientoOut(BaseModel):
 
 # ── Helpers ────────────────────────────────────────────────────────────────────
 
-def _pubmed_search_live(query: str, max_results: int = 10) -> list[dict]:
-    """Búsqueda en tiempo real en PubMed — sin caché."""
+import re as _re
+
+_ANIOS_RE = _re.compile(r"\b(19|20)\d{2}\b")
+
+
+def _quitar_anios(query: str) -> tuple[str, bool]:
+    """
+    FIX: las consultas curadas (QUERIES_DEFAULT, CONDICIONES_ESPECIFICAS) tienen
+    años pegados ("... 2023 2024"). En PubMed eso exige que el texto mencione esos
+    años (resultados viejos o 0, ej. 'intelectual') y en ClinicalTrials devuelve
+    siempre 0. Se quitan aquí, sin modificar las consultas originales.
+    Devuelve (consulta_limpia, tenia_anios).
+    """
+    limpia = " ".join(_ANIOS_RE.sub(" ", query).split())
+    return (limpia or query), limpia != " ".join(query.split())
+
+
+def _pubmed_ids(term: str, max_results: int, reciente: bool) -> list[str]:
     params = {
-        "db": "pubmed", "term": query,
+        "db": "pubmed", "term": term,
         "retmax": max_results, "retmode": "json", "sort": "pub_date",
     }
+    if reciente:
+        # Equivalente vigente de los años fijos: últimos 2 años (igual que el ETL)
+        params["datetype"] = "pdat"
+        params["reldate"] = 730
     if PUBMED_KEY:
         params["api_key"] = PUBMED_KEY
+    r = requests.get(f"{PUBMED_BASE}/esearch.fcgi", params=params, timeout=10)
+    r.raise_for_status()
+    return r.json()["esearchresult"]["idlist"]
+
+
+def _pubmed_search_live(query: str, max_results: int = 10) -> list[dict]:
+    """Búsqueda en tiempo real en PubMed — sin caché."""
+    term, tenia_anios = _quitar_anios(query)
     try:
-        r = requests.get(f"{PUBMED_BASE}/esearch.fcgi", params=params, timeout=10)
-        r.raise_for_status()
-        pmids = r.json()["esearchresult"]["idlist"]
+        if tenia_anios:
+            pmids = _pubmed_ids(term, max_results, reciente=True)
+            if len(pmids) < max_results:
+                # Pocos resultados recientes: completar sin filtro de fecha
+                # (sigue ordenado por fecha de publicación, más nuevos primero).
+                extra = _pubmed_ids(term, max_results, reciente=False)
+                pmids = pmids + [x for x in extra if x not in pmids]
+                pmids = pmids[:max_results]
+        else:
+            # Búsqueda libre del usuario: mismo comportamiento que antes.
+            pmids = _pubmed_ids(query, max_results, reciente=False)
         if not pmids:
             return []
         fetch_params = {"db": "pubmed", "id": ",".join(pmids), "retmode": "xml"}
@@ -171,7 +234,7 @@ def _pubmed_search_live(query: str, max_results: int = 10) -> list[dict]:
                 "pmid": pmid, "titulo": titulo,
                 "autores": "; ".join(autores[:5]),
                 "resumen": resumen_texto,
-                "resumen_es": _traducir(resumen_texto),
+                "resumen_es": _limpiar_traduccion(_traducir(resumen_texto)),
                 "revista": revista,
                 "fecha_pub": f"{year}-{month}" if year else None,
                 "doi": doi, "url": f"https://pubmed.ncbi.nlm.nih.gov/{pmid}/",
@@ -393,7 +456,7 @@ ESPECIALIDADES_MEDICAS: dict[str, dict] = {
 # ── Endpoints ──────────────────────────────────────────────────────────────────
 
 @router.get("/articulos")
-async def listar_articulos(
+def listar_articulos(
     tipo: Optional[str] = Query(None, description="motora|visual|auditiva|intelectual|psicosocial|visceral"),
     q:    Optional[str] = Query(None, description="Búsqueda por keyword"),
     limit: int          = Query(10, ge=1, le=50),
@@ -441,7 +504,7 @@ async def listar_articulos(
 
 
 @router.get("/articulos/{pmid}")
-async def detalle_articulo(pmid: str):
+def detalle_articulo(pmid: str):
     """Detalle completo de un artículo por PMID."""
     params = {"db": "pubmed", "id": pmid, "retmode": "xml"}
     if PUBMED_KEY:
@@ -487,7 +550,7 @@ async def detalle_articulo(pmid: str):
 
 
 @router.get("/ensayos")
-async def listar_ensayos(
+def listar_ensayos(
     tipo:   Optional[str] = Query(None),
     estado: str           = Query("RECRUITING", description="RECRUITING|COMPLETED|ACTIVE_NOT_RECRUITING"),
     limit:  int           = Query(10, ge=1, le=30),
@@ -498,8 +561,9 @@ async def listar_ensayos(
         raise HTTPException(400, f"tipo debe ser uno de: {', '.join(sorted(TIPOS_VALIDOS))}")
 
     query = QUERIES_DEFAULT.get(tipo, "disability treatment") if tipo else "disability treatment"
+    # FIX: sin años y con query.term (query.cond + años devolvía siempre 0 ensayos)
     params = {
-        "query.cond":           query,
+        "query.term":           _quitar_anios(query)[0],
         "filter.overallStatus": estado,
         "pageSize":             limit,
         "sort":                 "LastUpdatePostDate:desc",
@@ -538,7 +602,7 @@ async def listar_ensayos(
 
 
 @router.get("/tratamientos/{tipo}")
-async def tratamientos_por_tipo(tipo: str, limit: int = Query(5, ge=1, le=20)):
+def tratamientos_por_tipo(tipo: str, limit: int = Query(5, ge=1, le=20)):
     """
     Resumen de tratamientos + artículos top + ensayos activos para un tipo.
     """
@@ -551,9 +615,10 @@ async def tratamientos_por_tipo(tipo: str, limit: int = Query(5, ge=1, le=20)):
 
     try:
         r = requests.get(CT_BASE, params={
-            "query.cond": QUERIES_DEFAULT[tipo],
+            "query.term": _quitar_anios(QUERIES_DEFAULT[tipo])[0],  # FIX: antes siempre 0
             "filter.overallStatus": "RECRUITING",
             "pageSize": 1,
+            "countTotal": "true",  # FIX: sin esto la API v2 no devuelve totalCount
         }, timeout=10)
         n_ensayos = r.json().get("totalCount", 0) if r.ok else 0
     except Exception:
@@ -570,7 +635,7 @@ async def tratamientos_por_tipo(tipo: str, limit: int = Query(5, ge=1, le=20)):
 
 
 @router.get("/buscar")
-async def buscar(
+def buscar(
     q:     str = Query(..., min_length=3, description="Término de búsqueda médica"),
     limit: int = Query(10, ge=1, le=30),
 ):
@@ -594,7 +659,7 @@ async def listar_condiciones():
 
 
 @router.get("/condiciones/{condicion}")
-async def buscar_por_condicion(condicion: str, limit: int = Query(10, ge=1, le=30)):
+def buscar_por_condicion(condicion: str, limit: int = Query(10, ge=1, le=30)):
     """
     Evidencia médica (PubMed en vivo) para una condición específica curada,
     por ejemplo `/api/condiciones/tourette`. Ver `/api/condiciones` para el

@@ -23,9 +23,14 @@
          padding-top:56px;line-height:1.6}
 
     nav{position:fixed;top:0;left:0;right:0;height:56px;background:#4a2d8c;
-        display:flex;align-items:center;justify-content:center;gap:.5rem;
+        display:flex;align-items:center;justify-content:flex-start;gap:.5rem;
         z-index:100;box-shadow:0 1px 6px rgba(0,0,0,.15);
         overflow-x:auto;white-space:nowrap;padding:0 1rem}
+    /* FIX: con justify-content:center las primeras pestañas quedaban fuera de pantalla
+       (inaccesibles) cuando el menu no entraba. Los margenes auto centran igual
+       cuando sobra espacio y permiten desplazarse desde "Inicio" cuando no. */
+    nav > :first-child{margin-left:auto}
+    nav > :last-child{margin-right:auto}
     nav button{color:#e9e1fb;font-size:.85rem;font-weight:600;
           padding:.5rem .9rem;border-radius:6px;transition:background .15s;
           background:transparent;border:none;cursor:pointer;font-family:inherit}
@@ -2199,9 +2204,70 @@
     }
 
     function detenerLectura() {
+      colaLectura = [];
       if (keepAliveTimer) { clearInterval(keepAliveTimer); keepAliveTimer = null; }
       if (speechSoportado) window.speechSynthesis.cancel();
       if (leyendoEnVoz) actualizarBotonEscuchar(false);
+    }
+
+    /* FIX lectura en voz alta:
+       - se lee por fragmentos (oraciones) en vez de toda la pestaña de una vez:
+         los textos largos (ej. Tratamientos ~12.500 caracteres) se cortaban en
+         varios navegadores;
+       - se elige explícitamente una voz en español si el equipo tiene una
+         (antes algunos navegadores leían con voz en inglés);
+       - se quita el truco pause()/resume() cada 10 s, que en Chrome de Android
+         detenía la lectura (con fragmentos cortos ya no hace falta). */
+    let colaLectura = [];
+    let vozEspanol = null;
+
+    function elegirVozEspanol() {
+      if (!speechSoportado) return;
+      const voces = window.speechSynthesis.getVoices() || [];
+      const pref = ['es-AR', 'es-419', 'es-US', 'es-MX', 'es-ES'];
+      vozEspanol = null;
+      for (const code of pref) {
+        vozEspanol = voces.find(v => (v.lang || '').replace('_', '-').toLowerCase() === code.toLowerCase());
+        if (vozEspanol) break;
+      }
+      if (!vozEspanol) vozEspanol = voces.find(v => (v.lang || '').toLowerCase().startsWith('es')) || null;
+    }
+    if (speechSoportado) {
+      elegirVozEspanol();
+      window.speechSynthesis.onvoiceschanged = elegirVozEspanol;
+    }
+
+    function fragmentarTexto(texto, max) {
+      const partes = texto.replace(/\s+/g, ' ').match(/[^.!?;:]+[.!?;:]*\s*/g) || [texto];
+      const out = [];
+      let actual = '';
+      partes.forEach(p => {
+        if ((actual + p).length > max && actual) { out.push(actual.trim()); actual = ''; }
+        if (p.length > max) {
+          for (let i = 0; i < p.length; i += max) out.push(p.slice(i, i + max).trim());
+        } else {
+          actual += p;
+        }
+      });
+      if (actual.trim()) out.push(actual.trim());
+      return out.filter(Boolean);
+    }
+
+    function leerSiguiente() {
+      if (!leyendoEnVoz) return;
+      const frag = colaLectura.shift();
+      if (!frag) { detenerLectura(); return; }
+      const utter = new SpeechSynthesisUtterance(frag);
+      utter.lang = vozEspanol ? vozEspanol.lang : 'es-AR';
+      if (vozEspanol) utter.voice = vozEspanol;
+      utter.rate = 1;
+      utter.onend = () => leerSiguiente();
+      utter.onerror = (e) => {
+        // 'interrupted'/'canceled' ocurren al detener a propósito: no es un error
+        if (e && (e.error === 'interrupted' || e.error === 'canceled')) return;
+        leerSiguiente();
+      };
+      window.speechSynthesis.speak(utter);
     }
 
     function toggleListen() {
@@ -2219,20 +2285,10 @@
         return;
       }
       window.speechSynthesis.cancel();
-      const utter = new SpeechSynthesisUtterance(texto);
-      utter.lang = 'es-AR';
-      utter.rate = 1;
-      utter.onend = () => detenerLectura();
-      utter.onerror = () => detenerLectura();
-      window.speechSynthesis.speak(utter);
+      if (!vozEspanol) elegirVozEspanol();
+      colaLectura = fragmentarTexto(texto, 220);
       actualizarBotonEscuchar(true);
-      /* workaround: en Chrome la sintesis de voz se pausa sola en textos
-         largos (bug conocido); se fuerza un resume periodico mientras dura */
-      keepAliveTimer = setInterval(() => {
-        if (!window.speechSynthesis.speaking) { detenerLectura(); return; }
-        window.speechSynthesis.pause();
-        window.speechSynthesis.resume();
-      }, 10000);
+      leerSiguiente();
     }
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -2401,7 +2457,7 @@
       "Ley 20.628":            "https://www.argentina.gob.ar/normativa/nacional/ley-20628-2348",
       "Ley 18.910":            "https://www.argentina.gob.ar/normativa/nacional/ley-18910-27727",
       "Ley 24.314":            "https://www.argentina.gob.ar/normativa/nacional/ley-24314-703",
-      "Resolución ANAC":       "https://www.anac.gob.ar/anac/web/index.php/1/1509/0/2134",
+      "Resolución ANAC":       "https://www.argentina.gob.ar/anac",  // FIX: el enlace anterior ya no existe (redirigía aquí)
       "Varía por provincia":   "https://www.argentina.gob.ar/andis",
     };
 
@@ -2772,7 +2828,9 @@
         if (meta) h += '<span class="muted">' + meta + '</span>';
         // Resumen en español (Tarea 8) — mostrar si existe, sino el inglés truncado
         const resumen = a.resumen_es || (a.resumen ? a.resumen.slice(0, 300) + (a.resumen.length > 300 ? '…' : '') : '');
-        if (resumen) h += '<p class="article-resumen">' + escapeHtml(resumen) + '</p>';
+        // FIX: avisar cuando se muestra el original en inglés (traducción no disponible)
+        if (resumen && !a.resumen_es) h += '<span class="muted" lang="es">Resumen original en ingl&eacute;s (traducci&oacute;n no disponible por el momento):</span>';
+        if (resumen) h += '<p class="article-resumen"' + (a.resumen_es ? '' : ' lang="en"') + '>' + escapeHtml(resumen) + '</p>';
         h += '</div>';
         return h;
       }).join('');

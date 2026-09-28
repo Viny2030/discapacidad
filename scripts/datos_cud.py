@@ -596,7 +596,7 @@ JUNTAS_POR_PROVINCIA = {'Buenos Aires': {'nombre_organismo': 'Dirección Provinc
                            'direccion': 'Salta 55, Río Gallegos',
                            'telefono': '(02966) 426173'}]},
  'Santa Fe': {'nombre_organismo': 'Dirección Provincial de Inclusión de Personas con Discapacidad',
-              'url_turno': 'https://www.santafe.gov.ar/discapacidad',
+              'url_turno': 'https://www.santafe.gob.ar/gestionesciudadanas/tramite/6a3e68c212dd0f76cc88efb7',  # FIX: el enlace anterior daba 404
               'telefono': '0800-888-3588',
               'email': None,
               'turno_online': True,
@@ -1037,12 +1037,14 @@ MUSICOTERAPIA_INFO = {
                     'descripcion': 'Pistas con pulso isócrono a BPM fijo, usadas en '
                                     'reentrenamiento de la marcha y coordinación motriz.',
                     'recursos': [
-                        {'nombre': 'Metrónomo con música estructurada a 60 BPM', 'tipo': 'YouTube',
-                         'url': 'https://www.youtube.com/watch?v=kQW8Spw744M'},
-                        {'nombre': 'Patrón rítmico isócrono a 80 BPM para entrenamiento de paso', 'tipo': 'YouTube',
-                         'url': 'https://www.youtube.com/watch?v=y2hKk-lQ_a4'},
-                        {'nombre': 'Ritmo constante a 100 BPM para coordinación motriz', 'tipo': 'YouTube',
-                         'url': 'https://www.youtube.com/watch?v=G6P8c3W6r4g'},
+                        # FIX: los 3 videos anteriores ya no existen en YouTube (404);
+                        # se reemplazan por búsquedas del mismo ritmo.
+                        {'nombre': 'Metrónomo con música estructurada a 60 BPM', 'tipo': 'YouTube (búsqueda)',
+                         'url': 'https://www.youtube.com/results?search_query=metronome+music+60+bpm'},
+                        {'nombre': 'Patrón rítmico isócrono a 80 BPM para entrenamiento de paso', 'tipo': 'YouTube (búsqueda)',
+                         'url': 'https://www.youtube.com/results?search_query=walking+rhythm+80+bpm+metronome'},
+                        {'nombre': 'Ritmo constante a 100 BPM para coordinación motriz', 'tipo': 'YouTube (búsqueda)',
+                         'url': 'https://www.youtube.com/results?search_query=steady+beat+100+bpm+metronome'},
                         {'nombre': 'Búsqueda — Rhythmic Auditory Stimulation / metrónomo por BPM', 'tipo': 'YouTube (búsqueda)',
                          'url': 'https://www.youtube.com/results?search_query=Rhythmic+Auditory+Stimulation+metronome+bpm'},
                     ],
@@ -1632,8 +1634,8 @@ OTRAS_TERAPIAS_INFO = {
                 {'nombre': 'American Art Therapy Association (AATA)',
                  'url': 'https://arttherapy.org/',
                  'descripcion': 'Guías clínicas y estándares de práctica en arteterapia.'},
-                {'nombre': 'Asociación Argentina de Arteterapia',
-                 'url': 'http://www.asoarteterapia.org.ar/',
+                {'nombre': 'Fundación Arteterapia (Argentina)',  # FIX: el sitio anterior no responde
+                 'url': 'https://www.fundacionarteterapia.org/',
                  'descripcion': 'Actividades y profesionales de arteterapia en Argentina.'},
             ],
             'evidencia': [

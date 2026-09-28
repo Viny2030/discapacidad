@@ -1,14 +1,14 @@
 """
 etl_medico.py
-Motor de ingesta de artÃÂ­culos mÃÂ©dicos y ensayos clÃÂ­nicos sobre discapacidad.
+Motor de ingesta de artículos médicos y ensayos clínicos sobre discapacidad.
 
 Fuentes:
-  - PubMed (NIH) Ã¢â¬â 35M papers, API gratuita sin key
-  - SciELO Ã¢â¬â ciencia latinoamericana, OAI-PMH
-  - ClinicalTrials.gov Ã¢â¬â ensayos clÃÂ­nicos activos, API v2 gratuita
+  - PubMed (NIH) — 35M papers, API gratuita sin key
+  - SciELO — ciencia latinoamericana, OAI-PMH
+  - ClinicalTrials.gov — ensayos clínicos activos, API v2 gratuita
 
 Salida: tabla articulos_medicos en PostgreSQL
-Scheduler: cada 15 dÃÂ­as via APScheduler
+Scheduler: cada 15 días via APScheduler
 """
 
 import os
@@ -25,7 +25,7 @@ import html
 logging.basicConfig(level=logging.INFO, format="[ETL-MED] %(message)s")
 log = logging.getLogger(__name__)
 
-# Ã¢ââ¬Ã¢ââ¬ Queries por tipo de discapacidad Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬
+# ── Queries por tipo de discapacidad ──────────────────────────────────────────
 
 QUERIES_PUBMED = {
     "motora": [
@@ -80,7 +80,7 @@ QUERIES_CLINICALTRIALS = {
 }
 
 
-# Ã¢ââ¬Ã¢ââ¬ Dataclass artÃÂ­culo Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬
+# ── Dataclass artículo ─────────────────────────────────────────────────────────
 
 @dataclass
 class Articulo:
@@ -99,31 +99,31 @@ class Articulo:
     pais: str = ""
     mesh_terms: list = field(default_factory=list)
     fecha_ingesta: str = field(default_factory=lambda: datetime.now().isoformat())
-    resumen_es: str = ""   # traducciÃÂ³n/adaptaciÃÂ³n al espaÃÂ±ol (Tarea 8)
+    resumen_es: str = ""   # traducción/adaptación al español (Tarea 8)
 
 
-# Ã¢ââ¬Ã¢ââ¬ PubMed Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬
+# ── PubMed ─────────────────────────────────────────────────────────────────────
 
 PUBMED_BASE = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils"
-PUBMED_KEY  = os.getenv("PUBMED_API_KEY", "")  # opcional Ã¢â¬â 10 req/s con key vs 3 sin key
+PUBMED_KEY  = os.getenv("PUBMED_API_KEY", "")  # opcional — 10 req/s con key vs 3 sin key
 
 
-# Ã¢ââ¬Ã¢ââ¬ Traductor cientÃÂ­fico (resumen_es) Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬
+# ── Traductor científico (resumen_es) ─────────────────────────────────────────
 
-# Diccionario de tÃÂ©rminos tÃÂ©cnicos frecuentes (inglÃÂ©s Ã¢â â espaÃÂ±ol)
+# Diccionario de términos técnicos frecuentes (inglés → español)
 _TERMINOS = {
     "randomized controlled trial": "ensayo controlado aleatorizado",
-    "systematic review": "revisiÃÂ³n sistemÃÂ¡tica",
-    "meta-analysis": "metaanÃÂ¡lisis",
+    "systematic review": "revisión sistemática",
+    "meta-analysis": "metaanálisis",
     "cochlear implant": "implante coclear",
     "exoskeleton": "exoesqueleto",
-    "spinal cord injury": "lesiÃÂ³n medular",
+    "spinal cord injury": "lesión medular",
     "brain computer interface": "interfaz cerebro-computadora",
-    "gene therapy": "terapia gÃÂ©nica",
-    "stem cell": "cÃÂ©lula madre",
-    "prosthesis": "prÃÂ³tesis",
-    "prosthetic": "protÃÂ©sico",
-    "rehabilitation": "rehabilitaciÃÂ³n",
+    "gene therapy": "terapia génica",
+    "stem cell": "célula madre",
+    "prosthesis": "prótesis",
+    "prosthetic": "protésico",
+    "rehabilitation": "rehabilitación",
     "disability": "discapacidad",
     "impairment": "deficiencia",
     "motor": "motora",
@@ -135,10 +135,10 @@ _TERMINOS = {
     "therapy": "terapia",
     "outcomes": "resultados",
     "patients": "pacientes",
-    "clinical trial": "ensayo clÃÂ­nico",
+    "clinical trial": "ensayo clínico",
     "adverse events": "eventos adversos",
     "quality of life": "calidad de vida",
-    "intervention": "intervenciÃÂ³n",
+    "intervention": "intervención",
     "placebo": "placebo",
     "randomized": "aleatorizado",
     "double-blind": "doble ciego",
@@ -151,27 +151,69 @@ _TERMINOS = {
     "versus": "versus",
     "weeks": "semanas",
     "months": "meses",
-    "years": "aÃÂ±os",
+    "years": "años",
 }
+
+# FIX: memoria de traducciones ya hechas. Se precarga desde la caché del ETL
+# anterior, así cada resumen se traduce UNA sola vez entre corridas y no se
+# agota la cuota diaria gratuita de MyMemory (antes se re-traducía todo cada
+# corrida y ~56% terminaba en el fallback parcial).
+_MARCA_FALLBACK = "[traducción automática parcial]"
+_TRAD_MEMO: dict = {}
+_TRAD_MEMO_CARGADA = False
+_MYMEMORY_AGOTADO = False
+
+
+def _clave_trad(texto_en: str) -> str:
+    return " ".join((texto_en or "")[:1500].split())
+
+
+def _precargar_traducciones() -> None:
+    global _TRAD_MEMO_CARGADA
+    if _TRAD_MEMO_CARGADA:
+        return
+    _TRAD_MEMO_CARGADA = True
+    import json
+    from pathlib import Path
+    try:
+        ruta = Path(__file__).resolve().parent.parent / "data" / "processed" / "etl_medico_cache.json"
+        if not ruta.exists():
+            return
+        datos = json.loads(ruta.read_text(encoding="utf-8"))
+        for a in datos.get("articulos", []):
+            es = a.get("resumen_es") or ""
+            if es and "parcial]" not in es and a.get("resumen"):
+                _TRAD_MEMO[_clave_trad(a["resumen"])] = es
+    except Exception:
+        pass
+
 
 def traducir_resumen(texto_en: str, max_chars: int = 600) -> str:
     """
-    Tarea 8 Ã¢â¬â Traductor cientÃÂ­fico para resÃÂºmenes PubMed.
+    Tarea 8 — Traductor científico para resúmenes PubMed.
 
     Estrategia por niveles (en orden de disponibilidad):
-      1. MyMemory API (gratuita, 5k palabras/dÃÂ­a sin key)
-      2. LibreTranslate pÃÂºblica (si MyMemory falla)
-      3. SustituciÃÂ³n de terminologÃÂ­a tÃÂ©cnica + resumen acortado
+      1. MyMemory API (gratuita, 5k palabras/día sin key)
+      2. LibreTranslate pública (si MyMemory falla)
+      3. Sustitución de terminología técnica + resumen acortado
 
-    Siempre devuelve texto en espaÃÂ±ol, nunca lanza excepciÃÂ³n.
+    Siempre devuelve texto en español, nunca lanza excepción.
     """
     if not texto_en or not texto_en.strip():
         return ""
 
+    global _MYMEMORY_AGOTADO
+    _precargar_traducciones()
+    clave = _clave_trad(texto_en)
+    if clave in _TRAD_MEMO:
+        return _TRAD_MEMO[clave][:max_chars]
+
     snippet = texto_en[:1500]  # traducimos hasta 1500 chars para no agotar cuotas
 
-    # Nivel 1 Ã¢â¬â MyMemory (gratuita, ~5 000 palabras/dÃÂ­a)
+    # Nivel 1 — MyMemory (gratuita, ~5 000 palabras/día)
     try:
+        if _MYMEMORY_AGOTADO:
+            raise RuntimeError("cuota MyMemory agotada en esta ejecución")
         r = requests.get(
             "https://api.mymemory.translated.net/get",
             params={"q": snippet[:500], "langpair": "en|es", "de": "observatorio@discapacidad.ar"},
@@ -179,14 +221,17 @@ def traducir_resumen(texto_en: str, max_chars: int = 600) -> str:
         )
         if r.ok:
             j = r.json()
+            if j.get("quotaFinished") or str(j.get("responseStatus")) == "429":
+                _MYMEMORY_AGOTADO = True
             if j.get("responseStatus") == 200:
                 traducido = j["responseData"]["translatedText"]
-                if traducido and len(traducido) > 30:
+                if traducido and len(traducido) > 30 and "MYMEMORY WARNING" not in traducido.upper():
+                    _TRAD_MEMO[clave] = traducido
                     return traducido[:max_chars]
     except Exception:
         pass
 
-    # Nivel 2 Ã¢â¬â LibreTranslate pÃÂºblica
+    # Nivel 2 — LibreTranslate pública
     try:
         r2 = requests.post(
             "https://libretranslate.com/translate",
@@ -201,12 +246,12 @@ def traducir_resumen(texto_en: str, max_chars: int = 600) -> str:
     except Exception:
         pass
 
-    # Nivel 3 Ã¢â¬â sustituciÃÂ³n de terminologÃÂ­a + recorte (fallback sin red)
+    # Nivel 3 — sustitución de terminología + recorte (fallback sin red)
     resultado = snippet[:max_chars]
     for en, es in _TERMINOS.items():
         resultado = re.sub(re.escape(en), es, resultado, flags=re.IGNORECASE)
-    # Agregar nota al pie para que el lector sepa que es automÃÂ¡tico
-    return resultado + " [traducciÃÂ³n automÃÂ¡tica parcial]"
+    # Agregar nota al pie para que el lector sepa que es automático
+    return resultado + " [traducción automática parcial]"
 
 
 def pubmed_search(query: str, max_results: int = 20) -> list[str]:
@@ -218,7 +263,7 @@ def pubmed_search(query: str, max_results: int = 20) -> list[str]:
         "retmode": "json",
         "sort":    "pub_date",
         "datetype": "pdat",
-        "reldate": 730,  # ÃÂºltimos 2 aÃÂ±os
+        "reldate": 730,  # últimos 2 años
     }
     if PUBMED_KEY:
         params["api_key"] = PUBMED_KEY
@@ -265,7 +310,7 @@ def pubmed_fetch(pmids: list[str], tipo: str) -> list[Articulo]:
             a.pmid = pmid_el.text if pmid_el is not None else ""
             a.url  = f"https://pubmed.ncbi.nlm.nih.gov/{a.pmid}/" if a.pmid else ""
 
-            # TÃÂ­tulo
+            # Título
             titulo_el = art.find(".//ArticleTitle")
             a.titulo = html.unescape(titulo_el.text or "") if titulo_el is not None else ""
 
@@ -277,7 +322,7 @@ def pubmed_fetch(pmids: list[str], tipo: str) -> list[Articulo]:
                 if last is not None:
                     nombre = f"{fore.text} {last.text}" if fore is not None else last.text
                     autores.append(nombre)
-            a.autores = "; ".join(autores[:5])  # mÃÂ¡ximo 5
+            a.autores = "; ".join(autores[:5])  # máximo 5
 
             # Abstract
             abstract_texts = []
@@ -285,9 +330,9 @@ def pubmed_fetch(pmids: list[str], tipo: str) -> list[Articulo]:
                 label = ab.get("Label", "")
                 text  = ab.text or ""
                 abstract_texts.append(f"{label}: {text}" if label else text)
-            a.resumen = " ".join(abstract_texts)[:2000]  # mÃÂ¡ximo 2000 chars
+            a.resumen = " ".join(abstract_texts)[:2000]  # máximo 2000 chars
 
-            # TraducciÃÂ³n al espaÃÂ±ol (Tarea 8)
+            # Traducción al español (Tarea 8)
             a.resumen_es = traducir_resumen(a.resumen)
 
             # Revista
@@ -329,13 +374,13 @@ def pubmed_fetch(pmids: list[str], tipo: str) -> list[Articulo]:
     return articulos
 
 
-# Ã¢ââ¬Ã¢ââ¬ ClinicalTrials.gov Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬
+# ── ClinicalTrials.gov ─────────────────────────────────────────────────────────
 
 CT_BASE = "https://clinicaltrials.gov/api/v2/studies"
 
 
 def fetch_clinical_trials(tipo: str, query: str, max_results: int = 10) -> list[dict]:
-    """Devuelve ensayos clÃÂ­nicos activos o recientes."""
+    """Devuelve ensayos clínicos activos o recientes."""
     params = {
         "query.cond":        query,
         "filter.overallStatus": "RECRUITING,ACTIVE_NOT_RECRUITING,COMPLETED",
@@ -382,7 +427,7 @@ def fetch_clinical_trials(tipo: str, query: str, max_results: int = 10) -> list[
         return []
 
 
-# Ã¢ââ¬Ã¢ââ¬ SciELO (OAI-PMH) Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬
+# ── SciELO (OAI-PMH) ──────────────────────────────────────────────────────────
 
 SCIELO_BASE = "https://www.scielo.org/oai/scielo-oai.php"
 
@@ -413,12 +458,12 @@ def _fetch_scielo_original(tipo: str, query: str, max_results: int = 10) -> list
 
 def run_etl_medico(max_por_query: int = 10) -> dict:
     """
-    Corre el ETL completo de fuentes mÃÂ©dicas.
-    Retorna dict con listas de artÃÂ­culos y ensayos por tipo.
+    Corre el ETL completo de fuentes médicas.
+    Retorna dict con listas de artículos y ensayos por tipo.
     Persiste el resultado en data/processed/etl_medico_cache.json (Tarea 11).
     """
     log.info("=" * 55)
-    log.info("ETL MÃâ°DICO Ã¢â¬â Inicio")
+    log.info("ETL MÉDICO — Inicio")
     log.info("=" * 55)
 
     resultado = {
@@ -438,7 +483,7 @@ def run_etl_medico(max_por_query: int = 10) -> dict:
             time.sleep(0.35)  # respetar rate limit
 
         resultado["articulos"].extend(total_tipo)
-        log.info(f"  PubMed {tipo}: {len(total_tipo)} artÃÂ­culos")
+        log.info(f"  PubMed {tipo}: {len(total_tipo)} artículos")
 
     # 2. ClinicalTrials.gov
     for tipo, query in QUERIES_CLINICALTRIALS.items():
@@ -461,9 +506,9 @@ def run_etl_medico(max_por_query: int = 10) -> dict:
         "fecha":             datetime.now().isoformat(),
     }
 
-    log.info(f"ETL MÃÂ©dico OK Ã¢â¬â {resultado['resumen']}")
+    log.info(f"ETL Médico OK — {resultado['resumen']}")
 
-    # Ã¢ââ¬Ã¢ââ¬ Tarea 11: Persistencia en disco Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬
+    # ── Tarea 11: Persistencia en disco ──────────────────────────────────────
     _persistir_resultado_etl(resultado)
 
     return resultado
@@ -471,8 +516,8 @@ def run_etl_medico(max_por_query: int = 10) -> dict:
 
 def _persistir_resultado_etl(resultado: dict) -> None:
     """
-    Tarea 11 Ã¢â¬â Serializa el resultado del ETL a JSON para que api_medica.py
-    lo consuma con cachÃÂ© sin volver a llamar a PubMed en cada request.
+    Tarea 11 — Serializa el resultado del ETL a JSON para que api_medica.py
+    lo consuma con caché sin volver a llamar a PubMed en cada request.
     """
     import json
     from pathlib import Path
@@ -482,7 +527,7 @@ def _persistir_resultado_etl(resultado: dict) -> None:
     cache_dir.mkdir(parents=True, exist_ok=True)
     cache_path = cache_dir / "etl_medico_cache.json"
 
-    # Convertir dataclasses a dict (los artÃÂ­culos de PubMed son Articulo)
+    # Convertir dataclasses a dict (los artículos de PubMed son Articulo)
     def _serializable(obj):
         if hasattr(obj, "__dataclass_fields__"):
             return asdict(obj)
@@ -502,12 +547,12 @@ def _persistir_resultado_etl(resultado: dict) -> None:
             json.dumps(payload, ensure_ascii=False, indent=2, default=_serializable),
             encoding="utf-8",
         )
-        log.info(f"  Cache ETL MÃÂ©dico escrito Ã¢â â {cache_path}")
+        log.info(f"  Cache ETL Médico escrito → {cache_path}")
     except Exception as e:
-        log.warning(f"  No se pudo persistir cache ETL MÃÂ©dico: {e}")
+        log.warning(f"  No se pudo persistir cache ETL Médico: {e}")
 
 
-# Ã¢ââ¬Ã¢ââ¬ Endpoints FastAPI Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬Ã¢ââ¬
+# ── Endpoints FastAPI ──────────────────────────────────────────────────────────
 
 """
 Endpoints sugeridos para api/main.py:
@@ -518,13 +563,13 @@ GET /api/articulos
     ?q=keyword
     ?limit=20&offset=0
 
-GET /api/articulos/{pmid}           Ã¢â â detalle completo
-GET /api/ensayos                    Ã¢â â ensayos clÃÂ­nicos activos
+GET /api/articulos/{pmid}           → detalle completo
+GET /api/ensayos                    → ensayos clínicos activos
     ?tipo=motora&estado=RECRUITING
-GET /api/tratamientos/{tipo}        Ã¢â â resumen de tratamientos + artÃÂ­culos top
-GET /api/buscar?q=exoesqueleto      Ã¢â â bÃÂºsqueda full-text en resÃÂºmenes
+GET /api/tratamientos/{tipo}        → resumen de tratamientos + artículos top
+GET /api/buscar?q=exoesqueleto      → búsqueda full-text en resúmenes
 
-CachÃÂ© Redis: TTL 15 dÃÂ­as para listas, 30 dÃÂ­as para artÃÂ­culos individuales
+Caché Redis: TTL 15 días para listas, 30 días para artículos individuales
 """
 
 
@@ -533,7 +578,7 @@ if __name__ == "__main__":
     resultado = run_etl_medico(max_por_query=5)
     print(json.dumps(resultado["resumen"], indent=2, ensure_ascii=False))
 
-    # Muestra primeros 3 artÃÂ­culos
+    # Muestra primeros 3 artículos
     for art in resultado["articulos"][:3]:
         print(f"\n[{art.tipo_discapacidad.upper()}] {art.titulo[:80]}")
         print(f"  Fuente: {art.fuente} | Tipo: {art.tipo_estudio}")

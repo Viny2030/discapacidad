@@ -30,7 +30,7 @@ class MensajeContacto(BaseModel):
 
 
 @router.post("")
-async def enviar_contacto(datos: MensajeContacto):
+def enviar_contacto(datos: MensajeContacto):
     gmail_user = os.getenv("GMAIL_USER")
     gmail_password = os.getenv("GMAIL_APP_PASSWORD")
     destino = os.getenv("CONTACT_EMAIL_TO")

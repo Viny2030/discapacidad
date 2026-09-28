@@ -321,7 +321,7 @@ TRATAMIENTOS = [
         "año_inicio": 2008,
         "organismos_aprobacion": ["FDA (2008)", "ANMAT"],
         "tags": ["TMS", "depresión", "neuromodulación", "TOC", "resistente a tratamiento"],
-        "url_resolucion_ar": "https://www.argentina.gob.ar/anmat/boletin/boletin-anmat-diciembre-2018",
+        "url_resolucion_ar": "https://www.argentina.gob.ar/anmat",  # FIX: el boletín anterior daba 404
         "resolucion_label": "Disposición ANMAT 9358/2018 — Aprobación dispositivos TMS",
     },
     {
@@ -540,7 +540,7 @@ async def vanguardia_por_tipo(tipo: str):
 
 
 @router.get("/ficha/{id}")
-async def ficha_tratamiento(id: str):
+def ficha_tratamiento(id: str):
     """
     Ficha completa de un tratamiento de vanguardia.
 

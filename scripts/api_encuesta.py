@@ -37,7 +37,7 @@ class RespuestaEncuesta(BaseModel):
 
 
 @router.post("")
-async def enviar_encuesta(datos: RespuestaEncuesta):
+def enviar_encuesta(datos: RespuestaEncuesta):
     gmail_user = os.getenv("GMAIL_USER")
     gmail_password = os.getenv("GMAIL_APP_PASSWORD")
 
