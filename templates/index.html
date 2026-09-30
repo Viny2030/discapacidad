@@ -392,7 +392,9 @@
         <p>
           El CUD es un documento <strong>gratuito y obligatorio</strong> emitido
           por el Estado argentino que certifica la existencia de una discapacidad.
-          No tiene vencimiento si la discapacidad es permanente. Permite acceder a
+          Por regla general tiene vencimiento y debe renovarse (hay tres excepciones
+          sin vencimiento: soporte vital; mayores de 60 años con dos renovaciones que
+          mantienen la condición; y más de 2 renovaciones con el mismo número de barra). Permite acceder a
           beneficios en salud, transporte, impuestos y educacion, entre otros.
         </p>
       </div>
@@ -663,7 +665,7 @@
     <div class="wrap">
       <div class="card" style="border-left:4px solid #f5a623">
         <h2>🆕 Nuevo régimen — Decreto 84/2026</h2>
-        <p>Desde el <strong>03/02/2026</strong>, el <strong>Decreto 84/2026</strong> reglamentó la <strong>Ley de Emergencia Nacional en Discapacidad N° 27.793</strong> y creó la <strong>Pensión No Contributiva por Discapacidad para Protección Social</strong>, que reemplaza a la antigua "pensión por invalidez" (Ley 18.910) para las personas con discapacidad.</p>
+        <p>Desde el <strong>03/02/2026</strong>, el <strong>Decreto 84/2026</strong> reglamentó la <strong>Ley de Emergencia Nacional en Discapacidad N° 27.793</strong> y creó la <strong>Pensión No Contributiva por Discapacidad para Protección Social</strong>. <strong>No reemplaza</strong> a la pensión no contributiva por invalidez laboral (Ley 18.910): <strong>subsisten las dos pensiones</strong> — la nueva de discapacidad y la de la vieja ley por invalidez laboral.</p>
         <p>La autoridad de aplicación es la <strong>SECRETARÍA NACIONAL DE DISCAPACIDAD del MINISTERIO DE SALUD</strong> (ex ANDIS, incorporada al Ministerio de Salud por Decreto 942/25). El pago y la liquidación están a cargo de <strong>ANSES</strong>.</p>
       </div>
 
@@ -701,7 +703,11 @@
 
         <h3>¿Cómo se tramita hoy?</h3>
         <ol style="padding-left:1.2rem;margin:.5rem 0 1rem">
-          <li style="margin-bottom:.5rem">Sacar el <strong>Certificado Médico Oficial (CMO)</strong> digital en un hospital público o centro de salud habilitado — es el documento que acredita el grado de incapacidad laboral (distinto del CUD).</li>
+          <li style="margin-bottom:.5rem">Obtener el <strong>Certificado Médico Oficial (CMO)</strong> digital — es el documento que acredita el grado de incapacidad laboral (distinto del CUD).
+            <div style="margin-top:.4rem;padding:.6rem .8rem;border-left:4px solid #c62828;background:rgba(198,40,40,.08)">
+              ⚠️ <strong>Realidad del trámite hoy:</strong> la página oficial indica que el CMO se saca en hospitales públicos y Centros de Salud (CeSAC), pero <strong>en la práctica está siendo muy difícil conseguir turno</strong>. Consultas hechas por trabajadoras sociales en la oficina de atención de Hipólito Yrigoyen, en el Hospital Santojanni y en ONGs terminaron todas derivadas a la <strong>línea 147</strong>. Recomendación: empezar llamando al <a href="tel:147">147</a> para pedir el turno.
+            </div>
+          </li>
           <li style="margin-bottom:.5rem">Verificar que tus datos personales y familiares estén actualizados en <strong>Mi ANSES</strong>.</li>
           <li style="margin-bottom:.5rem">Iniciar la solicitud online en <a href="https://mi.anses.gob.ar" target="_blank" rel="noopener">mi.anses.gob.ar</a> con tu Clave de la Seguridad Social (menú "Solicitud de prestaciones") o presencialmente con turno previo.</li>
           <li style="margin-bottom:.5rem">Hacer seguimiento del expediente por Mi ANSES o por WhatsApp con el chatbot <strong>TINA</strong>: <a href="https://api.whatsapp.com/send?phone=5491139101010" target="_blank" rel="noopener">(54 11) 3910-1010</a>.</li>
@@ -779,6 +785,7 @@
 
       <div class="card">
         <h2>🧾 Moratoria impositiva y compensación de emergencia para prestadores (Ley 24.901)</h2>
+        <p style="padding:.6rem .8rem;border-left:4px solid #f5a623;background:rgba(245,166,35,.1)"><strong>⚠️ No es un beneficio para personas con discapacidad.</strong> Esta moratoria es solo para <strong>prestadores</strong> (instituciones y profesionales que brindan prestaciones de la Ley 24.901) que no hayan pagado impuestos y cargas sociales.</p>
         <p>El Decreto 84/2026 (Art. 4° inciso b, Anexo I) creó un régimen de regularización de deudas tributarias, aduaneras y de la seguridad social vencidas al <strong>31/12/2025</strong> para los prestadores comprendidos en la Ley 24.901.</p>
         <ul style="padding-left:1.2rem;margin:.5rem 0 1rem">
           <li style="margin-bottom:.4rem">Condonación de hasta el <strong>100%</strong> de intereses resarcitorios y punitorios</li>
@@ -1083,7 +1090,7 @@
             <pre class="a-resp">{
   <span class="k">"nombre"</span>: <span class="s">"Certificado Único de Discapacidad"</span>,
   <span class="k">"gratuito"</span>: <span class="b">true</span>,
-  <span class="k">"vence"</span>: <span class="b">false</span>,
+  <span class="k">"vence"</span>: <span class="b">true</span>,
   <span class="k">"tipos_discapacidad"</span>: [
     <span class="s">"motora"</span>, <span class="s">"visual"</span>,
     <span class="s">"auditiva"</span>, <span class="s">"intelectual"</span> …
@@ -2474,6 +2481,7 @@
       "Ley 20.628":            "https://www.argentina.gob.ar/normativa/nacional/ley-20628-2348",
       "Ley 18.910":            "https://www.argentina.gob.ar/normativa/nacional/ley-18910-27727",
       "Ley 24.314":            "https://www.argentina.gob.ar/normativa/nacional/ley-24314-703",
+      "Ley 26.182":            "https://www.argentina.gob.ar/normativa/nacional/ley-26182-2006-123278",
       "Resolución ANAC":       "https://www.argentina.gob.ar/anac",  // FIX: el enlace anterior ya no existe (redirigía aquí)
       "Varía por provincia":   "https://www.argentina.gob.ar/andis",
     };
@@ -3376,15 +3384,15 @@
       empleado_privado: [
         { nombre: 'Incentivo a empleador', detalle: 'Tu empleador tiene reducción en contribuciones patronales por tenerte contratado con CUD (Ley 22.431).' },
         { nombre: 'Protección ante despido', detalle: 'Consultar con abogado laboral; la discapacidad no inhabilita el despido pero hay jurisprudencia protectoria.' },
-        { nombre: 'Deducción en Ganancias', detalle: 'Podés deducir gastos de rehabilitación y medicamentos en tu declaración de Ganancias (Ley 20.628).', url: 'https://www.argentina.gob.ar/normativa/nacional/ley-20628-2348' },
+        { nombre: 'Ganancias: no hay exención por discapacidad', detalle: 'La Ley 20.628 no exime sueldos ni jubilaciones por tener discapacidad o CUD: si superás el mínimo no imponible, te descuentan Ganancias igual que a cualquier trabajador. Los proyectos para crear una exención nunca prosperaron.', url: 'https://www.argentina.gob.ar/normativa/nacional/ley-20628-2348' },
       ],
       empleado_publico: [
         { nombre: 'Cupo laboral garantizado', detalle: 'Ya accediste al 4% reservado del Estado. Consultá con RRHH si hay adecuaciones de puesto disponibles.' },
         { nombre: 'Licencias especiales', detalle: 'Podés tener licencias para asistir a tratamientos médicos y de rehabilitación según el convenio colectivo.' },
-        { nombre: 'Deducción en Ganancias', detalle: 'Podés deducir gastos de rehabilitación y medicamentos (Ley 20.628).', url: 'https://www.argentina.gob.ar/normativa/nacional/ley-20628-2348' },
+        { nombre: 'Ganancias: no hay exención por discapacidad', detalle: 'La Ley 20.628 no exime sueldos ni jubilaciones por tener discapacidad o CUD: si superás el mínimo no imponible, te descuentan Ganancias igual que a cualquier trabajador.', url: 'https://www.argentina.gob.ar/normativa/nacional/ley-20628-2348' },
       ],
       independiente: [
-        { nombre: 'Exención en Ganancias', detalle: 'Las personas con CUD pueden quedar exentas del impuesto a las ganancias según el grado de discapacidad.' },
+        { nombre: 'Ganancias: no hay exención por discapacidad', detalle: 'Tener CUD no exime del Impuesto a las Ganancias (Ley 20.628), cualquiera sea el grado de discapacidad. Se paga igual que cualquier contribuyente.', url: 'https://www.argentina.gob.ar/normativa/nacional/ley-20628-2348' },
         { nombre: 'Exención en Bienes Personales', detalle: 'Verificá con un contador si aplica exención parcial en Bienes Personales.' },
         { nombre: 'Microcréditos accesibles', detalle: 'Programas de financiamiento para emprendedores con discapacidad. Consultá en Ministerio de Desarrollo Social.' },
       ],
@@ -3453,7 +3461,7 @@
         if (laboral === 'desocupado') {
           cardPension.style.display = 'block';
           document.getElementById('calc-pension-info').innerHTML =
-            '<p>Si no tenés ingresos propios ni familiares que te sostengan, podés consultar si accedés a la <strong>Pensión No Contributiva por Discapacidad para Protección Social</strong> (Ley 27.793, reglamentada por el Decreto 84/2026). Si ya cobrabas la ex pensión por invalidez, la conversión es automática y no necesitás volver a tramitarla.</p>' +
+            '<p>Si no tenés ingresos propios ni familiares que te sostengan, podés consultar si accedés a la <strong>Pensión No Contributiva por Discapacidad para Protección Social</strong> (Ley 27.793, reglamentada por el Decreto 84/2026). Esta pensión no reemplaza a la pensión por invalidez laboral (Ley 18.910): subsisten las dos.</p>' +
             '<div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.8rem">' +
             '<a class="btn-sm" href="https://www.argentina.gob.ar/salud/senadis/pensiones-informacion-y-tramites" target="_blank" rel="noopener">Ver info oficial ↗</a>' +
             '<a class="btn-sm" href="https://www.argentina.gob.ar/andis/turnos-andis-pnc-por-invalidez-laboral" target="_blank" rel="noopener">Sacar turno ↗</a>' +

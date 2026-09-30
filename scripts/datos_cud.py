@@ -186,11 +186,7 @@ BENEFICIOS = [{'categoria': 'Salud',
                   'detalle': '100% de descuento en colectivos, trenes y subtes de todo el país. '
                              'Registrar CUD en SUBE.',
                   'normativa': 'Ley 22.431 / CNRT',
-                  'url': 'https://www.argentina.gob.ar/salud/senadis/asociar-el-certificado-unico-de-discapacidad-cud-la-tarjeta-sube'},
-                 {'nombre': 'Franquicia aerocomercial',
-                  'detalle': 'Descuento en pasajes aéreos de cabotaje para la persona y un '
-                             'acompañante.',
-                  'normativa': 'Resolución ANAC'}]},
+                  'url': 'https://www.argentina.gob.ar/salud/senadis/asociar-el-certificado-unico-de-discapacidad-cud-la-tarjeta-sube'}]},
  {'categoria': 'Educación',
   'icono': '📚',
   'beneficios': [{'nombre': 'Educación especial e integrada',
@@ -213,33 +209,33 @@ BENEFICIOS = [{'categoria': 'Salud',
                   'normativa': 'Ley 22.431'}]},
  {'categoria': 'Impuestos y económico',
   'icono': '💰',
-  'beneficios': [{'nombre': 'Exención en Ganancias',
-                  'detalle': 'Las personas con CUD pueden estar exentas del impuesto a las '
-                             'ganancias.',
+  'beneficios': [{'nombre': 'Impuesto a las Ganancias: NO hay exención por discapacidad',
+                  'detalle': 'La Ley 20.628 (texto actualizado) no establece una exención total ni '
+                             'directa sobre sueldos o jubilaciones por el solo hecho de tener una '
+                             'discapacidad o CUD: si se supera el mínimo no imponible, se paga '
+                             'Ganancias igual que cualquier contribuyente. Hubo varios proyectos '
+                             'en el Congreso para crear esa exención, pero ninguno prosperó.',
                   'normativa': 'Ley 20.628'},
                  {'nombre': 'Pensión No Contributiva por Discapacidad para Protección Social',
                   'detalle': 'Para personas con discapacidad sin obra social ni ingresos suficientes. '
-                             'Reemplaza a la ex "pensión por invalidez"; quienes ya cobraban esta última '
-                             'pasan de forma automática (conversión de oficio) al nuevo régimen. Los '
+                             'NO reemplaza a la pensión no contributiva por invalidez laboral (Ley 18.910): '
+                             'ambas pensiones subsisten. Los '
                              'criterios de acceso (porcentaje de incapacidad, tope de ingresos) están '
                              'pendientes de acuerdo entre la Secretaría Nacional de Discapacidad y el '
                              'Consejo Federal de Discapacidad.',
                   'normativa': 'Ley 27.793 / Decreto 84/2026 (Anexo I y Anexo II)',
                   'url': 'https://www.argentina.gob.ar/salud/senadis/pensiones-informacion-y-tramites'},
-                 {'nombre': 'Moratoria impositiva para prestadores de la Ley 24.901',
-                  'detalle': 'Régimen de regularización de deudas impositivas, aduaneras y de la '
-                             'seguridad social vencidas al 31/12/2025, con condonación de hasta el '
-                             '100% de intereses y de determinadas multas. Lo administra ARCA (ex AFIP) '
-                             'sobre la nómina que remite la Secretaría Nacional de Discapacidad.',
-                  'normativa': 'Decreto 84/2026, Art. 4° inciso b) Anexo I'},
                  {'nombre': 'Exención en patente de vehículos',
                   'detalle': 'Exención o reducción en el pago de patente del vehículo adaptado.',
                   'normativa': 'Varía por provincia'}]},
  {'categoria': 'Vivienda',
   'icono': '🏠',
-  'beneficios': [{'nombre': 'Accesibilidad en viviendas del Estado',
-                  'detalle': 'Prioridad en acceso a viviendas sociales accesibles.',
-                  'normativa': 'Ley 24.314'}]}]
+  'beneficios': [{'nombre': 'Cupo en planes de vivienda del Estado',
+                  'detalle': 'Cupo del 5% de las viviendas de los planes financiados con fondos '
+                             'FONAVI para personas con discapacidad o grupos familiares con una '
+                             'persona con discapacidad a cargo.',
+                  'normativa': 'Ley 26.182',
+                  'url': 'https://www.argentina.gob.ar/normativa/nacional/ley-26182-2006-123278'}]}]
 
 
 JUNTAS_POR_PROVINCIA = {'Buenos Aires': {'nombre_organismo': 'Dirección Provincial de Discapacidad — Provincia de Buenos '
@@ -271,38 +267,19 @@ JUNTAS_POR_PROVINCIA = {'Buenos Aires': {'nombre_organismo': 'Dirección Provinc
                             {'nombre': 'Dirección de Discapacidad — Bahía Blanca',
                              'direccion': 'Chiclana 451, Bahía Blanca',
                              'telefono': '0291-5506000'}]},
- 'CABA': {'nombre_organismo': 'COPIDIS — Comisión para la Plena Participación e Inclusión de las '
-                              'Personas con Discapacidad',
+ 'CABA': {'nombre_organismo': 'Centro de Evaluación y Orientación de la Discapacidad — GCBA',
           'url_turno': 'https://buenosaires.gob.ar/tramites/solicitud-del-certificado-unico-de-discapacidad-cud',
-          'telefono': '0800-999-2727 opción 3',
+          'telefono': '147 (atención ciudadana GCBA)',
           'email': 'discapacidadba@buenosaires.gob.ar',
           'turno_online': True,
-          'tiempo_espera_estimado': '15-30 días',
-          'nota': 'Las juntas en CABA están distribuidas por tipo de discapacidad.',
-          'sedes': [{'nombre': 'IREP — Discapacidad Motora',
-                     'direccion': 'Echeverría 955, Belgrano',
-                     'telefono': '4781-6071 int. 1083',
-                     'tipo': 'motora'},
-                    {'nombre': 'Hospital Rocca — Motora y Auditiva',
-                     'direccion': 'Segurola 1949, Flores',
-                     'telefono': '4630-4728',
-                     'tipo': 'motora/auditiva'},
-                    {'nombre': 'Hospital Santa Lucía — Visual',
-                     'direccion': 'Av. San Juan 2021 y Sarandí, San Cristóbal',
-                     'telefono': '4121-3193',
-                     'tipo': 'visual'},
-                    {'nombre': 'Hospital Álvear — Salud Mental adultos',
-                     'direccion': 'Warnes 2630, Agronomía',
-                     'telefono': '4521-0983',
-                     'tipo': 'psicosocial'},
-                    {'nombre': 'Hospital Piñero — Menores de 18 años',
-                     'direccion': 'Varela 1307 y Viola, Flores',
-                     'telefono': '4631-8601',
-                     'tipo': 'todas (menores)'},
-                    {'nombre': 'Hospital Penna — Visceral adultos',
-                     'direccion': 'Pedro Chutro 3380, Parque Patricios',
-                     'telefono': '4911-3030 int. 106',
-                     'tipo': 'visceral'}]},
+          'tiempo_espera_estimado': '15-30 días (alta demanda; puede demorar más)',
+          'nota': 'En CABA la evaluación se realiza en el Centro de Evaluación y Orientación de la '
+                  'Discapacidad (Piedras 1281). Previamente hay que solicitar turno y validar la '
+                  'documentación con la que se cuenta.',
+          'sedes': [{'nombre': 'Centro de Evaluación y Orientación de la Discapacidad',
+                     'direccion': 'Piedras 1281, San Telmo',
+                     'telefono': '147',
+                     'tipo': 'todas'}]},
  'Catamarca': {'nombre_organismo': 'Dirección de Asistencia Integral a Personas con Discapacidad',
                'url_turno': 'https://www.catamarca.gov.ar',
                'telefono': '(03833) 437921 / 437913',
@@ -660,9 +637,11 @@ FAQ = [{'pregunta': '¿El trámite del CUD es gratuito?',
   'respuesta': 'Sí, el trámite del CUD es completamente gratuito. Ningún organismo puede cobrar '
                'por la emisión del certificado.'},
  {'pregunta': '¿El CUD vence?',
-  'respuesta': 'Desde la Resolución ANDIS 322/2023, el CUD se otorga sin fecha de vencimiento '
-               'mientras las condiciones certificantes se mantengan. Los CUD anteriores mantienen '
-               'su validez.'},
+  'respuesta': 'Sí, como regla general el CUD tiene fecha de vencimiento y hay que renovarlo. '
+               'Hay tres excepciones en las que se otorga sin vencimiento: '
+               '1) personas que tienen soporte vital; '
+               '2) personas mayores de 60 años con dos renovaciones que mantienen la condición; y '
+               '3) personas con más de 2 renovaciones que mantienen el mismo número de barra.'},
  {'pregunta': '¿Puedo tramitar el CUD si vivo en el interior del país?',
   'respuesta': 'Sí. Cada provincia tiene su propia Junta Evaluadora. El trámite se realiza en la '
                'jurisdicción donde residís según tu DNI.'},
@@ -682,7 +661,7 @@ FAQ = [{'pregunta': '¿El trámite del CUD es gratuito?',
   'respuesta': 'Todavía no. El Art. 11 del Anexo I del Decreto 84/2026 establece que la Secretaría '
                'Nacional de Discapacidad dictará nuevos lineamientos de certificación, previa '
                'intervención del Consejo Federal de Discapacidad, pero al momento no modificó los '
-               'criterios vigentes de la Resolución ANDIS 322/2023.'},
+               'criterios de certificación vigentes.'},
  {'pregunta': '¿Puedo tener CUD y trabajar?',
   'respuesta': 'Sí. Tener CUD no impide trabajar. El cupo laboral del 4% en el Estado está pensado '
                'para personas con CUD que buscan empleo.'},
@@ -780,8 +759,9 @@ SUBE_INFO = {
         ),
     },
     'renovacion': (
-        'Como el CUD ya no vence (Resolución ANDIS 322/2023), el beneficio SUBE '
-        'tampoco vence. Solo deberás actualizarlo si cambiás de tarjeta SUBE.'
+        'El beneficio SUBE está atado a la vigencia del CUD: cuando renovás el CUD '
+        '(salvo las excepciones sin vencimiento), verificá que el beneficio siga activo. '
+        'También deberás actualizarlo si cambiás de tarjeta SUBE.'
     ),
     'sube_perdida_o_robo': {
         'pasos': [

@@ -13,7 +13,8 @@ def test_cud_info_general(client):
     assert r.status_code == 200
     data = r.json()
     assert data["gratuito"] is True
-    assert data["vence"] is False
+    assert data["vence"] is True
+    assert len(data["excepciones_sin_vencimiento"]) == 3
     assert "tipos_discapacidad" in data
     assert len(data["tipos_discapacidad"]) >= 5
     assert data["total_provincias_con_junta"] == 24
@@ -164,7 +165,7 @@ def test_consulta_estado(client):
     r = client.get("/api/cud/consulta-estado")
     assert r.status_code == 200
     data = r.json()
-    assert data["cud_vence"] is False
+    assert data["cud_vence"] is True
     assert "url_consulta" in data
 
 

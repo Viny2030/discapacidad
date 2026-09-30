@@ -46,8 +46,12 @@ async def info_general():
     return {
         "nombre": "Certificado Único de Discapacidad (CUD)",
         "gratuito": True,
-        "vence": False,
-        "normativa_vencimiento": "Resolución ANDIS 322/2023",
+        "vence": True,
+        "excepciones_sin_vencimiento": [
+            "Personas con soporte vital",
+            "Mayores de 60 años con dos renovaciones que mantienen la condición",
+            "Más de 2 renovaciones que mantienen el mismo número de barra",
+        ],
         "tipos_discapacidad": list(REQUISITOS_POR_TIPO.keys()),
         "total_provincias_con_junta": len(JUNTAS_POR_PROVINCIA),
         "normativa_base": ["Ley 22.431", "Ley 24.901", "Ley 27.793", "Decreto 84/2026", "Resolución ANDIS 322/2023"],
@@ -180,7 +184,7 @@ async def consulta_estado():
                           "argentina.gob.ar/andis/consultas-publicas ingresando tu DNI.",
         "url_consulta": "https://www.argentina.gob.ar/andis",
         "plazo_estimado": paso_resolucion["duracion_estimada"] if paso_resolucion else None,
-        "cud_vence": False,
+        "cud_vence": True,
         "detalle_vencimiento": faq_vence["respuesta"] if faq_vence else None,
     }
 
