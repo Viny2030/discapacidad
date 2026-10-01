@@ -3274,7 +3274,7 @@
 
     function renderResumen(data) {
       const items = [
-        [data.total_cud_vigentes, 'CUD vigentes (total nacional)'],
+        [data.total_cud_vigentes, 'CUD vigentes (total nacional) *'],
         [data.porcentaje_poblacion + '%', 'de la poblacion'],
         [data.provincia_mayor, 'provincia con mas CUD'],
         [data.tipo_mas_frecuente, 'tipo mas frecuente'],
@@ -3287,6 +3287,11 @@
         html += '<div class="stat-box"><div class="num">' + escapeHtml(num) + '</div><div class="label">' + escapeHtml(label) + '</div></div>';
       });
       html += '</div>';
+      const totalCud = Number(data.total_cud_vigentes);
+      const datoCud = (totalCud >= 1e6)
+        ? (Math.floor(totalCud / 1e5) / 10).toLocaleString('es-AR') + ' millones'
+        : (isFinite(totalCud) && totalCud > 0 ? totalCud.toLocaleString('es-AR') : 'CUD vigentes');
+      html += '<p class="muted" style="margin-top:.6rem">* El dato de ' + escapeHtml(datoCud) + ' se refiere a los CUD otorgados y cargados al sistema a la fecha, <strong>NO</strong> a la cantidad de PcD de la RA, dato final que surgir&aacute; cuando SENADIS realice la ENDI.</p>';
       if (data.fuente) html += '<p class="muted" style="margin-top:.6rem">Fuente: ' + escapeHtml(data.fuente) + '</p>';
       return html;
     }
