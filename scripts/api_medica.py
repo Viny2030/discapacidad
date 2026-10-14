@@ -410,6 +410,14 @@ CONDICIONES_ESPECIFICAS: dict[str, dict] = {
                        "compulsiones recurrentes.",
         "query_pubmed": "obsessive compulsive disorder OCD treatment 2023 2024 2025",
     },
+    "epf": {
+        "nombre": "Enfermedades poco frecuentes (EPF)",
+        # "tipo" agrupa la evidencia; las EPF pueden causar cualquier tipo de discapacidad.
+        "tipo": "visceral",
+        "descripcion": "Enfermedades con prevalencia igual o inferior a 1 cada 2.000 "
+                       "personas (Ley 26.689); muchas son de origen genético.",
+        "query_pubmed": "rare diseases diagnosis treatment access 2023 2024 2025",
+    },
     "diabetes_tipo1": {
         "nombre": "Diabetes tipo 1",
         "tipo": "visceral",
@@ -456,7 +464,7 @@ ESPECIALIDADES_MEDICAS: dict[str, dict] = {
         "nombre": "Genética médica",
         "descripcion": "Diagnóstico y asesoramiento sobre condiciones de origen "
                        "genético o cromosómico.",
-        "condiciones_relacionadas": ["sindrome_down", "fibrosis_quistica"],
+        "condiciones_relacionadas": ["sindrome_down", "fibrosis_quistica", "epf"],
     },
     "fisiatria": {
         "nombre": "Medicina Física y Rehabilitación (Fisiatría)",

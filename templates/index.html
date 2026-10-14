@@ -340,6 +340,8 @@
     <button class="sub-btn" data-sub="dea" title="Pendiente de revisión por un/a psicopedagogo/a o fonoaudiólogo/a">Dislexia y DEA*</button>
     <button class="sub-btn" data-sub="hipoacusia" title="Pendiente de revisión por un/a fonoaudiólogo/a u otorrinolaringólogo/a">Hipoacusia*</button>
     <button class="sub-btn" data-sub="epilepsia" title="Pendiente de revisión por un/a neurólogo/a">Epilepsia*</button>
+    <button class="sub-btn" data-sub="epf" title="Pendiente de revisión por un/a médico/a">Poco frecuentes*</button>
+    <button class="sub-btn" data-sub="saludmental" title="Pendiente de revisión por un/a psicólogo/a o psiquiatra">Salud mental*</button>
     <p class="subnav-nota">* Secciones pendientes de revisión profesional.</p>
   </div>
 
@@ -397,7 +399,7 @@
         </div>
         <div class="home-card">
           <h3>🧠 Condiciones</h3>
-          <p>Guías por condición: Plan TEA, Lenguaje (TDL), Dislexia y DEA, Hipoacusia y Epilepsia — qué son, señales para consultar, evaluación, tratamiento, derechos (con su ley) y evidencia reciente. <em>* Las secciones nuevas están pendientes de revisión profesional.</em></p>
+          <p>Guías por condición: Plan TEA, Lenguaje (TDL), Dislexia y DEA, Hipoacusia, Epilepsia, Enfermedades poco frecuentes y Salud mental — qué son, señales para consultar, evaluación, tratamiento, derechos (con su ley) y evidencia reciente. <em>* Las secciones nuevas están pendientes de revisión profesional.</em></p>
           <button class="go-btn" onclick="switchTab('tdl')">Ver condiciones</button>
         </div>
         <div class="home-card">
@@ -1128,6 +1130,116 @@
           <li><a href="https://www.who.int/es/news-room/fact-sheets/detail/epilepsy" target="_blank" rel="noopener">Organizaci&oacute;n Mundial de la Salud: epilepsia ↗</a></li>
         </ul>
         <p class="muted">* Secci&oacute;n pendiente de revisi&oacute;n por un/a m&eacute;dico/a neur&oacute;logo/a matriculado/a.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================== ENFERMEDADES POCO FRECUENTES ====================== -->
+  <div class="panel" id="panel-epf">
+    <div class="wrap">
+      <div class="aviso-medico" role="note" style="margin:0 0 1.2rem">
+        <strong>* Contenido pendiente de revisi&oacute;n profesional.</strong>
+        Esta secci&oacute;n es informativa y debe ser revisada y validada por un/a
+        <strong>m&eacute;dico/a matriculado/a (por ejemplo, de gen&eacute;tica m&eacute;dica)</strong> antes de tomarse como referencia.
+        No reemplaza la evaluaci&oacute;n ni el tratamiento profesional.
+      </div>
+
+      <div class="card" style="border-left:4px solid #7c4dff">
+        <h2>🧬 Enfermedades poco frecuentes (EPF)*</h2>
+        <p>La <strong>Ley 26.689</strong> define como poco frecuentes a las enfermedades cuya prevalencia es <strong>igual o inferior a 1 cada 2.000 personas</strong>. Cada una es rara, pero en conjunto son miles de enfermedades distintas, muchas de origen gen&eacute;tico y de comienzo en la infancia.</p>
+        <p>El problema com&uacute;n suele ser el <strong>diagn&oacute;stico tard&iacute;o</strong> (a veces despu&eacute;s de a&ntilde;os y muchas consultas) y el acceso a tratamientos y medicamentos espec&iacute;ficos, a veces de alto costo.</p>
+      </div>
+
+      <div class="card">
+        <h2>🩺 Camino al diagn&oacute;stico*</h2>
+        <ul style="margin:.4rem 0 .6rem 1.2rem;font-size:.9rem">
+          <li>Cuando los s&iacute;ntomas no encajan en un diagn&oacute;stico habitual, pedir derivaci&oacute;n a un <strong>servicio de gen&eacute;tica m&eacute;dica</strong> o a un centro de referencia.</li>
+          <li>Guardar todos los estudios e informes en orden: ayudan a no repetir pruebas.</li>
+          <li>Las <strong>asociaciones de pacientes</strong> de cada enfermedad suelen orientar sobre especialistas y tr&aacute;mites.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>🪪 Derechos: Ley 26.689*</h2>
+        <ul style="margin:.4rem 0 .6rem 1.2rem;font-size:.9rem">
+          <li><strong>Cobertura:</strong> las obras sociales, las prepagas y las dem&aacute;s entidades que brindan atenci&oacute;n m&eacute;dica deben dar <strong>cobertura asistencial</strong> a las personas con EPF, seg&uacute;n las prestaciones m&iacute;nimas que fija el Ministerio de Salud.</li>
+          <li><strong>Sin cobertura:</strong> el Ministerio de Salud acuerda con las provincias la atenci&oacute;n integral de quienes no tienen obra social ni prepaga.</li>
+          <li>La ley prev&eacute; un <strong>listado de EPF</strong>, un <strong>registro nacional</strong> con resguardo de la confidencialidad y <strong>centros de referencia</strong> regionales.</li>
+        </ul>
+        <p><strong>CUD:</strong> se eval&uacute;a seg&uacute;n las limitaciones de cada persona, no por el diagn&oacute;stico en s&iacute;; consult&aacute; con la junta evaluadora.</p>
+        <button class="go-btn" onclick="switchTab('cud')">Ver juntas evaluadoras</button>
+      </div>
+
+      <div class="card">
+        <h2>🔬 Evidencia m&eacute;dica reciente</h2>
+        <button class="go-btn" onclick="loadInto('/api/condiciones/epf', 'epf-evidencia', renderCondicionResult)">Enfermedades poco frecuentes</button>
+        <div id="epf-evidencia" class="result-box" style="margin-top:.8rem"></div>
+      </div>
+
+      <div class="card">
+        <h2>📚 Fuentes</h2>
+        <ul style="margin:.4rem 0 .6rem 1.2rem;font-size:.88rem">
+          <li><a href="https://www.argentina.gob.ar/normativa/nacional/185077/texto" target="_blank" rel="noopener">Ley 26.689, texto (argentina.gob.ar) ↗</a></li>
+          <li><a href="https://www.argentina.gob.ar/justicia/derechofacil/leysimple/enfermedades-poco-frecuentes" target="_blank" rel="noopener">Enfermedades poco frecuentes explicado (Derecho F&aacute;cil) ↗</a></li>
+        </ul>
+        <p class="muted">* Secci&oacute;n pendiente de revisi&oacute;n por un/a m&eacute;dico/a matriculado/a.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================== SALUD MENTAL ====================== -->
+  <div class="panel" id="panel-saludmental">
+    <div class="wrap">
+      <div class="aviso-medico" role="note" style="margin:0 0 1.2rem">
+        <strong>* Contenido pendiente de revisi&oacute;n profesional.</strong>
+        Esta secci&oacute;n es informativa y debe ser revisada y validada por un/a
+        <strong>psic&oacute;logo/a o m&eacute;dico/a psiquiatra matriculado/a</strong> antes de tomarse como referencia.
+        No reemplaza la evaluaci&oacute;n ni el tratamiento profesional.
+      </div>
+
+      <div class="card" style="border-left:4px solid #c62828;background:#fff5f5">
+        <h2>☎️ Si necesit&aacute;s ayuda ahora</h2>
+        <p><strong>L&iacute;nea de Orientaci&oacute;n y Apoyo en la Urgencia de Salud Mental: <a href="tel:08009990091">0800-999-0091</a></strong> &mdash; gratuita, confidencial, las 24 horas, los 365 d&iacute;as. Atiende tambi&eacute;n situaciones de riesgo suicida.</p>
+        <p>Ante una emergencia, llam&aacute; al <a href="tel:911">911</a> o acud&iacute; a la guardia del hospital m&aacute;s cercano.</p>
+      </div>
+
+      <div class="card" style="border-left:4px solid #7c4dff">
+        <h2>🧠 Salud mental y discapacidad psicosocial*</h2>
+        <p>La <strong>discapacidad psicosocial</strong> surge cuando un padecimiento mental de larga duraci&oacute;n, en interacci&oacute;n con barreras del entorno, limita la participaci&oacute;n en la vida diaria, el estudio o el trabajo. Es uno de los tipos que eval&uacute;an las juntas del CUD.</p>
+        <p>La <strong>Ley 26.657 de Salud Mental</strong> parte de la <strong>presunci&oacute;n de capacidad</strong> de todas las personas: un diagn&oacute;stico no autoriza, por s&iacute; solo, a presumir riesgo ni incapacidad.</p>
+      </div>
+
+      <div class="card">
+        <h2>🪪 Derechos: Ley 26.657*</h2>
+        <ul style="margin:.4rem 0 .6rem 1.2rem;font-size:.9rem">
+          <li>Atenci&oacute;n sanitaria y social <strong>integral</strong>, con un <strong>equipo interdisciplinario</strong> y preferentemente en la comunidad, fuera de la internaci&oacute;n.</li>
+          <li>El <strong>tratamiento menos restrictivo</strong> de sus derechos y libertades, que promueva la integraci&oacute;n familiar, laboral y comunitaria.</li>
+          <li>Recibir informaci&oacute;n comprensible y dar o negar su <strong>consentimiento informado</strong>; acceder a su historia cl&iacute;nica.</li>
+          <li><strong>No ser discriminado</strong> por un padecimiento actual o pasado.</li>
+          <li>La medicaci&oacute;n solo con fines terap&eacute;uticos, nunca como castigo ni por conveniencia de terceros.</li>
+        </ul>
+        <h3>Internaciones</h3>
+        <p>La internaci&oacute;n es un recurso <strong>restrictivo</strong> y debe ser lo m&aacute;s breve posible; no puede usarse para resolver problemas sociales o de vivienda. La involuntaria es excepcional (riesgo cierto e inminente para s&iacute; o para terceros), con control judicial y del <strong>&Oacute;rgano de Revisi&oacute;n</strong>, y la persona tiene derecho a un abogado.</p>
+        <p class="aviso-medico" style="margin-top:.6rem">⚠️ En 2026 el Senado debate un <strong>proyecto de reforma</strong> de esta ley que cambiar&iacute;a, entre otros puntos, el r&eacute;gimen de internaciones involuntarias. Esta secci&oacute;n describe la ley vigente; verific&aacute; si hubo cambios.</p>
+        <button class="go-btn" onclick="switchTab('cud')">Ver requisitos del CUD (psicosocial)</button>
+      </div>
+
+      <div class="card">
+        <h2>🔬 Evidencia m&eacute;dica reciente</h2>
+        <button class="go-btn" onclick="loadInto('/api/condiciones/esquizofrenia', 'sm-evidencia', renderCondicionResult)">Esquizofrenia</button>
+        <button class="go-btn" onclick="loadInto('/api/condiciones/trastorno_bipolar', 'sm-evidencia', renderCondicionResult)">Trastorno bipolar</button>
+        <button class="go-btn" onclick="loadInto('/api/condiciones/toc', 'sm-evidencia', renderCondicionResult)">TOC</button>
+        <div id="sm-evidencia" class="result-box" style="margin-top:.8rem"></div>
+      </div>
+
+      <div class="card">
+        <h2>📚 Fuentes</h2>
+        <ul style="margin:.4rem 0 .6rem 1.2rem;font-size:.88rem">
+          <li><a href="https://www.argentina.gob.ar/normativa/nacional/ley-26657-175977/texto" target="_blank" rel="noopener">Ley 26.657, texto (argentina.gob.ar) ↗</a></li>
+          <li><a href="https://www.argentina.gob.ar/node/356435" target="_blank" rel="noopener">L&iacute;nea 0800-999-0091 (Ministerio de Salud) ↗</a></li>
+          <li><a href="https://www.parlamentario.com/2026/04/18/el-gobierno-manda-al-senado-una-reforma-integral-de-la-ley-de-salud-mental-y-redefine-el-regimen-de-internaciones-involuntarias/" target="_blank" rel="noopener">Proyecto de reforma enviado al Senado (abril 2026) ↗</a></li>
+        </ul>
+        <p class="muted">* Secci&oacute;n pendiente de revisi&oacute;n por un/a psic&oacute;logo/a o psiquiatra matriculado/a.</p>
       </div>
     </div>
   </div>
@@ -2631,7 +2743,7 @@
 
     /* La pestaña "Condiciones" agrupa sub-pestañas, cada una con su propio panel
        (panel-tea, panel-tdl, ...). switchTab('tea') sigue funcionando. */
-    const CONDICIONES = ['tea', 'tdl', 'dea', 'hipoacusia', 'epilepsia'];
+    const CONDICIONES = ['tea', 'tdl', 'dea', 'hipoacusia', 'epilepsia', 'epf', 'saludmental'];
     const subnav = document.getElementById('subnav-condiciones');
     const subButtons = document.querySelectorAll('.sub-btn');
     let ultimaCondicion = 'tea';

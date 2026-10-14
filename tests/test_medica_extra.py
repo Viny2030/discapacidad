@@ -107,3 +107,8 @@ def test_condiciones_incluye_tdl_y_apraxia_del_habla():
 def test_condiciones_incluye_dislexia_y_epilepsia():
     assert "dislexia" in CONDICIONES_ESPECIFICAS and "epilepsia" in CONDICIONES_ESPECIFICAS
     assert "epilepsia" in ESPECIALIDADES_MEDICAS["neurologia"]["condiciones_relacionadas"]
+
+
+def test_condiciones_incluye_epf():
+    assert "epf" in CONDICIONES_ESPECIFICAS
+    assert "epf" in ESPECIALIDADES_MEDICAS["genetica"]["condiciones_relacionadas"]

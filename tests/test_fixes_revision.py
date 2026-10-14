@@ -111,9 +111,9 @@ def test_pestana_condiciones_con_subpestanas():
     nav = html[html.index("<nav>"):html.index("</nav>")]
     assert 'data-panel="condiciones"' in nav
     assert 'data-panel="tea"' not in nav and 'data-panel="tdl"' not in nav
-    for sub in ("tea", "tdl", "dea", "hipoacusia", "epilepsia"):
+    for sub in ("tea", "tdl", "dea", "hipoacusia", "epilepsia", "epf", "saludmental"):
         assert f'data-sub="{sub}"' in html and f'id="panel-{sub}"' in html
-    assert "const CONDICIONES = ['tea', 'tdl', 'dea', 'hipoacusia', 'epilepsia'];" in html
+    assert "const CONDICIONES = ['tea', 'tdl', 'dea', 'hipoacusia', 'epilepsia', 'epf', 'saludmental'];" in html
 
 
 def _panel(html, pid):
@@ -133,6 +133,10 @@ def test_secciones_nuevas_con_aviso_de_revision():
     assert "Ley 25.415" in _panel(html, "hipoacusia")
     assert "neur&oacute;logo/a matriculado/a" in _panel(html, "epilepsia")
     assert "Ley 25.404" in _panel(html, "epilepsia")
+    assert "Ley 26.689" in _panel(html, "epf") and "m&eacute;dico/a matriculado/a" in _panel(html, "epf")
+    sm = _panel(html, "saludmental")
+    assert "Ley 26.657" in sm and "psiquiatra matriculado/a" in sm
+    assert "0800-999-0091" in sm      # línea nacional de salud mental, verificada en argentina.gob.ar
 
 
 def test_lectura_en_voz_alta_por_fragmentos():
