@@ -49,6 +49,16 @@
       body{padding-top:0}
     }
 
+    /* sub-pestañas de "Condiciones" */
+    .subnav{display:flex;flex-wrap:wrap;justify-content:center;gap:.4rem;
+         padding:.8rem 1rem .2rem;max-width:1100px;margin:0 auto}
+    .subnav .sub-btn{background:#ede7f6;color:#4a2d8c;border:1px solid #d1c4e9;
+         border-radius:999px;padding:.4rem .9rem;font-size:.85rem;font-weight:600;
+         cursor:pointer;font-family:inherit}
+    .subnav .sub-btn:hover{background:#d1c4e9}
+    .subnav .sub-btn.active{background:#7c4dff;border-color:#7c4dff;color:#fff}
+    .subnav .subnav-nota{flex-basis:100%;text-align:center;font-size:.78rem;color:#6a5a8c;margin-top:.2rem}
+
     header{background:#5e35b1;color:white;padding:2.5rem 1rem;text-align:center}
     header h1{font-size:1.9rem;margin-bottom:.5rem}
     header p{opacity:.9}
@@ -303,8 +313,7 @@
     <button class="tab-btn" data-panel="calculadora">Calculadora</button>
     <button class="tab-btn" data-panel="pensiones">Pensiones</button>
     <span class="nav-break" aria-hidden="true"></span>
-    <button class="tab-btn" data-panel="tea">Plan TEA</button>
-    <button class="tab-btn" data-panel="tdl" title="Contenido pendiente de revisión por un/a fonoaudiólogo/a">Lenguaje (TDL)*</button>
+    <button class="tab-btn" data-panel="condiciones">Condiciones</button>
     <button class="tab-btn" data-panel="tratamientos">Tratamientos</button>
     <button class="tab-btn" data-panel="comparador">Comparador</button>
     <button class="tab-btn" data-panel="about">About (EN)</button>
@@ -323,6 +332,16 @@
     <h1>Asesoria Movil en Discapacidad</h1>
     <p>CUD - Evidencia medica - Estadisticas oficiales (Secretaría Nacional de Discapacidad/INDEC)</p>
   </header>
+
+  <!-- Sub-pestañas de la pestaña "Condiciones" (visibles solo dentro de ella) -->
+  <div class="subnav" id="subnav-condiciones" style="display:none" role="tablist" aria-label="Condiciones">
+    <button class="sub-btn" data-sub="tea">Plan TEA</button>
+    <button class="sub-btn" data-sub="tdl" title="Pendiente de revisión por un/a fonoaudiólogo/a">Lenguaje (TDL)*</button>
+    <button class="sub-btn" data-sub="dea" title="Pendiente de revisión por un/a psicopedagogo/a o fonoaudiólogo/a">Dislexia y DEA*</button>
+    <button class="sub-btn" data-sub="hipoacusia" title="Pendiente de revisión por un/a fonoaudiólogo/a u otorrinolaringólogo/a">Hipoacusia*</button>
+    <button class="sub-btn" data-sub="epilepsia" title="Pendiente de revisión por un/a neurólogo/a">Epilepsia*</button>
+    <p class="subnav-nota">* Secciones pendientes de revisión profesional.</p>
+  </div>
 
   <!-- ====================== INICIO ====================== -->
   <div class="panel visible" id="panel-inicio">
@@ -377,9 +396,9 @@
           <button class="go-btn" onclick="switchTab('tea')">Ver el plan</button>
         </div>
         <div class="home-card">
-          <h3>🗣️ Lenguaje (TDL)*</h3>
-          <p>Trastorno del Desarrollo del Lenguaje (antes TEL): qué es, señales para consultar, evaluación fonoaudiológica y neurolingüística, la técnica PROMPT, derechos y evidencia reciente. <em>* Pendiente de revisión por un/a fonoaudiólogo/a.</em></p>
-          <button class="go-btn" onclick="switchTab('tdl')">Ver la sección</button>
+          <h3>🧠 Condiciones</h3>
+          <p>Guías por condición: Plan TEA, Lenguaje (TDL), Dislexia y DEA, Hipoacusia y Epilepsia — qué son, señales para consultar, evaluación, tratamiento, derechos (con su ley) y evidencia reciente. <em>* Las secciones nuevas están pendientes de revisión profesional.</em></p>
+          <button class="go-btn" onclick="switchTab('tdl')">Ver condiciones</button>
         </div>
         <div class="home-card">
           <h3>🩺 Tratamientos</h3>
@@ -931,6 +950,184 @@
           <li><a href="https://radld.org/" target="_blank" rel="noopener">RADLD: campa&ntilde;a internacional de concientizaci&oacute;n sobre el TDL ↗</a></li>
         </ul>
         <p class="muted">* Secci&oacute;n pendiente de revisi&oacute;n por un/a fonoaudi&oacute;logo/a matriculado/a.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================== DISLEXIA Y DEA ====================== -->
+  <div class="panel" id="panel-dea">
+    <div class="wrap">
+      <div class="aviso-medico" role="note" style="margin:0 0 1.2rem">
+        <strong>* Contenido pendiente de revisi&oacute;n profesional.</strong>
+        Esta secci&oacute;n es informativa y debe ser revisada y validada por un/a
+        <strong>psicopedagogo/a o fonoaudi&oacute;logo/a matriculado/a</strong> antes de tomarse como referencia.
+        No reemplaza la evaluaci&oacute;n ni el tratamiento profesional.
+      </div>
+
+      <div class="card" style="border-left:4px solid #7c4dff">
+        <h2>📖 Dislexia y Dificultades Espec&iacute;ficas del Aprendizaje (DEA)*</h2>
+        <p>Las <strong>DEA</strong> son alteraciones de origen neurobiol&oacute;gico que afectan el aprendizaje de la <strong>lectura</strong>, la <strong>escritura</strong> o el <strong>c&aacute;lculo</strong>. La m&aacute;s conocida es la <strong>dislexia</strong> (lectura y escritura); tambi&eacute;n se describen la disortograf&iacute;a, la disgraf&iacute;a y la discalculia. No se explican por una discapacidad intelectual, por falta de ense&ntilde;anza ni por problemas de visi&oacute;n o audici&oacute;n.</p>
+        <p>Suelen aparecer junto con dificultades de lenguaje oral: muchos chicos con <a href="#" onclick="switchTab('tdl');return false">TDL</a> tienen despu&eacute;s dificultades en la lectoescritura.</p>
+      </div>
+
+      <div class="card">
+        <h2>🚩 Se&ntilde;ales para consultar*</h2>
+        <p class="muted">Orientativas, no diagn&oacute;sticas.</p>
+        <ul style="margin:.4rem 0 .6rem 1.2rem;font-size:.9rem">
+          <li>Le cuesta asociar letras y sonidos, o leer palabras simples, pese a una ense&ntilde;anza adecuada.</li>
+          <li>Lee lento, con mucho esfuerzo y errores, y le cuesta comprender lo que lee.</li>
+          <li>Errores de ortograf&iacute;a muy persistentes o escritura muy dif&iacute;cil de entender.</li>
+          <li>Dificultades persistentes con los n&uacute;meros y el c&aacute;lculo.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>🩺 Evaluaci&oacute;n y tratamiento*</h2>
+        <p>La evaluaci&oacute;n es <strong>interdisciplinaria</strong> (psicopedagog&iacute;a, fonoaudiolog&iacute;a, neuropsicolog&iacute;a), despu&eacute;s de descartar problemas de visi&oacute;n y audici&oacute;n. Se eval&uacute;an la lectura, la escritura, el c&aacute;lculo y habilidades de base como la conciencia fonol&oacute;gica.</p>
+        <p>La intervenci&oacute;n combina <strong>ense&ntilde;anza expl&iacute;cita y sistem&aacute;tica</strong> de la lectoescritura, apoyo psicopedag&oacute;gico o fonoaudiol&oacute;gico, y <strong>adecuaciones de acceso</strong> en la escuela.</p>
+      </div>
+
+      <div class="card">
+        <h2>🪪 Derechos: Ley 27.306*</h2>
+        <p>La <strong>Ley 27.306</strong> garantiza el derecho a la educaci&oacute;n de chicos y adultos con DEA.</p>
+        <h3>En la escuela</h3>
+        <ul style="margin:.4rem 0 .6rem 1.2rem;font-size:.9rem">
+          <li>Priorizar la oralidad y dar m&aacute;s tiempo para tareas y evaluaciones.</li>
+          <li>Permitir computadora, calculadora o tablet; evitar copiados y dictados extensos.</li>
+          <li>Adaptar las evaluaciones a cada persona y no exponerla innecesariamente frente a sus compa&ntilde;eros.</li>
+          <li>Contar con procedimientos de detecci&oacute;n temprana.</li>
+        </ul>
+        <h3>En salud</h3>
+        <p>La ley incorpora al <strong>Programa M&eacute;dico Obligatorio (PMO)</strong> la detecci&oacute;n temprana, el diagn&oacute;stico y el tratamiento integral e interdisciplinario de las DEA: las obras sociales y prepagas deben cubrirlos.</p>
+      </div>
+
+      <div class="card">
+        <h2>🔬 Evidencia m&eacute;dica reciente</h2>
+        <button class="go-btn" onclick="loadInto('/api/condiciones/dislexia', 'dea-evidencia', renderCondicionResult)">Dislexia</button>
+        <div id="dea-evidencia" class="result-box" style="margin-top:.8rem"></div>
+      </div>
+
+      <div class="card">
+        <h2>📚 Fuentes</h2>
+        <ul style="margin:.4rem 0 .6rem 1.2rem;font-size:.88rem">
+          <li><a href="https://www.argentina.gob.ar/node/159514" target="_blank" rel="noopener">Ley 27.306 explicada (Derecho F&aacute;cil, argentina.gob.ar) ↗</a></li>
+          <li><a href="https://aldiaargentina.microjuris.com/2018/06/19/a-proposito-de-la-reglamentacion-de-la-ley-27-306-dificultades-especificas-del-aprendizaje/" target="_blank" rel="noopener">Sobre la reglamentaci&oacute;n de la Ley 27.306 (2018) ↗</a></li>
+        </ul>
+        <p class="muted">* Secci&oacute;n pendiente de revisi&oacute;n por un/a psicopedagogo/a o fonoaudi&oacute;logo/a matriculado/a.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================== HIPOACUSIA ====================== -->
+  <div class="panel" id="panel-hipoacusia">
+    <div class="wrap">
+      <div class="aviso-medico" role="note" style="margin:0 0 1.2rem">
+        <strong>* Contenido pendiente de revisi&oacute;n profesional.</strong>
+        Esta secci&oacute;n es informativa y debe ser revisada y validada por un/a
+        <strong>fonoaudi&oacute;logo/a o m&eacute;dico/a otorrinolaring&oacute;logo/a matriculado/a</strong> antes de tomarse como referencia.
+        No reemplaza la evaluaci&oacute;n ni el tratamiento profesional.
+      </div>
+
+      <div class="card" style="border-left:4px solid #7c4dff">
+        <h2>👂 Hipoacusia y sordera*</h2>
+        <p>La <strong>hipoacusia</strong> es la disminuci&oacute;n de la audici&oacute;n; puede ser leve, moderada, severa o profunda, de un o&iacute;do o de ambos, y estar presente al nacer o aparecer despu&eacute;s. En los chicos, detectarla temprano es clave: el desarrollo del lenguaje depende del acceso a una lengua desde los primeros meses, sea oral o de se&ntilde;as.</p>
+        <p>Ante cualquier retraso del lenguaje, <strong>la audici&oacute;n se eval&uacute;a primero</strong> (ver <a href="#" onclick="switchTab('tdl');return false">Lenguaje (TDL)</a>).</p>
+      </div>
+
+      <div class="card">
+        <h2>🚩 Se&ntilde;ales para consultar*</h2>
+        <p class="muted">Orientativas, no diagn&oacute;sticas.</p>
+        <ul style="margin:.4rem 0 .6rem 1.2rem;font-size:.9rem">
+          <li>Un beb&eacute; que no se sobresalta con ruidos fuertes o no gira hacia los sonidos y las voces.</li>
+          <li>Un chico que no responde cuando lo llaman, pide que le repitan o sube mucho el volumen.</li>
+          <li>Retraso en el habla o el lenguaje.</li>
+          <li>En adultos: dificultad para seguir conversaciones, sobre todo con ruido de fondo.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>🩺 Detecci&oacute;n y tratamiento*</h2>
+        <p><strong>Pesquisa neonatal:</strong> la <strong>Ley 25.415</strong> establece que todo reci&eacute;n nacido tiene derecho a que se estudie su audici&oacute;n <strong>antes del tercer mes de vida</strong>, con los estudios que fija el Ministerio de Salud.</p>
+        <p><strong>Tratamiento:</strong> seg&uacute;n el caso, <strong>aud&iacute;fonos</strong>, <strong>implante coclear</strong> (en hipoacusias severas o profundas cuando los aud&iacute;fonos no alcanzan) y <strong>rehabilitaci&oacute;n fonoaudiol&oacute;gica</strong>.</p>
+        <p><strong>Lengua de Se&ntilde;as Argentina (LSA):</strong> la <strong>Ley 27.710</strong> (2023) la reconoce como lengua natural y originaria. Muchas familias eligen un abordaje bilingüe (LSA y espa&ntilde;ol).</p>
+      </div>
+
+      <div class="card">
+        <h2>🪪 Derechos y tr&aacute;mites*</h2>
+        <p><strong>Cobertura (Ley 25.415):</strong> las obras sociales y prepagas deben cubrir las prestaciones de la ley, incorporadas al PMO, incluida la <strong>provisi&oacute;n de aud&iacute;fonos y pr&oacute;tesis auditivas y la rehabilitaci&oacute;n fonoaudiol&oacute;gica</strong>. Para quienes no tienen cobertura ni recursos, el Programa Nacional prev&eacute; la provisi&oacute;n gratuita de pr&oacute;tesis y aud&iacute;fonos.</p>
+        <p><strong>CUD:</strong> la discapacidad auditiva es uno de los tipos que eval&uacute;an las juntas.</p>
+        <button class="go-btn" onclick="switchTab('cud')">Ver requisitos del CUD</button>
+      </div>
+
+      <div class="card">
+        <h2>🔬 Evidencia m&eacute;dica reciente</h2>
+        <button class="go-btn" onclick="loadInto('/api/condiciones/hipoacusia', 'hipoacusia-evidencia', renderCondicionResult)">Hipoacusia</button>
+        <div id="hipoacusia-evidencia" class="result-box" style="margin-top:.8rem"></div>
+      </div>
+
+      <div class="card">
+        <h2>📚 Fuentes</h2>
+        <ul style="margin:.4rem 0 .6rem 1.2rem;font-size:.88rem">
+          <li><a href="https://www.argentina.gob.ar/normativa/nacional/66860/texto" target="_blank" rel="noopener">Ley 25.415, texto (argentina.gob.ar) ↗</a></li>
+          <li><a href="https://www.palabrasdelderecho.com.ar/articulo/4256/Promulgan-la-Ley-de-Lengua-de-Senas" target="_blank" rel="noopener">Ley 27.710 de Lengua de Se&ntilde;as Argentina ↗</a></li>
+        </ul>
+        <p class="muted">* Secci&oacute;n pendiente de revisi&oacute;n por un/a fonoaudi&oacute;logo/a u otorrinolaring&oacute;logo/a matriculado/a.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================== EPILEPSIA ====================== -->
+  <div class="panel" id="panel-epilepsia">
+    <div class="wrap">
+      <div class="aviso-medico" role="note" style="margin:0 0 1.2rem">
+        <strong>* Contenido pendiente de revisi&oacute;n profesional.</strong>
+        Esta secci&oacute;n es informativa y debe ser revisada y validada por un/a
+        <strong>m&eacute;dico/a neur&oacute;logo/a matriculado/a</strong> antes de tomarse como referencia.
+        No reemplaza la evaluaci&oacute;n ni el tratamiento profesional.
+      </div>
+
+      <div class="card" style="border-left:4px solid #7c4dff">
+        <h2>⚡ Epilepsia*</h2>
+        <p>La <strong>epilepsia</strong> es una condici&oacute;n neurol&oacute;gica caracterizada por la tendencia a tener <strong>crisis</strong> recurrentes. Las crisis pueden ser muy distintas: desde breves desconexiones hasta convulsiones. El diagn&oacute;stico es neurol&oacute;gico y suele incluir electroencefalograma y estudios de imagen.</p>
+        <p>Seg&uacute;n la Organizaci&oacute;n Mundial de la Salud, <strong>hasta el 70%</strong> de las personas con epilepsia podr&iacute;a vivir sin crisis con un diagn&oacute;stico y tratamiento adecuados.</p>
+      </div>
+
+      <div class="card">
+        <h2>🆘 Qu&eacute; hacer ante una crisis convulsiva*</h2>
+        <ul style="margin:.4rem 0 .6rem 1.2rem;font-size:.9rem">
+          <li>Mantener la calma, alejar objetos peligrosos y proteger la cabeza.</li>
+          <li>Cuando sea posible, ponerla de costado.</li>
+          <li><strong>No</strong> poner nada en la boca y <strong>no</strong> sujetarla.</li>
+          <li>Medir cu&aacute;nto dura y quedarse a su lado hasta que se recupere.</li>
+          <li>Llamar a emergencias si dura m&aacute;s de 5 minutos, si se repite, si hay lesiones, si es la primera crisis o si no se recupera.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>🪪 Derechos: Ley 25.404*</h2>
+        <ul style="margin:.4rem 0 .6rem 1.2rem;font-size:.9rem">
+          <li><strong>Trabajo:</strong> la epilepsia no impide postularse, ingresar ni permanecer en un empleo. A pedido de la persona, el m&eacute;dico tratante debe extender un <strong>certificado de aptitud laboral</strong> con las limitaciones y recomendaciones que correspondan.</li>
+          <li><strong>Educaci&oacute;n:</strong> derecho a estudiar en todos los niveles sin limitaciones por la enfermedad.</li>
+          <li><strong>Discriminaci&oacute;n:</strong> negar esos derechos es un acto discriminatorio en los t&eacute;rminos de la Ley 23.592.</li>
+          <li><strong>Salud:</strong> las prestaciones de la ley integran el <strong>Programa M&eacute;dico Obligatorio (PMO)</strong>. Para quienes no tienen cobertura ni recursos, el programa nacional prev&eacute; la <strong>medicaci&oacute;n gratuita</strong>.</li>
+        </ul>
+        <p><strong>CUD:</strong> la certificaci&oacute;n depende de cada caso; consult&aacute; con la junta evaluadora de tu provincia.</p>
+        <button class="go-btn" onclick="switchTab('cud')">Ver juntas evaluadoras</button>
+      </div>
+
+      <div class="card">
+        <h2>🔬 Evidencia m&eacute;dica reciente</h2>
+        <button class="go-btn" onclick="loadInto('/api/condiciones/epilepsia', 'epilepsia-evidencia', renderCondicionResult)">Epilepsia</button>
+        <div id="epilepsia-evidencia" class="result-box" style="margin-top:.8rem"></div>
+      </div>
+
+      <div class="card">
+        <h2>📚 Fuentes</h2>
+        <ul style="margin:.4rem 0 .6rem 1.2rem;font-size:.88rem">
+          <li><a href="https://www.argentina.gob.ar/normativa/nacional/ley-25404-66578/texto" target="_blank" rel="noopener">Ley 25.404, texto (argentina.gob.ar) ↗</a></li>
+          <li><a href="https://www.who.int/es/news-room/fact-sheets/detail/epilepsy" target="_blank" rel="noopener">Organizaci&oacute;n Mundial de la Salud: epilepsia ↗</a></li>
+        </ul>
+        <p class="muted">* Secci&oacute;n pendiente de revisi&oacute;n por un/a m&eacute;dico/a neur&oacute;logo/a matriculado/a.</p>
       </div>
     </div>
   </div>
@@ -2432,16 +2629,33 @@
     const panels  = document.querySelectorAll('.panel');
     const loaded  = {};
 
+    /* La pestaña "Condiciones" agrupa sub-pestañas, cada una con su propio panel
+       (panel-tea, panel-tdl, ...). switchTab('tea') sigue funcionando. */
+    const CONDICIONES = ['tea', 'tdl', 'dea', 'hipoacusia', 'epilepsia'];
+    const subnav = document.getElementById('subnav-condiciones');
+    const subButtons = document.querySelectorAll('.sub-btn');
+    let ultimaCondicion = 'tea';
+
+    function mostrarPanel(target) {
+      const principal = CONDICIONES.includes(target) ? 'condiciones' : target;
+      if (principal === 'condiciones') ultimaCondicion = target;
+      buttons.forEach(b => b.classList.toggle('active', b.dataset.panel === principal));
+      subButtons.forEach(b => b.classList.toggle('active', b.dataset.sub === target));
+      if (subnav) subnav.style.display = principal === 'condiciones' ? '' : 'none';
+      panels.forEach(p => p.classList.toggle('visible', p.id === 'panel-' + target));
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      detenerLectura();
+      onTabOpen(target);
+    }
+
     buttons.forEach(btn => {
       btn.addEventListener('click', () => {
         const target = btn.dataset.panel;
-        buttons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        panels.forEach(p => p.classList.toggle('visible', p.id === 'panel-' + target));
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        detenerLectura();
-        onTabOpen(target);
+        mostrarPanel(target === 'condiciones' ? ultimaCondicion : target);
       });
+    });
+    subButtons.forEach(btn => {
+      btn.addEventListener('click', () => mostrarPanel(btn.dataset.sub));
     });
 
     function ajustarAltoMenu() {
@@ -2453,8 +2667,9 @@
     window.addEventListener('load', ajustarAltoMenu);
 
     function switchTab(name) {
-      const btn = document.querySelector('.tab-btn[data-panel="' + name + '"]');
-      if (btn) btn.click();
+      if (CONDICIONES.includes(name) || document.querySelector('.tab-btn[data-panel="' + name + '"]')) {
+        mostrarPanel(name);
+      }
     }
 
     function onTabOpen(name) {

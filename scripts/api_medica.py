@@ -304,6 +304,21 @@ CONDICIONES_ESPECIFICAS: dict[str, dict] = {
                        "debilidad muscular que lo explique.",
         "query_pubmed": "childhood apraxia of speech treatment 2023 2024 2025",
     },
+    "dislexia": {
+        "nombre": "Dislexia y Dificultades Específicas del Aprendizaje (DEA)",
+        "tipo": "intelectual",
+        "descripcion": "Alteraciones de origen neurobiológico que afectan el "
+                       "aprendizaje de la lectura, la escritura o el cálculo "
+                       "(Ley 27.306).",
+        "query_pubmed": "dyslexia reading intervention children 2023 2024 2025",
+    },
+    "epilepsia": {
+        "nombre": "Epilepsia",
+        "tipo": "intelectual",
+        "descripcion": "Condición neurológica caracterizada por la tendencia a "
+                       "presentar crisis epilépticas recurrentes (Ley 25.404).",
+        "query_pubmed": "epilepsy treatment children adults 2023 2024 2025",
+    },
     "tdah": {
         "nombre": "TDAH (Trastorno por Déficit de Atención e Hiperactividad)",
         "tipo": "intelectual",
@@ -428,6 +443,7 @@ ESPECIALIDADES_MEDICAS: dict[str, dict] = {
                        "nervioso central y periférico.",
         "condiciones_relacionadas": [
             "tourette", "ela", "esclerosis_multiple", "parkinson", "paralisis_cerebral",
+            "epilepsia",
         ],
     },
     "psiquiatria": {
@@ -459,7 +475,7 @@ ESPECIALIDADES_MEDICAS: dict[str, dict] = {
         "descripcion": "Evaluación y tratamiento de los trastornos del lenguaje, el "
                        "habla, la voz y la audición (foniatría: especialidad médica; "
                        "fonoaudiología: profesión de la salud).",
-        "condiciones_relacionadas": ["tdl", "apraxia_habla", "hipoacusia"],
+        "condiciones_relacionadas": ["tdl", "apraxia_habla", "dislexia", "hipoacusia"],
     },
     "otorrinolaringologia": {
         "nombre": "Otorrinolaringología",

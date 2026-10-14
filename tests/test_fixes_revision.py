@@ -106,13 +106,33 @@ def test_menu_no_esconde_pestanas():
     assert "--nav-h" in html and "function ajustarAltoMenu(" in html
 
 
-def test_pestana_tdl_con_aviso_de_revision():
+def test_pestana_condiciones_con_subpestanas():
     html = (ROOT / "templates" / "index.html").read_text(encoding="utf-8")
-    assert 'data-panel="tdl"' in html and 'id="panel-tdl"' in html
+    nav = html[html.index("<nav>"):html.index("</nav>")]
+    assert 'data-panel="condiciones"' in nav
+    assert 'data-panel="tea"' not in nav and 'data-panel="tdl"' not in nav
+    for sub in ("tea", "tdl", "dea", "hipoacusia", "epilepsia"):
+        assert f'data-sub="{sub}"' in html and f'id="panel-{sub}"' in html
+    assert "const CONDICIONES = ['tea', 'tdl', 'dea', 'hipoacusia', 'epilepsia'];" in html
+
+
+def _panel(html, pid):
+    i = html.index(f'id="panel-{pid}"')
+    return html[i:html.index('<div class="panel"', i + 1)]
+
+
+def test_secciones_nuevas_con_aviso_de_revision():
+    html = (ROOT / "templates" / "index.html").read_text(encoding="utf-8")
     assert "Lenguaje (TDL)*" in html
-    panel = html[html.index('id="panel-tdl"'):html.index("<!-- ====================== TRATAMIENTOS")]
-    assert "fonoaudi&oacute;logo/a matriculado/a" in panel
-    assert "PROMPT" in panel and "/api/condiciones/tdl" in panel
+    tdl = _panel(html, "tdl")
+    assert "fonoaudi&oacute;logo/a matriculado/a" in tdl
+    assert "PROMPT" in tdl and "/api/condiciones/tdl" in tdl
+    assert "psicopedagogo/a o fonoaudi&oacute;logo/a matriculado/a" in _panel(html, "dea")
+    assert "Ley 27.306" in _panel(html, "dea")
+    assert "otorrinolaring&oacute;logo/a matriculado/a" in _panel(html, "hipoacusia")
+    assert "Ley 25.415" in _panel(html, "hipoacusia")
+    assert "neur&oacute;logo/a matriculado/a" in _panel(html, "epilepsia")
+    assert "Ley 25.404" in _panel(html, "epilepsia")
 
 
 def test_lectura_en_voz_alta_por_fragmentos():

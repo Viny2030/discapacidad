@@ -102,3 +102,8 @@ def test_condiciones_incluye_tdl_y_apraxia_del_habla():
     assert "TDL" in CONDICIONES_ESPECIFICAS["tdl"]["nombre"]
     rel = ESPECIALIDADES_MEDICAS["foniatria_fonoaudiologia"]["condiciones_relacionadas"]
     assert "tdl" in rel and "apraxia_habla" in rel
+
+
+def test_condiciones_incluye_dislexia_y_epilepsia():
+    assert "dislexia" in CONDICIONES_ESPECIFICAS and "epilepsia" in CONDICIONES_ESPECIFICAS
+    assert "epilepsia" in ESPECIALIDADES_MEDICAS["neurologia"]["condiciones_relacionadas"]
