@@ -20,17 +20,18 @@
   <style>
     *{box-sizing:border-box;margin:0;padding:0}
     body{font-family:system-ui,sans-serif;background:#f8f7fb;color:#212529;
-         padding-top:56px;line-height:1.6}
+         padding-top:var(--nav-h,100px);line-height:1.6}
 
-    nav{position:fixed;top:0;left:0;right:0;height:56px;background:#4a2d8c;
-        display:flex;align-items:center;justify-content:flex-start;gap:.5rem;
+    nav{position:fixed;top:0;left:0;right:0;min-height:56px;background:#4a2d8c;
+        display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.3rem .5rem;
         z-index:100;box-shadow:0 1px 6px rgba(0,0,0,.15);
-        overflow-x:auto;white-space:nowrap;padding:0 1rem}
-    /* FIX: con justify-content:center las primeras pestañas quedaban fuera de pantalla
-       (inaccesibles) cuando el menu no entraba. Los margenes auto centran igual
-       cuando sobra espacio y permiten desplazarse desde "Inicio" cuando no. */
-    nav > :first-child{margin-left:auto}
-    nav > :last-child{margin-right:auto}
+        white-space:nowrap;padding:.4rem 1rem}
+    /* Menu en dos filas: las pestañas pasan a la fila siguiente en lugar de quedar
+       fuera de pantalla (con una sola fila desplazable las primeras quedaban
+       inaccesibles). .nav-break fuerza el corte entre las dos filas en pantallas
+       anchas; en pantallas angostas el menu sigue envolviendo en mas filas.
+       El alto real del menu se copia a --nav-h para el padding del body. */
+    nav .nav-break{flex-basis:100%;height:0}
     nav button{color:#e9e1fb;font-size:.85rem;font-weight:600;
           padding:.5rem .9rem;border-radius:6px;transition:background .15s;
           background:transparent;border:none;cursor:pointer;font-family:inherit}
@@ -39,6 +40,14 @@
     nav a.docs{color:#cbb8f5;text-decoration:none;font-size:.78rem;font-weight:600;
           padding:.5rem .8rem;border-radius:6px;background:#2d1b54;margin-left:.4rem}
     nav a.docs:hover{background:#3d2570;color:#fff}
+    /* En pantallas angostas el menu ocupa varias filas: se compacta y deja de ser
+       fijo para no tapar el contenido (al cambiar de pestaña la pagina vuelve arriba). */
+    @media (max-width:700px){
+      nav{position:static;gap:.2rem .3rem;padding:.4rem .5rem}
+      nav button{font-size:.8rem;padding:.4rem .6rem}
+      nav a.docs{font-size:.74rem;padding:.4rem .6rem}
+      body{padding-top:0}
+    }
 
     header{background:#5e35b1;color:white;padding:2.5rem 1rem;text-align:center}
     header h1{font-size:1.9rem;margin-bottom:.5rem}
@@ -293,7 +302,9 @@
     <button class="tab-btn" data-panel="vanguardia">Vanguardia</button>
     <button class="tab-btn" data-panel="calculadora">Calculadora</button>
     <button class="tab-btn" data-panel="pensiones">Pensiones</button>
+    <span class="nav-break" aria-hidden="true"></span>
     <button class="tab-btn" data-panel="tea">Plan TEA</button>
+    <button class="tab-btn" data-panel="tdl" title="Contenido pendiente de revisión por un/a fonoaudiólogo/a">Lenguaje (TDL)*</button>
     <button class="tab-btn" data-panel="tratamientos">Tratamientos</button>
     <button class="tab-btn" data-panel="comparador">Comparador</button>
     <button class="tab-btn" data-panel="about">About (EN)</button>
@@ -364,6 +375,11 @@
           <h3>🧩 Plan Nacional TEA</h3>
           <p>Plan Nacional del Trastorno del Espectro Autista aprobado por el Ministerio de Salud (Resolución 1115/2026): ejes, marco normativo y su relación con el CUD.</p>
           <button class="go-btn" onclick="switchTab('tea')">Ver el plan</button>
+        </div>
+        <div class="home-card">
+          <h3>🗣️ Lenguaje (TDL)*</h3>
+          <p>Trastorno del Desarrollo del Lenguaje (antes TEL): qué es, señales para consultar, evaluación fonoaudiológica y neurolingüística, la técnica PROMPT, derechos y evidencia reciente. <em>* Pendiente de revisión por un/a fonoaudiólogo/a.</em></p>
+          <button class="go-btn" onclick="switchTab('tdl')">Ver la sección</button>
         </div>
         <div class="home-card">
           <h3>🩺 Tratamientos</h3>
@@ -832,6 +848,89 @@
         <h2>🪪 Credenciales TEA de municipios y provincias</h2>
         <p>Además del CUD nacional, algunos municipios y provincias emiten sus propias credenciales o carnets para personas con TEA, orientados a garantizar atención prioritaria en dependencias locales. Es un listado curado y no exhaustivo, con fuente oficial en cada caso.</p>
         <div id="credenciales-tea-info" class="result-box"><p class="loading">Cargando credenciales TEA...</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================== LENGUAJE (TDL) ====================== -->
+  <div class="panel" id="panel-tdl">
+    <div class="wrap">
+      <div class="aviso-medico" role="note" style="margin:0 0 1.2rem">
+        <strong>* Contenido pendiente de revisi&oacute;n profesional.</strong>
+        Esta secci&oacute;n es informativa y debe ser revisada y validada por un/a
+        <strong>fonoaudi&oacute;logo/a matriculado/a</strong> antes de tomarse como referencia.
+        No reemplaza la evaluaci&oacute;n ni el tratamiento profesional.
+      </div>
+
+      <div class="card" style="border-left:4px solid #7c4dff">
+        <h2>🗣️ Trastorno del Desarrollo del Lenguaje (TDL)*</h2>
+        <p>El <strong>TDL</strong> es la dificultad persistente para <strong>comprender y/o expresar el lenguaje oral</strong> que no se explica por una p&eacute;rdida auditiva, una discapacidad intelectual, un trastorno del espectro autista ni una lesi&oacute;n neurol&oacute;gica. Antes se lo llamaba <strong>TEL (Trastorno Espec&iacute;fico del Lenguaje)</strong>: el nombre cambi&oacute; a partir del consenso internacional <strong>CATALISE</strong> (2016&ndash;2017).</p>
+        <p>Es frecuente: los estudios poblacionales lo ubican en alrededor del <strong>7% de los chicos</strong>, es decir, unos dos por aula. Suele persistir en el tiempo y puede afectar la lectoescritura, el aprendizaje escolar y la vida social.</p>
+        <p>Cuando las dificultades de lenguaje aparecen junto con otra condici&oacute;n (por ejemplo TEA, discapacidad intelectual o hipoacusia) se habla de <strong>trastorno del lenguaje asociado</strong> a esa condici&oacute;n.</p>
+        <h3>Lenguaje no es lo mismo que habla</h3>
+        <p><strong>Lenguaje</strong> es entender y armar mensajes: vocabulario, gram&aacute;tica, relatar, comprender consignas. <strong>Habla</strong> es producir los sonidos: articular, coordinar los movimientos de la boca. El TDL es un trastorno del <em>lenguaje</em>; la apraxia del habla infantil, en cambio, es un trastorno motor del <em>habla</em>. Pueden coexistir, y el abordaje es distinto.</p>
+      </div>
+
+      <div class="card">
+        <h2>🚩 Se&ntilde;ales para consultar*</h2>
+        <p class="muted">Orientativas, no diagn&oacute;sticas. Ante la duda, consult&aacute; con el pediatra.</p>
+        <ul style="margin:.4rem 0 .6rem 1.2rem;font-size:.9rem">
+          <li>Alrededor de los 2 a&ntilde;os: dice muy pocas palabras y todav&iacute;a no combina dos palabras.</li>
+          <li>Alrededor de los 3 a&ntilde;os: usa frases muy cortas o cuesta mucho entenderle.</li>
+          <li>Entre los 4 y 5 a&ntilde;os: le cuesta contar lo que pas&oacute;, seguir consignas o armar oraciones.</li>
+          <li>En la escuela: dificultades para comprender lo que lee, para escribir o para seguir explicaciones orales.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>🩺 Qui&eacute;n eval&uacute;a y c&oacute;mo*</h2>
+        <p>La evaluaci&oacute;n es <strong>interdisciplinaria</strong>:</p>
+        <ul style="margin:.4rem 0 .6rem 1.2rem;font-size:.9rem">
+          <li><strong>Audici&oacute;n primero:</strong> otorrinolaringolog&iacute;a / audiolog&iacute;a para descartar hipoacusia.</li>
+          <li><strong>Fonoaudiolog&iacute;a:</strong> evaluaci&oacute;n del lenguaje en comprensi&oacute;n y expresi&oacute;n.</li>
+          <li><strong>Foniatr&iacute;a</strong> (especialidad m&eacute;dica) y <strong>neurolog&iacute;a infantil</strong>, seg&uacute;n el caso.</li>
+          <li><strong>Neuropsicolog&iacute;a / psicopedagog&iacute;a</strong> para el perfil cognitivo y del aprendizaje.</li>
+        </ul>
+        <h3>Evaluaci&oacute;n neuroling&uuml;&iacute;stica</h3>
+        <p>Analiza por separado los componentes del lenguaje &mdash;sonidos (fonolog&iacute;a), vocabulario y significado (l&eacute;xico-sem&aacute;ntica), gram&aacute;tica (morfosintaxis) y uso social (pragm&aacute;tica)&mdash;, en comprensi&oacute;n y en expresi&oacute;n. Combina <strong>pruebas estandarizadas</strong> con el an&aacute;lisis de una <strong>muestra de lenguaje espont&aacute;neo</strong> y la observaci&oacute;n en distintos contextos.</p>
+        <p class="muted">Ejemplo de prueba estandarizada en espa&ntilde;ol: CELF-5 (Evaluaci&oacute;n Cl&iacute;nica de los Fundamentos del Lenguaje). Varias pruebas en espa&ntilde;ol tienen baremos de otros pa&iacute;ses; el profesional debe considerar si son adecuados para la poblaci&oacute;n argentina.</p>
+      </div>
+
+      <div class="card">
+        <h2>🧩 Tratamiento*</h2>
+        <p>El abordaje central es la <strong>terapia fonoaudiol&oacute;gica del lenguaje</strong>, con objetivos individuales y trabajo conjunto con la familia y la escuela. Cuando hace falta, la <strong>comunicaci&oacute;n aumentativa y alternativa</strong> (pictogramas, tableros, dispositivos) funciona como apoyo, no como reemplazo del habla.</p>
+        <h3>La t&eacute;cnica PROMPT</h3>
+        <p><strong>PROMPT</strong> (<em>Prompts for Restructuring Oral Muscular Phonetic Targets</em>) es un m&eacute;todo t&aacute;ctil-kinest&eacute;sico: el terapeuta gu&iacute;a con las manos los movimientos de mand&iacute;bula, labios y lengua para ense&ntilde;ar a producir sonidos y palabras. Est&aacute; pensado para <strong>trastornos motores del habla</strong>, sobre todo la <strong>apraxia del habla infantil</strong>, y su evidencia proviene de estudios peque&ntilde;os.</p>
+        <p><strong>No es un tratamiento del TDL en s&iacute; mismo</strong>, que es un trastorno del lenguaje: puede ser &uacute;til cuando, adem&aacute;s, hay una dificultad motora del habla. Requiere un profesional con formaci&oacute;n espec&iacute;fica en el m&eacute;todo.</p>
+      </div>
+
+      <div class="card">
+        <h2>🪪 Derechos y tr&aacute;mites*</h2>
+        <p><strong>CUD:</strong> el TDL no figura como un tipo de discapacidad propio en el tr&aacute;mite. No encontramos una fuente oficial que precise c&oacute;mo se certifica; consult&aacute; con la <strong>junta evaluadora de tu provincia</strong> con el informe diagn&oacute;stico interdisciplinario.</p>
+        <p><strong>Con CUD</strong>, la <strong>Ley 24.901</strong> obliga a obras sociales y prepagas a cubrir las prestaciones de rehabilitaci&oacute;n, entre ellas la fonoaudiolog&iacute;a.</p>
+        <p><strong>Escuela:</strong> el equipo escolar puede acordar configuraciones de apoyo y ajustes en la ense&ntilde;anza y la evaluaci&oacute;n.</p>
+        <p><strong>Credenciales locales:</strong> algunos municipios incluyen al TEL/TDL en sus credenciales de atenci&oacute;n prioritaria (por ejemplo, &laquo;Mi Muni Azul&raquo; de Moreno, en la pesta&ntilde;a Plan TEA).</p>
+        <button class="go-btn" onclick="switchTab('cud')">Ver juntas evaluadoras y requisitos del CUD</button>
+      </div>
+
+      <div class="card">
+        <h2>🔬 Evidencia m&eacute;dica reciente</h2>
+        <p>Art&iacute;culos recientes de PubMed, buscados en el momento.</p>
+        <button class="go-btn" onclick="loadInto('/api/condiciones/tdl', 'tdl-evidencia', renderCondicionResult)">TDL</button>
+        <button class="go-btn" onclick="loadInto('/api/condiciones/apraxia_habla', 'tdl-evidencia', renderCondicionResult)">Apraxia del habla infantil</button>
+        <div id="tdl-evidencia" class="result-box" style="margin-top:.8rem"></div>
+      </div>
+
+      <div class="card">
+        <h2>📚 Fuentes y recursos</h2>
+        <ul style="margin:.4rem 0 .6rem 1.2rem;font-size:.88rem">
+          <li><a href="https://doi.org/10.1111/jcpp.12721" target="_blank" rel="noopener">Bishop et al. (2017), consenso CATALISE: terminolog&iacute;a del TDL ↗</a></li>
+          <li><a href="https://doi.org/10.1111/jcpp.12573" target="_blank" rel="noopener">Norbury et al. (2016), prevalencia del TDL ↗</a></li>
+          <li><a href="https://revistas.ucm.es/index.php/RLOG/article/view/70857" target="_blank" rel="noopener">Del TEL al TDL: descripci&oacute;n del cambio (Revista de Investigaci&oacute;n en Logopedia) ↗</a></li>
+          <li><a href="https://pubs.asha.org/doi/10.1044/1058-0360(2013/12-0055)" target="_blank" rel="noopener">Dale y Hayden (2013), PROMPT en apraxia del habla infantil ↗</a></li>
+          <li><a href="https://radld.org/" target="_blank" rel="noopener">RADLD: campa&ntilde;a internacional de concientizaci&oacute;n sobre el TDL ↗</a></li>
+        </ul>
+        <p class="muted">* Secci&oacute;n pendiente de revisi&oacute;n por un/a fonoaudi&oacute;logo/a matriculado/a.</p>
       </div>
     </div>
   </div>
@@ -2344,6 +2443,14 @@
         onTabOpen(target);
       });
     });
+
+    function ajustarAltoMenu() {
+      const nav = document.querySelector('nav');
+      if (nav) document.documentElement.style.setProperty('--nav-h', nav.offsetHeight + 'px');
+    }
+    ajustarAltoMenu();
+    window.addEventListener('resize', ajustarAltoMenu);
+    window.addEventListener('load', ajustarAltoMenu);
 
     function switchTab(name) {
       const btn = document.querySelector('.tab-btn[data-panel="' + name + '"]');

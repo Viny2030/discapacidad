@@ -96,8 +96,23 @@ def test_menu_no_esconde_pestanas():
     html = (ROOT / "templates" / "index.html").read_text(encoding="utf-8")
     regla_nav = html[html.index("    nav{"):]
     regla_nav = regla_nav[:regla_nav.index("}")]
-    assert "justify-content:flex-start" in regla_nav
-    assert "nav > :first-child{margin-left:auto}" in html
+    # el menu envuelve en dos (o mas) filas: ninguna pestaña queda fuera de pantalla
+    assert "flex-wrap:wrap" in regla_nav
+    assert "overflow-x:auto" not in regla_nav
+    assert 'class="nav-break"' in html
+    # API Docs queda al final del menu y el alto real del menu se usa como padding
+    nav = html[html.index("<nav>"):html.index("</nav>")]
+    assert nav.rstrip().endswith('API Docs</a>')
+    assert "--nav-h" in html and "function ajustarAltoMenu(" in html
+
+
+def test_pestana_tdl_con_aviso_de_revision():
+    html = (ROOT / "templates" / "index.html").read_text(encoding="utf-8")
+    assert 'data-panel="tdl"' in html and 'id="panel-tdl"' in html
+    assert "Lenguaje (TDL)*" in html
+    panel = html[html.index('id="panel-tdl"'):html.index("<!-- ====================== TRATAMIENTOS")]
+    assert "fonoaudi&oacute;logo/a matriculado/a" in panel
+    assert "PROMPT" in panel and "/api/condiciones/tdl" in panel
 
 
 def test_lectura_en_voz_alta_por_fragmentos():

@@ -95,3 +95,10 @@ def test_endpoint_detalle_especialidad_neurologia(client):
 def test_endpoint_especialidad_inexistente(client):
     r = client.get("/api/especialidades/no-existe-esta-especialidad")
     assert r.status_code == 404
+
+
+def test_condiciones_incluye_tdl_y_apraxia_del_habla():
+    assert "tdl" in CONDICIONES_ESPECIFICAS and "apraxia_habla" in CONDICIONES_ESPECIFICAS
+    assert "TDL" in CONDICIONES_ESPECIFICAS["tdl"]["nombre"]
+    rel = ESPECIALIDADES_MEDICAS["foniatria_fonoaudiologia"]["condiciones_relacionadas"]
+    assert "tdl" in rel and "apraxia_habla" in rel

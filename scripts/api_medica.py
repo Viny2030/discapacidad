@@ -285,6 +285,25 @@ CONDICIONES_ESPECIFICAS: dict[str, dict] = {
                        "y vocales involuntarios, recurrentes y crónicos.",
         "query_pubmed": "Tourette syndrome tic disorder treatment 2023 2024 2025",
     },
+    "tdl": {
+        "nombre": "TDL (Trastorno del Desarrollo del Lenguaje, antes TEL)",
+        # "tipo" agrupa la evidencia dentro de la taxonomía de 6 tipos del sitio;
+        # no indica cómo se certifica el TDL en el CUD.
+        "tipo": "intelectual",
+        "descripcion": "Dificultades persistentes para comprender y/o expresar el "
+                       "lenguaje oral que no se explican por pérdida auditiva, "
+                       "discapacidad intelectual, TEA ni lesión neurológica "
+                       "(consenso internacional CATALISE).",
+        "query_pubmed": "developmental language disorder intervention children 2023 2024 2025",
+    },
+    "apraxia_habla": {
+        "nombre": "Apraxia del habla infantil",
+        "tipo": "intelectual",
+        "descripcion": "Trastorno motor del habla: dificultad para planificar y "
+                       "programar los movimientos necesarios para hablar, sin "
+                       "debilidad muscular que lo explique.",
+        "query_pubmed": "childhood apraxia of speech treatment 2023 2024 2025",
+    },
     "tdah": {
         "nombre": "TDAH (Trastorno por Déficit de Atención e Hiperactividad)",
         "tipo": "intelectual",
@@ -434,6 +453,13 @@ ESPECIALIDADES_MEDICAS: dict[str, dict] = {
         "descripcion": "Diagnóstico y tratamiento de enfermedades de los ojos y la "
                        "vía visual.",
         "condiciones_relacionadas": ["retinosis_pigmentaria", "glaucoma"],
+    },
+    "foniatria_fonoaudiologia": {
+        "nombre": "Foniatría y Fonoaudiología",
+        "descripcion": "Evaluación y tratamiento de los trastornos del lenguaje, el "
+                       "habla, la voz y la audición (foniatría: especialidad médica; "
+                       "fonoaudiología: profesión de la salud).",
+        "condiciones_relacionadas": ["tdl", "apraxia_habla", "hipoacusia"],
     },
     "otorrinolaringologia": {
         "nombre": "Otorrinolaringología",
