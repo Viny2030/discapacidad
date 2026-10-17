@@ -72,7 +72,7 @@ TRATAMIENTOS = [
         "costo_estimado": "USD 70.000–150.000 el dispositivo. Alquiler en centros: consultar.",
         "centros_referencia": ["FLENI", "INECO", "Hospital Italiano de Buenos Aires"],
         "pubmed_query": "exoskeleton rehabilitation spinal cord injury clinical trial",
-        "pmid_referencia": "35234567",
+        "pmid_referencia": "27042146",
         "año_inicio": 2014,
         "organismos_aprobacion": ["FDA (2014)", "CE Mark Europa"],
         "tags": ["exoesqueleto", "lesión medular", "parálisis", "rehabilitación robótica"],
@@ -97,7 +97,7 @@ TRATAMIENTOS = [
         "costo_estimado": "Solo en contexto de ensayo clínico (sin costo para participantes).",
         "centros_referencia": ["BrainGate Consortium (EE.UU.)", "Neuralink (EE.UU.)"],
         "pubmed_query": "brain computer interface motor paralysis BrainGate clinical trial 2023",
-        "pmid_referencia": "36789012",
+        "pmid_referencia": "22596161",
         "año_inicio": 2021,
         "organismos_aprobacion": ["FDA — Breakthrough Device Designation"],
         "tags": ["BCI", "neuralink", "ELA", "parálisis", "neuroprótesis"],
@@ -122,7 +122,7 @@ TRATAMIENTOS = [
         "costo_estimado": "USD 2.1 millones dosis única (uno de los medicamentos más caros del mundo). Cobertura obligatoria en AR.",
         "centros_referencia": ["Hospital Garrahan", "Hospital Italiano", "Hospital Alemán"],
         "pubmed_query": "Zolgensma SMA gene therapy clinical outcomes 2023",
-        "pmid_referencia": "34567890",
+        "pmid_referencia": "29091557",
         "año_inicio": 2019,
         "organismos_aprobacion": ["FDA (2019)", "EMA (2020)", "ANMAT (2021)"],
         "tags": ["SMA", "atrofia muscular", "terapia génica", "Zolgensma", "pediátrico"],
@@ -151,7 +151,7 @@ TRATAMIENTOS = [
         "costo_estimado": "USD 850.000 por tratamiento bilateral.",
         "centros_referencia": ["Children's Hospital of Philadelphia (EE.UU.)", "Moorfields Eye Hospital (UK)"],
         "pubmed_query": "Luxturna voretigene neparvovec LCA gene therapy outcomes",
-        "pmid_referencia": "29091566",
+        "pmid_referencia": "28712537",
         "año_inicio": 2017,
         "organismos_aprobacion": ["FDA (2017)", "EMA (2018)"],
         "tags": ["Luxturna", "LCA", "ceguera genética", "retina", "RPE65"],
@@ -177,7 +177,7 @@ TRATAMIENTOS = [
         "costo_estimado": "USD 150.000 (descontinuado comercialmente).",
         "centros_referencia": ["SNEC Singapore", "Wills Eye Hospital (EE.UU.)"],
         "pubmed_query": "Argus II retinal prosthesis visual outcomes 2022",
-        "pmid_referencia": "31770029",
+        "pmid_referencia": "22244176",
         "año_inicio": 2013,
         "organismos_aprobacion": ["FDA (2013)", "CE Mark Europa (2011)"],
         "tags": ["ojo biónico", "retinosis pigmentaria", "implante retiniano", "Argus II"],
@@ -205,7 +205,7 @@ TRATAMIENTOS = [
         "costo_estimado": "Solo en contexto de ensayo clínico.",
         "centros_referencia": ["Children's Hospital of Philadelphia", "Hospital La Paz (Madrid)", "Fudan University (Shanghai)"],
         "pubmed_query": "OTOF gene therapy hearing loss children clinical trial 2024",
-        "pmid_referencia": "38224701",
+        "pmid_referencia": "38280389",
         "año_inicio": 2022,
         "organismos_aprobacion": ["FDA — IND aprobado para fase III"],
         "tags": ["OTOF", "sordera congénita", "terapia génica", "audición", "neuropatía auditiva"],
@@ -231,7 +231,7 @@ TRATAMIENTOS = [
         "costo_estimado": "USD 30.000–50.000 (dispositivo + cirugía). Cobertura por obras sociales y PAMI.",
         "centros_referencia": ["Hospital Italiano", "Hospital Alemán", "Fundación FONO", "Hospital Garrahan (pediátrico)"],
         "pubmed_query": "cochlear implant outcomes adults children 2023 review",
-        "pmid_referencia": "36543210",
+        "pmid_referencia": "42525886",
         "año_inicio": 1985,
         "organismos_aprobacion": ["FDA", "CE Mark", "ANMAT"],
         "tags": ["implante coclear", "sordera", "hipoacusia", "Cochlear Nucleus", "MED-EL"],
@@ -262,7 +262,7 @@ TRATAMIENTOS = [
         "costo_estimado": "Solo en contexto de ensayo clínico.",
         "centros_referencia": ["Down Syndrome Biobank Consortium", "Hospital Sant Joan de Déu (Barcelona)"],
         "pubmed_query": "DYRK1A inhibitor Down syndrome cognitive clinical trial 2023",
-        "pmid_referencia": "37891234",
+        "pmid_referencia": "39422950",
         "año_inicio": 2020,
         "organismos_aprobacion": ["FDA — Orphan Drug Designation"],
         "tags": ["síndrome de Down", "DYRK1A", "trisomía 21", "cognición", "farmacológico"],
@@ -287,7 +287,7 @@ TRATAMIENTOS = [
         "costo_estimado": "Cobertura obligatoria por obras sociales, prepagas y PAMI.",
         "centros_referencia": ["PANAACEA", "APANA", "CALMA", "Centro Ann Sullivan Argentina"],
         "pubmed_query": "ABA EIBI autism spectrum disorder early intervention meta-analysis 2023",
-        "pmid_referencia": "35678901",
+        "pmid_referencia": "29742275",
         "año_inicio": 1987,
         "organismos_aprobacion": ["ANMAT", "OPS/OMS", "Academia Americana de Pediatría"],
         "tags": ["TEA", "autismo", "ABA", "EIBI", "intervención temprana"],
@@ -317,7 +317,7 @@ TRATAMIENTOS = [
         "costo_estimado": "AR $15.000–30.000 por sesión. Ciclo completo: 20–30 sesiones.",
         "centros_referencia": ["INECO", "Clínica de la Familia", "Hospital Austral", "Fundación Favaloro"],
         "pubmed_query": "TMS transcranial magnetic stimulation depression treatment resistant 2023",
-        "pmid_referencia": "36234567",
+        "pmid_referencia": "34711062",
         "año_inicio": 2008,
         "organismos_aprobacion": ["FDA (2008)", "ANMAT"],
         "tags": ["TMS", "depresión", "neuromodulación", "TOC", "resistente a tratamiento"],
@@ -344,7 +344,7 @@ TRATAMIENTOS = [
         "costo_estimado": "USD 800 por sesión en EE.UU. En AR: acceso muy limitado.",
         "centros_referencia": ["INECO (consultar disponibilidad)", "Centros certificados en EE.UU. y Europa"],
         "pubmed_query": "esketamine Spravato treatment resistant depression FDA 2023",
-        "pmid_referencia": "36891234",
+        "pmid_referencia": "31109201",
         "año_inicio": 2019,
         "organismos_aprobacion": ["FDA (2019)", "EMA (2019)"],
         "tags": ["esketamina", "Spravato", "depresión resistente", "ketamina", "antidepresivo"],
@@ -372,7 +372,7 @@ TRATAMIENTOS = [
         "costo_estimado": "USD 2.2 millones (tratamiento único).",
         "centros_referencia": ["Boston Children's Hospital", "Hammersmith Hospital (UK)"],
         "pubmed_query": "Casgevy CRISPR sickle cell disease FDA approval 2023",
-        "pmid_referencia": "38181483",
+        "pmid_referencia": "38661449",
         "año_inicio": 2023,
         "organismos_aprobacion": ["FDA (diciembre 2023)", "MHRA UK (noviembre 2023)"],
         "tags": ["CRISPR", "anemia falciforme", "Casgevy", "edición genómica", "hemoglobina"],
@@ -398,12 +398,179 @@ TRATAMIENTOS = [
         "costo_estimado": "USD 5.000–8.000 + consumibles mensuales USD 300–500.",
         "centros_referencia": ["Hospital Italiano", "Hospital Británico", "Fundación FUCA", "Centro de Diabetes CABA"],
         "pubmed_query": "artificial pancreas closed loop insulin pump diabetes outcomes 2023",
-        "pmid_referencia": "36123456",
+        "pmid_referencia": "31618560",
         "año_inicio": 2017,
         "organismos_aprobacion": ["FDA", "CE Mark", "ANMAT"],
         "tags": ["páncreas artificial", "diabetes tipo 1", "bomba de insulina", "CGM", "circuito cerrado"],
         "url_resolucion_ar": "https://www.argentina.gob.ar/normativa/nacional/resoluci%C3%B3n-310-2004-97081",
         "resolucion_label": "Res. MS 310/2004 + Disposición ANMAT 4730/2022 — Cobertura obligatoria sistemas CGM y bombas de insulina",
+    },
+
+    # ── Agregados 2026-10 (PMID verificados contra PubMed) ───────────────────
+    {
+        "id": "mot-004",
+        "tipo": "motora",
+        "nombre": "Estimulación eléctrica no invasiva de la médula espinal (lesión medular)",
+        "subtipo": "Neuromodulación",
+        "estado": "aprobado_intl",
+        "descripcion_simple": (
+            "Electrodos colocados sobre la piel de la nuca envían pulsos eléctricos "
+            "programados a la médula espinal mientras la persona hace rehabilitación. "
+            "En diciembre de 2024 la FDA autorizó el primer sistema de este tipo (ARC-EX) "
+            "para mejorar la fuerza y la función de las manos en lesión medular cervical "
+            "crónica e incompleta. La versión implantada para volver a caminar sigue en ensayos."
+        ),
+        "mecanismo": (
+            "La estimulación transcutánea aumenta la excitabilidad de los circuitos "
+            "medulares por debajo de la lesión, de modo que las pocas señales que todavía "
+            "llegan desde el cerebro alcanzan a activar los músculos."
+        ),
+        "evidencia": "Ensayo Up-LIFT (Nature Medicine, 2024): 72% de los participantes mejoró la fuerza o la función de brazos y manos.",
+        "disponibilidad_ar": "No disponible de forma habitual en Argentina. Aprobado en EE. UU.",
+        "costo_estimado": "Sin precio de referencia en Argentina.",
+        "centros_referencia": ["ONWARD Medical (Suiza/Países Bajos)", "Centros del ensayo Up-LIFT (EE. UU., Canadá, Europa)"],
+        "pubmed_query": "transcutaneous spinal cord stimulation tetraplegia upper extremity",
+        "ct_query": "transcutaneous spinal cord stimulation",
+        "pmid_referencia": "38769431",
+        "año_inicio": 2024,
+        "organismos_aprobacion": ["FDA (De Novo, diciembre 2024)"],
+        "tags": ["lesión medular", "tetraplejia", "neuromodulación", "estimulación espinal", "ARC-EX"],
+    },
+    {
+        "id": "mot-005",
+        "tipo": "motora",
+        "nombre": "Terapia génica para distrofia muscular de Duchenne (Elevidys)",
+        "subtipo": "Terapia génica",
+        "estado": "aprobado_intl",
+        "descripcion_simple": (
+            "Una única infusión aporta una versión acortada del gen de la distrofina "
+            "(microdistrofina) a los músculos. La FDA la aprobó en 2023; en noviembre de "
+            "2025 agregó una advertencia de recuadro negro por daño hepático grave, con "
+            "muertes en pacientes que ya no caminaban, y limitó su uso a niños de 4 años o "
+            "más que todavía caminan."
+        ),
+        "mecanismo": (
+            "Un virus adenoasociado (AAV) modificado lleva el gen de la microdistrofina a "
+            "las fibras musculares, que empiezan a producir una proteína funcional parcial."
+        ),
+        "evidencia": "El ensayo fase 3 EMBARK no alcanzó su objetivo principal; los datos a dos años en pacientes que caminan muestran señales funcionales. Requiere controles hepáticos semanales por al menos tres meses.",
+        "disponibilidad_ar": "No aprobado en Argentina. Requiere evaluación de un centro especializado en enfermedades neuromusculares.",
+        "costo_estimado": "Alrededor de USD 3,2 millones por dosis única en EE. UU.",
+        "centros_referencia": ["FLENI", "Hospital de Pediatría Garrahan (neuromuscular)"],
+        "pubmed_query": "delandistrogene moxeparvovec Duchenne muscular dystrophy",
+        "ct_query": "Duchenne muscular dystrophy gene therapy",
+        "pmid_referencia": "41518520",
+        "año_inicio": 2023,
+        "organismos_aprobacion": ["FDA (2023; advertencia de recuadro negro y uso limitado, nov. 2025)"],
+        "tags": ["Duchenne", "distrofia muscular", "terapia génica", "microdistrofina"],
+    },
+    {
+        "id": "vis-003",
+        "tipo": "visual",
+        "nombre": "Optogenética para retinosis pigmentaria",
+        "subtipo": "Terapia génica + dispositivo",
+        "estado": "fase1",
+        "descripcion_simple": (
+            "Se usa terapia génica para que células de la retina que sobreviven se vuelvan "
+            "sensibles a la luz, y unos anteojos especiales proyectan las imágenes con la "
+            "longitud de onda adecuada. En 2021 se publicó el primer paciente ciego que "
+            "recuperó parte de la visión (reconocer y tocar objetos)."
+        ),
+        "mecanismo": (
+            "Un virus adenoasociado introduce una proteína sensible a la luz (ChrimsonR) "
+            "en las células ganglionares de la retina; las gafas convierten la imagen en "
+            "pulsos de luz ámbar que esas células pueden captar."
+        ),
+        "evidencia": "Caso inicial del ensayo PIONEER (Nature Medicine, 2021). Ensayo de fase I/II en curso.",
+        "disponibilidad_ar": "No disponible. Solo en ensayos clínicos en Europa y EE. UU.",
+        "costo_estimado": "Solo en contexto de ensayo clínico.",
+        "centros_referencia": ["Institut de la Vision (París)", "GenSight Biologics"],
+        "pubmed_query": "optogenetic therapy retinitis pigmentosa vision",
+        "ct_query": "optogenetic retinitis pigmentosa",
+        "pmid_referencia": "34031601",
+        "año_inicio": 2021,
+        "organismos_aprobacion": [],
+        "tags": ["optogenética", "retinosis pigmentaria", "ceguera", "terapia génica"],
+    },
+    {
+        "id": "int-003",
+        "tipo": "intelectual",
+        "nombre": "Trofinetida para síndrome de Rett",
+        "subtipo": "Fármaco",
+        "estado": "aprobado_intl",
+        "descripcion_simple": (
+            "Primer medicamento aprobado específicamente para el síndrome de Rett (FDA, "
+            "marzo de 2023), para personas de 2 años o más. Se toma por boca dos veces al "
+            "día y busca mejorar la comunicación, la conducta y el uso de las manos."
+        ),
+        "mecanismo": (
+            "Es un análogo sintético de un fragmento del factor de crecimiento IGF-1; "
+            "reduce la neuroinflamación y favorece la función de las sinapsis."
+        ),
+        "evidencia": "Ensayo fase 3 LAVENDER (Nature Medicine, 2023), 187 niñas y jóvenes de 5 a 20 años. Efectos adversos frecuentes: diarrea y vómitos.",
+        "disponibilidad_ar": "No aprobado en Argentina. Podría gestionarse por importación con autorización de ANMAT.",
+        "costo_estimado": "Alto costo; sin precio de referencia en Argentina.",
+        "centros_referencia": ["Hospital de Pediatría Garrahan (neurología)", "FLENI"],
+        "pubmed_query": "trofinetide Rett syndrome",
+        "ct_query": "Rett syndrome",
+        "pmid_referencia": "37291210",
+        "año_inicio": 2023,
+        "organismos_aprobacion": ["FDA (marzo 2023)"],
+        "tags": ["Rett", "síndrome de Rett", "trofinetida", "enfermedad poco frecuente"],
+    },
+    {
+        "id": "psi-003",
+        "tipo": "psicosocial",
+        "nombre": "Psilocibina asistida por psicoterapia para depresión resistente",
+        "subtipo": "Fármaco + psicoterapia",
+        "estado": "fase3",
+        "descripcion_simple": (
+            "Una o dos dosis de psilocibina sintética, administradas en un entorno clínico "
+            "controlado y con acompañamiento de profesionales. Dos ensayos de fase 3 (2025 y "
+            "2026) mostraron mejoría frente a placebo en depresión resistente. Todavía no "
+            "está aprobada por la FDA ni por ANMAT."
+        ),
+        "mecanismo": (
+            "Actúa sobre los receptores de serotonina 5-HT2A y aumentaría la plasticidad "
+            "cerebral durante unas semanas, lo que potenciaría el trabajo psicoterapéutico."
+        ),
+        "evidencia": "Ensayo fase 2b (NEJM, 2022) y dos fases 3 con resultado positivo según el fabricante, aún sin publicación revisada por pares.",
+        "disponibilidad_ar": "No disponible. Su uso fuera de un ensayo clínico es ilegal y riesgoso.",
+        "costo_estimado": "Solo en contexto de ensayo clínico.",
+        "centros_referencia": ["Compass Pathways (ensayos COMP005 y COMP006)"],
+        "pubmed_query": "psilocybin treatment-resistant depression randomized",
+        "ct_query": "psilocybin depression",
+        "pmid_referencia": "36322843",
+        "año_inicio": 2022,
+        "organismos_aprobacion": ["FDA — Breakthrough Therapy Designation"],
+        "tags": ["psilocibina", "depresión resistente", "psicodélicos", "salud mental"],
+    },
+    {
+        "id": "vis-v003",
+        "tipo": "visceral",
+        "nombre": "Teplizumab para retrasar la diabetes tipo 1",
+        "subtipo": "Inmunoterapia",
+        "estado": "aprobado_intl",
+        "descripcion_simple": (
+            "Anticuerpo que se aplica por vía intravenosa durante 14 días y puede retrasar "
+            "unos años la aparición de la diabetes tipo 1 clínica (etapa 3) en personas de "
+            "8 años o más que ya tienen autoanticuerpos y alteraciones de la glucosa (etapa 2). "
+            "La FDA lo aprobó en noviembre de 2022."
+        ),
+        "mecanismo": (
+            "Se une a la molécula CD3 de los linfocitos T y frena el ataque autoinmune "
+            "contra las células del páncreas que producen insulina."
+        ),
+        "evidencia": "Ensayo TN-10 (NEJM, 2019): retrasó en una mediana de unos dos años el diagnóstico de diabetes tipo 1 en familiares en riesgo.",
+        "disponibilidad_ar": "Sin aprobación de ANMAT confirmada. Consultar con un/a endocrinólogo/a.",
+        "costo_estimado": "Alto costo en EE. UU.; sin precio de referencia en Argentina.",
+        "centros_referencia": ["TrialNet (red internacional de prevención de diabetes tipo 1)"],
+        "pubmed_query": "teplizumab type 1 diabetes delay",
+        "ct_query": "teplizumab",
+        "pmid_referencia": "31180194",
+        "año_inicio": 2022,
+        "organismos_aprobacion": ["FDA (noviembre 2022)"],
+        "tags": ["diabetes tipo 1", "teplizumab", "prevención", "inmunoterapia"],
     },
 ]
 
@@ -595,7 +762,144 @@ async def resumen_vanguardia():
         "en_investigacion":   total - aprobados_ar,
         "por_tipo":           por_tipo,
         "por_estado":         {ESTADOS[k]["label"]: v for k, v in por_estado.items()},
-        "ultima_actualizacion": "2024",
+        "ultima_actualizacion": "2026-10",
         "fuentes": ["PubMed NIH", "FDA.gov", "EMA Europa", "ANMAT Argentina",
                     "ClinicalTrials.gov", "OPS/OMS"],
     }
+
+# ── Evidencia en vivo (PubMed + ClinicalTrials.gov) ───────────────────────────
+# Para cada tratamiento consulta las bases en el momento: los artículos más
+# recientes de PubMed (NIH) y los ensayos clínicos que reclutan en
+# ClinicalTrials.gov, con el título original y su traducción al español (texto
+# chico en la página). Caché en memoria de 6 h para no agotar las cuotas.
+
+try:
+    from scripts.etl_medico import traducir_resumen as _traducir
+except ImportError:
+    def _traducir(texto: str, max_chars: int = 600) -> str:
+        return ""
+
+_EVIDENCIA_CACHE: dict = {}
+_FASES_ES = {"EARLY_PHASE1": "Fase 1 temprana", "PHASE1": "Fase 1", "PHASE2": "Fase 2",
+             "PHASE3": "Fase 3", "PHASE4": "Fase 4"}
+_EVIDENCIA_TTL = 6 * 3600
+
+
+def _titulo_es(titulo: str) -> str:
+    """Traducción del título; vacía si el traductor solo hizo un reemplazo parcial."""
+    es = _traducir(titulo, max_chars=300) if titulo else ""
+    return "" if (not es or "parcial]" in es or es.strip() == titulo.strip()) else es
+
+
+def _pubmed_por_ids(ids: list[str]) -> list[dict]:
+    if not ids:
+        return []
+    res = requests.get("https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi", params={
+        "db": "pubmed", "id": ",".join(ids), "retmode": "json",
+    }, timeout=10).json().get("result", {})
+    out = []
+    for pmid in ids:
+        a = res.get(pmid, {})
+        titulo = a.get("title", "")
+        out.append({
+            "pmid": pmid,
+            "titulo": titulo,
+            "titulo_es": _titulo_es(titulo),
+            "revista": a.get("source", ""),
+            "fecha": a.get("pubdate", ""),
+            "url": f"https://pubmed.ncbi.nlm.nih.gov/{pmid}/",
+        })
+    return out
+
+
+def _pubmed_recientes(query: str, n: int = 3) -> list[dict]:
+    ids = requests.get("https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi", params={
+        "db": "pubmed", "term": query, "retmax": n, "sort": "pub_date", "retmode": "json",
+    }, timeout=10).json().get("esearchresult", {}).get("idlist", [])
+    return _pubmed_por_ids(ids)
+
+
+def _ensayos_reclutando(query: str, n: int = 4) -> tuple[list[dict], int]:
+    r = requests.get("https://clinicaltrials.gov/api/v2/studies", params={
+        "query.term": query,
+        "filter.overallStatus": "RECRUITING,NOT_YET_RECRUITING",
+        "pageSize": n,
+        "countTotal": "true",
+        "fields": "NCTId,BriefTitle,OverallStatus,Phase,LocationCountry",
+    }, timeout=12)
+    r.raise_for_status()
+    j = r.json()
+    out = []
+    for s in j.get("studies", []):
+        p = s.get("protocolSection", {})
+        nct = p.get("identificationModule", {}).get("nctId", "")
+        titulo = p.get("identificationModule", {}).get("briefTitle", "")
+        paises = sorted({l.get("country", "") for l in p.get("contactsLocationsModule", {}).get("locations", []) if l.get("country")})
+        out.append({
+            "nct_id": nct,
+            "titulo": titulo,
+            "titulo_es": _titulo_es(titulo),
+            "estado": p.get("statusModule", {}).get("overallStatus", ""),
+            "fase": ", ".join(_FASES_ES.get(f, f) for f in (p.get("designModule", {}).get("phases", []) or []) if f != "NA"),
+            "en_argentina": "Argentina" in paises,
+            "paises": paises[:6],
+            "url": f"https://clinicaltrials.gov/study/{nct}",
+        })
+    return out, j.get("totalCount", len(out))
+
+
+@router.get("/evidencia/{id}")
+def evidencia_en_vivo(id: str):
+    """
+    Evidencia actualizada de un tratamiento de vanguardia, consultada en vivo:
+    artículos recientes de PubMed y ensayos que reclutan en ClinicalTrials.gov,
+    con el título original y su traducción al español.
+
+    ⚕️ AVISO: Información educativa. No constituye consejo médico.
+    """
+    import re
+    import time
+
+    match = next((t for t in TRATAMIENTOS if t["id"] == id), None)
+    if not match:
+        raise HTTPException(404, f"Tratamiento '{id}' no encontrado")
+
+    cache = _EVIDENCIA_CACHE.get(id)
+    if cache and time.time() - cache[0] < _EVIDENCIA_TTL:
+        return cache[1]
+
+    pm_query = match["pubmed_query"]
+    ct_query = match.get("ct_query") or re.sub(r"\b(19|20)\d{2}\b", "", pm_query).strip()
+
+    errores = []
+    try:
+        ref = _pubmed_por_ids([match["pmid_referencia"]]) if match.get("pmid_referencia") else []
+        articulos = [a for a in _pubmed_recientes(pm_query) if a["pmid"] != match.get("pmid_referencia")]
+    except Exception:
+        ref, articulos, errores = [], [], errores + ["PubMed no respondió"]
+    try:
+        ensayos, total_ensayos = _ensayos_reclutando(ct_query)
+    except Exception:
+        ensayos, total_ensayos, errores = [], 0, errores + ["ClinicalTrials.gov no respondió"]
+
+    data = {
+        "id": id,
+        "nombre": match["nombre"],
+        "disclaimer": DISCLAIMER_BASE,
+        "fuentes": ["PubMed (NIH, EE. UU.)", "ClinicalTrials.gov (NIH, EE. UU.)"],
+        "articulo_referencia": ref[0] if ref else None,
+        "articulos_recientes": articulos,
+        "ensayos_reclutando": ensayos,
+        "total_ensayos_reclutando": total_ensayos,
+        "url_busqueda_pubmed": "https://pubmed.ncbi.nlm.nih.gov/?term=" + requests.utils.quote(pm_query),
+        "url_busqueda_ensayos": "https://clinicaltrials.gov/search?term=" + requests.utils.quote(ct_query),
+        "errores": errores,
+        "nota": (
+            "Datos consultados en vivo en bases científicas internacionales. Los títulos "
+            "traducidos son automáticos y orientativos. Participar en un ensayo requiere "
+            "la evaluación de tu médico/a y del equipo del estudio."
+        ),
+    }
+    if not errores:
+        _EVIDENCIA_CACHE[id] = (time.time(), data)
+    return data

@@ -646,6 +646,7 @@
             <option value="visceral">Visceral</option>
           </select>
         </div>
+        <p class="muted" style="font-size:.85rem;margin:.4rem 0">🔎 En cada tratamiento, el bot&oacute;n &laquo;Evidencia y ensayos actualizados&raquo; consulta en vivo PubMed y ClinicalTrials.gov; debajo de cada referencia ves su t&iacute;tulo traducido al espa&ntilde;ol.</p>
         <div id="vang-result" class="result-box"></div>
       </div>
 
@@ -4124,6 +4125,11 @@
         }
         if (t.disclaimer_especifico) html += '<div class="small-disclaimer">' + escapeHtml(t.disclaimer_especifico) + '</div>';
         if (t.url_pubmed) html += '<p style="margin-top:.5rem"><a href="' + escapeHtml(t.url_pubmed) + '" target="_blank" rel="noopener">Ver evidencia en PubMed</a></p>';
+        if (t.id) {
+          const evId = 'vang-ev-' + t.id;
+          html += '<button class="go-btn" style="margin-top:.4rem" onclick="loadEvidenciaVanguardia(\'' + escapeHtml(t.id) + '\')">🔎 Evidencia y ensayos actualizados</button>';
+          html += '<div id="' + escapeHtml(evId) + '" class="vang-ev"></div>';
+        }
         html += '</div>';
       });
       return html;
@@ -4135,6 +4141,51 @@
       if (!tipo) { target.innerHTML = ''; return; }
       target.innerHTML = '<p class="loading">Cargando tratamientos...</p>';
       loadInto('/api/vanguardia/tipo/' + encodeURIComponent(tipo), 'vang-result', renderVanguardiaTipo);
+    }
+
+    /* Evidencia en vivo (PubMed + ClinicalTrials.gov): título original enlazado y,
+       debajo, su traducción al español en texto chico. */
+    function refVanguardiaHtml(titulo, tituloEs, url, meta) {
+      let h = '<li style="margin-bottom:.5rem"><a href="' + escapeHtml(url) + '" target="_blank" rel="noopener">' + escapeHtml(titulo) + '</a>';
+      if (meta) h += ' <span class="muted" style="font-size:.78rem">(' + escapeHtml(meta) + ')</span>';
+      if (tituloEs) h += '<br><small style="color:#5a4a7a">🇪🇸 ' + escapeHtml(tituloEs) + '</small>';
+      return h + '</li>';
+    }
+
+    function renderEvidenciaVanguardia(d) {
+      let h = '<div style="margin-top:.6rem;padding:.7rem;background:#fff;border:1px solid #e3dcf3;border-radius:8px">';
+      if (d.articulo_referencia) {
+        const a = d.articulo_referencia;
+        h += '<p style="margin:.2rem 0"><strong>📌 Artículo de referencia</strong></p><ul style="margin:.2rem 0 .5rem 1.1rem;font-size:.86rem">'
+          + refVanguardiaHtml(a.titulo, a.titulo_es, a.url, [a.revista, a.fecha].filter(Boolean).join(', ')) + '</ul>';
+      }
+      if (d.articulos_recientes && d.articulos_recientes.length) {
+        h += '<p style="margin:.2rem 0"><strong>📰 Publicaciones más recientes (PubMed)</strong></p><ul style="margin:.2rem 0 .5rem 1.1rem;font-size:.86rem">';
+        d.articulos_recientes.forEach(a => { h += refVanguardiaHtml(a.titulo, a.titulo_es, a.url, [a.revista, a.fecha].filter(Boolean).join(', ')); });
+        h += '</ul>';
+      }
+      h += '<p style="margin:.2rem 0"><strong>🧪 Ensayos que reclutan (ClinicalTrials.gov):</strong> ' + (d.total_ensayos_reclutando || 0) + '</p>';
+      if (d.ensayos_reclutando && d.ensayos_reclutando.length) {
+        h += '<ul style="margin:.2rem 0 .5rem 1.1rem;font-size:.86rem">';
+        d.ensayos_reclutando.forEach(e => {
+          const meta = [e.nct_id, e.fase, e.en_argentina ? '📍 con sede en Argentina' : ''].filter(Boolean).join(' · ');
+          h += refVanguardiaHtml(e.titulo, e.titulo_es, e.url, meta);
+        });
+        h += '</ul>';
+      }
+      h += '<p style="font-size:.8rem;margin:.3rem 0"><a href="' + escapeHtml(d.url_busqueda_pubmed) + '" target="_blank" rel="noopener">Buscar más en PubMed</a> · '
+        + '<a href="' + escapeHtml(d.url_busqueda_ensayos) + '" target="_blank" rel="noopener">Todos los ensayos</a></p>';
+      if (d.errores && d.errores.length) h += '<p class="muted" style="font-size:.78rem">⚠️ ' + escapeHtml(d.errores.join('; ')) + '. Probá de nuevo más tarde.</p>';
+      if (d.nota) h += '<div class="small-disclaimer">' + escapeHtml(d.nota) + '</div>';
+      return h + '</div>';
+    }
+
+    function loadEvidenciaVanguardia(id) {
+      const elId = 'vang-ev-' + id;
+      const el = document.getElementById(elId);
+      if (!el) return;
+      el.innerHTML = '<p class="loading">Consultando PubMed y ClinicalTrials.gov...</p>';
+      loadInto('/api/vanguardia/evidencia/' + encodeURIComponent(id), elId, renderEvidenciaVanguardia);
     }
 
     /* ---------- CALCULADORA ---------- */

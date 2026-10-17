@@ -226,3 +226,45 @@ def test_tratamientos_experimentales_con_aviso():
     assert 'data-trat="experimentales"' in html and 'id="trat-experimentales"' in html
     assert "/api/cud/tratamientos-experimentales" in html
     assert "Consult&aacute; siempre con tu m&eacute;dico/a o profesional tratante" in _panel(html, "tratamientos")
+
+
+def test_vanguardia_pmid_verificados_y_nuevos():
+    pmids = {t["pmid_referencia"] for t in tratamientos_vanguardia.TRATAMIENTOS if t.get("pmid_referencia")}
+    # PMID inventados que apuntaban a artículos ajenos (Sherlock Holmes, tráfico, etc.)
+    for malo in ("35234567", "36789012", "34567890", "29091566", "31770029", "38224701",
+                 "36543210", "37891234", "35678901", "36234567", "36891234", "38181483", "36123456"):
+        assert malo not in pmids, malo
+    ids = {t["id"] for t in tratamientos_vanguardia.TRATAMIENTOS}
+    assert {"mot-004", "mot-005", "vis-003", "int-003", "psi-003", "vis-v003"} <= ids
+    assert len(ids) == len(tratamientos_vanguardia.TRATAMIENTOS)
+    for t in tratamientos_vanguardia.TRATAMIENTOS:
+        assert t["estado"] in tratamientos_vanguardia.ESTADOS
+
+
+def test_vanguardia_evidencia_en_vivo_traduce_titulos():
+    assert not inspect.iscoroutinefunction(tratamientos_vanguardia.evidencia_en_vivo)
+
+    def falso_get(url, params=None, timeout=None):
+        if "esearch" in url:
+            return _resp({"esearchresult": {"idlist": ["111"]}})
+        if "esummary" in url:
+            ids = params["id"].split(",")
+            return _resp({"result": {i: {"title": "Gene therapy trial " + i, "source": "Lancet", "pubdate": "2026"} for i in ids}})
+        return _resp({"totalCount": 7, "studies": [{"protocolSection": {
+            "identificationModule": {"nctId": "NCT01", "briefTitle": "Spinal cord stimulation study"},
+            "statusModule": {"overallStatus": "RECRUITING"}, "designModule": {"phases": ["PHASE2"]},
+            "contactsLocationsModule": {"locations": [{"country": "Argentina"}]}}}]})
+
+    tratamientos_vanguardia._EVIDENCIA_CACHE.clear()
+    with patch.object(tratamientos_vanguardia.requests, "get", side_effect=falso_get), \
+         patch.object(tratamientos_vanguardia, "_traducir", side_effect=lambda t, max_chars=300: "ES: " + t):
+        d = client.get("/api/vanguardia/evidencia/mot-004").json()
+    assert d["articulo_referencia"]["pmid"] == "38769431"
+    assert d["articulo_referencia"]["titulo_es"].startswith("ES: ")
+    assert d["articulos_recientes"][0]["titulo_es"] == "ES: Gene therapy trial 111"
+    assert d["total_ensayos_reclutando"] == 7 and d["ensayos_reclutando"][0]["en_argentina"]
+    assert d["ensayos_reclutando"][0]["fase"] == "Fase 2"
+    assert d["ensayos_reclutando"][0]["titulo_es"] == "ES: Spinal cord stimulation study"
+    assert client.get("/api/vanguardia/evidencia/no-existe").status_code == 404
+    html = (ROOT / "templates" / "index.html").read_text(encoding="utf-8")
+    assert "/api/vanguardia/evidencia/" in html and "function renderEvidenciaVanguardia(" in html
