@@ -701,6 +701,31 @@ async def listar_vanguardia(
     }
 
 
+# Tratamientos incorporados en la actualización de octubre 2026; se muestran
+# también en la sub-pestaña "Nuevos" de la pestaña Tratamientos.
+NUEVOS_IDS = ["mot-004", "mot-005", "vis-003", "int-003", "psi-003", "vis-v003"]
+
+
+@router.get("/nuevos")
+async def vanguardia_nuevos():
+    """
+    Tratamientos de vanguardia incorporados recientemente (todos los tipos),
+    con la misma ficha que /tipo/{tipo}.
+
+    ⚕️ AVISO: Información educativa. No constituye consejo médico.
+    """
+    data = [_enriquecer(dict(t)) for t in TRATAMIENTOS if t["id"] in NUEVOS_IDS]
+    return {
+        "disclaimer": DISCLAIMER_BASE,
+        "total": len(data),
+        "tratamientos": data,
+        "nota_importante": (
+            f"{len(data)} tratamientos incorporados en octubre de 2026. Ninguno está aprobado "
+            "en Argentina: cada tarjeta indica su estado y la normativa argentina aplicable."
+        ),
+    }
+
+
 @router.get("/estados")
 async def estados_aprobacion():
     """Lista los posibles estados de aprobación con descripción."""

@@ -284,3 +284,14 @@ def test_vanguardia_normativa_argentina_aplicable():
     assert "2318/2002" in labels("vis-002") and "7516/2025" in labels("vis-003")
     html = (ROOT / "templates" / "index.html").read_text(encoding="utf-8")
     assert "Normativa argentina aplicable" in html
+
+
+def test_tratamientos_pestana_nuevos_de_vanguardia():
+    d = client.get("/api/vanguardia/nuevos").json()
+    assert [t["id"] for t in d["tratamientos"]] == [t["id"] for t in tratamientos_vanguardia.TRATAMIENTOS
+                                                    if t["id"] in tratamientos_vanguardia.NUEVOS_IDS]
+    assert d["total"] == 6 and all(t["normativa_ar"] for t in d["tratamientos"])
+    html = (ROOT / "templates" / "index.html").read_text(encoding="utf-8")
+    assert 'data-trat="nuevos"' in html and 'id="trat-nuevos"' in html
+    assert "loadInto('/api/vanguardia/nuevos', 'vang-nuevos-info', renderVanguardiaTipo)" in html
+    assert "++vangEvSeq" in html

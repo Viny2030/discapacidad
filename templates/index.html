@@ -1560,6 +1560,7 @@
           <button class="trat-btn" data-trat="visuales">👁️ Tratamientos visuales</button>
           <button class="trat-btn" data-trat="otras">🩹 Otras terapias</button>
           <button class="trat-btn" data-trat="experimentales">🧪 Experimentales</button>
+          <button class="trat-btn" data-trat="nuevos">🆕 Nuevos de vanguardia</button>
         </div>
       </div>
 
@@ -1600,6 +1601,20 @@
           <p>Cannabis medicinal (Ley 27.350), estimulaci&oacute;n de la m&eacute;dula espinal en lesi&oacute;n medular, estimulaci&oacute;n transcraneal por corriente directa (tDCS) y terapias con c&eacute;lulas madre, cada uno con su estado (qu&eacute; est&aacute; probado y qu&eacute; no), y c&oacute;mo participar de forma segura en un ensayo cl&iacute;nico.</p>
           <div id="tratamientos-experimentales-info" class="result-box"><p class="loading">Cargando tratamientos experimentales...</p></div>
           <p style="margin-top:.8rem">M&aacute;s tratamientos en investigaci&oacute;n (exoesqueletos, interfaces cerebro-computadora, terapias g&eacute;nicas) en la pesta&ntilde;a Vanguardia.</p>
+        </div>
+      </div>
+
+      <div class="trat-sub" id="trat-nuevos">
+        <div class="aviso-medico" role="note" style="margin:0 0 1.2rem;border-left:4px solid #c62828">
+          <strong>🆕 Ninguno de estos tratamientos est&aacute; aprobado en Argentina.</strong>
+          Algunos est&aacute;n aprobados en otros pa&iacute;ses y otros siguen en ensayo cl&iacute;nico.
+          <strong>Consult&aacute; siempre con tu m&eacute;dico/a o profesional tratante</strong> antes de considerarlos.
+        </div>
+        <div class="card" style="border-left:4px solid #7c4dff">
+          <h2>🆕 Nuevos tratamientos de vanguardia</h2>
+          <p>Estimulaci&oacute;n de la m&eacute;dula espinal, terapia g&eacute;nica para Duchenne, optogen&eacute;tica, trofinetida para Rett, psilocibina para depresi&oacute;n resistente y teplizumab para diabetes tipo 1: cada uno con su estado, la normativa argentina aplicable y el bot&oacute;n de evidencia y ensayos actualizados (con los t&iacute;tulos traducidos al espa&ntilde;ol).</p>
+          <div id="vang-nuevos-info" class="result-box"><p class="loading">Cargando tratamientos nuevos...</p></div>
+          <p style="margin-top:.8rem">Todos los tratamientos, por tipo de discapacidad, en la pesta&ntilde;a <a href="#" onclick="switchTab('vanguardia');return false">Vanguardia</a>.</p>
         </div>
       </div>
     </div>
@@ -3120,6 +3135,7 @@
         initTratamientosVisuales();
         initOtrasTerapias();
         initTratamientosExperimentales();
+        loadInto('/api/vanguardia/nuevos', 'vang-nuevos-info', renderVanguardiaTipo);
         initTratamientosPills();
       }
     }
@@ -4105,6 +4121,7 @@
     }
 
     /* ---------- VANGUARDIA ---------- */
+    let vangEvSeq = 0;  // id único por caja de evidencia (la misma tarjeta puede estar en Vanguardia y en Tratamientos)
     function renderVanguardiaTipo(data) {
       let html = '';
       if (data.nota_importante) html += '<p class="muted">' + escapeHtml(data.nota_importante) + '</p>';
@@ -4134,8 +4151,8 @@
         if (t.disclaimer_especifico) html += '<div class="small-disclaimer">' + escapeHtml(t.disclaimer_especifico) + '</div>';
         if (t.url_pubmed) html += '<p style="margin-top:.5rem"><a href="' + escapeHtml(t.url_pubmed) + '" target="_blank" rel="noopener">Ver evidencia en PubMed</a></p>';
         if (t.id) {
-          const evId = 'vang-ev-' + t.id;
-          html += '<button class="go-btn" style="margin-top:.4rem" onclick="loadEvidenciaVanguardia(\'' + escapeHtml(t.id) + '\')">🔎 Evidencia y ensayos actualizados</button>';
+          const evId = 'vang-ev-' + t.id + '-' + (++vangEvSeq);
+          html += '<button class="go-btn" style="margin-top:.4rem" onclick="loadEvidenciaVanguardia(\'' + escapeHtml(t.id) + '\', \'' + evId + '\')">🔎 Evidencia y ensayos actualizados</button>';
           html += '<div id="' + escapeHtml(evId) + '" class="vang-ev"></div>';
         }
         html += '</div>';
@@ -4188,8 +4205,8 @@
       return h + '</div>';
     }
 
-    function loadEvidenciaVanguardia(id) {
-      const elId = 'vang-ev-' + id;
+    function loadEvidenciaVanguardia(id, elId) {
+      elId = elId || ('vang-ev-' + id);
       const el = document.getElementById(elId);
       if (!el) return;
       el.innerHTML = '<p class="loading">Consultando PubMed y ClinicalTrials.gov...</p>';
