@@ -268,3 +268,19 @@ def test_vanguardia_evidencia_en_vivo_traduce_titulos():
     assert client.get("/api/vanguardia/evidencia/no-existe").status_code == 404
     html = (ROOT / "templates" / "index.html").read_text(encoding="utf-8")
     assert "/api/vanguardia/evidencia/" in html and "function renderEvidenciaVanguardia(" in html
+
+
+def test_vanguardia_normativa_argentina_aplicable():
+    v = tratamientos_vanguardia
+    for t in v.TRATAMIENTOS:
+        e = v._enriquecer(dict(t))
+        # todo tratamiento tiene norma propia (aprobados en AR) o normativa aplicable
+        assert e.get("url_resolucion_ar") or e["normativa_ar"], t["id"]
+        for n in e["normativa_ar"]:
+            assert n["url"].startswith("https://") and n["label"]
+    labels = lambda tid: " ".join(n["label"] for n in v._enriquecer(dict(next(t for t in v.TRATAMIENTOS if t["id"] == tid)))["normativa_ar"])
+    assert "26.689" in labels("mot-005") and "10401/2016" in labels("mot-005")
+    assert "23.753" in labels("vis-v003") and "23.737" in labels("psi-003")
+    assert "2318/2002" in labels("vis-002") and "7516/2025" in labels("vis-003")
+    html = (ROOT / "templates" / "index.html").read_text(encoding="utf-8")
+    assert "Normativa argentina aplicable" in html

@@ -4123,6 +4123,14 @@
             + 'title="Ver resolución oficial">' + escapeHtml(t.resolucion_label || 'Ver resolución') + '</a>'
             + '</p>';
         }
+        // Normativa argentina aplicable (no es aprobación: acceso, cobertura o investigación)
+        if (t.normativa_ar && t.normativa_ar.length) {
+          html += '<p style="margin:.4rem 0 .2rem;font-size:.82rem">⚖️ <strong>Normativa argentina aplicable</strong>'
+            + (t.estado !== 'aprobado_ar' ? ' <span class="muted">(no aprobado en Argentina: estas normas regulan su acceso, cobertura o investigación)</span>' : '') + '</p>'
+            + '<ul style="margin:.1rem 0 .4rem 1.1rem;font-size:.82rem">'
+            + t.normativa_ar.map(n => '<li><a href="' + escapeHtml(n.url) + '" target="_blank" rel="noopener">' + escapeHtml(n.label) + '</a></li>').join('')
+            + '</ul>';
+        }
         if (t.disclaimer_especifico) html += '<div class="small-disclaimer">' + escapeHtml(t.disclaimer_especifico) + '</div>';
         if (t.url_pubmed) html += '<p style="margin-top:.5rem"><a href="' + escapeHtml(t.url_pubmed) + '" target="_blank" rel="noopener">Ver evidencia en PubMed</a></p>';
         if (t.id) {

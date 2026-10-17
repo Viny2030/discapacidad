@@ -45,6 +45,26 @@ DISCLAIMER_POR_ESTADO = {
     "experimental":  "Este tratamiento es experimental y solo existe en contextos de investigación. No está disponible para uso en pacientes fuera de protocolos de investigación.",
 }
 
+# ── Normativa argentina aplicable (verificada en argentina.gob.ar / Boletín Oficial)
+# No son aprobaciones: indican qué norma rige el acceso, la cobertura o la
+# investigación de un tratamiento que todavía no está aprobado en Argentina.
+NORMAS_AR = {
+    "raem": {"label": "Disposición ANMAT 10401/2016 — Régimen de Acceso de Excepción a Medicamentos (importación para un paciente sin alternativa en el país)",
+             "url": "https://www.argentina.gob.ar/normativa/nacional/norma-265684/texto"},
+    "ensayos": {"label": "Disposición ANMAT 7516/2025 — Buenas Prácticas Clínicas para ensayos clínicos (vigente desde el 1/12/2025)",
+                "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/332695/20251009"},
+    "productos_medicos": {"label": "Disposición ANMAT 2318/2002 — Registro obligatorio de productos médicos",
+                          "url": "https://www.argentina.gob.ar/normativa/nacional/norma-75867/texto"},
+    "epf": {"label": "Ley 26.689 — Enfermedades poco frecuentes (cobertura asistencial)",
+            "url": "https://www.argentina.gob.ar/normativa/nacional/185077/texto"},
+    "diabetes": {"label": "Ley 23.753 (mod. Ley 26.914) — Cobertura del tratamiento de la diabetes",
+                 "url": "https://www.argentina.gob.ar/normativa/nacional/norma-154/texto"},
+    "salud_mental": {"label": "Ley 26.657 — Salud mental",
+                     "url": "https://www.argentina.gob.ar/normativa/nacional/ley-26657-175977/texto"},
+    "estupefacientes": {"label": "Ley 23.737 y Decreto 560/2019 — Régimen de estupefacientes (la psilocibina está fiscalizada por la Convención de la ONU de 1971 sobre sustancias psicotrópicas)",
+                        "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/213527/20190815"},
+}
+
 # ── Base de datos de tratamientos ─────────────────────────────────────────────
 
 TRATAMIENTOS = [
@@ -178,6 +198,7 @@ TRATAMIENTOS = [
         "centros_referencia": ["SNEC Singapore", "Wills Eye Hospital (EE.UU.)"],
         "pubmed_query": "Argus II retinal prosthesis visual outcomes 2022",
         "pmid_referencia": "22244176",
+        "normativa_ar": ["productos_medicos"],
         "año_inicio": 2013,
         "organismos_aprobacion": ["FDA (2013)", "CE Mark Europa (2011)"],
         "tags": ["ojo biónico", "retinosis pigmentaria", "implante retiniano", "Argus II"],
@@ -432,6 +453,7 @@ TRATAMIENTOS = [
         "pubmed_query": "transcutaneous spinal cord stimulation tetraplegia upper extremity",
         "ct_query": "transcutaneous spinal cord stimulation",
         "pmid_referencia": "38769431",
+        "normativa_ar": ["productos_medicos"],
         "año_inicio": 2024,
         "organismos_aprobacion": ["FDA (De Novo, diciembre 2024)"],
         "tags": ["lesión medular", "tetraplejia", "neuromodulación", "estimulación espinal", "ARC-EX"],
@@ -460,6 +482,7 @@ TRATAMIENTOS = [
         "pubmed_query": "delandistrogene moxeparvovec Duchenne muscular dystrophy",
         "ct_query": "Duchenne muscular dystrophy gene therapy",
         "pmid_referencia": "41518520",
+        "normativa_ar": ["epf", "raem"],
         "año_inicio": 2023,
         "organismos_aprobacion": ["FDA (2023; advertencia de recuadro negro y uso limitado, nov. 2025)"],
         "tags": ["Duchenne", "distrofia muscular", "terapia génica", "microdistrofina"],
@@ -488,6 +511,7 @@ TRATAMIENTOS = [
         "pubmed_query": "optogenetic therapy retinitis pigmentosa vision",
         "ct_query": "optogenetic retinitis pigmentosa",
         "pmid_referencia": "34031601",
+        "normativa_ar": ["ensayos", "epf"],
         "año_inicio": 2021,
         "organismos_aprobacion": [],
         "tags": ["optogenética", "retinosis pigmentaria", "ceguera", "terapia génica"],
@@ -514,6 +538,7 @@ TRATAMIENTOS = [
         "pubmed_query": "trofinetide Rett syndrome",
         "ct_query": "Rett syndrome",
         "pmid_referencia": "37291210",
+        "normativa_ar": ["epf", "raem"],
         "año_inicio": 2023,
         "organismos_aprobacion": ["FDA (marzo 2023)"],
         "tags": ["Rett", "síndrome de Rett", "trofinetida", "enfermedad poco frecuente"],
@@ -535,12 +560,13 @@ TRATAMIENTOS = [
             "cerebral durante unas semanas, lo que potenciaría el trabajo psicoterapéutico."
         ),
         "evidencia": "Ensayo fase 2b (NEJM, 2022) y dos fases 3 con resultado positivo según el fabricante, aún sin publicación revisada por pares.",
-        "disponibilidad_ar": "No disponible. Su uso fuera de un ensayo clínico es ilegal y riesgoso.",
+        "disponibilidad_ar": "No disponible. Su uso fuera de un ensayo clínico autorizado no está permitido y es riesgoso.",
         "costo_estimado": "Solo en contexto de ensayo clínico.",
         "centros_referencia": ["Compass Pathways (ensayos COMP005 y COMP006)"],
         "pubmed_query": "psilocybin treatment-resistant depression randomized",
         "ct_query": "psilocybin depression",
         "pmid_referencia": "36322843",
+        "normativa_ar": ["ensayos", "estupefacientes", "salud_mental"],
         "año_inicio": 2022,
         "organismos_aprobacion": ["FDA — Breakthrough Therapy Designation"],
         "tags": ["psilocibina", "depresión resistente", "psicodélicos", "salud mental"],
@@ -568,6 +594,7 @@ TRATAMIENTOS = [
         "pubmed_query": "teplizumab type 1 diabetes delay",
         "ct_query": "teplizumab",
         "pmid_referencia": "31180194",
+        "normativa_ar": ["diabetes", "raem"],
         "año_inicio": 2022,
         "organismos_aprobacion": ["FDA (noviembre 2022)"],
         "tags": ["diabetes tipo 1", "teplizumab", "prevención", "inmunoterapia"],
@@ -615,6 +642,14 @@ def _enriquecer(t: dict) -> dict:
     t["disclaimer"]           = DISCLAIMER_BASE
     t["disclaimer_especifico"] = DISCLAIMER_POR_ESTADO.get(estado, "")
     t["url_pubmed"]           = f"https://pubmed.ncbi.nlm.nih.gov/{t['pmid_referencia']}/" if t.get("pmid_referencia") else None
+    claves = list(t.get("normativa_ar") or [])
+    if not claves and not t.get("url_resolucion_ar"):
+        if estado in ("fase1", "fase2", "fase3", "experimental", "uso_compasivo"):
+            claves = ["ensayos"]
+        elif estado == "aprobado_intl":
+            es_dispositivo = any(x in t.get("subtipo", "") for x in ("Dispositivo", "Tecnología", "Neurotecnología"))
+            claves = ["productos_medicos"] if es_dispositivo else ["raem"]
+    t["normativa_ar"] = [NORMAS_AR[c] for c in claves if c in NORMAS_AR]
     t["llamado_accion"]       = (
         "Consultá con un médico especialista antes de tomar cualquier decisión. "
         "Si este tratamiento no está disponible en Argentina, tu médico puede orientarte "
