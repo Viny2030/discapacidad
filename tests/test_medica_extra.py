@@ -112,3 +112,7 @@ def test_condiciones_incluye_dislexia_y_epilepsia():
 def test_condiciones_incluye_epf():
     assert "epf" in CONDICIONES_ESPECIFICAS
     assert "epf" in ESPECIALIDADES_MEDICAS["genetica"]["condiciones_relacionadas"]
+
+
+def test_condiciones_incluye_celiaquia_y_cancer_infantil():
+    assert "celiaquia" in CONDICIONES_ESPECIFICAS and "cancer_infantil" in CONDICIONES_ESPECIFICAS

@@ -438,6 +438,20 @@ CONDICIONES_ESPECIFICAS: dict[str, dict] = {
         "descripcion": "Pérdida progresiva e irreversible de la función renal.",
         "query_pubmed": "chronic kidney disease treatment dialysis 2023 2024 2025",
     },
+    "celiaquia": {
+        "nombre": "Enfermedad celíaca",
+        "tipo": "visceral",
+        "descripcion": "Enfermedad autoinmune desencadenada por el gluten que daña el "
+                       "intestino delgado (Ley 26.588, mod. Ley 27.196).",
+        "query_pubmed": "celiac disease diagnosis gluten-free diet 2023 2024 2025",
+    },
+    "cancer_infantil": {
+        "nombre": "Cáncer infantil",
+        "tipo": "visceral",
+        "descripcion": "Cánceres en niños, niñas y adolescentes, como leucemias, "
+                       "tumores del sistema nervioso central y linfomas (Ley 27.674).",
+        "query_pubmed": "pediatric cancer childhood leukemia survival treatment 2023 2024 2025",
+    },
 }
 
 # ── Especialidades médicas (taxonomía en paralelo) ────────────────────────────

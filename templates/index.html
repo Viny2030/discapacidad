@@ -342,6 +342,12 @@
     <button class="sub-btn" data-sub="epilepsia" title="Pendiente de revisión por un/a neurólogo/a">Epilepsia*</button>
     <button class="sub-btn" data-sub="epf" title="Pendiente de revisión por un/a médico/a">Poco frecuentes*</button>
     <button class="sub-btn" data-sub="saludmental" title="Pendiente de revisión por un/a psicólogo/a o psiquiatra">Salud mental*</button>
+    <button class="sub-btn" data-sub="visual" title="Pendiente de revisión por un/a oftalmólogo/a">Visual*</button>
+    <button class="sub-btn" data-sub="diabetes" title="Pendiente de revisión por un/a endocrinólogo/a o diabetólogo/a">Diabetes*</button>
+    <button class="sub-btn" data-sub="celiaquia" title="Pendiente de revisión por un/a gastroenterólogo/a">Celiaquía*</button>
+    <button class="sub-btn" data-sub="fq" title="Pendiente de revisión por un/a neumólogo/a">Fibrosis quística*</button>
+    <button class="sub-btn" data-sub="oncoped" title="Pendiente de revisión por un/a oncólogo/a pediatra">Cáncer infantil*</button>
+    <button class="sub-btn" data-sub="trasplante" title="Pendiente de revisión por un/a nefrólogo/a o médico/a de trasplante">Trasplante y renal*</button>
     <p class="subnav-nota">* Secciones pendientes de revisión profesional.</p>
   </div>
 
@@ -1240,6 +1246,303 @@
           <li><a href="https://www.parlamentario.com/2026/04/18/el-gobierno-manda-al-senado-una-reforma-integral-de-la-ley-de-salud-mental-y-redefine-el-regimen-de-internaciones-involuntarias/" target="_blank" rel="noopener">Proyecto de reforma enviado al Senado (abril 2026) ↗</a></li>
         </ul>
         <p class="muted">* Secci&oacute;n pendiente de revisi&oacute;n por un/a psic&oacute;logo/a o psiquiatra matriculado/a.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================== DISCAPACIDAD VISUAL ====================== -->
+  <div class="panel" id="panel-visual">
+    <div class="wrap">
+      <div class="aviso-medico" role="note" style="margin:0 0 1.2rem">
+        <strong>* Contenido pendiente de revisi&oacute;n profesional.</strong>
+        Esta secci&oacute;n es informativa y debe ser revisada y validada por un/a
+        <strong>m&eacute;dico/a oftalm&oacute;logo/a matriculado/a</strong> antes de tomarse como referencia.
+        No reemplaza la evaluaci&oacute;n ni el tratamiento profesional.
+      </div>
+
+      <div class="card" style="border-left:4px solid #7c4dff">
+        <h2>👁️ Ceguera y baja visi&oacute;n*</h2>
+        <p>La <strong>discapacidad visual</strong> incluye la <strong>ceguera</strong> y la <strong>baja visi&oacute;n</strong>: una p&eacute;rdida de visi&oacute;n que no se corrige del todo con anteojos, lentes de contacto, medicaci&oacute;n ni cirug&iacute;a, y que limita actividades como leer, desplazarse o reconocer caras.</p>
+        <p>Causas frecuentes: glaucoma, retinopat&iacute;a diab&eacute;tica, degeneraci&oacute;n macular, retinosis pigmentaria, cataratas no tratadas y retinopat&iacute;a del prematuro.</p>
+      </div>
+
+      <div class="card">
+        <h2>🩺 Se&ntilde;ales para consultar*</h2>
+        <ul style="margin:.4rem 0 .6rem 1.2rem;font-size:.9rem">
+          <li>Chocarse con objetos, tropezar o tener dificultad para moverse con poca luz.</li>
+          <li>Ver borroso, manchas, distorsi&oacute;n o p&eacute;rdida de la visi&oacute;n lateral.</li>
+          <li>En beb&eacute;s: no fijar la mirada ni seguir objetos, pupila blanca o desv&iacute;o de un ojo.</li>
+        </ul>
+        <p>La <strong>rehabilitaci&oacute;n visual</strong> (ayudas &oacute;pticas, lupas, lectores de pantalla, orientaci&oacute;n y movilidad, Braille) ayuda a mantener la autonom&iacute;a.</p>
+      </div>
+
+      <div class="card">
+        <h2>🪪 Derechos: Ley 25.682 y Ley 26.858*</h2>
+        <ul style="margin:.4rem 0 .6rem 1.2rem;font-size:.9rem">
+          <li><strong>Ley 25.682 (bast&oacute;n verde):</strong> reconoce el <strong>bast&oacute;n verde</strong> como herramienta de orientaci&oacute;n y movilidad para personas con <strong>baja visi&oacute;n</strong> (el bast&oacute;n blanco identifica a las personas ciegas). Es un elemento de apoyo de la Ley 24.901, con <strong>cobertura obligatoria</strong> de obras sociales y prepagas.</li>
+          <li><strong>Ley 26.858 (perro gu&iacute;a o de asistencia):</strong> la persona con discapacidad acompa&ntilde;ada por su perro gu&iacute;a tiene derecho a <strong>ingresar, circular y permanecer</strong> en lugares p&uacute;blicos, privados de acceso p&uacute;blico y en el transporte p&uacute;blico, <strong>sin costo adicional</strong>.</li>
+        </ul>
+        <p><strong>CUD:</strong> la discapacidad visual es uno de los tipos que eval&uacute;an las juntas; se valora seg&uacute;n la agudeza y el campo visual con la mejor correcci&oacute;n.</p>
+        <button class="go-btn" onclick="switchTab('cud')">Ver juntas evaluadoras</button>
+      </div>
+
+      <div class="card">
+        <h2>🔬 Evidencia m&eacute;dica reciente</h2>
+        <button class="go-btn" onclick="loadInto('/api/condiciones/glaucoma', 'visual-evidencia', renderCondicionResult)">Glaucoma</button>
+        <button class="go-btn" onclick="loadInto('/api/condiciones/retinosis_pigmentaria', 'visual-evidencia', renderCondicionResult)">Retinosis pigmentaria</button>
+        <div id="visual-evidencia" class="result-box" style="margin-top:.8rem"></div>
+      </div>
+
+      <div class="card">
+        <h2>📚 Fuentes</h2>
+        <ul style="margin:.4rem 0 .6rem 1.2rem;font-size:.88rem">
+          <li><a href="https://www.argentina.gob.ar/normativa/nacional/ley-25682-80888/texto" target="_blank" rel="noopener">Ley 25.682, texto (argentina.gob.ar) ↗</a></li>
+          <li><a href="https://www.argentina.gob.ar/normativa/nacional/216286/texto" target="_blank" rel="noopener">Ley 26.858, texto (argentina.gob.ar) ↗</a></li>
+        </ul>
+        <p class="muted">* Secci&oacute;n pendiente de revisi&oacute;n por un/a oftalm&oacute;logo/a matriculado/a.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================== DIABETES ====================== -->
+  <div class="panel" id="panel-diabetes">
+    <div class="wrap">
+      <div class="aviso-medico" role="note" style="margin:0 0 1.2rem">
+        <strong>* Contenido pendiente de revisi&oacute;n profesional.</strong>
+        Esta secci&oacute;n es informativa y debe ser revisada y validada por un/a
+        <strong>m&eacute;dico/a endocrin&oacute;logo/a o diabet&oacute;logo/a matriculado/a</strong> antes de tomarse como referencia.
+        No reemplaza la evaluaci&oacute;n ni el tratamiento profesional.
+      </div>
+
+      <div class="card" style="border-left:4px solid #7c4dff">
+        <h2>🩸 Diabetes*</h2>
+        <p>La <strong>diabetes</strong> es una enfermedad cr&oacute;nica en la que la glucosa en sangre est&aacute; elevada. En la <strong>tipo 1</strong> (frecuente en la infancia) el p&aacute;ncreas deja de producir insulina; en la <strong>tipo 2</strong> el cuerpo no la usa bien.</p>
+        <p>Con buen control se puede llevar una vida plena; sin control puede dar complicaciones que s&iacute; generan discapacidad (visi&oacute;n, ri&ntilde;ones, nervios, amputaciones).</p>
+      </div>
+
+      <div class="card">
+        <h2>🩺 Se&ntilde;ales para consultar*</h2>
+        <ul style="margin:.4rem 0 .6rem 1.2rem;font-size:.9rem">
+          <li>Mucha sed, orinar seguido (en ni&ntilde;os, volver a mojar la cama), hambre intensa y p&eacute;rdida de peso.</li>
+          <li>Cansancio, visi&oacute;n borrosa, heridas que tardan en cicatrizar.</li>
+          <li>Ante v&oacute;mitos, respiraci&oacute;n r&aacute;pida o somnolencia en una persona con diabetes: <strong>guardia</strong> (puede ser cetoacidosis).</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>🪪 Derechos: Ley 23.753 (mod. Ley 26.914)*</h2>
+        <ul style="margin:.4rem 0 .6rem 1.2rem;font-size:.9rem">
+          <li><strong>Cobertura del 100%</strong> de los medicamentos y reactivos de diagn&oacute;stico para el autocontrol, en las cantidades necesarias, por obras sociales y prepagas.</li>
+          <li>Las <strong>normas de provisi&oacute;n</strong> de medicamentos e insumos las fija el Ministerio de Salud y deben revisarse al menos cada dos a&ntilde;os.</li>
+          <li>El <strong>certificado de persona con diabetes</strong> lo emite el m&eacute;dico tratante al diagn&oacute;stico y sigue vigente mientras dure la condici&oacute;n.</li>
+          <li>La diabetes <strong>no puede ser causa de impedimento</strong> para el ingreso laboral.</li>
+        </ul>
+        <p><strong>CUD:</strong> la diabetes por s&iacute; sola no da el certificado; se eval&uacute;an las limitaciones (por ejemplo, por complicaciones).</p>
+        <button class="go-btn" onclick="switchTab('cud')">Ver juntas evaluadoras</button>
+      </div>
+
+      <div class="card">
+        <h2>🔬 Evidencia m&eacute;dica reciente</h2>
+        <button class="go-btn" onclick="loadInto('/api/condiciones/diabetes_tipo1', 'diabetes-evidencia', renderCondicionResult)">Diabetes tipo 1</button>
+        <div id="diabetes-evidencia" class="result-box" style="margin-top:.8rem"></div>
+      </div>
+
+      <div class="card">
+        <h2>📚 Fuentes</h2>
+        <ul style="margin:.4rem 0 .6rem 1.2rem;font-size:.88rem">
+          <li><a href="https://www.argentina.gob.ar/normativa/nacional/norma-154/texto" target="_blank" rel="noopener">Ley 23.753, texto (argentina.gob.ar) ↗</a></li>
+          <li><a href="https://www.boletinoficial.gob.ar/detalleAviso/primera/99903/20131227" target="_blank" rel="noopener">Ley 26.914 (Bolet&iacute;n Oficial, 27/12/2013) ↗</a></li>
+        </ul>
+        <p class="muted">* Secci&oacute;n pendiente de revisi&oacute;n por un/a endocrin&oacute;logo/a o diabet&oacute;logo/a matriculado/a.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================== CELIAQUIA ====================== -->
+  <div class="panel" id="panel-celiaquia">
+    <div class="wrap">
+      <div class="aviso-medico" role="note" style="margin:0 0 1.2rem">
+        <strong>* Contenido pendiente de revisi&oacute;n profesional.</strong>
+        Esta secci&oacute;n es informativa y debe ser revisada y validada por un/a
+        <strong>m&eacute;dico/a gastroenter&oacute;logo/a matriculado/a</strong> antes de tomarse como referencia.
+        No reemplaza la evaluaci&oacute;n ni el tratamiento profesional.
+      </div>
+
+      <div class="card" style="border-left:4px solid #7c4dff">
+        <h2>🌾 Celiaqu&iacute;a*</h2>
+        <p>La <strong>enfermedad cel&iacute;aca</strong> es una condici&oacute;n autoinmune: el <strong>gluten</strong> (presente en trigo, avena, cebada y centeno, TACC) da&ntilde;a el intestino delgado y dificulta absorber los nutrientes. Puede aparecer a cualquier edad.</p>
+        <p>El &uacute;nico tratamiento es una <strong>dieta libre de gluten de por vida</strong>. No hay que dejar el gluten antes de diagnosticarse: altera los estudios.</p>
+      </div>
+
+      <div class="card">
+        <h2>🩺 Se&ntilde;ales para consultar*</h2>
+        <ul style="margin:.4rem 0 .6rem 1.2rem;font-size:.9rem">
+          <li>Diarrea cr&oacute;nica, distensi&oacute;n abdominal, p&eacute;rdida de peso o, en ni&ntilde;os, bajo crecimiento.</li>
+          <li>Anemia que no mejora, cansancio, aftas, dolor articular.</li>
+          <li>Familiares directos de una persona cel&iacute;aca, aunque no tengan s&iacute;ntomas.</li>
+        </ul>
+        <p>El diagn&oacute;stico se hace con <strong>an&aacute;lisis de sangre</strong> (anticuerpos) y, en general, una <strong>biopsia intestinal</strong>.</p>
+      </div>
+
+      <div class="card">
+        <h2>🪪 Derechos: Ley 26.588 (mod. Ley 27.196)*</h2>
+        <ul style="margin:.4rem 0 .6rem 1.2rem;font-size:.9rem">
+          <li>Declara de inter&eacute;s nacional la detecci&oacute;n temprana, el diagn&oacute;stico y el tratamiento, y el <strong>acceso a alimentos y medicamentos libres de gluten</strong>.</li>
+          <li>Las obras sociales y prepagas deben cubrir la <strong>detecci&oacute;n, el diagn&oacute;stico y el seguimiento</strong>, y la diferencia de costo de las harinas y premezclas libres de gluten.</li>
+          <li>Los productos aptos se identifican con el s&iacute;mbolo <strong>&laquo;Sin TACC&raquo;</strong>.</li>
+          <li>Los establecimientos sanitarios con internaci&oacute;n, los lugares de privaci&oacute;n de la libertad y otras instituciones alcanzadas deben ofrecer <strong>al menos una opci&oacute;n de men&uacute; libre de gluten</strong> (Ley 27.196).</li>
+        </ul>
+        <p><strong>CUD:</strong> la celiaqu&iacute;a por s&iacute; sola no da el certificado; se eval&uacute;an las limitaciones de cada persona.</p>
+      </div>
+
+      <div class="card">
+        <h2>🔬 Evidencia m&eacute;dica reciente</h2>
+        <button class="go-btn" onclick="loadInto('/api/condiciones/celiaquia', 'celiaquia-evidencia', renderCondicionResult)">Enfermedad cel&iacute;aca</button>
+        <div id="celiaquia-evidencia" class="result-box" style="margin-top:.8rem"></div>
+      </div>
+
+      <div class="card">
+        <h2>📚 Fuentes</h2>
+        <ul style="margin:.4rem 0 .6rem 1.2rem;font-size:.88rem">
+          <li><a href="https://www.argentina.gob.ar/normativa/nacional/ley-26588-162428/actualizacion" target="_blank" rel="noopener">Ley 26.588 actualizada (argentina.gob.ar) ↗</a></li>
+          <li><a href="https://www.argentina.gob.ar/normativa/nacional/decreto-218-2023-382629/texto" target="_blank" rel="noopener">Decreto 218/2023, reglamentaci&oacute;n (argentina.gob.ar) ↗</a></li>
+        </ul>
+        <p class="muted">* Secci&oacute;n pendiente de revisi&oacute;n por un/a gastroenter&oacute;logo/a matriculado/a.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================== FIBROSIS QUISTICA ====================== -->
+  <div class="panel" id="panel-fq">
+    <div class="wrap">
+      <div class="aviso-medico" role="note" style="margin:0 0 1.2rem">
+        <strong>* Contenido pendiente de revisi&oacute;n profesional.</strong>
+        Esta secci&oacute;n es informativa y debe ser revisada y validada por un/a
+        <strong>m&eacute;dico/a neum&oacute;logo/a matriculado/a (por ejemplo, de un centro de fibrosis qu&iacute;stica)</strong> antes de tomarse como referencia.
+        No reemplaza la evaluaci&oacute;n ni el tratamiento profesional.
+      </div>
+
+      <div class="card" style="border-left:4px solid #7c4dff">
+        <h2>🫁 Fibrosis qu&iacute;stica*</h2>
+        <p>La <strong>fibrosis qu&iacute;stica</strong> (o mucoviscidosis) es una enfermedad <strong>gen&eacute;tica</strong> que produce un moco espeso en los pulmones y el sistema digestivo: causa infecciones respiratorias repetidas y problemas para absorber los alimentos.</p>
+        <p>Se detecta en la <strong>pesquisa neonatal</strong> (prueba del tal&oacute;n, Ley 26.279) y se confirma con el <strong>test del sudor</strong>. El tratamiento es de por vida e incluye kinesioterapia respiratoria, enzimas, nutrici&oacute;n y, cuando corresponde, medicamentos moduladores.</p>
+      </div>
+
+      <div class="card">
+        <h2>🪪 Derechos: Ley 27.552*</h2>
+        <ul style="margin:.4rem 0 .6rem 1.2rem;font-size:.9rem">
+          <li>Declara de inter&eacute;s nacional la lucha contra la fibrosis qu&iacute;stica: investigaci&oacute;n, diagn&oacute;stico, tratamiento, asistencia, rehabilitaci&oacute;n y educaci&oacute;n.</li>
+          <li>Las obras sociales y prepagas deben cubrir los <strong>medicamentos e insumos</strong>, con un listado que se actualiza al menos cada dos a&ntilde;os.</li>
+          <li>Pesquisa neonatal obligatoria y estudio de <strong>hermanos y descendientes directos</strong>, con cobertura total.</li>
+          <li>Prev&eacute; el otorgamiento del <strong>Certificado &Uacute;nico de Discapacidad</strong> tras la confirmaci&oacute;n del diagn&oacute;stico.</li>
+        </ul>
+        <button class="go-btn" onclick="switchTab('cud')">Ver juntas evaluadoras</button>
+      </div>
+
+      <div class="card">
+        <h2>🔬 Evidencia m&eacute;dica reciente</h2>
+        <button class="go-btn" onclick="loadInto('/api/condiciones/fibrosis_quistica', 'fq-evidencia', renderCondicionResult)">Fibrosis qu&iacute;stica</button>
+        <div id="fq-evidencia" class="result-box" style="margin-top:.8rem"></div>
+      </div>
+
+      <div class="card">
+        <h2>📚 Fuentes</h2>
+        <ul style="margin:.4rem 0 .6rem 1.2rem;font-size:.88rem">
+          <li><a href="https://www.boletinoficial.gob.ar/detalleAviso/primera/233435/20200811" target="_blank" rel="noopener">Ley 27.552 (Bolet&iacute;n Oficial, 11/08/2020) ↗</a></li>
+          <li><a href="https://www.argentina.gob.ar/normativa/nacional/norma-344130/texto" target="_blank" rel="noopener">Decreto 884/2020, reglamentaci&oacute;n (argentina.gob.ar) ↗</a></li>
+        </ul>
+        <p class="muted">* Secci&oacute;n pendiente de revisi&oacute;n por un/a neum&oacute;logo/a matriculado/a.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================== CANCER INFANTIL ====================== -->
+  <div class="panel" id="panel-oncoped">
+    <div class="wrap">
+      <div class="aviso-medico" role="note" style="margin:0 0 1.2rem">
+        <strong>* Contenido pendiente de revisi&oacute;n profesional.</strong>
+        Esta secci&oacute;n es informativa y debe ser revisada y validada por un/a
+        <strong>m&eacute;dico/a onc&oacute;logo/a pediatra matriculado/a</strong> antes de tomarse como referencia.
+        No reemplaza la evaluaci&oacute;n ni el tratamiento profesional.
+      </div>
+
+      <div class="card" style="border-left:4px solid #7c4dff">
+        <h2>🎗️ C&aacute;ncer infantil*</h2>
+        <p>Los c&aacute;nceres m&aacute;s frecuentes en ni&ntilde;os, ni&ntilde;as y adolescentes son las <strong>leucemias</strong>, los <strong>tumores del sistema nervioso central</strong> y los <strong>linfomas</strong>. Con diagn&oacute;stico temprano y tratamiento en centros especializados, la mayor&iacute;a puede curarse.</p>
+        <p>Consultar ante fiebre o cansancio sin causa que no ceden, palidez, moretones o sangrados f&aacute;ciles, bultos, dolor de cabeza persistente con v&oacute;mitos, o un brillo blanco en la pupila.</p>
+      </div>
+
+      <div class="card">
+        <h2>🪪 Derechos: Ley 27.674 (Ley de Oncopediatr&iacute;a)*</h2>
+        <ul style="margin:.4rem 0 .6rem 1.2rem;font-size:.9rem">
+          <li>Crea un <strong>r&eacute;gimen de protecci&oacute;n integral</strong> para ni&ntilde;os, ni&ntilde;as y adolescentes con c&aacute;ncer hasta los <strong>18 a&ntilde;os</strong> con residencia permanente en el pa&iacute;s, tengan o no obra social.</li>
+          <li><strong>Certificado &Uacute;nico Oncopedi&aacute;trico (CUOP):</strong> para pacientes inscriptos en el Registro Oncopedi&aacute;trico Hospitalario Argentino (ROHA); da acceso a los beneficios de la ley.</li>
+          <li><strong>Asignaci&oacute;n mensual de ANSES</strong> mientras dure el tratamiento activo.</li>
+          <li><strong>Licencias especiales</strong> para la persona a cargo del ni&ntilde;o o la ni&ntilde;a en tratamiento, sin perder el empleo.</li>
+          <li>Crea el Programa Nacional de Cuidado Integral, con una red de centros oncol&oacute;gicos y seguimiento despu&eacute;s del tratamiento.</li>
+        </ul>
+        <p><strong>CUD:</strong> el CUOP es un certificado distinto; el CUD se tramita aparte seg&uacute;n las limitaciones.</p>
+        <button class="go-btn" onclick="switchTab('cud')">Ver juntas evaluadoras</button>
+      </div>
+
+      <div class="card">
+        <h2>🔬 Evidencia m&eacute;dica reciente</h2>
+        <button class="go-btn" onclick="loadInto('/api/condiciones/cancer_infantil', 'oncoped-evidencia', renderCondicionResult)">C&aacute;ncer infantil</button>
+        <div id="oncoped-evidencia" class="result-box" style="margin-top:.8rem"></div>
+      </div>
+
+      <div class="card">
+        <h2>📚 Fuentes</h2>
+        <ul style="margin:.4rem 0 .6rem 1.2rem;font-size:.88rem">
+          <li><a href="https://www.argentina.gob.ar/node/372549" target="_blank" rel="noopener">Derechos de la Ley 27.674 (argentina.gob.ar) ↗</a></li>
+          <li><a href="https://www.argentina.gob.ar/normativa/nacional/decreto-68-2023-379434/texto" target="_blank" rel="noopener">Decreto 68/2023, reglamentaci&oacute;n (argentina.gob.ar) ↗</a></li>
+        </ul>
+        <p class="muted">* Secci&oacute;n pendiente de revisi&oacute;n por un/a onc&oacute;logo/a pediatra matriculado/a.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================== TRASPLANTE Y ENFERMEDAD RENAL ====================== -->
+  <div class="panel" id="panel-trasplante">
+    <div class="wrap">
+      <div class="aviso-medico" role="note" style="margin:0 0 1.2rem">
+        <strong>* Contenido pendiente de revisi&oacute;n profesional.</strong>
+        Esta secci&oacute;n es informativa y debe ser revisada y validada por un/a
+        <strong>m&eacute;dico/a nefr&oacute;logo/a o de trasplante matriculado/a</strong> antes de tomarse como referencia.
+        No reemplaza la evaluaci&oacute;n ni el tratamiento profesional.
+      </div>
+
+      <div class="card" style="border-left:4px solid #7c4dff">
+        <h2>🫘 Trasplante y enfermedad renal cr&oacute;nica*</h2>
+        <p>La <strong>enfermedad renal cr&oacute;nica</strong> es la p&eacute;rdida progresiva de la funci&oacute;n de los ri&ntilde;ones; en su etapa avanzada requiere <strong>di&aacute;lisis</strong> o un <strong>trasplante</strong>. La diabetes y la hipertensi&oacute;n son sus causas m&aacute;s frecuentes.</p>
+        <p>El trasplante tambi&eacute;n es tratamiento para enfermedades graves del h&iacute;gado, el coraz&oacute;n, los pulmones y otros &oacute;rganos y tejidos.</p>
+      </div>
+
+      <div class="card">
+        <h2>🪪 Derechos: Ley 26.928 y Ley 27.447*</h2>
+        <ul style="margin:.4rem 0 .6rem 1.2rem;font-size:.9rem">
+          <li><strong>Ley 26.928 (protecci&oacute;n integral de personas trasplantadas):</strong> alcanza a quienes recibieron un trasplante o est&aacute;n en <strong>lista de espera</strong> (SINTRA) y residen en el pa&iacute;s. Prev&eacute; <strong>cobertura del 100%</strong> de la atenci&oacute;n relacionada con el trasplante por obras sociales y prepagas (o el Estado si no hay cobertura).</li>
+          <li>El trasplante o la inscripci&oacute;n en lista de espera <strong>no impide acceder a un trabajo ni conservarlo</strong>, y hay <strong>licencias especiales</strong> para los controles m&eacute;dicos.</li>
+          <li>El INCUCAI emite una <strong>credencial de beneficiario</strong>.</li>
+          <li><strong>Ley 27.447 (Ley Justina):</strong> regula la donaci&oacute;n de &oacute;rganos, tejidos y c&eacute;lulas; toda persona mayor de 18 a&ntilde;os es donante salvo que haya dejado constancia en contrario, y se respeta su voluntad expresada en vida.</li>
+        </ul>
+        <p><strong>CUD:</strong> se eval&uacute;a seg&uacute;n las limitaciones de cada persona (por ejemplo, en di&aacute;lisis).</p>
+        <button class="go-btn" onclick="switchTab('cud')">Ver juntas evaluadoras</button>
+      </div>
+
+      <div class="card">
+        <h2>🔬 Evidencia m&eacute;dica reciente</h2>
+        <button class="go-btn" onclick="loadInto('/api/condiciones/insuficiencia_renal', 'trasplante-evidencia', renderCondicionResult)">Insuficiencia renal cr&oacute;nica</button>
+        <div id="trasplante-evidencia" class="result-box" style="margin-top:.8rem"></div>
+      </div>
+
+      <div class="card">
+        <h2>📚 Fuentes</h2>
+        <ul style="margin:.4rem 0 .6rem 1.2rem;font-size:.88rem">
+          <li><a href="https://www.argentina.gob.ar/normativa/nacional/norma-225480/texto" target="_blank" rel="noopener">Ley 26.928, texto (argentina.gob.ar) ↗</a></li>
+          <li><a href="https://www.argentina.gob.ar/node/130855" target="_blank" rel="noopener">Paciente trasplantado: cobertura (argentina.gob.ar) ↗</a></li>
+        </ul>
+        <p class="muted">* Secci&oacute;n pendiente de revisi&oacute;n por un/a nefr&oacute;logo/a o m&eacute;dico/a de trasplante matriculado/a.</p>
       </div>
     </div>
   </div>
@@ -2744,6 +3047,7 @@
     /* La pestaña "Condiciones" agrupa sub-pestañas, cada una con su propio panel
        (panel-tea, panel-tdl, ...). switchTab('tea') sigue funcionando. */
     const CONDICIONES = ['tea', 'tdl', 'dea', 'hipoacusia', 'epilepsia', 'epf', 'saludmental'];
+    CONDICIONES.push('visual', 'diabetes', 'celiaquia', 'fq', 'oncoped', 'trasplante');
     const subnav = document.getElementById('subnav-condiciones');
     const subButtons = document.querySelectorAll('.sub-btn');
     let ultimaCondicion = 'tea';

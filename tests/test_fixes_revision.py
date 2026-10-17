@@ -192,3 +192,23 @@ def test_lectura_en_voz_alta_salta_emojis():
     html = (ROOT / "templates" / "index.html").read_text(encoding="utf-8")
     assert "function limpiarParaVoz(" in html and "function tieneContenido(" in html
     assert "fragmentarTexto(limpiarParaVoz(texto), 220).filter(tieneContenido)" in html
+
+
+def test_condiciones_adicionales_con_su_ley():
+    html = (ROOT / "templates" / "index.html").read_text(encoding="utf-8")
+    assert "CONDICIONES.push('visual', 'diabetes', 'celiaquia', 'fq', 'oncoped', 'trasplante');" in html
+    leyes = {
+        "visual": ("Ley 25.682", "Ley 26.858"),
+        "diabetes": ("Ley 23.753", "Ley 26.914"),
+        "celiaquia": ("Ley 26.588", "Ley 27.196"),
+        "fq": ("Ley 27.552",),
+        "oncoped": ("Ley 27.674",),
+        "trasplante": ("Ley 26.928", "Ley 27.447"),
+    }
+    for sub, nums in leyes.items():
+        assert f'data-sub="{sub}"' in html
+        panel = _panel(html, sub)
+        assert "Contenido pendiente de revisi&oacute;n profesional" in panel
+        assert "matriculado/a" in panel and "Evidencia m&eacute;dica reciente" in panel
+        for ley in nums:
+            assert ley in panel, (sub, ley)
