@@ -212,3 +212,17 @@ def test_condiciones_adicionales_con_su_ley():
         assert "matriculado/a" in panel and "Evidencia m&eacute;dica reciente" in panel
         for ley in nums:
             assert ley in panel, (sub, ley)
+
+
+def test_tratamientos_experimentales_con_aviso():
+    r = client.get("/api/cud/tratamientos-experimentales")
+    assert r.status_code == 200
+    data = r.json()
+    nombres = [t["nombre"] for t in data["tratamientos"]]
+    assert any("Cannabis" in n for n in nombres) and any("células madre" in n for n in nombres)
+    assert all(t.get("estado") for t in data["tratamientos"])
+    assert "EXPERIMENTALES" in data["nota"] and "profesional" in data["nota"]
+    html = (ROOT / "templates" / "index.html").read_text(encoding="utf-8")
+    assert 'data-trat="experimentales"' in html and 'id="trat-experimentales"' in html
+    assert "/api/cud/tratamientos-experimentales" in html
+    assert "Consult&aacute; siempre con tu m&eacute;dico/a o profesional tratante" in _panel(html, "tratamientos")

@@ -1660,6 +1660,146 @@ OTRAS_TERAPIAS_INFO = {
     ),
 }
 
+# ── TRATAMIENTOS_EXPERIMENTALES_INFO ─────────────────────────────────────────
+# Tratamientos en investigación o con evidencia limitada. Cada uno lleva el
+# campo 'estado' (qué está probado y qué no). Misma forma que
+# OTRAS_TERAPIAS_INFO para reutilizar el renderer del frontend. No repite los
+# de la pestaña Vanguardia (exoesqueletos, BCI, terapias génicas, TMS).
+TRATAMIENTOS_EXPERIMENTALES_INFO = {
+    'titulo': 'Tratamientos Experimentales',
+    'descripcion': (
+        'Tratamientos en investigación o con evidencia todavía limitada. Se informan '
+        'para que puedas conversarlos con tu profesional tratante, no para iniciarlos '
+        'por tu cuenta. Cada uno indica su estado: qué está probado y qué sigue en estudio.'
+    ),
+    'tratamientos': [
+        {
+            'nombre': 'Cannabis medicinal (cannabidiol, CBD)',
+            'estado': 'Con evidencia para algunas epilepsias refractarias (síndromes de '
+                      'Dravet y Lennox-Gastaut). Para otros usos (dolor, espasticidad, TEA) '
+                      'la evidencia es limitada y se considera experimental.',
+            'aplica_a': ['motora', 'intelectual'],
+            'objetivo': 'Reducir las crisis en epilepsias que no responden a los '
+                         'tratamientos habituales; se investiga en otras condiciones.',
+            'como_funciona': 'El cannabidiol actúa sobre el sistema endocannabinoide y otros '
+                              'receptores del sistema nervioso. Debe indicarlo y controlarlo '
+                              'un/a médico/a: interactúa con otros antiepilépticos. En '
+                              'Argentina lo regula la Ley 27.350 (uso medicinal del cannabis), '
+                              'reglamentada por el Decreto 883/2020, que creó el registro '
+                              'REPROCANN.',
+            'organizaciones': [
+                {'nombre': 'Programa de Cannabis Medicinal y REPROCANN (Ministerio de Salud)',
+                 'url': 'https://www.argentina.gob.ar/node/160035',
+                 'descripcion': 'Información oficial sobre la Ley 27.350 y la inscripción en el REPROCANN.'},
+            ],
+            'evidencia': [
+                {'nombre': 'Búsqueda PubMed — cannabidiol Dravet Lennox-Gastaut',
+                 'url': 'https://pubmed.ncbi.nlm.nih.gov/?term=cannabidiol+Dravet+Lennox-Gastaut'},
+                {'nombre': 'Búsqueda PubMed — cannabinoids spasticity multiple sclerosis',
+                 'url': 'https://pubmed.ncbi.nlm.nih.gov/?term=cannabinoids+spasticity+multiple+sclerosis'},
+            ],
+            'recursos': [],
+        },
+        {
+            'nombre': 'Estimulación eléctrica de la médula espinal en lesión medular',
+            'estado': 'En investigación. En diciembre de 2024 la FDA (EE. UU.) autorizó un '
+                      'sistema no invasivo para mejorar la fuerza y la función de las manos '
+                      'en lesión medular crónica incompleta. La versión implantada para '
+                      'volver a caminar sigue en ensayos clínicos. No está disponible de forma '
+                      'habitual en Argentina.',
+            'aplica_a': ['motora'],
+            'objetivo': 'Recuperar parte del movimiento voluntario (manos, tronco, marcha) '
+                         'en personas con lesión medular.',
+            'como_funciona': 'Electrodos sobre la piel de la nuca o la espalda (no invasivo) o '
+                              'implantados sobre la médula envían pulsos programados que '
+                              'reactivan los circuitos por debajo de la lesión, siempre '
+                              'combinados con rehabilitación intensiva.',
+            'organizaciones': [],
+            'evidencia': [
+                {'nombre': 'Búsqueda PubMed — spinal cord stimulation spinal cord injury walking',
+                 'url': 'https://pubmed.ncbi.nlm.nih.gov/?term=epidural+spinal+cord+stimulation+spinal+cord+injury+walking'},
+                {'nombre': 'Búsqueda PubMed — transcutaneous spinal cord stimulation upper extremity',
+                 'url': 'https://pubmed.ncbi.nlm.nih.gov/?term=transcutaneous+spinal+cord+stimulation+upper+extremity'},
+            ],
+            'recursos': [],
+        },
+        {
+            'nombre': 'Estimulación transcraneal por corriente directa (tDCS)',
+            'estado': 'Experimental. La revisión Cochrane sobre afasia tras un ACV no '
+                      'encontró beneficio en la comunicación cotidiana y solo evidencia '
+                      'limitada para nombrar objetos; no recomienda su uso clínico rutinario. '
+                      'Se considera segura en los estudios.',
+            'aplica_a': ['motora', 'psicosocial'],
+            'objetivo': 'Potenciar la rehabilitación del lenguaje (afasia) y del movimiento '
+                         'tras un ACV; se investiga también en depresión.',
+            'como_funciona': 'Una corriente eléctrica muy débil, aplicada con electrodos sobre '
+                              'el cuero cabelludo, modifica la excitabilidad de zonas del '
+                              'cerebro mientras la persona hace su terapia (fonoaudiología, '
+                              'kinesiología). No es la misma técnica que la estimulación '
+                              'magnética (TMS) de la pestaña Vanguardia.',
+            'organizaciones': [],
+            'evidencia': [
+                {'nombre': 'Revisión Cochrane — tDCS para la afasia tras un ACV',
+                 'url': 'https://www.cochrane.org/evidence/CD009760_direct-electrical-current-brain-language-difficulties-after-stroke'},
+                {'nombre': 'Búsqueda PubMed — tDCS stroke motor rehabilitation',
+                 'url': 'https://pubmed.ncbi.nlm.nih.gov/?term=tDCS+stroke+motor+rehabilitation'},
+            ],
+            'recursos': [],
+        },
+        {
+            'nombre': 'Terapias con células madre',
+            'estado': 'En Argentina el único uso aprobado es el trasplante de médula ósea '
+                      '(células progenitoras hematopoyéticas) para enfermedades '
+                      'oncohematológicas y algunas otras de la sangre. Para parálisis '
+                      'cerebral, TEA, lesión medular u otras condiciones es experimental.',
+            'aplica_a': ['motora', 'intelectual', 'visual', 'visceral'],
+            'objetivo': 'Reparar o reemplazar tejidos dañados; se investiga en muchas '
+                         'enfermedades neurológicas y degenerativas.',
+            'como_funciona': 'Se usan células capaces de transformarse en otros tipos de '
+                              'células. El INCUCAI advirtió sobre la promoción de supuestos '
+                              'tratamientos con células madre, en el país y en el exterior, '
+                              'que generan falsas expectativas y pueden ser peligrosos. Un '
+                              'procedimiento experimental legítimo se hace dentro de un '
+                              'protocolo de investigación aprobado, sin costo para el '
+                              'paciente y con consentimiento informado.',
+            'organizaciones': [
+                {'nombre': 'ISSCR — A Closer Look at Stem Cells (guía para pacientes)',
+                 'url': 'https://www.closerlookatstemcells.org/',
+                 'descripcion': 'Sociedad Internacional de Investigación en Células Madre: cómo reconocer tratamientos no probados.'},
+            ],
+            'evidencia': [
+                {'nombre': 'Búsqueda PubMed — unproven stem cell interventions patients',
+                 'url': 'https://pubmed.ncbi.nlm.nih.gov/?term=unproven+stem+cell+interventions'},
+            ],
+            'recursos': [],
+        },
+        {
+            'nombre': 'Cómo participar en un ensayo clínico',
+            'estado': 'Es la vía segura para acceder a un tratamiento experimental.',
+            'aplica_a': [],
+            'objetivo': 'Acceder a tratamientos en investigación con control médico y ético.',
+            'como_funciona': 'Un ensayo clínico serio tiene un protocolo aprobado por un comité '
+                              'de ética y la autoridad sanitaria, no cobra por el tratamiento '
+                              'en estudio y pide un consentimiento informado por escrito que se '
+                              'puede retirar en cualquier momento. Consultá con tu profesional '
+                              'tratante si hay algún estudio adecuado para tu caso.',
+            'organizaciones': [],
+            'evidencia': [
+                {'nombre': 'ClinicalTrials.gov — estudios con sede en Argentina',
+                 'url': 'https://clinicaltrials.gov/search?country=Argentina'},
+            ],
+            'recursos': [],
+        },
+    ],
+    'nota': (
+        'TRATAMIENTOS EXPERIMENTALES: consultá siempre con tu médico/a o profesional '
+        'tratante antes de considerar cualquiera de ellos, y no abandones ni cambies el '
+        'tratamiento indicado. Desconfiá de quien cobre por un tratamiento "experimental" o '
+        'prometa curas. Esta sección es informativa y no reemplaza la indicación de un/a '
+        'profesional de la salud. Los enlaces a sitios de terceros pueden modificarse.'
+    ),
+}
+
 # ── CREDENCIALES_TEA ─────────────────────────────────────────────────────────
 # Credenciales/programas de identificación y atención prioritaria para personas
 # con TEA emitidos por MUNICIPIOS y/o GOBIERNOS PROVINCIALES (distintos e

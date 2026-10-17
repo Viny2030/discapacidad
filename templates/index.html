@@ -1558,6 +1558,7 @@
           <button class="trat-btn active" data-trat="musicoterapia">🎵 Musicoterapia</button>
           <button class="trat-btn" data-trat="visuales">👁️ Tratamientos visuales</button>
           <button class="trat-btn" data-trat="otras">🩹 Otras terapias</button>
+          <button class="trat-btn" data-trat="experimentales">🧪 Experimentales</button>
         </div>
       </div>
 
@@ -1582,6 +1583,22 @@
           <h2>🩹 Otras terapias</h2>
           <p>Terapia táctil/vibrotáctil, terapia ocupacional y tecnología de asistencia, terapia asistida con animales, robótica y exoesqueletos de rehabilitación, hidroterapia, arteterapia e integración sensorial (método Ayres), con organizaciones profesionales y evidencia científica por tipo de discapacidad.</p>
           <div id="otras-terapias-info" class="result-box"><p class="loading">Cargando otras terapias...</p></div>
+        </div>
+      </div>
+
+      <div class="trat-sub" id="trat-experimentales">
+        <div class="aviso-medico" role="note" style="margin:0 0 1.2rem;border-left:4px solid #c62828">
+          <strong>🧪 Tratamientos EXPERIMENTALES.</strong>
+          Est&aacute;n en investigaci&oacute;n o tienen evidencia todav&iacute;a limitada.
+          <strong>Consult&aacute; siempre con tu m&eacute;dico/a o profesional tratante</strong> antes de considerarlos,
+          y no abandones ni cambies el tratamiento indicado. Desconfi&aacute; de quien cobre por un tratamiento
+          &laquo;experimental&raquo; o prometa curas.
+        </div>
+        <div class="card" style="border-left:4px solid #c62828">
+          <h2>🧪 Tratamientos experimentales</h2>
+          <p>Cannabis medicinal (Ley 27.350), estimulaci&oacute;n de la m&eacute;dula espinal en lesi&oacute;n medular, estimulaci&oacute;n transcraneal por corriente directa (tDCS) y terapias con c&eacute;lulas madre, cada uno con su estado (qu&eacute; est&aacute; probado y qu&eacute; no), y c&oacute;mo participar de forma segura en un ensayo cl&iacute;nico.</p>
+          <div id="tratamientos-experimentales-info" class="result-box"><p class="loading">Cargando tratamientos experimentales...</p></div>
+          <p style="margin-top:.8rem">M&aacute;s tratamientos en investigaci&oacute;n (exoesqueletos, interfaces cerebro-computadora, terapias g&eacute;nicas) en la pesta&ntilde;a Vanguardia.</p>
         </div>
       </div>
     </div>
@@ -3101,6 +3118,7 @@
         initMusicoterapia();
         initTratamientosVisuales();
         initOtrasTerapias();
+        initTratamientosExperimentales();
         initTratamientosPills();
       }
     }
@@ -3474,6 +3492,7 @@
             '<span class="badge" style="margin-right:.3rem">' + escapeHtml(TIPO_DISCAPACIDAD_LABEL[a] || a) + '</span>'
           ).join('') + '</div>';
         }
+        if (t.estado) html += '<p class="aviso-medico" style="margin:.3rem 0 .5rem"><strong>🧪 Estado:</strong> ' + escapeHtml(t.estado) + '</p>';
         if (t.objetivo) html += '<p><strong>Objetivo:</strong> ' + escapeHtml(t.objetivo) + '</p>';
         if (t.como_funciona) html += '<p><strong>Cómo funciona:</strong> ' + escapeHtml(t.como_funciona) + '</p>';
 
@@ -3509,6 +3528,11 @@
     /* ---------- Otras terapias (reusa el render de Tratamientos Visuales: misma forma de datos) ---------- */
     function initOtrasTerapias() {
       loadInto('/api/cud/otras-terapias', 'otras-terapias-info', renderTratamientosVisuales);
+    }
+
+    /* ---------- Tratamientos experimentales (mismo render; muestra además el campo "estado") ---------- */
+    function initTratamientosExperimentales() {
+      loadInto('/api/cud/tratamientos-experimentales', 'tratamientos-experimentales-info', renderTratamientosVisuales);
     }
 
     /* ---------- Pestañas internas del panel Tratamientos ---------- */

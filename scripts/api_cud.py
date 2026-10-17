@@ -24,6 +24,7 @@ from scripts.datos_cud import (
     MUSICOTERAPIA_INFO,
     TRATAMIENTOS_VISUALES_INFO,
     OTRAS_TERAPIAS_INFO,
+    TRATAMIENTOS_EXPERIMENTALES_INFO,
     CREDENCIALES_TEA,
 )
 
@@ -74,6 +75,7 @@ async def info_general():
             "/api/cud/musicoterapia",
             "/api/cud/tratamientos-visuales",
             "/api/cud/otras-terapias",
+            "/api/cud/tratamientos-experimentales",
             "/api/cud/credenciales-tea",
             "/api/cud/credenciales-tea?provincia=Buenos Aires",
         ],
@@ -276,6 +278,17 @@ async def otras_terapias():
     (misma taxonomía que /api/cud/requisitos).
     """
     return OTRAS_TERAPIAS_INFO
+
+
+@router.get("/tratamientos-experimentales")
+async def tratamientos_experimentales():
+    """
+    Tratamientos en investigación o con evidencia limitada (cannabis medicinal,
+    estimulación de médula espinal, tDCS, células madre) y cómo participar en un
+    ensayo clínico. Cada uno trae el campo 'estado'; siempre con aviso de
+    consulta al profesional tratante.
+    """
+    return TRATAMIENTOS_EXPERIMENTALES_INFO
 
 
 @router.get("/credenciales-tea")
