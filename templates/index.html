@@ -19,10 +19,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.5.0/chart.umd.min.js"></script>
   <style>
     *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:system-ui,sans-serif;background:#f8f7fb;color:#212529;
+    body{font-family:system-ui,sans-serif;background:#f4f9fd;color:#212529;
          padding-top:var(--nav-h,100px);line-height:1.6}
 
-    nav{position:fixed;top:0;left:0;right:0;min-height:56px;background:#4a2d8c;
+    nav{position:fixed;top:0;left:0;right:0;min-height:56px;background:#2f80c0;
         display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.3rem .5rem;
         z-index:100;box-shadow:0 1px 6px rgba(0,0,0,.15);
         white-space:nowrap;padding:.4rem 1rem}
@@ -32,14 +32,14 @@
        anchas; en pantallas angostas el menu sigue envolviendo en mas filas.
        El alto real del menu se copia a --nav-h para el padding del body. */
     nav .nav-break{flex-basis:100%;height:0}
-    nav button{color:#e9e1fb;font-size:.85rem;font-weight:600;
+    nav button{color:#e6f2fb;font-size:.85rem;font-weight:600;
           padding:.5rem .9rem;border-radius:6px;transition:background .15s;
           background:transparent;border:none;cursor:pointer;font-family:inherit}
-    nav button:hover{background:#5e3aa8;color:#fff}
-    nav button.active{background:#7c4dff;color:#fff}
-    nav a.docs{color:#cbb8f5;text-decoration:none;font-size:.78rem;font-weight:600;
-          padding:.5rem .8rem;border-radius:6px;background:#2d1b54;margin-left:.4rem}
-    nav a.docs:hover{background:#3d2570;color:#fff}
+    nav button:hover{background:#4a9ad6;color:#fff}
+    nav button.active{background:#1a6aa8;color:#fff}
+    nav a.docs{color:#bfdcf2;text-decoration:none;font-size:.78rem;font-weight:600;
+          padding:.5rem .8rem;border-radius:6px;background:#164a70;margin-left:.4rem}
+    nav a.docs:hover{background:#1d5d8c;color:#fff}
     /* En pantallas angostas el menu ocupa varias filas: se compacta y deja de ser
        fijo para no tapar el contenido (al cambiar de pestaña la pagina vuelve arriba). */
     @media (max-width:700px){
@@ -52,14 +52,14 @@
     /* sub-pestañas de "Condiciones" */
     .subnav{display:flex;flex-wrap:wrap;justify-content:center;gap:.4rem;
          padding:.8rem 1rem .2rem;max-width:1100px;margin:0 auto}
-    .subnav .sub-btn{background:#ede7f6;color:#4a2d8c;border:1px solid #d1c4e9;
+    .subnav .sub-btn{background:#eaf4fc;color:#2f80c0;border:1px solid #bfdcf2;
          border-radius:999px;padding:.4rem .9rem;font-size:.85rem;font-weight:600;
          cursor:pointer;font-family:inherit}
-    .subnav .sub-btn:hover{background:#d1c4e9}
-    .subnav .sub-btn.active{background:#7c4dff;border-color:#7c4dff;color:#fff}
-    .subnav .subnav-nota{flex-basis:100%;text-align:center;font-size:.78rem;color:#6a5a8c;margin-top:.2rem}
+    .subnav .sub-btn:hover{background:#bfdcf2}
+    .subnav .sub-btn.active{background:#1a6aa8;border-color:#1a6aa8;color:#fff}
+    .subnav .subnav-nota{flex-basis:100%;text-align:center;font-size:.78rem;color:#4a6f8c;margin-top:.2rem}
 
-    header{background:#5e35b1;color:white;padding:2.5rem 1rem;text-align:center}
+    header{background:#2574b0;color:white;padding:2.5rem 1rem;text-align:center}
     header h1{font-size:1.9rem;margin-bottom:.5rem}
     header p{opacity:.9}
 
@@ -68,85 +68,85 @@
 
     .card{background:white;border-radius:10px;padding:1.5rem;
           box-shadow:0 1px 4px rgba(0,0,0,.08);
-          border-top:3px solid #7c4dff;margin-bottom:1.2rem}
-    .card h2{color:#4a2d8c;margin-bottom:.8rem;font-size:1.2rem}
-    .card h3{color:#4a2d8c;margin:1.1rem 0 .6rem;font-size:1rem}
-    .card h4{color:#4a2d8c;margin-bottom:.4rem;font-size:.95rem}
-    .card h5{color:#4a2d8c;margin:.8rem 0 .4rem;font-size:.88rem}
+          border-top:3px solid #1a6aa8;margin-bottom:1.2rem}
+    .card h2{color:#2f80c0;margin-bottom:.8rem;font-size:1.2rem}
+    .card h3{color:#2f80c0;margin:1.1rem 0 .6rem;font-size:1rem}
+    .card h4{color:#2f80c0;margin-bottom:.4rem;font-size:.95rem}
+    .card h5{color:#2f80c0;margin:.8rem 0 .4rem;font-size:.88rem}
     .card p{font-size:.9rem;margin-bottom:.7rem}
     .muted{color:#888;font-size:.82rem}
 
-    a{color:#5e35b1;text-decoration:none}
+    a{color:#2574b0;text-decoration:none}
     a:hover{text-decoration:underline}
 
     /* tarjetas resumen home */
     .home-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
                gap:1rem}
     .home-card{background:white;border-radius:10px;padding:1.3rem;
-               box-shadow:0 1px 4px rgba(0,0,0,.08);border-top:3px solid #7c4dff;
+               box-shadow:0 1px 4px rgba(0,0,0,.08);border-top:3px solid #1a6aa8;
                display:flex;flex-direction:column;gap:.6rem}
-    .home-card h3{color:#4a2d8c;font-size:1rem}
+    .home-card h3{color:#2f80c0;font-size:1rem}
     .home-card p{font-size:.85rem;color:#555;flex-grow:1}
-    .home-intro{background:#efe7fd;border-left:4px solid #7c4dff;border-radius:8px;
+    .home-intro{background:#eaf4fc;border-left:4px solid #1a6aa8;border-radius:8px;
          padding:1.2rem 1.4rem;margin-bottom:1.2rem;font-size:.95rem;line-height:1.7;
-         color:#3d2570;font-weight:600;text-align:left;max-width:720px}
-    .go-btn{align-self:flex-start;background:#5e35b1;color:white;border:none;
+         color:#1d5d8c;font-weight:600;text-align:left;max-width:720px}
+    .go-btn{align-self:flex-start;background:#2574b0;color:white;border:none;
             padding:.5rem 1rem;border-radius:6px;font-size:.82rem;font-weight:600;
             cursor:pointer;font-family:inherit}
-    .go-btn:hover{background:#4a2d8c}
+    .go-btn:hover{background:#2f80c0}
     /* selects y forms */
     select, input[type=text]{font-family:inherit;font-size:.88rem;padding:.5rem .7rem;
-           border:1px solid #d8d2ee;border-radius:6px;background:white;color:#212529;
+           border:1px solid #cfe5f6;border-radius:6px;background:white;color:#212529;
            width:100%;max-width:320px}
-    select:focus, input[type=text]:focus{outline:2px solid #7c4dff;border-color:#7c4dff}
+    select:focus, input[type=text]:focus{outline:2px solid #1a6aa8;border-color:#1a6aa8}
     .form-row{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;margin-bottom:1rem}
-    .btn-sm{background:#5e35b1;color:white;border:none;padding:.5rem 1rem;
+    .btn-sm{background:#2574b0;color:white;border:none;padding:.5rem 1rem;
             border-radius:6px;font-size:.85rem;font-weight:600;cursor:pointer;
             font-family:inherit}
-    .btn-sm:hover{background:#4a2d8c}
+    .btn-sm:hover{background:#2f80c0}
 
     /* resultados renderizados */
     .result-box{margin-top:.8rem}
-    .kv-row{display:flex;gap:.6rem;padding:.35rem 0;border-bottom:1px solid #f0edf8;
+    .kv-row{display:flex;gap:.6rem;padding:.35rem 0;border-bottom:1px solid #eef6fc;
             font-size:.85rem;flex-wrap:wrap}
     .kv-row:last-child{border-bottom:none}
-    .kv-row dt{color:#4a2d8c;font-weight:600;min-width:140px}
+    .kv-row dt{color:#2f80c0;font-weight:600;min-width:140px}
     .kv-row dd{color:#333;flex:1}
     .list-items{display:flex;flex-direction:column;gap:.4rem;margin-top:.3rem}
-    .list-item{background:#f8f7fb;border-radius:6px;padding:.6rem .8rem}
+    .list-item{background:#f4f9fd;border-radius:6px;padding:.6rem .8rem}
     .simple-list{padding-left:1.2rem;font-size:.85rem;margin-top:.2rem}
     .simple-list li{margin-bottom:.3rem}
 
-    .article-card{background:#f8f7fb;border-radius:6px;padding:.7rem .9rem;
+    .article-card{background:#f4f9fd;border-radius:6px;padding:.7rem .9rem;
                    margin-bottom:.6rem}
     .article-card a{font-weight:600;font-size:.88rem}
     .article-card .muted{margin-top:.2rem;display:block}
     .article-resumen{font-size:.82rem;color:#444;margin-top:.4rem;line-height:1.5;
-                     border-left:3px solid #c4b3f0;padding-left:.6rem;margin-left:.1rem}
+                     border-left:3px solid #b5d6f0;padding-left:.6rem;margin-left:.1rem}
 
     .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
                gap:.8rem;margin-top:.6rem}
-    .stat-box{background:#efe7fd;border-radius:8px;padding:.9rem;text-align:center}
-    .stat-box .num{font-size:1.4rem;font-weight:700;color:#4a2d8c}
-    .stat-box .label{font-size:.75rem;color:#5e35b1;margin-top:.2rem}
+    .stat-box{background:#eaf4fc;border-radius:8px;padding:.9rem;text-align:center}
+    .stat-box .num{font-size:1.4rem;font-weight:700;color:#2f80c0}
+    .stat-box .label{font-size:.75rem;color:#2574b0;margin-top:.2rem}
 
     .bar-row{display:flex;align-items:center;gap:.6rem;margin-bottom:.5rem;font-size:.85rem}
-    .bar-label{min-width:140px;color:#3d2570}
-    .bar-track{flex:1;background:#efe7fd;border-radius:4px;height:10px;overflow:hidden}
-    .bar-fill{background:#7c4dff;height:100%}
-    .bar-pct{min-width:42px;text-align:right;color:#5e35b1;font-weight:600}
+    .bar-label{min-width:140px;color:#1d5d8c}
+    .bar-track{flex:1;background:#eaf4fc;border-radius:4px;height:10px;overflow:hidden}
+    .bar-fill{background:#1a6aa8;height:100%}
+    .bar-pct{min-width:42px;text-align:right;color:#2574b0;font-weight:600}
 
     table.tbl{width:100%;font-size:.85rem;border-collapse:collapse;margin-top:.4rem}
-    table.tbl th{text-align:left;color:#4a2d8c;font-weight:600;padding:.4rem .5rem;
-                  border-bottom:2px solid #efe7fd}
-    table.tbl td{padding:.4rem .5rem;border-bottom:1px solid #f0edf8}
+    table.tbl th{text-align:left;color:#2f80c0;font-weight:600;padding:.4rem .5rem;
+                  border-bottom:2px solid #eaf4fc}
+    table.tbl td{padding:.4rem .5rem;border-bottom:1px solid #eef6fc}
 
     /* tratamientos vanguardia */
-    .treat-card{background:#f8f7fb;border-radius:8px;padding:1rem;margin-bottom:.8rem}
+    .treat-card{background:#f4f9fd;border-radius:8px;padding:1rem;margin-bottom:.8rem}
     .treat-head{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;margin-bottom:.4rem}
-    .treat-head h5{margin:0;color:#3d2570;font-size:.95rem}
+    .treat-head h5{margin:0;color:#1d5d8c;font-size:.95rem}
     .badge{font-size:.72rem;font-weight:600;padding:.2rem .5rem;border-radius:4px;
-           background:#efe7fd;color:#4a2d8c}
+           background:#eaf4fc;color:#2f80c0}
     .small-disclaimer{background:#fdf3e0;color:#7d6608;font-size:.78rem;
            padding:.5rem .7rem;border-radius:6px;margin-top:.5rem}
 
@@ -156,7 +156,7 @@
     .tag-warn{background:#fdf3e0;color:#7d6608;border-radius:4px;
          padding:2px 6px;font-size:.72rem;font-weight:600}
 
-    .loading{color:#9b8fc7;font-size:.85rem;font-style:italic}
+    .loading{color:#7fb4de;font-size:.85rem;font-style:italic}
 
     /* imagen institucional Comuna 07 */
     .comuna07-banner{display:block;max-width:520px;width:100%;height:auto;
@@ -166,11 +166,11 @@
     .verses{width:100%;margin:.6rem 0 0;padding:0}
     .verses-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;
                  padding:.7rem 1rem}
-    .verse-item{background:#efe7fd;border-left:3px solid #7c4dff;
+    .verse-item{background:#eaf4fc;border-left:3px solid #1a6aa8;
                 border-radius:8px;padding:.7rem .9rem;
                 font-size:.74rem;font-style:italic;
-                color:#4a2d8c;line-height:1.6}
-    .verse-item strong{font-style:normal;color:#3d2570;display:block;
+                color:#2f80c0;line-height:1.6}
+    .verse-item strong{font-style:normal;color:#1d5d8c;display:block;
                        margin-bottom:.2rem}
     @media(max-width:640px){
       .verses-grid{grid-template-columns:1fr}
@@ -182,23 +182,23 @@
     .notice{background:#fdf3e0;border-left:4px solid #d4a017;
             padding:1rem 1.2rem;border-radius:8px;font-size:.85rem;
             line-height:1.6;color:#5c4a08}
-    .legal{background:#efe7fd;border-left:4px solid #7c4dff;
+    .legal{background:#eaf4fc;border-left:4px solid #1a6aa8;
            padding:1.2rem 1.4rem;border-radius:8px;font-size:.85rem;
-           line-height:1.7;color:#3d2570}
-    .legal h3{color:#4a2d8c;font-size:1rem;margin-bottom:.7rem}
+           line-height:1.7;color:#1d5d8c}
+    .legal h3{color:#2f80c0;font-size:1rem;margin-bottom:.7rem}
     .legal p{margin-bottom:.7rem;font-size:inherit}
     .legal p:last-child{margin-bottom:0}
-    .legal strong{color:#4a2d8c}
-    .author{background:#2d1b54;color:#e9e1fb;border-radius:10px;
+    .legal strong{color:#2f80c0}
+    .author{background:#164a70;color:#e6f2fb;border-radius:10px;
             padding:1.4rem;display:flex;gap:1.2rem;align-items:flex-start}
     .author img{width:64px;height:64px;border-radius:50%;flex-shrink:0;
-                 object-fit:cover;border:2px solid #7c4dff}
+                 object-fit:cover;border:2px solid #1a6aa8}
     .author h3{font-size:1.05rem;margin-bottom:.5rem;color:#fff}
-    .author p{font-size:.85rem;line-height:1.6;margin-bottom:.6rem;color:#cbb8f5}
+    .author p{font-size:.85rem;line-height:1.6;margin-bottom:.6rem;color:#bfdcf2}
     .author-links{display:flex;gap:1rem;flex-wrap:wrap;margin-top:.4rem}
-    .author-links a{background:#4a2d8c;color:#e9e1fb;padding:.4rem .8rem;
+    .author-links a{background:#2f80c0;color:#e6f2fb;padding:.4rem .8rem;
                      border-radius:6px;font-size:.78rem}
-    .author-links a:hover{background:#5e3aa8;text-decoration:none}
+    .author-links a:hover{background:#4a9ad6;text-decoration:none}
     @media (max-width:600px){.author{flex-direction:column;align-items:center;text-align:center}}
 
     footer{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;text-align:left;padding:2rem;color:#888;font-size:.82rem}
@@ -206,46 +206,46 @@
 
     /* boton flotante de contacto */
     .fab{position:fixed;bottom:1.2rem;right:1.2rem;width:54px;height:54px;
-         border-radius:50%;background:#5e35b1;color:#fff;border:none;
+         border-radius:50%;background:#2574b0;color:#fff;border:none;
          font-size:1.4rem;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,.25);
          z-index:200;display:flex;align-items:center;justify-content:center}
-    .fab:hover{background:#4a2d8c}
+    .fab:hover{background:#2f80c0}
 
     /* boton flotante de lectura en voz alta (accesibilidad para no videntes) */
     .fab-listen{position:fixed;bottom:1.2rem;left:1.2rem;height:54px;
-         border-radius:27px;background:#5e35b1;color:#fff;border:none;
+         border-radius:27px;background:#2574b0;color:#fff;border:none;
          font-size:.85rem;font-weight:600;font-family:inherit;cursor:pointer;
          box-shadow:0 2px 10px rgba(0,0,0,.25);z-index:200;display:flex;
          align-items:center;gap:.5rem;padding:0 1.1rem}
-    .fab-listen:hover{background:#4a2d8c}
+    .fab-listen:hover{background:#2f80c0}
     .fab-listen.speaking{background:#c0392b}
     .fab-listen.speaking:hover{background:#a5311f}
     .fab-listen .fab-listen-icon{font-size:1.15rem}
     @media (max-width:640px){.fab-listen span:not(.fab-listen-icon){display:none}
          .fab-listen{width:54px;padding:0;justify-content:center}}
 
-    .modal-overlay{position:fixed;inset:0;background:rgba(45,27,84,.45);
+    .modal-overlay{position:fixed;inset:0;background:rgba(22,74,112,.45);
          display:none;align-items:center;justify-content:center;z-index:300;
          padding:1rem}
     .modal-overlay.visible{display:flex}
     .modal-box{background:#fff;border-radius:10px;padding:1.5rem;
          max-width:420px;width:100%;box-shadow:0 4px 24px rgba(0,0,0,.25)}
-    .modal-box h3{color:#4a2d8c;margin-bottom:.3rem;font-size:1.1rem}
+    .modal-box h3{color:#2f80c0;margin-bottom:.3rem;font-size:1.1rem}
     .modal-box p.muted{margin-bottom:.9rem}
-    .modal-box label{display:block;font-size:.82rem;color:#4a2d8c;
+    .modal-box label{display:block;font-size:.82rem;color:#2f80c0;
          font-weight:600;margin-bottom:.3rem;margin-top:.7rem}
     .modal-box input, .modal-box select, .modal-box textarea{width:100%;max-width:100%}
     .modal-box textarea{font-family:inherit;font-size:.88rem;padding:.5rem .7rem;
-         border:1px solid #d8d2ee;border-radius:6px;resize:vertical;min-height:90px}
+         border:1px solid #cfe5f6;border-radius:6px;resize:vertical;min-height:90px}
     .modal-actions{display:flex;justify-content:flex-end;gap:.6rem;margin-top:1.1rem}
-    .btn-cancel{background:transparent;color:#5e35b1;border:1px solid #d8d2ee;
+    .btn-cancel{background:transparent;color:#2574b0;border:1px solid #cfe5f6;
          padding:.5rem 1rem;border-radius:6px;font-size:.85rem;font-weight:600;
          cursor:pointer;font-family:inherit}
-    .btn-cancel:hover{background:#f8f7fb}
+    .btn-cancel:hover{background:#f4f9fd}
 
     /* mapas */
     .map-container{height:420px;border-radius:8px;overflow:hidden;margin-top:.6rem;
-                    border:1px solid #e8e3f7}
+                    border:1px solid #e6f2fb}
     /* comuna 07 - graficos */
     .comuna-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));
                  gap:1.2rem;margin-top:1.2rem}
@@ -253,27 +253,27 @@
     @media (max-width:480px){.comuna-grid{grid-template-columns:1fr}}
     .survey-team p{margin:.3rem 0}
     .survey-fields{margin-top:1rem}
-    .survey-fields summary{cursor:pointer;font-weight:600;color:#5e35b1;padding:.4rem 0}
+    .survey-fields summary{cursor:pointer;font-weight:600;color:#2574b0;padding:.4rem 0}
     .survey-fields ul{margin:.6rem 0 0;padding-left:1.2rem;line-height:1.6}
     .survey-form{display:flex;flex-direction:column;gap:1rem;margin-top:1rem}
-    .survey-field label{display:block;font-size:.85rem;color:#4a2d8c;
+    .survey-field label{display:block;font-size:.85rem;color:#2f80c0;
          font-weight:600;margin-bottom:.3rem}
     .survey-field input, .survey-field select, .survey-field textarea{
          width:100%;max-width:100%;font-family:inherit;font-size:.88rem;
-         padding:.5rem .7rem;border:1px solid #d8d2ee;border-radius:6px;
+         padding:.5rem .7rem;border:1px solid #cfe5f6;border-radius:6px;
          background:#fff;color:#212529;box-sizing:border-box}
     .survey-field textarea{resize:vertical;min-height:64px}
     .survey-field input:focus, .survey-field select:focus, .survey-field textarea:focus{
-         outline:2px solid #7c4dff;border-color:#7c4dff}
+         outline:2px solid #1a6aa8;border-color:#1a6aa8}
     .survey-required{color:#c0392b}
     .survey-status{margin-top:.8rem;font-size:.85rem;font-weight:600;min-height:1.2em}
     .survey-status.ok{color:#2e7d32}
     .survey-status.err{color:#c0392b}
     .survey-submit-row{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
     .map-legend{display:flex;align-items:center;gap:.6rem;margin-top:.6rem;
-                 font-size:.78rem;color:#5e35b1;flex-wrap:wrap}
+                 font-size:.78rem;color:#2574b0;flex-wrap:wrap}
     .legend-bar{height:10px;width:160px;border-radius:4px;
-                 background:linear-gradient(to right,#cbb8f5,#3d2570)}
+                 background:linear-gradient(to right,#bfdcf2,#1d5d8c)}
     .legend-note{font-size:.78rem;color:#888;margin-top:.4rem}
     .leaflet-popup-content{font-size:.82rem;line-height:1.5}
 
@@ -282,18 +282,18 @@
 
     /* pestana GCBA - sub-links */
     .gcba-links{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.8rem}
-    .gcba-link-btn{background:#f1ecfb;color:#4a2d8c;border:1px solid #d8c9f7;
+    .gcba-link-btn{background:#eef6fc;color:#2f80c0;border:1px solid #c8e1f5;
          padding:.55rem 1rem;border-radius:8px;font-size:.85rem;font-weight:600;
          cursor:pointer;font-family:inherit}
-    .gcba-link-btn:hover{background:#e5d9fb}
-    .gcba-link-btn.active{background:#7c4dff;color:#fff;border-color:#7c4dff}
+    .gcba-link-btn:hover{background:#e0eff9}
+    .gcba-link-btn.active{background:#1a6aa8;color:#fff;border-color:#1a6aa8}
     .gcba-sub{display:none}
     .gcba-sub.visible{display:block}
-    .trat-btn{background:#f1ecfb;color:#4a2d8c;border:1px solid #d8c9f7;
+    .trat-btn{background:#eef6fc;color:#2f80c0;border:1px solid #c8e1f5;
          padding:.55rem 1rem;border-radius:8px;font-size:.85rem;font-weight:600;
          cursor:pointer;font-family:inherit}
-    .trat-btn:hover{background:#e5d9fb}
-    .trat-btn.active{background:#7c4dff;color:#fff;border-color:#7c4dff}
+    .trat-btn:hover{background:#e0eff9}
+    .trat-btn.active{background:#1a6aa8;color:#fff;border-color:#1a6aa8}
     .trat-sub{display:none}
     .trat-sub.visible{display:block}
     .aviso-medico{background:#fff4e0;border:1px solid #f5c876;color:#7a4a00;
@@ -322,10 +322,11 @@
     <a href="/docs" class="docs" target="_blank" rel="noopener">API Docs</a>
   </nav>
 
-  <p class="nota-autoria" style="margin:0;padding:.45rem 1rem;background:#ede7f6;color:#4a2d8c;
-     font-size:.82rem;text-align:center;border-bottom:1px solid #d1c4e9">
-    * Este desarrollo fue ideado, dise&ntilde;ado, construido y financiado por Vicente Humberto Monteverde
-    en el marco de una iniciativa solidaria personal.
+  <p class="nota-autoria" style="margin:0;padding:.45rem 1rem;background:#eaf4fc;color:#2f80c0;
+     font-size:.82rem;text-align:center;border-bottom:1px solid #bfdcf2">
+    * En respuesta a la inquietud y al relevamiento vecinal de la Comuna 7, este desarrollo fue ideado,
+    dise&ntilde;ado, construido y financiado por Vicente Humberto Monteverde en el marco de una iniciativa
+    solidaria personal para brindar una soluci&oacute;n concreta a trav&eacute;s de este sitio.
   </p>
 
   <header>
@@ -661,13 +662,13 @@
         <p>Seleccioná tu situación para ver los beneficios exactos que corresponden según la normativa vigente.</p>
         <div class="form-row" style="flex-direction:column;gap:.8rem;align-items:flex-start;max-width:400px">
           <div style="width:100%">
-            <label style="font-size:.85rem;font-weight:600;color:#4a2d8c;display:block;margin-bottom:.3rem">Provincia</label>
+            <label style="font-size:.85rem;font-weight:600;color:#2f80c0;display:block;margin-bottom:.3rem">Provincia</label>
             <select id="calc-provincia" style="width:100%">
               <option value="">— Seleccioná provincia —</option>
             </select>
           </div>
           <div style="width:100%">
-            <label style="font-size:.85rem;font-weight:600;color:#4a2d8c;display:block;margin-bottom:.3rem">Tipo de discapacidad</label>
+            <label style="font-size:.85rem;font-weight:600;color:#2f80c0;display:block;margin-bottom:.3rem">Tipo de discapacidad</label>
             <select id="calc-tipo" style="width:100%">
               <option value="">— Seleccioná tipo —</option>
               <option value="motora">Motora</option>
@@ -679,7 +680,7 @@
             </select>
           </div>
           <div style="width:100%">
-            <label style="font-size:.85rem;font-weight:600;color:#4a2d8c;display:block;margin-bottom:.3rem">Situación laboral</label>
+            <label style="font-size:.85rem;font-weight:600;color:#2f80c0;display:block;margin-bottom:.3rem">Situación laboral</label>
             <select id="calc-laboral" style="width:100%">
               <option value="">— Seleccioná situación —</option>
               <option value="desocupado">Sin trabajo / desocupado</option>
@@ -852,7 +853,7 @@
   <!-- ====================== TEA ====================== -->
   <div class="panel" id="panel-tea">
     <div class="wrap">
-      <div class="card" style="border-left:4px solid #7c4dff">
+      <div class="card" style="border-left:4px solid #1a6aa8">
         <h2>🧩 Plan Nacional del Trastorno del Espectro Autista (TEA)</h2>
         <p>El Ministerio de Salud aprobó el <strong>Plan Nacional del TEA</strong> mediante la <strong>Resolución 1115/2026</strong> (BO 24/08/2026), en el marco de la <strong>Ley 27.043</strong> y su <strong>Decreto Reglamentario 777/2019</strong>, que declaran de Interés Nacional el abordaje integral e interdisciplinario de las personas con Trastorno del Espectro Autista.</p>
         <p>La autoridad de aplicación es la <strong>Dirección Nacional de Abordaje Integral de Salud Mental</strong> del Ministerio de Salud, con intervención de la Secretaría Nacional de Discapacidad.</p>
@@ -890,7 +891,7 @@
         No reemplaza la evaluaci&oacute;n ni el tratamiento profesional.
       </div>
 
-      <div class="card" style="border-left:4px solid #7c4dff">
+      <div class="card" style="border-left:4px solid #1a6aa8">
         <h2>🗣️ Trastorno del Desarrollo del Lenguaje (TDL)*</h2>
         <p>El <strong>TDL</strong> es la dificultad persistente para <strong>comprender y/o expresar el lenguaje oral</strong> que no se explica por una p&eacute;rdida auditiva, una discapacidad intelectual, un trastorno del espectro autista ni una lesi&oacute;n neurol&oacute;gica. Antes se lo llamaba <strong>TEL (Trastorno Espec&iacute;fico del Lenguaje)</strong>: el nombre cambi&oacute; a partir del consenso internacional <strong>CATALISE</strong> (2016&ndash;2017).</p>
         <p>Es frecuente: los estudios poblacionales lo ubican en alrededor del <strong>7% de los chicos</strong>, es decir, unos dos por aula. Suele persistir en el tiempo y puede afectar la lectoescritura, el aprendizaje escolar y la vida social.</p>
@@ -973,7 +974,7 @@
         No reemplaza la evaluaci&oacute;n ni el tratamiento profesional.
       </div>
 
-      <div class="card" style="border-left:4px solid #7c4dff">
+      <div class="card" style="border-left:4px solid #1a6aa8">
         <h2>📖 Dislexia y Dificultades Espec&iacute;ficas del Aprendizaje (DEA)*</h2>
         <p>Las <strong>DEA</strong> son alteraciones de origen neurobiol&oacute;gico que afectan el aprendizaje de la <strong>lectura</strong>, la <strong>escritura</strong> o el <strong>c&aacute;lculo</strong>. La m&aacute;s conocida es la <strong>dislexia</strong> (lectura y escritura); tambi&eacute;n se describen la disortograf&iacute;a, la disgraf&iacute;a y la discalculia. No se explican por una discapacidad intelectual, por falta de ense&ntilde;anza ni por problemas de visi&oacute;n o audici&oacute;n.</p>
         <p>Suelen aparecer junto con dificultades de lenguaje oral: muchos chicos con <a href="#" onclick="switchTab('tdl');return false">TDL</a> tienen despu&eacute;s dificultades en la lectoescritura.</p>
@@ -1037,7 +1038,7 @@
         No reemplaza la evaluaci&oacute;n ni el tratamiento profesional.
       </div>
 
-      <div class="card" style="border-left:4px solid #7c4dff">
+      <div class="card" style="border-left:4px solid #1a6aa8">
         <h2>👂 Hipoacusia y sordera*</h2>
         <p>La <strong>hipoacusia</strong> es la disminuci&oacute;n de la audici&oacute;n; puede ser leve, moderada, severa o profunda, de un o&iacute;do o de ambos, y estar presente al nacer o aparecer despu&eacute;s. En los chicos, detectarla temprano es clave: el desarrollo del lenguaje depende del acceso a una lengua desde los primeros meses, sea oral o de se&ntilde;as.</p>
         <p>Ante cualquier retraso del lenguaje, <strong>la audici&oacute;n se eval&uacute;a primero</strong> (ver <a href="#" onclick="switchTab('tdl');return false">Lenguaje (TDL)</a>).</p>
@@ -1095,7 +1096,7 @@
         No reemplaza la evaluaci&oacute;n ni el tratamiento profesional.
       </div>
 
-      <div class="card" style="border-left:4px solid #7c4dff">
+      <div class="card" style="border-left:4px solid #1a6aa8">
         <h2>⚡ Epilepsia*</h2>
         <p>La <strong>epilepsia</strong> es una condici&oacute;n neurol&oacute;gica caracterizada por la tendencia a tener <strong>crisis</strong> recurrentes. Las crisis pueden ser muy distintas: desde breves desconexiones hasta convulsiones. El diagn&oacute;stico es neurol&oacute;gico y suele incluir electroencefalograma y estudios de imagen.</p>
         <p>Seg&uacute;n la Organizaci&oacute;n Mundial de la Salud, <strong>hasta el 70%</strong> de las personas con epilepsia podr&iacute;a vivir sin crisis con un diagn&oacute;stico y tratamiento adecuados.</p>
@@ -1151,7 +1152,7 @@
         No reemplaza la evaluaci&oacute;n ni el tratamiento profesional.
       </div>
 
-      <div class="card" style="border-left:4px solid #7c4dff">
+      <div class="card" style="border-left:4px solid #1a6aa8">
         <h2>🧬 Enfermedades poco frecuentes (EPF)*</h2>
         <p>La <strong>Ley 26.689</strong> define como poco frecuentes a las enfermedades cuya prevalencia es <strong>igual o inferior a 1 cada 2.000 personas</strong>. Cada una es rara, pero en conjunto son miles de enfermedades distintas, muchas de origen gen&eacute;tico y de comienzo en la infancia.</p>
         <p>El problema com&uacute;n suele ser el <strong>diagn&oacute;stico tard&iacute;o</strong> (a veces despu&eacute;s de a&ntilde;os y muchas consultas) y el acceso a tratamientos y medicamentos espec&iacute;ficos, a veces de alto costo.</p>
@@ -1210,7 +1211,7 @@
         <p>Ante una emergencia, llam&aacute; al <a href="tel:911">911</a> o acud&iacute; a la guardia del hospital m&aacute;s cercano.</p>
       </div>
 
-      <div class="card" style="border-left:4px solid #7c4dff">
+      <div class="card" style="border-left:4px solid #1a6aa8">
         <h2>🧠 Salud mental y discapacidad psicosocial*</h2>
         <p>La <strong>discapacidad psicosocial</strong> surge cuando un padecimiento mental de larga duraci&oacute;n, en interacci&oacute;n con barreras del entorno, limita la participaci&oacute;n en la vida diaria, el estudio o el trabajo. Es uno de los tipos que eval&uacute;an las juntas del CUD.</p>
         <p>La <strong>Ley 26.657 de Salud Mental</strong> parte de la <strong>presunci&oacute;n de capacidad</strong> de todas las personas: un diagn&oacute;stico no autoriza, por s&iacute; solo, a presumir riesgo ni incapacidad.</p>
@@ -1261,7 +1262,7 @@
         No reemplaza la evaluaci&oacute;n ni el tratamiento profesional.
       </div>
 
-      <div class="card" style="border-left:4px solid #7c4dff">
+      <div class="card" style="border-left:4px solid #1a6aa8">
         <h2>👁️ Ceguera y baja visi&oacute;n*</h2>
         <p>La <strong>discapacidad visual</strong> incluye la <strong>ceguera</strong> y la <strong>baja visi&oacute;n</strong>: una p&eacute;rdida de visi&oacute;n que no se corrige del todo con anteojos, lentes de contacto, medicaci&oacute;n ni cirug&iacute;a, y que limita actividades como leer, desplazarse o reconocer caras.</p>
         <p>Causas frecuentes: glaucoma, retinopat&iacute;a diab&eacute;tica, degeneraci&oacute;n macular, retinosis pigmentaria, cataratas no tratadas y retinopat&iacute;a del prematuro.</p>
@@ -1315,7 +1316,7 @@
         No reemplaza la evaluaci&oacute;n ni el tratamiento profesional.
       </div>
 
-      <div class="card" style="border-left:4px solid #7c4dff">
+      <div class="card" style="border-left:4px solid #1a6aa8">
         <h2>🩸 Diabetes*</h2>
         <p>La <strong>diabetes</strong> es una enfermedad cr&oacute;nica en la que la glucosa en sangre est&aacute; elevada. En la <strong>tipo 1</strong> (frecuente en la infancia) el p&aacute;ncreas deja de producir insulina; en la <strong>tipo 2</strong> el cuerpo no la usa bien.</p>
         <p>Con buen control se puede llevar una vida plena; sin control puede dar complicaciones que s&iacute; generan discapacidad (visi&oacute;n, ri&ntilde;ones, nervios, amputaciones).</p>
@@ -1369,7 +1370,7 @@
         No reemplaza la evaluaci&oacute;n ni el tratamiento profesional.
       </div>
 
-      <div class="card" style="border-left:4px solid #7c4dff">
+      <div class="card" style="border-left:4px solid #1a6aa8">
         <h2>🌾 Celiaqu&iacute;a*</h2>
         <p>La <strong>enfermedad cel&iacute;aca</strong> es una condici&oacute;n autoinmune: el <strong>gluten</strong> (presente en trigo, avena, cebada y centeno, TACC) da&ntilde;a el intestino delgado y dificulta absorber los nutrientes. Puede aparecer a cualquier edad.</p>
         <p>El &uacute;nico tratamiento es una <strong>dieta libre de gluten de por vida</strong>. No hay que dejar el gluten antes de diagnosticarse: altera los estudios.</p>
@@ -1423,7 +1424,7 @@
         No reemplaza la evaluaci&oacute;n ni el tratamiento profesional.
       </div>
 
-      <div class="card" style="border-left:4px solid #7c4dff">
+      <div class="card" style="border-left:4px solid #1a6aa8">
         <h2>🫁 Fibrosis qu&iacute;stica*</h2>
         <p>La <strong>fibrosis qu&iacute;stica</strong> (o mucoviscidosis) es una enfermedad <strong>gen&eacute;tica</strong> que produce un moco espeso en los pulmones y el sistema digestivo: causa infecciones respiratorias repetidas y problemas para absorber los alimentos.</p>
         <p>Se detecta en la <strong>pesquisa neonatal</strong> (prueba del tal&oacute;n, Ley 26.279) y se confirma con el <strong>test del sudor</strong>. El tratamiento es de por vida e incluye kinesioterapia respiratoria, enzimas, nutrici&oacute;n y, cuando corresponde, medicamentos moduladores.</p>
@@ -1467,7 +1468,7 @@
         No reemplaza la evaluaci&oacute;n ni el tratamiento profesional.
       </div>
 
-      <div class="card" style="border-left:4px solid #7c4dff">
+      <div class="card" style="border-left:4px solid #1a6aa8">
         <h2>🎗️ C&aacute;ncer infantil*</h2>
         <p>Los c&aacute;nceres m&aacute;s frecuentes en ni&ntilde;os, ni&ntilde;as y adolescentes son las <strong>leucemias</strong>, los <strong>tumores del sistema nervioso central</strong> y los <strong>linfomas</strong>. Con diagn&oacute;stico temprano y tratamiento en centros especializados, la mayor&iacute;a puede curarse.</p>
         <p>Consultar ante fiebre o cansancio sin causa que no ceden, palidez, moretones o sangrados f&aacute;ciles, bultos, dolor de cabeza persistente con v&oacute;mitos, o un brillo blanco en la pupila.</p>
@@ -1513,7 +1514,7 @@
         No reemplaza la evaluaci&oacute;n ni el tratamiento profesional.
       </div>
 
-      <div class="card" style="border-left:4px solid #7c4dff">
+      <div class="card" style="border-left:4px solid #1a6aa8">
         <h2>🫘 Trasplante y enfermedad renal cr&oacute;nica*</h2>
         <p>La <strong>enfermedad renal cr&oacute;nica</strong> es la p&eacute;rdida progresiva de la funci&oacute;n de los ri&ntilde;ones; en su etapa avanzada requiere <strong>di&aacute;lisis</strong> o un <strong>trasplante</strong>. La diabetes y la hipertensi&oacute;n son sus causas m&aacute;s frecuentes.</p>
         <p>El trasplante tambi&eacute;n es tratamiento para enfermedades graves del h&iacute;gado, el coraz&oacute;n, los pulmones y otros &oacute;rganos y tejidos.</p>
@@ -1551,7 +1552,7 @@
   <!-- ====================== TRATAMIENTOS ====================== -->
   <div class="panel" id="panel-tratamientos">
     <div class="wrap">
-      <div class="card" style="border-left:4px solid #7c4dff">
+      <div class="card" style="border-left:4px solid #1a6aa8">
         <h2>🩺 Tratamientos</h2>
         <p>Musicoterapia, tratamientos visuales y otras terapias complementarias para personas con discapacidad, organizadas por técnica y tipo de discapacidad, con organizaciones profesionales y evidencia científica de referencia.</p>
         <p class="aviso-medico">⚕️ <strong>Se sugiere que las personas con discapacidad consulten a su médico de cabecera</strong> sobre estos tratamientos antes de iniciarlos: esta sección es informativa y no reemplaza la indicación de un/a profesional.</p>
@@ -1610,7 +1611,7 @@
           Algunos est&aacute;n aprobados en otros pa&iacute;ses y otros siguen en ensayo cl&iacute;nico.
           <strong>Consult&aacute; siempre con tu m&eacute;dico/a o profesional tratante</strong> antes de considerarlos.
         </div>
-        <div class="card" style="border-left:4px solid #7c4dff">
+        <div class="card" style="border-left:4px solid #1a6aa8">
           <h2>🆕 Nuevos tratamientos de vanguardia</h2>
           <p>Estimulaci&oacute;n de la m&eacute;dula espinal, terapia g&eacute;nica para Duchenne, optogen&eacute;tica, trofinetida para Rett, psilocibina para depresi&oacute;n resistente y teplizumab para diabetes tipo 1: cada uno con su estado, la normativa argentina aplicable y el bot&oacute;n de evidencia y ensayos actualizados (con los t&iacute;tulos traducidos al espa&ntilde;ol).</p>
           <div id="vang-nuevos-info" class="result-box"><p class="loading">Cargando tratamientos nuevos...</p></div>
@@ -1628,13 +1629,13 @@
         <p>Seleccioná dos provincias para ver sus diferencias en prestaciones, cupo laboral y datos de la junta evaluadora.</p>
         <div class="form-row">
           <div style="flex:1;min-width:150px">
-            <label style="font-size:.85rem;font-weight:600;color:#4a2d8c;display:block;margin-bottom:.3rem">Provincia A</label>
+            <label style="font-size:.85rem;font-weight:600;color:#2f80c0;display:block;margin-bottom:.3rem">Provincia A</label>
             <select id="comp-prov-a" style="width:100%">
               <option value="">— Seleccioná —</option>
             </select>
           </div>
           <div style="flex:1;min-width:150px">
-            <label style="font-size:.85rem;font-weight:600;color:#4a2d8c;display:block;margin-bottom:.3rem">Provincia B</label>
+            <label style="font-size:.85rem;font-weight:600;color:#2f80c0;display:block;margin-bottom:.3rem">Provincia B</label>
             <select id="comp-prov-b" style="width:100%">
               <option value="">— Seleccioná —</option>
             </select>
@@ -1660,8 +1661,8 @@
   <div class="panel" id="panel-about">
     <style>
       /* Scoped tokens — namespaced so they never leak into the rest of the site */
-      #panel-about{--navy:#0A2540;--navy-soft:#143654;--paper:#F7F5F0;--paper-line:#E3DDCB;
-        --ink:#1E1E1E;--ink-soft:#52514c;--seal:#2D8C72;--seal-dark:#1F6B57;
+      #panel-about{--navy:#1d5d8c;--navy-soft:#2a74ad;--paper:#f4f9fd;--paper-line:#cfe5f6;
+        --ink:#1E1E1E;--ink-soft:#52514c;--seal:#2f80c0;--seal-dark:#1d5d8c;
         font-family:'IBM Plex Sans',system-ui,sans-serif;color:var(--ink);background:#fff;
         margin:-1.5rem -1rem 0;}
       #panel-about *{box-sizing:border-box;}
@@ -1679,12 +1680,12 @@
       #panel-about .a-hero{background:var(--navy);color:#fff;padding:56px 0 72px;}
       #panel-about .a-hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:start;}
       #panel-about .a-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;
-        text-transform:uppercase;color:var(--seal);background:rgba(45,140,114,.12);
-        border:1px solid rgba(45,140,114,.4);display:inline-block;padding:5px 11px;
+        text-transform:uppercase;color:var(--seal);background:rgba(47,128,192,.12);
+        border:1px solid rgba(47,128,192,.4);display:inline-block;padding:5px 11px;
         border-radius:3px;margin-bottom:18px;}
       #panel-about .a-hero h2{font-size:clamp(1.7rem,3.6vw,2.6rem);line-height:1.1;color:#fff;}
       #panel-about .a-hero h2 em{font-style:normal;color:var(--seal);
-        background:linear-gradient(transparent 62%,rgba(45,140,114,.28) 62%);}
+        background:linear-gradient(transparent 62%,rgba(47,128,192,.28) 62%);}
       #panel-about .a-hero p.lede{font-size:1rem;color:#c7d6e3;max-width:46ch;margin-top:18px;}
       #panel-about .a-ctas{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap;}
       #panel-about .a-btn{font-family:'IBM Plex Mono',monospace;font-size:13px;padding:11px 18px;
@@ -1712,16 +1713,16 @@
         margin-bottom:8px;word-break:break-all;}
       #panel-about .a-req .verb{background:var(--seal-dark);color:var(--paper);padding:2px 6px;
         border-radius:2px;margin-right:6px;font-weight:500;}
-      #panel-about pre.a-resp{background:#11202c;color:#d6e8da;font-family:'IBM Plex Mono',monospace;
+      #panel-about pre.a-resp{background:#11202c;color:#dceefa;font-family:'IBM Plex Mono',monospace;
         font-size:10.8px;line-height:1.55;padding:12px 14px;border-radius:3px;overflow-x:auto;margin:0;}
-      #panel-about pre.a-resp .k{color:#7fc9a8;}
+      #panel-about pre.a-resp .k{color:#9ccbec;}
       #panel-about pre.a-resp .s{color:#e3c98f;}
       #panel-about pre.a-resp .b{color:#82a8d6;}
       #panel-about .a-t-foot{display:flex;justify-content:space-between;align-items:center;
         padding:11px 18px;border-top:1px dashed var(--paper-line);font-family:'IBM Plex Mono',monospace;
         font-size:10.5px;color:var(--ink-soft);}
       #panel-about .a-live-dot{width:7px;height:7px;border-radius:50%;background:var(--seal);
-        display:inline-block;margin-right:6px;box-shadow:0 0 0 3px rgba(45,140,114,.25);}
+        display:inline-block;margin-right:6px;box-shadow:0 0 0 3px rgba(47,128,192,.25);}
 
       #panel-about .a-sec{padding:56px 0;}
       #panel-about .a-sec-head{max-width:62ch;margin-bottom:36px;}
@@ -1750,7 +1751,7 @@
       #panel-about .a-ledger-row h4{font-size:1.02rem;color:var(--navy);}
       #panel-about .a-ledger-row p{margin:0;color:var(--ink-soft);font-size:.9rem;}
       #panel-about .a-ledger-row .ep{font-family:'IBM Plex Mono',monospace;font-size:10.8px;
-        color:var(--seal-dark);background:rgba(45,140,114,.08);padding:5px 9px;border-radius:3px;
+        color:var(--seal-dark);background:rgba(47,128,192,.08);padding:5px 9px;border-radius:3px;
         text-align:center;word-break:break-all;}
 
       #panel-about .a-sources{background:var(--navy);color:#cfe0ee;}
@@ -2016,7 +2017,7 @@
           </p>
           <div id="map-edu-especial" class="map-container"></div>
           <div class="map-legend">
-            <span><span class="legend-dot" style="background:#7c4dff"></span>Estatal</span>
+            <span><span class="legend-dot" style="background:#1a6aa8"></span>Estatal</span>
             <span><span class="legend-dot" style="background:#ff8a65"></span>Privada</span>
           </div>
           <div id="lista-edu-especial" class="result-box"><p class="loading">Cargando listado...</p></div>
@@ -3457,7 +3458,7 @@
           html += '<h4 style="margin:0 0 .4rem">' + escapeHtml(grp.nombre || grp.tipo_discapacidad || '') + '</h4>';
           (grp.tecnicas || []).forEach(t => {
             html += '<div style="margin:.6rem 0">';
-            html += '<span style="color:#7c4dff;font-weight:600">' + escapeHtml(t.nombre || '') + '</span>';
+            html += '<span style="color:#1a6aa8;font-weight:600">' + escapeHtml(t.nombre || '') + '</span>';
             if (t.descripcion) html += '<br><span class="muted">' + escapeHtml(t.descripcion) + '</span>';
             if (t.recursos && t.recursos.length) {
               html += '<div style="display:flex;flex-direction:column;gap:.4rem;margin-top:.4rem">';
@@ -3589,8 +3590,8 @@
       if (!preguntas.length) return renderJSON(data);
       let html = '';
       preguntas.forEach(p => {
-        html += '<details style="margin-bottom:.5rem;border-bottom:1px solid #ede9f8;padding-bottom:.5rem">';
-        html += '<summary style="cursor:pointer;font-weight:600;color:#3d2570">' + escapeHtml(p.pregunta || '') + '</summary>';
+        html += '<details style="margin-bottom:.5rem;border-bottom:1px solid #eaf4fc;padding-bottom:.5rem">';
+        html += '<summary style="cursor:pointer;font-weight:600;color:#1d5d8c">' + escapeHtml(p.pregunta || '') + '</summary>';
         html += '<p style="margin:.4rem 0 0;color:#444">' + escapeHtml(p.respuesta || '') + '</p>';
         html += '</details>';
       });
@@ -3765,10 +3766,10 @@
     }
 
     function colorForValue(value, min, max) {
-      if (max <= min) return '#7c4dff';
+      if (max <= min) return '#1a6aa8';
       const t = Math.max(0, Math.min(1, (value - min) / (max - min)));
-      const c1 = [203, 184, 245];   // #cbb8f5
-      const c2 = [61, 37, 112];     // #3d2570
+      const c1 = [203, 184, 245];   // #bfdcf2
+      const c2 = [61, 37, 112];     // #1d5d8c
       const r = Math.round(c1[0] + (c2[0] - c1[0]) * t);
       const g = Math.round(c1[1] + (c2[1] - c1[1]) * t);
       const b = Math.round(c1[2] + (c2[2] - c1[2]) * t);
@@ -3871,10 +3872,10 @@
               const name  = props.nombre || props.provincia || props.name || '';
               const stat  = byName[normName(name)];
               const tasa  = stat ? (stat.tasa_prevalencia || 0) : null;
-              const color = tasa != null ? colorForValue(tasa, tasaMin, tasaMax) : '#d0cde8';
+              const color = tasa != null ? colorForValue(tasa, tasaMin, tasaMax) : '#cfe5f6';
               return {
                 fillColor: color,
-                color: '#3d2570',
+                color: '#1d5d8c',
                 weight: 1,
                 fillOpacity: 0.75,
               };
@@ -3911,7 +3912,7 @@
             const radius = radiusForValue(cud, cudMax);
             const marker = L.circleMarker([lat, lon], {
               radius: radius, fillColor: color,
-              color: '#3d2570', weight: 1, fillOpacity: 0.75,
+              color: '#1d5d8c', weight: 1, fillOpacity: 0.75,
             }).addTo(map);
             const dentroDeRango = lat >= -56 && lat <= -21 && lon >= -74 && lon <= -52;
             if (dentroDeRango) bounds.push([lat, lon]);
@@ -3949,7 +3950,7 @@
           const color = colorForValue(tasa, tasaMin, tasaMax);
           const radius = radiusForValue(cud, cudMax);
           const marker = L.circleMarker([coords[0], coords[1]], {
-            radius, fillColor: color, color: '#3d2570', weight: 1, fillOpacity: 0.75,
+            radius, fillColor: color, color: '#1d5d8c', weight: 1, fillOpacity: 0.75,
           }).addTo(map);
           marker.bindPopup('<strong>' + escapeHtml(s.provincia) + '</strong><br>'
             + 'CUD vigentes: ' + cud.toLocaleString('es-AR') + '<br>'
@@ -4037,7 +4038,7 @@
           const marker = L.circleMarker([coords[1], coords[0]], {
             radius: radius,
             fillColor: color,
-            color: '#3d2570',
+            color: '#1d5d8c',
             weight: 1,
             fillOpacity: 0.75,
           }).addTo(map);
@@ -4173,12 +4174,12 @@
     function refVanguardiaHtml(titulo, tituloEs, url, meta) {
       let h = '<li style="margin-bottom:.5rem"><a href="' + escapeHtml(url) + '" target="_blank" rel="noopener">' + escapeHtml(titulo) + '</a>';
       if (meta) h += ' <span class="muted" style="font-size:.78rem">(' + escapeHtml(meta) + ')</span>';
-      if (tituloEs) h += '<br><small style="color:#5a4a7a">🇪🇸 ' + escapeHtml(tituloEs) + '</small>';
+      if (tituloEs) h += '<br><small style="color:#3f6380">🇪🇸 ' + escapeHtml(tituloEs) + '</small>';
       return h + '</li>';
     }
 
     function renderEvidenciaVanguardia(d) {
-      let h = '<div style="margin-top:.6rem;padding:.7rem;background:#fff;border:1px solid #e3dcf3;border-radius:8px">';
+      let h = '<div style="margin-top:.6rem;padding:.7rem;background:#fff;border:1px solid #d9ebf8;border-radius:8px">';
       if (d.articulo_referencia) {
         const a = d.articulo_referencia;
         h += '<p style="margin:.2rem 0"><strong>📌 Artículo de referencia</strong></p><ul style="margin:.2rem 0 .5rem 1.1rem;font-size:.86rem">'
@@ -4350,8 +4351,8 @@
           fetchJSON('/api/cud/juntas?provincia=' + encodeURIComponent(pb)),
         ]);
 
-        document.getElementById('comp-col-a').innerHTML = '<h3 style="color:#4a2d8c;margin-bottom:.8rem">📍 ' + escapeHtml(pa) + '</h3>' + renderJunta(ja);
-        document.getElementById('comp-col-b').innerHTML = '<h3 style="color:#4a2d8c;margin-bottom:.8rem">📍 ' + escapeHtml(pb) + '</h3>' + renderJunta(jb);
+        document.getElementById('comp-col-a').innerHTML = '<h3 style="color:#2f80c0;margin-bottom:.8rem">📍 ' + escapeHtml(pa) + '</h3>' + renderJunta(ja);
+        document.getElementById('comp-col-b').innerHTML = '<h3 style="color:#2f80c0;margin-bottom:.8rem">📍 ' + escapeHtml(pb) + '</h3>' + renderJunta(jb);
 
         // Tabla comparativa
         const rows = [
@@ -4366,12 +4367,12 @@
         ];
 
         let tabla = '<table style="width:100%;border-collapse:collapse;font-size:.85rem">';
-        tabla += '<thead><tr style="background:#f0edf8"><th style="text-align:left;padding:.5rem .7rem;border-bottom:2px solid #d8d2ee">Campo</th><th style="text-align:left;padding:.5rem .7rem;border-bottom:2px solid #d8d2ee">' + escapeHtml(pa) + '</th><th style="text-align:left;padding:.5rem .7rem;border-bottom:2px solid #d8d2ee">' + escapeHtml(pb) + '</th></tr></thead>';
+        tabla += '<thead><tr style="background:#eef6fc"><th style="text-align:left;padding:.5rem .7rem;border-bottom:2px solid #cfe5f6">Campo</th><th style="text-align:left;padding:.5rem .7rem;border-bottom:2px solid #cfe5f6">' + escapeHtml(pa) + '</th><th style="text-align:left;padding:.5rem .7rem;border-bottom:2px solid #cfe5f6">' + escapeHtml(pb) + '</th></tr></thead>';
         tabla += '<tbody>';
         rows.forEach(([campo, va, vb]) => {
           const diff = va !== vb ? 'background:#fffbe6' : '';
-          tabla += '<tr style="border-bottom:1px solid #f0edf8;' + diff + '">';
-          tabla += '<td style="padding:.45rem .7rem;font-weight:600;color:#4a2d8c;white-space:nowrap">' + escapeHtml(campo) + '</td>';
+          tabla += '<tr style="border-bottom:1px solid #eef6fc;' + diff + '">';
+          tabla += '<td style="padding:.45rem .7rem;font-weight:600;color:#2f80c0;white-space:nowrap">' + escapeHtml(campo) + '</td>';
           tabla += '<td style="padding:.45rem .7rem">' + va + '</td>';
           tabla += '<td style="padding:.45rem .7rem">' + vb + '</td>';
           tabla += '</tr>';
@@ -4428,9 +4429,9 @@
 
       const bounds = [];
       ESCUELAS_ESPECIAL.forEach(e => {
-        const color = e.sector === 'Estatal' ? '#7c4dff' : '#ff8a65';
+        const color = e.sector === 'Estatal' ? '#1a6aa8' : '#ff8a65';
         const marker = L.circleMarker([e.lat, e.lon], {
-          radius: 6, fillColor: color, color: '#3d2570', weight: 1, fillOpacity: 0.85,
+          radius: 6, fillColor: color, color: '#1d5d8c', weight: 1, fillOpacity: 0.85,
         }).addTo(map);
         marker.bindPopup('<strong>' + escapeHtml(e.nombre) + '</strong><br>' +
           escapeHtml(e.sector) + '<br>' + escapeHtml(e.direccion) + ', ' + escapeHtml(e.barrio));
@@ -4460,7 +4461,7 @@
       SALUD_DISCAPACIDAD.forEach(s => {
         const color = s.tipo === 'Publico' ? '#3d8c6a' : '#ff8a65';
         const marker = L.circleMarker([s.lat, s.lon], {
-          radius: s.destacado ? 8 : 6, fillColor: color, color: '#3d2570', weight: 1, fillOpacity: 0.85,
+          radius: s.destacado ? 8 : 6, fillColor: color, color: '#1d5d8c', weight: 1, fillOpacity: 0.85,
         }).addTo(map);
         marker.bindPopup('<strong>' + (s.destacado ? '&#9733; ' : '') + escapeHtml(s.nombre) + '</strong><br>' +
           escapeHtml(s.tipo) + ' &middot; ' + escapeHtml(s.especialidad) + '<br>' +
@@ -4484,7 +4485,7 @@
           labels: labels,
           datasets: [{
             data: values,
-            backgroundColor: opts.color || '#7c4dff',
+            backgroundColor: opts.color || '#1a6aa8',
             borderRadius: 4,
             barThickness: opts.thick || 16,
           }],
@@ -4496,7 +4497,7 @@
           plugins: {
             legend: { display: false },
             tooltip: {
-              backgroundColor: '#3d2570',
+              backgroundColor: '#1d5d8c',
               padding: 8,
               callbacks: {
                 label: (ctx) => ctx.parsed.x + ' personas',
@@ -4506,12 +4507,12 @@
           scales: {
             x: {
               beginAtZero: true,
-              grid: { color: '#eee7fb' },
+              grid: { color: '#eaf4fc' },
               ticks: { color: '#888', font: { size: 11 } },
             },
             y: {
               grid: { display: false },
-              ticks: { color: '#4a2d8c', font: { size: 11 } },
+              ticks: { color: '#2f80c0', font: { size: 11 } },
             },
           },
         },
