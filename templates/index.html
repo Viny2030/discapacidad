@@ -300,6 +300,71 @@
          border-radius:10px;padding:.7rem 1rem;font-size:.9rem;margin-top:.8rem}
     .legend-dot{display:inline-block;width:10px;height:10px;border-radius:50%;
          margin-right:.35rem;vertical-align:middle}
+
+    /* pestaña Adultos Mayores (WCAG 2.1 AA: tamaño de letra 100/125/150 %,
+       alto contraste, interlineado >= 1.5, texto sin justificar) */
+    #panel-mayores{--am-fs:1;line-height:1.65;text-align:left}
+    #panel-mayores .card p, #panel-mayores li, #panel-mayores td, #panel-mayores th,
+    #panel-mayores dd, #panel-mayores dt, #panel-mayores label, #panel-mayores select,
+    #panel-mayores .disclaimer, #panel-mayores .am-resumen, #panel-mayores summary,
+    #panel-mayores .am-pill, #panel-mayores .btn-sm, #panel-mayores .am-out{font-size:calc(.92rem * var(--am-fs))}
+    #panel-mayores .card h2{font-size:calc(1.2rem * var(--am-fs))}
+    #panel-mayores .card h3{font-size:calc(1.02rem * var(--am-fs))}
+    #panel-mayores .stat-box .num{font-size:calc(1.4rem * var(--am-fs))}
+    #panel-mayores .stat-box .label{font-size:calc(.78rem * var(--am-fs))}
+    #panel-mayores li{margin-bottom:.35rem}
+    #panel-mayores :focus-visible{outline:3px solid #d4a017;outline-offset:2px}
+    .am-toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem .6rem;
+         background:#fff;border:1px solid #bfdcf2;border-radius:10px;padding:.6rem .9rem;
+         margin-bottom:1rem}
+    .am-toolbar .am-tb-label{font-size:.82rem;font-weight:600;color:#1d5d8c}
+    .am-toolbar button{background:#eaf4fc;color:#1d5d8c;border:1px solid #bfdcf2;
+         border-radius:6px;padding:.35rem .7rem;font-weight:700;cursor:pointer;
+         font-family:inherit;font-size:.85rem}
+    .am-toolbar button[aria-pressed="true"]{background:#1a6aa8;border-color:#1a6aa8;color:#fff}
+    .am-subnav{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1rem}
+    .am-pill{background:#eef6fc;color:#2f80c0;border:1px solid #c8e1f5;
+         padding:.5rem .9rem;border-radius:999px;font-weight:600;cursor:pointer;font-family:inherit}
+    .am-pill:hover{background:#e0eff9}
+    .am-pill[aria-pressed="true"]{background:#1a6aa8;color:#fff;border-color:#1a6aa8}
+    .am-sub{display:none}
+    .am-sub.visible{display:block}
+    .am-resumen{background:#eaf4fc;border-left:4px solid #1a6aa8;border-radius:6px;
+         padding:.7rem 1rem;margin-bottom:1rem;color:#1d5d8c}
+    .am-resumen strong{display:block;margin-bottom:.2rem}
+    .am-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+    #panel-mayores table.tbl{min-width:640px}
+    #panel-mayores table.tbl td{vertical-align:top}
+    #panel-mayores table.tbl caption{text-align:left;color:#4a6f8c;font-size:.8rem;margin-bottom:.3rem}
+    .am-tree{background:#f4f9fd;border-radius:8px;padding:.9rem 1rem;font-family:ui-monospace,Consolas,monospace;
+         font-size:.82rem;line-height:1.6;white-space:pre;overflow-x:auto;color:#1d5d8c}
+    .am-form{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.8rem;margin-bottom:1rem}
+    .am-form label{display:block;font-weight:600;color:#2f80c0;margin-bottom:.25rem}
+    .am-form select{max-width:100%}
+    .am-out{background:#f4f9fd;border-radius:8px;padding:1rem 1.1rem;margin-top:.6rem}
+    .am-out h4{margin-top:.6rem}
+    .am-out h4:first-child{margin-top:0}
+    .am-semaforo{display:inline-block;width:.9em;height:.9em;border-radius:50%;vertical-align:-.1em;margin-right:.35rem;
+         border:1px solid rgba(0,0,0,.25)}
+    .am-modelo textarea{width:100%;min-height:220px;font-family:inherit;font-size:.85rem;
+         padding:.6rem .7rem;border:1px solid #cfe5f6;border-radius:6px;resize:vertical;line-height:1.5}
+    .am-modelo .form-row{margin-top:.5rem}
+    .am-map{height:440px}
+    /* alto contraste: negro sobre blanco, bordes y enlaces subrayados */
+    #panel-mayores.am-hc .card, #panel-mayores.am-hc .am-out, #panel-mayores.am-hc .am-resumen,
+    #panel-mayores.am-hc .stat-box, #panel-mayores.am-hc .am-tree, #panel-mayores.am-hc .list-item,
+    #panel-mayores.am-hc header{background:#fff;color:#000;border:2px solid #000}
+    #panel-mayores.am-hc h2, #panel-mayores.am-hc h3, #panel-mayores.am-hc h4,
+    #panel-mayores.am-hc th, #panel-mayores.am-hc dt, #panel-mayores.am-hc label,
+    #panel-mayores.am-hc .stat-box .num, #panel-mayores.am-hc .stat-box .label,
+    #panel-mayores.am-hc p, #panel-mayores.am-hc li, #panel-mayores.am-hc td,
+    #panel-mayores.am-hc .muted, #panel-mayores.am-hc .am-tree{color:#000}
+    #panel-mayores.am-hc a{color:#00008b;text-decoration:underline}
+    #panel-mayores.am-hc .am-pill, #panel-mayores.am-hc .am-toolbar button,
+    #panel-mayores.am-hc .btn-sm{background:#fff;color:#000;border:2px solid #000}
+    #panel-mayores.am-hc .am-pill[aria-pressed="true"],
+    #panel-mayores.am-hc .am-toolbar button[aria-pressed="true"]{background:#000;color:#fff}
+    #panel-mayores.am-hc .disclaimer{background:#fff;color:#000;border:2px solid #000}
   </style>
 </head>
 <body>
@@ -319,6 +384,7 @@
     <button class="tab-btn" data-panel="about">About (EN)</button>
     <button class="tab-btn" data-panel="gcba">GCBA</button>
     <button class="tab-btn" data-panel="comuna_07">Comuna_07</button>
+    <button class="tab-btn" data-panel="mayores">Adultos Mayores</button>
     <a href="/docs" class="docs" target="_blank" rel="noopener">API Docs</a>
   </nav>
 
@@ -2682,6 +2748,404 @@
     </div>
   </div>
 
+  <!-- ====================== ADULTOS MAYORES ====================== -->
+  <div class="panel" id="panel-mayores" aria-labelledby="am-titulo">
+    <div class="wrap wrap-wide">
+
+      <div class="am-toolbar" role="group" aria-label="Opciones de lectura de esta sección">
+        <span class="am-tb-label" id="am-fs-label">Tamaño de letra:</span>
+        <button type="button" data-am-fs="1" aria-pressed="true" aria-describedby="am-fs-label">A 100%</button>
+        <button type="button" data-am-fs="1.25" aria-pressed="false" aria-describedby="am-fs-label">A 125%</button>
+        <button type="button" data-am-fs="1.5" aria-pressed="false" aria-describedby="am-fs-label">A 150%</button>
+        <span class="am-tb-label" style="margin-left:.6rem">Contraste:</span>
+        <button type="button" id="am-hc-btn" aria-pressed="false">Alto contraste</button>
+      </div>
+
+      <div class="card">
+        <h2 id="am-titulo">Adultos Mayores y Discapacidad: Tipologías, Certificación y Derechos</h2>
+        <div class="am-resumen"><strong>En resumen</strong>
+          Envejecer no es tener una discapacidad. Cuando una limitación de la salud, sumada a las barreras
+          del entorno, restringe la vida diaria de una persona mayor, puede certificarse con el CUD y da
+          derecho a cobertura integral (100%) de las prestaciones vinculadas.
+        </div>
+        <div class="am-subnav" role="group" aria-label="Secciones de Adultos Mayores">
+          <button type="button" class="am-pill" data-am-sub="panorama" aria-pressed="true" aria-controls="am-sub-panorama">Panorama</button>
+          <button type="button" class="am-pill" data-am-sub="tipologias" aria-pressed="false" aria-controls="am-sub-tipologias">Tipologías</button>
+          <button type="button" class="am-pill" data-am-sub="diferencial" aria-pressed="false" aria-controls="am-sub-diferencial">Vejez vs. discapacidad</button>
+          <button type="button" class="am-pill" data-am-sub="certificacion" aria-pressed="false" aria-controls="am-sub-certificacion">Guía CUD</button>
+          <button type="button" class="am-pill" data-am-sub="derechos" aria-pressed="false" aria-controls="am-sub-derechos">Derechos</button>
+          <button type="button" class="am-pill" data-am-sub="tratamientos" aria-pressed="false" aria-controls="am-sub-tratamientos">Tratamientos de vanguardia</button>
+          <button type="button" class="am-pill" data-am-sub="territorio" aria-pressed="false" aria-controls="am-sub-territorio">Datos y mapa</button>
+          <button type="button" class="am-pill" data-am-sub="calculadora" aria-pressed="false" aria-controls="am-sub-calculadora">Calculadora de derechos</button>
+          <button type="button" class="am-pill" data-am-sub="recursos" aria-pressed="false" aria-controls="am-sub-recursos">Recursos y modelos</button>
+        </div>
+      </div>
+
+      <!-- ---------- Panorama ---------- -->
+      <section class="am-sub visible" id="am-sub-panorama" aria-label="Panorama">
+        <div class="card">
+          <h2>Marco conceptual</h2>
+          <div class="am-resumen"><strong>En resumen</strong>
+            Según la CIF (OMS), la discapacidad no está solo en el cuerpo: surge de la interacción entre
+            una condición de salud y las barreras del entorno.
+          </div>
+          <ul class="simple-list">
+            <li><strong>Envejecimiento fisiológico habitual:</strong> cambios graduales y esperables (menos fuerza,
+              vista cansada, olvidos leves) que no impiden realizar las actividades de la vida diaria.</li>
+            <li><strong>Discapacidad adquirida o asociada a la edad:</strong> una deficiencia corporal (por ejemplo,
+              una secuela de ACV o una demencia) que, junto a las barreras del entorno, limita la actividad
+              y restringe la participación social.</li>
+            <li><strong>Enfoque CIF:</strong> se evalúan tres planos — funciones y estructuras corporales,
+              actividad, y participación — y los factores ambientales (vivienda, transporte, apoyos).</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h2>Indicadores demográficos rápidos</h2>
+          <div class="stat-grid">
+            <div class="stat-box"><div class="num">16,2%</div><div class="label">Población de 60+ años (más de 7,4 millones)</div></div>
+            <div class="stat-box"><div class="num">11,9%</div><div class="label">Población de 65+ años (10,2% en el Censo 2010)</div></div>
+            <div class="stat-box"><div class="num">53</div><div class="label">Personas de 65+ por cada 100 menores de 15 (24 en 1970)</div></div>
+            <div class="stat-box"><div class="num">228</div><div class="label">Mujeres por cada 100 varones a los 85+ años</div></div>
+            <div class="stat-box"><div class="num">22,3%</div><div class="label">De los CUD vigentes corresponde a personas de 65+</div></div>
+            <div class="stat-box"><div class="num">+52%</div><div class="label">De esos diagnósticos son condiciones adquiridas a lo largo de la vida</div></div>
+          </div>
+          <p class="muted" style="margin-top:.8rem">Fuentes: Censo Nacional 2022 (INDEC); Registro Nacional de Personas con
+            Discapacidad (Secretaría Nacional de Discapacidad, ex ANDIS). Valores de referencia: verificá la última
+            publicación oficial antes de citarlos.</p>
+        </div>
+      </section>
+
+      <!-- ---------- Tipologías ---------- -->
+      <section class="am-sub" id="am-sub-tipologias" aria-label="Tipologías de discapacidad en personas mayores">
+        <div class="card">
+          <h2>Tipologías de discapacidad en personas mayores</h2>
+          <div class="am-resumen"><strong>En resumen</strong>
+            Seis grandes grupos. Para cada uno: causas frecuentes, cómo afecta la vida diaria y qué apoyos existen.
+          </div>
+          <div class="am-table-wrap">
+            <table class="tbl">
+              <caption>Tipologías, etiologías frecuentes, impacto funcional y apoyos</caption>
+              <thead>
+                <tr><th scope="col">Tipología</th><th scope="col">Principales etiologías / patologías</th>
+                  <th scope="col">Impacto funcional y barreras</th><th scope="col">Adaptaciones / tecnologías de apoyo</th></tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">Motora / Neuromotora</th>
+                  <td>Artrosis severa, secuelas de ACV, enfermedad de Parkinson, fracturas (por ejemplo, de cadera), sarcopenia severa.</td>
+                  <td>Pérdida de bipedestación, marcha inestable, dificultad en motricidad fina y en transferencias (cama-silla).</td>
+                  <td>Andadores, sillas de ruedas (manuales o motorizadas), barras de apoyo, rampas, calzadores adaptados.</td></tr>
+                <tr><th scope="row">Sensorial: Visual</th>
+                  <td>Degeneración macular asociada a la edad (DMAE), retinopatía diabética, glaucoma avanzado, cataratas inoperables.</td>
+                  <td>Reducción de agudeza y campo visual, pérdida de sensibilidad al contraste, riesgo elevado de caídas.</td>
+                  <td>Lectores de pantalla, macrotexto, contrastes altos, bastones guía, iluminación regulada sin deslumbramiento.</td></tr>
+                <tr><th scope="row">Sensorial: Auditiva</th>
+                  <td>Presbiacusia bilateral progresiva, otoesclerosis, trauma acústico acumulado.</td>
+                  <td>Aislamiento social, pérdida de inteligibilidad del habla en ambientes ruidosos, fatiga cognitiva por sobreesfuerzo auditivo.</td>
+                  <td>Audífonos calibrados, implantes cocleares o de conducción ósea, subtitulado automático, timbres lumínicos.</td></tr>
+                <tr><th scope="row">Mental / Cognitiva</th>
+                  <td>Demencias neurodegenerativas (Alzheimer, demencia vascular, frontotemporal, por cuerpos de Lewy).</td>
+                  <td>Pérdida progresiva de memoria episódica, desorientación temporoespacial, afasia, apraxia, pérdida de autonomía en las actividades básicas de la vida diaria (ABVD).</td>
+                  <td>Estimulación cognitiva, pictogramas y señalética en el hogar, pulseras o rastreadores geolocalizados, simplificación de rutinas.</td></tr>
+                <tr><th scope="row">Visceral / Orgánica</th>
+                  <td>Insuficiencia cardíaca severa (clases NYHA III/IV), EPOC avanzado, insuficiencia renal crónica terminal (diálisis).</td>
+                  <td>Fatiga extrema ante esfuerzos mínimos, disnea, requerimiento continuo de oxígeno o de tratamiento sustitutivo.</td>
+                  <td>Concentradores de oxígeno portátiles, vivienda sin desniveles, sillas de descanso intermedias.</td></tr>
+                <tr><th scope="row">Múltiple / Compleja</th>
+                  <td>Combinaciones frecuentes: motora + auditiva o visual; ACV con secuela física y afasia o deterioro cognitivo.</td>
+                  <td>Superposición de barreras del entorno; alto requerimiento de asistencia de terceras personas.</td>
+                  <td>Cuidados domiciliarios integrales, sistemas aumentativos y alternativos de comunicación (SAAC).</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ---------- Diagnóstico diferencial ---------- -->
+      <section class="am-sub" id="am-sub-diferencial" aria-label="Diagnóstico diferencial: vejez versus discapacidad">
+        <div class="card">
+          <h2>Diagnóstico diferencial: vejez vs. discapacidad</h2>
+          <div class="am-resumen"><strong>En resumen</strong>
+            Una limitación pasa a ser certificable cuando es persistente, tiene un diagnóstico de base
+            y le impide a la persona hacer sola actividades que antes hacía.
+          </div>
+          <h3>Guía para familias y cuidadores: señales para consultar</h3>
+          <ul class="simple-list">
+            <li>Necesita ayuda para bañarse, vestirse, comer, ir al baño o levantarse de la cama (actividades básicas).</li>
+            <li>Ya no puede manejar dinero, medicación, compras o transporte sin ayuda (actividades instrumentales).</li>
+            <li>Tuvo caídas repetidas, se desorienta en lugares conocidos o deja de reconocer personas.</li>
+            <li>No entiende conversaciones aun con audífonos, o no puede leer aun con anteojos.</li>
+            <li>Se agita o se fatiga con esfuerzos mínimos, o depende de oxígeno o diálisis.</li>
+            <li>La situación dura más de unos meses o empeora, aun con tratamiento.</li>
+          </ul>
+          <h3>Criterios CIF</h3>
+          <div class="am-table-wrap">
+            <table class="tbl">
+              <caption>Cómo se distingue un cambio de la edad de una discapacidad certificable</caption>
+              <thead><tr><th scope="col">Dimensión</th><th scope="col">Envejecimiento habitual</th><th scope="col">Discapacidad certificable</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Déficit orgánico</th><td>Leve, gradual, sin diagnóstico de enfermedad.</td><td>Deficiencia con diagnóstico de base y estudios que la documentan.</td></tr>
+                <tr><th scope="row">Actividad</th><td>Mantiene autonomía; puede tardar más.</td><td>Requiere ayuda de terceros o de apoyos técnicos (escalas Barthel, Katz, Lawton-Brody).</td></tr>
+                <tr><th scope="row">Participación</th><td>Sostiene su vida social y comunitaria.</td><td>Restricción de la participación (aislamiento, abandono de actividades).</td></tr>
+                <tr><th scope="row">Entorno</th><td>Las barreras no impiden la vida diaria.</td><td>Las barreras del hogar o del entorno agravan la limitación.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="disclaimer" style="margin-top:1rem">Esta guía orienta a las familias; no reemplaza la evaluación médica ni la de la junta evaluadora.</div>
+        </div>
+      </section>
+
+      <!-- ---------- Guía de certificación ---------- -->
+      <section class="am-sub" id="am-sub-certificacion" aria-label="Guía de certificación CUD para adultos mayores">
+        <div class="card">
+          <h2>Guía de certificación (CUD) para adultos mayores</h2>
+          <div class="am-resumen"><strong>En resumen</strong>
+            Juntá informes de especialistas recientes (menos de 6 meses) y los estudios de tu condición.
+            Si la persona no puede trasladarse, pedí la evaluación en el domicilio.
+          </div>
+          <h3>Requisitos y documentación clínica</h3>
+          <ul class="simple-list">
+            <li>Informes de especialistas con fecha de emisión no mayor a 6 meses, con diagnóstico, evolución y tratamiento.</li>
+            <li>Estudios complementarios según la patología:
+              <ul class="simple-list">
+                <li>Auditiva: audiometría tonal y logoaudiometría.</li>
+                <li>Visual: agudeza visual con corrección y campimetría.</li>
+                <li>Neurológica / motora: resonancia o tomografía, según el caso.</li>
+                <li>Funcionalidad: escalas Barthel, Katz o Lawton-Brody.</li>
+                <li>Cognitiva: evaluación neurocognitiva integral (MMSE / MoCA).</li>
+              </ul>
+            </li>
+            <li>DNI, y la credencial de la obra social, PAMI o prepaga si la tiene.</li>
+          </ul>
+          <h3>Evaluación domiciliaria o en la institución</h3>
+          <ul class="simple-list">
+            <li>Si la persona está inmovilizada o no puede trasladarse, se puede pedir que la junta evaluadora
+              (junta itinerante o domiciliaria) la evalúe en su casa o en la residencia donde vive.</li>
+            <li>Pedilo por escrito en la junta de tu jurisdicción, adjuntando un certificado médico que indique la
+              imposibilidad de traslado. En <em>Recursos y modelos</em> hay un modelo de nota.</li>
+            <li>Guardá copia sellada o el número de trámite: sirve para reclamar si hay demora.</li>
+          </ul>
+          <p><button type="button" class="btn-sm" onclick="switchTab('cud')">Ver la pestaña CUD (trámite y beneficios)</button></p>
+        </div>
+      </section>
+
+      <!-- ---------- Marco jurídico ---------- -->
+      <section class="am-sub" id="am-sub-derechos" aria-label="Marco jurídico y derechos esenciales">
+        <div class="card">
+          <h2>Marco jurídico y derechos esenciales</h2>
+          <div class="am-resumen"><strong>En resumen</strong>
+            Con el CUD, la obra social, PAMI o la prepaga deben cubrir al 100% las prestaciones vinculadas a la discapacidad.
+            Las personas mayores tienen además una convención propia con jerarquía constitucional.
+          </div>
+          <h3>Cobertura prestacional al 100% (obras sociales, PAMI y prepagas)</h3>
+          <ul class="simple-list">
+            <li>Rehabilitación motora, kinesiología y terapia ocupacional.</li>
+            <li>Medicación específica del cuadro de base.</li>
+            <li>Dispositivos de ayuda técnica, prótesis y órtesis.</li>
+            <li>Acompañante terapéutico, cuidador domiciliario, centro de día y residencia de larga estadía especializada.</li>
+          </ul>
+          <h3>Instrumentos legales</h3>
+          <ul class="simple-list">
+            <li><strong>Convención Interamericana sobre la Protección de los Derechos Humanos de las Personas Mayores:</strong>
+              aprobada por la Ley 27.360 (2017); tiene jerarquía constitucional desde la Ley 27.700 (2022).</li>
+            <li><strong>Ley 22.431:</strong> sistema de protección integral de las personas con discapacidad.</li>
+            <li><strong>Ley 24.901:</strong> sistema de prestaciones básicas en habilitación y rehabilitación integral.</li>
+            <li><strong>Código Civil y Comercial:</strong> régimen de apoyos y salvaguardias para el ejercicio de la capacidad
+              jurídica (arts. 31 a 50); la curatela queda como excepción. Apoyar no es sustituir la voluntad de la persona.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ---------- Tratamientos de vanguardia para personas mayores ---------- -->
+      <section class="am-sub" id="am-sub-tratamientos" aria-label="Tratamientos de vanguardia para personas mayores">
+        <div class="card">
+          <h2>Tratamientos de vanguardia para personas mayores</h2>
+          <div class="am-resumen"><strong>En resumen</strong>
+            Avances para las causas de discapacidad más frecuentes en la vejez: Alzheimer, degeneración macular,
+            Parkinson, secuelas de ACV, enfermedad valvular y sarcopenia. Cada tarjeta indica si está aprobado
+            en Argentina o solo en el exterior.
+          </div>
+          <div class="disclaimer">⚕️ Información educativa: no es consejo médico ni recomendación de tratamiento.
+            Toda decisión terapéutica la toma un profesional de la salud habilitado.</div>
+          <label for="am-trat-filtro" style="font-weight:600;color:#2f80c0;display:block;margin-bottom:.3rem">Mostrar:</label>
+          <select id="am-trat-filtro" style="margin-bottom:1rem">
+            <option value="">Todas las condiciones</option>
+            <option value="cognitiva">Cognitiva (demencias)</option>
+            <option value="visual">Visual (degeneración macular)</option>
+            <option value="motora">Motora (Parkinson, ACV, sarcopenia)</option>
+            <option value="organica">Orgánica (corazón)</option>
+            <option value="auditiva">Auditiva</option>
+            <option value="mental">Salud mental</option>
+          </select>
+          <div id="am-trat-lista" aria-live="polite"><p class="loading">Cargando tratamientos...</p></div>
+        </div>
+        <div class="card">
+          <h2>Cómo acceder</h2>
+          <ul class="simple-list">
+            <li><strong>Aprobado en Argentina:</strong> con CUD y prescripción, la obra social, PAMI o la prepaga debe cubrirlo
+              (Ley 24.901). Si lo niegan, usá los modelos de reclamo de <em>Recursos y modelos</em>.</li>
+            <li><strong>Aprobado solo en el exterior:</strong> el médico puede pedir la importación para un paciente puntual
+              por el Régimen de Acceso de Excepción a Medicamentos de ANMAT (Disposición 10401/2016).</li>
+            <li><strong>En investigación:</strong> solo dentro de un ensayo clínico autorizado. Buscá ensayos que reclutan en Argentina en
+              <a href="https://clinicaltrials.gov/search?country=Argentina" target="_blank" rel="noopener">ClinicalTrials.gov ↗</a>.</li>
+          </ul>
+          <p><button type="button" class="btn-sm" onclick="switchTab('vanguardia')">Ver el catálogo completo de Vanguardia</button></p>
+        </div>
+      </section>
+
+      <!-- ---------- Datos territoriales ---------- -->
+      <section class="am-sub" id="am-sub-territorio" aria-label="Datos demográficos y mapa provincial">
+        <div class="card">
+          <h2>Mapa provincial de envejecimiento</h2>
+          <div class="am-resumen"><strong>En resumen</strong>
+            CABA es la jurisdicción más envejecida (más mayores que niños); NEA y Patagonia Sur, las más jóvenes.
+            Elegí qué indicador ver en el mapa.
+          </div>
+          <div class="form-row">
+            <label for="am-metrica" style="font-weight:600;color:#2f80c0">Indicador:</label>
+            <select id="am-metrica">
+              <option value="indice">Índice de envejecimiento (65+ por cada 100 de 0-14)</option>
+              <option value="pct">% de población de 65+ años</option>
+              <option value="cud">% de los CUD del país (65+)</option>
+            </select>
+          </div>
+          <div id="am-mapa" class="map-container am-map" role="img" aria-label="Mapa de Argentina con el indicador elegido por provincia. Los mismos datos están en la tabla siguiente."></div>
+          <div class="map-legend"><span id="am-leg-min">—</span><span class="legend-bar"></span><span id="am-leg-max">—</span>
+            <span class="muted">Gris: sin dato en la fuente. Los valores de NOA, NEA y Patagonia Sur son rangos regionales (se muestra el punto medio).</span></div>
+
+          <h3>Tabla por región / jurisdicción</h3>
+          <div class="am-table-wrap">
+            <table class="tbl">
+              <caption>Censo 2022 (INDEC). Valores aproximados donde se indica un rango.</caption>
+              <thead><tr><th scope="col">Región / jurisdicción</th><th scope="col">% población 65+</th>
+                <th scope="col">Índice de envejecimiento</th><th scope="col">Perfil sociosanitario</th></tr></thead>
+              <tbody id="am-tabla-regiones"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Semáforo territorial: envejecimiento vs. certificación</h2>
+          <div class="am-resumen"><strong>En resumen</strong>
+            Compara la parte de los CUD de mayores que tiene cada jurisdicción con su parte de la población.
+            Un cociente bajo en un distrito envejecido sugiere subregistro o barreras de acceso a las juntas.
+          </div>
+          <div class="am-table-wrap">
+            <table class="tbl">
+              <caption>Cociente = % de CUD 65+ del país ÷ % de la población total del país (Censo 2022). Indicador orientativo.</caption>
+              <thead><tr><th scope="col">Jurisdicción</th><th scope="col">% CUD 65+</th><th scope="col">% población</th>
+                <th scope="col">Cociente</th><th scope="col">Semáforo</th></tr></thead>
+              <tbody id="am-tabla-semaforo"></tbody>
+            </table>
+          </div>
+          <p class="muted" style="margin-top:.6rem">Verde: cociente ≥ 1. Amarillo: entre 0,9 y 1. Rojo: menor a 0,9.
+            Es una aproximación: usa la población total, no la de 65+, porque la fuente no publica la serie por provincia y edad.</p>
+        </div>
+
+        <div class="comuna-grid">
+          <div class="card">
+            <h3>Distribución de los CUD de personas de 65+ (RNPcD)</h3>
+            <div class="chart-box" style="height:240px"><canvas id="am-chart-cud" aria-label="Gráfico de barras: Buenos Aires 40,4%, CABA 9,6%, Santa Fe 7,5%, Córdoba 6,7%, Mendoza 4,9%, resto del país 30,9%" role="img"></canvas></div>
+          </div>
+          <div class="card">
+            <h3>Cobertura previsional del universo 65+ (SIPA / ANSES)</h3>
+            <div class="chart-box" style="height:240px"><canvas id="am-chart-previsional" aria-label="Gráfico de barras: 65% jubilación contributiva o moratoria, 25% pensiones, 10% sin cobertura previsional directa" role="img"></canvas></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Matriz ANSES – PAMI: cobertura, ingresos y dependencia</h2>
+          <div class="am-tree" role="img" aria-label="Esquema: del universo 65+, alrededor del 90% tiene cobertura previsional (65% jubilación, 25% pensiones) y 10% no tiene cobertura previsional directa.">[ Universo 65+ años en Argentina ]
+  │
+  ├── Cobertura previsional (SIPA / ANSES): ~90%
+  │     ├── ~65% jubilación contributiva o por moratoria (PAMI como efector principal)
+  │     ├── ~25% pensiones (PUAM y no contributivas)
+  │     └── ~10% sin cobertura previsional directa
+  │
+  └── Vulnerabilidad funcional y económica:
+        ├── 72% de brecha de ingresos previsionales medios por género
+        ├── 87,4% de los titulares de CUD mayores no participa del mercado laboral
+        └── 14,2% del gasto del hogar va a salud cuando conviven 2 o más mayores</div>
+          <h3>Impacto en PAMI</h3>
+          <ul class="simple-list">
+            <li>Más de 5 millones de personas afiliadas, con mayor proporción en el AMBA, Santa Fe y Córdoba.</li>
+            <li>Principal financiador de ayudas técnicas: sillas de ruedas, camas ortopédicas, audífonos y oxigenoterapia domiciliaria.</li>
+            <li>La PUAM (Pensión Universal para el Adulto Mayor) paga el 80% del haber mínimo: la brecha frente al costo de un
+              cuidador particular es severa para quien no logra certificar el CUD.</li>
+          </ul>
+          <p class="muted">Fuentes: Tablero de Personas Mayores (INDEC); Secretaría de Seguridad Social (ANSES); PAMI.</p>
+        </div>
+      </section>
+
+      <!-- ---------- Calculadora de derechos ---------- -->
+      <section class="am-sub" id="am-sub-calculadora" aria-label="Calculadora de derechos por condición y cobertura">
+        <div class="card">
+          <h2>Calculadora de derechos por condición y cobertura</h2>
+          <div class="am-resumen"><strong>En resumen</strong>
+            Elegí los cuatro datos y obtené: qué documentación pedir, qué normas te amparan y a dónde reclamar.
+          </div>
+          <form class="am-form" id="am-calc" onsubmit="return false">
+            <div><label for="am-prov">Provincia de residencia</label><select id="am-prov"></select></div>
+            <div><label for="am-edad">Rango de edad</label>
+              <select id="am-edad"><option value="60">60 a 74 años</option><option value="75">75 años o más</option></select></div>
+            <div><label for="am-cob">Cobertura de salud</label>
+              <select id="am-cob">
+                <option value="pami">PAMI (jubilación, pensión o PUAM)</option>
+                <option value="osn">Obra social nacional</option>
+                <option value="osp">Obra social provincial</option>
+                <option value="prepaga">Prepaga</option>
+                <option value="ninguna">Sin cobertura (sistema público)</option>
+              </select></div>
+            <div><label for="am-tipo">Tipo de limitación funcional</label>
+              <select id="am-tipo">
+                <option value="motora">Motora</option><option value="visual">Visual</option>
+                <option value="auditiva">Auditiva</option><option value="cognitiva">Cognitiva</option>
+                <option value="organica">Orgánica (visceral)</option>
+              </select></div>
+          </form>
+          <div class="am-out" id="am-calc-out" aria-live="polite"></div>
+          <div class="disclaimer" style="margin-top:1rem">Orientación general, no asesoramiento legal ni médico. Cada junta
+            evaluadora puede pedir estudios adicionales.</div>
+        </div>
+      </section>
+
+      <!-- ---------- Recursos ---------- -->
+      <section class="am-sub" id="am-sub-recursos" aria-label="Directorio y recursos de soporte">
+        <div class="card">
+          <h2>Modelos de notas y reclamos</h2>
+          <div class="am-resumen"><strong>En resumen</strong>
+            Completá los datos entre corchetes, imprimí dos copias y pedí que te sellen una. Para un amparo hace
+            falta un abogado: la Defensoría Pública o los consultorios jurídicos gratuitos pueden patrocinarte.
+          </div>
+          <div id="am-modelos"></div>
+        </div>
+        <div class="card">
+          <h2>Dónde buscar centros y prestadores</h2>
+          <ul class="simple-list">
+            <li><a href="https://sisa.msal.gov.ar/" target="_blank" rel="noopener">SISA – Registro Federal de Establecimientos de Salud (REFES) ↗</a>:
+              buscador oficial de establecimientos, incluidos centros de rehabilitación.</li>
+            <li><a href="https://www.pami.org.ar/" target="_blank" rel="noopener">PAMI ↗</a>: cartilla de prestadores por agencia.</li>
+            <li>Las pestañas <button type="button" class="btn-sm" onclick="switchTab('gcba')">GCBA</button> y
+              <button type="button" class="btn-sm" onclick="switchTab('estadistico')">Estadístico</button> tienen mapas de servicios.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h2>Canales de reclamo y denuncia</h2>
+          <dl>
+            <div class="kv-row"><dt>PAMI</dt><dd>Línea 138 (gratuita) o la agencia más cercana.</dd></div>
+            <div class="kv-row"><dt>Superintendencia de Servicios de Salud</dt><dd>0800-222-72583 —
+              <a href="https://www.sssalud.gob.ar/" target="_blank" rel="noopener">sssalud.gob.ar ↗</a> (obras sociales nacionales y prepagas).</dd></div>
+            <div class="kv-row"><dt>Defensoría del Pueblo de la Nación</dt><dd>
+              <a href="https://www.dpn.gob.ar/" target="_blank" rel="noopener">dpn.gob.ar ↗</a></dd></div>
+            <div class="kv-row"><dt>ANSES</dt><dd>Línea 130 — <a href="https://www.anses.gob.ar/" target="_blank" rel="noopener">anses.gob.ar ↗</a> (jubilaciones, PUAM, pensiones).</dd></div>
+            <div class="kv-row"><dt>Obras sociales provinciales</dt><dd>Defensoría del Pueblo de tu provincia o ciudad.</dd></div>
+          </dl>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
   <!-- ====================== INFO LEGAL / AUTOR ====================== -->
   <div class="info-section">
 
@@ -3129,6 +3593,7 @@
       if (name === 'estadistico') initEstadistico();
       if (name === 'gcba') initGcba();
       if (name === 'comuna_07') initComuna07();
+      if (name === 'mayores') initMayores();
       if (name === 'tea') initTea();
       if (name === 'medico') initMedicoExtra();
       if (name === 'tratamientos') {
@@ -4532,6 +4997,406 @@
       renderBarChart('chart-cud', d.cud.labels, d.cud.values, { color: '#3d8c6a', thick: 22 });
       renderBarChart('chart-pension', d.pension.labels, d.pension.values, { color: '#ff8a65', thick: 20 });
       renderBarChart('chart-conectividad', d.conectividad.labels, d.conectividad.values, { color: '#ff8a65', thick: 22 });
+    }
+
+    /* ---------- Adultos Mayores ---------- */
+    // Regiones del Censo 2022 (INDEC). Donde la fuente da un rango, se guarda el rango y
+    // el mapa usa el punto medio. cud = % de los CUD 65+ del país (RNPcD); pob = % de la
+    // población total del país (Censo 2022), usado solo por el semáforo.
+    const AM_REGIONES = [
+      { region: 'CABA (Ciudad de Buenos Aires)', provs: ['caba'], pct: [17.7, 17.7], indice: [117, 117],
+        perfil: 'Envejecimiento muy avanzado (más mayores que niños). Concentración crítica de hogares unipersonales y alta demanda de cuidados domiciliarios.' },
+      { region: 'Santa Fe', provs: ['santa fe'], pct: [12.4, 12.4], indice: [58, 61], aprox: true,
+        perfil: 'Envejecimiento avanzado. Alta densidad de adultos mayores en el cordón industrial y en Rosario y Santa Fe capital.' },
+      { region: 'La Pampa', provs: ['la pampa'], pct: [12.2, 12.2], indice: [56, 59], aprox: true,
+        perfil: 'Población rural dispersa y centros urbanos envejecidos; dispersión de prestadores médicos.' },
+      { region: 'Córdoba', provs: ['cordoba'], pct: [11.8, 11.8], indice: [53, 56], aprox: true,
+        perfil: 'Gran volumen poblacional; polo receptor de derivaciones complejas en la región centro.' },
+      { region: 'Provincia de Buenos Aires', provs: ['buenos aires'], pct: [11.5, 11.5], indice: [50, 53], aprox: true,
+        perfil: 'Concentra el 40,4% de los CUD emitidos del país; contraste severo entre el conurbano y el interior.' },
+      { region: 'Mendoza / Entre Ríos', provs: ['mendoza', 'entre rios'], pct: [10.8, 11.2], indice: [48, 52],
+        perfil: 'Rango intermedio nacional; envejecimiento progresivo en áreas metropolitanas.' },
+      { region: 'NOA (Salta, Jujuy, Tucumán)', provs: ['salta', 'jujuy', 'tucuman'], pct: [8.5, 9.5], indice: [35, 42],
+        perfil: 'Estructura con mayor peso joven, pero barreras geográficas críticas para llegar a las juntas evaluadoras.' },
+      { region: 'NEA (Misiones, Chaco, Formosa)', provs: ['misiones', 'chaco', 'formosa'], pct: [7.8, 8.8], indice: [32, 38],
+        perfil: 'Las poblaciones más jóvenes del país; tasas elevadas de dependencia económica y vulnerabilidad social.' },
+      { region: 'Patagonia Sur (Tierra del Fuego, Santa Cruz)', provs: ['tierra del fuego', 'santa cruz'], pct: [6.0, 7.2], indice: [22, 28],
+        perfil: 'Pirámide joven por migración laboral; pocos mayores en números absolutos, pero traslados e infraestructura especializada muy costosos.' },
+    ];
+    const AM_CUD = [
+      { nombre: 'Provincia de Buenos Aires', prov: 'buenos aires', cud: 40.4, pob: 38.2 },
+      { nombre: 'CABA', prov: 'caba', cud: 9.6, pob: 6.8 },
+      { nombre: 'Santa Fe', prov: 'santa fe', cud: 7.5, pob: 7.7 },
+      { nombre: 'Córdoba', prov: 'cordoba', cud: 6.7, pob: 8.4 },
+      { nombre: 'Mendoza', prov: 'mendoza', cud: 4.9, pob: 4.4 },
+      { nombre: 'Resto del país (19 provincias)', prov: null, cud: 30.9, pob: 34.5 },
+    ];
+    const AM_PROV_NOMBRE = {
+      'buenos aires': 'Buenos Aires', 'caba': 'Ciudad Autónoma de Buenos Aires', 'catamarca': 'Catamarca',
+      'chaco': 'Chaco', 'chubut': 'Chubut', 'cordoba': 'Córdoba', 'corrientes': 'Corrientes',
+      'entre rios': 'Entre Ríos', 'formosa': 'Formosa', 'jujuy': 'Jujuy', 'la pampa': 'La Pampa',
+      'la rioja': 'La Rioja', 'mendoza': 'Mendoza', 'misiones': 'Misiones', 'neuquen': 'Neuquén',
+      'rio negro': 'Río Negro', 'salta': 'Salta', 'san juan': 'San Juan', 'san luis': 'San Luis',
+      'santa cruz': 'Santa Cruz', 'santa fe': 'Santa Fe', 'santiago del estero': 'Santiago del Estero',
+      'tierra del fuego': 'Tierra del Fuego', 'tucuman': 'Tucumán',
+    };
+
+    function amFmt(n) { return String(Math.round(n * 10) / 10).replace('.', ','); }
+    function amRango(r) { return r[0] === r[1] ? amFmt(r[0]) : amFmt(r[0]) + ' – ' + amFmt(r[1]); }
+    function amMedio(r) { return (r[0] + r[1]) / 2; }
+
+    function amValorProvincia(prov, metrica) {
+      if (metrica === 'cud') {
+        const c = AM_CUD.find(x => x.prov === prov);
+        return c ? c.cud : null;
+      }
+      const reg = AM_REGIONES.find(x => x.provs.includes(prov));
+      if (!reg) return null;
+      return amMedio(metrica === 'pct' ? reg.pct : reg.indice);
+    }
+
+    let amMapa = null, amCapa = null;
+    function amDibujarMapa() {
+      if (!window.L) return;
+      const el = document.getElementById('am-mapa');
+      if (!amMapa) {
+        amMapa = L.map(el, { scrollWheelZoom: false }).setView([-38.5, -63.5], 4);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; OpenStreetMap', maxZoom: 8,
+        }).addTo(amMapa);
+      }
+      setTimeout(() => amMapa.invalidateSize(), 50);
+      if (amCapa) amCapa.remove();
+      amCapa = L.layerGroup().addTo(amMapa);
+      const metrica = document.getElementById('am-metrica').value;
+      const sufijo = metrica === 'indice' ? '' : '%';
+      const etiqueta = { indice: 'Índice de envejecimiento', pct: 'Población 65+', cud: 'CUD 65+ del país' }[metrica];
+      const valores = Object.keys(PROVINCIA_COORDS).map(p => amValorProvincia(p, metrica)).filter(v => v != null);
+      const min = Math.min(...valores), max = Math.max(...valores);
+      document.getElementById('am-leg-min').textContent = amFmt(min) + sufijo;
+      document.getElementById('am-leg-max').textContent = amFmt(max) + sufijo;
+      Object.keys(PROVINCIA_COORDS).forEach(p => {
+        const v = amValorProvincia(p, metrica);
+        const reg = AM_REGIONES.find(x => x.provs.includes(p));
+        L.circleMarker(PROVINCIA_COORDS[p], {
+          radius: p === 'caba' ? 9 : 13,
+          fillColor: v == null ? '#c9c9c9' : colorForValue(v, min, max),
+          color: '#1d5d8c', weight: 1, fillOpacity: 0.85,
+        }).bindPopup('<strong>' + escapeHtml(AM_PROV_NOMBRE[p] || p) + '</strong><br>' + etiqueta + ': ' +
+          (v == null ? '<span class="muted">sin dato en la fuente</span>' : amFmt(v) + sufijo +
+            (metrica !== 'cud' && reg && (reg.pct[0] !== reg.pct[1] || reg.aprox) ? ' <span class="muted">(aprox.)</span>' : ''))
+        ).addTo(amCapa);
+      });
+    }
+
+    function amSemaforo(c) {
+      const q = Math.round(c.cud / c.pob * 100) / 100;   // el color sigue al valor que se muestra
+      if (q >= 1) return { q, color: '#2e7d32', txt: 'Verde' };
+      if (q >= 0.9) return { q, color: '#d4a017', txt: 'Amarillo' };
+      return { q, color: '#c0392b', txt: 'Rojo' };
+    }
+
+    function amTablas() {
+      document.getElementById('am-tabla-regiones').innerHTML = AM_REGIONES.map(r =>
+        '<tr><th scope="row">' + escapeHtml(r.region) + '</th><td>' + (r.aprox ? '~' : '') +
+        amRango(r.pct) + '%</td><td>' + amRango(r.indice) + '</td><td>' + escapeHtml(r.perfil) + '</td></tr>').join('');
+      document.getElementById('am-tabla-semaforo').innerHTML = AM_CUD.map(c => {
+        const s = amSemaforo(c);
+        return '<tr><th scope="row">' + escapeHtml(c.nombre) + '</th><td>' + amFmt(c.cud) + '%</td><td>' + amFmt(c.pob) +
+          '%</td><td>' + s.q.toFixed(2).replace('.', ',') + '</td><td><span class="am-semaforo" style="background:' + s.color +
+          '" aria-hidden="true"></span>' + s.txt + '</td></tr>';
+      }).join('');
+    }
+
+    function amGraficos() {
+      if (!window.Chart) return;
+      const opciones = (sufijo) => ({
+        indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false },
+          tooltip: { backgroundColor: '#1d5d8c', callbacks: { label: ctx => amFmt(ctx.parsed.x) + sufijo } } },
+        scales: { x: { beginAtZero: true, grid: { color: '#eaf4fc' }, ticks: { color: '#888', callback: v => v + '%' } },
+                  y: { grid: { display: false }, ticks: { color: '#2f80c0' } } },
+      });
+      new Chart(document.getElementById('am-chart-cud'), {
+        type: 'bar',
+        data: { labels: AM_CUD.map(c => c.nombre), datasets: [{ data: AM_CUD.map(c => c.cud), backgroundColor: '#1a6aa8', borderRadius: 4, barThickness: 18 }] },
+        options: opciones('% de los CUD 65+'),
+      });
+      new Chart(document.getElementById('am-chart-previsional'), {
+        type: 'bar',
+        data: { labels: ['Jubilación contributiva o moratoria', 'Pensiones (PUAM / no contributivas)', 'Sin cobertura previsional directa'],
+                datasets: [{ data: [65, 25, 10], backgroundColor: ['#1a6aa8', '#3d8c6a', '#ff8a65'], borderRadius: 4, barThickness: 22 }] },
+        options: opciones('% del universo 65+'),
+      });
+    }
+
+    // Documentación orientativa que suele pedir la junta evaluadora, por tipo de limitación.
+    const AM_DOCS = {
+      motora: ['Informe de traumatología, neurología o fisiatría (menos de 6 meses).',
+               'Estudios por imágenes que documenten la lesión (radiografía, resonancia o tomografía).',
+               'Escala funcional de Barthel o Katz.', 'Informe de kinesiología, si hay tratamiento en curso.'],
+      visual: ['Informe oftalmológico (menos de 6 meses) con diagnóstico.',
+               'Agudeza visual con la mejor corrección en ambos ojos.',
+               'Campimetría computarizada.', 'Fondo de ojo u OCT, según la patología.'],
+      auditiva: ['Informe de otorrinolaringología (menos de 6 meses).',
+                 'Audiometría tonal y logoaudiometría.', 'Impedanciometría.',
+                 'Informe de adaptación de audífonos o implante, si los usa.'],
+      cognitiva: ['Informe de neurología, psiquiatría o geriatría (menos de 6 meses).',
+                  'Evaluación neurocognitiva integral (MMSE / MoCA o batería completa).',
+                  'Resonancia o tomografía de cerebro.', 'Escalas de Katz y Lawton-Brody (autonomía en la vida diaria).'],
+      organica: ['Informe del especialista (cardiología, neumonología o nefrología) de menos de 6 meses.',
+                 'Insuficiencia cardíaca: ecocardiograma con fracción de eyección y clase funcional NYHA.',
+                 'EPOC: espirometría y gases en sangre o saturometría; indicación de oxígeno si la tiene.',
+                 'Insuficiencia renal: laboratorio con filtrado glomerular o constancia de diálisis.'],
+    };
+    const AM_REGION_REMOTA = ['salta', 'jujuy', 'tucuman', 'misiones', 'chaco', 'formosa', 'tierra del fuego', 'santa cruz',
+      'catamarca', 'la rioja', 'santiago del estero', 'chubut', 'neuquen', 'rio negro', 'la pampa'];
+
+    function amCalcular() {
+      const prov = document.getElementById('am-prov').value;
+      const edad = document.getElementById('am-edad').value;
+      const cob = document.getElementById('am-cob').value;
+      const tipo = document.getElementById('am-tipo').value;
+      const li = arr => '<ul class="simple-list">' + arr.map(x => '<li>' + x + '</li>').join('') + '</ul>';
+
+      const docs = AM_DOCS[tipo].map(escapeHtml).concat(['DNI y credencial de la cobertura de salud.']);
+      if (edad === '75') docs.push('Si no puede trasladarse: certificado médico de imposibilidad de traslado para pedir evaluación domiciliaria.');
+
+      const normas = [
+        'Ley 22.431 — sistema de protección integral de las personas con discapacidad.',
+        'Ley 24.901 — prestaciones básicas al 100% para personas con CUD.',
+        'Ley 27.360 — aprueba la Convención Interamericana sobre los Derechos Humanos de las Personas Mayores (jerarquía constitucional por Ley 27.700).',
+      ];
+      if (tipo === 'cognitiva') normas.push('Código Civil y Comercial, arts. 31 a 50 — sistema de apoyos para el ejercicio de la capacidad jurídica.');
+      if (cob === 'prepaga') normas.push('Ley 26.682 — las prepagas deben cubrir las prestaciones de la Ley 24.901.');
+      if (cob === 'osp') normas.push('Ley provincial de discapacidad y adhesión de la provincia a la Ley 24.901 (la cobertura depende de esa adhesión).');
+
+      const vias = {
+        pami: ['Reclamo por escrito en la agencia PAMI o por la línea 138; pedí número de reclamo.',
+               'Sin respuesta en un plazo razonable: Defensoría del Pueblo de la Nación.',
+               'Si la demora pone en riesgo la salud: amparo de salud (art. 43 de la Constitución) con patrocinio letrado.'],
+        osn: ['Reclamo por escrito a la obra social; pedí constancia.',
+              'Si no responde o rechaza: denuncia ante la Superintendencia de Servicios de Salud (0800-222-72583).',
+              'Urgencia o negativa reiterada: amparo de salud con patrocinio letrado.'],
+        prepaga: ['Reclamo por escrito a la prepaga; pedí constancia.',
+                  'Si no responde o rechaza: denuncia ante la Superintendencia de Servicios de Salud (0800-222-72583).',
+                  'Urgencia o negativa reiterada: amparo de salud con patrocinio letrado.'],
+        osp: ['Reclamo por escrito a la obra social provincial (no depende de la Superintendencia nacional).',
+              'Sin respuesta: Defensoría del Pueblo de la provincia.',
+              'Urgencia o negativa reiterada: amparo de salud ante la justicia provincial.'],
+        ninguna: ['Atención y prestaciones en el hospital público y el área de discapacidad de tu provincia o municipio.',
+                  'Si cobrás una pensión no contributiva, consultá la cobertura del programa Incluir Salud.',
+                  'Negativa o demora: Defensoría del Pueblo de la provincia o de la Nación; amparo si hay urgencia.'],
+      }[cob];
+
+      const junta = [];
+      junta.push('Pedí turno en la junta evaluadora de ' + escapeHtml(AM_PROV_NOMBRE[prov]) + ' (organismo provincial o municipal de discapacidad).');
+      if (AM_REGION_REMOTA.includes(prov)) junta.push('Si la junta queda lejos, preguntá por juntas itinerantes o por la evaluación en tu localidad.');
+      if (edad === '75') junta.push('Con 75 años o más y movilidad reducida, pedí por escrito la evaluación domiciliaria o en la residencia.');
+
+      document.getElementById('am-calc-out').innerHTML =
+        '<h4>Documentación médica para la junta</h4>' + li(docs) +
+        '<h4>Dónde se tramita</h4>' + li(junta) +
+        '<h4>Normativa aplicable</h4>' + li(normas.map(escapeHtml)) +
+        '<h4>Vía de reclamo si hay demora o negativa</h4>' + li(vias.map(escapeHtml));
+    }
+
+    const AM_MODELOS = [
+      { id: 'reclamo', titulo: 'Reclamo por demora o negativa de una prestación', texto:
+`[Lugar], [fecha]
+
+A: [Nombre de la obra social / PAMI / prepaga]
+Ref.: Reclamo por [demora / negativa] en la prestación de [prestación]
+
+Quien suscribe, [nombre y apellido], DNI [número], afiliado/a N.º [número], con Certificado Único de Discapacidad vigente N.º [número], se dirige a ustedes para reclamar la cobertura de [prestación: por ejemplo, cuidador domiciliario, silla de ruedas, kinesiología], indicada por [profesional] el [fecha], y solicitada el [fecha] con el trámite N.º [número].
+
+A la fecha no he recibido [la prestación / respuesta]. Les recuerdo que las Leyes 22.431 y 24.901 obligan a cubrir al 100% las prestaciones vinculadas a la discapacidad, y que la Convención Interamericana sobre la Protección de los Derechos Humanos de las Personas Mayores (Ley 27.360, con jerarquía constitucional por Ley 27.700) protege mi derecho a la salud y a los cuidados.
+
+Solicito que en el plazo de [5 / 10] días hábiles se autorice y provea la prestación. De lo contrario, haré la denuncia ante [la Superintendencia de Servicios de Salud / la Defensoría del Pueblo] y evaluaré las acciones judiciales que correspondan.
+
+Adjunto: copia del CUD, prescripción médica y constancia del pedido.
+
+Firma: ____________________
+Aclaración: [nombre y apellido]
+Teléfono / correo: [datos de contacto]` },
+      { id: 'domicilio', titulo: 'Pedido de evaluación domiciliaria a la junta', texto:
+`[Lugar], [fecha]
+
+A: Junta evaluadora de discapacidad de [jurisdicción]
+Ref.: Solicitud de evaluación domiciliaria para el Certificado Único de Discapacidad
+
+Quien suscribe, [nombre y apellido], DNI [número], en mi carácter de [la persona interesada / familiar / apoyo designado] de [nombre de la persona mayor], DNI [número], de [edad] años, solicito que la evaluación para el CUD se realice en [su domicilio / la institución donde reside]: [dirección completa].
+
+La persona no puede trasladarse por [motivo: inmovilidad, oxígeno continuo, demencia avanzada, etc.], según consta en el certificado médico adjunto, firmado por [profesional] el [fecha].
+
+Adjunto: certificado de imposibilidad de traslado, informes de especialistas de menos de 6 meses y estudios complementarios.
+
+Firma: ____________________
+Aclaración: [nombre y apellido]
+Teléfono / correo: [datos de contacto]` },
+    ];
+
+    function amModelos() {
+      document.getElementById('am-modelos').innerHTML = AM_MODELOS.map(m =>
+        '<details class="am-modelo" style="margin-bottom:.8rem"><summary style="cursor:pointer;font-weight:600;color:#2574b0">' + escapeHtml(m.titulo) + '</summary>' +
+        '<label for="am-modelo-' + m.id + '" class="muted" style="display:block;margin:.5rem 0 .3rem">Texto editable del modelo</label>' +
+        '<textarea id="am-modelo-' + m.id + '">' + escapeHtml(m.texto) + '</textarea>' +
+        '<div class="form-row"><button type="button" class="btn-sm" data-am-copiar="' + m.id + '">Copiar texto</button>' +
+        '<button type="button" class="btn-sm" data-am-bajar="' + m.id + '">Descargar (.txt)</button>' +
+        '<span class="muted" id="am-modelo-estado-' + m.id + '" aria-live="polite"></span></div></details>').join('');
+      document.querySelectorAll('[data-am-copiar]').forEach(b => b.addEventListener('click', async () => {
+        const id = b.dataset.amCopiar, t = document.getElementById('am-modelo-' + id);
+        const estado = document.getElementById('am-modelo-estado-' + id);
+        try { await navigator.clipboard.writeText(t.value); estado.textContent = 'Copiado.'; }
+        catch (e) { t.select(); estado.textContent = 'Seleccionado: usá Ctrl+C para copiar.'; }
+      }));
+      document.querySelectorAll('[data-am-bajar]').forEach(b => b.addEventListener('click', () => {
+        const id = b.dataset.amBajar;
+        const blob = new Blob([document.getElementById('am-modelo-' + id).value], { type: 'text/plain;charset=utf-8' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'modelo-' + id + '.txt';
+        document.body.appendChild(a); a.click(); a.remove();
+        setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+      }));
+    }
+
+    /* Tratamientos de vanguardia para personas mayores. Las tarjetas usan el mismo
+       formato que la pestaña Vanguardia (renderVanguardiaTipo). Los del catálogo
+       existente se leen de /api/vanguardia; los propios de la vejez viven acá para no
+       alterar ese catálogo. El enlace a PubMed es una búsqueda, no un PMID puntual. */
+    const AM_NORMAS = {   // mismas normas y URLs que NORMAS_AR en scripts/tratamientos_vanguardia.py
+      raem: { label: 'Disposición ANMAT 10401/2016 — Régimen de Acceso de Excepción a Medicamentos (importación para un paciente sin alternativa en el país)',
+              url: 'https://www.argentina.gob.ar/normativa/nacional/norma-265684/texto' },
+      ensayos: { label: 'Disposición ANMAT 7516/2025 — Buenas Prácticas Clínicas para ensayos clínicos (vigente desde el 1/12/2025)',
+                 url: 'https://www.boletinoficial.gob.ar/detalleAviso/primera/332695/20251009' },
+      productos_medicos: { label: 'Disposición ANMAT 2318/2002 — Registro obligatorio de productos médicos',
+                           url: 'https://www.argentina.gob.ar/normativa/nacional/norma-75867/texto' },
+    };
+    const AM_TRAT_CATALOGO = { 'mot-001': 'motora', 'aud-002': 'auditiva', 'psi-001': 'mental', 'psi-002': 'mental' };
+    const AM_TRAT_PROPIOS = [
+      { grupo: 'cognitiva', estado: 'aprobado_intl', normas: ['raem'],
+        nombre: 'Anticuerpos anti-amiloide (lecanemab, donanemab) para Alzheimer temprano',
+        descripcion_simple: 'Anticuerpos que retiran placas de proteína amiloide del cerebro. En los ensayos de fase III enlentecieron de forma moderada el deterioro (alrededor de un cuarto a un tercio en 18 meses) en personas con deterioro cognitivo leve o demencia leve y amiloide confirmado. No sirven en etapas avanzadas y pueden causar edema o microsangrados cerebrales (ARIA), por lo que exigen resonancias de control.',
+        disponibilidad_ar: 'Aprobados por FDA (2023 y 2024) y con autorización restringida en Europa. Consultá con el neurólogo su estado en ANMAT y la vía de acceso.',
+        q: 'lecanemab OR donanemab early Alzheimer' },
+      { grupo: 'visual', estado: 'aprobado_ar', normas: [],
+        nombre: 'Antiangiogénicos intravítreos para la degeneración macular húmeda',
+        descripcion_simple: 'Inyecciones en el ojo (ranibizumab, aflibercept y moléculas más nuevas de mayor duración) que frenan los vasos anómalos de la DMAE húmeda. Aplicadas a tiempo, conservan la visión en la mayoría de los pacientes; requieren controles y aplicaciones periódicas.',
+        disponibilidad_ar: 'Disponibles en Argentina en servicios de oftalmología. Son medicación de alto costo: con CUD y prescripción, la cobertura corresponde a la obra social, PAMI o la prepaga.',
+        q: 'anti-VEGF neovascular age-related macular degeneration' },
+      { grupo: 'visual', estado: 'aprobado_intl', normas: ['raem'],
+        nombre: 'Inhibidores del complemento para la atrofia geográfica (DMAE seca)',
+        descripcion_simple: 'Pegcetacoplan y avacincaptad pegol, inyectados en el ojo, reducen la velocidad con que crece la lesión de la DMAE seca avanzada. No recuperan la visión perdida.',
+        disponibilidad_ar: 'Aprobados por FDA en 2023; la agencia europea no aprobó pegcetacoplan. Consultá con el oftalmólogo su disponibilidad en el país.',
+        q: 'pegcetacoplan OR avacincaptad geographic atrophy' },
+      { grupo: 'motora', estado: 'aprobado_ar', normas: [],
+        nombre: 'Estimulación cerebral profunda para la enfermedad de Parkinson',
+        descripcion_simple: 'Electrodos implantados en el cerebro, conectados a un generador tipo marcapasos, que reducen el temblor, la rigidez y las fluctuaciones motoras cuando la medicación ya no alcanza.',
+        disponibilidad_ar: 'Se realiza en Argentina en centros de neurocirugía de alta complejidad, tras evaluación de un equipo especializado.',
+        q: 'deep brain stimulation Parkinson disease outcomes' },
+      { grupo: 'motora', estado: 'aprobado_intl', normas: ['productos_medicos'],
+        nombre: 'Ultrasonido focalizado guiado por resonancia para el temblor',
+        descripcion_simple: 'Ondas de ultrasonido concentradas en un punto del cerebro que reducen el temblor de un lado del cuerpo, sin incisiones ni implantes. Indicado en temblor esencial y en temblor de Parkinson.',
+        disponibilidad_ar: 'Aprobado por FDA (2016 y 2018). Requiere equipamiento específico: consultá con el neurólogo dónde se ofrece.',
+        q: 'MR-guided focused ultrasound tremor' },
+      { grupo: 'motora', estado: 'aprobado_intl', normas: ['raem'],
+        nombre: 'Levodopa subcutánea continua (foslevodopa/foscarbidopa) para Parkinson avanzado',
+        descripcion_simple: 'Una bomba portátil infunde la medicación bajo la piel durante las 24 horas, lo que reduce los períodos "off" sin necesidad de cirugía.',
+        disponibilidad_ar: 'Aprobada en Europa y por FDA (2024). Consultá con el neurólogo su estado en ANMAT.',
+        q: 'foslevodopa foscarbidopa subcutaneous Parkinson' },
+      { grupo: 'motora', estado: 'aprobado_intl', normas: ['productos_medicos'],
+        nombre: 'Estimulación del nervio vago asociada a rehabilitación tras un ACV',
+        descripcion_simple: 'Un pequeño implante estimula el nervio vago mientras la persona hace sus ejercicios de rehabilitación, lo que mejora la recuperación del brazo en secuelas crónicas de ACV isquémico.',
+        disponibilidad_ar: 'Aprobado por FDA en 2021. Sin registro conocido en Argentina: consultá con el fisiatra o el neurólogo.',
+        q: 'vagus nerve stimulation paired rehabilitation stroke upper limb' },
+      { grupo: 'motora', estado: 'fase2', normas: ['ensayos'],
+        nombre: 'Fármacos para la sarcopenia (en investigación)',
+        descripcion_simple: 'No hay ningún medicamento aprobado para la pérdida de masa muscular de la vejez; hay moléculas en ensayos de fase II. Hoy, lo que tiene mejor evidencia es el ejercicio de fuerza supervisado con un aporte adecuado de proteínas.',
+        disponibilidad_ar: 'Solo dentro de ensayos clínicos. El ejercicio supervisado (kinesiología) sí está cubierto con CUD.',
+        q: 'sarcopenia older adults pharmacological treatment trial' },
+      { grupo: 'organica', estado: 'aprobado_ar', normas: [],
+        nombre: 'Implante valvular aórtico transcatéter (TAVI)',
+        descripcion_simple: 'Reemplaza la válvula aórtica estrecha a través de un catéter, sin abrir el tórax. Es una opción para personas mayores con estenosis aórtica severa y alto riesgo quirúrgico.',
+        disponibilidad_ar: 'Se realiza en Argentina en centros de hemodinamia de alta complejidad.',
+        q: 'transcatheter aortic valve implantation elderly outcomes' },
+    ];
+
+    let amTratamientos = null;
+    async function amCargarTratamientos() {
+      if (!amTratamientos) {
+        const lista = document.getElementById('am-trat-lista');
+        let estados = {}, catalogo = [];
+        try {
+          const [e, c] = await Promise.all([fetchJSON('/api/vanguardia/estados'), fetchJSON('/api/vanguardia')]);
+          estados = e.estados || {};
+          catalogo = (c.tratamientos || []).filter(t => AM_TRAT_CATALOGO[t.id])
+            .map(t => Object.assign({}, t, { grupo: AM_TRAT_CATALOGO[t.id] }));
+        } catch (err) {
+          lista.innerHTML = '<p class="muted">No se pudo cargar el estado de aprobación; se muestran los tratamientos sin él.</p>';
+        }
+        const propios = AM_TRAT_PROPIOS.map(t => {
+          const est = estados[t.estado] || {};
+          return Object.assign({}, t, {
+            estado_icon: est.icon, estado_label: est.label,
+            disclaimer_especifico: est.descripcion_para_paciente,
+            normativa_ar: t.normas.map(n => AM_NORMAS[n]),
+            url_pubmed: 'https://pubmed.ncbi.nlm.nih.gov/?term=' + encodeURIComponent(t.q),
+          });
+        });
+        amTratamientos = propios.concat(catalogo);
+      }
+      const grupo = document.getElementById('am-trat-filtro').value;
+      const datos = amTratamientos.filter(t => !grupo || t.grupo === grupo);
+      document.getElementById('am-trat-lista').innerHTML = renderVanguardiaTipo({
+        nota_importante: datos.length + ' tratamientos. Los que tienen el botón de evidencia vienen del catálogo de Vanguardia del sitio.',
+        tratamientos: datos,
+      });
+    }
+
+    function amMostrarSub(sub) {
+      document.querySelectorAll('.am-pill').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.amSub === sub)));
+      document.querySelectorAll('.am-sub').forEach(s => s.classList.toggle('visible', s.id === 'am-sub-' + sub));
+      if (sub === 'territorio') amDibujarMapa();
+      if (sub === 'tratamientos') amCargarTratamientos();
+    }
+
+    function amAplicarLectura(fs, hc) {
+      const panel = document.getElementById('panel-mayores');
+      panel.style.setProperty('--am-fs', fs);
+      panel.classList.toggle('am-hc', hc);
+      document.querySelectorAll('[data-am-fs]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.amFs === fs)));
+      document.getElementById('am-hc-btn').setAttribute('aria-pressed', String(hc));
+      try { localStorage.setItem('am-lectura', JSON.stringify({ fs, hc })); } catch (e) {}
+    }
+
+    let mayoresInit = false;
+    function initMayores() {
+      if (mayoresInit) return;
+      mayoresInit = true;
+      let pref = { fs: '1', hc: false };
+      try { pref = Object.assign(pref, JSON.parse(localStorage.getItem('am-lectura') || '{}')); } catch (e) {}
+      amAplicarLectura(pref.fs, pref.hc);
+      document.querySelectorAll('[data-am-fs]').forEach(b => b.addEventListener('click', () =>
+        amAplicarLectura(b.dataset.amFs, document.getElementById('panel-mayores').classList.contains('am-hc'))));
+      document.getElementById('am-hc-btn').addEventListener('click', () => {
+        const panel = document.getElementById('panel-mayores');
+        amAplicarLectura(panel.style.getPropertyValue('--am-fs') || '1', !panel.classList.contains('am-hc'));
+      });
+      document.querySelectorAll('.am-pill').forEach(b => b.addEventListener('click', () => amMostrarSub(b.dataset.amSub)));
+
+      amTablas();
+      amGraficos();
+      amModelos();
+      document.getElementById('am-metrica').addEventListener('change', amDibujarMapa);
+      document.getElementById('am-trat-filtro').addEventListener('change', amCargarTratamientos);
+
+      const sel = document.getElementById('am-prov');
+      sel.innerHTML = Object.keys(AM_PROV_NOMBRE).sort((a, b) => AM_PROV_NOMBRE[a].localeCompare(AM_PROV_NOMBRE[b], 'es'))
+        .map(p => '<option value="' + p + '">' + escapeHtml(AM_PROV_NOMBRE[p]) + '</option>').join('');
+      sel.value = 'caba';
+      document.querySelectorAll('#am-calc select').forEach(s => s.addEventListener('change', amCalcular));
+      amCalcular();
     }
   </script>
 </body>
