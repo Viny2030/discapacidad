@@ -166,7 +166,9 @@ def _quitar_anios(query: str) -> tuple[str, bool]:
 
 def _pubmed_ids(term: str, max_results: int, reciente: bool) -> list[str]:
     params = {
-        "db": "pubmed", "term": term,
+        # Excluye estudios sólo en animales (p. ej. modelos en ratón). La forma
+        # NOT animals NOT humans conserva los artículos recientes aún sin MeSH.
+        "db": "pubmed", "term": f"({term}) NOT (animals[mh] NOT humans[mh])",
         "retmax": max_results, "retmode": "json", "sort": "pub_date",
     }
     if reciente:

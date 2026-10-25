@@ -306,7 +306,7 @@ def pubmed_search(query: str, max_results: int = 20) -> list[str]:
     """Devuelve lista de PMIDs para una query."""
     params = {
         "db":      "pubmed",
-        "term":    query,
+        "term":    f"({query}) NOT (animals[mh] NOT humans[mh])",  # excluye estudios sólo en animales
         "retmax":  max_results,
         "retmode": "json",
         "sort":    "pub_date",

@@ -874,7 +874,9 @@ def _pubmed_por_ids(ids: list[str]) -> list[dict]:
 
 def _pubmed_recientes(query: str, n: int = 3) -> list[dict]:
     ids = requests.get("https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi", params={
-        "db": "pubmed", "term": query, "retmax": n, "sort": "pub_date", "retmode": "json",
+        # Excluye estudios sólo en animales; conserva los recientes aún sin MeSH
+        "db": "pubmed", "term": f"({query}) NOT (animals[mh] NOT humans[mh])",
+        "retmax": n, "sort": "pub_date", "retmode": "json",
     }, timeout=10).json().get("esearchresult", {}).get("idlist", [])
     return _pubmed_por_ids(ids)
 

@@ -26,3 +26,6 @@ repo_descargado.zip
 repo_extraido_temp/
 
 exportar_pdf.py
+
+# Salidas locales de Claude
+Claude outputs/
