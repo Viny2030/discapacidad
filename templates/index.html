@@ -365,6 +365,11 @@
     #panel-mayores.am-hc .am-pill[aria-pressed="true"],
     #panel-mayores.am-hc .am-toolbar button[aria-pressed="true"]{background:#000;color:#fff}
     #panel-mayores.am-hc .disclaimer{background:#fff;color:#000;border:2px solid #000}
+    /* lengua de señas e inclusion laboral */
+    .ls-lista{margin:.3rem 0 .6rem 1.2rem;font-size:.9rem;line-height:1.55}
+    .ls-lista li{margin-bottom:.45rem}
+    .il-indice{font-size:.88rem;line-height:1.8}
+    table.il-prov td:last-child{font-size:.78rem;color:#5c4a08}
   </style>
 </head>
 <body>
@@ -384,6 +389,8 @@
     <button class="tab-btn" data-panel="about">About (EN)</button>
     <button class="tab-btn" data-panel="gcba">GCBA</button>
     <button class="tab-btn" data-panel="mayores">Adultos Mayores</button>
+    <button class="tab-btn" data-panel="senas">Lengua de Señas</button>
+    <button class="tab-btn" data-panel="laboral">Inclusión Laboral</button>
     <button class="tab-btn" data-panel="comuna_07">Comuna_07</button>
     <a href="/docs" class="docs" target="_blank" rel="noopener">API Docs</a>
   </nav>
@@ -2108,6 +2115,277 @@
           </div>
           <div id="lista-salud" class="result-box"><p class="loading">Cargando listado...</p></div>
         </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ====================== LENGUA DE SEÑAS ====================== -->
+  <div class="panel" id="panel-senas" aria-labelledby="ls-titulo">
+    <div class="wrap">
+
+      <div class="card">
+        <h2 id="ls-titulo">Acceso a la lengua de señas</h2>
+        <p>
+          Organizaciones de referencia y cursos para aprender lengua de señas, ordenados por pa&iacute;s.
+          Cada pa&iacute;s tiene su propia lengua de señas: la que se usa en Argentina es la
+          <strong>Lengua de Señas Argentina (LSA)</strong>, distinta de la española, la mexicana o la colombiana.
+        </p>
+        <p class="muted">Enlaces comprobados el 2 de noviembre de 2026. Todos abren en una pestaña nueva.</p>
+      </div>
+
+      <div class="card">
+        <h3>Argentina &mdash; Lengua de Señas Argentina (LSA)</h3>
+        <ul class="ls-lista">
+          <li><a href="https://cas.org.ar/" target="_blank" rel="noopener">Confederaci&oacute;n Argentina de Sordos (CAS)</a>:
+            entidad nacional de la comunidad sorda; informaci&oacute;n sobre la LSA, derechos e int&eacute;rpretes.</li>
+          <li><strong>Ley 27.710 (2023)</strong>: reconoce la LSA como lengua natural y originaria de las personas sordas
+            y como parte de su patrimonio cultural. Adhirieron, entre otras, C&oacute;rdoba (Ley 10.949) y Chaco (Ley 4055-E);
+            Salta dict&oacute; su propia Ley 8.502 (2025).</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>España &mdash; Lengua de Signos Española (LSE)</h3>
+        <ul class="ls-lista">
+          <li><a href="https://www.fundacioncnse.org/" target="_blank" rel="noopener">Fundaci&oacute;n CNSE (Confederaci&oacute;n Estatal de Personas Sordas)</a>:
+            principal referente en España; nuclea centros federados con cursos homologados seg&uacute;n el Marco Com&uacute;n Europeo de Referencia (MCER).</li>
+          <li><a href="https://cnlse.es/" target="_blank" rel="noopener">Centro de Normalizaci&oacute;n Ling&uuml;&iacute;stica de la Lengua de Signos Española (CNLSE)</a>:
+            organismo del Real Patronato sobre Discapacidad con recursos de formaci&oacute;n, investigaci&oacute;n y difusi&oacute;n de la LSE.</li>
+          <li><a href="https://aprendergratis.es/cursos-online/curso-de-lenguaje-de-senas-basico-a1/" target="_blank" rel="noopener">Curso de Lengua de Signos Española A1 &mdash; AprenderGratis</a>:
+            lecciones en video gratuitas orientadas a la comunicaci&oacute;n cotidiana.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>M&eacute;xico &mdash; Lengua de Señas Mexicana (LSM)</h3>
+        <ul class="ls-lista">
+          <li><a href="https://femesor.org/" target="_blank" rel="noopener">Federaci&oacute;n Mexicana de Sordos (FEMESOR)</a>:
+            organizaci&oacute;n nacional que coordina talleres e iniciativas de formaci&oacute;n comunitaria en LSM con instructores sordos.</li>
+          <li><a href="https://edutin.com/escuela-de-lenguas-de-se%C3%B1as-c83" target="_blank" rel="noopener">Escuela de Lengua de Señas &mdash; Edutin Academy</a>:
+            cursos modulares y autogestionados de LSM con opci&oacute;n a certificaci&oacute;n.</li>
+          <li><a href="https://platzi.com/cursos/lenguaje-senas/" target="_blank" rel="noopener">Platzi &mdash; Curso de Lengua de Señas</a>:
+            formaci&oacute;n en l&iacute;nea orientada a accesibilidad y atenci&oacute;n al p&uacute;blico.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Colombia &mdash; Lengua de Señas Colombiana (LSC)</h3>
+        <ul class="ls-lista">
+          <li><a href="https://fenascol.org.co/" target="_blank" rel="noopener">Federaci&oacute;n Nacional de Sordos de Colombia (FENASCOL)</a>:
+            m&aacute;xima entidad de la comunidad sorda en Colombia; programas presenciales y virtuales de LSC.</li>
+          <li><a href="https://www.insor.gov.co/" target="_blank" rel="noopener">Instituto Nacional para Sordos (INSOR)</a>:
+            entidad adscrita al Ministerio de Educaci&oacute;n Nacional con recursos pedag&oacute;gicos en LSC.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Internacional</h3>
+        <ul class="ls-lista">
+          <li><a href="https://cursa.app/curso-lengua-de-senas-online-gratis" target="_blank" rel="noopener">Cursa &mdash; Cursos gratuitos de lengua de señas</a>:
+            cursos en l&iacute;nea sin costo de lenguas de señas de varios pa&iacute;ses hispanohablantes.</li>
+          <li><a href="https://wfdeaf.org/" target="_blank" rel="noopener">Federaci&oacute;n Mundial de Sordos (WFD)</a>:
+            derechos ling&uuml;&iacute;sticos de las personas sordas y Sistema de Signos Internacional (SSI).</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ====================== INCLUSION LABORAL ====================== -->
+  <div class="panel" id="panel-laboral" aria-labelledby="il-titulo">
+    <div class="wrap wrap-wide">
+
+      <div class="card">
+        <h2 id="il-titulo">Inclusi&oacute;n laboral &mdash; legislaci&oacute;n nacional y provincial</h2>
+        <p>
+          En Argentina la inclusi&oacute;n laboral de personas con discapacidad funciona con dos l&oacute;gicas:
+          <strong>cupo obligatorio en el sector p&uacute;blico</strong> y <strong>est&iacute;mulos fiscales y empleo protegido
+          en el sector privado</strong>, bajo la Convenci&oacute;n sobre los Derechos de las Personas con Discapacidad
+          (CDPD, Ley 26.378, con jerarqu&iacute;a constitucional por Ley 27.044).
+        </p>
+        <nav class="il-indice" aria-label="Secciones de inclusión laboral">
+          <a href="#il-publico">Sector p&uacute;blico</a> &middot;
+          <a href="#il-privado">Sector privado</a> &middot;
+          <a href="#il-provincias">Provincias</a> &middot;
+          <a href="#il-municipios">Municipios</a> &middot;
+          <a href="#il-tramites">Formularios y tr&aacute;mites</a> &middot;
+          <a href="#il-accesibilidad">Accesibilidad y apoyos</a>
+        </nav>
+        <div class="disclaimer" style="margin-top:1rem">
+          Informaci&oacute;n orientativa, revisada el 2 de noviembre de 2026. Cada dato indica si pudimos
+          confirmarlo en una fuente oficial o period&iacute;stica. Antes de iniciar un tr&aacute;mite, consult&aacute; el texto
+          vigente en <a href="https://www.infoleg.gob.ar/" target="_blank" rel="noopener">InfoLEG</a> o en el bolet&iacute;n oficial de tu provincia.
+        </div>
+      </div>
+
+      <div class="card" id="il-publico">
+        <h2>1. Nivel nacional &mdash; sector p&uacute;blico (cupo obligatorio)</h2>
+        <ul class="ls-lista">
+          <li><strong>Ley 22.431, art. 8 (texto seg&uacute;n Ley 25.689)</strong>: el Estado nacional debe ocupar personas con
+            discapacidad en una proporci&oacute;n no inferior al <strong>4%</strong> de su personal. Alcanza a los tres poderes,
+            organismos descentralizados y aut&aacute;rquicos, empresas del Estado y empresas privadas concesionarias de servicios p&uacute;blicos;
+            incluye planta permanente, contratados y personal transitorio.</li>
+          <li><a href="https://www.argentina.gob.ar/normativa/nacional/164909/texto" target="_blank" rel="noopener">Decreto 312/2010</a>:
+            reglamenta el cupo; las vacantes reservadas se concursan entre personas con CUD y los puestos deben adecuarse con apoyos.
+            No estar inscripto en el registro del Ministerio de Trabajo no impide postularse.</li>
+          <li><strong>Decreto 721/2020</strong>: regula el cupo laboral en el sector p&uacute;blico nacional junto al Decreto 312/2010.</li>
+          <li><strong>Ley 22.431, art. 11</strong>: reserva de concesiones de pequeños comercios (quioscos, buf&eacute;s) en edificios p&uacute;blicos.</li>
+        </ul>
+      </div>
+
+      <div class="card" id="il-privado">
+        <h2>2. Nivel nacional &mdash; sector privado (est&iacute;mulos)</h2>
+        <p>No rige un cupo obligatorio para el sector privado en general. Existen estos beneficios:</p>
+        <div class="am-table-wrap">
+          <table class="tbl">
+            <caption class="muted" style="text-align:left">Beneficios nacionales para empleadores privados</caption>
+            <thead><tr><th scope="col">Norma</th><th scope="col">Beneficio</th><th scope="col">Estado</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Ley 22.431, art. 23 (seg&uacute;n Ley 23.021)</th>
+                <td>Deducci&oacute;n especial en Ganancias del <strong>70%</strong> de las remuneraciones nominales pagadas al personal con discapacidad.</td>
+                <td>Vigente</td></tr>
+              <tr><th scope="row">Ley 24.013, art. 87</th>
+                <td>Exenci&oacute;n del <strong>50%</strong> de las contribuciones patronales (jubilaci&oacute;n, INSSJP, asignaciones familiares, Fondo Nacional de Empleo)
+                  por contratar por tiempo indeterminado, durante <strong>un año</strong>.</td>
+                <td>Vigente. La <a href="https://biblioteca.afip.gob.ar/dcp/LEY_C_027793_2025_07_10" target="_blank" rel="noopener">Ley 27.793</a> (emergencia en discapacidad, art. 17)
+                  lo extiende a <strong>tres años</strong>, pero el Decreto 681/2025 suspendi&oacute; su aplicaci&oacute;n hasta que se asigne financiamiento: confirmar con ARCA.</td></tr>
+              <tr><th scope="row">Ley 24.013, art. 88</th>
+                <td>Beneficios para empleadores con 4% o m&aacute;s de personal con discapacidad que deban hacer obras de accesibilidad.</td>
+                <td>Vigente</td></tr>
+              <tr><th scope="row">Ley 24.013, art. 89</th>
+                <td>Contratar personas con discapacidad no puede encarecer el seguro de riesgos del trabajo.</td>
+                <td>Vigente</td></tr>
+              <tr><th scope="row"><a href="https://www.argentina.gob.ar/normativa/nacional/ley-26816-207088/texto" target="_blank" rel="noopener">Ley 26.816</a></th>
+                <td>R&eacute;gimen Federal de Empleo Protegido: Taller Protegido Especial para el Empleo (TPEE), Taller Protegido de Producci&oacute;n (TPP)
+                  y Grupos Laborales Protegidos (GLP) dentro de empresas.</td>
+                <td>Vigente (reglamentada por Decreto 1771/2015)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card" id="il-provincias">
+        <h2>3. Nivel provincial</h2>
+        <p>
+          Cada provincia tiene su r&eacute;gimen de protecci&oacute;n integral, con cupos de empleo p&uacute;blico que suelen ir del 4% al 5%.
+          La columna <em>Verificaci&oacute;n</em> indica qu&eacute; datos confirmamos y cu&aacute;les no.
+        </p>
+        <div class="am-table-wrap">
+          <table class="tbl il-prov">
+            <caption class="muted" style="text-align:left">Leyes provinciales de cupo laboral (✔ confirmado · ⚠ sin confirmar o en conflicto)</caption>
+            <thead><tr><th scope="col">Jurisdicci&oacute;n</th><th scope="col">Ley</th><th scope="col">Cupo</th><th scope="col">Aspectos relevantes</th><th scope="col">Verificaci&oacute;n</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Buenos Aires</th>
+                <td><a href="https://normas.gba.gob.ar/documentos/B1eGmU4B.html" target="_blank" rel="noopener">Ley 10.592</a>, art. 8</td><td>4%</td>
+                <td>Tres poderes y empresas p&uacute;blicas. Sector privado: pago a cuenta de Ingresos Brutos por las remuneraciones del personal con discapacidad
+                  (art. 208 del C&oacute;digo Fiscal, <a href="https://web.arba.gov.ar/sites/default/files/2023-12/RN%2029-2022.pdf" target="_blank" rel="noopener">RN ARBA 29/2022</a>).
+                  Adhesi&oacute;n al empleo protegido: <a href="https://normas.gba.gob.ar/documentos/xqGpw3Cp.html" target="_blank" rel="noopener">Ley 15.622</a>.</td>
+                <td>✔ ley y cupo; ✔ Ley 15.622; ⚠ el 50% del pago a cuenta figura en fuentes contables, no en el texto oficial consultado</td></tr>
+              <tr><th scope="row">CABA</th><td>Ley 1.502</td><td>5%</td>
+                <td>Administraci&oacute;n centralizada y descentralizada, Legislatura, Poder Judicial, Comunas y concesionarias. Prev&eacute; un registro de aspirantes y prioridad a igual puntaje en concursos.</td>
+                <td>✔ ley y cupo; ⚠ la modificaci&oacute;n por Ley 6.023 no se pudo confirmar</td></tr>
+              <tr><th scope="row">C&oacute;rdoba</th><td>Ley 5.624 (modif. Ley 8.834)</td><td>—</td>
+                <td>Cupo del art. 2; el TSJ (2019) lo trat&oacute; como derecho subjetivo.</td>
+                <td>✔ ley; ⚠ porcentaje sin confirmar (el material recibido indica 5%)</td></tr>
+              <tr><th scope="row">Santa Fe</th><td>Ley 9.325, art. 8; Ley 13.853, art. 37</td><td>4%</td>
+                <td>Tres poderes, empresas del Estado y mixtas.</td>
+                <td>✔ leyes y 4% (Ley 9.325); ⚠ beneficio en Ingresos Brutos sin confirmar</td></tr>
+              <tr><th scope="row">Mendoza</th><td><a href="https://jusmendoza.gob.ar/cupo-laboral-para-personas-con-discapacidad-ley-5041/" target="_blank" rel="noopener">Ley 5.041</a></td><td>4%</td>
+                <td>R&eacute;gimen de protecci&oacute;n con cap&iacute;tulo laboral.</td><td>✔ ley; ⚠ porcentaje</td></tr>
+              <tr><th scope="row">Neuqu&eacute;n</th><td>Ley 1.634</td><td>4%</td>
+                <td>Aplicada, entre otros, por el <a href="https://www.noticiasjusneuquen.gob.ar/inclusion/" target="_blank" rel="noopener">Poder Judicial provincial</a>.</td><td>✔</td></tr>
+              <tr><th scope="row">R&iacute;o Negro</th><td><a href="https://rionegro.gov.ar/download/archivos/00010614.pdf" target="_blank" rel="noopener">Ley D 2.055</a></td><td>4%</td>
+                <td>R&eacute;gimen de promoci&oacute;n integral; crea el Registro Provincial de Personas con Discapacidad.</td><td>✔ ley; ⚠ porcentaje</td></tr>
+              <tr><th scope="row">Salta</th><td>Adhiere a Ley 22.431; Ley 7.790 (empleo protegido)</td><td>4%</td>
+                <td>Adhesi&oacute;n a la Ley 26.816 por Ley 7.790.</td><td>✔; ⚠ la Ley 7.600 citada en el material no se pudo confirmar</td></tr>
+              <tr><th scope="row">Tierra del Fuego</th><td><a href="https://www.legistdf.gob.ar/lp/leyes/Provinciales/LEYP048.pdf" target="_blank" rel="noopener">Ley 48</a> (1992)</td><td>4%</td>
+                <td>R&eacute;gimen de equiparaci&oacute;n de oportunidades; en 2022 se cumpl&iacute;a el 1,5%.</td><td>✔</td></tr>
+              <tr><th scope="row">La Rioja</th><td>Ley 5.097 (1988)</td><td>—</td>
+                <td>El material recibido citaba la Ley 6.574; la fuente consultada indica la Ley 5.097.</td><td>⚠ corregido; porcentaje sin confirmar</td></tr>
+              <tr><th scope="row">Catamarca</th><td>Ley 4.605</td><td>4%</td><td>Una fuente cita en cambio la Ley 4.848 como r&eacute;gimen integral.</td><td>⚠ en conflicto</td></tr>
+              <tr><th scope="row">Chaco</th><td>Ley 1.706-G (antes 6.477)</td><td>5%</td><td>Administraci&oacute;n provincial, entes aut&aacute;rquicos y descentralizados.</td><td>⚠ sin confirmar</td></tr>
+              <tr><th scope="row">Chubut</th><td>Ley I N.º 296 (antes 4.398)</td><td>4%</td><td>Organismos centralizados, descentralizados y empresas p&uacute;blicas.</td><td>⚠ sin confirmar</td></tr>
+              <tr><th scope="row">Corrientes</th><td>Ley 4.478</td><td>4%</td><td>R&eacute;gimen jur&iacute;dico b&aacute;sico provincial.</td><td>⚠ sin confirmar</td></tr>
+              <tr><th scope="row">Entre R&iacute;os</th><td>Ley 9.891</td><td>4%</td><td>R&eacute;gimen provincial de protecci&oacute;n integral.</td><td>⚠ sin confirmar</td></tr>
+              <tr><th scope="row">Formosa</th><td>Ley 1.272</td><td>4%</td><td>Reserva de vacantes en dependencias provinciales.</td><td>⚠ sin confirmar</td></tr>
+              <tr><th scope="row">Jujuy</th><td>Ley 4.396</td><td>4%</td><td>Reserva de puestos en concursos.</td><td>⚠ sin confirmar</td></tr>
+              <tr><th scope="row">La Pampa</th><td>Ley 2.140</td><td>4%</td><td>Reserva obligatoria en el Estado provincial.</td><td>⚠ sin confirmar</td></tr>
+              <tr><th scope="row">Misiones</th><td>Ley XIX N.º 23 (antes 2.707)</td><td>4%</td><td>Tres poderes y entes aut&aacute;rquicos.</td><td>⚠ sin confirmar</td></tr>
+              <tr><th scope="row">San Juan</th><td>Ley 1.189-S (antes 6.719)</td><td>4%</td><td>R&eacute;gimen integral provincial.</td><td>⚠ sin confirmar</td></tr>
+              <tr><th scope="row">San Luis</th><td>Ley II-0063-2004 (antes 5.161)</td><td>4%</td><td>Protecci&oacute;n integral provincial.</td><td>⚠ sin confirmar</td></tr>
+              <tr><th scope="row">Santa Cruz</th><td>Ley 1.662</td><td>4%</td><td>Tres poderes y organismos descentralizados.</td><td>⚠ sin confirmar</td></tr>
+              <tr><th scope="row">Santiago del Estero</th><td>Ley 6.002</td><td>4%</td><td>Reserva de vacantes en el empleo p&uacute;blico.</td><td>⚠ sin confirmar</td></tr>
+              <tr><th scope="row">Tucum&aacute;n</th><td>Ley 6.830</td><td>4%</td><td>Todos los organismos del Estado provincial.</td><td>⚠ sin confirmar</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="muted" style="margin-top:.6rem">
+          Seg&uacute;n un relevamiento de 2022, ninguna de las 24 jurisdicciones ni el Estado nacional cumpl&iacute;a efectivamente su cupo.
+        </p>
+      </div>
+
+      <div class="card" id="il-municipios">
+        <h2>4. Nivel municipal</h2>
+        <ul class="ls-lista">
+          <li><strong>Ordenanzas de cupo</strong>: muchos municipios fijan un cupo en su planta (habitualmente entre 4% y 5%) y llevan
+            un registro de postulantes articulado con la Oficina de Empleo municipal.</li>
+          <li><strong>Tasas municipales</strong>: algunas ordenanzas descuentan parte de la Tasa de Seguridad e Higiene a comercios e industrias
+            que contraten personas con discapacidad inscriptas en la oficina de empleo local.</li>
+          <li><strong>Concesiones</strong>: reserva de quioscos y buf&eacute;s en edificios municipales, en l&iacute;nea con el art. 11 de la Ley 22.431.</li>
+        </ul>
+        <p class="muted">Las condiciones var&iacute;an en cada municipio: consult&aacute; la ordenanza local en tu municipio.</p>
+      </div>
+
+      <div class="card" id="il-tramites">
+        <h2>5. Formularios y tr&aacute;mites</h2>
+        <ul class="ls-lista">
+          <li><strong>Certificado &Uacute;nico de Discapacidad (CUD)</strong>: es la puerta de entrada al cupo y a los beneficios;
+            ver la pesta&ntilde;a <a href="#" onclick="switchTab('cud');return false;">CUD</a> (pasos, requisitos y formularios).</li>
+          <li><a href="https://www.portalempleo.gob.ar/" target="_blank" rel="noopener">Portal Empleo</a>: b&uacute;squeda de empleo y
+            Oficinas de Empleo municipales, donde se inscriben las personas que buscan trabajo.</li>
+          <li><a href="https://buenosaires.gob.ar/gcaba_historico/base-de-talentos-registro-unico-laboral" target="_blank" rel="noopener">CABA &mdash; Base de Talentos / Registro &Uacute;nico Laboral</a>
+            para personas con discapacidad aspirantes a empleo (inscripci&oacute;n presencial o en l&iacute;nea).</li>
+          <li><strong>Provincia de Buenos Aires &mdash; empleadores</strong>: pago a cuenta de Ingresos Brutos seg&uacute;n
+            <a href="https://web.arba.gov.ar/sites/default/files/2023-12/RN%2029-2022.pdf" target="_blank" rel="noopener">RN ARBA 29/2022</a> (requisitos y condiciones).</li>
+          <li><strong>Empleadores &mdash; contribuciones y Ganancias</strong>: la exenci&oacute;n del art. 87 de la Ley 24.013 se aplica en la
+            declaraci&oacute;n jurada mensual de cargas sociales ante ARCA (ex AFIP); la deducci&oacute;n del 70% se computa en la declaraci&oacute;n
+            jurada anual de Ganancias. Consult&aacute; con tu contador las modalidades de contrataci&oacute;n vigentes.</li>
+        </ul>
+        <p class="muted">No encontramos un formulario nacional &uacute;nico de inscripci&oacute;n para el cupo estatal: cada organismo publica
+          sus convocatorias y el Decreto 312/2010 aclara que no hace falta estar inscripto en un registro para postularse.</p>
+      </div>
+
+      <div class="card" id="il-accesibilidad">
+        <h2>6. Accesibilidad, comunicaci&oacute;n y apoyos</h2>
+
+        <h3>Accesibilidad digital y web (WCAG / WAI-ARIA)</h3>
+        <ul class="ls-lista">
+          <li><a href="https://www.w3.org/TR/WCAG22/" target="_blank" rel="noopener">Pautas WCAG 2.1 / 2.2, nivel AA</a>: estructura sem&aacute;ntica,
+            contraste, navegaci&oacute;n solo con teclado y compatibilidad con lectores de pantalla (NVDA, JAWS, TalkBack).</li>
+          <li>Documentos y PDF accesibles: encabezados jer&aacute;rquicos, texto alternativo en gr&aacute;ficos y tablas estructuradas.</li>
+          <li>Multimedia accesible: subt&iacute;tulos descriptivos para personas sordas (con indicaciones sonoras) y audiodescripci&oacute;n para personas ciegas o con baja visi&oacute;n.</li>
+          <li><strong>Ley 26.653</strong>: accesibilidad de la informaci&oacute;n en las p&aacute;ginas web del Estado y de empresas que prestan servicios p&uacute;blicos.</li>
+        </ul>
+
+        <h3>Marco de derechos y modelo social</h3>
+        <ul class="ls-lista">
+          <li>CDPD: autonom&iacute;a individual, no discriminaci&oacute;n, diseño universal y <strong>ajustes razonables</strong> en el puesto de trabajo.</li>
+          <li>Capacitaci&oacute;n en trato digno y modelo social para equipos de la funci&oacute;n p&uacute;blica y de empresas.</li>
+        </ul>
+
+        <h3>Comunicaci&oacute;n accesible y sistemas aumentativos (SAAC)</h3>
+        <ul class="ls-lista">
+          <li><strong>Lectura F&aacute;cil y Lenguaje Claro</strong>: textos simplificados, directos y comprensibles para personas con dificultades de comprensi&oacute;n lectora.</li>
+          <li><strong>SAAC</strong>: pictogramas (<a href="https://arasaac.org/" target="_blank" rel="noopener">ARASAAC</a>), tableros de comunicaci&oacute;n y tecnolog&iacute;a de apoyo.</li>
+          <li><strong>Neurodiversidad</strong>: interfaces sin sobrecarga sensorial, sin animaciones intrusivas ni parpadeos de m&aacute;s de 3 Hz, con tipograf&iacute;as legibles.</li>
+        </ul>
+
+        <h3>Empleo con apoyo y accesibilidad f&iacute;sica</h3>
+        <ul class="ls-lista">
+          <li><strong>Empleo con apoyo</strong>: acompañamiento de la inserci&oacute;n laboral de personas con discapacidad intelectual o motriz en puestos ordinarios.</li>
+          <li><strong>Accesibilidad universal</strong>: diseño universal y eliminaci&oacute;n de barreras arquitect&oacute;nicas en el lugar de trabajo.</li>
+        </ul>
       </div>
 
     </div>
