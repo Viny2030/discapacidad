@@ -6,11 +6,51 @@ on:
     - cron: "0 10 * * *"
   workflow_dispatch:
 
+permissions:
+  contents: read
+  issues: write
+
 jobs:
   health-check:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 50
+
+      # Detecta que producción quedó en un commit viejo (p. ej. un "Redeploy" manual de un
+      # despliegue anterior en Railway, como pasó el 10/11/2026). Compara el commit que informa
+      # /health (RAILWAY_GIT_COMMIT_SHA) con el último de main.
+      - name: Verificar que producción corre el último commit de main
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          URL="${{ secrets.RAILWAY_URL }}"
+          URL="${URL:-https://discapacidad.viny2030.com.ar}"
+          PROD=$(curl -L -s --max-time 15 "$URL/health" | python3 -c 'import json,sys; print(json.load(sys.stdin).get("commit") or "")' || true)
+          HEAD=$(git rev-parse --short=7 HEAD)
+          EDAD=$(( $(date +%s) - $(git log -1 --format=%ct HEAD) ))
+          echo "Producción: ${PROD:-desconocido} · main: $HEAD (hace $((EDAD / 60)) min)"
+          if [ -z "$PROD" ]; then
+            echo "⚠️ /health no informa el commit desplegado" >> "$GITHUB_STEP_SUMMARY"; exit 0
+          fi
+          if [ "$PROD" = "$HEAD" ]; then
+            echo "✅ Producción corre el último commit de main ($HEAD)" >> "$GITHUB_STEP_SUMMARY"; exit 0
+          fi
+          if [ "$EDAD" -lt 2700 ]; then
+            echo "⏳ main ($HEAD) tiene menos de 45 min: el despliegue puede estar en curso" >> "$GITHUB_STEP_SUMMARY"; exit 0
+          fi
+          ATRAS=$(git rev-list --count "$PROD..$HEAD" 2>/dev/null || echo "?")
+          titulo="Producción no corre el último commit de main"
+          cuerpo="Producción ($URL) corre $PROD y main está en $HEAD ($ATRAS commits más nuevos).
+          Probable causa: un Redeploy manual de un despliegue viejo en Railway. Para arreglarlo: Redeploy del despliegue de $HEAD (el de más arriba) o \`railway redeploy --from-source\`.
+          Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          n=$(gh issue list --state open --search "$titulo in:title" --json number -q '.[0].number')
+          if [ -n "$n" ]; then gh issue comment "$n" --body "$cuerpo"; else gh issue create --title "$titulo" --body "$cuerpo"; fi
+          echo "❌ Producción en $PROD, main en $HEAD" >> "$GITHUB_STEP_SUMMARY"
+          exit 1
+
       - name: Verificar endpoint /health
         run: |
           URL="${{ secrets.RAILWAY_URL }}"

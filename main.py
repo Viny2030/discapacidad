@@ -85,6 +85,8 @@ async def health():
         "module": "observatorio-discapacidad",
         "version": "1.0.0",
         "scheduler_running": scheduler.running,
+        # commit que está corriendo (Railway lo inyecta); el health check diario lo compara con main
+        "commit": os.getenv("RAILWAY_GIT_COMMIT_SHA", "")[:7] or None,
     }
 
 

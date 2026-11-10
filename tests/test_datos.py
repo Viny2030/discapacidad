@@ -210,3 +210,9 @@ def test_health(client):
     data = r.json()
     assert data["status"] == "ok"
     assert data["version"] == "1.0.0"
+
+def test_health_informa_el_commit_desplegado(client, monkeypatch):
+    monkeypatch.setenv("RAILWAY_GIT_COMMIT_SHA", "dd4d22d0123456789")
+    assert client.get("/health").json()["commit"] == "dd4d22d"
+    monkeypatch.delenv("RAILWAY_GIT_COMMIT_SHA")
+    assert client.get("/health").json()["commit"] is None
