@@ -54,10 +54,7 @@ jobs:
       - name: Verificar endpoint /health
         run: |
           URL="${{ secrets.RAILWAY_URL }}"
-          if [ -z "$URL" ]; then
-            echo "⚠️  RAILWAY_URL no configurada en secrets — saltando check de producción"
-            exit 0
-          fi
+          URL="${URL:-https://discapacidad.viny2030.com.ar}"   # antes se salteaba si faltaba el secreto
 
           echo "Chequeando $URL/health ..."
           STATUS=$(curl -L -s -o /tmp/health_resp.json -w "%{http_code}" "$URL/health" --max-time 15)
@@ -75,7 +72,7 @@ jobs:
       - name: Verificar endpoints críticos
         run: |
           URL="${{ secrets.RAILWAY_URL }}"
-          if [ -z "$URL" ]; then exit 0; fi
+          URL="${URL:-https://discapacidad.viny2030.com.ar}"
 
           ENDPOINTS=(
             "/api/cud"
