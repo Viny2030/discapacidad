@@ -332,3 +332,32 @@ def test_nombre_y_aviso_de_independencia():
     assert aviso in header and aviso in footer
     assert "not affiliated with any government agency" in _panel(html, "about")
     assert "Asesoria Movil en Discapacidad</title>" not in html
+
+
+# ── Pestaña Manual (ES/EN) y reparto del menú ────────────────────────────────
+def test_pestana_manual_generada_bilingue_y_con_nodos_nombrados():
+    import re
+    from scripts import gen_panel_manual as g
+    html = (ROOT / "templates" / "index.html").read_text(encoding="utf-8")
+    a, b = html.index(g.INICIO), html.index(g.FIN) + len(g.FIN)
+    assert html[a:b].replace("\r\n", "\n") == g.panel()
+    assert "if (name === 'manual') initManual();" in html
+    for lang in g.LANGS:
+        flow, uso = g.GRAPH_TEXT[lang]["flow"], g.GRAPH_TEXT[lang]["uso"]
+        assert set(flow) == {n[0] for n in g.FLOW_NODES}          # todo nodo tiene texto en ambos idiomas
+        assert set(uso) == {c for c, _ in g.USO_FILAS}
+        assert all(t[0].strip() for t in flow.values()) and all(all(x.strip() for x in t) for t in uso.values())
+        assert len(g.MANUAL_TABS[lang]) == len(g.MANUAL_TABS["es"])
+    nav = html[html.index("<nav>"):html.index("</nav>")]
+    destinos = set(re.findall(r'data-panel="([^"]+)"', nav)) | {"docs"}
+    assert {d for _, d in g.USO_FILAS} <= destinos                # cada nodo de pestaña abre una que existe
+
+
+def test_menu_dos_filas_balanceadas():
+    import re
+    html = (ROOT / "templates" / "index.html").read_text(encoding="utf-8")
+    nav = html[html.index("<nav>"):html.index("</nav>")]
+    fila1, fila2 = nav.split('class="nav-break"')
+    n1, n2 = len(re.findall(r'class="tab-btn', fila1)), len(re.findall(r'class="tab-btn', fila2))
+    assert abs(n1 - n2) <= 2, (n1, n2)                             # medido: 2 filas desde 1024 px
+    assert re.findall(r'data-panel="([^"]+)"', fila2)[-1] == "comuna_07"
