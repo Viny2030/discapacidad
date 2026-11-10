@@ -644,7 +644,10 @@ FAQ = [{'pregunta': '¿El trámite del CUD es gratuito?',
                'Hay tres excepciones en las que se otorga sin vencimiento: '
                '1) personas que tienen soporte vital; '
                '2) personas mayores de 60 años con dos renovaciones que mantienen la condición; y '
-               '3) personas con más de 2 renovaciones que mantienen el mismo número de barra.'},
+               '3) personas con más de 2 renovaciones que mantienen el mismo número de barra. '
+               'Prórroga vigente: la Resolución ANDIS 2520/2024 extendió por única vez un año los CUD cuyo '
+               'vencimiento original caía en 2025 (hasta la misma fecha de 2026); los de 2022 a 2024 no '
+               'tuvieron nueva prórroga y los de 2026 se renuevan normalmente.'},
  {'pregunta': '¿Puedo tramitar el CUD si vivo en el interior del país?',
   'respuesta': 'Sí. Cada provincia tiene su propia Junta Evaluadora. El trámite se realiza en la '
                'jurisdicción donde residís según tu DNI.'},

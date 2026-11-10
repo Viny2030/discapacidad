@@ -551,13 +551,29 @@
       <div class="card">
         <h2>Certificado Unico de Discapacidad (CUD)</h2>
         <p>
-          El CUD es un documento <strong>gratuito y obligatorio</strong> emitido
+          El CUD es un documento <strong>p&uacute;blico, voluntario y gratuito</strong> emitido
           por el Estado argentino que certifica la existencia de una discapacidad.
           Por regla general tiene vencimiento y debe renovarse (hay tres excepciones
           sin vencimiento: soporte vital; mayores de 60 años con dos renovaciones que
           mantienen la condición; y más de 2 renovaciones con el mismo número de barra). Permite acceder a
           beneficios en salud, transporte, impuestos y educacion, entre otros.
         </p>
+      </div>
+
+      <div class="card" id="cud-vigencia" style="border:2px solid #b45309">
+        <h2>&iquest;Mi CUD sigue vigente?</h2>
+        <p>Ingres&aacute; la fecha de vencimiento o actualizaci&oacute;n que figura en tu certificado (la original, la que dice el CUD).</p>
+        <div class="form-row" style="align-items:center;gap:.6rem;flex-wrap:wrap">
+          <label for="cud-vto">Fecha del CUD:</label>
+          <input type="date" id="cud-vto" style="padding:.4rem .6rem;border:1px solid #cfe5f6;border-radius:6px">
+          <button type="button" class="go-btn" onclick="cudVigencia()">Ver qu&eacute; hacer</button>
+        </div>
+        <div id="cud-vigencia-res" class="result-box" aria-live="polite"></div>
+        <p class="muted" style="font-size:.8rem;margin-top:.6rem">Regla vigente: la
+          <a href="https://www.argentina.gob.ar/normativa/nacional/resoluci%C3%B3n-2520-2024-407346/texto" target="_blank" rel="noopener">Resoluci&oacute;n ANDIS 2520/2024</a>
+          prorrog&oacute; por &uacute;nica vez y por un a&ntilde;o los CUD cuyo vencimiento original ca&iacute;a en 2025; los de 2022 a 2024 no tuvieron nueva
+          prórroga y los de 2026 se renuevan normalmente. No encontramos una prórroga posterior (revisado el 10/11/2026).
+          Si tu CUD no tiene vencimiento (soporte vital, o las excepciones de m&aacute;s abajo), no hace falta renovarlo.</p>
       </div>
 
       <div class="card">
@@ -582,8 +598,7 @@
 
       <div class="card">
         <h2>Junta evaluadora en tu provincia</h2>
-        <p>Eleg&iacute; tu provincia para ver el organismo a cargo, tel&eacute;fono,
-           email, turnos online y sedes.</p>
+        <p>Eleg&iacute; tu provincia para ver las juntas evaluadoras del listado oficial de ANDIS, con direcci&oacute;n y contacto.</p>
         <div class="form-row">
           <select id="cud-provincia-select" onchange="loadJunta()">
             <option value="">Seleccion&aacute; una provincia...</option>
@@ -4797,6 +4812,35 @@
       loadJunta();
       setTimeout(() => document.getElementById('cud-junta-result').scrollIntoView({ behavior: 'smooth', block: 'start' }), 400);
     });
+
+    /* Vigencia del CUD según la Resolución ANDIS 2520/2024 (prórroga única de los vencimientos 2025). */
+    function evaluarVigenciaCud(vto, hoy) {
+      const f = d => String(d.getDate()).padStart(2, '0') + '/' + String(d.getMonth() + 1).padStart(2, '0') + '/' + d.getFullYear();
+      const anio = vto.getFullYear();
+      if (anio === 2025) {
+        const prorrogado = new Date(2026, vto.getMonth(), vto.getDate());
+        return prorrogado >= hoy
+          ? { estado: 'vigente', texto: 'Vigente hasta el ' + f(prorrogado) + ' por la prórroga de la Resolución 2520/2024 (un año desde la fecha de tu CUD). Pedí turno en tu junta antes de esa fecha.' }
+          : { estado: 'vencido', texto: 'Venció el ' + f(prorrogado) + ', al terminar la prórroga de un año de la Resolución 2520/2024. Pedí turno en tu junta evaluadora para renovarlo.' };
+      }
+      if (anio <= 2024) {
+        return { estado: 'vencido', texto: 'Los CUD con fecha original entre 2022 y 2024 no tuvieron la prórroga de la Resolución 2520/2024 y debían renovarse durante 2025. Pedí turno en tu junta evaluadora.' };
+      }
+      return vto >= hoy
+        ? { estado: 'vigente', texto: 'Vigente hasta el ' + f(vto) + '. No hay prórroga para los vencimientos de ' + anio + ': pedí turno con anticipación.' }
+        : { estado: 'vencido', texto: 'Venció el ' + f(vto) + ' y no tiene prórroga. Pedí turno en tu junta evaluadora para renovarlo.' };
+    }
+    function cudVigencia() {
+      const v = document.getElementById('cud-vto').value;
+      const out = document.getElementById('cud-vigencia-res');
+      if (!v) { out.innerHTML = '<p class="muted">Ingresá la fecha que figura en tu CUD.</p>'; return; }
+      const [a, m, d] = v.split('-').map(Number);
+      const hoy = new Date(); hoy.setHours(0, 0, 0, 0);
+      const r = evaluarVigenciaCud(new Date(a, m - 1, d), hoy);
+      const color = r.estado === 'vigente' ? ['#e3f4ea', '#1f6b3f', 'Vigente'] : ['#fde8ec', '#9b2c45', 'Vencido'];
+      out.innerHTML = '<p><span style="display:inline-block;padding:.15rem .6rem;border-radius:999px;font-weight:700;background:' + color[0] + ';color:' + color[1] + '">' +
+        color[2] + '</span> ' + escapeHtml(r.texto) + '</p><p><a href="#cud-provincia-select">Buscar mi junta evaluadora &darr;</a></p>';
+    }
 
     function loadJunta() {
       const prov = document.getElementById('cud-provincia-select').value;
