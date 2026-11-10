@@ -165,10 +165,17 @@ def normas_del_dia(fecha: str, pdf_url: str, texto: str) -> list[dict]:
 # ── Red y almacenamiento ────────────────────────────────────────────────────────
 
 def _get(s: requests.Session, url: str) -> requests.Response:
-    """GET con respeto por el servidor: ante 429/503 espera (Retry-After o 30, 60, 120 s) y reintenta."""
+    """GET con respeto por el servidor: ante 429/503 o un corte de conexión, espera (Retry-After
+    o 30, 60, 120 s) y reintenta."""
     for espera in (30, 60, 120, None):
-        r = s.get(url, timeout=90)
-        if r.status_code not in (429, 503) or espera is None:
+        try:
+            r = s.get(url, timeout=90)
+        except (requests.ConnectionError, requests.Timeout):
+            if espera is None:
+                raise
+            time.sleep(espera)
+            continue
+        if r.status_code not in (429, 502, 503, 504) or espera is None:
             r.raise_for_status()
             return r
         retry = r.headers.get("Retry-After", "")

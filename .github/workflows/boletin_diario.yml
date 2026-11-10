@@ -59,6 +59,7 @@ jobs:
           python -m scripts.scraper_boletin $ARGS | tee -a "$GITHUB_STEP_SUMMARY"
 
       - name: Commit y push
+        if: always()          # aunque el scraper corte, se guarda lo leído hasta ese día
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"

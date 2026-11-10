@@ -100,3 +100,23 @@ def test_json_del_boletin_sin_anexos_ni_texto_completo():
     for n in d["normas"]:
         assert set(n) <= {"id", "organismo", "norma", "codigo", "fecha", "url", "pdf", "resumen", "categoria"}
         assert len(n["resumen"]) <= 420
+
+
+def test_reintenta_ante_corte_de_conexion(monkeypatch):
+    import requests
+    llamadas = []
+
+    class Resp:
+        status_code, headers = 200, {}
+        def raise_for_status(self): pass
+
+    def get(url, timeout):
+        llamadas.append(url)
+        if len(llamadas) == 1:
+            raise requests.ConnectionError("Remote end closed connection without response")
+        return Resp()
+
+    s = requests.Session()
+    monkeypatch.setattr(s, "get", get)
+    monkeypatch.setattr(sb.time, "sleep", lambda _: None)
+    assert sb._get(s, "https://otslist.boletinoficial.gob.ar/x").status_code == 200 and len(llamadas) == 2
