@@ -37,7 +37,7 @@ def test_inicio_y_pie_muestran_las_fuentes():
     html = (ROOT / "templates" / "index.html").read_text(encoding="utf-8")
     inicio = html[html.index('id="panel-inicio"'):html.index('id="panel-cud"')]
     assert 'id="fuentes"' in inicio and 'id="fuentes-tabla"' in inicio
-    assert "loadInto('/api/fuentes', 'fuentes-tabla', renderFuentes)" in html
+    assert "fetchJSON('/api/fuentes')" in html and "renderFuentes(data)" in html and "renderAvisoActualizacion(data)" in html
     footer = html[html.index("<footer>"):html.index("</footer>")]
     assert "Fuentes y antig&uuml;edad de los datos" in footer
 
@@ -57,3 +57,15 @@ def test_scripts_inline_sin_errores_de_sintaxis(tmp_path):
         f.write_text(js, encoding="utf-8")
         r = subprocess.run(["node", "--check", str(f)], capture_output=True, text=True)
         assert r.returncode == 0, f"<script> n.º {i}: {r.stderr[:400]}"
+
+
+def test_aviso_de_actualizacion_visible_en_todas_las_pestanas(client):
+    html = (ROOT / "templates" / "index.html").read_text(encoding="utf-8")
+    # está fuera de los paneles: entre el encabezado y el primer panel, así se ve en cualquier pestaña
+    entre = html[html.index("</header>"):html.index('id="panel-inicio"')]
+    assert 'id="aviso-actualizacion"' in entre and "Actualizaci&oacute;n de la informaci&oacute;n" in entre
+    assert "noviembre de 2023" in entre                       # texto de respaldo si la API no responde
+    fuentes = client.get("/api/fuentes").json()["fuentes"]
+    origenes = {f.get("origen"): f for f in fuentes}
+    assert origenes["andis_oficial"]["valor"] == 1_680_723
+    assert origenes["andis_reciente"]["valor"] == 1_900_061

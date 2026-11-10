@@ -41,12 +41,16 @@ def listar_fuentes(hoy: date | None = None) -> list[dict]:
     for f in registro:
         f = dict(f)
         dinamico = f.pop("dinamico", None)
+        if dinamico:
+            f["origen"] = dinamico
         if dinamico == "andis_oficial" and andis.get("oficial"):
             f["fecha"] = andis["oficial"]["fecha_corte"]
+            f["valor"] = andis["oficial"]["total_cud_vigentes"]
             f["url"] = andis["oficial"]["fuente_pagina"]
             f["fecha_lectura"] = andis.get("fecha_lectura")
         elif dinamico == "andis_reciente" and andis.get("dato_reciente"):
             f["fecha"] = andis["dato_reciente"]["fecha"] + "-01"
+            f["valor"] = andis["dato_reciente"]["total_cud_vigentes"]
             f["url"] = andis["dato_reciente"]["url"]
         if f.get("tipo") == "en_vivo":
             f["antiguedad"] = {"meses": 0, "estado": "en_vivo"}
