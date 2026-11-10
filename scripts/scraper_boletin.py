@@ -42,12 +42,15 @@ OTS = "https://otslist.boletinoficial.gob.ar"
 PAUSA = 2.0             # segundos entre pedidos
 DIAS_GUARDADOS = 400
 MAX_PAGINAS_LISTADO = 40   # ~25 días por página: alcanza para más de 3 años
+VENTANA_DIARIA = 10        # días hacia atrás en la corrida diaria
 
 RELEVANTE = re.compile(
     r"discapacidad|certificado [uú]nico de discapacidad|\bCUD\b|24\.901|22\.431|27\.793|27\.711|"
     r"pensi[oó]n(es)? no contributiva|invalidez laboral|prestaciones b[aá]sicas", re.I)
 CATEGORIAS = [
-    ("aranceles", re.compile(r"arancel|nomenclador|valores? de las prestaciones", re.I)),
+    # "arancel" a secas daba falsos positivos (designaciones, presupuesto): se exige el sistema de prestaciones
+    ("aranceles", re.compile(r"aranceles? (vigentes )?del Sistema de Prestaciones|nomenclador de prestaciones|"
+                             r"valores? de las prestaciones|actualizaci[oó]n al valor de los aranceles", re.I)),
     ("asignaciones", re.compile(r"asignaci[oó]n(es)? familiar|asignaci[oó]n universal|Ley N° 24\.714", re.I)),
     ("pensiones", re.compile(r"pensi[oó]n|invalidez|rehabilitaci[oó]n del beneficio", re.I)),
     ("cud", re.compile(r"certificado [uú]nico de discapacidad|\bCUD\b|juntas? evaluadora", re.I)),
@@ -210,11 +213,16 @@ def guardar(datos: dict, nuevas: dict[str, list[dict]], hoy: date) -> int:
 def main(argv: list[str]) -> int:
     hoy = date.today()
     hasta = date.fromisoformat(argv[argv.index("--hasta") + 1]) if "--hasta" in argv else hoy
-    desde = date.fromisoformat(argv[argv.index("--desde") + 1]) if "--desde" in argv else hasta - timedelta(days=3)
+    manual = "--desde" in argv
+    # El listado de PDF (otslist) se publica con algunos días de demora: la corrida diaria mira 10 días
+    # hacia atrás y saltea los días ya procesados (un PDF publicado no cambia). Con --desde se reprocesa todo.
+    desde = date.fromisoformat(argv[argv.index("--desde") + 1]) if manual else hasta - timedelta(days=VENTANA_DIARIA)
     s = requests.Session()
     s.headers["User-Agent"] = USER_AGENT
-    pdfs = pdfs_del_periodo(s, desde.isoformat(), hasta.isoformat())
     datos, agregadas = cargar(), 0
+    pdfs = pdfs_del_periodo(s, desde.isoformat(), hasta.isoformat())
+    if not manual:
+        pdfs = {f: u for f, u in pdfs.items() if f not in set(datos.get("dias_revisados", []))}
     for fecha in sorted(pdfs):
         time.sleep(PAUSA)
         texto = texto_pdf(_get(s, pdfs[fecha]).content)

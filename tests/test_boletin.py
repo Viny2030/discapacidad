@@ -120,3 +120,8 @@ def test_reintenta_ante_corte_de_conexion(monkeypatch):
     monkeypatch.setattr(s, "get", get)
     monkeypatch.setattr(sb.time, "sleep", lambda _: None)
     assert sb._get(s, "https://otslist.boletinoficial.gob.ar/x").status_code == 200 and len(llamadas) == 2
+
+
+def test_aranceles_exige_el_sistema_de_prestaciones():
+    assert sb.categoria("Establécese una actualización al valor de los aranceles vigentes del Sistema de Prestaciones Básicas") == "aranceles"
+    assert sb.categoria("Dase por designado al Director; el arancel consular se mantiene") == "otras"
