@@ -1,14 +1,15 @@
 """
-control_frescura.py — controla que los datos estadísticos estén al día.
+control_frescura.py — controla que los datos y las secciones del sitio estén al día.
 
-Revisa tres cosas y escribe un informe en Markdown:
+Revisa cuatro cosas y escribe un informe en Markdown:
   1. Si la página oficial de ANDIS publica un informe (PDF) distinto del que
      tenemos guardado: eso significa que el scraper no lo pudo cargar.
   2. Si producción muestra la misma fecha y total que el repositorio
      (detecta un despliegue que no tomó los datos nuevos).
-  3. La antigüedad del informe oficial (solo informativo: depende del Estado).
+  3. Que ninguna sección escrita a mano (data/fuentes.json) lleve más de 12 meses sin revisión.
+  4. La antigüedad del informe oficial (solo informativo: depende del Estado).
 
-Sale con código 1 si 1 o 2 fallan, para que el workflow abra un issue.
+Sale con código 1 si 1, 2 o 3 fallan, para que el workflow abra un issue.
 Hace 2 pedidos HTTP en total.
 
 Uso:  python -m scripts.control_frescura [--sitio https://discapacidad.viny2030.com.ar]
@@ -60,6 +61,16 @@ def controlar(sitio: str = SITIO) -> tuple[bool, list[str]]:
     except Exception as e:  # noqa: BLE001
         ok = False
         lineas.append(f"- ❌ No se pudo consultar {sitio}/api/resumen: {e}")
+
+    from scripts.api_fuentes import listar_fuentes
+    vencidas = [f for f in listar_fuentes() if f.get("tipo") == "contenido" and f["antiguedad"]["meses"] > 12]
+    if vencidas:
+        ok = False
+        for f in vencidas:
+            lineas.append(f"- ❌ «{f['seccion']}» lleva {f['antiguedad']['meses']} meses sin revisión: revisarla y "
+                          "actualizar su fecha en data/fuentes.json.")
+    else:
+        lineas.append("- ✅ Todas las secciones escritas a mano se revisaron en los últimos 12 meses.")
 
     if guardado.get("fecha_corte"):
         edad = meses_desde(guardado["fecha_corte"])

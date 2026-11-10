@@ -508,6 +508,19 @@
           <a class="go-btn" href="https://datos.gob.ar/dataset?q=boletin+oficial" target="_blank" rel="noopener">Ver en datos.gob.ar ↗</a>
         </div>
       </div>
+
+      <div class="card" id="fuentes" style="margin-top:1.5rem">
+        <h2>Fuentes y antig&uuml;edad de los datos</h2>
+        <p>
+          De d&oacute;nde sale cada secci&oacute;n y qu&eacute; tan reciente es. La <em>fecha</em> es la de los datos
+          (cuando vienen de un organismo) o la de la &uacute;ltima revisi&oacute;n del contenido (cuando lo armamos nosotros).
+          La antig&uuml;edad se calcula al abrir la p&aacute;gina.
+        </p>
+        <div id="fuentes-tabla" class="am-table-wrap"><p class="loading">Cargando fuentes...</p></div>
+        <p class="muted" style="font-size:.8rem">Los datos oficiales &laquo;antiguos&raquo; son los &uacute;ltimos que public&oacute; el organismo:
+          el sitio los revisa autom&aacute;ticamente y los reemplaza cuando sale una versi&oacute;n nueva. Los datos tambi&eacute;n est&aacute;n en
+          <a href="/api/fuentes" target="_blank" rel="noopener">/api/fuentes</a>.</p>
+      </div>
     </div>
   </div>
 
@@ -2609,7 +2622,7 @@
           <h2>Manual de uso del Observatorio de Discapacidad</h2>
           <p>Esta guía explica cómo moverte por el sitio, qué hay en cada pestaña y de dónde salen los datos. El sitio es un <strong>proyecto independiente, sin vínculo con organismos del Estado</strong>: reúne información oficial y científica, pero no reemplaza a un profesional ni al trámite oficial.</p>
           <h3>Cómo navegar</h3>
-          <ul class="ls-lista"><li>El <strong>menú de arriba</strong> tiene una pestaña por tema; en el celular ocupa dos filas, ninguna queda oculta.</li><li>El botón <strong>«Escuchar esta página»</strong> (abajo a la izquierda) lee en voz alta la sección abierta.</li><li>El botón de <strong>sobre</strong> (abajo a la derecha) abre el formulario de contacto.</li><li>En los mapas, tocá un punto para ver sus datos. Las tablas que no entran en la pantalla se deslizan de costado.</li><li><strong>API Docs</strong> (al final del menú) muestra los datos abiertos en formato JSON para desarrolladores.</li></ul>
+          <ul class="ls-lista"><li>El <strong>menú de arriba</strong> tiene una pestaña por tema; en el celular ocupa dos filas, ninguna queda oculta.</li><li>El botón <strong>«Escuchar esta página»</strong> (abajo a la izquierda) lee en voz alta la sección abierta.</li><li>El botón de <strong>sobre</strong> (abajo a la derecha) abre el formulario de contacto.</li><li>En los mapas, tocá un punto para ver sus datos. Las tablas que no entran en la pantalla se deslizan de costado.</li><li><strong>API Docs</strong> (al final del menú) muestra los datos abiertos en formato JSON para desarrolladores.</li><li>En <strong>Inicio</strong>, la tabla <strong>«Fuentes y antigüedad de los datos»</strong> dice de dónde sale cada sección y qué tan reciente es; el pie de página tiene un enlace directo.</li></ul>
         </div>
         <div class="card">
           <h3>Grafo de uso: ¿qué necesitás?</h3>
@@ -2640,7 +2653,7 @@
           <h2>Disability Observatory user guide</h2>
           <p>This guide explains how to move around the site, what each tab contains and where the data come from. The site is an <strong>independent project, not affiliated with any government agency</strong>: it gathers official and scientific information, but it does not replace a professional or the official procedure. Most of the site is in Spanish; tab names are kept as they appear in the menu.</p>
           <h3>How to navigate</h3>
-          <ul class="ls-lista"><li>The <strong>top menu</strong> has one tab per topic; on a phone it wraps onto two rows, so no tab is hidden.</li><li>The <strong>«Escuchar esta página»</strong> button (bottom left) reads the open section aloud (in Spanish).</li><li>The <strong>envelope</strong> button (bottom right) opens the contact form.</li><li>On the maps, tap a point to see its details. Tables wider than the screen scroll sideways.</li><li><strong>API Docs</strong> (end of the menu) exposes the open data as JSON for developers.</li></ul>
+          <ul class="ls-lista"><li>The <strong>top menu</strong> has one tab per topic; on a phone it wraps onto two rows, so no tab is hidden.</li><li>The <strong>«Escuchar esta página»</strong> button (bottom left) reads the open section aloud (in Spanish).</li><li>The <strong>envelope</strong> button (bottom right) opens the contact form.</li><li>On the maps, tap a point to see its details. Tables wider than the screen scroll sideways.</li><li><strong>API Docs</strong> (end of the menu) exposes the open data as JSON for developers.</li><li>On <strong>Inicio</strong>, the <strong>«Fuentes y antigüedad de los datos»</strong> table shows where each section comes from and how recent it is; the footer links straight to it.</li></ul>
         </div>
         <div class="card">
           <h3>Usage graph: what do you need?</h3>
@@ -3821,7 +3834,8 @@
 
   <footer>
     <div>&copy; 2026 Vicente H. Monteverde | Observatorio de Discapacidad. Todos los derechos reservados.</div>
-    <div><strong>Proyecto independiente, sin v&iacute;nculo con organismos del Estado.</strong></div>
+    <div><strong>Proyecto independiente, sin v&iacute;nculo con organismos del Estado.</strong>
+      &middot; <a href="#fuentes" onclick="switchTab('inicio');setTimeout(()=>document.getElementById('fuentes').scrollIntoView({behavior:'smooth'}),300);return false">Fuentes y antig&uuml;edad de los datos</a></div>
     <div>
       Informacion oficial basada en normativa de la Secretaria Nacional de Discapacidad - Ley 22.431 - Ley 24.901<br>
       Para consultas oficiales: <a href="https://www.argentina.gob.ar/andis">argentina.gob.ar/andis</a>
@@ -4244,6 +4258,39 @@
       if (!r.ok) throw new Error('HTTP ' + r.status);
       return r.json();
     }
+
+    /* ---------- Fuentes y antigüedad (Inicio) ---------- */
+    const ESTADO_FUENTE = {
+      al_dia:  ['Al d&iacute;a', '#e3f4ea', '#1f6b3f'],
+      revisar: ['Revisar pronto', '#fbf3d6', '#7a6200'],
+      antiguo: ['Antiguo', '#fde8ec', '#9b2c45'],
+      en_vivo: ['En vivo', '#e8eefc', '#2d4fb0'],
+    };
+    function textoAntiguedad(a) {
+      if (!a || a.estado === 'en_vivo') return 'se consulta al momento';
+      if (a.meses === 0) return 'este mes';
+      if (a.meses < 24) return a.meses + (a.meses === 1 ? ' mes' : ' meses');
+      return Math.floor(a.meses / 12) + ' años y ' + (a.meses % 12) + ' meses';
+    }
+    function renderFuentes(data) {
+      const filas = (data.fuentes || []).map(f => {
+        const est = ESTADO_FUENTE[(f.antiguedad || {}).estado] || ESTADO_FUENTE.en_vivo;
+        const fuente = f.url ? '<a href="' + escapeHtml(f.url) + '" target="_blank" rel="noopener">' + escapeHtml(f.fuente) + '</a>' : escapeHtml(f.fuente);
+        const fecha = f.fecha ? (f.tipo === 'datos' ? 'datos a ' + mesAnio(f.fecha) : 'revisado el ' + fechaCorta(f.fecha)) : '&mdash;';
+        return '<tr><th scope="row"><a href="#" data-ir="' + escapeHtml(f.pestana) + '">' + escapeHtml(f.seccion) + '</a></th>' +
+          '<td>' + fuente + '<br><span class="muted" style="font-size:.78rem">' + escapeHtml(f.actualizacion || '') + '</span></td>' +
+          '<td style="white-space:nowrap">' + fecha + '</td>' +
+          '<td style="white-space:nowrap"><span style="display:inline-block;padding:.1rem .5rem;border-radius:999px;font-size:.76rem;font-weight:600;background:' + est[1] + ';color:' + est[2] + '">' + est[0] + '</span><br>' + textoAntiguedad(f.antiguedad) + '</td></tr>';
+      }).join('');
+      return '<table class="tbl"><caption class="muted" style="text-align:left">' + escapeHtml(data.criterio || '') + '</caption>' +
+        '<thead><tr><th scope="col">Secci&oacute;n</th><th scope="col">Fuente y actualizaci&oacute;n</th><th scope="col">Fecha</th><th scope="col">Antig&uuml;edad</th></tr></thead>' +
+        '<tbody>' + filas + '</tbody></table>';
+    }
+    document.addEventListener('DOMContentLoaded', () => loadInto('/api/fuentes', 'fuentes-tabla', renderFuentes));
+    document.addEventListener('click', ev => {
+      const a = ev.target.closest('#fuentes-tabla a[data-ir]');
+      if (a) { ev.preventDefault(); switchTab(a.dataset.ir); }
+    });
 
     async function loadInto(url, targetId, renderer) {
       const el = document.getElementById(targetId);

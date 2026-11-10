@@ -1,0 +1,110 @@
+{
+  "_nota": "Registro de fuentes del sitio. 'fecha' = fecha de los datos o de la última revisión registrada del contenido (historial de git). Las entradas con 'dinamico' se completan en /api/fuentes con el dato real. Editar a mano al revisar una sección.",
+  "fuentes": [
+    {
+      "seccion": "Estadístico (CUD por provincia, tipo y edad)", "pestana": "estadistico",
+      "fuente": "ANDIS — Registro Nacional de Personas con Discapacidad",
+      "url": "https://www.argentina.gob.ar/andis/estadisticas/datos-estadisticos",
+      "tipo": "datos", "dinamico": "andis_oficial",
+      "actualizacion": "Scraper semanal: se carga solo cuando el Estado publica un informe nuevo."
+    },
+    {
+      "seccion": "Estadístico (dato más reciente del total)", "pestana": "estadistico",
+      "fuente": "Informe del Jefe de Gabinete al Congreso, citado por Chequeado",
+      "url": "https://chequeado.com/el-explicador/discapacidad-cuantos-certificados-hay-en-cada-provincia-y-que-paso-con-la-auditoria-que-anuncio-el-gobierno/",
+      "tipo": "datos", "dinamico": "andis_reciente",
+      "actualizacion": "Carga manual; fuente secundaria, sin desglose por provincia."
+    },
+    {
+      "seccion": "Población por provincia (para la tasa)", "pestana": "estadistico",
+      "fuente": "INDEC — población estimada 2022",
+      "url": "https://www.indec.gob.ar/indec/web/Nivel4-Tema-2-24-84",
+      "tipo": "datos", "fecha": "2022-07-01",
+      "actualizacion": "Fija; la tasa por provincia es un cálculo propio."
+    },
+    {
+      "seccion": "Médico (artículos y ensayos clínicos)", "pestana": "medico",
+      "fuente": "PubMed (NCBI) y ClinicalTrials.gov",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/",
+      "tipo": "en_vivo",
+      "actualizacion": "Consulta en vivo al abrir la pestaña; además, ETL semanal los miércoles."
+    },
+    {
+      "seccion": "Mapas de provincias y comunas", "pestana": "estadistico",
+      "fuente": "GeoRef — datos.gob.ar",
+      "url": "https://datosgobar.github.io/georef-ar-api/",
+      "tipo": "en_vivo",
+      "actualizacion": "Se descarga al desplegar el sitio."
+    },
+    {
+      "seccion": "Hogares", "pestana": "hogares",
+      "fuente": "Guía oficial de la Obra Don Orione, Formosa Digital y fuentes de cada fila",
+      "url": "https://donorione.org.ar/familia/FAMILIA_ORIONITA_AR-UR-PY.pdf",
+      "tipo": "contenido", "fecha": "2026-11-10",
+      "actualizacion": "Revisión manual; cada hogar indica su fuente y verificación."
+    },
+    {
+      "seccion": "Inclusión Laboral", "pestana": "laboral",
+      "fuente": "Leyes nacionales y provinciales (InfoLEG, e-legis, boletines oficiales)",
+      "url": "https://www.argentina.gob.ar/normativa",
+      "tipo": "contenido", "fecha": "2026-11-02",
+      "actualizacion": "Revisión manual; la tabla indica qué se confirmó en el texto de cada ley."
+    },
+    {
+      "seccion": "Lengua de Señas", "pestana": "senas",
+      "fuente": "Ley 27.710 y organizaciones de cada país",
+      "url": "https://e-legis-ar.msal.gov.ar/legisalud/migration/pdf/ley27710.pdf",
+      "tipo": "contenido", "fecha": "2026-11-02",
+      "actualizacion": "Revisión manual de enlaces."
+    },
+    {
+      "seccion": "Adultos Mayores", "pestana": "mayores",
+      "fuente": "ANDIS, INDEC y normativa nacional",
+      "url": "https://www.argentina.gob.ar/andis",
+      "tipo": "contenido", "fecha": "2026-10-24",
+      "actualizacion": "Revisión manual."
+    },
+    {
+      "seccion": "Condiciones (13 subpestañas)", "pestana": "condiciones",
+      "fuente": "Leyes de cada condición y guías del Ministerio de Salud",
+      "url": "https://www.argentina.gob.ar/salud",
+      "tipo": "contenido", "fecha": "2026-10-17",
+      "actualizacion": "Revisión manual; las marcadas con * esperan revisión profesional."
+    },
+    {
+      "seccion": "Tratamientos y Vanguardia", "pestana": "tratamientos",
+      "fuente": "PubMed, ANMAT y organizaciones profesionales",
+      "url": "https://www.argentina.gob.ar/anmat",
+      "tipo": "contenido", "fecha": "2026-10-17",
+      "actualizacion": "Revisión manual; la evidencia de cada tratamiento se consulta en vivo."
+    },
+    {
+      "seccion": "CUD (trámite, requisitos, juntas, beneficios, SUBE)", "pestana": "cud",
+      "fuente": "ANDIS, argentina.gob.ar y juntas evaluadoras provinciales",
+      "url": "https://www.argentina.gob.ar/cud",
+      "tipo": "contenido", "fecha": "2026-09-30",
+      "actualizacion": "Revisión manual."
+    },
+    {
+      "seccion": "Pensiones (PNC-PS, Decreto 84/2026)", "pestana": "pensiones",
+      "fuente": "Decreto 84/2026 y ANSES",
+      "url": "https://www.argentina.gob.ar/andis",
+      "tipo": "contenido", "fecha": "2026-09-30",
+      "actualizacion": "Revisión manual; los montos cambian cada mes por movilidad."
+    },
+    {
+      "seccion": "GCBA (escuelas especiales y salud)", "pestana": "gcba",
+      "fuente": "Buenos Aires Data (GCBA)",
+      "url": "https://data.buenosaires.gob.ar/",
+      "tipo": "contenido", "fecha": "2026-08-14",
+      "actualizacion": "Revisión manual."
+    },
+    {
+      "seccion": "Comuna_07", "pestana": "comuna_07",
+      "fuente": "Relevamiento vecinal propio",
+      "url": "",
+      "tipo": "contenido", "fecha": "2026-10-25",
+      "actualizacion": "Encuesta en curso."
+    }
+  ]
+}
