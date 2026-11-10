@@ -320,3 +320,15 @@ def test_pestana_hogares_generada_y_consistente():
 def test_sin_enlace_viejo_de_sssalud():
     html = (ROOT / "templates" / "index.html").read_text(encoding="utf-8")
     assert "sssalud.gob.ar/index.php" not in html
+
+
+def test_nombre_y_aviso_de_independencia():
+    html = (ROOT / "templates" / "index.html").read_text(encoding="utf-8")
+    assert "<title>Observatorio de Discapacidad</title>" in html
+    header = html[html.index("<header>"):html.index("</header>")]
+    footer = html[html.index("<footer>"):html.index("</footer>")]
+    aviso = "Proyecto independiente, sin v&iacute;nculo con organismos del Estado."
+    assert "<h1>Observatorio de Discapacidad</h1>" in header
+    assert aviso in header and aviso in footer
+    assert "not affiliated with any government agency" in _panel(html, "about")
+    assert "Asesoria Movil en Discapacidad</title>" not in html
