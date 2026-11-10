@@ -391,6 +391,7 @@
     <button class="tab-btn" data-panel="mayores">Adultos Mayores</button>
     <button class="tab-btn" data-panel="senas">Lengua de Señas</button>
     <button class="tab-btn" data-panel="laboral">Inclusión Laboral</button>
+    <button class="tab-btn" data-panel="hogares">Hogares</button>
     <button class="tab-btn" data-panel="comuna_07">Comuna_07</button>
     <a href="/docs" class="docs" target="_blank" rel="noopener">API Docs</a>
   </nav>
@@ -495,7 +496,7 @@
         <div class="home-card">
           <h3>🔎 Buscador de prestadores</h3>
           <p>Encontrá prestadores habilitados por obra social y provincia en el sitio oficial de la Superintendencia de Salud.</p>
-          <a class="go-btn" href="https://www.sssalud.gob.ar/index.php?cat=consultas&opc=nomenclador" target="_blank" rel="noopener">Ir al sitio SSS ↗</a>
+          <a class="go-btn" href="https://www.argentina.gob.ar/sssalud/prestadores" target="_blank" rel="noopener">Ir al sitio SSS ↗</a>
         </div>
         <div class="home-card">
           <h3>📰 Alertas Boletín Oficial</h3>
@@ -2423,6 +2424,148 @@
     </div>
   </div>
 
+<!-- HOGARES:INICIO (generado por scripts/gen_panel_hogares.py) -->
+  <div class="panel" id="panel-hogares" aria-labelledby="ho-titulo">
+    <div class="wrap wrap-wide">
+
+      <div class="card">
+        <h2 id="ho-titulo">Hogares para personas con discapacidad &mdash; provincia por provincia</h2>
+        <p>
+          Un <strong>hogar</strong> es una prestaci&oacute;n residencial para personas con discapacidad que no pueden vivir
+          con su familia o necesitan apoyos las 24 horas. Est&aacute; incluida en el
+          <a href="https://www.argentina.gob.ar/normativa/nacional/ley-24901-47677/texto" target="_blank" rel="noopener">Sistema de Prestaciones B&aacute;sicas (Ley 24.901)</a>:
+          con <strong>CUD</strong>, la obra social, la prepaga o el programa Incluir Salud deben cubrirla si el equipo tratante la indica
+          y el hogar est&aacute; inscripto en el Registro Nacional de Prestadores.
+        </p>
+        <p>
+          Los <strong>Peque&ntilde;os Cottolengos Don Orione</strong> son la red m&aacute;s conocida: 12 sedes en el pa&iacute;s
+          con hogar permanente para personas con discapacidad severa. Tambi&eacute;n listamos otros hogares cuya direcci&oacute;n
+          pudimos confirmar en una fuente p&uacute;blica.
+        </p>
+        <div class="disclaimer">
+          Este listado <strong>no es exhaustivo</strong>: no existe un padr&oacute;n nacional p&uacute;blico de hogares con direcci&oacute;n.
+          Antes de ir, llam&aacute; para confirmar vacantes, edades y tipo de discapacidad que reciben.
+          La columna <em>Verificaci&oacute;n</em> indica de d&oacute;nde sale cada dato (✔ fuente oficial &middot; ⚠ dato parcial).
+          &iquest;Conoc&eacute;s un hogar que falta? Escribinos desde el formulario de contacto de la portada.
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Mapa de hogares</h3>
+        <div style="display:flex;gap:.8rem;flex-wrap:wrap;align-items:center;margin-bottom:.6rem">
+          <label for="ho-prov">Provincia:</label>
+          <select id="ho-prov"><option value="">Todo el pa&iacute;s</option><option value="Buenos Aires">Buenos Aires</option><option value="CABA">CABA</option><option value="Catamarca">Catamarca</option><option value="Chaco">Chaco</option><option value="Chubut">Chubut</option><option value="Corrientes">Corrientes</option><option value="Córdoba">Córdoba</option><option value="Entre Ríos">Entre Ríos</option><option value="Formosa">Formosa</option><option value="Jujuy">Jujuy</option><option value="La Pampa">La Pampa</option><option value="La Rioja">La Rioja</option><option value="Mendoza">Mendoza</option><option value="Misiones">Misiones</option><option value="Neuquén">Neuquén</option><option value="Río Negro">Río Negro</option><option value="Salta">Salta</option><option value="San Juan">San Juan</option><option value="San Luis">San Luis</option><option value="Santa Cruz">Santa Cruz</option><option value="Santa Fe">Santa Fe</option><option value="Santiago del Estero">Santiago del Estero</option><option value="Tierra del Fuego">Tierra del Fuego</option><option value="Tucumán">Tucumán</option></select>
+          <span class="muted"><span style="color:#1d5d8c">&#9679;</span> Peque&ntilde;o Cottolengo
+            &nbsp; <span style="color:#b35c00">&#9679;</span> otro hogar o instituci&oacute;n</span>
+        </div>
+        <div id="ho-mapa" class="map-container" style="height:440px" role="img"
+             aria-label="Mapa de Argentina con los hogares listados. Los mismos datos están en la lista y la tabla siguientes."></div>
+        <p class="muted" style="font-size:.78rem">Puntos ubicados con OpenStreetMap. Los marcados como &laquo;ubicaci&oacute;n aproximada&raquo; se&ntilde;alan la calle o la ciudad, no el edificio.</p>
+        <div id="ho-lista" aria-live="polite"></div>
+      </div>
+
+      <div class="card" id="ho-provincias">
+        <h3>Las 24 jurisdicciones: hogares y d&oacute;nde pedir una vacante</h3>
+        <p>
+          Para ingresar a un hogar suele hacer falta: CUD vigente, indicaci&oacute;n del m&eacute;dico o equipo tratante,
+          informe social y la autorizaci&oacute;n de la obra social o del programa provincial. Si no ten&eacute;s cobertura,
+          el pedido se hace al organismo provincial de discapacidad.
+        </p>
+        <div class="am-table-wrap">
+          <table class="tbl il-prov" id="ho-tabla">
+            <caption class="muted" style="text-align:left">Organismos tomados de la pesta&ntilde;a CUD de este sitio.</caption>
+            <thead><tr><th scope="col">Jurisdicci&oacute;n</th><th scope="col">Hogares listados</th><th scope="col">Organismo provincial (vacantes y orientaci&oacute;n)</th></tr></thead>
+            <tbody>
+<tr data-prov="Buenos Aires"><th scope="row">Buenos Aires</th><td><ul class="ls-lista" style="margin:0 0 0 1rem"><li><strong>Pequeño Cottolengo Don Orione — Claypole</strong><br>Av. Lacaze 3963, Claypole (Almirante Brown) &middot; (011) 2206-5500<br><span class="muted">✔ guía oficial de la Obra Don Orione</span></li><li><strong>Pequeño Cottolengo Don Orione — Avellaneda</strong><br>Manuel Estévez 620, Avellaneda &middot; (011) 4201-9719<br><span class="muted">✔ guía oficial de la Obra Don Orione</span></li><li><strong>Pequeño Cottolengo Don Orione — Los Polvorines</strong><br>Av. Presidente Illia 4250, Los Polvorines (Malvinas Argentinas) &middot; (011) 4667-2830<br><span class="muted">✔ guía oficial de la Obra Don Orione</span></li><li><strong>Pequeño Cottolengo Don Orione — Mar del Plata</strong><br>Matheu 3340, Mar del Plata &middot; +54 9 223 573-2846<br><span class="muted">✔ guía oficial de la Obra Don Orione</span></li><li><strong>Colonia Nacional Dr. Manuel A. Montes de Oca</strong><br>Padre Criado Alonso s/n, Torres (Luján) &middot; (02323) 493380 al 387<br><span class="muted">✔ ficha del INAP (Estado nacional)</span></li></ul></td><td><a href="https://www.argentina.gob.ar/andis/juntas-evaluadoras-cud" target="_blank" rel="noopener">Dirección Provincial de Discapacidad — Provincia de Buenos Aires</a><br>0800-222-2427</td></tr>
+<tr data-prov="CABA"><th scope="row">CABA</th><td><span class="muted">Sin hogar verificado todav&iacute;a en este listado. Pedí la n&oacute;mina de hogares habilitados al organismo de la columna siguiente.</span></td><td><a href="https://buenosaires.gob.ar/tramites/solicitud-del-certificado-unico-de-discapacidad-cud" target="_blank" rel="noopener">Centro de Evaluación y Orientación de la Discapacidad — GCBA</a><br>147 (atención ciudadana GCBA)</td></tr>
+<tr data-prov="Catamarca"><th scope="row">Catamarca</th><td><span class="muted">Sin hogar verificado todav&iacute;a en este listado. Pedí la n&oacute;mina de hogares habilitados al organismo de la columna siguiente.</span></td><td><a href="https://www.catamarca.gov.ar" target="_blank" rel="noopener">Dirección de Asistencia Integral a Personas con Discapacidad</a><br>(03833) 437921 / 437913</td></tr>
+<tr data-prov="Chaco"><th scope="row">Chaco</th><td><ul class="ls-lista" style="margin:0 0 0 1rem"><li><strong>Pequeño Cottolengo Don Orione — Presidencia Roque Sáenz Peña</strong><br>Av. Las Malvinas y Superiora Palmira, Pres. Roque Sáenz Peña &middot; (0364) 442-1860<br><span class="muted">✔ guía oficial; ⚠ el punto del mapa es la ciudad, no el edificio</span></li></ul></td><td><a href="https://www.chaco.gov.ar" target="_blank" rel="noopener">Junta Central Evaluadora — Hospital Julio C. Perrando</a><br>(03722) 425050 / 442399 / 456446</td></tr>
+<tr data-prov="Chubut"><th scope="row">Chubut</th><td><span class="muted">Sin hogar verificado todav&iacute;a en este listado. Pedí la n&oacute;mina de hogares habilitados al organismo de la columna siguiente.</span></td><td><a href="https://www.chubut.gov.ar" target="_blank" rel="noopener">Secretaría de Salud — Dirección de Discapacidad</a><br>0800 222 8582</td></tr>
+<tr data-prov="Corrientes"><th scope="row">Corrientes</th><td><ul class="ls-lista" style="margin:0 0 0 1rem"><li><strong>Pequeño Cottolengo Don Orione — Itatí</strong><br>Obispo Luis María Niella 792, Itatí &middot; (0379) 449-3304<br><span class="muted">✔ guía oficial de la Obra Don Orione</span></li></ul></td><td><a href="https://salud.corrientes.gov.ar" target="_blank" rel="noopener">Junta Central Evaluadora de Personas — Ministerio de Salud</a><br>(03783) 424842</td></tr>
+<tr data-prov="Córdoba"><th scope="row">Córdoba</th><td><ul class="ls-lista" style="margin:0 0 0 1rem"><li><strong>Pequeño Cottolengo Don Orione — Córdoba</strong><br>B° Santa Isabel 1ª Sección (comunidad: Av. Armada Argentina 2440), Córdoba &middot; (0351) 494-0730<br><span class="muted">✔ guía oficial; ⚠ la guía da la dirección de la comunidad, no la puerta del hogar</span></li><li><strong>Pequeño Cottolengo Don Orione — San Francisco</strong><br>Juan de Garay 2900, San Francisco &middot; (03564) 42-6577<br><span class="muted">✔ guía oficial de la Obra Don Orione</span></li></ul></td><td><a href="https://www.cba.gov.ar/discapacidad" target="_blank" rel="noopener">Junta Central Evaluadora de Personas — Ministerio de Salud</a><br>(0351) 4341511 / 4688692</td></tr>
+<tr data-prov="Entre Ríos"><th scope="row">Entre Ríos</th><td><ul class="ls-lista" style="margin:0 0 0 1rem"><li><strong>Hogar Aprendiendo a Ser</strong><br>Pedro Londero 2947, Paraná<br><span class="muted">⚠ nota de prensa; sin teléfono publicado</span></li></ul></td><td><a href="https://www.iprodich.gob.ar" target="_blank" rel="noopener">IPRODICH — Instituto Provincial del Discapacitado de Entre Ríos</a><br>(0343) 4208280 / 4208281</td></tr>
+<tr data-prov="Formosa"><th scope="row">Formosa</th><td><span class="muted">Sin hogar verificado todav&iacute;a en este listado. Pedí la n&oacute;mina de hogares habilitados al organismo de la columna siguiente.</span></td><td><a href="https://www.formosa.gob.ar" target="_blank" rel="noopener">Junta Central Evaluadora — Ministerio de Desarrollo Humano</a><br>(03717) 436446</td></tr>
+<tr data-prov="Jujuy"><th scope="row">Jujuy</th><td><ul class="ls-lista" style="margin:0 0 0 1rem"><li><strong>Residencia “Nicky” — Asociación Todos Juntos</strong><br>Salta 1058, San Salvador de Jujuy &middot; (0388) 423-0236<br><span class="muted">✔ sitio oficial de la asociación</span></li></ul></td><td><a href="https://salud.jujuy.gob.ar" target="_blank" rel="noopener">Departamento Provincial de Rehabilitación — Ministerio de Bienestar Social</a><br>(0388) 4234243 / 44221308</td></tr>
+<tr data-prov="La Pampa"><th scope="row">La Pampa</th><td><span class="muted">Sin hogar verificado todav&iacute;a en este listado. Pedí la n&oacute;mina de hogares habilitados al organismo de la columna siguiente.</span></td><td><a href="https://www.lapampa.gob.ar" target="_blank" rel="noopener">Dirección de Discapacidad — Ministerio de Bienestar Social</a><br>(02954) 453953</td></tr>
+<tr data-prov="La Rioja"><th scope="row">La Rioja</th><td><span class="muted">Sin hogar verificado todav&iacute;a en este listado. Pedí la n&oacute;mina de hogares habilitados al organismo de la columna siguiente.</span></td><td><a href="https://salud.larioja.gov.ar" target="_blank" rel="noopener">Juntas Evaluadoras — Ministerio de Salud</a><br>(03822) 453552</td></tr>
+<tr data-prov="Mendoza"><th scope="row">Mendoza</th><td><ul class="ls-lista" style="margin:0 0 0 1rem"><li><strong>Pequeño Cottolengo Don Orione — Mendoza</strong><br>Juan B. Justo 1565, Villa Hipódromo (Godoy Cruz) &middot; (0261) 427-1333<br><span class="muted">✔ guía oficial de la Obra Don Orione</span></li></ul></td><td><a href="https://www.mendoza.gov.ar" target="_blank" rel="noopener">Gerencia de Discapacidad — Ministerio de Salud</a><br>(0261) 4254780</td></tr>
+<tr data-prov="Misiones"><th scope="row">Misiones</th><td><span class="muted">Sin hogar verificado todav&iacute;a en este listado. Pedí la n&oacute;mina de hogares habilitados al organismo de la columna siguiente.</span></td><td><a href="https://salud.misiones.gob.ar" target="_blank" rel="noopener">Dirección de Discapacidad — Ministerio de Salud Pública</a><br>(0376) 444082 / 441426</td></tr>
+<tr data-prov="Neuquén"><th scope="row">Neuquén</th><td><span class="muted">Sin hogar verificado todav&iacute;a en este listado. Pedí la n&oacute;mina de hogares habilitados al organismo de la columna siguiente.</span></td><td><a href="https://www.neuquen.gov.ar" target="_blank" rel="noopener">JUCAID — Junta Coordinadora para la Atención Integral del Discapacitado</a><br>(0299) 4495552</td></tr>
+<tr data-prov="Río Negro"><th scope="row">Río Negro</th><td><span class="muted">Sin hogar verificado todav&iacute;a en este listado. Pedí la n&oacute;mina de hogares habilitados al organismo de la columna siguiente.</span></td><td><a href="https://www.rionegro.gov.ar" target="_blank" rel="noopener">Consejo Provincial del Discapacitado — Junta Central</a><br>(02920) 421833</td></tr>
+<tr data-prov="Salta"><th scope="row">Salta</th><td><span class="muted">Sin hogar verificado todav&iacute;a en este listado. Pedí la n&oacute;mina de hogares habilitados al organismo de la columna siguiente.</span></td><td><a href="https://www.salta.gov.ar" target="_blank" rel="noopener">Junta Central Evaluadora — Secretaría de Asistencia Médica</a><br>(0387) 4375146 / 4314866</td></tr>
+<tr data-prov="San Juan"><th scope="row">San Juan</th><td><span class="muted">Sin hogar verificado todav&iacute;a en este listado. Pedí la n&oacute;mina de hogares habilitados al organismo de la columna siguiente.</span></td><td><a href="https://www.sanjuan.gov.ar" target="_blank" rel="noopener">Dirección de la Persona con Capacidades Especiales</a><br>(0264) 4216606</td></tr>
+<tr data-prov="San Luis"><th scope="row">San Luis</th><td><span class="muted">Sin hogar verificado todav&iacute;a en este listado. Pedí la n&oacute;mina de hogares habilitados al organismo de la columna siguiente.</span></td><td><a href="https://www.sanluis.gov.ar" target="_blank" rel="noopener">Centro de Referencia Provincial de Rehabilitación</a><br>(02652) 425046 / 431079</td></tr>
+<tr data-prov="Santa Cruz"><th scope="row">Santa Cruz</th><td><span class="muted">Sin hogar verificado todav&iacute;a en este listado. Pedí la n&oacute;mina de hogares habilitados al organismo de la columna siguiente.</span></td><td><a href="https://www.santacruz.gov.ar" target="_blank" rel="noopener">Área de Discapacidad — Subsecretaría de Salud Pública</a><br>(02966) 426173 / 420535</td></tr>
+<tr data-prov="Santa Fe"><th scope="row">Santa Fe</th><td><ul class="ls-lista" style="margin:0 0 0 1rem"><li><strong>Pequeño Cottolengo Don Orione — Rosario</strong><br>Gorriti 461, Rosario &middot; (0341) 439-9198<br><span class="muted">✔ guía oficial de la Obra Don Orione</span></li><li><strong>Pequeño Cottolengo Don Orione — General Lagos</strong><br>Ruta 21 km 12, zona rural, General Lagos &middot; (03402) 49-0052<br><span class="muted">✔ guía oficial de la Obra Don Orione</span></li></ul></td><td><a href="https://www.santafe.gob.ar/gestionesciudadanas/tramite/6a3e68c212dd0f76cc88efb7" target="_blank" rel="noopener">Dirección Provincial de Inclusión de Personas con Discapacidad</a><br>0800-888-3588</td></tr>
+<tr data-prov="Santiago del Estero"><th scope="row">Santiago del Estero</th><td><span class="muted">Sin hogar verificado todav&iacute;a en este listado. Pedí la n&oacute;mina de hogares habilitados al organismo de la columna siguiente.</span></td><td><a href="https://www.santiago.gov.ar" target="_blank" rel="noopener">Dirección Provincial de Discapacidad</a><br>(0385) 4242207</td></tr>
+<tr data-prov="Tierra del Fuego"><th scope="row">Tierra del Fuego</th><td><span class="muted">Sin hogar verificado todav&iacute;a en este listado. Pedí la n&oacute;mina de hogares habilitados al organismo de la columna siguiente.</span></td><td><a href="https://www.tierradelfuego.gob.ar" target="_blank" rel="noopener">Secretaría General de Acción Social — Dirección de Discapacidad</a><br>(02901) 431159</td></tr>
+<tr data-prov="Tucumán"><th scope="row">Tucumán</th><td><ul class="ls-lista" style="margin:0 0 0 1rem"><li><strong>Pequeño Cottolengo Don Orione — San Miguel de Tucumán</strong><br>Av. República del Líbano 2148 (comunidad y parroquia), San Miguel de Tucumán &middot; (0381) 424-6879<br><span class="muted">✔ guía oficial; ⚠ la guía da la dirección de la comunidad</span></li></ul></td><td><a href="https://salud.tucuman.gov.ar" target="_blank" rel="noopener">Junta de Evaluación de Discapacidad y Categorización de Prestadores</a><br>(0381) 452-6291 / 6292</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3>Si la cobertura se niega o demora</h3>
+        <ul class="ls-lista">
+          <li>Ped&iacute; la negativa <strong>por escrito</strong> y reclam&aacute; ante la
+            <a href="https://www.argentina.gob.ar/sssalud" target="_blank" rel="noopener">Superintendencia de Servicios de Salud</a> (0800-222-72583).</li>
+          <li>La Defensor&iacute;a del Pueblo de tu provincia o municipio puede intervenir sin costo.</li>
+          <li>Ante urgencia, un amparo de salud suele resolverse en d&iacute;as; consult&aacute; a la defensor&iacute;a oficial.</li>
+        </ul>
+        <p class="muted" style="font-size:.78rem">Fuentes: <a href="https://donorione.org.ar/familia/FAMILIA_ORIONITA_AR-UR-PY.pdf" target="_blank" rel="noopener">Gu&iacute;a de la Familia Orionita (Argentina, Uruguay y Paraguay)</a>,
+          <a href="https://donorione.org.ar/cottolengo-de-claypole/" target="_blank" rel="noopener">Cottolengo de Claypole</a> y las fuentes de cada fila. Revisado el 10/11/2026.</p>
+      </div>
+
+    </div>
+  </div>
+  <script>
+    const HOGARES = [{"prov": "Buenos Aires", "nombre": "Pequeño Cottolengo Don Orione — Claypole", "tipo": "cottolengo", "dir": "Av. Lacaze 3963, Claypole (Almirante Brown)", "tel": "(011) 2206-5500", "email": "cottolengoclaypole@donorione.org.ar", "nota": "Sede más grande del país: unas 415 personas con discapacidad. Hogar con Centro Educativo Terapéutico.", "ll": [-34.80842, -58.34256], "fuente": "https://donorione.org.ar/familia/FAMILIA_ORIONITA_AR-UR-PY.pdf", "verif": "✔ guía oficial de la Obra Don Orione"}, {"prov": "Buenos Aires", "nombre": "Pequeño Cottolengo Don Orione — Avellaneda", "tipo": "cottolengo", "dir": "Manuel Estévez 620, Avellaneda", "tel": "(011) 4201-9719", "email": "adm.orioneavellaneda@gmail.com", "nota": "", "ll": [-34.65326, -58.36455], "fuente": "https://donorione.org.ar/familia/FAMILIA_ORIONITA_AR-UR-PY.pdf", "verif": "✔ guía oficial de la Obra Don Orione"}, {"prov": "Buenos Aires", "nombre": "Pequeño Cottolengo Don Orione — Los Polvorines", "tipo": "cottolengo", "dir": "Av. Presidente Illia 4250, Los Polvorines (Malvinas Argentinas)", "tel": "(011) 4667-2830", "email": "cottolengodorione@yahoo.com.ar", "nota": "", "aprox": true, "ll": [-34.53149, -58.7031], "fuente": "https://donorione.org.ar/familia/FAMILIA_ORIONITA_AR-UR-PY.pdf", "verif": "✔ guía oficial de la Obra Don Orione"}, {"prov": "Buenos Aires", "nombre": "Pequeño Cottolengo Don Orione — Mar del Plata", "tipo": "cottolengo", "dir": "Matheu 3340, Mar del Plata", "tel": "+54 9 223 573-2846", "email": "", "nota": "", "ll": [-38.01245, -57.56806], "fuente": "https://donorione.org.ar/familia/FAMILIA_ORIONITA_AR-UR-PY.pdf", "verif": "✔ guía oficial de la Obra Don Orione"}, {"prov": "Buenos Aires", "nombre": "Colonia Nacional Dr. Manuel A. Montes de Oca", "tipo": "publico", "dir": "Padre Criado Alonso s/n, Torres (Luján)", "tel": "(02323) 493380 al 387", "email": "", "nota": "Organismo del Ministerio de Salud de la Nación para personas con discapacidad intelectual y padecimientos mentales.", "ll": [-34.42139, -59.14268], "fuente": "https://capacitacion.inap.gob.ar/coordinador/colonia-nacional-dr-manuel-a-montes-de-oca/", "verif": "✔ ficha del INAP (Estado nacional)"}, {"prov": "Córdoba", "nombre": "Pequeño Cottolengo Don Orione — Córdoba", "tipo": "cottolengo", "dir": "B° Santa Isabel 1ª Sección (comunidad: Av. Armada Argentina 2440), Córdoba", "tel": "(0351) 494-0730", "email": "info@donorionecordoba.com.ar", "nota": "Sede administrativa: 9 de Julio 37, 2° piso, of. 37 — (0351) 422-1518.", "ll": [-31.47536, -64.23795], "fuente": "https://donorione.org.ar/familia/FAMILIA_ORIONITA_AR-UR-PY.pdf", "verif": "✔ guía oficial; ⚠ la guía da la dirección de la comunidad, no la puerta del hogar"}, {"prov": "Córdoba", "nombre": "Pequeño Cottolengo Don Orione — San Francisco", "tipo": "cottolengo", "dir": "Juan de Garay 2900, San Francisco", "tel": "(03564) 42-6577", "email": "cottolengodonorionesf@gmail.com", "nota": "", "ll": [-31.41924, -62.09621], "fuente": "https://donorione.org.ar/familia/FAMILIA_ORIONITA_AR-UR-PY.pdf", "verif": "✔ guía oficial de la Obra Don Orione"}, {"prov": "Santa Fe", "nombre": "Pequeño Cottolengo Don Orione — Rosario", "tipo": "cottolengo", "dir": "Gorriti 461, Rosario", "tel": "(0341) 439-9198", "email": "administracionrosario@donorione.org.ar", "nota": "", "ll": [-32.9233, -60.67021], "fuente": "https://donorione.org.ar/familia/FAMILIA_ORIONITA_AR-UR-PY.pdf", "verif": "✔ guía oficial de la Obra Don Orione"}, {"prov": "Santa Fe", "nombre": "Pequeño Cottolengo Don Orione — General Lagos", "tipo": "cottolengo", "dir": "Ruta 21 km 12, zona rural, General Lagos", "tel": "(03402) 49-0052", "email": "cottolengolagos@gmail.com", "nota": "", "ll": [-33.09951, -60.55469], "fuente": "https://donorione.org.ar/familia/FAMILIA_ORIONITA_AR-UR-PY.pdf", "verif": "✔ guía oficial de la Obra Don Orione"}, {"prov": "Corrientes", "nombre": "Pequeño Cottolengo Don Orione — Itatí", "tipo": "cottolengo", "dir": "Obispo Luis María Niella 792, Itatí", "tel": "(0379) 449-3304", "email": "cottolengoitati@yahoo.com.ar", "nota": "", "aprox": true, "ll": [-27.26913, -58.24663], "fuente": "https://donorione.org.ar/familia/FAMILIA_ORIONITA_AR-UR-PY.pdf", "verif": "✔ guía oficial de la Obra Don Orione"}, {"prov": "Mendoza", "nombre": "Pequeño Cottolengo Don Orione — Mendoza", "tipo": "cottolengo", "dir": "Juan B. Justo 1565, Villa Hipódromo (Godoy Cruz)", "tel": "(0261) 427-1333", "email": "hdonorionemza@gmail.com", "nota": "Hogar permanente para personas con discapacidad severa.", "ll": [-32.90628, -68.86094], "fuente": "https://donorione.org.ar/familia/FAMILIA_ORIONITA_AR-UR-PY.pdf", "verif": "✔ guía oficial de la Obra Don Orione"}, {"prov": "Chaco", "nombre": "Pequeño Cottolengo Don Orione — Presidencia Roque Sáenz Peña", "tipo": "cottolengo", "dir": "Av. Las Malvinas y Superiora Palmira, Pres. Roque Sáenz Peña", "tel": "(0364) 442-1860", "email": "cottolengochaco@yahoo.com.ar", "nota": "", "aprox": true, "ll": [-26.79097, -60.44129], "fuente": "https://donorione.org.ar/familia/FAMILIA_ORIONITA_AR-UR-PY.pdf", "verif": "✔ guía oficial; ⚠ el punto del mapa es la ciudad, no el edificio"}, {"prov": "Tucumán", "nombre": "Pequeño Cottolengo Don Orione — San Miguel de Tucumán", "tipo": "cottolengo", "dir": "Av. República del Líbano 2148 (comunidad y parroquia), San Miguel de Tucumán", "tel": "(0381) 424-6879", "email": "cottotuc@gmail.com", "nota": "", "ll": [-26.79876, -65.21434], "fuente": "https://donorione.org.ar/familia/FAMILIA_ORIONITA_AR-UR-PY.pdf", "verif": "✔ guía oficial; ⚠ la guía da la dirección de la comunidad"}, {"prov": "Entre Ríos", "nombre": "Hogar Aprendiendo a Ser", "tipo": "otro", "dir": "Pedro Londero 2947, Paraná", "tel": "", "email": "", "nota": "Hogar privado inaugurado en noviembre de 2026, junto a un Centro de Día; el Iprodi habló de 234 camas.", "ll": [-31.74243, -60.45904], "aprox": true, "fuente": "https://www.elheraldo.com.ar/noticias/interes-general/se-inauguro-el-hogar-aprendiendo-a-ser-una-iniciativa-privada-que-amplia-los-espacios-de-atencion-para-personas-con-discapacidad", "verif": "⚠ nota de prensa; sin teléfono publicado"}, {"prov": "Jujuy", "nombre": "Residencia “Nicky” — Asociación Todos Juntos", "tipo": "otro", "dir": "Salta 1058, San Salvador de Jujuy", "tel": "(0388) 423-0236", "email": "", "nota": "Asociación que acompaña a personas con discapacidad intelectual y sus familias desde 1988.", "ll": [-24.18191, -65.3052], "aprox": true, "fuente": "https://todosjuntosjujuy.org/contacto/", "verif": "✔ sitio oficial de la asociación"}];
+    let hoMapa = null, hoCapa = null;
+    function hoDibujar() {
+      const prov = document.getElementById('ho-prov').value;
+      const lista = HOGARES.filter(h => !prov || h.prov === prov);
+      document.querySelectorAll('#ho-tabla tbody tr').forEach(tr => {
+        tr.style.display = !prov || tr.dataset.prov === prov ? '' : 'none';
+      });
+      document.getElementById('ho-lista').innerHTML = lista.length
+        ? '<div class="list-items">' + lista.map(h =>
+            '<div class="list-item"><strong>' + escapeHtml(h.nombre) + '</strong><br>' +
+            escapeHtml(h.dir) + ' &middot; ' + escapeHtml(h.prov) +
+            (h.tel ? '<br>Tel.: ' + escapeHtml(h.tel) : '') +
+            (h.email ? ' &middot; ' + escapeHtml(h.email) : '') +
+            (h.nota ? '<br><span class="muted">' + escapeHtml(h.nota) + '</span>' : '') +
+            '<br><a href="https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(h.dir + ', ' + h.prov + ', Argentina') +
+            '" target="_blank" rel="noopener">C&oacute;mo llegar</a> &middot; <a href="' + h.fuente + '" target="_blank" rel="noopener">Fuente</a></div>'
+          ).join('') + '</div>'
+        : '<p class="muted">Todav&iacute;a no listamos hogares verificados en esta provincia. Consult&aacute; al organismo provincial de la tabla.</p>';
+      if (!window.L) return;
+      if (!hoMapa) {
+        hoMapa = L.map('ho-mapa', { scrollWheelZoom: false }).setView([-38.5, -63.5], 4);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; OpenStreetMap', maxZoom: 18,
+        }).addTo(hoMapa);
+      }
+      setTimeout(() => hoMapa.invalidateSize(), 50);
+      if (hoCapa) hoCapa.remove();
+      hoCapa = L.layerGroup().addTo(hoMapa);
+      const puntos = lista.map(h => {
+        L.circleMarker(h.ll, {
+          radius: 8, weight: 1, fillOpacity: 0.9, color: '#ffffff',
+          fillColor: h.tipo === 'cottolengo' ? '#1d5d8c' : '#b35c00',
+        }).bindPopup('<strong>' + escapeHtml(h.nombre) + '</strong><br>' + escapeHtml(h.dir) +
+          (h.tel ? '<br>Tel.: ' + escapeHtml(h.tel) : '') +
+          (h.aprox ? '<br><em>Ubicaci&oacute;n aproximada</em>' : '')).addTo(hoCapa);
+        return h.ll;
+      });
+      if (puntos.length > 1) hoMapa.fitBounds(puntos, { padding: [30, 30], maxZoom: 12 });
+      else if (puntos.length === 1) hoMapa.setView(puntos[0], 13);
+      else hoMapa.setView([-38.5, -63.5], 4);
+    }
+    function initHogares() {
+      document.getElementById('ho-prov').addEventListener('change', hoDibujar);
+      hoDibujar();
+    }
+  </script>
+<!-- HOGARES:FIN -->
+
   <!-- ====================== COMUNA_07 ====================== -->
   <div class="panel" id="panel-comuna_07">
     <div class="wrap wrap-wide">
@@ -3903,6 +4046,7 @@
       if (name === 'gcba') initGcba();
       if (name === 'comuna_07') initComuna07();
       if (name === 'mayores') initMayores();
+      if (name === 'hogares') initHogares();
       if (name === 'tea') initTea();
       if (name === 'medico') initMedicoExtra();
       if (name === 'tratamientos') {

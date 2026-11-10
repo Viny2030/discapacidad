@@ -295,3 +295,28 @@ def test_tratamientos_pestana_nuevos_de_vanguardia():
     assert 'data-trat="nuevos"' in html and 'id="trat-nuevos"' in html
     assert "loadInto('/api/vanguardia/nuevos', 'vang-nuevos-info', renderVanguardiaTipo)" in html
     assert "++vangEvSeq" in html
+
+
+# ── Pestaña Hogares ──────────────────────────────────────────────────────────
+def test_pestana_hogares_generada_y_consistente():
+    from scripts import gen_panel_hogares as g
+    from scripts.datos_cud import JUNTAS_POR_PROVINCIA
+    html = (ROOT / "templates" / "index.html").read_text(encoding="utf-8")
+    nav = html[html.index("<nav>"):html.index("</nav>")]
+    assert 'data-panel="hogares"' in nav
+    assert "if (name === 'hogares') initHogares();" in html
+    # el bloque del HTML es exactamente lo que produce el generador (no editado a mano)
+    a, b = html.index(g.INICIO), html.index(g.FIN) + len(g.FIN)
+    assert html[a:b].replace("\r\n", "\n") == g.panel()
+    panel = _panel(html, "hogares")
+    for prov in JUNTAS_POR_PROVINCIA:          # las 24 jurisdicciones tienen fila
+        assert f'data-prov="{prov}"' in panel
+    for h in g.HOGARES:                         # cada hogar con fuente, provincia válida y punto en Argentina
+        assert h["prov"] in JUNTAS_POR_PROVINCIA and h["fuente"].startswith("https://") and h["verif"]
+        lat, lon = h["ll"]
+        assert -55.1 < lat < -21.7 and -73.6 < lon < -53.6, h["nombre"]
+
+
+def test_sin_enlace_viejo_de_sssalud():
+    html = (ROOT / "templates" / "index.html").read_text(encoding="utf-8")
+    assert "sssalud.gob.ar/index.php" not in html
