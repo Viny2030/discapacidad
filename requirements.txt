@@ -5,6 +5,7 @@ python-dotenv==1.0.1
 requests==2.32.3
 pandas==2.2.2
 apscheduler==3.10.4
+pypdf==5.1.0
 
 # testing
 pytest==8.2.2

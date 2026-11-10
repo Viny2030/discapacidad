@@ -81,17 +81,17 @@ GRAPH_TEXT = {
             "pubmed": ("PubMed", ["artículos; también en vivo"]),
             "ctgov": ("ClinicalTrials.gov", ["ensayos que reclutan"]),
             "mymemory": ("MyMemory", ["traducción de resúmenes"]),
-            "datosgob": ("datos.gob.ar · INDEC", ["CUD, estudio 2018, población"]),
+            "datosgob": ("ANDIS · INDEC", ["informe oficial CUD, población"]),
             "georef": ("GeoRef", ["provincias y comunas"]),
             "normas": ("Normas y guías oficiales", ["leyes, ANDIS, Don Orione"]),
             "etl_med": ("ETL médico", ["GitHub Actions, miércoles"]),
             "sched": ("Programador interno", ["cada 15 días, en el servidor"]),
-            "etl_est": ("ETL estadístico", ["GitHub Actions, lunes"]),
+            "etl_est": ("Scraper + ETL estadístico", ["GitHub Actions, lunes"]),
             "revision": ("Revisión manual", ["fuente y verificación"]),
             "cache": ("Caché médica", ["etl_medico_cache.json", "traducciones_es.json"]),
             "csv": ("Datos estadísticos", ["data/processed/*.csv"]),
             "curados": ("Datos curados", ["datos_cud.py, generadores"]),
-            "health": ("Control diario", ["health check, 7 h"]),
+            "health": ("Controles", ["diario y frescura mensual"]),
             "api": ("API FastAPI", ["/api/cud, /api/provincias…"]),
             "sitio": ("Sitio web", ["pestañas y mapas"]),
             "docs": ("API Docs", ["/docs, datos abiertos"]),
@@ -124,17 +124,17 @@ GRAPH_TEXT = {
             "pubmed": ("PubMed", ["articles; also live"]),
             "ctgov": ("ClinicalTrials.gov", ["recruiting trials"]),
             "mymemory": ("MyMemory", ["abstract translation"]),
-            "datosgob": ("datos.gob.ar · INDEC", ["CUD, 2018 survey, population"]),
+            "datosgob": ("ANDIS · INDEC", ["official CUD report, population"]),
             "georef": ("GeoRef", ["provinces and comunas"]),
             "normas": ("Laws and official guides", ["statutes, ANDIS, Don Orione"]),
             "etl_med": ("Medical ETL", ["GitHub Actions, Wednesdays"]),
             "sched": ("Internal scheduler", ["every 15 days, on the server"]),
-            "etl_est": ("Statistics ETL", ["GitHub Actions, Mondays"]),
+            "etl_est": ("Scraper + statistics ETL", ["GitHub Actions, Mondays"]),
             "revision": ("Manual review", ["source and verification"]),
             "cache": ("Medical cache", ["etl_medico_cache.json", "traducciones_es.json"]),
             "csv": ("Statistics data", ["data/processed/*.csv"]),
             "curados": ("Curated data", ["datos_cud.py, generators"]),
-            "health": ("Daily check", ["health check, 7 am"]),
+            "health": ("Checks", ["daily and monthly freshness"]),
             "api": ("FastAPI API", ["/api/cud, /api/provincias…"]),
             "sitio": ("Website", ["tabs and maps"]),
             "docs": ("API Docs", ["/docs, open data"]),
@@ -303,7 +303,7 @@ TEXTOS = {
         "col": ("Pestaña", "Para qué sirve"),
         "func_t": "Grafo de funcionamiento: de dónde salen los datos",
         "func_p": "Los procesos automáticos actualizan la evidencia médica cada miércoles y las estadísticas cada lunes; "
-                  "el servidor además los repite cada 15 días y un control diario verifica que el sitio responda. "
+                  "el servidor además los repite cada 15 días, un control diario verifica que el sitio responda y uno mensual que los datos estén al día. "
                   "Las leyes, guías y direcciones se cargan a mano, cada una con su fuente.",
         "priv_t": "Privacidad y avisos",
         "priv": [
@@ -333,7 +333,7 @@ TEXTOS = {
         "col": ("Tab", "What it is for"),
         "func_t": "Operation graph: where the data come from",
         "func_p": "Automated jobs refresh the medical evidence every Wednesday and the statistics every Monday; "
-                  "the server also reruns them every 15 days and a daily check confirms the site responds. "
+                  "the server also reruns them every 15 days, a daily check confirms the site responds and a monthly one that the data are current. "
                   "Laws, guides and addresses are entered by hand, each with its source.",
         "priv_t": "Privacy and notices",
         "priv": [

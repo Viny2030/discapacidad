@@ -3,7 +3,7 @@ etl_estadistico.py
 Motor de ingesta de datos estadísticos de discapacidad en Argentina.
 
 Fuentes:
-  - ANDIS  — CUD emitidos por provincia (PDF + informes)
+  - ANDIS  — informe oficial del RNPcD, leído por scripts/scraper_andis.py
   - INDEC  — Estudio Nacional 2018 + Censo 2022
   - Georef — Provincias y comunas de CABA para mapas
   - BA Data — Datos específicos de CABA
@@ -48,72 +48,34 @@ FUENTES = {
     ),
 }
 
-# Datos ANDIS noviembre 2023 (publicados en informe PDF — hardcodeados del último informe oficial)
-ANDIS_NOV_2023 = {
-    "total_nacional": 1_680_723,
-    "porcentaje_poblacion": 3.65,
-    "fecha_corte": "2023-11-01",
-    "por_provincia": {
-        "Buenos Aires":          680_333,
-        "CABA":                  163_114,
-        "Santa Fe":              124_441,
-        "Córdoba":               112_777,
-        "Mendoza":                67_148,
-        "Entre Ríos":             47_890,
-        "Tucumán":                46_203,
-        "Salta":                  38_901,
-        "Chaco":                  31_245,
-        "Corrientes":             30_112,
-        "Misiones":               29_887,
-        "Santiago del Estero":    26_334,
-        "Jujuy":                  22_111,
-        "Río Negro":              21_445,
-        "Neuquén":                20_889,
-        "Formosa":                18_223,
-        "San Juan":               17_667,
-        "Chubut":                 16_334,
-        "La Pampa":               12_001,
-        "San Luis":               11_778,
-        "Catamarca":              10_445,
-        "La Rioja":                9_334,
-        "Santa Cruz":              9_001,
-        "Tierra del Fuego":        4_445,
-    },
-    "por_tipo": {
-        "Mental/Psiquiátrica":  465_234,
-        "Motora":               428_945,
-        "Sensorial auditiva":   201_456,
-        "Sensorial visual":     189_234,
-        "Intelectual":          168_072,
-        "Visceral/Sistémica":    89_234,
-        "Múltiple":              68_972,
-        "Otras":                 69_576,
-    },
-    "por_rango_edad": {
-        "0-14":   201_234,
-        "15-29":  268_445,
-        "30-44":  312_667,
-        "45-59":  378_223,
-        "60-74":  312_001,
-        "75+":    208_153,
-    },
-    "por_genero": {
-        "Femenino":  882_345,
-        "Masculino": 798_378,
-    },
-}
+# Datos oficiales: los escribe scripts/scraper_andis.py a partir del último
+# informe publicado en argentina.gob.ar/andis/estadisticas/datos-estadisticos.
+# Antes estaban escritos a mano y el desglose no coincidía con el informe.
+ANDIS_JSON = PROC_DIR / "andis_oficial.json"
 
-# Datos históricos CUD emitidos (evolución)
-EVOLUCION_CUD = [
-    {"año": 2018, "total": 950_000},
-    {"año": 2019, "total": 1_020_000},
-    {"año": 2020, "total": 1_059_480},
-    {"año": 2021, "total": 1_120_869},
-    {"año": 2022, "total": 1_231_185},
-    {"año": 2023, "total": 1_680_723},
-]
 
-# Datos CABA por comuna (estimados del informe COPIDIS 2022)
+def cargar_andis() -> dict:
+    """Devuelve el JSON completo (oficial + dato_reciente + no_oficiales)."""
+    import json
+    return json.loads(ANDIS_JSON.read_text(encoding="utf-8"))
+
+
+def oficial() -> dict:
+    return cargar_andis()["oficial"]
+
+
+def puntos_evolucion() -> list[dict]:
+    """Únicos totales nacionales con fuente: el informe oficial y el dato reciente."""
+    d = cargar_andis()
+    puntos = [{"fecha": d["oficial"]["fecha_corte"][:7], "total": d["oficial"]["total_cud_vigentes"],
+               "fuente": d["oficial"]["fuente"]}]
+    if d.get("dato_reciente"):
+        r = d["dato_reciente"]
+        puntos.append({"fecha": r["fecha"], "total": r["total_cud_vigentes"], "fuente": r["fuente"]})
+    return sorted(puntos, key=lambda x: x["fecha"])
+
+
+# Datos CABA por comuna — ESTIMACIÓN PROPIA, no oficial (el informe oficial no publica comunas)
 CABA_POR_COMUNA = {
     1:  {"nombre": "Constitución",    "cud": 8_234},
     2:  {"nombre": "Recoleta",        "cud": 7_891},
@@ -212,14 +174,15 @@ def construir_df_provincias() -> pd.DataFrame:
         "La Rioja": 393_531, "Santa Cruz": 333_473, "Tierra del Fuego": 190_641,
     }
     rows = []
-    for prov, cud in ANDIS_NOV_2023["por_provincia"].items():
+    datos = oficial()
+    for prov, cud in datos["por_provincia"].items():
         pob = POBLACION_2022.get(prov, 1)
         rows.append({
             "provincia":         prov,
             "cud_vigentes":      cud,
             "poblacion_2022":    pob,
             "tasa_prevalencia":  round(cud / pob * 100, 2),
-            "fecha_datos":       ANDIS_NOV_2023["fecha_corte"],
+            "fecha_datos":       datos["fecha_corte"],
         })
     df = pd.DataFrame(rows).sort_values("cud_vigentes", ascending=False)
     df.to_csv(PROC_DIR / "prevalencia_provincias.csv", index=False)
@@ -228,21 +191,22 @@ def construir_df_provincias() -> pd.DataFrame:
 
 
 def construir_df_evolucion() -> pd.DataFrame:
-    """Construye DataFrame de evolución histórica del CUD."""
-    df = pd.DataFrame(EVOLUCION_CUD)
+    """Totales nacionales con fuente (informe oficial y dato reciente informado al Congreso)."""
+    df = pd.DataFrame(puntos_evolucion())
     variacion = df["total"].pct_change() * 100
     # pct_change() da NaN en la primera fila (sin año anterior).
     # NaN no es JSON-serializable -> lo convertimos a None.
     df["variacion_pct"] = variacion.round(2).astype(object).where(variacion.notna(), None)
     df.to_csv(PROC_DIR / "evolucion_cud.csv", index=False)
-    log.info(f"  ✓ evolucion_cud.csv — {len(df)} años")
+    log.info(f"  ✓ evolucion_cud.csv — {len(df)} puntos con fuente")
     return df
 
 
 def construir_df_tipos() -> pd.DataFrame:
     """Construye DataFrame de CUD por tipo de discapacidad."""
-    rows = [{"tipo": k, "cantidad": v, "porcentaje": round(v / ANDIS_NOV_2023["total_nacional"] * 100, 1)}
-            for k, v in ANDIS_NOV_2023["por_tipo"].items()]
+    datos = oficial()
+    rows = [{"tipo": k, "cantidad": v, "porcentaje": round(v / datos["total_cud_vigentes"] * 100, 1)}
+            for k, v in datos["por_tipo"].items()]
     df = pd.DataFrame(rows).sort_values("cantidad", ascending=False)
     df.to_csv(PROC_DIR / "cud_por_tipo.csv", index=False)
     log.info(f"  ✓ cud_por_tipo.csv — {len(df)} tipos")
@@ -252,7 +216,7 @@ def construir_df_tipos() -> pd.DataFrame:
 def construir_df_caba() -> pd.DataFrame:
     """Construye DataFrame de CUD por comuna de CABA."""
     rows = [{"comuna": k, "nombre": v["nombre"], "cud": v["cud"],
-             "tasa_estimada": round(v["cud"] / 163_114 * 100, 1)}
+             "tasa_estimada": round(v["cud"] / oficial()["por_provincia"]["CABA"] * 100, 1)}
             for k, v in CABA_POR_COMUNA.items()]
     df = pd.DataFrame(rows)
     df.to_csv(PROC_DIR / "caba_por_comuna.csv", index=False)
@@ -274,9 +238,9 @@ def run_etl_estadistico() -> dict:
     geo_comunas = descargar_georef_comunas()
 
     resumen = {
-        "total_cud_nacional":    ANDIS_NOV_2023["total_nacional"],
-        "porcentaje_poblacion":  ANDIS_NOV_2023["porcentaje_poblacion"],
-        "fecha_datos":           ANDIS_NOV_2023["fecha_corte"],
+        "total_cud_nacional":    oficial()["total_cud_vigentes"],
+        "porcentaje_poblacion":  oficial()["porcentaje_poblacion"],
+        "fecha_datos":           oficial()["fecha_corte"],
         "provincias":            len(df_prov),
         "comunas_caba":          len(df_caba),
         "fecha_etl":             datetime.now().isoformat(),

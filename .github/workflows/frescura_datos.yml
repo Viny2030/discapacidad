@@ -1,0 +1,50 @@
+name: Control de frescura de datos
+
+# El día 1 de cada mes revisa que:
+#   - el informe oficial que publica ANDIS sea el mismo que tenemos cargado;
+#   - producción muestre el mismo corte de datos que el repositorio.
+# Si algo no cuadra, abre (o comenta) un issue. No modifica datos.
+
+on:
+  schedule:
+    - cron: "0 12 1 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  frescura:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configurar Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
+
+      - name: Controlar frescura
+        id: control
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          python -m scripts.control_frescura | tee informe.md
+          cat informe.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Abrir issue si los datos no están al día
+        if: steps.control.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          titulo="Datos estadísticos desactualizados"
+          printf '%s\n\nRun: %s\n' "$(cat informe.md)" "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" > cuerpo.md
+          n=$(gh issue list --state open --search "$titulo in:title" --json number -q '.[0].number')
+          if [ -n "$n" ]; then gh issue comment "$n" --body-file cuerpo.md; else gh issue create --title "$titulo" --body-file cuerpo.md; fi
+          exit 1

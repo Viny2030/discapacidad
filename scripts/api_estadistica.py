@@ -55,23 +55,35 @@ def _load_json(nombre: str) -> dict:
     return json.loads(text)
 
 
+def _andis() -> dict:
+    """Informe oficial leído por scripts/scraper_andis.py, más el dato reciente y las aclaraciones."""
+    return json.loads((PROC_DIR / "andis_oficial.json").read_text(encoding="utf-8"))
+
+
+def _fuente_oficial(d: dict) -> dict:
+    o = d["oficial"]
+    return {"fuente": o["fuente"], "fuente_url": o["fuente_pagina"], "fuente_pdf": o["fuente_pdf"],
+            "fecha_datos": o["fecha_corte"], "fecha_lectura": d.get("fecha_lectura")}
+
+
 # ── Endpoints ──────────────────────────────────────────────────────────────────
 
 @router.get("/resumen")
 async def resumen_nacional():
     """KPIs nacionales del Observatorio."""
-    prov = _load_csv("prevalencia_provincias.csv")
-    tipos = _load_csv("cud_por_tipo.csv")
-    evol  = _load_csv("evolucion_cud.csv")
+    d = _andis()
+    o = d["oficial"]
+    prov = max(o["por_provincia"].items(), key=lambda kv: kv[1])[0]
+    tipo = max(o["por_tipo"].items(), key=lambda kv: kv[1])[0]
     return {
-        "total_cud_vigentes":   1_680_723,
-        "porcentaje_poblacion": 3.65,
-        "fecha_datos":          "2023-11-01",
-        "provincia_mayor":      prov[0]["provincia"] if prov else "",
-        "tipo_mas_frecuente":   tipos[0]["tipo"] if tipos else "",
-        "variacion_anual_pct":  evol[-1]["variacion_pct"] if evol else 0,
-        "total_provincias":     len(prov),
-        "fuente":               "ANDIS — Registro Nacional de Personas con Discapacidad",
+        "total_cud_vigentes":   o["total_cud_vigentes"],
+        "porcentaje_poblacion": o["porcentaje_poblacion"],
+        "provincia_mayor":      prov,
+        "tipo_mas_frecuente":   tipo,
+        "total_provincias":     len(o["por_provincia"]),
+        **_fuente_oficial(d),
+        "dato_reciente":        d.get("dato_reciente"),
+        "no_oficiales":         d.get("no_oficiales", []),
     }
 
 
@@ -89,7 +101,8 @@ async def provincias(
         data.sort(key=lambda x: x.get(orden, 0), reverse=True)
     elif orden == "provincia":
         data.sort(key=lambda x: x.get("provincia", ""))
-    return {"total": len(data), "orden": orden, "provincias": data}
+    return {"total": len(data), "orden": orden, "provincias": data, **_fuente_oficial(_andis()),
+            "nota": "La tasa es un cálculo propio sobre la población estimada 2022 (INDEC)."}
 
 
 @router.get("/provincias/{nombre}")
@@ -104,12 +117,12 @@ async def provincia_detalle(nombre: str):
 
 @router.get("/evolucion")
 async def evolucion_historica():
-    """Evolución histórica del CUD 2018–2023."""
+    """Totales nacionales con fuente (no hay serie anual oficial publicada)."""
     data = _load_csv("evolucion_cud.csv")
     if not data:
         from scripts.etl_estadistico import construir_df_evolucion
         data = construir_df_evolucion().to_dict("records")
-    return {"fuente": "ANDIS", "series": data}
+    return {"fuente": "ANDIS y dato informado al Congreso", "series": data}
 
 
 @router.get("/tipos")
@@ -119,7 +132,7 @@ async def tipos_discapacidad():
     if not data:
         from scripts.etl_estadistico import construir_df_tipos
         data = construir_df_tipos().to_dict("records")
-    return {"total": sum(d["cantidad"] for d in data), "tipos": data}
+    return {"total": sum(d["cantidad"] for d in data), "tipos": data, **_fuente_oficial(_andis())}
 
 
 @router.get("/caba/comunas")
@@ -130,10 +143,10 @@ async def caba_comunas():
         from scripts.etl_estadistico import construir_df_caba
         data = construir_df_caba().to_dict("records")
     return {
-        "total_caba":    163_114,
-        "porcentaje_ar": 9.7,
+        "total_caba":    _andis()["oficial"]["por_provincia"]["CABA"],
         "comunas":       data,
-        "fuente":        "COPIDIS — Gobierno de CABA",
+        "oficial":       False,
+        "fuente":        "Estimación propia por comuna (no oficial); el total de CABA es del informe oficial de ANDIS",
     }
 
 

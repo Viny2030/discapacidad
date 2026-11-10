@@ -1,0 +1,68 @@
+{
+  "oficial": {
+    "fecha_corte": "2023-11-01",
+    "total_cud_vigentes": 1680723,
+    "porcentaje_poblacion": 3.65,
+    "por_provincia": {
+      "Buenos Aires": 678237,
+      "CABA": 162522,
+      "Santa Fe": 126431,
+      "Córdoba": 113005,
+      "Mendoza": 80338,
+      "Tucumán": 63809,
+      "Salta": 57497,
+      "Entre Ríos": 50164,
+      "Chaco": 37696,
+      "Río Negro": 33709,
+      "Misiones": 29117,
+      "San Juan": 28712,
+      "Neuquén": 28299,
+      "Corrientes": 28182,
+      "Jujuy": 28121,
+      "Santiago del Estero": 23849,
+      "Chubut": 23206,
+      "San Luis": 16603,
+      "Catamarca": 15910,
+      "Santa Cruz": 14617,
+      "Formosa": 13030,
+      "La Rioja": 11535,
+      "La Pampa": 10010,
+      "Tierra del Fuego": 6124
+    },
+    "por_tipo": {
+      "Física motora": 425813,
+      "Mental": 391857,
+      "Más de un tipo": 335767,
+      "Intelectual": 171196,
+      "Sensorial auditiva": 153073,
+      "Física visceral": 122179,
+      "Sensorial visual": 80838
+    },
+    "por_edad": {
+      "0 a 14 años": 383125,
+      "15 a 64 años": 918589,
+      "65 años y más": 379009
+    },
+    "fuente": "ANDIS — Registro Nacional de Personas con Discapacidad",
+    "fuente_pagina": "https://www.argentina.gob.ar/andis/estadisticas/datos-estadisticos",
+    "fuente_pdf": "https://www.argentina.gob.ar/sites/default/files/texto_plano_del_poster_informativo_de_noviembre_de_2023pdf.pdf"
+  },
+  "fecha_lectura": "2026-11-10",
+  "dato_reciente": {
+    "total_cud_vigentes": 1900061,
+    "fecha": "2025-03",
+    "descripcion": "Personas con CUD vigente informadas por el Jefe de Gabinete al Congreso en 2025, con datos de ANDIS. No está publicado en la página oficial de estadísticas y no tiene desglose por provincia.",
+    "fuente": "Informe de gestión del Jefe de Gabinete ante el Congreso, citado por Chequeado (25/07/2025)",
+    "url": "https://chequeado.com/el-explicador/discapacidad-cuantos-certificados-hay-en-cada-provincia-y-que-paso-con-la-auditoria-que-anuncio-el-gobierno/"
+  },
+  "no_oficiales": [
+    {
+      "dato": "Tasa por provincia",
+      "detalle": "Cálculo propio: CUD vigentes del informe oficial dividido la población estimada 2022 (INDEC)."
+    },
+    {
+      "dato": "Distribución en CABA por comuna",
+      "detalle": "Estimación propia: el informe oficial no publica datos por comuna."
+    }
+  ]
+}

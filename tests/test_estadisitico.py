@@ -62,7 +62,7 @@ def test_provincia_detalle(client):
     assert r.status_code == 200
     data = r.json()
     assert data["provincia"] == "CABA"
-    assert data["cud_vigentes"] == 163_114
+    assert data["cud_vigentes"] == 162_522      # informe oficial ANDIS, nov. 2023
 
 
 def test_provincia_detalle_inexistente(client):
@@ -76,11 +76,9 @@ def test_evolucion(client):
     r = client.get("/api/evolucion")
     assert r.status_code == 200
     data = r.json()
-    assert len(data["series"]) >= 4
-    años = [s["año"] for s in data["series"]]
-    assert 2018 in años
-    assert 2023 in años
-    # Evolución debe ser creciente
+    # solo totales con fuente: el informe oficial (2023-11) y el dato informado al Congreso (2025-03)
+    assert [s["fecha"] for s in data["series"]] == ["2023-11", "2025-03"]
+    assert all(s["fuente"] for s in data["series"])
     totales = [s["total"] for s in data["series"]]
     assert totales == sorted(totales)
 
@@ -147,7 +145,7 @@ def test_etl_construir_provincias():
 def test_etl_construir_evolucion():
     from scripts.etl_estadistico import construir_df_evolucion
     df = construir_df_evolucion()
-    assert len(df) >= 4
+    assert len(df) >= 2
     totales = df["total"].tolist()
     assert totales == sorted(totales)             # siempre creciente
     # variacion_pct: primer valor None, resto numérico

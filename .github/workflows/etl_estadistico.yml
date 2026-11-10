@@ -1,9 +1,25 @@
 name: ETL Estadístico semanal
 
+# Cada lunes:
+#   1. scripts/scraper_andis.py lee el último informe OFICIAL publicado en
+#      argentina.gob.ar/andis/estadisticas/datos-estadisticos y, si es nuevo y
+#      sus números cierran, actualiza data/processed/andis_oficial.json.
+#   2. El ETL regenera los CSV de la pestaña Estadístico a partir de ese JSON.
+#   3. Si cambió algo, se commitea (y el sitio se redespliega solo).
+# Si el scraper falla, el ETL sigue con los datos ya guardados y se abre un issue.
+
 on:
   schedule:
     - cron: "0 6 * * 1"
   workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: datos-estadisticos
+  cancel-in-progress: false
 
 jobs:
   etl-estadistico:
@@ -24,27 +40,41 @@ jobs:
       - name: Crear directorios de datos
         run: mkdir -p data/raw data/processed
 
+      - name: Leer el informe oficial de ANDIS
+        id: scraper
+        continue-on-error: true
+        run: python -m scripts.scraper_andis | tee -a "$GITHUB_STEP_SUMMARY"
+
       - name: Correr ETL estadístico
         run: python scripts/run_etl_estadistico.py
 
       - name: Verificar archivos generados
         run: |
-          echo "=== Archivos procesados ==="
-          ls -lh data/processed/ || echo "Sin archivos procesados"
-          echo "=== Archivos raw ==="
-          ls -lh data/raw/ || echo "Sin archivos raw"
-          test -f data/processed/prevalencia_provincias.csv || (echo "❌ prevalencia_provincias.csv no generado" && exit 1)
-          echo "✅ ETL estadístico completado correctamente"
+          ls -lh data/processed/
+          for f in andis_oficial.json prevalencia_provincias.csv cud_por_tipo.csv evolucion_cud.csv; do
+            test -f "data/processed/$f" || { echo "❌ falta $f"; exit 1; }
+          done
+          echo "✅ ETL estadístico completado"
 
       - name: Commit y push de datos actualizados
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/
           git diff --staged --quiet || git commit -m "data: ETL estadístico automático $(date -u '+%Y-%m-%d')"
           git push
+
+      - name: Abrir issue si no se pudo leer el informe oficial
+        if: steps.scraper.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          titulo="No se pudo leer el informe oficial de ANDIS"
+          cuerpo="El scraper falló el $(date -u '+%Y-%m-%d'). El sitio sigue mostrando el último informe leído.
+          Log: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          Revisar si cambió el formato del PDF en https://www.argentina.gob.ar/andis/estadisticas/datos-estadisticos"
+          n=$(gh issue list --state open --search "$titulo in:title" --json number -q '.[0].number')
+          if [ -n "$n" ]; then gh issue comment "$n" --body "$cuerpo"; else gh issue create --title "$titulo" --body "$cuerpo"; fi
 
       - name: Notificar fallo
         if: failure()
