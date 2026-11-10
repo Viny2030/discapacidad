@@ -1,9 +1,12 @@
 name: Boletín Oficial diario
 
-# Cada día hábil, scripts/scraper_boletin.py revisa la primera sección del Boletín
-# Oficial (hoy y los 3 días anteriores, por si un día falló) y guarda las normas
-# sobre discapacidad en data/processed/boletin_discapacidad.json. Si cambió algo,
-# se commitea y el sitio se redespliega solo. Si falla, se abre un issue.
+# Cada día hábil, scripts/scraper_boletin.py baja el PDF oficial de la primera sección
+# del Boletín Oficial (hoy y los 3 días anteriores, por si un día falló) desde
+# otslist.boletinoficial.gob.ar y guarda las normas sobre discapacidad en
+# data/processed/boletin_discapacidad.json. Si cambió algo, se commitea y el sitio se
+# redespliega solo. Si falla, se abre un issue.
+# www.boletinoficial.gob.ar no responde a los servidores de GitHub (issue #1); otslist sí,
+# por eso corre en los runners normales de GitHub, sin depender de ninguna PC.
 
 on:
   schedule:

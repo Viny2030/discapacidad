@@ -1,44 +1,48 @@
 {
  "normas": [
   {
-   "id": "349786",
-   "organismo": "MINISTERIO DE SALUD - SECRETARÍA NACIONAL DE DISCAPACIDAD",
+   "id": "20261029-RESOL-2026-3697-APN-SND#MS",
+   "organismo": "MINISTERIO DE SALUD SECRETARÍA NACIONAL DE DISCAPACIDAD",
    "norma": "Resolución 3697/2026",
    "codigo": "RESOL-2026-3697-APN-SND#MS",
    "fecha": "2026-10-29",
-   "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/349786/20261029",
-   "resumen": "Sustitúyese el artículo 2° de la Resolución N° 3695 del 27 de octubre de 2026 de la SECRETARÍA NACIONAL DE DISCAPACIDAD DEL MINISTERIO DE SALUD, por el siguiente: “",
+   "url": "https://www.boletinoficial.gob.ar/seccion/primera/20261029",
+   "pdf": "https://otslist.boletinoficial.gob.ar/ots/download/510ca6821c388f67d65f205f0eebe8ba6808dcb0e35dc3d8979d3d792b216dc3/0/",
+   "resumen": "Sustitúyese el artículo 2° de la Resolución N° 3695 del 27 de octubre de 2026 de la SECRETARÍA NACIONAL DE DISCAPACIDAD DEL MINISTERIO DE SALUD, por el siguiente: “ARTÍCULO 2°.- Hágase saber a las personas titulares de las prestaciones individualizadas en el Anexo I (IF- 2026-103572421-APN-DNGYAA#MS) aprobado en el artículo 1° de la presente resolución que podrán solicitar su rehabilitación en los términos del…",
    "categoria": "pensiones"
   },
   {
-   "id": "349760",
+   "id": "20261029-DECTO-2026-1296-APN-PTE",
    "organismo": "SEGURIDAD SOCIAL",
    "norma": "Decreto 1296/2026",
-   "codigo": "DECTO-2026-1296-APN-PTE - Bono Extraordinario Previsional.",
+   "codigo": "DECTO-2026-1296-APN-PTE",
    "fecha": "2026-10-29",
-   "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/349760/20261029",
+   "url": "https://www.boletinoficial.gob.ar/seccion/primera/20261029",
+   "pdf": "https://otslist.boletinoficial.gob.ar/ots/download/510ca6821c388f67d65f205f0eebe8ba6808dcb0e35dc3d8979d3d792b216dc3/0/",
    "resumen": "Otórgase un BONO EXTRAORDINARIO PREVISIONAL por un monto máximo de PESOS SETENTA MIL ($70.000) a los beneficiarios enunciados en el artículo 2° del presente decreto y cuyos haberes previsionales se encuentren comprendidos dentro de los parámetros establecidos en los artículos 3° y 4° de la presente medida, que se abonará en el mes de noviembre de 2026.",
    "categoria": "pensiones"
   },
   {
-   "id": "349705",
-   "organismo": "MINISTERIO DE SALUD - SECRETARÍA NACIONAL DE DISCAPACIDAD",
+   "id": "20261028-RESOL-2026-3695-APN-SND#MS",
+   "organismo": "MINISTERIO DE SALUD SECRETARÍA NACIONAL DE DISCAPACIDAD",
    "norma": "Resolución 3695/2026",
    "codigo": "RESOL-2026-3695-APN-SND#MS",
    "fecha": "2026-10-28",
-   "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/349705/20261028",
+   "url": "https://www.boletinoficial.gob.ar/seccion/primera/20261028",
+   "pdf": "https://otslist.boletinoficial.gob.ar/ots/download/a80cf451d984b02c4d88e66245202595bed9c00881f44f921ed82e2f6b64fe60/0/",
    "resumen": "Déjase sin efecto la Resolución N° 13.901/25 de la ex AGENCIA NACIONAL DE DISCAPACIDAD respecto de las personas identificadas en el Anexo I (IF-2026-103572421-APN-DNGYAA#MS) que forma parte integrante de la presente.",
    "categoria": "pensiones"
   },
   {
-   "id": "349683",
+   "id": "20261028-RESOL-2026-303-ANSES-ANSES",
    "organismo": "ADMINISTRACIÓN NACIONAL DE LA SEGURIDAD SOCIAL",
    "norma": "Resolución 303/2026",
    "codigo": "RESOL-2026-303-ANSES-ANSES",
    "fecha": "2026-10-28",
-   "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/349683/20261028",
+   "url": "https://www.boletinoficial.gob.ar/seccion/primera/20261028",
+   "pdf": "https://otslist.boletinoficial.gob.ar/ots/download/a80cf451d984b02c4d88e66245202595bed9c00881f44f921ed82e2f6b64fe60/0/",
    "resumen": "El incremento de los límites y rangos de ingresos del grupo familiar y de los montos de las asignaciones familiares previstas en la Ley N° 24.714, sus normas complementarias y modificatorias, con excepción de las establecidas en los incisos d) y e) del artículo 6° de la misma, será equivalente a UNO CON NOVENTA Y TRES CENTÉSIMOS POR CIENTO (1,93%), que se aplicará sobre los límites, rangos y montos establecidos…",
-   "categoria": "pensiones"
+   "categoria": "asignaciones"
   },
   {
    "id": "346718",
@@ -68,7 +72,7 @@
   "2026-09-02",
   "2026-09-01"
  ],
- "fuente": "Boletín Oficial de la República Argentina — sección primera",
- "fuente_url": "https://www.boletinoficial.gob.ar/seccion/primera",
+ "fuente": "Boletín Oficial de la República Argentina — sección primera (PDF oficial)",
+ "fuente_url": "https://otslist.boletinoficial.gob.ar/ots/",
  "actualizado": "2026-11-10"
 }

@@ -1,27 +1,29 @@
 """
 scraper_boletin.py — normas sobre discapacidad publicadas en el Boletín Oficial (sección primera).
 
-Para cada día hábil:
-  1. Lee https://www.boletinoficial.gob.ar/seccion/primera/AAAAMMDD (lista de avisos).
-  2. Abre solo los avisos candidatos: organismos vinculados (Secretaría Nacional de
-     Discapacidad, ANSES, Superintendencia de Servicios de Salud, PAMI, Ministerio de
-     Salud) y todos los decretos y leyes.
-  3. Se queda con los que mencionan discapacidad en su texto, los clasifica
-     (aranceles, pensiones, cud, otras) y guarda un resumen del artículo 1°.
+Fuente: el listado oficial de PDF del Boletín Oficial, https://otslist.boletinoficial.gob.ar/ots/
+(cada día publica el PDF de cada sección con su hash y recibo de la Blockchain Federal Argentina).
+Se usa este dominio porque www.boletinoficial.gob.ar no responde a los servidores de GitHub
+Actions (timeout de conexión, ver issue #1), y otslist sí.
 
-Uso legal y respetuoso: robots.txt del Boletín Oficial solo prohíbe la sección segunda;
-se hace una pausa entre pedidos y se identifica el cliente. NO se guardan los anexos
-(suelen traer listas de personas con nombre y DNI) ni el texto completo: solo el
-resumen y el enlace oficial. Si un resumen contiene un número de DNI, se oculta.
+Para cada día hábil:
+  1. Busca en el listado el PDF de la sección 1 (primera) de esa fecha y lo descarga (un pedido).
+  2. Extrae el texto con pypdf y lo separa en avisos por la marca de cierre de cada uno
+     ("e. 03/11/2026 N° 82345/26 v. 03/11/2026").
+  3. Se queda con los avisos que mencionan discapacidad, los clasifica (aranceles,
+     asignaciones, pensiones, cud, otras) y guarda un resumen del artículo 1°.
+
+NO se guardan los anexos ni el texto completo: solo el resumen y los enlaces oficiales
+(la página de la sección del día y el PDF). Si un resumen contiene un número de DNI, se oculta.
 
 Salida: data/processed/boletin_discapacidad.json (último año).
 
 Uso:  python -m scripts.scraper_boletin                  # hoy y los 3 días anteriores
-      python -m scripts.scraper_boletin --desde 2026-09-01 [--hasta 2026-11-10]
+      python -m scripts.scraper_boletin --desde 2026-01-01 [--hasta 2026-10-31]
 """
 from __future__ import annotations
 
-import html
+import io
 import json
 import re
 import sys
@@ -36,12 +38,11 @@ from scripts.scraper_andis import USER_AGENT
 ROOT = Path(__file__).resolve().parent.parent
 SALIDA = ROOT / "data" / "processed" / "boletin_discapacidad.json"
 BASE = "https://www.boletinoficial.gob.ar"
-PAUSA = 3.0            # segundos entre pedidos (con 1,5 s el Boletín Oficial respondió 429)
+OTS = "https://otslist.boletinoficial.gob.ar"
+PAUSA = 2.0             # segundos entre pedidos
 DIAS_GUARDADOS = 400
+MAX_PAGINAS_LISTADO = 40   # ~25 días por página: alcanza para más de 3 años
 
-ORGANISMOS = re.compile(
-    r"DISCAPACIDAD|SEGURIDAD SOCIAL|ANSES|SERVICIOS DE SALUD|JUBILADOS Y PENSIONADOS|PAMI|MINISTERIO DE SALUD", re.I)
-NORMAS_GENERALES = re.compile(r"^(Decreto|Ley|Decisión Administrativa|DNU)\b", re.I)
 RELEVANTE = re.compile(
     r"discapacidad|certificado [uú]nico de discapacidad|\bCUD\b|24\.901|22\.431|27\.793|27\.711|"
     r"pensi[oó]n(es)? no contributiva|invalidez laboral|prestaciones b[aá]sicas", re.I)
@@ -53,38 +54,81 @@ CATEGORIAS = [
 ]
 DNI = re.compile(r"(D\.?\s?N\.?\s?I\.?\s*(N[°º]\s*)?:?\s*)\d{1,2}\.?\d{3}\.?\d{3}", re.I)
 
+FIN_AVISO = re.compile(r"e\.\s*\d{2}/\d{2}/\d{4}\s*N[°º]\s*\d+/\d+\s*v\.\s*\d{2}/\d{2}/\d{4}")
+TIPOS = (r"(?:Resolución Conjunta|Resolución Sintetizada|Resolución General|Resolución|Decreto|Disposición Conjunta|"
+         r"Disposición|Decisión Administrativa|Ley|Nota Externa|Comunicación\s*“?[A-Z]?”?|Acordada|Instrucción General|Circular)")
+# Con código GDE (RESOL-2026-3702-APN-SND#MS) o sin él; el cuerpo empieza con la fecha o con VISTO.
+ENCABEZADO = re.compile(r"(?P<norma>" + TIPOS + r"\s+(?:N[°º]\s*)?[\d.]+/\d{4})"
+                        r"(?:\s+(?P<codigo>[A-Z]{2,}-\d{4}-[\dA-Z]+-[A-Z0-9#\-]+))?")
+CUERPO_INICIO = re.compile(r"Ciudad de Buenos Aires,? \d{2}/\d{2}/\d{4}|VISTO|\d{2}/\d{2}/\d{4} A LAS ")
+CABECERA_PAGINA = re.compile(r"BOLET[IÍ]N OFICIAL N[º°] [\d.]+ - Primera Secci[oó]n( \d+)? [A-Za-zéáÁÉ]+ \d+ de [a-z]+ de \d{4}( \d+)?", re.I)
+MARCAS = re.compile(r"#[IF]\d+[IF]#")
+
 
 class BoletinInvalido(ValueError):
     pass
 
 
-def _texto(fragmento: str) -> str:
-    return " ".join(html.unescape(re.sub(r"<[^>]+>", " ", fragmento)).split())
+# ── Listado de PDF oficiales ────────────────────────────────────────────────────
+
+def parsear_listado(html: str) -> dict[str, str]:
+    """{AAAA-MM-DD: url del PDF de la sección 1} de una página del listado otslist."""
+    salida = {}
+    for bloque in re.split(r'<h4 class="text-left">', html)[1:]:
+        m = re.match(r"(\d{2})-(\d{2})-(\d{4})", bloque)
+        if not m:
+            continue
+        fecha = f"{m.group(3)}-{m.group(2)}-{m.group(1)}"
+        fila = re.search(r"<tr>\s*<td>\s*1\s*</td>.*?href=\"(/ots/download/[0-9a-f]+/0/)\"", bloque, re.S)
+        if fila:
+            salida[fecha] = OTS + fila.group(1)
+    return salida
 
 
-def parsear_seccion(pagina: str, fecha: str) -> list[dict]:
-    """Avisos de la página de la sección primera de un día: id, organismo, norma, código."""
-    fecha_raw = fecha.replace("-", "")
+def pdfs_del_periodo(s: requests.Session, desde: str, hasta: str) -> dict[str, str]:
+    """Recorre el listado (de lo más nuevo a lo más viejo) hasta cubrir el período."""
+    encontrados: dict[str, str] = {}
+    for pagina in range(1, MAX_PAGINAS_LISTADO + 1):
+        fechas = parsear_listado(_get(s, f"{OTS}/ots/?page={pagina}").text)
+        if not fechas:
+            if pagina == 1:
+                raise BoletinInvalido("el listado de PDF oficiales vino vacío o cambió de formato")
+            break
+        encontrados.update({f: u for f, u in fechas.items() if desde <= f <= hasta})
+        if min(fechas) < desde:
+            break
+        time.sleep(PAUSA)
+    return encontrados
+
+
+# ── Texto del PDF ───────────────────────────────────────────────────────────────
+
+def texto_pdf(contenido: bytes) -> str:
+    from pypdf import PdfReader
+    paginas = PdfReader(io.BytesIO(contenido)).pages
+    return re.sub(r"\s+", " ", " ".join(p.extract_text() or "" for p in paginas))
+
+
+def separar_avisos(texto: str) -> list[dict]:
+    """Avisos del PDF de la sección primera: organismo, norma, código y cuerpo."""
+    texto = MARCAS.sub(" ", CABECERA_PAGINA.sub(" ", texto))
     avisos = []
-    for m in re.finditer(r'href="/detalleAviso/primera/(\d+)/' + fecha_raw + r'"(.*?)</a>', pagina, re.S):
-        bloque = m.group(2)
-        item = re.search(r'<p class="item">(.*?)</p>', bloque, re.S)
-        detalles = [_texto(x) for x in re.findall(r"<small>(.*?)</small>", bloque, re.S)]
-        avisos.append({"id": m.group(1), "organismo": _texto(item.group(1)) if item else "",
-                       "norma": detalles[0] if detalles else "", "codigo": detalles[1] if len(detalles) > 1 else ""})
+    for parte in FIN_AVISO.split(texto)[:-1]:          # lo que sigue a la última marca no es un aviso
+        # El encabezado es la ÚLTIMA norma nombrada antes de que empiece el cuerpo ("Ciudad de Buenos
+        # Aires, dd/mm", "VISTO" o la fecha de una comunicación). Así se saltea el sumario del día, que
+        # precede al primer aviso, y las normas citadas dentro del texto, que vienen después.
+        cuerpo = CUERPO_INICIO.search(parte)
+        tope = cuerpo.start() if cuerpo else 400
+        candidatos = [c for c in ENCABEZADO.finditer(parte, 0, tope + 1) if c.end() <= tope + 1]
+        enc = candidatos[-1] if candidatos else None
+        if not enc:
+            continue      # edictos y avisos oficiales: no son normas y nombran personas; no se guardan
+        previo = parte[:enc.start()].strip()
+        org = re.search(r"([A-ZÁÉÍÓÚÑÜ][A-ZÁÉÍÓÚÑÜ0-9 ,.\-–()“”\"]{2,200})$", previo)
+        avisos.append({"organismo": " ".join((org.group(1) if org else previo[-120:]).split()).strip(" -–"),
+                       "norma": " ".join(enc.group("norma").split()), "codigo": enc.group("codigo") or "",
+                       "cuerpo": parte[enc.end():].strip()})
     return avisos
-
-
-def es_candidato(aviso: dict) -> bool:
-    return bool(ORGANISMOS.search(aviso["organismo"]) or NORMAS_GENERALES.search(aviso["norma"])
-                or RELEVANTE.search(aviso["organismo"]))
-
-
-def cuerpo_aviso(pagina: str) -> str:
-    m = re.search(r'id="cuerpoDetalleAviso"(.*?)(<div[^>]*id="anexos|</section>|<footer)', pagina, re.S)
-    if not m:
-        raise BoletinInvalido("el aviso no tiene el bloque cuerpoDetalleAviso")
-    return _texto(m.group(1))
 
 
 def resumir(cuerpo: str) -> str:
@@ -105,34 +149,31 @@ def categoria(texto: str) -> str:
     return "otras"
 
 
+def normas_del_dia(fecha: str, pdf_url: str, texto: str) -> list[dict]:
+    normas = []
+    for i, a in enumerate(separar_avisos(texto)):
+        if not (RELEVANTE.search(a["cuerpo"]) or RELEVANTE.search(a["organismo"])):
+            continue
+        normas.append({"id": f"{fecha.replace('-', '')}-{a['codigo'] or a['norma'].replace(' ', '_')}", "organismo": a["organismo"],
+                       "norma": a["norma"], "codigo": a["codigo"], "fecha": fecha,
+                       "url": f"{BASE}/seccion/primera/{fecha.replace('-', '')}", "pdf": pdf_url,
+                       "resumen": resumir(a["cuerpo"]),
+                       "categoria": categoria(a["organismo"] + " " + a["cuerpo"])})   # el texto completo no se guarda
+    return normas
+
+
+# ── Red y almacenamiento ────────────────────────────────────────────────────────
+
 def _get(s: requests.Session, url: str) -> requests.Response:
     """GET con respeto por el servidor: ante 429/503 espera (Retry-After o 30, 60, 120 s) y reintenta."""
     for espera in (30, 60, 120, None):
-        r = s.get(url, timeout=40)
+        r = s.get(url, timeout=90)
         if r.status_code not in (429, 503) or espera is None:
             r.raise_for_status()
             return r
         retry = r.headers.get("Retry-After", "")
         time.sleep(int(retry) if retry.isdigit() else espera)
     raise AssertionError("inalcanzable")
-
-
-def revisar_dia(s: requests.Session, fecha: str) -> list[dict] | None:
-    """Normas relevantes de un día. None si ese día no hubo edición (feriado o fin de semana)."""
-    r = _get(s, f"{BASE}/seccion/primera/{fecha.replace('-', '')}")
-    avisos = parsear_seccion(r.text, fecha)
-    if not avisos:
-        return None
-    normas = []
-    for a in filter(es_candidato, avisos):
-        time.sleep(PAUSA)
-        url = f"{BASE}/detalleAviso/primera/{a['id']}/{fecha.replace('-', '')}"
-        cuerpo = cuerpo_aviso(_get(s, url).text)
-        if not (RELEVANTE.search(cuerpo) or RELEVANTE.search(a["organismo"])):
-            continue
-        normas.append({**a, "fecha": fecha, "url": url, "resumen": resumir(cuerpo),
-                       "categoria": categoria(a["organismo"] + " " + cuerpo)})   # el texto completo no se guarda
-    return normas
 
 
 def cargar() -> dict:
@@ -145,18 +186,18 @@ def cargar() -> dict:
 def guardar(datos: dict, nuevas: dict[str, list[dict]], hoy: date) -> int:
     """Incorpora los días revisados (reemplaza lo que hubiera de esos días). Devuelve normas nuevas."""
     limite = (hoy - timedelta(days=DIAS_GUARDADOS)).isoformat()
-    previas = {n["id"] for n in datos["normas"]}
+    previas = {(n["fecha"], n["codigo"]) for n in datos["normas"]}
     normas = [n for n in datos["normas"] if n["fecha"] not in nuevas and n["fecha"] >= limite]
     for lista in nuevas.values():
         normas.extend(lista)
     normas.sort(key=lambda n: (n["fecha"], n["id"]), reverse=True)
     dias = sorted({*datos.get("dias_revisados", []), *nuevas}, reverse=True)
     dias = [d for d in dias if d >= limite]
-    datos.update({"fuente": "Boletín Oficial de la República Argentina — sección primera",
-                  "fuente_url": f"{BASE}/seccion/primera", "actualizado": hoy.isoformat(),
+    datos.update({"fuente": "Boletín Oficial de la República Argentina — sección primera (PDF oficial)",
+                  "fuente_url": f"{OTS}/ots/", "actualizado": hoy.isoformat(),
                   "dias_revisados": dias, "normas": normas})
     SALIDA.write_text(json.dumps(datos, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
-    return len([n for n in normas if n["id"] not in previas])
+    return len([n for n in normas if (n["fecha"], n["codigo"]) not in previas])
 
 
 def main(argv: list[str]) -> int:
@@ -165,21 +206,18 @@ def main(argv: list[str]) -> int:
     desde = date.fromisoformat(argv[argv.index("--desde") + 1]) if "--desde" in argv else hasta - timedelta(days=3)
     s = requests.Session()
     s.headers["User-Agent"] = USER_AGENT
-    datos, revisados, agregadas, sin_edicion = cargar(), 0, 0, 0
-    dia = desde
-    while dia <= hasta:
-        if dia.weekday() < 5:
-            normas = revisar_dia(s, dia.isoformat())
-            if normas is None:
-                sin_edicion += 1
-            else:
-                agregadas += guardar(datos, {dia.isoformat(): normas}, hoy)   # se guarda día por día
-                revisados += 1
-                print(f"{dia}: {len(normas)} normas sobre discapacidad", flush=True)
-            time.sleep(PAUSA)
-        dia += timedelta(days=1)
-    print(f"Boletín Oficial: {revisados} días revisados ({sin_edicion} sin edición), {agregadas} normas nuevas, "
-          f"{len(datos['normas'])} en total")
+    pdfs = pdfs_del_periodo(s, desde.isoformat(), hasta.isoformat())
+    datos, agregadas = cargar(), 0
+    for fecha in sorted(pdfs):
+        time.sleep(PAUSA)
+        texto = texto_pdf(_get(s, pdfs[fecha]).content)
+        avisos = separar_avisos(texto)
+        if not avisos:
+            raise BoletinInvalido(f"el PDF del {fecha} no tiene avisos reconocibles")
+        normas = normas_del_dia(fecha, pdfs[fecha], texto)
+        agregadas += guardar(datos, {fecha: normas}, hoy)   # se guarda día por día
+        print(f"{fecha}: {len(avisos)} avisos, {len(normas)} sobre discapacidad", flush=True)
+    print(f"Boletín Oficial: {len(pdfs)} días revisados, {agregadas} normas nuevas, {len(datos['normas'])} en total")
     return 0
 
 

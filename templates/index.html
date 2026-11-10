@@ -2824,9 +2824,10 @@ Por lo expuesto, pido que se haga lugar a la rehabilitación y se reanude el pag
     <div class="wrap wrap-wide">
       <div class="card">
         <h2 id="bo-titulo">Normativa del d&iacute;a &mdash; Bolet&iacute;n Oficial</h2>
-        <p>Todos los d&iacute;as h&aacute;biles revisamos la primera secci&oacute;n del <a href="https://www.boletinoficial.gob.ar/seccion/primera" target="_blank" rel="noopener">Bolet&iacute;n Oficial</a>
+        <p>Todos los d&iacute;as h&aacute;biles revisamos el PDF oficial de la primera secci&oacute;n del <a href="https://www.boletinoficial.gob.ar/seccion/primera" target="_blank" rel="noopener">Bolet&iacute;n Oficial</a>
           y guardamos las normas que hablan de discapacidad: <strong>aranceles</strong> de las prestaciones, <strong>pensiones</strong>,
-          <strong>CUD</strong>, <strong>asignaciones</strong> y otras. Cada una tiene un resumen de su art&iacute;culo 1&deg; y el enlace al texto oficial.</p>
+          <strong>CUD</strong>, <strong>asignaciones</strong> y otras. Cada una tiene un resumen de su art&iacute;culo 1&deg;, el enlace a la edici&oacute;n
+          del d&iacute;a (busc&aacute; la norma por su n&uacute;mero) y el PDF oficial.</p>
         <p id="bo-estado" class="muted" style="font-size:.85rem"></p>
         <div class="form-row" style="gap:.6rem;flex-wrap:wrap;align-items:flex-end">
           <label style="flex:2;min-width:200px">Buscar<br>
@@ -4510,8 +4511,11 @@ Por lo expuesto, pido que se haga lugar a la rehabilitación y se reanude el pag
         out.innerHTML = d.normas.map(n => {
           const c = BO_CAT[n.categoria] || BO_CAT.otras;
           return '<div class="list-item"><span style="display:inline-block;padding:.05rem .5rem;border-radius:999px;font-size:.74rem;font-weight:700;background:' + c[1] + ';color:' + c[2] + '">' + c[0] + '</span> ' +
-            '<strong>' + escapeHtml(fechaCorta(n.fecha)) + '</strong> &middot; <a href="' + escapeHtml(n.url) + '" target="_blank" rel="noopener">' + escapeHtml(n.norma || 'Aviso') + '</a>' +
-            '<br><span class="muted">' + escapeHtml(n.organismo) + '</span><br>' + escapeHtml(n.resumen) + '</div>';
+            '<strong>' + escapeHtml(fechaCorta(n.fecha)) + '</strong> &middot; <strong>' + escapeHtml(n.norma || 'Aviso') + '</strong>' +
+            (n.codigo ? ' <span class="muted" style="font-size:.78rem">' + escapeHtml(n.codigo) + '</span>' : '') +
+            '<br><span class="muted">' + escapeHtml(n.organismo) + '</span><br>' + escapeHtml(n.resumen) +
+            '<br><a href="' + escapeHtml(n.url) + '" target="_blank" rel="noopener">Edici&oacute;n del d&iacute;a en el Bolet&iacute;n Oficial</a>' +
+            (n.pdf ? ' &middot; <a href="' + escapeHtml(n.pdf) + '" target="_blank" rel="noopener">PDF oficial</a>' : '') + '</div>';
         }).join('') || '<p class="muted">No hay normas con esos filtros.</p>';
       } catch (e) {
         out.innerHTML = '<p class="muted">No se pudo cargar la normativa ahora. <a href="/api/boletin" target="_blank" rel="noopener">Ver datos</a></p>';
