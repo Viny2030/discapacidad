@@ -72,3 +72,14 @@ console.log(JSON.stringify([
     out = subprocess.run(["node", str(f)], capture_output=True, text=True, check=True).stdout
     assert json.loads(out) == ["vencido", "vigente", "vencido", "vencido", "vigente"]
     assert "p&uacute;blico, voluntario y gratuito" in HTML and "gratuito y obligatorio" not in HTML
+
+
+def test_guia_pension_suspendida_cita_las_normas_vigentes():
+    html = (ROOT / "templates" / "index.html").read_text(encoding="utf-8")
+    i = html.index('id="pension-suspendida"')
+    guia = html[i:html.index("</textarea>", i)]
+    for dato in ("349705/20261028", "349786/20261029", "349970/20261103",   # Res. 3695, 3697 y 3702/2026 en el BO
+                 "60 d&iacute;as corridos", "citacion@senadis.gob.ar", "Presentaci&oacute;n de Documentaci&oacute;n para Pensi&oacute;n Invalidez",
+                 "<strong>20 d&iacute;as</strong>", "artículo 11 del Anexo I al Decreto N° 432/97"):
+        assert dato in guia, dato
+    assert html.index('id="pension-suspendida"') < html.index("Nuevo régimen — Decreto 84/2026")   # va primero en la pestaña

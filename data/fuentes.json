@@ -119,11 +119,11 @@
     {
       "seccion": "Pensiones (PNC-PS, Decreto 84/2026)",
       "pestana": "pensiones",
-      "fuente": "Decreto 84/2026 y ANSES",
+      "fuente": "Decreto 84/2026, Resoluciones SND 3695, 3697 y 3702/2026 y ANSES",
       "url": "https://www.argentina.gob.ar/andis",
       "tipo": "contenido",
-      "fecha": "2026-09-30",
-      "actualizacion": "Revisión manual; los montos cambian cada mes por movilidad."
+      "fecha": "2026-11-10",
+      "actualizacion": "Revisión manual; guía de suspensiones según el Boletín Oficial del 28/10 y el 03/11/2026."
     },
     {
       "seccion": "GCBA (escuelas especiales y salud)",
