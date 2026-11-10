@@ -22,6 +22,7 @@ from scripts.tratamientos_vanguardia import router as router_vanguardia
 from scripts.api_contacto import router as router_contacto
 from scripts.api_encuesta import router as router_encuesta
 from scripts.api_fuentes import router as router_fuentes
+from scripts.api_boletin import router as router_boletin
 from scripts.scheduler import create_scheduler
 
 logging.basicConfig(level=logging.INFO, format="[OBSERVATORIO] %(message)s")
@@ -56,6 +57,7 @@ app.include_router(router_vanguardia)
 app.include_router(router_contacto)
 app.include_router(router_encuesta)
 app.include_router(router_fuentes)
+app.include_router(router_boletin)
 
 
 @app.get("/{filename}.html", response_class=HTMLResponse)

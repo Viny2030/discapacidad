@@ -69,7 +69,7 @@ FLOW_VIEWBOX = (1060, 470)
 USO_FILAS = [
     ("cud", "cud"), ("sube", "cud"), ("beneficios", "calculadora"), ("pension", "pensiones"),
     ("condicion", "condiciones"), ("tratamiento", "tratamientos"), ("hogar", "hogares"),
-    ("trabajo", "laboral"), ("mayores", "mayores"), ("senas", "senas"), ("datos", "estadistico"),
+    ("trabajo", "laboral"), ("normas", "normativa"), ("mayores", "mayores"), ("senas", "senas"), ("datos", "estadistico"),
     ("caba", "gcba"), ("dev", "docs"),
 ]
 _UX, _UW, _UH, _USTEP = (20, 380, 690), (300, 230, 310), 44, 52
@@ -109,6 +109,7 @@ GRAPH_TEXT = {
             "tratamiento": ("Tratamientos e investigación", "Tratamientos · Médico", "PubMed, ensayos, vanguardia"),
             "hogar": ("Buscar un hogar", "Hogares", "mapa y direcciones por provincia"),
             "trabajo": ("Conseguir trabajo", "Inclusión Laboral", "cupo laboral y leyes provinciales"),
+            "normas": ("Saber qué normas salieron", "Normativa", "Boletín Oficial del día, con buscador"),
             "mayores": ("Persona mayor", "Adultos Mayores", "CUD, derechos y recursos 65+"),
             "senas": ("Lengua de señas", "Lengua de Señas", "LSA, Ley 27.710 y cursos"),
             "datos": ("Ver datos o comparar", "Estadístico · Comparador", "CUD por provincia y tipo"),
@@ -152,6 +153,7 @@ GRAPH_TEXT = {
             "tratamiento": ("Treatments and research", "Tratamientos · Médico", "PubMed, trials, cutting edge"),
             "hogar": ("Find a residential home", "Hogares", "map and addresses by province"),
             "trabajo": ("Find a job", "Inclusión Laboral", "job quotas and provincial laws"),
+            "normas": ("See which rules were issued", "Normativa", "daily Official Gazette, searchable"),
             "mayores": ("Older person", "Adultos Mayores", "CUD, rights and resources 65+"),
             "senas": ("Sign language", "Lengua de Señas", "LSA, Law 27,710 and courses"),
             "datos": ("See or compare data", "Estadístico · Comparador", "CUD by province and type"),
@@ -257,6 +259,7 @@ MANUAL_TABS = {
         ("Adultos Mayores", "CUD y derechos de las personas de 65 años o más, tipologías, mapa provincial, calculadora y recursos."),
         ("Lengua de Señas", "Lengua de Señas Argentina (Ley 27.710) y recursos de otros países."),
         ("Inclusión Laboral", "Cupo de empleo público, estímulos para empresas privadas y leyes de cada provincia, con su verificación."),
+        ("Normativa", "Normas sobre discapacidad publicadas cada día hábil en el Boletín Oficial (aranceles, pensiones, CUD, asignaciones), con buscador, resumen y enlace oficial."),
         ("Hogares", "Hogares para personas con discapacidad (Pequeños Cottolengos y otros) con mapa, direcciones y el organismo de cada provincia para pedir vacante."),
         ("Manual", "Esta guía, en español e inglés, con los dos grafos."),
         ("Comuna_07", "Relevamiento vecinal de la Comuna 7 de CABA y su encuesta."),
@@ -277,6 +280,7 @@ MANUAL_TABS = {
         ("Adultos Mayores", "CUD and rights for people aged 65 and over, typologies, provincial map, calculator and resources."),
         ("Lengua de Señas", "Argentine Sign Language (Law 27,710) and resources from other countries."),
         ("Inclusión Laboral", "Public-sector job quotas, incentives for private employers and each province's laws, with verification."),
+        ("Normativa", "Disability-related rules published every working day in the Official Gazette (fees, pensions, CUD, allowances), searchable, with a summary and the official link."),
         ("Hogares", "Residential homes for people with disabilities (Pequeños Cottolengos and others) with a map, addresses and each province's agency for requesting a place."),
         ("Manual", "This guide, in Spanish and English, with both graphs."),
         ("Comuna_07", "Neighbourhood survey of Comuna 7 in Buenos Aires City."),

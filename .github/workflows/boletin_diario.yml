@@ -1,0 +1,75 @@
+name: Boletín Oficial diario
+
+# Cada día hábil, scripts/scraper_boletin.py revisa la primera sección del Boletín
+# Oficial (hoy y los 3 días anteriores, por si un día falló) y guarda las normas
+# sobre discapacidad en data/processed/boletin_discapacidad.json. Si cambió algo,
+# se commitea y el sitio se redespliega solo. Si falla, se abre un issue.
+
+on:
+  schedule:
+    - cron: "30 11 * * 1-5"   # 08:30 Argentina, después de la publicación del día
+  workflow_dispatch:
+    inputs:
+      desde:
+        description: "Cargar historial desde esta fecha (AAAA-MM-DD). Vacío = últimos 4 días. Un mes lleva ~15 min."
+        required: false
+        default: ""
+      hasta:
+        description: "Hasta esta fecha (AAAA-MM-DD). Vacío = hoy."
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: datos-boletin
+  cancel-in-progress: false
+
+jobs:
+  boletin:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configurar Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
+
+      - name: Revisar el Boletín Oficial
+        id: boletin
+        timeout-minutes: 300
+        env:
+          DESDE: ${{ github.event.inputs.desde }}
+          HASTA: ${{ github.event.inputs.hasta }}
+        run: |
+          set -o pipefail
+          ARGS=""
+          if [ -n "$DESDE" ]; then ARGS="--desde $DESDE"; fi
+          if [ -n "$HASTA" ]; then ARGS="$ARGS --hasta $HASTA"; fi
+          python -m scripts.scraper_boletin $ARGS | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Commit y push
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/processed/boletin_discapacidad.json
+          git diff --staged --quiet || git commit -m "data: Boletín Oficial $(date -u '+%Y-%m-%d')"
+          git pull --rebase -q && git push
+
+      - name: Abrir issue si falló la lectura del Boletín Oficial
+        if: failure()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          titulo="No se pudo leer el Boletín Oficial"
+          cuerpo="La revisión diaria falló el $(date -u '+%Y-%m-%d'). La pestaña Normativa sigue con lo último leído.
+          Log: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          n=$(gh issue list --state open --search "$titulo in:title" --json number -q '.[0].number')
+          if [ -n "$n" ]; then gh issue comment "$n" --body "$cuerpo"; else gh issue create --title "$titulo" --body "$cuerpo"; fi

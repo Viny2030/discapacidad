@@ -21,6 +21,7 @@ ROOT = Path(__file__).resolve().parent.parent
 REGISTRO = ROOT / "data" / "fuentes.json"
 ANDIS = ROOT / "data" / "processed" / "andis_oficial.json"
 JUNTAS = ROOT / "data" / "processed" / "juntas_oficiales.json"
+BOLETIN = ROOT / "data" / "processed" / "boletin_discapacidad.json"
 
 
 def antiguedad(fecha_iso: str, hoy: date | None = None) -> dict:
@@ -53,6 +54,12 @@ def listar_fuentes(hoy: date | None = None) -> list[dict]:
             f["fecha"] = andis["dato_reciente"]["fecha"] + "-01"
             f["valor"] = andis["dato_reciente"]["total_cud_vigentes"]
             f["url"] = andis["dato_reciente"]["url"]
+        elif dinamico == "boletin":
+            try:
+                bo = json.loads(BOLETIN.read_text(encoding="utf-8"))
+                f["fecha"], f["valor"] = bo["dias_revisados"][0], len(bo["normas"])
+            except (FileNotFoundError, json.JSONDecodeError, KeyError, IndexError):
+                pass
         elif dinamico == "juntas_oficiales":
             try:
                 j = json.loads(JUNTAS.read_text(encoding="utf-8"))

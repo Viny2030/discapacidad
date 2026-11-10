@@ -29,6 +29,15 @@
       "actualizacion": "Scraper semanal de la planilla oficial que publica ANDIS."
     },
     {
+      "seccion": "Normativa (Boletín Oficial)",
+      "pestana": "normativa",
+      "fuente": "Boletín Oficial de la República Argentina — sección primera",
+      "url": "https://www.boletinoficial.gob.ar/seccion/primera",
+      "tipo": "datos",
+      "dinamico": "boletin",
+      "actualizacion": "Revisión automática cada día hábil; solo resúmenes y enlaces, sin anexos."
+    },
+    {
       "seccion": "Población por provincia (para la tasa)",
       "pestana": "estadistico",
       "fuente": "INDEC — población estimada 2022",
