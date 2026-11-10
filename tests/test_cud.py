@@ -116,10 +116,10 @@ def test_juntas_por_provincia(client, provincia):
     assert r.status_code == 200
     data = r.json()
     assert data["provincia"] == provincia
-    assert "nombre_organismo" in data
-    assert "sedes" in data
-    assert len(data["sedes"]) >= 1
-    assert "url_turno" in data
+    # listado oficial de ANDIS: cada junta con nombre, localidad, dirección y contacto
+    assert data["total_juntas"] == len(data["juntas"]) >= 1
+    assert all(j["nombre"] and j["localidad"] for j in data["juntas"])
+    assert data["fuente_url"] == "https://www.argentina.gob.ar/andis/juntas-evaluadoras-cud"
 
 
 def test_juntas_provincia_inexistente(client):

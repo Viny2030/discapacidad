@@ -141,19 +141,25 @@ async def beneficios(
 async def juntas(
     provincia: Optional[str] = Query(None, description="Nombre de la provincia, ej: CABA"),
 ):
-    """Listado de juntas evaluadoras por provincia, o el detalle de una provincia puntual."""
+    """Juntas evaluadoras del listado OFICIAL de ANDIS (scripts/scraper_juntas.py), por provincia."""
+    import json
+    from pathlib import Path
+    oficial = json.loads((Path(__file__).resolve().parent.parent / "data" / "processed" / "juntas_oficiales.json")
+                         .read_text(encoding="utf-8"))
+    fuente = {"fuente": oficial["fuente"], "fuente_url": oficial["fuente_pagina"],
+              "fecha_lectura": oficial["fecha_lectura"]}
     if provincia:
-        match = next(
-            (k for k in JUNTAS_POR_PROVINCIA if k.lower() == provincia.lower()),
-            None,
-        )
+        match = next((k for k in oficial["por_provincia"] if k.lower() == provincia.lower()), None)
         if not match:
             raise HTTPException(404, f"Provincia '{provincia}' no encontrada")
-        return {"provincia": match, **JUNTAS_POR_PROVINCIA[match]}
+        juntas_prov = oficial["por_provincia"][match]
+        return {"provincia": match, "total_juntas": len(juntas_prov), "juntas": juntas_prov, **fuente}
 
     return {
-        "total_provincias": len(JUNTAS_POR_PROVINCIA),
-        "provincias": list(JUNTAS_POR_PROVINCIA.keys()),
+        "total_provincias": len(oficial["por_provincia"]),
+        "total_juntas": oficial["total"],
+        "provincias": list(oficial["por_provincia"].keys()),
+        **fuente,
     }
 
 

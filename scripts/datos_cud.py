@@ -238,6 +238,9 @@ BENEFICIOS = [{'categoria': 'Salud',
                   'url': 'https://www.argentina.gob.ar/normativa/nacional/ley-26182-2006-123278'}]}]
 
 
+# NO SE PUBLICA: teléfonos, organismos y tiempos de espera escritos a mano y desactualizados
+# (auditoría 10/11/2026: solo 2 de 24 teléfonos figuraban en el listado oficial). El sitio
+# muestra el listado OFICIAL de ANDIS (scripts/scraper_juntas.py -> juntas_oficiales.json).
 JUNTAS_POR_PROVINCIA = {'Buenos Aires': {'nombre_organismo': 'Dirección Provincial de Discapacidad — Provincia de Buenos '
                                       'Aires',
                   'url_turno': 'https://www.argentina.gob.ar/andis/juntas-evaluadoras-cud',

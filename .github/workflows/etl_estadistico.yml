@@ -43,7 +43,16 @@ jobs:
       - name: Leer el informe oficial de ANDIS
         id: scraper
         continue-on-error: true
-        run: python -m scripts.scraper_andis | tee -a "$GITHUB_STEP_SUMMARY"
+        run: |
+          set -o pipefail
+          python -m scripts.scraper_andis | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Leer el listado oficial de juntas evaluadoras
+        id: juntas
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          python -m scripts.scraper_juntas | tee -a "$GITHUB_STEP_SUMMARY"
 
       - name: Correr ETL estadístico
         run: python scripts/run_etl_estadistico.py
@@ -63,6 +72,18 @@ jobs:
           git add data/
           git diff --staged --quiet || git commit -m "data: ETL estadístico automático $(date -u '+%Y-%m-%d')"
           git push
+
+      - name: Abrir issue si no se pudo leer el listado de juntas
+        if: steps.juntas.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          titulo="No se pudo leer el listado oficial de juntas evaluadoras"
+          cuerpo="El scraper de juntas falló el $(date -u '+%Y-%m-%d'). El sitio sigue mostrando el último listado leído.
+          Log: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          Revisar https://www.argentina.gob.ar/andis/juntas-evaluadoras-cud"
+          n=$(gh issue list --state open --search "$titulo in:title" --json number -q '.[0].number')
+          if [ -n "$n" ]; then gh issue comment "$n" --body "$cuerpo"; else gh issue create --title "$titulo" --body "$cuerpo"; fi
 
       - name: Abrir issue si no se pudo leer el informe oficial
         if: steps.scraper.outcome == 'failure'

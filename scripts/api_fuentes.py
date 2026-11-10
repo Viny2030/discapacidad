@@ -20,6 +20,7 @@ router = APIRouter(prefix="/api", tags=["fuentes"])
 ROOT = Path(__file__).resolve().parent.parent
 REGISTRO = ROOT / "data" / "fuentes.json"
 ANDIS = ROOT / "data" / "processed" / "andis_oficial.json"
+JUNTAS = ROOT / "data" / "processed" / "juntas_oficiales.json"
 
 
 def antiguedad(fecha_iso: str, hoy: date | None = None) -> dict:
@@ -52,6 +53,12 @@ def listar_fuentes(hoy: date | None = None) -> list[dict]:
             f["fecha"] = andis["dato_reciente"]["fecha"] + "-01"
             f["valor"] = andis["dato_reciente"]["total_cud_vigentes"]
             f["url"] = andis["dato_reciente"]["url"]
+        elif dinamico == "juntas_oficiales":
+            try:
+                j = json.loads(JUNTAS.read_text(encoding="utf-8"))
+                f["fecha"], f["valor"] = j["fecha_lectura"], j["total"]
+            except (FileNotFoundError, json.JSONDecodeError, KeyError):
+                pass
         if f.get("tipo") == "en_vivo":
             f["antiguedad"] = {"meses": 0, "estado": "en_vivo"}
         elif f.get("fecha"):

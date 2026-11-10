@@ -1,0 +1,2685 @@
+{
+ "fuente": "ANDIS — Listado de juntas evaluadoras para CUD",
+ "fuente_pagina": "https://www.argentina.gob.ar/andis/juntas-evaluadoras-cud",
+ "fuente_datos": "https://docs.google.com/spreadsheets/d/1pvcQRLcLr8_gvJfb5rij-QhqUHcs5mS3lkJnBnfqyCw/export?format=csv",
+ "fecha_lectura": "2026-11-10",
+ "total": 438,
+ "por_provincia": {
+  "Buenos Aires": [
+   {
+    "nombre": "Junta Evaluadora – Hospital Saturnino Unzué",
+    "localidad": "25 de Mayo",
+    "direccion": "Calle 37 entre 1 y 102 | Horario de atención: lunes, martes, miércoles y viernes de 8 a 11h",
+    "contacto": "Teléfono: 02345-464849 | Correo electrónico: junta25demayo@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora – Dirección General de Discapacidad",
+    "localidad": "9 de Julio",
+    "direccion": "Balcarce 735 | Horario de atención: lunes a viernes de 7 a 13 h",
+    "contacto": "Teléfono: 02317-610070 | Correo electrónico: direcciondediscapacidad9dej@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora – Hospital municipal Adolfo Alsina",
+    "localidad": "Adolfo Alsina (Carhue)",
+    "direccion": "Avellaneda y Adolfo Alsina | Horario de atención: lunes a jueves de 12 a 14h",
+    "contacto": "02923-566647 | juntacarhue@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Centro Interdisciplinario Municipal",
+    "localidad": "Adolfo González Chaves",
+    "direccion": "Torchiari y Maipú | Horario de atención: martes de 8 a 11h",
+    "contacto": "02983-484449 | juntaevaluadorachaves@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Dirección de atención primaria de la salud | Centro Integrador Comunitario Evita Mujer del Bicentenario",
+    "localidad": "Alberti",
+    "direccion": "Av. del Libertador Gral. San Martín y Colombia | Horario de atención: lunes, martes y miércoles de 8 a 10h",
+    "contacto": "02346-471124 | juntadediscapacidadalberti@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora – Hospital Subzonal especializado en rehabilitación Dr. José María Jorge",
+    "localidad": "Almirante Brown",
+    "direccion": "Pte. Perón N.° 870, Burzaco | Horario de atención: lunes a viernes de 7 a 16h",
+    "contacto": "Teléfonos: 1142941384 o 1141938562 | Correo electrónico: sguhospitaljorge@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora – Hospital Municipal Florentino Ameghino",
+    "localidad": "Ameghino",
+    "direccion": "Av. San Martín 281 | Horario de atención: lunes a viernes de 8 a 12h",
+    "contacto": "Teléfono: 3388 678018 | Correo electrónico: areadediscapacidadfa@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Dirección de Discapacidad",
+    "localidad": "América (Rivadavia)",
+    "direccion": "Marcos Cachau y San Martín, América | Horario de atención: lunes a viernes de 7 a 14h",
+    "contacto": "Correo electrónico: discapacidad@munirivadavia.gob.ar | Teléfono: 2392616456"
+   },
+   {
+    "nombre": "Junta Evaluadora – Dirección De Discapacidad",
+    "localidad": "Arrecifes",
+    "direccion": "Euskalerria 759 | Horario de atención: lunes a viernes de 7 a 15h",
+    "contacto": "Teléfono: 2478451323 | Correo electrónico: csmarrecifes@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora de Avellaneda - Dirección de Inclusión de las personas con discapacidad",
+    "localidad": "Avellaneda",
+    "direccion": "Av. Belgrano 1124 | Horario de atención: lunes a viernes de 9 a 14h",
+    "contacto": "Teléfonos: 1155339926/28/49 | Correo electrónico: direcciondiscapacidadmda@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora – Servicio local de promoción y protección de derechos de niños y adolescentes | Municipalidad De Ayacucho",
+    "localidad": "Ayacucho",
+    "direccion": "9 de Julio 755 | Horario de atención: lunes a viernes de 8 a 13h",
+    "contacto": "Teléfono: 2296451407 |Correo electrónico: inclusion.ayacucho@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora de 2° instancia - Hospital Zonal Especializado Materno Infantil Argentina Diego",
+    "localidad": "Azul",
+    "direccion": "Alfredo Prat 521 | Horarios de atención : lunes de 12 a 14:30h, miércoles de 7:30 a 9h y jueves de 11 a 13:30h",
+    "contacto": "Teléfonos: 2281424150 o 2281422063 | Correo electrónico: mregionsanitaria9@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora – Hospital Municipal Dr. Ángel Pintos",
+    "localidad": "Azul",
+    "direccion": "Amado Diab 270 | Horario de atención: lunes a viernes de 8 a 14h",
+    "contacto": "Teléfono: 2281415571 |Correo electrónico: cudazul@yahoo.com.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora - Bahía Salud",
+    "localidad": "Bahía Blanca",
+    "direccion": "Chiclana 470 | Horario de atención: lunes a viernes de 9 a 12h",
+    "contacto": "Teléfono: 2914193331 | Correo electrónico: cudbahiablanca@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora de 2° instancia - Región Sanitaria 1 | Ministerio de Salud de la Provincia De Buenos Aires",
+    "localidad": "Bahía Blanca",
+    "direccion": "Moreno 267 | Horario de atención: lunes a viernes de 9 a 12h",
+    "contacto": "Teléfono: 2914555510 | Correo electrónico: cudbahiablanca@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Dirección de Políticas de Inclusión, Secretaría de Desarrollo Social",
+    "localidad": "Balcarce",
+    "direccion": "Av. del Valle Esquina 12 N.º 451 | Horario de atención: martes a viernes de 8 a 11h",
+    "contacto": "Teléfono: 2266421898 | Correo electrónico: discapacidadbalcarce@yahoo.com.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora – Secretaría de Desarrollo Social",
+    "localidad": "Baradero",
+    "direccion": "Santa María de Oro 450 | Horarios de atención: martes y miércoles de 13:30 a 16h. / Equipo técnico :lunes a viernes de 8 a 12h",
+    "contacto": "Teléfono: 3329519934"
+   },
+   {
+    "nombre": "Junta Evaluadora - Centro de Atención Primaria de la Salud Dr. Esteban Riganti | Juarez Salud",
+    "localidad": "Benito Juárez",
+    "direccion": "Zibecchi 74 | Horarios de atención: lunes a viernes de 8 a 11h",
+    "contacto": "Teléfonos: 2292452002 o 2281318084 | Correo electrónico: terceraedadbj@yahoo.com.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora – Centro de Atención Primaria de Salud N.º 1 Dr. Javier Sábatto",
+    "localidad": "Berazategui",
+    "direccion": "Av. 14 N.º 3144 | Horario de atención: lunes a viernes de 8 a 14h",
+    "contacto": "Teléfono: 1131532877 | Correo electrónico: cud.berazategui@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora – Unidad Sanitaria N.º 43 Villa Nueva | Hospital Zonal General de Agudos Mario V. Larraín",
+    "localidad": "Berisso",
+    "direccion": "Calle 145 (20 de Junio) entre 6 y 7 | Horarios de atención: lunes, martes y viernes de 8 a 13h y jueves de 8 a 16h",
+    "contacto": "Teléfono: 2214616474 | Correo electrónico: juntadiscapacidadberisso@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora –Dirección de Políticas Públicas para Personas con Discapacidad",
+    "localidad": "Bolivar",
+    "direccion": "Av. San Martín 961 | Horario de atención: lunes a viernes de 8 a 14h",
+    "contacto": "Teléfonos: 2314410897 o 2314400763 | Correo electrónico: direcciondiscapacidadbolivar@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora – Secretaría de Desarrollo Humano y Productivo de Bragado",
+    "localidad": "Bragado",
+    "direccion": "Del Busto 1202 | Horario de atención: lunes a viernes de 8 a 14h",
+    "contacto": "Teléfono: 2342541253 | Correo electrónico: dirdiscapacidadbragado@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora – Subsecretaría de Desarrollo Social y Programas Sociales",
+    "localidad": "Brandsen",
+    "direccion": "Pueyrredón 578 | Horarios de atención: lunes a viernes de 8 a 16h",
+    "contacto": "Teléfono: 2223426104 | Correos electrónicos: areadiscapacidad@brandsen.gob.ar y desarrollosocialbrandsen@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Dirección de Discapacidad | Sociedad Cosmopolita Obrera de Socorros Mutuos",
+    "localidad": "Campana",
+    "direccion": "Moreno 154 | Horario de atención: lunes a viernes de 8 a 13h",
+    "contacto": "Teléfono: 3489660798"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Municipal San Carlos",
+    "localidad": "Capitán Sarmiento",
+    "direccion": "San Martín 450 | Horario de atención: lunes a viernes",
+    "contacto": "Teléfono: 2478441480 | Correo electrónico: cudcapitalsarmiento@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Municipal Adolfo Alsina",
+    "localidad": "Carhué",
+    "direccion": "Avellaneda y Adolfo Alsina | Horario de atención: lunes y jueves de 12 a 14h",
+    "contacto": "Teléfono: 2923566647 | Correo electrónico: juntacarhue@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Ex-Centro Materno Infantil, Dirección de Discapacidad",
+    "localidad": "Carlos Casares",
+    "direccion": "Lamadrid 185 | Horario de atención: lunes a viernes de 7:30 a 13h",
+    "contacto": "Teléfono: 2396456620 | Correo electrónico: direcciondiscacscs@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Municipal Esteban y Santiago Garré",
+    "localidad": "Carlos Tejedor",
+    "direccion": "Esteban y Santiago Garré 950 | Horario de atención : lunes a viernes de 7 a 13h",
+    "contacto": "Correo electrónico: juntaevaluadoractejedor@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Dirección de Salud",
+    "localidad": "Carmen de Areco",
+    "direccion": "Belgrano 710 | Horario de atención: viernes de 8 a 13h",
+    "contacto": "Teléfono: 2273406106 | Correo electrónico: direcciondesalud.mcdea@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Municipal Agudos Dr. Pedro Ecay",
+    "localidad": "Carmen de Patagones",
+    "direccion": "Dr. Barajas 690 | Horario de atención: lunes a viernes de 7 a 9 h",
+    "contacto": "Teléfono: 2920461111 Int. 182 | Correo electrónico: rehabilitacion.patagones@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Área de Inclusión y Discapacidad | Dispositivos Integrales de Abordaje Territorial (DIAT)",
+    "localidad": "Castelli",
+    "direccion": "9 de Julio y Nardillo | Horario de atención: lunes a viernes de 7 a 13h",
+    "contacto": "Correo electrónico: areadeinclusion.castelli@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora – Dirección de Discapacidad | Municipalidad de Cañuelas",
+    "localidad": "Cañuelas",
+    "direccion": "Lara 331 | Horario de atención: lunes a viernes de 8 a 13h",
+    "contacto": "Teléfono: 2226541962 | Correo electrónico: canuelasdiscapacidad@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Municipal Nuestra Señora del Carmen",
+    "localidad": "Chacabuco",
+    "direccion": "Av. Garay 224 | Horario de atención: lunes, miércoles y viernes de 8 a 12h",
+    "contacto": "Teléfono: 2352430827/28 Int. 103 | Correo electrónico: juntachacabuco@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Dirección de Accesibilidad",
+    "localidad": "Chascomús",
+    "direccion": "Moreno 259 | Horario de atención: lunes a viernes de 9 a 12h",
+    "contacto": "Teléfono: 2241569385 | Correo electrónico: juntaevaluadorachascomus@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Municipal Dr. Santiago Fornos",
+    "localidad": "Chivilcoy",
+    "direccion": "Av. Hijas de San José 31 | Horario de atención: lunes, martes y miércoles de 9:30 a 12h",
+    "contacto": "Teléfono: 2346439100/115/116 Int. 2470 | Correo electrónico: jdchivilcoy@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Municipal Eduardo Morgan",
+    "localidad": "Colón",
+    "direccion": "Boulevard 50 N.º 576 | Horario de atención: lunes a viernes de 8 a 12h",
+    "contacto": "Teléfono: 2473430416 | Correo electrónico:cudjuntadecolon@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora- Hospital Local General María Eva Duarte de Perón",
+    "localidad": "Coronel Dorrego",
+    "direccion": "El Indio 350 | Horario de atención: lunes a jueves de 8 a 12 h",
+    "contacto": "Teléfonos: 2921405455 o 2921401681 | Correo electrónico: saluddorrego@yahoo.com.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora - Centro de Atención Primaria de la Salud Dr. Hugo Maggi",
+    "localidad": "Coronel Pringles",
+    "direccion": "Frondizi 404 | Horario de atención: lunes a viernes de 7 a 13h",
+    "contacto": "Teléfono: 2922500015 |Correo electrónico: capsmaggi@outlook.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Dirección de Acción Social",
+    "localidad": "Coronel Rosales (Punta Alta)",
+    "direccion": "Avellaneda 690, Punta Alta. | Horario de atención: lunes a viernes de 7 a 13h",
+    "contacto": "Teléfono: 2932617955 | Correo electrónico: juntaevaluadorarosales@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Raúl Caccavo",
+    "localidad": "Coronel Suárez",
+    "direccion": "Avellaneda y Garibaldi | Horario de atención: lunes a viernes de 8 a 13h",
+    "contacto": "Teléfono: 2926478220 | Correo electrónico: discapacidad@coronelsuarez.gob.ar"
+   },
+   {
+    "nombre": "Junta N.º 1 y N.º 2 de Mar Chiquita - Hospital Municipal Eustaquio Aristizábal",
+    "localidad": "Coronel Vidal",
+    "direccion": "Belgrano 250 | Horario de atención: lunes a viernes de 8 a 13h",
+    "contacto": "Teléfono: 2236930678 | Correo electrónico: dirdediscapacidadmarchiquita@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Dirección de Discapacidad",
+    "localidad": "Daireaux",
+    "direccion": "Belgrano 237 | Horario de atención: lunes a viernes de 7 a 14h",
+    "contacto": "Teléfono: 2314470957 | Correos electrónicos: juntaevaluadoradx@outlook.com o discapacidad@daireaux.gob.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora - Centro Cívico de Participación",
+    "localidad": "Dolores",
+    "direccion": "Leandro N. Alem 244 | Horario de atención: lunes a viernes de 8 a 13h",
+    "contacto": "Teléfono: 2245459869 | Correo electrónico: accesibilidad.dolores@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Nacional Profesor Alejandro Posadas",
+    "localidad": "El Palomar",
+    "direccion": "Av. Illia y Marconi S/N, El Palomar.| Horario de atención: lunes a viernes de 8 a 12h. Exclusivo para pacientes con historia clínica del Hospital",
+    "contacto": "Teléfono:44699300 Int. 2835 | Correo electrónico:cud@hospitalposadas.gob.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora - Dirección de Discapacidad | Secretaría de Desarrollo Social",
+    "localidad": "Ensenada",
+    "direccion": "Alem 660 | Horario de atención: lunes a viernes de 8 a 16h",
+    "contacto": "Correo electrónico: oficinadiscapacidadensenada@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Zonal Especializado en Crónicos El Dique",
+    "localidad": "Ensenada",
+    "direccion": "Calle 129, entre 51 y 53 | Horario de atención: lunes a viernes de 9 a 14h",
+    "contacto": "Teléfono: 2214210093 Int. 111/223 | Correo electrónico: medrehab.eldique@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Polo Sanitario Dr. Horacio Canesi",
+    "localidad": "Escobar",
+    "direccion": "Sarmiento 41, Matheu. | Horario de atención: lunes a jueves de 8 a 12h",
+    "contacto": "Teléfono: 3484434581 | Correo electrónico: escobardiscapacidad@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Centro de Rehabilitación Municipal Esteban Echeverría",
+    "localidad": "Esteban Echeverria",
+    "direccion": "Santa Catalina 231, Luis Guillón. | Horario de atención: lunes a viernes de 8 a 12h",
+    "contacto": "Correo electrónico: centroderehabilitacionee@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Dirección de Discapacidad",
+    "localidad": "Exaltación de la Cruz",
+    "direccion": "Ameghino 772, Capilla del Señor. | Horario de atención: lunes a viernes de 8 a 13h",
+    "contacto": "Teléfono: 2323491379 | Correo electrónico: ddiscapacidad@exaltaciondelacruz.gov.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora - Secretaría de Desarrollo y Trabajo para la Comunidad",
+    "localidad": "Ezeiza",
+    "direccion": "Zapala 480 (y Formosa),Villa Golf. | Horario de atención: lunes a viernes de 8 a 14h",
+    "contacto": "Correo electrónico: ezeiza.juntaevaluadora@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Centro de Día para personas mayores Lital Genoud",
+    "localidad": "Florencio Varela",
+    "direccion": "Cariboni y de la Ancianidad | Horario de atención: lunes a viernes de 8 a 16h",
+    "contacto": "Correo electrónico: direccion.discapacidad.fv@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Dirección de Salud | Centro de atención primaria de la salud San Antonio",
+    "localidad": "General Alvear",
+    "direccion": "25 De Mayo 372| Horario de atención: jueves y viernes de 12 a 17h",
+    "contacto": "Teléfono: 2344500682 | Correo electrónico: saludgeneralalvear@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Municipal Dr. Ignacio Pirovano",
+    "localidad": "General Arenales",
+    "direccion": "Sarmiento 276 | Horario de atención: martes de 14:30 a 17h. Quincenal",
+    "contacto": "Teléfono: 2353460515 | Correo electrónico:turnospirovano.arenales@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Municipal Juan de La Fuente",
+    "localidad": "General Belgrano",
+    "direccion": "Av. España 325 | Horario de atención: lunes y viernes de 15 a 17h. martes y jueves de 9 a 12h",
+    "contacto": "Correo electrónico: juntacudgeneralbelgrano@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Centro de atención primaria de la salud - Unidad Sanitaria General Guido",
+    "localidad": "General Guido",
+    "direccion": "San Martín y 9 de julio | Horario de atención: lunes de 15 a 18h. A demanda",
+    "contacto": "Teléfono: 2268491028 | Correo electrónico: direccionsalud_guido@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Dirección de Inclusión | Secretaria de Desarrollo Humano Y Social",
+    "localidad": "General Lamadrid",
+    "direccion": "Azcuénaga y Sarmiento | Horario de atención: lunes a viernes de 7 a 13:30h",
+    "contacto": "Teléfono: 2284216537 | Correo electrónico: direcciondeinclusionsocialglm@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Dirección de Discapacidad | Municipalidad de General Las Heras",
+    "localidad": "General Las Heras",
+    "direccion": "Neuquén 98 | Horario de atención: lunes a viernes de 8 a 14h",
+    "contacto": "Teléfono: 1169186365 | Correo electrónico: juntadiscapacidad@gobiernodelasheras.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Secretaría De Calidad de Vida y Desarrollo Humano | Municipalidad De General Lavalle",
+    "localidad": "General Lavalle",
+    "direccion": "Bartolomé Mitre 861 | Horario de atención: lunes a viernes de 8 a 14h",
+    "contacto": "Teléfono: 2252491037 | Correo electrónico: lavallehospital@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Municipal Ana Rosa S de Martínez Guerrero de General Madariaga",
+    "localidad": "General Madariaga",
+    "direccion": "Av. Buenos Aires y Echeverría | Horario de atención: viernes de 10:30 a 12h",
+    "contacto": "Teléfono: 2234953802"
+   },
+   {
+    "nombre": "Junta Evaluadora -Dirección de Discapacidad",
+    "localidad": "General Pinto",
+    "direccion": "Presidente Perón y Uruguay S/N | Horario de atención: lunes a viernes de 8 a 12h",
+    "contacto": "Teléfono: 2355555360 | Correo electrónico: discapacidad@pinto.gob.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora - Dirección de Discapacidad | Centro de Atención Primaria de la Salud María de Irigoyen",
+    "localidad": "General Rodríguez",
+    "direccion": "Cherubini 450 | Horario de atención: lunes a viernes de 8 a 13h",
+    "contacto": "Teléfono: 2323681993 | Correo electrónico: mariasilva_3@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Dr. Baldomero Sommer",
+    "localidad": "General Rodríguez",
+    "direccion": "Ruta 24 km 23,500 Gral. Rodríguez | Horario de atención: jueves de 9 a 12 h",
+    "contacto": "Teléfono: 2374050800 Int. 257 | Correo electrónico: rehabilitacion@sommer.gov.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora de Segunda Instancia - Hospital Interzonal General de Agudos Vicente López y Planes",
+    "localidad": "General Rodríguez",
+    "direccion": "Alem y 25 de Mayo | Horario de atención: lunes, martes y miércoles de 8 a 12h",
+    "contacto": "Teléfono: 2374840022/0023 Int.136 | Correo electrónico: socialvicentelopez@yahoo.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Municipalidad de General Viamonte | Dirección de Discapacidad",
+    "localidad": "General Viamonte",
+    "direccion": "Bartolomé Mitre 991, Los Toldos | Mitre y San Martín, Baigorrita | Horario de atención: lunes a viernes de 7 a 13h",
+    "contacto": "Teléfono: 2358450711 | Correo electrónico: discapacidad@generalviamonte.gob.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Municipal Nuestra Señora del Carmen de General Villegas",
+    "localidad": "General Villegas",
+    "direccion": "Isturiz 846 | Horario de atención: lunes a viernes de 12 a 14h",
+    "contacto": "Teléfono: 3388417274 | Correo electrónico: junta.evaluadora.discapacidad24@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora – Hospital Interzonal General de Agudos San Roque de Gonnet",
+    "localidad": "Gonnet",
+    "direccion": "Calle 508, entre 18 y 19 | Horario de atención: lunes a viernes de 7 a 13h",
+    "contacto": "Correo electrónico: cudsanroque@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora de La Matanza - Región Municipal Descentralizada Matanza Sur",
+    "localidad": "González Catán",
+    "direccion": "Juan Manuel de Rosas 17798 | Horario de atención: lunes a viernes (asesoramiento y requisitos por WhatsApp)",
+    "contacto": "Teléfono: 1155735327 | 1161648038 (WhatsApp) | Correo electrónico: juntadiscapacidadmatanza@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora de Guaminí",
+    "localidad": "Guaminí",
+    "direccion": "Enrique Bonifacio 400 (Ex Estación del Ferrocarril) | Horario de atención: lunes a viernes de 8 a 12h",
+    "contacto": "Teléfono: 2929493356 | Correo electrónico: juntaevaluadoraguamini@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Secretaría De Desarrollo Social",
+    "localidad": "Henderson",
+    "direccion": "Italia y Lavalle | Horario de atención:lunes a viernes de 7 a 12h",
+    "contacto": "Teléfono: 2314577273 | Correos electrónicos: juntadiscapacidadhenderson@gmail.com | bsocialhenderson@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Centro de Inclusión y Accesibilidad para Personas con Discapacidad",
+    "localidad": "Hurlingham",
+    "direccion": "Avenida Vergara 3020 | Horario de atención: lunes a viernes de 9 a 17h",
+    "contacto": "Teléfono: 1126785304 | Correo electrónico: discapacidadhur@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora – Dirección De Discapacidad De Ituzaingó",
+    "localidad": "Ituzaingó",
+    "direccion": "Pringles 2750, San Alberto. | Horario de atención: lunes a viernes de 8 a 15h",
+    "contacto": "Teléfono: 1121201938 | Correo electrónico: dir.discapacidadmiituzaingo@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Dirección de Discapacidad | Centro de Atención y Rehabilitación",
+    "localidad": "José C Paz",
+    "direccion": "Hipólito Yrigoyen 3551 | Horario de atención: lunes a viernes de 8 a 15h",
+    "contacto": "Teléfono: 1125195355 | Correo electrónico: centrodediscapacidadjcp@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Secretaría de Desarrollo Social",
+    "localidad": "Junín",
+    "direccion": "Gandini 92 | Horario de atención : lunes a viernes de 8 a 13h",
+    "contacto": "Teléfono: 2364515158 | Correo electrónico: discapacidad@junin.gob.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora de Segunda Instancia - Región Sanitaria 3 | Ministerio de Salud de la Provincia de Buenos Aires",
+    "localidad": "Junín",
+    "direccion": "25 de Mayo y Coronel Borges | Horario de atención: lunes a viernes de 9 a 12h",
+    "contacto": "Correo electrónico: discapacidad@junin.gob.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora - Dirección Provincial de Acceso e Inclusión en Salud | Ministerio de Salud de la Plata",
+    "localidad": "La Plata",
+    "direccion": "Calle 47 N° 835 | Horario de atención: lunes a viernes de 8 a 13 hs",
+    "contacto": "Correo electrónico: cudjuntaevaluadora@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Interzonal Especializado de Agudos y Crónicos San Juan de Dios",
+    "localidad": "La Plata",
+    "direccion": "Calle 27 y 70 | Horario de atención: lunes a viernes de 9 a 12 hs",
+    "contacto": "Teléfono de contacto: 2214575454 Int. 133 | Correo electrónico: juntasanjuan@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Interzonal General de Agudos Prof. Dr. Rodolfo Rossi",
+    "localidad": "La Plata",
+    "direccion": "Calle 37 N° 183 | Horario de atención: lunes y viernes de 8:30 a 10:30 hs",
+    "contacto": "Teléfono de contacto: 2214828821 Int. 25 | Correo electrónico: juntaevaluadorarossi@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Subzonal Especializado Dr. Ramos Mejía",
+    "localidad": "La Plata",
+    "direccion": "Calle 143 entre 521 y 522 | Horario de atención: lunes a viernes de 8 a 12 hs",
+    "contacto": "Teléfono de contacto: 2214705513 | Correo electrónico: jecert.cud@ms.gba.gov.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Subzonal Especializado Elina de La Serna",
+    "localidad": "La Plata",
+    "direccion": "Calle 8 N° 483, entre 41 y 42 | Horario de atención: viernes de 9:30 a 12:30 hs",
+    "contacto": "Teléfono de contacto: 2214833869 | Correo electrónico: juntaevaluadoraelina@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Zonal Especializado Dr. Noel H. Sbarra",
+    "localidad": "La Plata",
+    "direccion": "Calle 8 y 67 | Horario de atención: viernes de 8 a 12 hs",
+    "contacto": "Teléfono de contacto: 2215651650 | Correo electrónico: cudsbarra@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Zonal de Agudos Dr. Ricardo Gutiérrez",
+    "localidad": "La Plata",
+    "direccion": "Diagonal 114 entre 39 y 40 | Horario de atención: lunes a viernes de 8 a 13 hs",
+    "contacto": "Teléfono de contacto: 2214830171 | Correo electrónico: saludmental.gutierrez@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital de Niños Sor María Ludovica",
+    "localidad": "La Plata",
+    "direccion": "Calle 14 N° 1631, entre 65 y 66 | Horario de atención: lunes a viernes de 8 a 12 hs",
+    "contacto": "Teléfono de contacto: 2214535901 Int. 1372 | Correo electrónico: juntascudludovica@hotmail.com.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora - Pabellón de Rehabilitación | Hospital Interzonal General de Agudos General San Martín",
+    "localidad": "La Plata",
+    "direccion": "116 y 69 | Horario de atención: lunes a viernes de 8 a 12 hs",
+    "contacto": "Teléfono de contacto: 2214836588 Int. 288 | Correo electrónico: juntadiscapacidad@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Secretaría de Salud | Municipalidad de la Plata",
+    "localidad": "La Plata",
+    "direccion": "Diagonal 73 N° 1273 | Horario de atención: lunes y viernes de 9 a 13 hs",
+    "contacto": "Teléfono de contacto: 2214220009 | Correo electrónico: juntaevaluadoramlp@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Local Especializado San Lucas",
+    "localidad": "La Plata - Lisandro Olmos",
+    "direccion": "Calle 52, entre 191 y 197 | Horario de atención: lunes a viernes de 8 a 14 hs",
+    "contacto": "Teléfono de contacto: 2214961051 | Correo electrónico: jecudsanlucas@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Subsecretaría de Personas con Discapacidad | Secretaría de Desarrollo Social",
+    "localidad": "La Tablada",
+    "direccion": "Av. Crovara 3286 | Horario de atención: lunes a viernes (asesoramiento y requisitos por whatsapp)",
+    "contacto": "Teléfono de contacto: 1155735327 | 1161648038 (WhatsApp) | Correo electrónico: juntadiscapacidadmatanza@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora de Hospital de Melo | Segunda InstanciaRegion Sanitaria Vi |Hospital Local|General de Agudos Dr.Arturo Melo",
+    "localidad": "Lanus",
+    "direccion": "Villa de Luján 3050, Remedios de Escalada | Horario de atención: lunes a viernes de 9 a 12 hs",
+    "contacto": "Teléfono : 1142894485 | Correo electrónico: discapacidadhmelo@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Dirección de Discapacidad | Secretaría de Desarrollo Social",
+    "localidad": "Lanús",
+    "direccion": "Dr. Máspero 35, Remedios de Escalada | Horario de atención: lunes a viernes de 8:30 a 13:30 hs",
+    "contacto": "Teléfono de contacto: | Correo electrónico: direcdiscapacidadlanus@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Municipal Pedro S. Sancholuz",
+    "localidad": "Laprida",
+    "direccion": "Lavalle y Sancholuz | Horario de atención: lunes a viernes de 7 a 12 hs",
+    "contacto": "Teléfono de contacto: 2284420017 | Correo electrónico: apslaprida@yahoo.com.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora - Centro de Atención Primaria de la Salud Dardo Décima",
+    "localidad": "Las Flores",
+    "direccion": "Belgrano y Sordeaux | Horario de atención: lunes a viernes de 8 a 14 hs",
+    "contacto": "Teléfono de contacto: 2244444993 | Correo electrónico: discapacidad@lasflores.gob.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora Municipio De La Costa - Centro Integrador Comunitario Las Toninas",
+    "localidad": "Las Toninas",
+    "direccion": "Av. 26 y calle 29, Las Toninas | Horario de atención: lunes a viernes de 8 a 14 hs",
+    "contacto": "Teléfono de contacto: 2246432279 |2257635698 (WhatsApp)"
+   },
+   {
+    "nombre": "Junta Evaluadora - Centro Integrador Comunitario de Vedia (Partido Leandro N. Alem)",
+    "localidad": "Leandro N. Alem - Vedia",
+    "direccion": "Mendoza y Comandante Escribano, Vedia | Horario de atención: lunes de 13:30 a 17 hs",
+    "contacto": "Teléfono de contacto: 2354421244 | Correo electrónico: jedalem2011@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Municipal Dr. Francisco Quijano",
+    "localidad": "Lezama",
+    "direccion": "Ruta 57 S/N (Desvío) | Horario de atención: lunes a viernes de 8 a 13 hs",
+    "contacto": "Teléfono de contacto: 2242432624 | Correo electrónico: discapacidadlezama@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Dirección de Discapacidad",
+    "localidad": "Lincoln",
+    "direccion": "Ameghino 242 | Horario de atención: lunes a viernes de 7 a 13 hs",
+    "contacto": "Teléfono de contacto: 2355424220"
+   },
+   {
+    "nombre": "Junta Evaluadora - Centro Integrador Comunitario Evita",
+    "localidad": "Loberia",
+    "direccion": "Suarez García y Albarello | Horario de atención: lunes y miércoles de 13:30 a 17 hs",
+    "contacto": "Teléfono de contacto: 2261442105 Int. 2015 | Correo electrónico: cudloberia@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Consejo Municipal de Discapacidad | Oficina Municipal Descentralizada Belgrano",
+    "localidad": "Lobos",
+    "direccion": "Belgrano 470 | Horario de atención: lunes, miércoles y viernes de 8 a 12 hs",
+    "contacto": "Teléfono de contacto: 2227431450 Int. 107 | 2227549691 | Correo electrónico: discapacidadlobos@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Zonal General de Agudos Dr. Carlos Bocalandro",
+    "localidad": "Loma Hermosa - Tres de Febrero",
+    "direccion": "Ruta 8 N° 9100, KM 20.500 | Horario de atención: lunes, martes y miércoles de 10 a 13 hs (solo para demanda interna)",
+    "contacto": "Teléfono de contacto: 1177296615 | Correo electrónico: cudbocalandro@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Dirección de Discapacidad | Secretaría de Desarrollo Social",
+    "localidad": "Lomas de Zamora",
+    "direccion": "Av. Frías 1115 | Horario de atención: lunes a viernes de 8:30 a 13:30 hs",
+    "contacto": "Teléfono de contacto: 1136083602 | Correo electrónico: juntaevaluadora.documentacion@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Dirección de Discapacidad | Secretaría de Desarrollo Humano",
+    "localidad": "Luján",
+    "direccion": "Colón 1177 | Horario de atención: lunes a viernes de 7 a 13 hs",
+    "contacto": "Teléfono de contacto: 1140416596 | Correo electrónico: discapacidad@lujan.gov.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Subzonal Santa María Magdalena",
+    "localidad": "Magdalena",
+    "direccion": "Las Heras N° 385 | Horario de atención: martes de 9 a 12 horas",
+    "contacto": "Teléfono de contacto: 2221453308 | Correo electrónico: juntacudmagdalena@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Municipal de Maipú Dr. Raúl Montalverne",
+    "localidad": "Maipú",
+    "direccion": "Lavalle 1114 | Horario de atención: lunes a viernes de 8 a 12 hs",
+    "contacto": "Teléfono de contacto: 2268421290 | Correo electrónico: hospitalmaipu@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora Hospital Dr. Drozdowski - Dirección de Discapacidad de Malvinas Argentinas",
+    "localidad": "Malvinas Argentinas - Grand Bourg",
+    "direccion": "Soler 977, Grand Bourg | Horario de atención: lunes a viernes de 8 a 15 hs",
+    "contacto": "Teléfono de contacto: 1122524491 | Correo electrónico: discapacidadmalvinasargentinas@gmail.com"
+   },
+   {
+    "nombre": "Inareps | Amputados - Instituto Nacional de Rehabilitación Psicofísica del Sur",
+    "localidad": "Mar del Plata",
+    "direccion": "Ruta 88 km 1,5 | Horario de atención: jueves de 8 a 13 hs",
+    "contacto": "Teléfono de contacto: 2234559582 | Correo electrónico: cud@inareps.gov.ar"
+   },
+   {
+    "nombre": "Inareps | Internados - Instituto Nacional de Rehabilitación Psicofísica del Sur",
+    "localidad": "Mar del Plata",
+    "direccion": "Ruta 88 km 1,5 | Horario de atención: jueves de 8 a 10 hs",
+    "contacto": "Teléfono de contacto: 2234559582 | Correo electrónico: cud@inareps.gov.ar"
+   },
+   {
+    "nombre": "Inareps | Motores / Visceral / Mental / Auditivo / Visual -Instituto Nacional de Rehabilitación Psicofísica del Sur",
+    "localidad": "Mar del Plata",
+    "direccion": "Ruta 88 km 1,5 | Horario de atención: lunes a viernes de 8 a 13 hs",
+    "contacto": "Teléfono de contacto: 2234559582 | Correo electrónico: cud@inareps.gov.ar"
+   },
+   {
+    "nombre": "Inareps | Niños - Instituto Nacional de Rehabilitación Psicofísica del Sur",
+    "localidad": "Mar del Plata",
+    "direccion": "Ruta 88 km 1,5 | Horario de atención: lunes de 9 a 13 hs",
+    "contacto": "Teléfono de contacto: 2234559582 | Correo electrónico: cud@inareps.gov.ar"
+   },
+   {
+    "nombre": "Inareps | Reumatologia - Instituto Nacional de Rehabilitación Psicofísica del Sur",
+    "localidad": "Mar del Plata",
+    "direccion": "Ruta 88 km 1,5 | Horario de atención: lunes de 10 a 12 hs",
+    "contacto": "Teléfono de contacto: 2234559582 | Correo electrónico: cud@inareps.gov.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora de Mar Del Plata - Dirección de Políticas para Personas con Discapacidad",
+    "localidad": "Mar del Plata",
+    "direccion": "Pescadores 456 | Horario de atención: lunes, miércoles, jueves y viernes de 8 a 14 hs",
+    "contacto": "Teléfono de contacto: 2234800379 | 2234806657 | 2235425908 | Correo electrónico: discapacidad@mardelplata.gov.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora de Mar Del Plata | Segunda Instancia - Hospital Interzonal General de Agudos Dr. Oscar E. Alende",
+    "localidad": "Mar del Plata",
+    "direccion": "Rodríguez Peña 6802 | Horario de atención: lunes, jueves y viernes",
+    "contacto": "Teléfono de contacto: 2234495624 | Correo electrónico: regsan8discapacidad1@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora de Marcos Paz - Centro de Atención Primaria de la Salud Héroes de Malvinas, Nuestra Señora de la Paz",
+    "localidad": "Marcos Paz",
+    "direccion": "Eva Duarte y Del Criollo | Horario de atención: lunes y jueves 9 a 13 hs",
+    "contacto": "Teléfono de contacto: 2204983103 | Correo electrónico: salud@marcospaz.gob.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora de Melchor Romero | Hospital A. KornHospital Interzonal de Agudos y Crónicos Dr. Alejandro Korn",
+    "localidad": "Melchor Romero",
+    "direccion": "Calle 520 y 179 | Horario de atención: lunes a viernes de 8 a 12 hs",
+    "contacto": "Teléfono de contacto: 2214780181 Int. 598 | Correo electrónico: cudakorn@yahoo.com"
+   },
+   {
+    "nombre": "Junta Evaluadora de Melchor Romero | Hospital J. IngenierosHospital Sub Zonal Especializado Dr. José Ingenieros",
+    "localidad": "Melchor Romero",
+    "direccion": "Calle 514 y 161 | Horario de atención: lunes, jueves y viernes de 9 a 13 hs",
+    "contacto": "Teléfono de contacto: | Correo electrónico: juntajoseingenieros@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Dirección de Discapacidad | Municipalidad de Mercedes (Ex. Instituto Unzué)",
+    "localidad": "Mercedes",
+    "direccion": "Calle 26 y 47 | Horario de atención: lunes a viernes de 8 a 14 hs",
+    "contacto": "Teléfono de contacto: 2324468141 | Correo electrónico: discapacidadmercedes@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Dirección de Discapacidad | Secretaría de Desarrollo e Integración Social",
+    "localidad": "Merlo",
+    "direccion": "Colón 686 | Horario de atención: lunes a viernes de 8 a 16 hs",
+    "contacto": "Teléfono de contacto: 2204821865 | Correo electrónico: discapacidadypensiones@merlo.gob.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora - Tercera Edad y Discapacidad | Hospital Municipal Dr. Marino Cassano",
+    "localidad": "Miramar",
+    "direccion": "Diag. J. M. Dupuy 1550 | Horario de atención: lunes 17 a 20 hs y martes 8 a 12 hs",
+    "contacto": "Teléfono de contacto: 2291431253 | Correo electrónico: direccionmedicacassano@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Centro Integrador Comunitario (Cic)",
+    "localidad": "Monte Hermoso",
+    "direccion": "Río Salado y Cassey | Horario de atención: jueves de 8 a 11 hs",
+    "contacto": "Teléfono de contacto: 2921483221 | Correo electrónico: juntadiscapacidadmh@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Centro Integrador Comunitario La Bibiana",
+    "localidad": "Moreno",
+    "direccion": "O` Brien 2989 | Horario de atención: lunes y jueves 8 a 15 hs y miércoles de 12 a 15 hs",
+    "contacto": "Teléfono de contacto: 2374669211 Int. 3 | Correo electrónico: juntadiscapacidadmoreno@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora de Morón N° 1 - Hospital Municipal de Morón Ostaciana B. De Lavignolle",
+    "localidad": "Morón",
+    "direccion": "Dr. Rodolfo Monte 848 | Horario de atención: martes y viernes de 8 a 13 hs",
+    "contacto": "Teléfono de contacto: 1126685169 | Correo electrónico: discapacidad@moron.gob.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora de Morón N° 2 - Dirección de Políticas de Inclusión | Subsecretaría de Desarrollo Humano",
+    "localidad": "Morón",
+    "direccion": "Bartolomé Mitre 957 | Horario de atención: lunes a viernes de 9 a 13 hs",
+    "contacto": "Teléfono de contacto: 1126685169 | Correo electrónico: discapacidad@moron.gob.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora - Dirección de Discapacidad | Municipalidad de Navarro",
+    "localidad": "Navarro",
+    "direccion": "Calle 16 N° 564 | Horario de atención: lunes a viernes de 7 a 13:30 hs",
+    "contacto": "Teléfono de contacto: 2272404006 | Correo electrónico: discapacidaddisc@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora de Necochea -Dirección de Discapacidad | Hospital José Irurzun de Quequén",
+    "localidad": "Necochea - Quequén",
+    "direccion": "Calle 541 Nº 3550, QUEQUÉN | Horario de atención: lunes a viernes de 7 a 13 hs",
+    "contacto": "Teléfono de contacto: 2262414619 | Correo electrónico: juntanecochea@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Dirección de Discapacidad y Personas Mayores",
+    "localidad": "Olavarria",
+    "direccion": "Las Heras 5398 | Horario de atención: lunes a viernes de 7 a 13 hs",
+    "contacto": "Teléfono de contacto: 2284428333 | 2284300138 | Correo electrónico: junta.evaluadora.discapacidad@olavarria.gov.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora - Secretaría de Salud",
+    "localidad": "Pehuajó",
+    "direccion": "Artigas 821 | Horario de atención: lunes a viernes de 7 a 14 hs",
+    "contacto": "Teléfono de contacto: 2396474285 | Correo electrónico: secretariadesalud@gmail.com | secretariadesalud.pehuajo@yahoo.com.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Guillermo Del Soldato",
+    "localidad": "Pellegrini",
+    "direccion": "Ugarte N° 317 | Horario de atención: lunes a viernes de 8 a 13 hs",
+    "contacto": "Teléfono de contacto: 2392498660 | 2392527578 | Correo electrónico: adm.hospital@pellegrini.gov.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora de Pergamino - Centro de Atención Primaria de la Salud Salvador Mazza",
+    "localidad": "Pergamino",
+    "direccion": "Tucumán 265 | Horario de atención: lunes a viernes de 8 a 12 hs",
+    "contacto": "Teléfono de contacto: 2477328190 | Correo electrónico: cud@pergamino.gob.ar | cudpergamino@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora de Pergamino | Segunda Instancia - Hospital Interzonal General de Agudos San José",
+    "localidad": "Pergamino",
+    "direccion": "Av. Liniers 950 | Horario de atención: martes 8 a 12 hs",
+    "contacto": "Teléfono de contacto: 2477665102 | Correo electrónico: juntahigasanjose@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora de Pigüé - Saavedra - Hospital y Maternidad Municipal Pigüé",
+    "localidad": "Pigüé",
+    "direccion": "Liniers 46 | Horario de atención: lunes a viernes de 7 a 14 hs",
+    "contacto": "Teléfono de contacto: 2923476006 Int. 230 | Correo electrónico: discapacidad@saavedra.gob.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora - Dirección de Acción Social | Municipalidad de Pila",
+    "localidad": "Pila",
+    "direccion": "Calle 15 y 6 | Av. San Martín y Domingo Rigol | Horario de atención: lunes a viernes de 7 a 13 hs",
+    "contacto": "Teléfono de contacto: 2242498288 | Correo electrónico: pila_accionsocial@yahoo.com.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora - Centro de Rehabilitación Pilares de Esperanza",
+    "localidad": "Pilar",
+    "direccion": "Los Perales y J. B. Ambrosetti, La Esperanza | Horario de atención: lunes a viernes de 7 a 13h",
+    "contacto": "Teléfono: 1159139542 | Correo electrónico: malberini@pilar.gov.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora de Pinamar - Centro de Atención Primaria de la Salud de Pinamar",
+    "localidad": "Pinamar",
+    "direccion": "Calamares y Av. Intermedanos | Horario de atención: jueves de 8 a 12 hs (quincenal)",
+    "contacto": "Teléfono de contacto: 2254491624 | Correo electrónico: discapacidad@pinamar.gob.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora de Pinamar - Dirección de Discapacidad | Taller Protegido del Centro de Organización Juvenil de Pinamar",
+    "localidad": "Pinamar - Ostende",
+    "direccion": "Av. del Parque y España, Ostende | Horario de atención: miércoles de 8 a 12 hs (quincenal)",
+    "contacto": "Teléfono de contacto: 2254491624 |2254535605 | Correo electrónico: discapacidad@pinamar.gob.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora de Presidente Perón - Área de Discapacidad | Secretaria de Desarrollo Social",
+    "localidad": "Presidente Perón - Guernica",
+    "direccion": "Av. Jauretche 1123, Guernica | Horario de atención: lunes a viernes de 8 a 14 hs",
+    "contacto": "Teléfono de contacto: 2224507013 Int. 2263 | Correo electrónico: discapperon@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora de Puan- Área de Discapacidad",
+    "localidad": "Puan",
+    "direccion": "Hipólito Yrigoyen y Mar del Plata | Horario de atención: lunes a viernes 7 a 14 hs",
+    "contacto": "Teléfono de contacto: 2923488771 | Correo electrónico: cudpuan@yahoo.com.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora (H. G. Hernandez) – Oficina de Inclusión Social y Discapacidad",
+    "localidad": "Punta Indio",
+    "direccion": "Pje. Eva Perón, entre 25 y 27 (Estación del ex Ferrocarril), Verónica. | Horario de atención: sábados de 8 a 16h",
+    "contacto": "Teléfono: 2223511807 | Correo electrónico: pindiojunta@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Dirección de Acceso e Inclusión En Salud | Centro Integral de Salud, Diagnóstico y Rehabilitación",
+    "localidad": "Quilmes",
+    "direccion": "Calle 9 de Julio 264, Bernal | Horario de atención: lunes a viernes de 9 a 12 hs",
+    "contacto": "Correo electrónico: juntaevaluadoraquilmes@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora -Hospital Jose Maria Gomendio",
+    "localidad": "Ramallo",
+    "direccion": "Gomendio 1374 | Horario de atención: martes y jueves 8 hs",
+    "contacto": "Teléfono : 3407421555 | Correo electrónico: juntaevaluadoraramallo@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora de La Matanza - Región Municipal Descentralizada Matanza Noroeste",
+    "localidad": "Ramos Mejía",
+    "direccion": "Rivadavia 13518 | Horario de atención: lunes a viernes (Asesoramiento y Requisitos por WhatsApp)",
+    "contacto": "Teléfonos: 1155735327 | 1161648038 (WhatsApp) | Correo electrónico: juntadiscapacidadmatanza@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora -Hospital Campomar de Ranchos",
+    "localidad": "Ranchos",
+    "direccion": "Av. Campomar 3413 | Horario de atención: lunes a viernes de 8 a 14 hs",
+    "contacto": "Teléfono : 2241475250 | Correo electrónico: juntaevaluadoraranchos@outlook.com"
+   },
+   {
+    "nombre": "Junta Evaluadora -Hospital Municipal General Eustoquio Díaz Vélez",
+    "localidad": "Rauch",
+    "direccion": "Alberti 450 | Horario de atención: lunes a viernes de 6 a 14 hs",
+    "contacto": "Teléfono : 2297442620 |2494014004 Int. 258 | Correo electrónico: hospitalrauch@yahoo.com.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora -Hospital Municipal Saturnino E. Unzué",
+    "localidad": "Rojas",
+    "direccion": "Av. 25 de Mayo 717 | Horario de atención: lunes a viernes de 8 a 12 hs",
+    "contacto": "Teléfono : 2475465410 | 465316 Int. 2017 | Correo electrónico: cudrojas@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora -Dirección de Discapacidad | Casa Gatuzzo",
+    "localidad": "Roque Perez",
+    "direccion": "Gotuzzo 960 | Horario de atención: lunes a viernes de 8 a 12 hs",
+    "contacto": "Correo electrónico: discapacidadroqueperez@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora -Dirección de Niñez, Familia y Discapacidad | Secretaría de Desarrollo Humano y Salud",
+    "localidad": "Saladillo",
+    "direccion": "Estrada 2872 (Esquina Posadas) | Horario de atención: lunes a viernes de 8 a 13 hs y de 14 a 17 hs",
+    "contacto": "Teléfono : 2344453033 | Correo electrónico: deshumano34@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora -Municipalidad de Salliquelo | Oficina de Discapacidad",
+    "localidad": "Salliquelo",
+    "direccion": "Alem (O) 125 | Horario de atención: lunes a viernes de 7 a 13 hs",
+    "contacto": "Teléfono : 2394402136 | Correo electrónico: discapacidad@salliquelo.gob.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora -Centro de Desarrollo Infantil Salvador",
+    "localidad": "Salto",
+    "direccion": "Virgen de Pompeya y Bolivia | Horario de atención: martes de 8 a 12:30 hs",
+    "contacto": "Teléfono : 2474678133 | Correo electrónico: cudsalto@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora -Hospital Municipal San Andrés",
+    "localidad": "San Andrés de Giles",
+    "direccion": "Av. Cámpora 1377 | Horario de atención: lunes a jueves 8 a 13 hs",
+    "contacto": "Teléfono : 2325568229 | Correo electrónico: juntacudsag@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora -Hospital Municipal Emilio Zerboni/ CIC Salud (Admisión)",
+    "localidad": "San Antonio de Areco",
+    "direccion": "Moreno 90 | Alberdi 768 (Admisión) | Horario de atención: martes y jueves de 9 a 12 hs",
+    "contacto": "Teléfono : 2326530894 | Correo electrónico: salud@areco.gob.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora -Hospital Municipal San Cayetano",
+    "localidad": "San Cayetano",
+    "direccion": "9 de Julio 1170 | Horario de atención: lunes a viernes de 8 a 14 hs",
+    "contacto": "Teléfono : 2234953802 | Correo electrónico: admihospi.2010@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora -Dirección de Discapacidad | Quinta \"El Ombú\"",
+    "localidad": "San Fernando",
+    "direccion": "Av. del Libertador 600 | Horario de atención: lunes a viernes de 7:30 a 13 hs",
+    "contacto": "Teléfono : 1166574926 | Correo electrónico: juntadediscapacidad@sanfernando.gov.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora de San Isidro 1 Y 2Hospital Central de San Isidro Dr. Melchor Ángel Posse",
+    "localidad": "San Isidro",
+    "direccion": "Santa Fe 431 | Horario de atención: lunes-martes-jueves de 8 a 12 hs",
+    "contacto": "Correo electrónico: consultascud@sanisidro.gob.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora de la Matanza - Centro de Medicina Física y Rehabilitación",
+    "localidad": "San Justo",
+    "direccion": "Perú 2433 | Horario de atención: lunes a viernes (Asesoramiento y Requisitos por WhatsApp)",
+    "contacto": "Teléfonos: 1155735327 | 1161648038 (WhatsApp) | Correo electrónico: juntadiscapacidadmatanza@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora -Complejo Municipal de Rehabilitación Psicofísica y Salud Mental",
+    "localidad": "San Martín",
+    "direccion": "Matheu 4441 | Horario de atención: lunes a viernes de 8 a 13 hs",
+    "contacto": "Teléfono : 45892408 | 48744342 | Correo electrónico: sanmartincud@hotmail.com.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora -Hospital General Manuel Belgrano",
+    "localidad": "San Martín",
+    "direccion": "Av. de los Constituyentes 3120 | Horario de atención: lunes a viernes de 9 a 13 hs",
+    "contacto": "Teléfono : 1147552228 o 3380 | Correo electrónico: discapacidadhb2@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora -Dirección de Discapacidad | Municipalidad de San Miguel",
+    "localidad": "San Miguel",
+    "direccion": "Sarmiento 1551 | Horario de atención: lunes a viernes de 8 a 14 hs",
+    "contacto": "Teléfono : 1160917100 Int. 6 | Correo electrónico: direccion.discapacidad@msm.gov.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora - Dirección de Políticas de Discapacidad | Desarrollo Social",
+    "localidad": "San Miguel del Monte",
+    "direccion": "Rojas y Eva Perón | Horario de atención: lunes a viernes de 8 a 14h",
+    "contacto": "Teléfono: 2271407611 | Correo electrónico:discapacidad@monte.gov.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora de San Nicolas - Centro de Medicina Preventiva Dr. Ferreyra",
+    "localidad": "San Nicolás de los Arroyos",
+    "direccion": "Pellegrini 111 | Horario de atención: lunes a viernes de 8 a 13:30 hs",
+    "contacto": "Teléfono : 3364284703 | Correo electrónico: mesadeentradas@sannicolas.gob.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora de San Nicolas | Segunda Instancia - Hospital Interzonal General de Agudos San Felipe",
+    "localidad": "San Nicolás de los Arroyos",
+    "direccion": "Moreno 31 | Horario de atención: miércoles y viernes 9hs",
+    "contacto": "Correo electrónico: 2instanciacud@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Secretaría de Desarrollo de la Comunidad",
+    "localidad": "San Pedro",
+    "direccion": "Oliveira Cesar 280 | Horario de atención: lunes a viernes de 8 a 14 hs",
+    "contacto": "Correo electrónico: discapacidadjuntasp@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora de San Vicente (Hospital Dr. Ramón Carrillo) - Centro Integrador Comunitario Alejandro Korn",
+    "localidad": "San Vicente – Alejandro Korn",
+    "direccion": "Av. Hipólito Irigoyen 29.500, Alejandro Korn. | Horario de atención: lunes a viernes de 8 a 14 hs",
+    "contacto": "Teléfono : 2224640608 | Correo electrónico: amid.sanvicente@gmail.com"
+   },
+   {
+    "nombre": "Junta N.º 1 y N.º 2 de Mar Chiquita - Unidad Sanitaria Santa Elena",
+    "localidad": "Santa Elena",
+    "direccion": "Pedro de Mendoza 190, Santa Elena. | Horario de atención: lunes a viernes de 8 a 13h",
+    "contacto": "Teléfono: 2236188041 | Correo electrónico: direcciondediscapacidadmch@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora -Hospital Municipal Esteban Iribarne",
+    "localidad": "Suipacha",
+    "direccion": "Dr. Cusa 251 | Horario de atención: viernes de 14 a 17 hs",
+    "contacto": "Teléfono : 2324480006 | Correo electrónico: juntadiscapacidad3@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora -Hospital Municipal Ramón Santamarina",
+    "localidad": "Tandil",
+    "direccion": "General Paz 1406 | Horario de atención: lunes a viernes de 7 a 12 hs",
+    "contacto": "Teléfono : 2494245435 | Correo electrónico: cudtandil@sisptandil.gob.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora Hospital Municipal de Tapalque - Oficina del Complejo para Adultos Mayores | Hospital Municipal de Tapalqué",
+    "localidad": "Tapalqué",
+    "direccion": "L. N. Alem 799 | Horario de atención: lunes a viernes de 8:30 a 15 hs",
+    "contacto": "Teléfono : 2283420622 | Cel: 2281530107 | Correo electrónico: camtapalque@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora de Tigre Juana Azurduy - Centro de Rehabilitación Psicofísica para Adultos Juana Azurduy",
+    "localidad": "Tigre",
+    "direccion": "Maipú 201 | Horario de atención: lunes a viernes de 8 a 16 hs",
+    "contacto": "Teléfono : 1131131759 | Correo electrónico: centrorehabilitajazurduy@tigre.gob.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora de Tigre Frida Kahlo - Centro de Rehabilitación Frida Kahlo",
+    "localidad": "Tigre - General Pacheco",
+    "direccion": "Hipólito Yrigoyen 1450, General Pacheco. | Horario de atención: lunes a viernes de 8 a 16 hs",
+    "contacto": "Teléfono : 1121821683 | Correo electrónico: centrofridakahlo@tigre.gob.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora - Unidad Sanitaria Dr. Luis Dante Berretini",
+    "localidad": "Tornquist",
+    "direccion": "Juan de Dios Filiberto N.° 450 | Horario de atención: primeros 4 miércoles al mes",
+    "contacto": "Teléfono : 2914940812 | Correo electrónico: juntadiscapacidadtornquist@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora de Discapacidad Hospital Ramón Carrillo - Hospital Nacional y comunidad Dr. Ramón Carrillo",
+    "localidad": "Torres, Luján",
+    "direccion": "Padre Criado Alonso S/N | Horario de atención: lunes, miércoles y jueves de 9 a 15 hs",
+    "contacto": "Teléfono : 1128018490 | Correo electrónico: gestiondepacientes@cmdo.gov.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora - Centro de Rehabilitación Dr. Jorge Barracchia",
+    "localidad": "Trenque Lauquen",
+    "direccion": "Paso 55 | Horario de atención: lunes a viernes de 7 a 13 hs",
+    "contacto": "Teléfono : 2392503126 | Correo electrónico: discapacidadoficina.tl@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Centro Municipal de Salud Dr. Ignacio Pirovano",
+    "localidad": "Tres Arroyos",
+    "direccion": "Av. 1ra. Junta N° 400 | Horario de atención: martes, miércoles y jueves desde las 12 hs",
+    "contacto": "Teléfono : 2983457085 | Correo electrónico: areadiscapacidad.tsas@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Centro de Atención Primaria de la Salud Dr. Raúl Olivera",
+    "localidad": "Tres Lomas",
+    "direccion": "Amalia Rodríguez 269 | Horario de atención: lunes a viernes de 7 a 14 hs",
+    "contacto": "Teléfono : 2392510521 | Correo electrónico: discapacidadtreslomas@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Dirección de Protección Social e Inclusión en Discapacidad",
+    "localidad": "Tres de Febrero",
+    "direccion": "Urquiza 4473, Caseros | Horario de atención: lunes a viernes de 9 a 15 hs",
+    "contacto": "Teléfono de contacto: 1177296615 | Correo electrónico: discapacidad3f@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora Uribelarrea - Hospital Subzonal Especializado Dr. Dardo Rocha",
+    "localidad": "Uribelarrea",
+    "direccion": "María Auxiliadora y Uribelarrea, Uribelarrea. | Horario de atención: lunes a viernes de 8 a 15h",
+    "contacto": "Teléfono: 2226493037 | Correo electrónico: administracion-hrocha@ms.gba.gov.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora - Instituto Municipal de Rehabilitación Dr. Anselmo Marini",
+    "localidad": "Vicente López",
+    "direccion": "Av. Maipú 3075 | Horario de atención: lunes a viernes de 7 a 16 hs",
+    "contacto": "Teléfono : 1133094442 | Correo electrónico: juntadiscapacidadvl@vicentelopez.gov.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora - Centro de Atención a las Personas con Discapacidad | Centro Modular Sanitario de Villa Gesell",
+    "localidad": "Villa Gesell",
+    "direccion": "Paseo 140 y Av. 15 | Horario de atención: lunes a viernes de 8 a 13 hs",
+    "contacto": "Teléfono : 2255463983 | Correo electrónico: cudvg@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora de Villarino - Medanos - Centro de Atención Primaria de la Salud N° 3 de Medanos",
+    "localidad": "Villarino - Medanos",
+    "direccion": "Martín Fierro y Rivadavia, Médanos | Horario de atención: lunes a viernes de 8 a 12 hs",
+    "contacto": "Teléfono : 2927433138 | Correo electrónico: juntazn@villarino.gob.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora de Villarino - Pedro Luro - Hospital Local General Juana A. Pradere",
+    "localidad": "Villarino - Pedro Luro",
+    "direccion": "Calle 26 y 1, N° 81 | Horario de atención: miércoles de 12 a 15hs",
+    "contacto": "Teléfono : 2928420078 | Correo electrónico: hospitalpedroluro@villarino.gob.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora - Centro Integrador Comunitario de Zárate",
+    "localidad": "Zárate",
+    "direccion": "Agustín Álvarez y Pellegrini | Horario de atención: lunes a viernes de 7:30 a 13:30 hs",
+    "contacto": "Teléfono : 3487443700 Int. 4402 | Correo electrónico: discapacidad@zarate.gob.ar"
+   }
+  ],
+  "CABA": [
+   {
+    "nombre": "Junta Evaluadora del GCBA - Centro Integral de Evaluación y Orientación de la Discapacidad",
+    "localidad": "Ciudad Autónoma de Buenos Aires",
+    "direccion": "Piedras 1281 | Horario de atención: lunes a viernes de 8 a 18h. Más información en el siguiente link https://www.buenosaires.gob.ar/tramites/certificado-de-discapacidad",
+    "contacto": "Teléfono: 147 | Correo electrónico: llicciardi@buenosaires.gob.ar"
+   }
+  ],
+  "Catamarca": [
+   {
+    "nombre": "Junta Evaluadora - Hospital Roberto Ramón Carro",
+    "localidad": "Pomán",
+    "direccion": "Av. Jorge Newbery y 15 de Septiembre | Horario de atención: lunes a viernes de 8 a 12 h",
+    "contacto": "Teléfono de contacto: 3835505831"
+   },
+   {
+    "nombre": "Junta Evaluadora - Dirección Provincial de Asistencia Integral a Personas con Discapacidad | Ministerio de Salud de Catamarca",
+    "localidad": "San Fernando del Valle de Catamarca",
+    "direccion": "Chacabuco 169 | Horario de atención: lunes a viernes de 7 a 12 y de 14 a 18 h",
+    "contacto": "Teléfono de contacto: 3834021685 | Correo electrónico: discatamarca@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora Itinerante -Dirección Provincial de Asistencia Integral a Personas con Discapacidad | Ministerio de Salud de Catamarca",
+    "localidad": "San Fernando del Valle de Catamarca",
+    "direccion": "Toda la provincia de Catamarca | Horario de atención: a demanda y planificación",
+    "contacto": "Teléfono de contacto: 3834021685 | Correo electrónico: discatamarca@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Regional Santa Maria Dr. Luis A. Vargas",
+    "localidad": "Santa María",
+    "direccion": "Av. 1 de Mayo 269 | Horario de atención: lunes a viernes de 8 a 12 h",
+    "contacto": "Teléfono de contacto: 3838423800"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Dr. Dermidio Herrera",
+    "localidad": "Valle Viejo - Villa Dolores",
+    "direccion": "Calle Carmen Barros S/N, Villa Dolores. | Horario de atención: martes, miércoles y viernes de 8:30 a 12 h",
+    "contacto": ""
+   }
+  ],
+  "Chaco": [
+   {
+    "nombre": "Junta Evaluadora -I.Pro.Di.Ch | Sede Charata",
+    "localidad": "Charata",
+    "direccion": "Av. Belgrano 208 | Horario de atención: lunes a viernes 7 a 13 hs",
+    "contacto": "Teléfono: 3624647520 | Correo electrónico: juntacharata@iprodich.gob.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora -I.Pro.Di.Ch | Sede General José de San Martín",
+    "localidad": "General José de San Martín",
+    "direccion": "Paso y Chile | Horario de atención: lunes a viernes 7 a 13 hs",
+    "contacto": "Teléfono: 3625270079 | Correo electrónico: juntasanmartin@iprodich.gob.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora -I.Pro.Di.Ch | Sede Juan José Castelli",
+    "localidad": "Juan José Castelli",
+    "direccion": "Juan Manuel de Rosas 51 | Horario de atención: lunes a viernes 7 a 13 hs",
+    "contacto": "Teléfono: 3624749224 | Correo electrónico: juntacastelli@iprodich.gob.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora -I.Pro.Di.Ch | Sede Saenz Peña",
+    "localidad": "Presidencia Roque Saenz Peña",
+    "direccion": "Córdoba 550 (calle 4 entre 11 y 13) | Horario de atención: lunes y jueves de 7 a 19 hs | martes, miércoles y viernes de 7 a 13 hs",
+    "contacto": "Teléfono: 3624246756 | Correo electrónico: juntasaenzpena@iprodich.gob.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora -Instituto Provincial para la Inclusión de las Personas con Discapacidad del Chaco | I.Pro.Di.Ch",
+    "localidad": "Resistencia",
+    "direccion": "Monteagudo 1640 | Horario de atención: lunes a viernes 7 a 13 hs",
+    "contacto": "Teléfono: 3624901516 | Correo electrónico: juntadepersonas@iprodich.gob.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora -I.Pro.Di.Ch | Sede Villa Ángela",
+    "localidad": "Villa Ángela",
+    "direccion": "Rivadavia y Moreno | Horario de atención: lunes a viernes 7 a 13 hs",
+    "contacto": "Teléfono: 3624900785 | Correo electrónico: juntava2@iprodich.gob.ar"
+   }
+  ],
+  "Chubut": [
+   {
+    "nombre": "Junta Evaluadora -Centro de Rehabilitación | Hospital Regional de Comodoro Rivadavia Dr. Víctor Manuel Sanguinetti",
+    "localidad": "Comodoro Rivadavia",
+    "direccion": "Democracia S/N, entre Roque Saenz Peña y Gral Solari | Horario de atención: lunes a viernes de 7 a 12 hs",
+    "contacto": "Teléfono: 2974473563 | Correo electrónico: juntacomodoro@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora -Hospital Subzonal El Maiten",
+    "localidad": "El Maiten",
+    "direccion": "Liniers y José Hernández, El Maiten | Horario de atención: lunes a viernes de 8 a 14 hs",
+    "contacto": "Teléfono: 2945495004 | Correo electrónico: juntadiscapacidadelmaiten@hotmail.com | juntaevaluadoraelmaiten@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora -Servicio de Rehabilitación | Hospital Zonal Esquel",
+    "localidad": "Esquel",
+    "direccion": "General Roca 145 | Horario de atención: lunes a viernes de 8 a 13 hs",
+    "contacto": "Teléfono: 2945457064 | Correo electrónico: juntahze@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora -Hospital Rural de Gaiman John Evans",
+    "localidad": "Gaiman",
+    "direccion": "Belgrano 678 | Horario de atención: lunes a viernes de 8 a 12 hs",
+    "contacto": "Teléfono: 2804491002 | Correo electrónico: juntaevaluadoragaiman@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora -Hospital Rural Lago Puelo",
+    "localidad": "Lago Puelo",
+    "direccion": "Av. 2 de abril S/N | Horario de atención: lunes a viernes de 9 a 13 hs",
+    "contacto": "Teléfono: 2944499290. Int. 126 | Correo electrónico: juntaevaluadoralagopuelo@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora -Hospital Zonal de Puerto Madryn Dr. Andrés Ísola",
+    "localidad": "Puerto Madryn",
+    "direccion": "Roberto Gómez 383 | Horario de atención: lunes, martes y jueves de 14 a 15:30 hs",
+    "contacto": "Teléfono: 2804453030 Int. 1212 | 2804358525 (WhatsApp) | Correo electrónico: juntaevaluadoramadryn@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora -Dirección Provincial de Atención Integral de la Discapacidad | Edificio Coorporación de Fomento del Chubut",
+    "localidad": "Rawson",
+    "direccion": "Luis Costa 10 | Horario de atención: lunes a viernes de 8 a 14 hs",
+    "contacto": "Teléfono: 2804728964 | Correo electrónico: juntaevaluadorachubut@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora -Hospital Sub Zonal de Rawson Santa Teresita",
+    "localidad": "Rawson",
+    "direccion": "Julio A. Roca 555 | Horario de atención: lunes a viernes de 8 a 13 hs",
+    "contacto": "Teléfono: 2804481421 | Correo electrónico: juntaevaluadorarw@hotmail.com"
+   },
+   {
+    "nombre": "Junta Itinerante Chubut -Dirección Provincial de Atención Integral de la Discapacidad | Edificio Coorporación de Fomento del Chubut",
+    "localidad": "Rawson",
+    "direccion": "Toda la provincia de Chubut | Horario de atención: lunes a viernes de 8 a 14 hs",
+    "contacto": "Teléfono: 2804728964 | Correo electrónico: juntaevaluadorachubut@gmail.com |discapacidadchubut@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora -Hospital Rural Sarmiento",
+    "localidad": "Sarmiento",
+    "direccion": "General Roca y Av. Ingeniero Coronel | Horario de atención: lunes a viernes de 8 a 14 hs",
+    "contacto": "Teléfono: 2974893177 | Correo electrónico: juntaevaluadorasarmiento@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora -Centro de Rehabilitación y Estimulación Temprana | Hospital Zonal Trelew",
+    "localidad": "Trelew",
+    "direccion": "San Martín 518 | Horario de atención: lunes a viernes de 8 a 14 hs",
+    "contacto": "Teléfono: 2804634794 | Correo electrónico: secretaria.juntatw23@gmail.com | junta_discapacidad_trelew@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora -Hospital Rural Trevelin",
+    "localidad": "Trevelin",
+    "direccion": "Av. San Martín 955 | Horario de atención: jueves de 11 a 13 hs",
+    "contacto": "Teléfono: 2945480132 | Correo electrónico: rehabilitaciontrevelin@gmail.com"
+   }
+  ],
+  "Córdoba": [
+   {
+    "nombre": "Junta Evaluadora - Hospital Alta Gracia Dr. Arturo U. Illia",
+    "localidad": "Alta Gracia",
+    "direccion": "Av. del Libertador 1460 | Horario de atención: lunes a viernes de 7 a 14 hs",
+    "contacto": "Teléfono: 3547429285 | Correo electrónico: juntaaltagracia@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Municipal Dr. J .Carlos Rodriguez",
+    "localidad": "Arroyito",
+    "direccion": "Av. Carlos Pontín 750 | Horario de atención: lunes a viernes de 7 a 14 hs",
+    "contacto": "Teléfono: 3576453009 | Correo electrónico: juntadiscapacidadarroyito@yahoo.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Regional Dr. José Antonio Ceballos",
+    "localidad": "Bell Ville",
+    "direccion": "Gerónimo del Barco 1300 | Horario de atención: lunes a viernes de 8 a 14 hs",
+    "contacto": "Teléfono: 3537421002/5 Int. 121 | Correo electrónico: juntadisbv@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Aurelio Crespo",
+    "localidad": "Cruz del Eje",
+    "direccion": "Juan José Paso S/N | Horario de atención: lunes a viernes de 8 a 14 hs",
+    "contacto": "Teléfono: 3549426728. Int. 9 | Correo electrónico: juntadediscapacidadcruzdeleje@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Córdoba",
+    "localidad": "Córdoba Capital",
+    "direccion": "Libertad 2050 | Horario de atención: lunes a jueves de 8 a 12 hs",
+    "contacto": "Teléfono: 3514529000. Int. 375 | Correo electrónico: juntadiscapacidadhc@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital De Niños de la Santísima Trinidad",
+    "localidad": "Córdoba Capital",
+    "direccion": "Pucará y Ferroviarios | Horario de atención: lunes a viernes de 7 a 14 hs",
+    "contacto": "Teléfono: 3514586400. Int. 561 | Correo electrónico: rehabilitacionhnstcordoba@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Neuropsiquiátrico Provincial",
+    "localidad": "Córdoba Capital",
+    "direccion": "León Morra 172 | Horario de atención: lunes a viernes de 7 a 14 hs",
+    "contacto": "Teléfono: 3514342426. Int. 108 | Correo electrónico: discapacidadneuropsiquiatrico@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Nuestra Señora de la Misericordia",
+    "localidad": "Córdoba Capital",
+    "direccion": "Belgrano 1500 | Horario de atención: lunes a viernes de 7 a 14 hs",
+    "contacto": "Teléfono: 3514476108 | Correo electrónico: rehabilitacionmisericordia@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Pediátrico del Niño Jesús",
+    "localidad": "Córdoba Capital",
+    "direccion": "Av. Castro Barros 650 | Horario de atención: lunes a viernes de 7 a 14 hs",
+    "contacto": "Teléfono: 3515538800. Int. 236 | Correo electrónico: rehabilitacionpediatrico2020@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Preventivo San Roque Viejo",
+    "localidad": "Córdoba Capital",
+    "direccion": "Rosario de Santa Fe 374 | Horario de atención: lunes a viernes de 7 a 19 hs",
+    "contacto": "Teléfono: 3514291300. Int. 223 | Correo electrónico: juntasdediscapacidadcordoba@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Transito Caceres de Allende",
+    "localidad": "Córdoba Capital",
+    "direccion": "Buchardo 1250 | Horario de atención: lunes a viernes de 7 a 14 hs",
+    "contacto": "Teléfono: 3514342402/09 | Correo electrónico: juntadediscapacidadhtca@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Regional Dr. Ernesto Romagosa",
+    "localidad": "Dean Funes",
+    "direccion": "Colon 247 | Horario de atención: lunes a viernes de 7 a 14 hs",
+    "contacto": "Teléfono: 3521473325 (WhatsApp) | Correo electrónico: rehab.romagosa.df@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Vicente Agüero",
+    "localidad": "Jesús María",
+    "direccion": "España 121 | Horario de atención: lunes a viernes de 7 a 14 hs",
+    "contacto": "Teléfono: 3525458876 (WhatsApp) | Correo electrónico: discapacidadjm@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Regional Dr. Abel Ayerza",
+    "localidad": "Marcos Juarez",
+    "direccion": "Belgrano 350 | Horario de atención: lunes a viernes de 7 a 14 hs",
+    "contacto": "Teléfono: 3472422820/26 | 3516321486 (WhatsApp) | Correo electrónico: serviciosocialabelayerza@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Regional Pedro Vella",
+    "localidad": "Marcos Juarez - Corral de Bustos-Ifflinger",
+    "direccion": "Rosario de Santa Fe 300 | Horario de atención: lunes a viernes de 7 a 13 hs",
+    "contacto": "Teléfono: 3513878759 (WhatsApp) | Correo electrónico: juntadiscapacidadhpv@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital de Salud Mental (Hospital Viejo Pabellón N° 3)",
+    "localidad": "Rio Cuarto",
+    "direccion": "Mosconi 486 | Horario de atención: lunes a viernes de 8 a 14 hs",
+    "contacto": "Teléfono: 3513463778 | Correo electrónico: centroderehabilitacion2011@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Provincial Brigadier General Juan Bautista Bustos",
+    "localidad": "Rio Tercero",
+    "direccion": "Estanislao del Campo y Amado Nervo | Horario de atención: lunes a viernes de 7 a 14 hs",
+    "contacto": "Teléfono: 3571410210 | Correo electrónico: cudrio3@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Regional José Bernardo Iturraspe",
+    "localidad": "San Francisco",
+    "direccion": "Dominga Cullen 450 | Horario de atención: lunes a viernes de 7 a 14 hs",
+    "contacto": "Teléfono: 3564672514 (WhatsApp) | Correo electrónico: secresanfco@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Colonia Santa Maria de Punilla",
+    "localidad": "Santa María de Punilla",
+    "direccion": "Av. Dean Funes S/N, Villa Caeiro, Santa María de Punilla | Horario de atención: lunes a viernes de 7 a 14 hs",
+    "contacto": "Teléfono: | Correo electrónico: cudsantamaria@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Centro de Rehabilitación Evita | Hospital Domingo Funes de Villa Caeiro",
+    "localidad": "Santa María de Punilla - Villa Caeiro",
+    "direccion": "Av. Dean Funes S/N, Villa Caeiro, Santa María de Punilla | Horario de atención: martes y viernes de 9 a 14 hs",
+    "contacto": "Teléfono: 3541488900 Int. 530/533 | 3541707551 (WhatsApp) | Correo electrónico: rehabilitacionevita@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Centro de Rehabilitación Sierras Chicas",
+    "localidad": "Unquillo",
+    "direccion": "Río Negro 441 | Horario de atención: lunes a viernes de 7 a 14 hs",
+    "contacto": "Teléfono: 3543487958/9 | Correo electrónico: centrounquillo@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Municipal Josefina Prieur",
+    "localidad": "Villa Allende",
+    "direccion": "Balbín 77 | Horario de atención: lunes a viernes de 7 a 14 hs",
+    "contacto": "Teléfono: 3512928939 (WhatsApp) | Correo electrónico: juntadiscapacidadhjp@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Provincial de Villa Dolores",
+    "localidad": "Villa Dolores",
+    "direccion": "Av. Belgrano 1800 | Horario de atención: lunes a viernes de 8 a 14 hs",
+    "contacto": "Teléfono: 3544426415 Int. 133 | Correo electrónico: centrorehabilitacionhvd@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Regional Dr. Louis Pasteur",
+    "localidad": "Villa María",
+    "direccion": "Buchardo y Serrano | Horario de atención: lunes a viernes de 7 a 13 hs",
+    "contacto": "Teléfono: 3534616124 | Correo electrónico: juntacudhp@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Zonal San Vicente de Paul",
+    "localidad": "Villa del Rosario",
+    "direccion": "Sobremonte 550 | Horario de atención: lunes a viernes de 7 a 14 hs",
+    "contacto": "Teléfono: 3573424706 | 3518078182 (WhatsApp) | Correo electrónico: juntadediscapacidadhsvdp@gmail.com"
+   }
+  ],
+  "Corrientes": [
+   {
+    "nombre": "Junta Evaluadora de Personas - Hospital El Salvador de Bella Vista",
+    "localidad": "Bella Vista",
+    "direccion": "Montevideo 1851 | Horario de atención: lunes a viernes de 7:30 a 13 hs",
+    "contacto": "Correo electrónico: subjuntabellavistactes.msp@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora Central de Personas Nº 1 - Dirección de Atención a la Discapacidad | Ministerio de Salud Pública",
+    "localidad": "Corrientes Capital",
+    "direccion": "9 de Julio 1041 | Horario de atención: lunes a viernes de 7:30 a 12:30 hs",
+    "contacto": "Teléfono: 3794887093 | Correo electrónico: dir.atencion.discapacidad.msp@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora Central de Personas Nº 2 - Dirección de Atención a la Discapacidad | Ministerio de Salud Pública",
+    "localidad": "Corrientes Capital",
+    "direccion": "9 de Julio 1041 | Horario de atención: lunes a viernes de 7:30 a 12:30 hs",
+    "contacto": "Teléfono: 3794887093 | Correo electrónico: dir.atencion.discapacidad.msp@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora De Personas - Hospital Provincial Dr. Fernando Irastorza",
+    "localidad": "Curuzú Cuatiá",
+    "direccion": "Berón de Astrada 1350 | Horario de atención: lunes a viernes de 7 a 13 hs",
+    "contacto": "Correo electrónico: juntaevaluadoracuruzu@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora De Personas - Hospital Regional de Goya",
+    "localidad": "Goya",
+    "direccion": "Av. Mazzanti 550 | Horario de atención: lunes a viernes de 7 a 13 hs",
+    "contacto": "Teléfono: 3777215890 | Correo electrónico: juntagoya@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora De Personas - Hospital Dr. Genaro Leiva",
+    "localidad": "Ituzaingo",
+    "direccion": "Av. 9 de Julio S/N | Horario de atención: lunes, martes, miércoles y viernes de 8 a 11 hs",
+    "contacto": "Correo electrónico: juntacud.itgo.ctes@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora De Personas - Hospital Las Mercedes",
+    "localidad": "Mercedes",
+    "direccion": "Lacour 1055 | Horario de atención: lunes, martes y viernes de 8 a 12:30 hs",
+    "contacto": "Correo electrónico: subjuntademercedesctes.msp@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora De Personas - Hospital Samuel W Robinson",
+    "localidad": "Monte Caseros",
+    "direccion": "San Martín y Mitre | Horario de atención: lunes a viernes de 8 a 12 hs",
+    "contacto": "Correo electrónico: subjuntadediscapacidadmontecas@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora De Personas - Hospital Regional San José de Paso de los Libres",
+    "localidad": "Paso de los Libres",
+    "direccion": "Av. Di Tomaso 1700 | Horario de atención: lunes, martes y miércoles de 8 a 12 hs",
+    "contacto": "Teléfono: 3772511983 | Correo electrónico: subjuntapasodeloslibres.msp@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora De Personas - Hospital Universitario San Juan Bautista",
+    "localidad": "Santo Tomé",
+    "direccion": "Bertrán 451 | Horario de atención: martes, jueves y viernes de 8 a 13 hs",
+    "contacto": "Correo electrónico: juntamedicasantotome@gmail.com"
+   }
+  ],
+  "Entre Ríos": [
+   {
+    "nombre": "Junta Evaluadora N° 15 - Coordinación de Discapacidad Municipio de Basavilbaso | Edificio Nido",
+    "localidad": "Basavilbaso",
+    "direccion": "Blanche y Moreno | Horario de atención: martes de 8 a 12 hs",
+    "contacto": "Teléfono: 3445645323 | Correo electrónico: juntaevaluadora@basavilbaso.gob.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora N° 5 - Centro Integrador Comunitario Presidente Néstor Kirchner",
+    "localidad": "Chajarí",
+    "direccion": "Moreno y Cepeda | Horario de atención: martes de 10:30 a 13:30 hs",
+    "contacto": "Teléfono: 3456461603 | Correo electrónico: discapacidad@chajari.gob.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora N° 10 - Centro de Integración Comunitario de Barrio Ombú",
+    "localidad": "Colón",
+    "direccion": "Arrayán 171 | Horario de atención: jueves de 8 a 11 hs y de 14 a 17 hs",
+    "contacto": "Teléfono: 3447643052 | Correo electrónico: iprodi.juntacolon@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora N° 17 - Área de Inclusión y Discapacidad | Secretaría de Salud y Bienestar Social",
+    "localidad": "Colón - San José",
+    "direccion": "Centenario 2180 | Horario de atención: jueves de 13 a 17 hs",
+    "contacto": "Teléfono: 3447640067 | Correo electrónico: juntaevaluadorASJ.23@gmail.com | inclusion@sanjose.gob.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora N° 3 - Hospital Justo José de Urquiza",
+    "localidad": "Concepción del Uruguay",
+    "direccion": "Bv. Dr. Uncal S/Nº y vías del ferrocarril | Horario de atención: miércoles y jueves 7 a 12 hs",
+    "contacto": "Teléfono: 3442443900 al 06 Int. 312 | Correo electrónico: lilianasabingnon@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora N° 2 - Hospital Felipe Heras de Concordia",
+    "localidad": "Concordia",
+    "direccion": "Entre Ríos 135 | Horario de atención: lunes a viernes 7 a 12 hs",
+    "contacto": "Teléfono: 3454212580 Int. 151 | Correo electrónico: iprodi.juntaconcordia@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora N° 4 - Hospital San José de Federación",
+    "localidad": "Federación",
+    "direccion": "Presbitero Dangelo 35 | Horario de atención: jueves de 8 a 12 hs",
+    "contacto": "Teléfono: 3456437276 | Correo electrónico: iprodifederacion@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora N° 7 - Hospital San Antonio de Gualeguay",
+    "localidad": "Gualeguay",
+    "direccion": "Av. Soberanía S/N | Horario de atención: lunes y viernes de 14 a 18 hs",
+    "contacto": "Teléfono: 3444429670 Int. 191 | 3444531969 (WhatsApp) | Correo electrónico: iprodi.juntagualeguay@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora N° 6 - Área de Accesibilidad e Inclusión | Centro de Atención Primaria de la Salud Dr. Patico Daneri",
+    "localidad": "Gualeguaychú",
+    "direccion": "San Martín 685 | Horario de atención: lunes y viernes de 13 a 16:30 hs",
+    "contacto": "Teléfono: 3446637840 | Correo electrónico: integracion@gualeguaychu.gob.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora N° 11 - Hospital Pediatrico de Santa Elena",
+    "localidad": "La Paz - Santa Elena",
+    "direccion": "Av. Presidente Perón y Paraná",
+    "contacto": ""
+   },
+   {
+    "nombre": "Junta Evaluadora N° 8 - Instituto Provincial de Discapacidad | I.Pro.Di | Sede Nogoyá",
+    "localidad": "Nogoyá",
+    "direccion": "25 de Mayo 876 | Horario de atención: lunes y miércoles de 13 a 15 hs",
+    "contacto": "Teléfono: 3435421866 | Correo electrónico: iprodi@nogoya.gov.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora N° 1 - Instituto Provincial de Discapacidad | I.Pro.Di",
+    "localidad": "Paraná",
+    "direccion": "José María Torres 773 | Horario de atención: lunes a viernes 7 a 13 hs",
+    "contacto": "Teléfono: 3434208280/81 | 3436119741 | Correo electrónico: iprodi.juntaparana@gmail.com"
+   },
+   {
+    "nombre": "Junta Itinerante | Junta Evaluadora N° 1 - Instituto Provincial de Discapacidad | I.Pro.Di",
+    "localidad": "Paraná",
+    "direccion": "Zona Norte de la provincia de Entre Ríos | Horario de atención: a demanda y coordinación",
+    "contacto": "Teléfono: 3434208280/81 | Correo electrónico: iprodi.juntaparana@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora N° 13 - Municipalidad de Rosario de Tala | Edificio Anexo",
+    "localidad": "Rosario del Tala",
+    "direccion": "Centenario y 25 de Mayo | Horario de atención: lunes de 8 a 12 hs",
+    "contacto": "Teléfono: 3445471999 | Correo electrónico: discapacidadtala@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora N° 16 - Municipalidad de San Salvador | Edificio Anexo",
+    "localidad": "San Salvador",
+    "direccion": "Bernardino Horne 518 | Horario de atención: martes de 8 a 12 hs",
+    "contacto": "Teléfono: 3454029216 | Correo electrónico: discapacidadsansalvador@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora N° 14 - Municipalidad de Urdinarraín",
+    "localidad": "Urdinarraín",
+    "direccion": "Dr. Silva 417 | Horario de atención: lunes de 13:15 a 17 hs",
+    "contacto": "Teléfono: 3446480020 Int. 219 | Correo electrónico: discapacidad@urdinarrain.gov.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora N° 12 - Centro de Integración Comunitaria de Victoria",
+    "localidad": "Victoria",
+    "direccion": "Cochabamba y Paso | Horario de atención: martes de 8 a 10 hs",
+    "contacto": "Teléfono: 3436424584 | Correo electrónico: juntacertificadoravictoria@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora N° 9 - Hospital Santa Rosa de Villaguay",
+    "localidad": "Villaguay",
+    "direccion": "José de San Martín 1867 | Horario de atención: martes, miércoles, jueves y viernes de 8 a 11 hs",
+    "contacto": "Teléfono: 3455426060 | Correo electrónico: iprodijuntavillaguay@gmail.com"
+   },
+   {
+    "nombre": "Junta Itinerante | Junta Evaluadora N° 9 - Hospital Santa Rosa de Villaguay",
+    "localidad": "Villaguay",
+    "direccion": "Zona Sur de la provincia de Entre Ríos | Horario de atención: a demanda y coordinación",
+    "contacto": "Teléfono: 3434208280/81 | Correo electrónico: iprodijuntavillaguay@gmail.com"
+   }
+  ],
+  "Formosa": [
+   {
+    "nombre": "Junta Evaluadora de Discapacidad de Formosa - Dirección de Discapacidad | Ministerio de Desarrollo Humano",
+    "localidad": "Formosa Capital",
+    "direccion": "Belgrano 426 | Horario de atención: lunes a viernes de 07:30 a 13 hs",
+    "contacto": "Teléfono: 3705026209 | Correo electrónico: juntaevaluadoradiscapacidad@formosa.gob.ar"
+   }
+  ],
+  "Jujuy": [
+   {
+    "nombre": "Junta Evaluadora Central de Jujuy - Dirección de Rehabilitación, Discapacidad e Inclusión | Centro Provincial de Adultos Mayores (Cepam)",
+    "localidad": "San Salvador de Jujuy",
+    "direccion": "Alvear 1152 | Horario de atención: lunes a viernes de 8 a 15 hs",
+    "contacto": "Teléfono: 3884245500. Int. 5805 | Correo electrónico: direccionrehabilitacion2020@gmail.com"
+   },
+   {
+    "nombre": "Junta Itinerante Jujuy -Dirección de Rehabilitación, Discapacidad e Inclusión | Centro Provincial de Adultos Mayores (Cepam)",
+    "localidad": "San Salvador de Jujuy",
+    "direccion": "Toda la provincia de Jujuy | Horario de atención: lunes a viernes de 8 a 15 hs",
+    "contacto": "Teléfono: 3884245500. Int. 5805 | Correo electrónico: direccionrehabilitacion2020@gmail.com"
+   }
+  ],
+  "La Pampa": [
+   {
+    "nombre": "Junta Evaluadora - Centro de Salud para la Tercera Edad Dr. Salvador Abudara",
+    "localidad": "General Pico",
+    "direccion": "Calle 23 N° 298 | Horario de atención: lunes y jueves de 8 a 12:30 hs",
+    "contacto": "Teléfono: 2302423369 | Correo electrónico: discapacidad_lapampa@yahoo.com.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora - Dirección General de Discapacidad | Subsecretaría de Niñez, Adolescencia y Familia | Ministerio de Desarrollo Social",
+    "localidad": "Santa Rosa",
+    "direccion": "Av. San Martín Oeste 851 | Horario de atención: lunes a viernes de 8 a 12:30 hs",
+    "contacto": "Teléfono: 2954242121 | Correo electrónico: discapacidad_lapampa@yahoo.com.ar"
+   }
+  ],
+  "La Rioja": [
+   {
+    "nombre": "Junta Evaluadora - Hospital Zonal San Nicolás de Aimogasta",
+    "localidad": "Aimogasta",
+    "direccion": "Casimiro Godoy 1200 | Horario de atención: lunes a viernes de 8 a 13 hs",
+    "contacto": "Teléfono: 3827459292 | Correo electrónico: paomalvina@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Zonal Luis Agote",
+    "localidad": "Chamical",
+    "direccion": "El Chacho S/N | Horario de atención: lunes a viernes de 8 a 13 hs",
+    "contacto": "Teléfono: 3826669090 | Correo electrónico: anarvaez@unlar.edu.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Eleazar Herrera Motta",
+    "localidad": "Chilecito",
+    "direccion": "Profesor Gregorio Cavero 500 | Horario de atención: lunes a viernes de 8 a 13 hs",
+    "contacto": "Teléfono: 3825429623 Int. 8125 | Correo electrónico: legalherreramotta@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital de la Madre y del Niño",
+    "localidad": "La Rioja Capital",
+    "direccion": "1 de Marzo, entre José Atencio y Chile | Horario de atención: martes de 8 a 13 hs",
+    "contacto": "Teléfono: 3804388554 | Correo electrónico: paulayacante@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora Central | Junta Itinerante - Dirección de Discapacidad | Ministerio de Salud de La Rioja",
+    "localidad": "La Rioja Capital",
+    "direccion": "Av. Independencia 1150 | Horario de atención: lunes a viernes de 8 a 13 hs",
+    "contacto": "Teléfono: 3804432956 | Correo electrónico: discapacidadlarioja@hotmail.com"
+   },
+   {
+    "nombre": "Junta Itinerante La Rioja - Dirección de Discapacidad | Ministerio de Salud De La Rioja",
+    "localidad": "La Rioja Capital",
+    "direccion": "Av. Independencia 1150 | Horario de atención: lunes a viernes de 8 a 13 hs",
+    "contacto": "Teléfono: 3804432956 | Correo electrónico: discapacidadlarioja@hotmail.com"
+   }
+  ],
+  "Mendoza": [
+   {
+    "nombre": "Junta Evaluadora -Asesoría de Personas con Discapacidad | Municipalidad de General Alvear",
+    "localidad": "General Alvear",
+    "direccion": "Zeballos 1200 | Horario de atención: lunes a viernes de 8 a 13 hs",
+    "contacto": "Teléfono: 2625425861 | Correo electrónico: asesoriadiscapacidad@alvearmendoza.gob.ar | asesoriadiscapacidadalvear@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora -Dirección de Salud | Centro de Salud Municipal | Sede en Ala Norte del Hipermercado Libertad - Paseo de Compras",
+    "localidad": "Godoy Cruz",
+    "direccion": "Joaquín V. González y Cipolletti | Horario de atención: lunes a viernes de 8 a 14 hs",
+    "contacto": "Teléfono: 2614429376 | 2214429351 | Correo electrónico: discapacidadgcruz@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora -Área de Atención a la Persona con Discapacidad | Subsecretaría de Desarrollo Social de Guaymallén",
+    "localidad": "Guaymallén",
+    "direccion": "Av. Godoy Cruz 1249 | Horario de atención: lunes a viernes de 8 a 13 hs",
+    "contacto": "Teléfono: 2614498387 | Correo electrónico: discapacidadgllen@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora -Oficina de Discapacidad | Subsecretaría de Desarrollo Social | Municipalidad de Junín",
+    "localidad": "Junín",
+    "direccion": "Sarmiento y Don Bosco | Horario de atención: lunes a viernes de 7 a 13 hs",
+    "contacto": "Teléfono: 2634521352 | Correo electrónico: juntajunin@juninmendoza.gov.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora -Centro Integrador Comunitario Las Colonias",
+    "localidad": "La Paz",
+    "direccion": "Av. 25 de Mayo S/N, entre Bandera de los Andes y Libertad | Horario de atención: jueves de 18 a 21:30 hs",
+    "contacto": "Teléfono: 2613001055 | Correo electrónico: tamiriera2002@yahoo.com.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora -Dirección de Desarrollo Social de Las Heras",
+    "localidad": "Las Heras",
+    "direccion": "Patricias Mendocinas y Cacique Guaymallén | Horario de atención: lunes a viernes de 8 a 14 hs",
+    "contacto": "Correo electrónico: discapacidadlh@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora -Dirección de Desarrollo Humano | Municipalidad de Lavalle",
+    "localidad": "Lavalle - Villa Tulumaya",
+    "direccion": "Remedios de Escalada y San Martín, Villa Tulumaya | Horario de atención: lunes, martes, jueves y viernes de 7:30 a 13:30 hs",
+    "contacto": "Teléfono: 2616226807 | Correo electrónico: discapacidad@lavallemendoza.gob.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora -Área de Discapacidad | Subsecretaría de Inclusión y Familia de Lujan De Cuyo",
+    "localidad": "Luján De Cuyo",
+    "direccion": "Taboada 1110 | Horario de atención: lunes a viernes de 7:30 a 13 hs",
+    "contacto": "Teléfono: 2615927666 (WhatsApp) | Correo electrónico: juntadiscapacidadlujan@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora -Dirección de Discapacidad de la Municipalidad de Maipú",
+    "localidad": "Maipú",
+    "direccion": "Padre Vázquez 586 | Horario de atención: lunes a viernes 8 a 13 hs",
+    "contacto": "Teléfono: 2614811687 | Correo electrónico: discapacidadmaipu@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora -Dirección de Inclusión y Desarrollo Social | Municipalidad de Malargüe",
+    "localidad": "Malargüe",
+    "direccion": "Comandante Salas Oeste y Gobernador Juan Corvalán | Horario de atención: lunes a viernes de 8 a 13 hs",
+    "contacto": "Teléfono: 2604471541 | Correo electrónico: oficinadiscapicidad@malargue.gov.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora -Dirección de Atención a la Persona con Discapacidad | Junta Mendoza Capital",
+    "localidad": "Mendoza Capital",
+    "direccion": "9 de Julio 500 | Horario de atención: lunes a jueves de 8:30 13:30 hs",
+    "contacto": "Teléfono: 2615962335 | Correo electrónico: inclusionyaccesibilidadmendoza@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora -Junta Central y Segunda Instancia | Dirección de Atención a la Persona con Discapacidad | Ministerio de Salud, Desarrollo Social y Deportes",
+    "localidad": "Mendoza Capital",
+    "direccion": "Av. Pedro Molina 565 | Horario de atención: lunes a viernes de 8 a 14 hs",
+    "contacto": "Teléfono: 2614253756 | Correo electrónico: certificaciones@mendoza.gov.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora -Dirección de Desarrollo Social, Hábitat y Salud | Municipalidad de Rivadavia",
+    "localidad": "Rivadavia",
+    "direccion": "Perito Moreno y Lavalle | Horario de atención: lunes a viernes de 8 a 13 hs",
+    "contacto": "Teléfono: 2634343046 | Correo electrónico: juntadiscapacidadrivia@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora -Micro Hospital Municipal de San Carlos",
+    "localidad": "San Carlos - La Consulta",
+    "direccion": "Ricardo Bustos 336, La Consulta | Horario de atención: lunes a viernes de 7 a 13 hs",
+    "contacto": "Teléfono: 2622467056 | Correo electrónico: sancarlosareadiscapacidad@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora -Dirección de Desarrollo Social | Municipalidad de San Martín",
+    "localidad": "San Martín",
+    "direccion": "Almirante Brown y España | Horario de atención: lunes a viernes de 7 a 13 hs",
+    "contacto": "Teléfono: 2634431997 | Correo electrónico: discasanmartin@yahoo.com.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora -Coordinación Integral de Personas con Discapacidad | Municipalidad de San Rafael",
+    "localidad": "San Rafael",
+    "direccion": "Av. Zapata y Córdoba | Horario de atención: lunes a viernes de 7 a 13 hs",
+    "contacto": "Teléfono: 2604403732 | 2604420037 | Correo electrónico: coordinacionintegraldiscap@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora -Hospital Fernando Arenas Raffo",
+    "localidad": "Santa Rosa",
+    "direccion": "Av. San Martín y Rufino Ortega | Horario de atención: lunes a viernes de 7 a 13 hs",
+    "contacto": "Teléfono: 2634497200 | Correo electrónico: santarosadiscapacidad@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora -Área de Discapacidad | Municipalidad de Tunuyán",
+    "localidad": "Tunuyán",
+    "direccion": "La Argentina 600 (anexo) | Horario de atención: lunes a viernes de 7 a 13 hs",
+    "contacto": "Teléfono: 2612022004 | Correo electrónico: areadediscapacidadtunuyan@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora -Área de Discapacidad | Municipalidad de Tupungato",
+    "localidad": "Tupungato",
+    "direccion": "Beltrán 43 | Horario de atención: lunes a viernes de 7 a 14 hs",
+    "contacto": "Teléfono: 2622522017 | Correo electrónico: areadiscapacidadtupungato@gmail.com"
+   }
+  ],
+  "Misiones": [
+   {
+    "nombre": "Junta Evaluadora Discapacidad Andresito - Centro Integrador Comunitario de Comandante Andresito",
+    "localidad": "Comandante Andresito",
+    "direccion": "Av. Corrientes S/N, entre Av. Misiones y Catamarca | Horario de atención: lunes, martes y jueves de 7 a 12 hs y miércoles de 13:30 a 17 hs",
+    "contacto": "Teléfono: 3757304839 | Correo electrónico: juntadediscapacidadandresito@gmail.com"
+   },
+   {
+    "nombre": "Junta Jurisdiccional Unidad de Discapacidad El Dorado - Centro de Atención Primaria de la Salud El Dorado III - Km 10",
+    "localidad": "El Dorado",
+    "direccion": "Mborore Km 10, entre Vilcapugio y Ayohuma | Horario de atención: lunes a viernes de 6:30 a 11:30 hs",
+    "contacto": "Teléfono: 3751666333 | Correo electrónico: juntadisceldo@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora El Soberbio - Hospital de El Soberbio",
+    "localidad": "El Soberbio",
+    "direccion": "Calle Chivilcoy S/N y Mariano Moreno | Horario de atención: lunes, miércoles y viernes 7 a 12 hs | martes y jueves de 14 a 18 hs",
+    "contacto": "Correo electrónico: juntaevaluadoraelsoberbio@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora Jardín América - Hospital de Jardín América Dr. Tadayoshi Kamada",
+    "localidad": "Jardín América",
+    "direccion": "Fray Bonifacio Ortiz y Ruta 7 | Horario de atención: martes, jueves y viernes de 14 a 18 hs",
+    "contacto": "Teléfono: 3743610701 | Correo electrónico: hospijam646@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora Leandro N. Alem - Dirección Zona de Salud Sur | Ministerio de Salud Pública",
+    "localidad": "Leandro N. Alem",
+    "direccion": "Calle 25 de Mayo 1076 | Horario de atención: lunes y miércoles de 13:30 a 18:30 hs | martes, jueves y viernes de 6:30 a 12 hs",
+    "contacto": "Teléfono: 3754463906 | Correo electrónico: juntaevaluadora.zonasur@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora Oberá - Hospital Samic de Oberá",
+    "localidad": "Oberá",
+    "direccion": "Pincen Y Federación S/N | Horario de atención: miércoles y viernes de 7 a 12 hs",
+    "contacto": "Teléfono: 3755421226 | Correo electrónico: cudzonacentrouruguay@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora Central - Dirección de Discapacidad | Ministro de Salud Pública",
+    "localidad": "Posadas",
+    "direccion": "Tucumán 2174 | Horario de atención: lunes a viernes de 7 a 12 hs",
+    "contacto": "Teléfono: 3764444082 | Correo electrónico: discapacidad_misionesalud@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora de Discapacidad Madariaga - Hospital Escuela de Agudos Dr. Ramón Madariaga",
+    "localidad": "Posadas",
+    "direccion": "Av. Marconi 3736 (Parque de la Salud) | Horario de atención: lunes a viernes de 6 a 12 hs y de 14 a 18 hs",
+    "contacto": "Correo electrónico: junta-madariaga@outlook.com"
+   },
+   {
+    "nombre": "Junta Evaluadora de Discapacidad | Caps Belén - Centro de Atención Primaria de la Salud Belén | Caps Nº 32 - Itaembe Mini",
+    "localidad": "Posadas",
+    "direccion": "Calle 188 (Cerca Av. 147, Zona Itaembe Mini) | Horario de atención: lunes a viernes de 8 a 11:30 hs",
+    "contacto": "Teléfono: 3764578301 | Correo electrónico: juntaevaluadoramuniposadas@gmail.com"
+   },
+   {
+    "nombre": "Junta Itinerante Misiones - Dirección de Discapacidad | Ministro de Salud Pública",
+    "localidad": "Posadas",
+    "direccion": "Localidades de Garupá y Candelaria | Horario de atención: lunes a viernes de 7 a 12 hs",
+    "contacto": "Teléfono: 3764444082 | Correo electrónico: discapacidad_misionesalud@hotmail.com"
+   },
+   {
+    "nombre": "Junta Jurisdiccional Hospital Barreyro - Hospital Pediátrico Nivel III Dr. Fernando Barreyro | Servicio de Junta Evaluadora de Discapacidad",
+    "localidad": "Posadas",
+    "direccion": "Av. Mariano Moreno 1092. (Ex. altura 110) | Horario de atención: lunes a viernes de 7 a 13 hs",
+    "contacto": "Teléfono: 3764447778 Int.253 | 3764120672 (WhatsApp) | Correo electrónico: fbarreyro0515@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora Iguazú - Hospital Samic de Iguazú Dra. Marta Shuartz",
+    "localidad": "Puerto Iguazú",
+    "direccion": "Av. Victoria Aguirre 142 | Horario de atención: lunes a viernes de 7 a 11:30 hs",
+    "contacto": "Teléfono: 3755546269 | 3755285014 | Correo electrónico: jjdeiguazu@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora San Vicente - Secretaría de Salud y Políticas Sociales | Municipalidad de San Vicente",
+    "localidad": "San Vicente",
+    "direccion": "Abel Siñuka 48 | Horario de atención: lunes a viernes de 7 a 13 hs | lunes y martes de 14 a 16 hs",
+    "contacto": "Teléfono: 3755285014 | Correo electrónico: juntaevaluadorasanvicente@gmail.com"
+   }
+  ],
+  "Neuquén": [
+   {
+    "nombre": "Junta Evaluadora - Área de Discapacidad | Secretaría de Desarrollo Social y Acción Comunitaria",
+    "localidad": "Aluminé",
+    "direccion": "Torcuato Modarelli 232 | Horario de atención: lunes a viernes de 8 a 14 hs",
+    "contacto": "Teléfono: 2942526850 | Correo electrónico: direcciondiscapacidadalumine@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Dirección de Discapacidad | Municipalidad de Centenario",
+    "localidad": "Centenario",
+    "direccion": "Canadá y Héctor Cámpora (Barrio Eluney) | Horario de atención: lunes a viernes de 8 a 13 hs",
+    "contacto": "Teléfono: 2994063904 | Correo electrónico: areadiscapacidad@centenario.gov.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora - Área Municipal de Discapacidad | Secretaría de Desarrollo Humano",
+    "localidad": "Chos Malal",
+    "direccion": "Los Maitenes 736 | Horario de atención: lunes a viernes de 7 a 14 hs",
+    "contacto": "Teléfono: 2942478498 | Correo electrónico: discapacidadchml21@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Junta Evaluadora de Discapacidad de Cutral Có | Secretaría de Desarrollo Social",
+    "localidad": "Cutral Có",
+    "direccion": "Alberdi entre Belgrano y Sáenz Peña | Horario de atención: lunes a viernes de 7:45 a 13 hs",
+    "contacto": "Teléfono: 2995530053 | Correo electrónico: marcosam79@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Secretaría de Familia, Desarrollo Social y Derechos Humanos",
+    "localidad": "Junín de los Andes",
+    "direccion": "Patagonia 580 | Horario de atención: lunes a viernes de 7:30 a 14 hs",
+    "contacto": "Teléfono: 2972499672 | Correo electrónico: discapacidadmunijunin@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora central -Subsecretaria de Discapacidad",
+    "localidad": "Neuquén Capital",
+    "direccion": "Perito Moreno 334 | Horario de atención: lunes a viernes de 8 a 16 hs",
+    "contacto": "Teléfono: 2994670061 | Correo electrónico: juntaevaluadoraneuquen@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Dirección de Discapacidad | Secretaria de Desarrollo Social | Municipalidad de Plottier",
+    "localidad": "Plottier",
+    "direccion": "Zabaleta 40 | Horario de atención: lunes a viernes de 8:30 a 13 hs",
+    "contacto": "Teléfono: 2995071768 | Correo electrónico: juntaevaluadoraplottier@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Área de Discapacidad | Secretaría de Desarrollo Humano y Mujeres",
+    "localidad": "Rincón de los Sauces",
+    "direccion": "Av. 30 de Octubre y Chos Malal | Horario de atención: lunes a viernes de 8 a 13 hs",
+    "contacto": "Teléfono: 2995700094 | Correo electrónico: discapacidad.mrdls@munirdls.gov.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora - Delegación Barrio el Arenal San Martín de los Andes",
+    "localidad": "San Martín de los Andes",
+    "direccion": "Los Saucos 100 (Barrio El Arenal) | Horario de atención: lunes a viernes de 8 a 13 hs",
+    "contacto": "Teléfono: 2972427315 Int. 274 | Correo electrónico: juntaevaluadorasma@gmail.com | junta.evaluadora@smandes.gob.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora - Oficina de Accesibilidad | Municipalidad de Villa la Angostura",
+    "localidad": "Villa la Angostura",
+    "direccion": "Obispo de Nevares 32 | Horario de atención: lunes a viernes de 7 a 14 hs",
+    "contacto": "Teléfono: 2944348585 | Correo electrónico: accesibilidadvla@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Junta Evaluadora de Zapala | Secretaría de Desarrollo Humano",
+    "localidad": "Zapala",
+    "direccion": "Añelo y Quillén | Horario de atención: lunes a viernes de 7 a 14 hs",
+    "contacto": "Teléfono: 2942683424 | Correo electrónico: juntaevaluadorazapala@gmail.com"
+   }
+  ],
+  "Río Negro": [
+   {
+    "nombre": "Junta Evaluadora - Departamento de Atención a Personas con Discapacidad | Secretaría Desarrollo Humano de Allen",
+    "localidad": "Allen",
+    "direccion": "San Martín 270 | Horario de atención: lunes, miércoles y viernes de 8 a 13 hs",
+    "contacto": "Teléfono: 2984190109 | Correo electrónico: juntaevaluadora@allen.gob.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital De Luis Beltrán",
+    "localidad": "Avellaneda - Choele Choel - Luis Beltrán",
+    "direccion": "24 de septiembre S/N, Luis Beltrán | Horario de atención: lunes a viernes de 8 a 14 hs",
+    "contacto": "Teléfono: 2946508197 | Correo electrónico: juntaevaluadoralb@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Junta Evaluadora de Cipolletti | Delegación del Ministerio de Desarrollo Humano, Deporte y Cultura",
+    "localidad": "Cipolletti",
+    "direccion": "Hipólito Yrigoyen 1047 | Horario de atención: lunes a viernes de 8 a 14 hs",
+    "contacto": "Teléfono: 2994287323 | Correo electrónico: juntadiscapacidad.cipo@yahoo.com.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora - Consejo Local de y para las Personas con Discapacidad El Bolsón",
+    "localidad": "El Bolsón",
+    "direccion": "Rivadavia 3070 | Horario de atención: lunes a viernes de 8 a 14 hs",
+    "contacto": "Teléfono: 2920212888 | Correo electrónico: juntaelbolson@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Padres y Amigos del Discapacitado de Conesa | P.A.D.I.C.O",
+    "localidad": "General Conesa",
+    "direccion": "Libertad 480 (P.A.D.I.C.O.) | Horario de atención: lunes a viernes de 8 a 14 hs",
+    "contacto": "Correo electrónico: juntadiscapacidadconesa@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Junta Evaluadora de Discapacidad de General Roca | Consejo Local para las Personas con Discapacidad",
+    "localidad": "General Roca",
+    "direccion": "Isidro Lobo 1374 | Horario de atención: lunes a viernes de 8 a 14 hs",
+    "contacto": "Teléfono: 2984665650 | Correo electrónico: rocajunta@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Dr. Rogelio Cortizo de Ingeniero Jacobacci",
+    "localidad": "Ingeniero Jacobacci",
+    "direccion": "Villegas y de los Evangelios | Horario de atención: lunes de 8:30 a 13:30 hs",
+    "contacto": "Correo electrónico: juntaevaluadorajacobacci@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Municipalidad de Los Menucos",
+    "localidad": "Los Menucos",
+    "direccion": "Buenos Aires 1195 | Horario de atención: lunes a viernes de 8 a 14 hs",
+    "contacto": "Teléfono: 2940492022 | Correo electrónico: juntalosmenucos@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Área de Discapacidad | Concejo Deliberante de Río Colorado",
+    "localidad": "Río Colorado",
+    "direccion": "República Española 61 | Horario de atención: lunes a viernes de 8 a 13 hs",
+    "contacto": "Correo electrónico: riocolorado2017@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Junta Evaluadora de San Antonio Oeste | Consejo Local para las Personas con Discapacidad",
+    "localidad": "San Antonio Oeste",
+    "direccion": "Pescadores del Golfo y Oscar Salas | Horario de atención: lunes a viernes de 8 a 14 hs",
+    "contacto": "Teléfono: 2934521550 | Correo electrónico: jdiscapacidad_sao@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Dirección de Gestión de Personas con Discapacidad | Centro Administrativo Provincial",
+    "localidad": "San Carlos de Bariloche",
+    "direccion": "Onelli 1450 (subsuelo) | Horario de atención: lunes a viernes de 8 a 14 hs",
+    "contacto": "Teléfono: 2944666542 | Correo electrónico: juntaevaluadora1@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Oficina de Atención a Personas con Discapacidad | Municipalidad de Sierra Grande",
+    "localidad": "Sierra Grande",
+    "direccion": "Calle 15 N° 61 | Horario de atención: lunes a viernes de 8 a 14 hs",
+    "contacto": "Correo electrónico: discapacidadsierragrande@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Asociación de Padres y Amigos de las Personas con Discapacidad (Apad) | Consejo Provincial para las Personas con Discapacidad",
+    "localidad": "Valcheta",
+    "direccion": "Vicente López y Alem | Horario de atención: lunes a viernes de 8 a 14 hs",
+    "contacto": "Correo electrónico: juntaevaluadoravalcheta@outlook.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Consejo Provincial para las Personas con Discapacidad | Subsecretaria de Políticas Públicas para Personas con Discapacidad",
+    "localidad": "Viedma",
+    "direccion": "Gallardo 165 | Horario de atención: lunes a viernes de 8 a 14 hs",
+    "contacto": "Teléfono: 2920606012 | Correo electrónico: juntaevaluadoraviedma@gmail.com"
+   },
+   {
+    "nombre": "Junta Itinerante de Río Negro - Subsecretaría de Políticas Públicas para Personas con Discapacidad| Ministerio de Desarrollo Humano, Cultura y Deporte",
+    "localidad": "Viedma",
+    "direccion": "Toda la provincia de Río Negro | Horario de atención: lunes a viernes de 7 a 13 hs",
+    "contacto": "Teléfono: 2920275180 (solo WhatsApp) | Correo electrónico: coordjuntasevaluadorasrn@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Dr. Elias Smirnoff de Villa Regina",
+    "localidad": "Villa Regina",
+    "direccion": "Luis Beltrán 496 | Horario de atención: lunes a viernes de 8 a 14 hs",
+    "contacto": "Teléfono: 2920704995 | Correo electrónico: juntaevaluadoravr@gmail.com"
+   }
+  ],
+  "Salta": [
+   {
+    "nombre": "Junta Evaluadora Cafayate - Hospital Nuestra Señora del Rosario",
+    "localidad": "Cafayate",
+    "direccion": "General Paz y 12 de Octubre, Cafayate | Horario de atención: martes y jueves de 14 a 17 hs",
+    "contacto": "Teléfono: 3868422010 Int. 120 | Correo electrónico: serviciosocialhospitalcafayate@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora Orán - Centro de Rehabilitación Municipal",
+    "localidad": "Orán",
+    "direccion": "Pellegrini 581, Orán | Horario de atención: jueves de 14 a 20 hs",
+    "contacto": "Teléfono: 3878422856 | Correo electrónico: juntadiscapacidadoran@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora Rosario de la Frontera - Hospital Melchora Figueroa de Cornejo",
+    "localidad": "Rosario de la Frontera",
+    "direccion": "Avellaneda 350, Rosario de la Frontera | Horario de atención: lunes y jueves de 9 a 11 hs",
+    "contacto": "Teléfono: 3876664214 | Correo electrónico: angyr24@gmail.com"
+   },
+   {
+    "nombre": "Junta Itinerante Salta N° 1 - Centro de Asistencia Socio Sanitaria Marq’Ay (Anexo)",
+    "localidad": "Salta Capital",
+    "direccion": "Toda la provincia de Salta | Horario de atención: lunes a viernes de 8 a 14 hs",
+    "contacto": "Teléfono: 3874317130 | Correo electrónico: secretariadiscapacidadsalta@gmail.com"
+   },
+   {
+    "nombre": "Junta Itinerante Salta N° 2 - Centro de Asistencia Socio Sanitaria Marq’Ay (Anexo)",
+    "localidad": "Salta Capital",
+    "direccion": "Toda la provincia de Salta | Horario de atención: lunes a viernes de 8 a 14 hs",
+    "contacto": "Teléfono: 3874317130 | Correo electrónico: secretariadiscapacidadsalta@gmail.com"
+   },
+   {
+    "nombre": "Junta Itinerante Salta N° 3 - Junta Central | Secretaría de Discapacidad | Ministerio De Salud Pública",
+    "localidad": "Salta Capital",
+    "direccion": "Toda la provincia de Salta | Horario de atención: lunes a viernes de 8 a 14 hs",
+    "contacto": "Teléfono: 3874317130 | Correo electrónico: secretariadiscapacidadsalta@gmail.com"
+   },
+   {
+    "nombre": "Junta Itinerante Salta N° 4 - Junta Central | Secretaría de Discapacidad | Ministerio De Salud Pública",
+    "localidad": "Salta Capital",
+    "direccion": "Toda la provincia de Salta | Horario de atención: lunes a viernes de 8 a 14 hs",
+    "contacto": "Teléfono: 3874317130 | Correo electrónico: secretariadiscapacidadsalta@gmail.com"
+   },
+   {
+    "nombre": "Junta Municipalidad de Ciudad de Salta - Municipalidad de Salta",
+    "localidad": "Salta Capital",
+    "direccion": "Av. Paraguay 1240 | Horario de atención: martes, miércoles y viernes de 8 a 14 hs",
+    "contacto": "Teléfono: 3875279056 | 3876832268 | Correo electrónico: direcciongraldiscapacidad@gmail.com"
+   },
+   {
+    "nombre": "Junta N° 1 | Junta Central - Centro de Asistencia Socio Sanitaria Marq’Ay (Anexo)",
+    "localidad": "Salta Capital",
+    "direccion": "Entre Ríos 1045 (Anexo), Salta Capital | Horario de atención: lunes a viernes de 8 a 14 hs",
+    "contacto": "Teléfono: 3874317130 | 3874680572 | Correo electrónico: secretariadiscapacidadsalta@gmail.com"
+   },
+   {
+    "nombre": "Junta N° 2 | Junta Central - Centro de Asistencia Socio Sanitaria Marq’Ay (Anexo)",
+    "localidad": "Salta Capital",
+    "direccion": "Entre Ríos 1045 (Anexo), Salta Capital | Horario de atención: lunes a viernes de 8 a 14 hs",
+    "contacto": "Teléfono: 3874317130 | 3876134241 | Correo electrónico: secretariadiscapacidadsalta@gmail.com"
+   },
+   {
+    "nombre": "Junta N° 3 | Junta Central - Junta Central | Secretaría de Discapacidad | Ministerio De Salud Pública",
+    "localidad": "Salta Capital",
+    "direccion": "Jujuy 402, Salta Capital | Horario de atención: lunes a viernes de 8 a 14 hs",
+    "contacto": "Teléfono: 3874317130 | 3875292119 | Correo electrónico: secretariadiscapacidadsalta@gmail.com"
+   },
+   {
+    "nombre": "Junta N° 4 | Junta Central - Junta Central | Secretaría de Discapacidad | Ministerio De Salud Pública",
+    "localidad": "Salta Capital",
+    "direccion": "Jujuy 402, Salta Capital | Horario de atención: lunes a viernes de 8 a 14 hs",
+    "contacto": "Teléfono: 3874317130 | Correo electrónico: secretariadiscapacidadsalta@gmail.com"
+   }
+  ],
+  "San Juan": [
+   {
+    "nombre": "Junta Evaluadora - Centro Integrador Comunitario de 25 De Mayo",
+    "localidad": "25 De Mayo - Villa Santa Rosa",
+    "direccion": "Ruta 279, entre Calle 4 y Calle 5, Barrio Algarrobo Verde, VILLA SANTA ROSA | Horario de atención: lunes a viernes de 7 a 13 hs",
+    "contacto": "Teléfono: 2644055837 | Correo electrónico: miriamfigueroa03@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Dr. José Giordano",
+    "localidad": "Albardón - Villa General San Martín",
+    "direccion": "D.F. Sarmiento S/N, VILLA GENERAL SAN MARTÍN | Horario de atención: lunes a viernes de 8 a 13 hs (CIC La Laja)",
+    "contacto": "Teléfono: 2644399587 | Correo electrónico: alejandraluciamarquez@yahoo.com.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora - Junta Evaluadora de Caucete | Subsecretaría de Desarrollo Social",
+    "localidad": "Caucete",
+    "direccion": "Guillermo Rawson 488 | Horario de atención: lunes a viernes de 8 a 13 hs",
+    "contacto": "Teléfono: 2645307537 | Correo electrónico: soledad731@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Área para las Personas con Discapacidad | Secretaría de Acción Social | Municipalidad de Iglesia",
+    "localidad": "Iglesia - Rodeo",
+    "direccion": "Av. Santo Domingo 3650, RODEO | Horario de atención: lunes a viernes de 8 a 13 hs",
+    "contacto": "Teléfono: 2644866840 | Correo electrónico: janet.wttr@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Área de Discapacidad | Municipalidad de Pocito",
+    "localidad": "Pocito - Villa Aberastain",
+    "direccion": "Roberto Vidart 1073, VILLA ABERASTAIN | Horario de atención: lunes a viernes de 7 a 14 hs",
+    "contacto": "Teléfono: 2645319988 | Correo electrónico: carolinapala@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Área de Discapacidad | Galería San Martín",
+    "localidad": "Rawson - Villa Krause",
+    "direccion": "República del Líbano N°612 Oeste, VILLA KRAUSE | Horario de atención: lunes a viernes de 8 a 13 hs",
+    "contacto": "Teléfono: 2644882809 | Correo electrónico: discapacidad@municipioderawson.gob.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora - Área de Discapacidad | Anexo Centro | Dirección de Acción Social Municipal",
+    "localidad": "Rivadavia",
+    "direccion": "Av. Libertador Gral. San Martín Oeste 5135 | Horario de atención: lunes a viernes de 7 a 13 hs",
+    "contacto": "Teléfono: 2645821056 | Correo electrónico: liclopezcarina@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Junta Evaluadora de San Martín | Municipalidad de San Martín",
+    "localidad": "San Martín",
+    "direccion": "Av. Sarmiento y Godoy Cruz | Horario de atención: lunes a viernes de 8 a 13:30 hs",
+    "contacto": "Teléfono: 2646605455 | Correo electrónico: fabiirmar@yahoo.com.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora Central - Dirección de Personas don Discapacidad",
+    "localidad": "Santa Lucía",
+    "direccion": "Hipólito Yrigoyen Este 2950, SANTA LUCÍA | Horario de atención: lunes a viernes de 7 a 14 hs",
+    "contacto": "Correo electrónico: dir.discapacidad@sanjuan.gov.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora - Área de Personas con Discapacidad | Dirección de Desarrollo Humano | Municipalidad de Sarmiento",
+    "localidad": "Sarmiento - Media Agua",
+    "direccion": "9 de Julio y Santa Cruz, MEDIA AGUA | Horario de atención: lunes a viernes de 7 a 13 hs",
+    "contacto": "Teléfono: 2644869516 | Correo electrónico: alejandrafemenia4@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Dirección de Discapacidad | Municipalidad de Valle Fértil",
+    "localidad": "Valle Fertil - Villa San Agustín",
+    "direccion": "Libertador, entre Mendoza y Entre Ríos, VILLA SAN AGUSTÍN | Horario de atención: lunes a viernes de 7:30 a 14 hs",
+    "contacto": "Teléfono: 2645897565 | Correo electrónico: calivar08@gmail.com"
+   }
+  ],
+  "San Luis": [
+   {
+    "nombre": "Junta Central de San Luis - Centro de Referencia de Rehabilitación Provincial (CERPRE) | Hospital Pediátrico San Luis",
+    "localidad": "San Luis Capital",
+    "direccion": "Pasaje Pasteur y Ciudad del Rosario | Horario de atención: lunes a viernes de 7 a 18 hs",
+    "contacto": "Teléfono: 26644452000 Int. 6984/5619 | Correo electrónico: juntadiscapacidad.sl@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora de Discapacidad - Hospital Policlínico Regional Juan Domingo Perón",
+    "localidad": "Villa Mercedes",
+    "direccion": "Maipú 450 | Horario de atención: lunes a viernes de 8 a 12 hs",
+    "contacto": "Teléfono: 657423034 | 2657427342 Int. 160 | Correo electrónico: subjuntavm@outlook.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Servicio de Rehabilitación | Hospital Madre Catalina Rodríguez",
+    "localidad": "Villa de Merlo",
+    "direccion": "Ruta Provincial N°1 y Bv. El Ceibo | Horario de atención: lunes a viernes de 8 a 13 hs",
+    "contacto": "Correo electrónico: juntae.cudmerlosl@gmail.com"
+   }
+  ],
+  "Santa Cruz": [
+   {
+    "nombre": "Junta Evaluadora - Hospital Zonal de Caleta Olivia Padre Pedro Tardivo",
+    "localidad": "Caleta Olivia",
+    "direccion": "Av. Eva Perón y Urquiza | Horario de atención: lunes a viernes de 8:30 a 13 hs",
+    "contacto": "Teléfono: 2974851199 Int. 246 | Correo electrónico: juntadiscaco@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Dirección de Discapacidad Municipal | Centro Integrador Comunitario (Cic) Dr. Néstor Kirchner",
+    "localidad": "Comandante Luis Piedra Buena",
+    "direccion": "Bella Vista 25 | Horario de atención: lunes a viernes de 8 a 13 hs",
+    "contacto": "Teléfono: 2966614828 | Correo electrónico: direccionhospitalpb@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Unidad Comunitaria de Salud Familiar (U.C.S.F) Dr. José J. Formenti",
+    "localidad": "El Calafate",
+    "direccion": "Julio A.Roca 1487 | Horario de atención: lunes, martes, jueves y viernes 8 a 15 hs",
+    "contacto": "Correo electrónico: discapcalafate@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Distrital de Gobernador Gregores",
+    "localidad": "Gobernador Gregores",
+    "direccion": "Mario Paradelo 1025 | Horario de atención: sábados 8 a 14 hs",
+    "contacto": "Teléfono: 2966628550 | Correo electrónico: cudhgg@saludsantacruz.gob.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora - Centro Integrador Comunitario de Salud Micaela Santana",
+    "localidad": "Las Heras",
+    "direccion": "San Julián S/N, entre Simón Bolívar y Gobernador Moyano | Horario de atención: lunes a viernes de 8:30 a 12:30 hs",
+    "contacto": "Teléfono: 2974974666 | Correo electrónico: jdiscapacidad@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Seccional Dr Reynaldo A. Bimbi",
+    "localidad": "Los Antiguos",
+    "direccion": "Patagonia Argentina 68 | Horario de atención: lunes a viernes de 9 a 11 hs",
+    "contacto": "Teléfono: 2975047322 | Correo electrónico: hsladiscapacidad@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Distrital Dr. Oscar H. Natale",
+    "localidad": "Perito Moreno",
+    "direccion": "Colón 1235 | Horario de atención: lunes a viernes de 8 a 14 hs",
+    "contacto": "Teléfono: 2974000329 | Correo electrónico: juntadischpm@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Distrital Guillermo H.C. Kuester",
+    "localidad": "Pico Truncado",
+    "direccion": "Vélez Sarsfield 305 | Horario de atención: martes, jueves y sábados de 14:30 a 17 hs",
+    "contacto": "Teléfono: 2974114179 | Correo electrónico: juntadiscapicotruncado@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Distrital de Puerto Deseado",
+    "localidad": "Puerto Deseado",
+    "direccion": "España 991 | Horario de atención: martes y jueves de 15 a 17 hs",
+    "contacto": "Teléfono: 2974379411 | Correo electrónico: juntadiscapacidadpd@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Centro Médico Asociación Amigos para la Prevención de Trastornos Alimentarios, Anímicos y de la Ansiedad (Aapta)",
+    "localidad": "Puerto San Julian",
+    "direccion": "12 de Octubre 1805 y Cameron | Horario de atención: martes y jueves de 8 a 14 hs",
+    "contacto": "Teléfono: 2962460999 | Correo electrónico: jed.psj@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Seccional Dr. Eduardo Canosa",
+    "localidad": "Puerto Santa Cruz",
+    "direccion": "Juan Williams 448 | Horario de atención: a demanda",
+    "contacto": "Correo electrónico: directormedicohpsc@saludsantacruz.gob.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora Interdisciplinaria CUD - Hospital Regional Río Gallegos",
+    "localidad": "Rio Gallegos",
+    "direccion": "Ramón y Cajal S/N y Errazuriz | Horario de atención: lunes a viernes de 8 a 12 hs",
+    "contacto": "Teléfono: 2966420289 | Correo electrónico: discapacidadrgl@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora de la Cuenca - Hospital Distrital San Lucas de 28 de Noviembre",
+    "localidad": "Río Turbio - 28 De Noviembre",
+    "direccion": "9 de Julio y Río Negro, 28 de Noviembre | Horario de atención: lunes y viernes de 8 a 14 hs",
+    "contacto": "Teléfono: 2902451661 | Correo electrónico: cudcuenca@gmail.com"
+   }
+  ],
+  "Santa Fe": [
+   {
+    "nombre": "Junta Evaluadora - Hospital de Tostado | Sistema para la Atención Médica de la Comunidad (S.A.M.Co.)",
+    "localidad": "9 De Julio - Tostado",
+    "direccion": "Chacabuco 378, Tostado | Horario de atención: lunes a viernes de 7 a 12 hs",
+    "contacto": "Teléfono: 3424779749 | Correo electrónico: juntadiscapacidadtostado@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora de Discapacidad - Centro Cultural Guillermo Furlong | Sede Municipal de Arroyo Seco",
+    "localidad": "Arroyo Seco",
+    "direccion": "Belgrano 540 | Horario de atención: lunes a jueves de 7:30 a 13 hs",
+    "contacto": "Teléfono: 3402437556 | 3402426000 | Correo electrónico: andreaalarcons1973@gmail.com.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora de Las Rosas - Casa de la Cultura Municipal de las Rosas | Área de Discapacidad",
+    "localidad": "Belgrano - Las Rosas",
+    "direccion": "Bv. Kemmis 1000, Las Rosas | Horario de atención: lunes a viernes de 7:30 a 13 hs",
+    "contacto": "Teléfono: 3471582226 | 3471513913 | Correo electrónico: vescovomauricio@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora de Frontera - Centro de Salud San Roque de Frontera | Sistema para la Atención Médica de la Comunidad (S.A.M.Co.)",
+    "localidad": "Castellanos - Frontera",
+    "direccion": "Calle 94 N° 575, Frontera | Horario de atención: lunes a viernes de 7 a 12 hs",
+    "contacto": "Teléfono: 3564261005 | Correo electrónico: juntadiscapacidadfrontera@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora Municipal de Rafaela - Departamento de Discapacidad | Municipalidad de Rafaela",
+    "localidad": "Castellanos - Rafaela",
+    "direccion": "CAPS N° 10 Santiago Shine y Gabriel Maggi, Rafaela | CAPS N° 11 Cortázar 248, Rafaela| Horario de atención: lunes a viernes de 8 a 12hs",
+    "contacto": "Teléfono: 3492597358 | Correo electrónico: juntamunicipalrafaelasantafe@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora Provincial de Rafaela - Hospital Dr. Jaime Ferré de Rafaela | Sistema para la Atención Médica de la Comunidad (S.A.M.Co.)",
+    "localidad": "Castellanos - Rafaela",
+    "direccion": "Lisandro de la Torre 737 | Horario de atención: lunes a viernes de 7 a 13 hs",
+    "contacto": "Teléfono: 3492421621 Int. 167 | Correo electrónico: certificados_rafaela@santafe.gov.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora Sunchales - Hospital Dr. Almicar Gorosito de Sunchales | Sistema para la Atención Médica de la Comunidad (S.A.M.Co.)",
+    "localidad": "Castellanos - Sunchales",
+    "direccion": "Av. Belgrano 332, Sunchales | Horario de atención: martes, miércoles y jueves de 8 a 12 hs",
+    "contacto": "Teléfono: 3493427124 | Correo electrónico: discapacidad.samcosunchales@santafe.gov.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora Discapacidad de Villa Constitución - Hospital de Villa Constitución | Sistema para la Atención Médica de la Comunidad (S.A.M.Co.)",
+    "localidad": "Constitución - Villa Constitución",
+    "direccion": "Bolívar 1600, Villa Constitución | Horario de atención: lunes a viernes de 7 a 13 hs",
+    "contacto": "Teléfono: 3400511170 | Correo electrónico: discapacidadypensionvc@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora S.A.M.Co. de Coronda - Hospital de Coronda | Sistema para la Atención Médica de la Comunidad (S.A.M.Co.)",
+    "localidad": "Coronda",
+    "direccion": "Bv. Oroño 1172 | Horario de atención: lunes y martes de 10 a 12 hs",
+    "contacto": "Teléfono: 3424918100 Int. 107 | Correo electrónico: juntadiscapacidadcoronda@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora del Hospital Helvecia - Hospital de Helvecia | Sistema para la Atención Médica de la Comunidad (S.A.M.Co.)",
+    "localidad": "Garay - Helvecia",
+    "direccion": "Vélez Sarsfield 830, Helvecia | Horario de atención: lunes a viernes de 8 a 12 hs",
+    "contacto": "Teléfono: 3405470164 Int. 122 | Correo electrónico: juntahelvecia@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora S.A.M.Co Firmat - Hospital San Martín de Firmat | Sistema para la Atención Médica de la Comunidad (S.A.M.Co.)",
+    "localidad": "General López - Firmat",
+    "direccion": "Av. Santa Fe 1800, Firmat| Horario de atención: martes y viernes de 10:30 a 12:30 hs",
+    "contacto": "Teléfono: 3465435136 | Correo electrónico: cudfirmat@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora de Hughes - Hospital de Hughes | Sistema para la Atención Médica de la Comunidad (S.A.M.Co.)",
+    "localidad": "General López - Hughes",
+    "direccion": "Laprida y Rivadavia | Horario de atención: martes y jueves de 8 a 12 hs",
+    "contacto": "Teléfono: 2473460167 | Correo electrónico: accionsocialcomunadehughes@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora de Maria Teresa - Hospital de María Teresa | Sistema para la Atención Médica de la Comunidad (S.A.M.Co.)",
+    "localidad": "General López - María Teresa",
+    "direccion": "Ernesto Bosch y Av. San Martín, María Teresa | Horario de atención: lunes a viernes de 7 a 13 hs",
+    "contacto": "Teléfono: 3462321025 | Correo electrónico: juntadediscapacidadmt@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora de Rufino - Secretaría de Desarrollo Social | Municipalidad de Rufino",
+    "localidad": "General López - Rufino",
+    "direccion": "Bv. Belgrano 190, Rufino | Horario de atención: lunes a viernes de 7 a 13 hs",
+    "contacto": "Teléfono: 3382419613 | Correo electrónico: rufinodiscapacidad@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora de Santa Isabel - Comuna de Santa Isabel",
+    "localidad": "General López - Santa Isabel",
+    "direccion": "José Ingenieros 942, Santa Isabel | Horario de atención: lunes a viernes de 7 a 13 hs",
+    "contacto": "Teléfono: 3462610149 | Correo electrónico: bpellegrini@santaisabel.gob.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora de Venado Tuerto - Hospital Dr. Alejandro Gutiérrez",
+    "localidad": "General López - Venado Tuerto",
+    "direccion": "Av. Santa Fe 1311, Venado Tuerto | Horario de atención: lunes a viernes de 7 a 13 hs",
+    "contacto": "Teléfono: 3462234393 | Correo electrónico: cudvenado@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora de Villa Cañas - Gabinete Municipal | Municipalidad de Villa Cañás",
+    "localidad": "General López - Villa Cañás",
+    "direccion": "Av. 51 (entre 48 y 46), Villa Cañás | Horario de atención: lunes a viernes de 7 a 13 hs",
+    "contacto": "Teléfono: 3462598447 | Correo electrónico: secaccionsocial@muvc.gov.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora de Wheelwright - Área de Inclusión y Discapacidad de la comuna de Wheelwright",
+    "localidad": "General López - Wheelwright",
+    "direccion": "Rivadavia 339, Wheelwright | Horario de atención: martes y jueves de 8 a 10 hs",
+    "contacto": "Teléfono: 2473404330 | Correo electrónico: discapacidadwheelwright@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora Avellaneda - Hospital de Avellaneda | Sistema para la Atención Médica de la Comunidad (S.A.M.Co.)",
+    "localidad": "General Obligado - Avellaneda",
+    "direccion": "Calle 16 Nº 344, Avellaneda| Horario de atención: martes y jueves 8 a 12 hs",
+    "contacto": "Teléfono: 34882567790 | Correo electrónico: juntaavellaneda@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora S.A.M.Co. de Malabrigo - Hospital de Malabrigo | Sistema para la Atención Médica de la Comunidad (S.A.M.Co.)",
+    "localidad": "General Obligado - Malabrigo",
+    "direccion": "2 de Julio 864, Malabrigo | Horario de atención: miércoles de 8 a 12 hs",
+    "contacto": "Teléfono: 3482454700 | 3482454001 | Correo electrónico: juntaevaluadoramalabrigo@outlook.com.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora Municipalidad de Reconquista - Oficina Municipal para Personas con Discapacidad | Terminal de ómnibus - Local 16",
+    "localidad": "General Obligado - Reconquista",
+    "direccion": "Patricio Diez 1105, Reconquista | Horario de atención: lunes a viernes de 7 a 13 hs",
+    "contacto": "Teléfono: 3482590751 | Correo electrónico: oficinaregionaldiscapacidad@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora del Hospital Central Reconquista - Hospital Central de Reconquista Dra. Olga Stuky de Rizzi",
+    "localidad": "General Obligado - Reconquista",
+    "direccion": "Bv. Yrigoyen 1951, Reconquista | Horario de atención: martes y jueves de 8 a 10:30 hs",
+    "contacto": "Teléfono: 3482489100 Int. 137 | Correo electrónico: juntadiscapacidadrqta@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora Villa Ocampo - Hospital de Villa Ocampo | Sistema para la Atención Médica de la Comunidad (S.A.M.Co.)",
+    "localidad": "General Obligado - Villa Ocampo",
+    "direccion": "Dr Farran 2129, Villa Ocampo | Horario de atención: lunes a viernes de 7:30 a 12 hs",
+    "contacto": "Teléfono: 3482466002 Int. 129 | Correo electrónico: juntadediscapacidadvillaocampo@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora de Cañada de Gómez - Centro de Salud Estévez Boero",
+    "localidad": "Iriondo - Cañada de Gómez",
+    "direccion": "Avellaneda 565, Cañada de Gomez | Horario de atención: lunes de 8 a 17 hs | miércoles, jueves y viernes de 8 a 12 hs",
+    "contacto": "Teléfono: 3471514262 | Correo electrónico: gabrielkirilovsky@yahoo.com.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora Colonia Psiquiátrica de Oliveros - Colonia Psiquiátrica de Oliveros Dr. A. I. Freyre",
+    "localidad": "Iriondo - Oliveros",
+    "direccion": "Ruta 11 Km 356, Oliveros (Zona Rural) | Horario de atención: lunes, martes y jueves de 8 a 12 hs",
+    "contacto": "Teléfono: 3416535894 | Correo electrónico: turnosconsultorioexternocpo@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora de Totoras - Área de Desarrollo Social | Municipalidad de Totoras",
+    "localidad": "Iriondo - Totoras",
+    "direccion": "Bv. Colón 723, Totoras | Horario de atención: lunes de 15 a 17 hs",
+    "contacto": "Teléfono: 3476371365 | Correo electrónico: juntamedica@totoras.gob.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora Hospital Esperanza - Hospital Dr.Daniel Alonso Criado de Esperanza | Sistema para la Atención Médica de la Comunidad (S.A.M.Co.)",
+    "localidad": "Las Colonias - Esperanza",
+    "direccion": "Janssen 2639, Esperanza | Horario de atención: lunes a viernes de 6 a 12 hs",
+    "contacto": "Teléfono: 3496654716 | Correo electrónico: ofdiscapacidadesperanza@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora N° 1 | Rosario - Instituto de Lucha Antipoliomielítica y Rehabilitación del Lisiado (Ilar)",
+    "localidad": "Rosario",
+    "direccion": "Ocampo 1498 | Horario de atención: lunes a viernes de 8 a 17 hs",
+    "contacto": "Teléfono: 3414721165 | Correo electrónico: discapacidad.sur@santafe.gov.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora N° 2 | Rosario - Dirección Municipal de Discapacidad | Municipalidad de Rosario",
+    "localidad": "Rosario",
+    "direccion": "Corrientes 2452 | Horario de atención: lunes a viernes de 8 a 17 hs",
+    "contacto": "Teléfono: 3414721165 | Correo electrónico: discapacidad.sur@santafe.gov.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora N° 3 | Rosario - Dirección Provincial de Inclusión para Personas con Discapacidad | 2° Circunscripción | Subsecretaría de Inclusión para Personas con Discapacidad",
+    "localidad": "Rosario",
+    "direccion": "9 de julio 325 | Horario de atención: lunes a viernes de 8 a 17 hs",
+    "contacto": "Teléfono: 3414721165 | Correo electrónico: discapacidad.sur@santafe.gov.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora N° 4 | Rosario - Dirección Provincial de Inclusión para Personas con Discapacidad | 2° Circunscripción | Subsecretaría de Inclusión para Personas con Discapacidad",
+    "localidad": "Rosario",
+    "direccion": "9 de julio 325 | Horario de atención: lunes a viernes de 8 a 17 hs",
+    "contacto": "Teléfono: 3414721165 | Correo electrónico: discapacidad.sur@santafe.gov.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora de Granadero Baigorria - Centro Integrador Comunitario (C.I.C.) de Granadero Baigorria",
+    "localidad": "Rosario - Granadero Baigorria",
+    "direccion": "La Paz 1370, Granadero Baigorria | Horario de atención: martes, miércoles y viernes de 9 a 13 hs",
+    "contacto": "Teléfono: 3413420681 | Correo electrónico: juntadediscapacidad@baigorria.gob.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora de Discapacidad de Pérez - Secretaría de Desarrollo Productivo | Municipalidad de Perez",
+    "localidad": "Rosario - Pérez",
+    "direccion": "Jolly Medrano 1469, Perez | Horario de atención: lunes a viernes de 7 a 13 hs",
+    "contacto": "Teléfono: 3414951200 | Correo electrónico: juntaevaluadoraperez@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora de Villa Gdor. Galvez - Hospital Dr. Anselmo Gámen de Villa Gobernador Galvez | Sistema para la Atención Médica de la Comunidad (S.A.M.Co.)",
+    "localidad": "Rosario - Villa Gobernador Galvez",
+    "direccion": "Balcarce 1355, Villa Gobernador Galvez | Horario de atención: lunes a viernes de 8 a 12 hs",
+    "contacto": "Teléfono: 3414921874 Int. 134 | Correo electrónico: vggdiscapacidad@outlook.es"
+   },
+   {
+    "nombre": "Junta Evaluadora Comuna de Álvarez - Secretaría de Desarrollo Social de la Comuna de Álvarez",
+    "localidad": "Rosario - Álvarez",
+    "direccion": "Av. San Martín y 9 de Julio, Alvarez | Horario de atención: lunes a jueves de 9 a 13 hs | viernes de 9 a 12 hs",
+    "contacto": "Teléfono: 3402559420 | Correo electrónico: discapacidad@alvarezweb.gob.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora Hospital S.A.M.Co de Ceres - Hospital de Ceres | Sistema para la Atención Médica de la Comunidad (S.A.M.Co.)",
+    "localidad": "San Cristobal - Ceres",
+    "direccion": "Chacabuco 378, Ceres | Horario de atención: lunes a viernes de 7 a 13 hs",
+    "contacto": "Teléfono: 3491421117 Int. 116 | Correo electrónico: cud_ceres@santafe.gov.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora San Javier - Hospital de San Javier Dr. Guillermo Rawson",
+    "localidad": "San Javier",
+    "direccion": "Av. Teófilo Madrejón 1320 | Horario de atención: lunes a viernes de 7 a 13 hs",
+    "contacto": "Teléfono: 3405420343 | Correo electrónico: virgidspaz@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora S.A.M.Co. de Barrancas - Hospital de Barrancas | Sistema para la Atención Médica de la Comunidad (S.A.M.Co.)",
+    "localidad": "San Jerónimo - Barrancas",
+    "direccion": "Dr. Agote 132, Barrancas | Horario de atención: lunes, martes y viernes de 8 a 12 hs",
+    "contacto": "Teléfono: 3466428642 | Correo electrónico: samcobarrancasadm@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora S.A.M.Co. Galvez - Hospital Dr. Alfredo Baetti de Galvez | Sistema para la Atención Médica de la Comunidad (S.A.M.Co.)",
+    "localidad": "San Jerónimo - Galvez",
+    "direccion": "Mitre 1561, Galvez | Horario de atención: martes a viernes de 7:30 a 12:30 hs",
+    "contacto": "Teléfono: 3404550139 | Correo electrónico: rehabilitacionsamcogalvez@cegnet.com.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora de Maciel - Hospital Federico Meroi de Maciel | Sistema para la Atención Médica de la Comunidad (S.A.M.Co.)",
+    "localidad": "San Jerónimo - Maciel",
+    "direccion": "Bv. Sarmiento 84, Maciel | Horario de atención: lunes a viernes de 8 a 13 hs",
+    "contacto": "Teléfono: 3476470240 |3476483020 | Correo electrónico: carlarodriguezpieropan@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora Hospital San Justo - Hospital Dr. Juan O. Lanza de San Justo | Sistema para la Atención Médica de la Comunidad (S.A.M.Co.)",
+    "localidad": "San Justo",
+    "direccion": "Italia 2865 | Horario de atención: lunes, martes y jueves de 8 a 12 hs",
+    "contacto": "Teléfono: 3498427377 Int. 660 | Correo electrónico: cudsanjusto@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora de Discapacidad de San Lorenzo - Centro de Integración Comunitario (C.I.C.) de San Lorenzo Virgen de Itatí",
+    "localidad": "San Lorenzo",
+    "direccion": "Gral. J.J. Valle y Belgrano | Horario de atención: lunes a viernes de 7 a 13 hs",
+    "contacto": "Teléfono: 3413629815 | Correo electrónico: subsecretariasanlorenzo@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora de Capitan Bermudez - Centro Integrador Comunitario (C.I.C) de Capitán Bermudez",
+    "localidad": "San Lorenzo - Capitán Bermudez",
+    "direccion": "Laprida y Ayacucho, Capitán Bermudez | Horario de atención: lunes a viernes de 8 a 12 hs",
+    "contacto": "Teléfono: 3413090557 | Correo electrónico: discapacidad.mcb@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora de Fray Luis Beltrán - Hospital de Fray Luis Beltrán | Sistema para la Atención Médica de la Comunidad (S.A.M.Co.)",
+    "localidad": "San Lorenzo - Fray Luis Beltrán",
+    "direccion": "Pte. Perón 501, Fray Luis Beltrán | Horario de atención: lunes a viernes de 8 a 12 hs",
+    "contacto": "Teléfono: 3413593420 | Correo electrónico: marianreig02@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora de Discapacidad de Funes - Centro de Discapacidad de Funes (Ce.Di.F.)",
+    "localidad": "San Lorenzo - Funes",
+    "direccion": "Montevideo 1555, Funes | Horario de atención: lunes a viernes de 7 a 13 hs",
+    "contacto": "Teléfono: 3413103132 | Correo electrónico: juntadediscapacidad@funes.gob.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora de Roldán - Área de Inclusión para Personas con Discapacidad de la Municipalidad de Roldán | Centro de Gestión Municipal",
+    "localidad": "San Lorenzo - Roldán",
+    "direccion": "Entre Ríos 1041, Roldán | Horario de atención: lunes a viernes de 7:30 a 12:30 hs",
+    "contacto": "Teléfono: 3413795502 | Correo electrónico: salud@roldan.gov.ar | tsocialsalud@roldan.gov.ar | discapacidad@roldan.gov.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora Interdisciplinaria Villa Mugueta - Hospital de Villa Mugueta | Sistema para la Atención Médica de la Comunidad (S.A.M.Co.)",
+    "localidad": "San Lorenzo - Villa Mugueta",
+    "direccion": "Rivadavia 798, Villa Mugueta | Horario de atención: viernes (uno al mes) de 8 a 12 hs o de 13 a 17 hs",
+    "contacto": "Teléfono: 3412586192 | Correo electrónico: jdiscapacidadvm@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora de Discapacidad El Trébol - Hogar Permanente Para Personas Con Discapacidad Arco Iris",
+    "localidad": "San Martín - El Trébol",
+    "direccion": "Mendoza 667, El Trébol | Horario de atención: lunes a viernes de 8 a 14 hs",
+    "contacto": "Teléfono: 3401522864 | Correo electrónico: discapacidad@eltrebol.gov.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora S.A.M.Co María Susana - Hospital de María Susana | Sistema para la Atención Médica de la Comunidad (S.A.M.Co.)",
+    "localidad": "San Martín - María Susana",
+    "direccion": "Santiago del Estero 567, María Susana | Horario de atención: lunes y miércoles de 16 a 19 hs",
+    "contacto": "Teléfono: 3401466296 | 3401466878 | Correo electrónico: areadiscapacidadms@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora de San Jorge N° 1 - Hospital de San José | Sistema para la Atención Médica de la Comunidad (S.A.M.Co.)",
+    "localidad": "San Martín - San Jorge",
+    "direccion": "Urquiza 1648, San Jorge | Horario de atención: lunes a viernes de 7 a 13 hs",
+    "contacto": "Teléfono: 3406432193 | Correo electrónico: lpiccato@hospitalsanjorge.com.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital General Dr. Emilio Mira y López",
+    "localidad": "Santa Fe de La Vera Cruz",
+    "direccion": "Av. Blas Parera 8430 | Horario de atención: lunes a viernes de 7:30 a 13 hs",
+    "contacto": "Teléfono: 3424579225 Int. 356 | Correo electrónico: juntacudmyl@santafe.gov.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Provincial Gumersindo Sayago",
+    "localidad": "Santa Fe de La Vera Cruz",
+    "direccion": "Av. French 5224 | Horario de atención: lunes a jueves de 11 a 15 hs",
+    "contacto": "Teléfono: 3424579237/40 Int. 123 y 149 | Correo electrónico: rosamonzon2009@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital de Niños Dr. Orlando Alassia",
+    "localidad": "Santa Fe de La Vera Cruz",
+    "direccion": "Mendoza 4151 | Horario de atención: lunes, martes y miércoles de 8 a 12 hs",
+    "contacto": "Teléfono: 3424505900 Int. 104 | Correo electrónico: susanabraidot@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital de Rehabilitación Integral Dr. Carlos Vera Candioti",
+    "localidad": "Santa Fe de La Vera Cruz",
+    "direccion": "Monzeñor Zaspe 3738 | Almirante Brown 7386 (Niños) | Horario de atención: lunes a viernes de 7:30 a 14 hs",
+    "contacto": "Teléfono: 3424573511 Int. 113 | 3424578931|3424573526 | Correo electrónico: dcenturion@santafe.gov.ar | cir-hrveracandioti@santafe.gov.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital. Dr. José María Cullen",
+    "localidad": "Santa Fe de La Vera Cruz",
+    "direccion": "Av. Freire 2150 | Horario de atención: lunes a viernes de 7 a 13 hs",
+    "contacto": "Teléfono: 3425434773 | Correo electrónico: ssocialcullen@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora Policía de Santa Fe - Dirección General de Servicios Sociales de la Policía de Santa Fe",
+    "localidad": "Santa Fe de La Vera Cruz",
+    "direccion": "Tucumán 3489 | Horario de atención: lunes a viernes de 8 a 19 hs",
+    "contacto": "Teléfono: 3426399808 | Correo electrónico: dgssdiscapacidad@santafe.gov.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora de Santa Fe | 1° Circunscripción - Dirección Provincial de Inclusión para Personas con Discapacidad | 1° Circunscripción | Subsecretaría de Inclusión para Personas con Discapacidad",
+    "localidad": "Santa Fe de La Vera Cruz",
+    "direccion": "Dr. Zavalla 3361 PB y 2° Piso | Horario de atención: lunes a viernes de 7 a 13 hs",
+    "contacto": "Teléfono: 3424572481/77/78 | Correo electrónico: supervisioncud@santafe.gov.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora S.A.M.Co. Laguna Paiva - Hospital Norberto Trossero de Laguna Paiva | Sistema para la Atención Médica de la Comunidad (S.A.M.Co.)",
+    "localidad": "Santa Fe de La Vera Cruz - Laguna Paiva",
+    "direccion": "Colono 1344, Laguna Paiva | Horario de atención: jueves a partir de 14 hs",
+    "contacto": "Teléfono: 3425845845 | Correo electrónico: juntadiscapacidadpaiva@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Hospital Protomédico Dr. Manuel Rodríguez",
+    "localidad": "Santa Fe de La Vera Cruz - Recreo",
+    "direccion": "Ruta Provincial 5, entre Ruta 2 y Ruta 11, Recreo | Horario de atención: martes de 8 a 12 hs",
+    "contacto": "Teléfono: 3424574921/22/26 Int. 125 | Correo electrónico: noelciordano1984@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora Municipal San José del Rincón - Junta de Discapacidad | Municipalidad de San José del Rincón",
+    "localidad": "Santa Fe de La Vera Cruz - San José del Rincón",
+    "direccion": "San Martín 1467, San José del Rincón | Horario de atención: lunes a viernes de 8 a 12 hs",
+    "contacto": "Teléfono: 3425367102 | Correo electrónico: saludsjdelrincon@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora Santo Tomé - Área de Discapacidad de la Municipalidad de Santo Tomé",
+    "localidad": "Santa Fe de La Vera Cruz - Santo Tomé",
+    "direccion": "Córdoba 2027, Santo Tomé | Horario de atención: lunes a viernes de 7 a 13 hs",
+    "contacto": "Teléfono: 3424740402 Int. 121 | Correo electrónico: juntadiscapacidad@santotome.gov.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora Municipal Sauce Viejo - Área de Discapacidad | Municipalidad de Sauce Viejo",
+    "localidad": "Santa Fe de La Vera Cruz - Sauce Viejo",
+    "direccion": "Rivadavia y Las Heras, Sauce Viejo | Horario de atención: martes a viernes de 8 a 13 hs",
+    "contacto": "Teléfono: 3425366264 | Correo electrónico: juntamedicadiscapacidadsv@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora Vera - Hospital Regional Vera",
+    "localidad": "Vera",
+    "direccion": "Juan de Garay 2260 | Horario de atención: lunes a viernes de 7 a 13 hs",
+    "contacto": "Teléfono: 3483420146 | Correo electrónico: juntaevaluadoradepersonascondiscapacidadvera@hotmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora Calchaquí - Hospital de Calchaquí | Sistema para la Atención Médica de la Comunidad (S.A.M.Co.)",
+    "localidad": "Vera - Calchaquí",
+    "direccion": "C.I.C. Salta y A.P. Justo, Calchaquí | Horario de atención: lunes a viernes de 8 a 12 hs",
+    "contacto": "Teléfono: 3483431524 | Correo electrónico: evangelinadougaluk@hotmail.com"
+   }
+  ],
+  "Santiago del Estero": [
+   {
+    "nombre": "Junta Evaluadora Descentralizada de Evaluación de Discapacidad - Municipalidad de Frías",
+    "localidad": "Choya - Frías",
+    "direccion": "Rivadavia y Tucumán, FRÍAS | Horario de atención: lunes a viernes de 8 a 13 h",
+    "contacto": "Correo electrónico: certificadoscud2023@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Centro Provincial de Salud Infantil (Ce.P.S.I.) Eva Perón",
+    "localidad": "Santiago del Estero Capital",
+    "direccion": "Misiones 1087 | Horario de atención:",
+    "contacto": ""
+   },
+   {
+    "nombre": "Junta Evaluadora de Santiago del Estero N.° 1 - Dirección Provincial de Discapacidad | Jefatura de Gabinete de Ministros",
+    "localidad": "Santiago del Estero Capital",
+    "direccion": "Av. Belgrano Sur 1880 | Horario de atención: lunes a viernes de 7 a 13 h",
+    "contacto": "Teléfono de contacto: 3856097440 | Correo electrónico: juntaevaluadorasgodelestero@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora de Santiago del Estero N.° 2 - Dirección Provincial de Discapacidad | Jefatura de Gabinete de Ministros",
+    "localidad": "Santiago del Estero Capital",
+    "direccion": "Av. Belgrano Sur 1880 | Horario de atención: lunes a viernes de 7 a 13 h",
+    "contacto": "Teléfono de contacto: 3856097440 | Correo electrónico: juntaevaluadorasgodelestero@gmail.com"
+   }
+  ],
+  "Tierra del Fuego": [
+   {
+    "nombre": "Junta Evaluadora - Dirección de Juntas de Certificación de Discapacidad | Zona Norte",
+    "localidad": "Río Grande",
+    "direccion": "Guayaquil 376 | Horario de atención: lunes a viernes de 8 a 15 h",
+    "contacto": "Teléfono de contacto: 2964698571 | Correo electrónico: direcciondiscazn@gmail.com"
+   },
+   {
+    "nombre": "Junta Evaluadora - Dirección de Juntas de Certificación de Discapacidad | Zona Sur",
+    "localidad": "Ushuaia",
+    "direccion": "Onachaga 146 | Horario de atención: lunes a viernes de 9 a 15 h",
+    "contacto": "Teléfono de contacto: 2901640221 | Correo electrónico: departamentodiscapacidadms@gmail.com"
+   }
+  ],
+  "Tucumán": [
+   {
+    "nombre": "Junta Evaluadora Itinerante- Junta de Discapacidad | Ministerio de Salud",
+    "localidad": "San Miguel de Tucumán",
+    "direccion": "Toda la provincia de Tucumán | Horario de atención: lunes a viernes de 7 a 13 h",
+    "contacto": "Correo electrónico: juntaevalydiscap@msptucuman.gov.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora N° 1 - Junta de Discapacidad | Ministerio de Salud",
+    "localidad": "San Miguel de Tucumán",
+    "direccion": "Santa Fe 930 | Horario de atención: lunes a viernes de 7 a 13 h",
+    "contacto": "Correo electrónico: juntaevalydiscap@msptucuman.gov.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora N° 2 - Junta de Discapacidad | Ministerio de Salud",
+    "localidad": "San Miguel de Tucumán",
+    "direccion": "Santa Fe 930 | Horario de atención: lunes a viernes de 7 a 13 h",
+    "contacto": "Correo electrónico: juntaevalydiscap@msptucuman.gov.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora N° 3 - Junta de Discapacidad | Ministerio de Salud",
+    "localidad": "San Miguel de Tucumán",
+    "direccion": "Santa Fe 930 | Horario de atención: lunes a viernes de 7 a 13 h",
+    "contacto": "Correo electrónico: juntaevalydiscap@msptucuman.gov.ar"
+   },
+   {
+    "nombre": "Junta Evaluadora N° 4 - Junta de Discapacidad | Ministerio de Salud",
+    "localidad": "San Miguel de Tucumán",
+    "direccion": "Santa Fe 930 | Horario de atención: lunes a viernes de 7 a 13 h",
+    "contacto": "Correo electrónico: juntaevalydiscap@msptucuman.gov.ar"
+   }
+  ]
+ }
+}

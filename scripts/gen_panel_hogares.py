@@ -1,9 +1,10 @@
 """
 gen_panel_hogares.py — genera la pestaña "Hogares" de templates/index.html.
 
-Los hogares salen de HOGARES (abajo, cada uno con su fuente) y los organismos
-provinciales para pedir una vacante salen de JUNTAS_POR_PROVINCIA
-(scripts/datos_cud.py), así la pestaña CUD y la de Hogares no se contradicen.
+Los hogares salen de HOGARES (abajo, cada uno con su fuente). Para orientación
+en cada provincia, la tabla enlaza a las juntas evaluadoras del listado OFICIAL
+de ANDIS que muestra la pestaña CUD (scripts/scraper_juntas.py); ya no usa los
+organismos y teléfonos escritos a mano, que estaban desactualizados.
 
 Uso:  python -m scripts.gen_panel_hogares
 Reemplaza el bloque entre los marcadores HOGARES:INICIO y HOGARES:FIN.
@@ -12,7 +13,7 @@ import html
 import json
 from pathlib import Path
 
-from scripts.datos_cud import JUNTAS_POR_PROVINCIA
+from scripts.scraper_juntas import PROVINCIAS as JURISDICCIONES
 
 ROOT = Path(__file__).resolve().parent.parent
 INDEX = ROOT / "templates" / "index.html"
@@ -104,7 +105,7 @@ HOGARES = [
          verif="✔ sitio oficial de la asociación"),
 ]
 
-PROVINCIAS = sorted(JUNTAS_POR_PROVINCIA, key=lambda p: (p != "Buenos Aires", p != "CABA", p))
+PROVINCIAS = sorted(JURISDICCIONES, key=lambda p: (p != "Buenos Aires", p != "CABA", p))
 
 
 def e(s):
@@ -112,7 +113,6 @@ def e(s):
 
 
 def fila_provincia(prov):
-    org = JUNTAS_POR_PROVINCIA[prov]
     propios = [h for h in HOGARES if h["prov"] == prov]
     if propios:
         lista = "<ul class=\"ls-lista\" style=\"margin:0 0 0 1rem\">" + "".join(
@@ -120,14 +120,11 @@ def fila_provincia(prov):
             + (f" &middot; {e(h['tel'])}" if h["tel"] else "")
             + f"<br><span class=\"muted\">{e(h['verif'])}</span></li>" for h in propios) + "</ul>"
     else:
-        lista = ("<span class=\"muted\">Sin hogar verificado todav&iacute;a en este listado. "
-                 "Pedí la n&oacute;mina de hogares habilitados al organismo de la columna siguiente.</span>")
-    url = org.get("url_turno") or ""
-    organismo = e(org["nombre_organismo"])
-    if url:
-        organismo = f"<a href=\"{e(url)}\" target=\"_blank\" rel=\"noopener\">{organismo}</a>"
+        lista = "<span class=\"muted\">Sin hogar verificado todav&iacute;a en este listado.</span>"
+    orientacion = (f"<a href=\"#\" data-junta=\"{e(prov)}\">Juntas evaluadoras oficiales de {e(prov)}</a>"
+                   "<br><span class=\"muted\" style=\"font-size:.78rem\">Listado de ANDIS con direcci&oacute;n y contacto</span>")
     return (f"<tr data-prov=\"{e(prov)}\"><th scope=\"row\">{e(prov)}</th><td>{lista}</td>"
-            f"<td>{organismo}<br>{e(org.get('telefono'))}</td></tr>")
+            f"<td>{orientacion}</td></tr>")
 
 
 def panel():
@@ -176,16 +173,17 @@ def panel():
       </div>
 
       <div class="card" id="ho-provincias">
-        <h3>Las 24 jurisdicciones: hogares y d&oacute;nde pedir una vacante</h3>
+        <h3>Las 24 jurisdicciones: hogares y d&oacute;nde pedir orientaci&oacute;n</h3>
         <p>
           Para ingresar a un hogar suele hacer falta: CUD vigente, indicaci&oacute;n del m&eacute;dico o equipo tratante,
           informe social y la autorizaci&oacute;n de la obra social o del programa provincial. Si no ten&eacute;s cobertura,
-          el pedido se hace al organismo provincial de discapacidad.
+          el pedido se hace al &aacute;rea de discapacidad de tu provincia; las juntas evaluadoras oficiales (columna derecha)
+          pueden orientarte.
         </p>
         <div class="am-table-wrap">
           <table class="tbl il-prov" id="ho-tabla">
-            <caption class="muted" style="text-align:left">Organismos tomados de la pesta&ntilde;a CUD de este sitio.</caption>
-            <thead><tr><th scope="col">Jurisdicci&oacute;n</th><th scope="col">Hogares listados</th><th scope="col">Organismo provincial (vacantes y orientaci&oacute;n)</th></tr></thead>
+            <caption class="muted" style="text-align:left">Juntas: listado oficial de ANDIS (se actualiza cada semana).</caption>
+            <thead><tr><th scope="col">Jurisdicci&oacute;n</th><th scope="col">Hogares listados</th><th scope="col">Orientaci&oacute;n en la provincia</th></tr></thead>
             <tbody>
 {filas}
             </tbody>

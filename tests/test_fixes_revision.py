@@ -300,7 +300,7 @@ def test_tratamientos_pestana_nuevos_de_vanguardia():
 # ── Pestaña Hogares ──────────────────────────────────────────────────────────
 def test_pestana_hogares_generada_y_consistente():
     from scripts import gen_panel_hogares as g
-    from scripts.datos_cud import JUNTAS_POR_PROVINCIA
+    from scripts.scraper_juntas import PROVINCIAS as JUNTAS_POR_PROVINCIA
     html = (ROOT / "templates" / "index.html").read_text(encoding="utf-8")
     nav = html[html.index("<nav>"):html.index("</nav>")]
     assert 'data-panel="hogares"' in nav
