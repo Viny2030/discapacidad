@@ -1,6 +1,28 @@
 {
  "normas": [
   {
+   "id": "20261111-RESOL-2026-1612-APN-MS",
+   "organismo": "MINISTERIO DE SALUD",
+   "norma": "Resolución 1612/2026",
+   "codigo": "RESOL-2026-1612-APN-MS",
+   "fecha": "2026-11-11",
+   "url": "https://www.boletinoficial.gob.ar/seccion/primera/20261111",
+   "pdf": "https://otslist.boletinoficial.gob.ar/ots/download/1caf186b8eaf07c6f64d5ce10378e301ba1a7d8f51addf79617e293e44e13693/0/",
+   "resumen": "Desígnase con carácter transitorio, a partir del 16 de octubre de 2026 y por el término de CIENTO OCHENTA (180) días hábiles, al abogado Eduardo Martin BERSCHADSKY (D.N.I N° [omitido]), en el cargo de Director Nacional de Acceso a los Servicios de Salud dependiente de la SUBSECRETARÍA DE POLITICAS DE ACCESO Y APOYOS de la SECRETARÍA NACIONAL DE DISCAPACIDAD del MINISTERIO DE SALUD, Nivel A, Grado 0, del Convenio…",
+   "categoria": "otras"
+  },
+  {
+   "id": "20261111-RESOL-2026-1604-APN-MS",
+   "organismo": "MINISTERIO DE SALUD",
+   "norma": "Resolución 1604/2026",
+   "codigo": "RESOL-2026-1604-APN-MS",
+   "fecha": "2026-11-11",
+   "url": "https://www.boletinoficial.gob.ar/seccion/primera/20261111",
+   "pdf": "https://otslist.boletinoficial.gob.ar/ots/download/1caf186b8eaf07c6f64d5ce10378e301ba1a7d8f51addf79617e293e44e13693/0/",
+   "resumen": "Prorrógase, a partir del 7 de octubre de 2026 y por el término de CIENTO OCHENTA (180) días hábiles, la designación transitoria efectuada por conducto del Decreto N.° 371 del 25 de abril de 2018, del contador Hugo Alberto GARCÍA (D.N.I N.° 28.268.805) en el cargo de Director de Asignaciones No Contributivas dependiente de la Dirección Nacional de Gestión y Asignación de Apoyos de la SUBSECRETARÍA DE POLÍTICAS DE…",
+   "categoria": "otras"
+  },
+  {
    "id": "20261103-RESOL-2026-3702-APN-SND#MS",
    "organismo": "MINISTERIO DE SALUD SECRETARÍA NACIONAL DE DISCAPACIDAD",
    "norma": "Resolución 3702/2026",
@@ -1102,6 +1124,7 @@
   }
  ],
  "dias_revisados": [
+  "2026-11-11",
   "2026-11-06",
   "2026-11-05",
   "2026-11-04",
@@ -1313,5 +1336,5 @@
  ],
  "fuente": "Boletín Oficial de la República Argentina — sección primera (PDF oficial)",
  "fuente_url": "https://otslist.boletinoficial.gob.ar/ots/",
- "actualizado": "2026-11-10"
+ "actualizado": "2026-11-11"
 }
