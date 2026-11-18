@@ -125,7 +125,108 @@ REQUISITOS_POR_TIPO = {'motora': {'nombre': 'Discapacidad motora',
                                          'referencia'],
               'especialidades_evaluadoras': ['Especialista del órgano afectado', 'Médico clínico'],
               'tip': 'Para enfermedades raras, el diagnóstico de un centro de referencia nacional '
-                     'tiene mayor peso.'}}
+                     'tiene mayor peso.'},
+ # FIX (auditoría — Anexo 6.1 y 6.2): séptimo tipo, agregado de forma aditiva.
+ # La Epidermolisis Ampollosa (EB) es una condición genética dermatológica que
+ # no encajaba con precisión en ninguna de las seis categorías anteriores.
+ 'dermatologica': {'nombre': 'Epidermolisis Ampollosa (EB)',
+    'descripcion': (
+        'Grupo de enfermedades genéticas poco frecuentes que provocan fragilidad '
+        'extrema de la piel y las mucosas, con formación de ampollas ante mínimos '
+        'roces o traumatismos. Existen más de 30 subtipos agrupados en cuatro '
+        'categorías principales según la capa de la piel donde se forman las ampollas.'
+    ),
+    'subtipos': [
+        {
+            'id': 'ebs',
+            'nombre': 'Epidermolisis ampollosa simple (EBS)',
+            'capa_afectada': 'Epidermis (capa más superficial)',
+            'descripcion': (
+                'La forma más común y generalmente la más leve. Las ampollas se '
+                'producen en la capa más superficial de la piel, suelen afectar '
+                'manos y pies, y por lo general sanan sin dejar cicatrices profundas.'
+            ),
+        },
+        {
+            'id': 'ebj',
+            'nombre': 'Epidermolisis ampollosa juntural (EBJ)',
+            'capa_afectada': 'Unión dermoepidérmica (lámina lúcida)',
+            'descripcion': (
+                'Las ampollas se forman en la unión entre la epidermis y la dermis. '
+                'Suele ser grave desde el nacimiento y afecta extensamente piel y mucosas.'
+            ),
+        },
+        {
+            'id': 'ebd',
+            'nombre': 'Epidermolisis ampollosa distrófica (EBD)',
+            'capa_afectada': 'Dermis (capa más profunda)',
+            'descripcion': (
+                'Las ampollas se producen en una capa más profunda de la piel. Al '
+                'sanar, las heridas generan cicatrices fibrosas que pueden provocar '
+                'retracciones en las articulaciones o la fusión de los dedos de manos '
+                'y pies (sindactilia).'
+            ),
+        },
+        {
+            'id': 'kindler',
+            'nombre': 'Síndrome de Kindler',
+            'capa_afectada': 'Múltiples niveles de la piel',
+            'descripcion': (
+                'El tipo más raro de EB; las ampollas pueden formarse en múltiples '
+                'niveles de la piel y suele presentar fotosensibilidad (sensibilidad '
+                'extrema al sol) y adelgazamiento progresivo de la piel.'
+            ),
+        },
+    ],
+    'documentos_adicionales': [
+        'Informe de dermatólogo o genéticista con diagnóstico de subtipo '
+        '(idealmente confirmado por biopsia de piel o estudio genético)',
+        'Informe nutricional si hay compromiso esofágico o déficit de proteínas',
+        'Informe oftalmológico y odontológico de seguimiento',
+    ],
+    'especialidades_evaluadoras': ['Dermatólogo', 'Genéticista', 'Pediatra (si es diagnóstico infantil)'],
+    'tip': (
+        'El informe del subtipo específico (EBS/EBJ/EBD/Kindler) es clave para la '
+        'junta evaluadora porque determina el pronóstico funcional y la cobertura '
+        'de insumos de curación especiales.'
+    ),
+}}
+
+
+# ── MANEJO_INTEGRAL ──────────────────────────────────────────────────────────
+# Lista nueva (aditiva): cuidados de apoyo no farmacológico por condición, en
+# paralelo a BENEFICIOS. Primera entrada: Epidermolisis Ampollosa (auditoría
+# Anexo 6.3), independiente del subtipo (EBS/EBJ/EBD/Kindler).
+MANEJO_INTEGRAL = [
+    {
+        'id': 'eb-manejo-integral',
+        'tipo': 'dermatologica',
+        'nombre': 'Manejo integral de la Epidermolisis Ampollosa',
+        'descripcion': (
+            'Actualmente no tiene cura definitiva. El abordaje es integral y '
+            'multidisciplinario, combinando cuidado de heridas, control de síntomas, '
+            'soporte nutricional y rehabilitación.'
+        ),
+        'componentes': [
+            {
+                'area': 'Cuidado diario de heridas',
+                'detalle': 'Curaciones meticulosas con apósitos especiales no adherentes para prevenir infecciones y proteger la piel.',
+            },
+            {
+                'area': 'Control del dolor y picazón',
+                'detalle': 'Uso de analgésicos y tratamientos dermatológicos específicos.',
+            },
+            {
+                'area': 'Soporte nutricional',
+                'detalle': 'Dietas blandas, hipercalóricas y suplementos para compensar la pérdida de proteínas y facilitar la cicatrización, especialmente si hay lesiones esofágicas.',
+            },
+            {
+                'area': 'Prevención y rehabilitación',
+                'detalle': 'Ropa sin costuras, calzado especial, fisioterapia para mantener la movilidad, y seguimiento oftalmológico y odontológico continuo.',
+            },
+        ],
+    },
+]
 
 
 PASOS_TRAMITE = [{'paso': 1,

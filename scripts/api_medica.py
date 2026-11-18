@@ -60,7 +60,12 @@ PUBMED_BASE = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils"
 CT_BASE     = "https://clinicaltrials.gov/api/v2/studies"
 PUBMED_KEY  = os.getenv("PUBMED_API_KEY", "")
 
-TIPOS_VALIDOS = {"motora", "visual", "auditiva", "intelectual", "psicosocial", "visceral"}
+# FIX (auditoría — Anexo 6 "Brecha de taxonomía"): se agrega "dermatologica"
+# como séptimo valor para cubrir condiciones genéticas de piel (p. ej.
+# Epidermolisis Ampollosa) que no encajaban con precisión en ninguna de las
+# seis categorías anteriores. Cambio aditivo: no afecta los seis tipos
+# existentes ni los endpoints que ya filtran por ellos.
+TIPOS_VALIDOS = {"motora", "visual", "auditiva", "intelectual", "psicosocial", "visceral", "dermatologica"}
 
 # ── Caché ETL Médico (Tarea 11) ───────────────────────────────────────────────
 
@@ -261,6 +266,10 @@ QUERIES_DEFAULT = {
     "intelectual": "intellectual disability intervention ABA 2023 2024",
     "psicosocial": "mental health psychosocial disability treatment 2023 2024",
     "visceral":    "chronic disease organ disability treatment 2023 2024",
+    # FIX: sin esta entrada, /api/articulos?tipo=dermatologica y
+    # /api/tratamientos/dermatologica harían KeyError (500) ahora que
+    # "dermatologica" es un tipo válido (ver TIPOS_VALIDOS más arriba).
+    "dermatologica": "epidermolysis bullosa skin fragility treatment 2023 2024",
 }
 
 DESCRIPCIONES = {
@@ -270,6 +279,7 @@ DESCRIPCIONES = {
     "intelectual": "Alteraciones en la función intelectual. Incluye síndrome de Down, TEA, TDAH.",
     "psicosocial": "Alteraciones en la conducta adaptativa y salud mental. Incluye esquizofrenia, depresión mayor.",
     "visceral":    "Afecta órganos internos. Incluye insuficiencia renal, cardíaca, diabetes, enfermedades raras.",
+    "dermatologica": "Enfermedades genéticas de la piel y mucosas. Incluye Epidermolisis Ampollosa (EBS, EBJ, EBD, Kindler).",
 }
 
 # ── Condiciones específicas (búsqueda curada) ─────────────────────────────────

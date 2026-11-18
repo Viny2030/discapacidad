@@ -4,12 +4,19 @@ Endpoints FastAPI para el módulo estadístico del Observatorio de Discapacidad.
 """
 
 from fastapi import APIRouter, Query, HTTPException
-from typing import Optional
+from typing import Literal, Optional
 import pandas as pd
 from pathlib import Path
 import json
 
+from scripts.accesibilidad import grafico_accesible
+
 router = APIRouter(prefix="/api", tags=["estadístico"])
+
+# FIX (auditoría WCAG/Pydantic — Sección 2 "Validación de entrada"): antes se
+# comparaba `orden` como string suelto; ahora FastAPI valida con Literal y
+# devuelve 422 automático ante cualquier valor que no sea uno de estos tres.
+OrdenProvincias = Literal["cud_vigentes", "tasa_prevalencia", "provincia"]
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 PROC_DIR = BASE_DIR / "data" / "processed"
@@ -88,10 +95,17 @@ async def resumen_nacional():
 
 
 @router.get("/provincias")
-async def provincias(
-    orden: str = Query("cud_vigentes", description="cud_vigentes|tasa_prevalencia|provincia"),
+def provincias(
+    orden: OrdenProvincias = Query("cud_vigentes", description="cud_vigentes|tasa_prevalencia|provincia"),
 ):
-    """CUD y tasa de prevalencia por provincia."""
+    """
+    CUD y tasa de prevalencia por provincia.
+
+    FIX (auditoría — Sección 2 "Cómputo en caliente"): declarado con `def`
+    (no `async def`), igual que el fix ya aplicado en api_medica.py. Si falta
+    el CSV cacheado, este endpoint corre Pandas en caliente (construir_df_provincias);
+    con `async def` eso bloqueaba el event loop entero mientras corría.
+    """
     data = _load_csv("prevalencia_provincias.csv")
     if not data:
         from scripts.etl_estadistico import construir_df_provincias
@@ -102,7 +116,12 @@ async def provincias(
     elif orden == "provincia":
         data.sort(key=lambda x: x.get("provincia", ""))
     return {"total": len(data), "orden": orden, "provincias": data, **_fuente_oficial(_andis()),
-            "nota": "La tasa es un cálculo propio sobre la población estimada 2022 (INDEC)."}
+            "nota": "La tasa es un cálculo propio sobre la población estimada 2022 (INDEC).",
+            # Nuevo: metadatos de accesibilidad para el <canvas> Chart.js que consume este endpoint.
+            "accesibilidad": grafico_accesible(
+                data, titulo="CUD y tasa de prevalencia por provincia",
+                columna_etiqueta="provincia", columna_valor="cud_vigentes",
+            )}
 
 
 @router.get("/provincias/{nombre}")
@@ -116,28 +135,51 @@ async def provincia_detalle(nombre: str):
 
 
 @router.get("/evolucion")
-async def evolucion_historica():
-    """Totales nacionales con fuente (no hay serie anual oficial publicada)."""
+def evolucion_historica():
+    """
+    Totales nacionales con fuente (no hay serie anual oficial publicada).
+
+    FIX: `def` en vez de `async def` — ver nota en /provincias.
+    """
     data = _load_csv("evolucion_cud.csv")
     if not data:
         from scripts.etl_estadistico import construir_df_evolucion
         data = construir_df_evolucion().to_dict("records")
-    return {"fuente": "ANDIS y dato informado al Congreso", "series": data}
+    return {"fuente": "ANDIS y dato informado al Congreso", "series": data,
+            "accesibilidad": grafico_accesible(
+                data, titulo="Evolución histórica de CUD vigentes",
+                columna_etiqueta="fecha", columna_valor="total",
+            )}
 
 
 @router.get("/tipos")
-async def tipos_discapacidad():
-    """Distribución de CUD por tipo de discapacidad."""
+def tipos_discapacidad():
+    """
+    Distribución de CUD por tipo de discapacidad.
+
+    FIX: `def` en vez de `async def` — ver nota en /provincias.
+    """
     data = _load_csv("cud_por_tipo.csv")
     if not data:
         from scripts.etl_estadistico import construir_df_tipos
         data = construir_df_tipos().to_dict("records")
-    return {"total": sum(d["cantidad"] for d in data), "tipos": data, **_fuente_oficial(_andis())}
+    return {
+        "total": sum(d["cantidad"] for d in data), "tipos": data, **_fuente_oficial(_andis()),
+        # Nuevo: metadatos de accesibilidad para el <canvas> Chart.js que consume este endpoint.
+        "accesibilidad": grafico_accesible(
+            data, titulo="Distribución de CUD por tipo de discapacidad",
+            columna_etiqueta="tipo", columna_valor="cantidad",
+        ),
+    }
 
 
 @router.get("/caba/comunas")
-async def caba_comunas():
-    """CUD por comuna de CABA."""
+def caba_comunas():
+    """
+    CUD por comuna de CABA.
+
+    FIX: `def` en vez de `async def` — ver nota en /provincias.
+    """
     data = _load_csv("caba_por_comuna.csv")
     if not data:
         from scripts.etl_estadistico import construir_df_caba
@@ -147,6 +189,10 @@ async def caba_comunas():
         "comunas":       data,
         "oficial":       False,
         "fuente":        "Estimación propia por comuna (no oficial); el total de CABA es del informe oficial de ANDIS",
+        "accesibilidad": grafico_accesible(
+            data, titulo="CUD vigentes por comuna de CABA",
+            columna_etiqueta="nombre", columna_valor="cud",
+        ),
     }
 
 

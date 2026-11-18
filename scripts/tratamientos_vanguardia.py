@@ -599,6 +599,62 @@ TRATAMIENTOS = [
         "organismos_aprobacion": ["FDA (noviembre 2022)"],
         "tags": ["diabetes tipo 1", "teplizumab", "prevención", "inmunoterapia"],
     },
+
+    # ── DERMATOLÓGICA (Epidermolisis Ampollosa) ──────────────────────────────────
+    # Auditoría Anexo 6.4: tres aprobaciones FDA verificadas para EB distrófica/
+    # juntural (Vyjuvek, Filsuvez, Zevaskyn); se incluyen las dos primeras, con
+    # el mismo nivel de detalle regulatorio que el resto del módulo. Ninguna
+    # fue verificada contra ANMAT/Argentina — "disponibilidad_ar" queda
+    # deliberadamente sin dato, por la regla de veracidad absoluta del proyecto.
+    {
+        "id": "derm-001",
+        "tipo": "dermatologica",
+        "nombre": "Vyjuvek (beremagene geperpavec) — terapia génica tópica para EB distrófica",
+        "subtipo": "Terapia génica tópica",
+        "estado": "aprobado_intl",
+        "descripcion_simple": (
+            "Gel aplicado directamente sobre las heridas, una vez por semana, que "
+            "entrega una copia funcional del gen COL7A1 (deficiente en la EB distrófica) "
+            "mediante un virus herpes simple modificado. Es la primera terapia génica "
+            "tópica aprobada para esta enfermedad."
+        ),
+        "mecanismo": (
+            "Un vector viral (HSV-1 modificado, no replicativo) transporta el gen "
+            "COL7A1 funcional a las células de la piel para restaurar la producción "
+            "de colágeno tipo VII."
+        ),
+        "evidencia": "Aprobado por la FDA el 19 de mayo de 2023 para el tratamiento de heridas en pacientes con EB distrófica (DEB).",
+        "disponibilidad_ar": "No verificada ante ANMAT al momento de esta revisión — confirmar antes de publicar.",
+        "costo_estimado": "No informado en esta revisión.",
+        "centros_referencia": [],
+        "pubmed_query": "beremagene geperpavec Vyjuvek dystrophic epidermolysis bullosa",
+        "pmid_referencia": None,
+        "año_inicio": 2023,
+        "organismos_aprobacion": ["FDA (mayo 2023)"],
+        "tags": ["epidermolisis ampollosa", "EBD", "terapia génica", "COL7A1", "Vyjuvek"],
+    },
+    {
+        "id": "derm-002",
+        "tipo": "dermatologica",
+        "nombre": "Filsuvez (extracto de corteza de abedul) — gel tópico para EB juntural y distrófica",
+        "subtipo": "Tratamiento tópico (no génico)",
+        "estado": "aprobado_intl",
+        "descripcion_simple": (
+            "Gel tópico de aplicación directa sobre heridas de espesor parcial, "
+            "formulado con extractos de dos especies de abedul. Primer tratamiento "
+            "aprobado específicamente para heridas de la EB juntural."
+        ),
+        "mecanismo": "Mecanismo de acción exacto no establecido; demostró aceleración de la cicatrización en el ensayo de fase III EASE.",
+        "evidencia": "Aprobado por la FDA en diciembre de 2023 para heridas de EB juntural y distrófica en pacientes a partir de los 6 meses de edad.",
+        "disponibilidad_ar": "No verificada ante ANMAT al momento de esta revisión — confirmar antes de publicar.",
+        "costo_estimado": "No informado en esta revisión.",
+        "centros_referencia": [],
+        "pubmed_query": "Filsuvez oleogel birch triterpenes epidermolysis bullosa EASE trial",
+        "pmid_referencia": None,
+        "año_inicio": 2023,
+        "organismos_aprobacion": ["FDA (diciembre 2023)"],
+        "tags": ["epidermolisis ampollosa", "EBJ", "EBD", "Filsuvez", "tratamiento tópico"],
+    },
 ]
 
 
@@ -658,7 +714,11 @@ def _enriquecer(t: dict) -> dict:
     return t
 
 
-TIPOS_VALIDOS = {"motora", "visual", "auditiva", "intelectual", "psicosocial", "visceral"}
+# FIX (auditoría — Anexo 6 "Brecha de taxonomía"): se agrega "dermatologica"
+# para que los tratamientos derm-001/derm-002 (Epidermolisis Ampollosa) sean
+# filtrables por /api/vanguardia?tipo=dermatologica y /api/vanguardia/tipo/dermatologica,
+# igual que los otros seis tipos. Cambio aditivo.
+TIPOS_VALIDOS = {"motora", "visual", "auditiva", "intelectual", "psicosocial", "visceral", "dermatologica"}
 
 
 # ── Endpoints ──────────────────────────────────────────────────────────────────

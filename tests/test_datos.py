@@ -40,7 +40,11 @@ def test_requisitos_generales_completos():
 
 
 def test_tipos_discapacidad_completos():
-    tipos_esperados = {"motora", "visual", "auditiva", "intelectual", "psicosocial", "visceral"}
+    # "dermatologica" se agregó como séptimo tipo (auditoría Anexo 6.1, Opción A)
+    # para cubrir condiciones genéticas de piel como la Epidermolisis Ampollosa,
+    # que no encajaban con precisión en ninguna de las seis categorías originales.
+    tipos_esperados = {"motora", "visual", "auditiva", "intelectual", "psicosocial",
+                        "visceral", "dermatologica"}
     assert tipos_esperados == set(REQUISITOS_POR_TIPO.keys())
 
 
