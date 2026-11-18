@@ -453,6 +453,7 @@
     <button class="sub-btn" data-sub="fq" title="Pendiente de revisión por un/a neumólogo/a">Fibrosis quística*</button>
     <button class="sub-btn" data-sub="oncoped" title="Pendiente de revisión por un/a oncólogo/a pediatra">Cáncer infantil*</button>
     <button class="sub-btn" data-sub="trasplante" title="Pendiente de revisión por un/a nefrólogo/a o médico/a de trasplante">Trasplante y renal*</button>
+    <button class="sub-btn" data-sub="nuevas" title="Condiciones agregadas recientemente, pendientes de revisión profesional">Otras condiciones*</button>
     <p class="subnav-nota">* Secciones pendientes de revisión profesional.</p>
   </div>
 
@@ -778,7 +779,14 @@
             <option value="intelectual">Intelectual</option>
             <option value="psicosocial">Psicosocial</option>
             <option value="visceral">Visceral</option>
+            <option value="dermatologica">Dermatológica (EB)</option>
           </select>
+        </div>
+
+        <!-- Búsqueda libre de tratamientos de vanguardia por nombre o tag (usa /api/vanguardia?q=) -->
+        <div class="form-row" style="margin-top:.6rem">
+          <input type="text" id="vang-busqueda" placeholder="Buscar tratamiento por nombre o palabra clave (ej. Vyjuvek, exoesqueleto, Zolgensma)..." style="flex:1;min-width:220px" onkeydown="if(event.key==='Enter') buscarVanguardia()">
+          <button class="btn-sm" onclick="buscarVanguardia()">Buscar</button>
         </div>
         <p class="muted" style="font-size:.85rem;margin:.4rem 0">🔎 En cada tratamiento, el bot&oacute;n &laquo;Evidencia y ensayos actualizados&raquo; consulta en vivo PubMed y ClinicalTrials.gov; debajo de cada referencia ves su t&iacute;tulo traducido al espa&ntilde;ol.</p>
         <div id="vang-result" class="result-box"></div>
@@ -1397,6 +1405,61 @@ Por lo expuesto, pido que se haga lugar a la rehabilitación y se reanude el pag
           <li><a href="https://www.argentina.gob.ar/justicia/derechofacil/leysimple/enfermedades-poco-frecuentes" target="_blank" rel="noopener">Enfermedades poco frecuentes explicado (Derecho F&aacute;cil) ↗</a></li>
         </ul>
         <p class="muted">* Secci&oacute;n pendiente de revisi&oacute;n por un/a m&eacute;dico/a matriculado/a.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================== ENFERMEDADES NUEVAS ====================== -->
+  <div class="panel" id="panel-nuevas">
+    <div class="wrap">
+      <div class="aviso-medico" role="note" style="margin:0 0 1.2rem">
+        <strong>* Contenido pendiente de revisi&oacute;n profesional.</strong>
+        Esta pesta&ntilde;a agrupa condiciones agregadas recientemente al Observatorio.
+        Cada secci&oacute;n debe ser revisada y validada por el/la profesional que
+        corresponda antes de tomarse como referencia. No reemplaza la evaluaci&oacute;n
+        ni el tratamiento profesional.
+      </div>
+
+      <div class="card" style="border-left:4px solid #1a6aa8">
+        <h2>🧬 Epidermolisis Ampollosa (EB)*</h2>
+        <p>Grupo de enfermedades gen&eacute;ticas poco frecuentes que provocan <strong>fragilidad extrema de la piel y las mucosas</strong>, con formaci&oacute;n de ampollas ante m&iacute;nimos roces o traumatismos. Existen m&aacute;s de 30 subtipos agrupados en cuatro categor&iacute;as principales seg&uacute;n la capa de la piel donde se forman las ampollas.</p>
+      </div>
+
+      <div class="card">
+        <h2>🩹 Subtipos principales*</h2>
+        <ul style="margin:.4rem 0 .6rem 1.2rem;font-size:.9rem">
+          <li><strong>EBS (simple):</strong> la forma más común y en general la más leve; afecta la capa más superficial de la piel.</li>
+          <li><strong>EBJ (juntural):</strong> las ampollas se forman en la unión entre la epidermis y la dermis; suele ser grave desde el nacimiento.</li>
+          <li><strong>EBD (distrófica):</strong> las ampollas se producen en una capa más profunda y, al sanar, dejan cicatrices que pueden provocar retracciones o sindactilia.</li>
+          <li><strong>Síndrome de Kindler:</strong> el subtipo más raro; ampollas en múltiples niveles de la piel y fotosensibilidad.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>🪪 Requisitos del CUD por subtipo*</h2>
+        <button class="go-btn" onclick="loadInto('/api/cud/requisitos?tipo=dermatologica', 'eb-requisitos', renderRequisitosTipoDetalle)">Ver subtipos y documentación requerida</button>
+        <div id="eb-requisitos" class="result-box" style="margin-top:.8rem"></div>
+        <button class="go-btn" style="margin-top:.6rem" onclick="switchTab('cud')">Ver juntas evaluadoras</button>
+      </div>
+
+      <div class="card">
+        <h2>🧑‍🤝‍🧑 Manejo integral*</h2>
+        <p>Actualmente no tiene cura definitiva. El abordaje es integral y multidisciplinario: cuidado diario de heridas con apósitos no adherentes, control del dolor, soporte nutricional (especialmente ante compromiso esofágico) y prevención/rehabilitación (ropa sin costuras, calzado especial, fisioterapia, seguimiento oftalmológico y odontológico).</p>
+      </div>
+
+      <div class="card">
+        <h2>🔬 Tratamientos de vanguardia</h2>
+        <div class="disclaimer">
+          <span class="tag-warn">AVISO</span> Informaci&oacute;n educativa. No constituye consejo m&eacute;dico ni recomendaci&oacute;n de tratamiento.
+        </div>
+        <button class="go-btn" onclick="loadInto('/api/vanguardia/tipo/dermatologica', 'eb-vanguardia', renderVanguardiaTipo)">Ver tratamientos (Vyjuvek, Filsuvez)</button>
+        <div id="eb-vanguardia" class="result-box" style="margin-top:.8rem"></div>
+      </div>
+
+      <div class="card">
+        <h2>📚 Fuentes</h2>
+        <p class="muted">Clasificación de subtipos y requisitos: Secretaría Nacional de Discapacidad (datos_cud.py). Terapias de vanguardia: aprobaciones de la FDA citadas en cada ficha — ver botón «Evidencia y ensayos actualizados» de cada tratamiento para la fuente en PubMed/ClinicalTrials.gov.</p>
+        <p class="muted">* Secci&oacute;n pendiente de revisi&oacute;n por un/a dermat&oacute;logo/a o genetista.</p>
       </div>
     </div>
   </div>
@@ -4286,6 +4349,11 @@ Por lo expuesto, pido que se haga lugar a la rehabilitación y se reanude el pag
        (panel-tea, panel-tdl, ...). switchTab('tea') sigue funcionando. */
     const CONDICIONES = ['tea', 'tdl', 'dea', 'hipoacusia', 'epilepsia', 'epf', 'saludmental'];
     CONDICIONES.push('visual', 'diabetes', 'celiaquia', 'fq', 'oncoped', 'trasplante');
+    // Nuevo: panel genérico "Enfermedades nuevas" (primera condición: Epidermolisis
+    // Ampollosa, auditoría Anexo 6). Se agrega aparte, sin tocar las dos líneas
+    // anteriores, para no alterar su contrato. Futuras condiciones nuevas se
+    // agregan como secciones dentro de panel-nuevas, sin crear otro botón.
+    CONDICIONES.push('nuevas');
     const subnav = document.getElementById('subnav-condiciones');
     const subButtons = document.querySelectorAll('.sub-btn');
     let ultimaCondicion = 'tea';
@@ -4575,6 +4643,35 @@ Por lo expuesto, pido que se haga lugar a la rehabilitación y se reanude el pag
         html += '<p class="muted" style="margin-top:.6rem">Tipos de discapacidad: ' + escapeHtml(data.tipos_disponibles.join(', ')) + '</p>';
       }
       return html;
+    }
+
+    // Render genérico para /api/cud/requisitos?tipo=X cuando ese tipo tiene
+    // subtipos (p. ej. dermatologica/EB): subtipos + documentos adicionales +
+    // especialidades evaluadoras + tip. Sirve para EB y para cualquier futuro
+    // tipo con la misma forma, sin tocar renderRequisitos (que es genérico,
+    // sin tipo, y no debe cambiar).
+    function renderRequisitosTipoDetalle(data) {
+      let html = '';
+      if (data.descripcion) html += '<p>' + escapeHtml(data.descripcion) + '</p>';
+      if (data.subtipos && data.subtipos.length) {
+        html += '<ul style="margin:.4rem 0 .6rem 1.2rem;font-size:.9rem">';
+        data.subtipos.forEach(s => {
+          html += '<li><strong>' + escapeHtml(s.nombre || '') + '</strong>'
+            + (s.capa_afectada ? ' <span class="muted">(' + escapeHtml(s.capa_afectada) + ')</span>' : '')
+            + (s.descripcion ? '<br>' + escapeHtml(s.descripcion) : '') + '</li>';
+        });
+        html += '</ul>';
+      }
+      if (data.documentos_adicionales && data.documentos_adicionales.length) {
+        html += '<p style="margin:.4rem 0 .2rem"><strong>Documentación adicional:</strong></p><ul style="margin:.1rem 0 .6rem 1.2rem;font-size:.88rem">';
+        data.documentos_adicionales.forEach(d => { html += '<li>' + escapeHtml(d) + '</li>'; });
+        html += '</ul>';
+      }
+      if (data.especialidades_evaluadoras && data.especialidades_evaluadoras.length) {
+        html += '<p style="font-size:.88rem"><strong>Especialidades evaluadoras:</strong> ' + escapeHtml(data.especialidades_evaluadoras.join(', ')) + '</p>';
+      }
+      if (data.tip) html += '<div class="small-disclaimer">💡 ' + escapeHtml(data.tip) + '</div>';
+      return html || renderJSON(data);
     }
 
     // Links oficiales a InfoLEG por normativa (Tarea —)
@@ -5510,19 +5607,32 @@ Por lo expuesto, pido que se haga lugar a la rehabilitación y se reanude el pag
       const arr = Array.isArray(data) ? data : (data.tipos || []);
       if (!arr.length) return renderJSON(data);
       const max = Math.max(...arr.map(t => t.porcentaje || 0));
-      return arr.map(t => {
+      // Accesibilidad (auditoría WCAG — scripts/accesibilidad.py): las barras ya
+      // son texto real (accesibles por sí solas), pero no tenían una etiqueta de
+      // grupo que resuma el conjunto ni una tabla equivalente para exportar/leer
+      // con lector de pantalla. role="group" (no "img": así no se oculta el
+      // texto real de cada barra a la tecnología asistiva).
+      const acc = data.accesibilidad || {};
+      let html = '<div role="group"' + (acc.aria_label ? ' aria-label="' + escapeHtml(acc.aria_label) + '"' : '') + '>';
+      html += arr.map(t => {
         const pct = t.porcentaje || 0;
         const width = max ? (pct / max * 100) : 0;
         return '<div class="bar-row"><div class="bar-label">' + escapeHtml(t.tipo || '') +
           '</div><div class="bar-track"><div class="bar-fill" style="width:' + width + '%"></div></div>' +
           '<div class="bar-pct">' + pct + '%</div></div>';
       }).join('');
+      html += '</div>';
+      if (acc.tabla_html_sr_only) html += acc.tabla_html_sr_only;
+      return html;
     }
 
     function renderProvinciasTable(data) {
       const arr = Array.isArray(data) ? data : (data.provincias || []);
       if (!arr.length) return renderJSON(data);
-      let html = '<table class="tbl"><tr><th>Provincia</th><th>CUD vigentes</th><th>Tasa prevalencia</th></tr>';
+      // Accesibilidad: la tabla ya es nativamente accesible; solo se agrega el
+      // aria-label de resumen (sin duplicar la tabla, a diferencia de las barras).
+      const ariaLabel = (data.accesibilidad && data.accesibilidad.aria_label) || '';
+      let html = '<table class="tbl"' + (ariaLabel ? ' aria-label="' + escapeHtml(ariaLabel) + '"' : '') + '><tr><th>Provincia</th><th>CUD vigentes</th><th>Tasa prevalencia</th></tr>';
       arr.slice(0, 8).forEach(p => {
         html += '<tr><td>' + escapeHtml(p.provincia || '') + '</td><td>' +
           escapeHtml(p.cud_vigentes != null ? p.cud_vigentes.toLocaleString('es-AR') : '') +
@@ -5535,7 +5645,8 @@ Por lo expuesto, pido que se haga lugar a la rehabilitación y se reanude el pag
     function renderCabaTable(data) {
       const arr = Array.isArray(data) ? data : (data.comunas || []);
       if (!arr.length) return renderJSON(data);
-      let html = '<table class="tbl"><tr><th>Comuna</th><th>CUD</th><th>Tasa estimada</th></tr>';
+      const ariaLabel = (data.accesibilidad && data.accesibilidad.aria_label) || '';
+      let html = '<table class="tbl"' + (ariaLabel ? ' aria-label="' + escapeHtml(ariaLabel) + '"' : '') + '><tr><th>Comuna</th><th>CUD</th><th>Tasa estimada</th></tr>';
       arr.forEach(c => {
         html += '<tr><td>' + escapeHtml((c.comuna != null ? c.comuna + ' - ' : '') + (c.nombre || '')) + '</td><td>' +
           escapeHtml(c.cud != null ? c.cud.toLocaleString('es-AR') : '') + '</td><td>' +
@@ -5591,6 +5702,18 @@ Por lo expuesto, pido que se haga lugar a la rehabilitación y se reanude el pag
       if (!tipo) { target.innerHTML = ''; return; }
       target.innerHTML = '<p class="loading">Cargando tratamientos...</p>';
       loadInto('/api/vanguardia/tipo/' + encodeURIComponent(tipo), 'vang-result', renderVanguardiaTipo);
+    }
+
+    // Búsqueda libre de tratamientos de vanguardia (usa /api/vanguardia?q=...,
+    // que ya existe en el backend y devuelve la misma forma {tratamientos: [...]}
+    // que consume renderVanguardiaTipo).
+    function buscarVanguardia() {
+      const q = document.getElementById('vang-busqueda').value.trim();
+      const target = document.getElementById('vang-result');
+      if (!q) { target.innerHTML = '<p class="muted">Escribí un término para buscar.</p>'; return; }
+      document.getElementById('vang-tipo-select').value = '';
+      target.innerHTML = '<p class="loading">Buscando...</p>';
+      loadInto('/api/vanguardia?q=' + encodeURIComponent(q), 'vang-result', renderVanguardiaTipo);
     }
 
     /* Evidencia en vivo (PubMed + ClinicalTrials.gov): título original enlazado y,

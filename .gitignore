@@ -29,3 +29,5 @@ exportar_pdf.py
 
 # Salidas locales de Claude
 Claude outputs/
+
+repomix-output.xml
