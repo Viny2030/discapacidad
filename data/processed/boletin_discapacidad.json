@@ -1,6 +1,28 @@
 {
  "normas": [
   {
+   "id": "20261118-RESOL-2026-3716-APN-SND#MS",
+   "organismo": "MINISTERIO DE SALUD SECRETARÍA NACIONAL DE DISCAPACIDAD",
+   "norma": "Resolución 3716/2026",
+   "codigo": "RESOL-2026-3716-APN-SND#MS",
+   "fecha": "2026-11-18",
+   "url": "https://www.boletinoficial.gob.ar/seccion/primera/20261118",
+   "pdf": "https://otslist.boletinoficial.gob.ar/ots/download/1cebe95a7b1ababe1b324b52e51d1fde0126b282e2cb971c0a973646aa73105f/0/",
+   "resumen": "Instrúyase a la DIRECCIÓN NACIONAL DEL FONADIS a proceder al archivo de las actuaciones correspondientes a las solicitudes comprendidas en lo acordado por el CONSEJO DE ARTICULACIÓN DE PROGRAMAS PARA PERSONAS CON DISCAPACIDAD mediante el Acta N° 8 (IF2026-110732397-APN DNFONADIS#MS), con observancia de los procedimientos administrativos aplicables.",
+   "categoria": "otras"
+  },
+  {
+   "id": "20261118-RESOL-2026-3715-APN-SND#MS",
+   "organismo": "MINISTERIO DE SALUD SECRETARÍA NACIONAL DE DISCAPACIDAD",
+   "norma": "Resolución 3715/2026",
+   "codigo": "RESOL-2026-3715-APN-SND#MS",
+   "fecha": "2026-11-18",
+   "url": "https://www.boletinoficial.gob.ar/seccion/primera/20261118",
+   "pdf": "https://otslist.boletinoficial.gob.ar/ots/download/1cebe95a7b1ababe1b324b52e51d1fde0126b282e2cb971c0a973646aa73105f/0/",
+   "resumen": "– Establécese una actualización al valor de los aranceles vigentes del Sistema de Prestaciones Básicas de Atención Integral a favor de las Personas con Discapacidad para el mes de noviembre del año en curso, consistente en un incremento del DOS CON VEINTE POR CIENTO (2,20%), sin diferencia por tipo de prestación, que obra en el ANEXO (IF-2026-109850912-APN-SSRCYP#MS), que forma parte integrante de la presente…",
+   "categoria": "aranceles"
+  },
+  {
    "id": "20261111-RESOL-2026-1612-APN-MS",
    "organismo": "MINISTERIO DE SALUD",
    "norma": "Resolución 1612/2026",
@@ -1124,6 +1146,7 @@
   }
  ],
  "dias_revisados": [
+  "2026-11-18",
   "2026-11-17",
   "2026-11-16",
   "2026-11-13",
@@ -1340,5 +1363,5 @@
  ],
  "fuente": "Boletín Oficial de la República Argentina — sección primera (PDF oficial)",
  "fuente_url": "https://otslist.boletinoficial.gob.ar/ots/",
- "actualizado": "2026-11-17"
+ "actualizado": "2026-11-18"
 }
