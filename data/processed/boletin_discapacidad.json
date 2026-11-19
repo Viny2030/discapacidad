@@ -1,6 +1,17 @@
 {
  "normas": [
   {
+   "id": "20261119-DNU-2026-1391-APN-PTE",
+   "organismo": "PRESUPUESTO",
+   "norma": "Decreto 1391/2026",
+   "codigo": "DNU-2026-1391-APN-PTE",
+   "fecha": "2026-11-19",
+   "url": "https://www.boletinoficial.gob.ar/seccion/primera/20261119",
+   "pdf": "https://otslist.boletinoficial.gob.ar/ots/download/946c83475a7824713c1d28a5bbccaabcc3fec8798c0e6d3ec61b80d5df73bfbd/0/",
+   "resumen": "Modifícase el Presupuesto General de la Administración Nacional para el Ejercicio 2026, de acuerdo con el detalle obrante en las planillas anexas (IF-2026-109534467-APN-SSP#MEC) al presente artículo, que integran la presente medida.",
+   "categoria": "asignaciones"
+  },
+  {
    "id": "20261118-RESOL-2026-3716-APN-SND#MS",
    "organismo": "MINISTERIO DE SALUD SECRETARÍA NACIONAL DE DISCAPACIDAD",
    "norma": "Resolución 3716/2026",
@@ -1146,6 +1157,7 @@
   }
  ],
  "dias_revisados": [
+  "2026-11-19",
   "2026-11-18",
   "2026-11-17",
   "2026-11-16",
@@ -1363,5 +1375,5 @@
  ],
  "fuente": "Boletín Oficial de la República Argentina — sección primera (PDF oficial)",
  "fuente_url": "https://otslist.boletinoficial.gob.ar/ots/",
- "actualizado": "2026-11-18"
+ "actualizado": "2026-11-19"
 }
