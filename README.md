@@ -29,8 +29,8 @@ discapacidad/
 │   │                               #   SUBE_INFO (4 canales de registro CUD→SUBE)
 │   ├── api_cud.py                  # Router /api/cud — 13 endpoints
 │   ├── api_estadistica.py          # Router /api — estadísticas ANDIS/INDEC
-│   ├── api_medica.py               # Router /api/medico — PubMed / ClinicalTrials
-│   ├── tratamientos_vanguardia.py  # Router /api/vanguardia — 12 tratamientos
+│   ├── api_medica.py               # Router /api (artículos, ensayos, condiciones) — PubMed / ClinicalTrials
+│   ├── tratamientos_vanguardia.py  # Router /api/vanguardia — tratamientos de vanguardia
 │   ├── etl_estadistico.py          # ETL: descarga y procesa datos ANDIS + Georef
 │   ├── etl_medico.py               # ETL: artículos PubMed + ensayos ClinicalTrials
 │   └── scheduler.py                # APScheduler — ETL cada 15 días
@@ -57,7 +57,9 @@ discapacidad/
         ├── ci.yml                  # Tests en cada push a main
         ├── etl_estadistico.yml     # ETL estadístico — lunes 06:00 UTC
         ├── etl_medico.yml          # ETL médico — miércoles 06:00 UTC
-        └── heatlh_ckeck.yml        # Health check diario — 10:00 UTC
+        ├── boletin_diario.yml      # Boletín Oficial — días hábiles 11:30 UTC
+        ├── frescura_datos.yml      # Control de frescura — día 1 de cada mes
+        └── health_check.yml        # Health check diario — 10:00 UTC
 ```
 
 ---
@@ -66,11 +68,11 @@ discapacidad/
 
 ### 1. CUD — Certificado Único de Discapacidad (`/api/cud`)
 
-Fuente estática curada desde ANDIS, Ley 22.431, Ley 24.901 y Resolución ANDIS 322/2023.
+Fuente estática curada desde ANDIS, Ley 22.431, Ley 24.901 y Resolución ANDIS 2520/2024.
 
 | Endpoint | Descripción |
 |---|---|
-| `GET /api/cud` | Info general del trámite (gratuito, no vence, normativa) |
+| `GET /api/cud` | Info general del trámite (gratuito, vencimiento y excepciones, normativa) |
 | `GET /api/cud/formularios` | Formularios oficiales ANDIS para descargar |
 | `GET /api/cud/requisitos` | Requisitos generales |
 | `GET /api/cud/requisitos?tipo=motora` | Requisitos por tipo de discapacidad |
@@ -163,19 +165,17 @@ ETL automático que descarga datos de ANDIS y Georef (API del Estado).
 
 ---
 
-### 3. Médico — PubMed / ClinicalTrials (`/api/medico`)
+### 3. Médico — PubMed / ClinicalTrials (`/api`)
 
 ETL que consulta PubMed y ClinicalTrials.gov con queries por tipo de discapacidad.
 
 | Endpoint | Descripción |
 |---|---|
-| `GET /api/medico/articulos` | Artículos científicos recientes |
-| `GET /api/medico/articulos/{pmid}` | Detalle de un artículo por PMID |
-| `GET /api/medico/ensayos` | Ensayos clínicos activos |
-| `GET /api/medico/tratamientos/{tipo}` | Tratamientos por tipo de discapacidad |
-| `GET /api/medico/buscar` | Búsqueda libre en artículos y ensayos |
-
-> **Nota sobre prefijos:** los endpoints médicos anteriores están montados en el router con prefijo `/api` (no `/api/medico`); las rutas reales son `/api/articulos`, `/api/ensayos`, `/api/tratamientos/{tipo}` y `/api/buscar`. Los endpoints nuevos de abajo siguen el mismo prefijo real.
+| `GET /api/articulos` | Artículos científicos recientes |
+| `GET /api/articulos/{pmid}` | Detalle de un artículo por PMID |
+| `GET /api/ensayos` | Ensayos clínicos activos |
+| `GET /api/tratamientos/{tipo}` | Tratamientos por tipo de discapacidad |
+| `GET /api/buscar` | Búsqueda libre en PubMed |
 
 #### Búsqueda curada por condición específica (incluye Tourette)
 
@@ -203,7 +203,7 @@ Ninguno de estos endpoints nuevos modifica el comportamiento de `/api/articulos`
 
 ### 4. Vanguardia (`/api/vanguardia`)
 
-12 tratamientos de vanguardia con fichas clínicas, estado de aprobación y disclaimers.
+Tratamientos de vanguardia con fichas clínicas, estado de aprobación y disclaimers.
 
 | Endpoint | Descripción |
 |---|---|
@@ -270,7 +270,9 @@ pytest tests/ -v
 | **CI** | `ci.yml` | Cada push a `main` | Instala dependencias, corre pytest, verifica imports críticos |
 | **ETL Estadístico** | `etl_estadistico.yml` | Lunes 06:00 UTC | Descarga datos ANDIS + Georef, genera CSVs, hace commit automático a `data/` |
 | **ETL Médico** | `etl_medico.yml` | Miércoles 06:00 UTC | Descarga artículos PubMed y ensayos ClinicalTrials, hace commit automático |
-| **Health Check** | `heatlh_ckeck.yml` | Diario 10:00 UTC | Verifica `/health` y 5 endpoints críticos en producción |
+| **Boletín Oficial** | `boletin_diario.yml` | Días hábiles 11:30 UTC | Lee el PDF oficial de la sección primera y guarda las normas sobre discapacidad |
+| **Frescura de datos** | `frescura_datos.yml` | Día 1 de cada mes | Compara el informe de ANDIS y producción con el repositorio; abre un issue si no coinciden |
+| **Health Check** | `health_check.yml` | Diario 10:00 UTC | Verifica `/health`, el commit desplegado y 5 endpoints críticos en producción |
 
 Los workflows de ETL también se pueden disparar manualmente desde la pestaña **Actions** de GitHub (`workflow_dispatch`).
 
@@ -290,7 +292,7 @@ El repositorio incluye `railway.toml` con la configuración necesaria. El `Docke
 - Ley 24.901 — Sistema de Prestaciones Básicas
 - Ley 27.793 — Emergencia Nacional en Discapacidad
 - Decreto 84/2026 (Anexo I y Anexo II) — Reglamentación de la Ley 27.793 y nuevas normas de la Pensión No Contributiva por Discapacidad para Protección Social
-- Resolución ANDIS 322/2023 — CUD sin vencimiento
+- Resolución ANDIS 2520/2024 — prórroga única de los CUD con vencimiento en 2025
 - Resolución CNRT 1018/2018 — Beneficio SUBE para personas con discapacidad
 - Ley 27.043 y Decreto Reglamentario 777/2019 — Interés Nacional del abordaje integral e interdisciplinario del TEA
 - Resolución 2641/2019 (Ministerio de Salud) — Consenso sobre Diagnóstico y Tratamiento de Personas con TEA

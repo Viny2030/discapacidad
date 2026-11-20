@@ -30,7 +30,7 @@ Todo lo que necesitás saber sobre el trámite del CUD en un solo lugar.
 
 **Qué encontrás:**
 
-- **Información general** — el CUD es gratuito y no vence (Resolución ANDIS 322/2023).
+- **Información general** — el CUD es gratuito y, por regla general, vence y debe renovarse (hay tres excepciones sin vencimiento).
 - **Formularios** — links directos para descargar los formularios oficiales de ANDIS.
 - **Requisitos** — generales y por tipo de discapacidad (motora, visual, auditiva, intelectual/TEA, psicosocial, visceral).
 - **Paso a paso** — los 6 pasos del trámite con tiempos estimados.
@@ -112,7 +112,7 @@ El saldo y el beneficio se transfieren a la nueva tarjeta.
 ### Preguntas frecuentes — SUBE
 
 **¿El beneficio vence?**
-No. Como el CUD ya no vence (Resolución ANDIS 322/2023), el beneficio SUBE tampoco vence. Solo hay que actualizarlo si cambiás de tarjeta.
+Está atado a la vigencia del CUD: cuando renovás el CUD (salvo las excepciones sin vencimiento), verificá que el beneficio siga activo. También hay que actualizarlo si cambiás de tarjeta SUBE.
 
 **¿Puedo usar la SUBE de otra persona?**
 No. El beneficio está vinculado a una única tarjeta registrada a nombre del titular. Usar la tarjeta de otra persona implica la pérdida del beneficio.
@@ -166,7 +166,7 @@ Visualizaciones con actualización automática semanal.
 
 ## 💊 Vanguardia — Tratamientos de vanguardia
 
-12 tratamientos terapéuticos emergentes con ficha clínica completa.
+Tratamientos terapéuticos emergentes con ficha clínica completa.
 
 **Cómo explorarlos:** filtrá por tipo de discapacidad o estado de aprobación. Hacé clic en cualquier tratamiento para ver descripción, mecanismo, estado regulatorio (ANMAT / FDA / EMA), instituciones que lo aplican en Argentina y costo estimado.
 
@@ -230,7 +230,7 @@ Datos bancarios para transferencias en pesos (ARS) y dólares (USD). Cada dato t
 Sí. Los datos estadísticos se actualizan cada lunes y los médicos cada miércoles, de manera automática.
 
 **¿El CUD vence?**
-No. Desde la Resolución ANDIS 322/2023 el CUD no tiene fecha de vencimiento.
+Sí, como regla general hay que renovarlo. Hay tres excepciones sin vencimiento: soporte vital; mayores de 60 años con dos renovaciones que mantienen la condición; y más de 2 renovaciones con el mismo número de barra. Podés verificar el tuyo en la pestaña CUD → «¿Mi CUD sigue vigente?».
 
 **¿El descuento SUBE es automático al obtener el CUD?**
 No. Hay que registrar el CUD en la SUBE por separado — ver la sección CUD y SUBE de este manual.

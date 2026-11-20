@@ -53,7 +53,9 @@ def _documentos_desde_boletin() -> list[dict]:
     if not BOLETIN_JSON.exists():
         return []
     data = json.loads(BOLETIN_JSON.read_text(encoding="utf-8"))
-    return [{"texto": n["titulo"] + " " + n.get("resumen", ""),
+    # Las normas de scraper_boletin.py no tienen "titulo": se indexan norma, organismo y resumen
+    # (los mismos campos que busca api_boletin.buscar).
+    return [{"texto": " ".join(filter(None, (n.get("norma"), n.get("organismo"), n.get("resumen")))),
              "fuente": "boletin_oficial", "url": n.get("url", "")}
             for n in data.get("normas", [])]
 

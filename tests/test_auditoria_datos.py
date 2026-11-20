@@ -28,6 +28,7 @@ def test_adultos_mayores_usa_las_participaciones_oficiales():
         assert float(cud) == round(r.cud_vigentes / tc * 100, 1), prov
         assert float(pob) == round(r.poblacion_2022 / tp * 100, 1), prov
     assert "CUD 65+ del país" not in HTML and "% CUD 65+" not in HTML     # no se presenta el total como si fuera 65+
+    assert "de los CUD 65+" not in HTML                                     # tampoco en el tooltip del gráfico
 
 
 def test_comparador_no_tiene_cupos_escritos_a_mano():

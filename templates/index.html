@@ -4419,7 +4419,9 @@ Por lo expuesto, pido que se haga lugar a la rehabilitación y se reanude el pag
 
     /* ---------- helpers ---------- */
     function escapeHtml(s) {
-      return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+      // También comillas: escapeHtml se usa dentro de atributos (href, onclick, data-*).
+      return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+                      .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
     }
 
     // Si la URL es un video puntual de YouTube (watch?v=...), devuelve la miniatura
@@ -5259,8 +5261,8 @@ Por lo expuesto, pido que se haga lugar a la rehabilitación y se reanude el pag
     function colorForValue(value, min, max) {
       if (max <= min) return '#1a6aa8';
       const t = Math.max(0, Math.min(1, (value - min) / (max - min)));
-      const c1 = [203, 184, 245];   // #bfdcf2
-      const c2 = [61, 37, 112];     // #1d5d8c
+      const c1 = [191, 220, 242];   // #bfdcf2 (mismo inicio que .legend-bar)
+      const c2 = [29, 93, 140];     // #1d5d8c (mismo final que .legend-bar)
       const r = Math.round(c1[0] + (c2[0] - c1[0]) * t);
       const g = Math.round(c1[1] + (c2[1] - c1[1]) * t);
       const b = Math.round(c1[2] + (c2[2] - c1[2]) * t);
@@ -6202,7 +6204,7 @@ Por lo expuesto, pido que se haga lugar a la rehabilitación y se reanude el pag
       new Chart(document.getElementById('am-chart-cud'), {
         type: 'bar',
         data: { labels: AM_CUD.map(c => c.nombre), datasets: [{ data: AM_CUD.map(c => c.cud), backgroundColor: '#1a6aa8', borderRadius: 4, barThickness: 18 }] },
-        options: opciones('% de los CUD 65+'),
+        options: opciones('% del total de CUD del país'),
       });
       new Chart(document.getElementById('am-chart-previsional'), {
         type: 'bar',

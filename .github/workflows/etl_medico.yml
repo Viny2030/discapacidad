@@ -5,6 +5,13 @@ on:
     - cron: "0 6 * * 3"
   workflow_dispatch:
 
+permissions:
+  contents: write
+
+concurrency:
+  group: datos-medicos
+  cancel-in-progress: false
+
 jobs:
   etl-medico:
     runs-on: ubuntu-latest
@@ -44,7 +51,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/
           git diff --staged --quiet || git commit -m "data: ETL médico automático $(date -u '+%Y-%m-%d')"
-          git push
+          git pull --rebase -q && git push
 
       - name: Notificar fallo
         if: failure()
