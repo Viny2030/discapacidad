@@ -402,6 +402,7 @@
     <button class="tab-btn" data-panel="condiciones">Condiciones</button>
     <button class="tab-btn" data-panel="tratamientos">Tratamientos</button>
     <button class="tab-btn" data-panel="comparador">Comparador</button>
+    <button class="tab-btn" data-panel="epof">Enfermedades No<br>Tradicionales (EPOF)</button>
     <span class="nav-break" aria-hidden="true"></span>
     <button class="tab-btn" data-panel="about">About (EN)</button>
     <button class="tab-btn" data-panel="gcba">GCBA</button>
@@ -455,6 +456,14 @@
     <button class="sub-btn" data-sub="trasplante" title="Pendiente de revisión por un/a nefrólogo/a o médico/a de trasplante">Trasplante y renal*</button>
     <button class="sub-btn" data-sub="nuevas" title="Condiciones agregadas recientemente, pendientes de revisión profesional">Otras condiciones*</button>
     <p class="subnav-nota">* Secciones pendientes de revisión profesional.</p>
+  </div>
+
+  <!-- Sub-pestañas de la pestaña "Enfermedades No Tradicionales (EPOF)" (visibles solo dentro de ella) -->
+  <div class="subnav" id="subnav-epof" style="display:none" role="tablist" aria-label="Enfermedades No Tradicionales (EPOF)">
+    <button class="sub-btn" data-sub="epof-info">Información Médica y Patologías</button>
+    <button class="sub-btn" data-sub="epof-dx">Diagnóstico y Tratamientos</button>
+    <button class="sub-btn" data-sub="epof-ley">Ley Argentina y CUD</button>
+    <p class="subnav-nota">Información orientativa: no reemplaza la consulta con profesionales de la salud.</p>
   </div>
 
   <!-- ====================== INICIO ====================== -->
@@ -2911,6 +2920,186 @@ Por lo expuesto, pido que se haga lugar a la rehabilitación y se reanude el pag
     </div>
   </div>
 
+  <!-- ====================== ENFERMEDADES NO TRADICIONALES (EPOF) ====================== -->
+  <!-- Subpestaña 1: Información Médica y Patologías -->
+  <div class="panel" id="panel-epof-info">
+    <div class="wrap">
+      <div class="aviso-medico" role="note" style="margin:0 0 1.2rem">
+        <strong>Informaci&oacute;n orientativa.</strong>
+        Esta secci&oacute;n es informativa y no reemplaza la evaluaci&oacute;n, el diagn&oacute;stico
+        ni el tratamiento de profesionales de la salud. Ante cualquier duda, consult&aacute; con tu equipo m&eacute;dico.
+      </div>
+
+      <div class="card" style="border-left:4px solid #1a6aa8">
+        <h2>🧬 S&iacute;ndrome de Rett</h2>
+        <p>El <strong>S&iacute;ndrome de Rett</strong> (frecuentemente escrito de forma fon&eacute;tica como &laquo;s&iacute;ndrome de red&raquo;)
+          es un trastorno neurol&oacute;gico y del desarrollo poco frecuente, de origen gen&eacute;tico, que afecta principalmente a las ni&ntilde;as.
+          Se caracteriza por una <strong>regresi&oacute;n en las habilidades motoras y del lenguaje</strong> tras un per&iacute;odo inicial de desarrollo aparentemente normal.</p>
+      </div>
+
+      <div class="card">
+        <h2>🧪 Causa gen&eacute;tica</h2>
+        <p>En la gran mayor&iacute;a de los casos se debe a una <strong>mutaci&oacute;n espont&aacute;nea</strong> (no heredada de los padres)
+          en el <strong>gen MECP2</strong>, ubicado en el <strong>cromosoma X</strong>. Este gen es fundamental para la producci&oacute;n de una
+          prote&iacute;na necesaria para el desarrollo normal del cerebro y el funcionamiento de las neuronas.</p>
+      </div>
+
+      <div class="card">
+        <h2>📈 Evoluci&oacute;n en etapas</h2>
+        <p>Los beb&eacute;s suelen crecer y desarrollarse con normalidad durante los <strong>primeros 6 a 18 meses de vida</strong>.
+          Luego comienzan a perder de forma progresiva habilidades que ya hab&iacute;an adquirido.</p>
+      </div>
+
+      <div class="card">
+        <h2>🔎 S&iacute;ntomas caracter&iacute;sticos</h2>
+        <ul style="margin:.4rem 0 .6rem 1.2rem;font-size:.9rem">
+          <li><strong>P&eacute;rdida del uso funcional de las manos:</strong> es uno de los signos m&aacute;s distintivos; las ni&ntilde;as dejan de agarrar
+            objetos intencionalmente y desarrollan movimientos repetitivos e involuntarios (como frotarse, lavarse, aplaudir o llevarse las manos a la boca).</li>
+          <li><strong>P&eacute;rdida del habla:</strong> disminuci&oacute;n o desaparici&oacute;n de la capacidad de comunicarse verbalmente y menor contacto visual.</li>
+          <li><strong>Problemas motores y de coordinaci&oacute;n:</strong> dificultad para caminar, marcha inestable o p&eacute;rdida de la capacidad de desplazarse,
+            adem&aacute;s de hipoton&iacute;a muscular inicial que puede derivar en rigidez o escoliosis (curvatura de la columna).</li>
+          <li><strong>Alteraciones respiratorias:</strong> episodios de hiperventilaci&oacute;n, apnea (pausas en la respiraci&oacute;n) o degluci&oacute;n de aire mientras est&aacute;n despiertas.</li>
+          <li><strong>Otros signos frecuentes:</strong> desaceleraci&oacute;n del crecimiento de la cabeza (microcefalia adquirida), convulsiones (epilepsia),
+            trastornos del sue&ntilde;o y problemas gastrointestinales.</li>
+        </ul>
+        <button class="go-btn" onclick="switchTab('epof-dx')">Ver diagn&oacute;stico y tratamientos</button>
+      </div>
+
+      <div class="card" style="border-left:4px solid #1a6aa8">
+        <h2>📋 Clasificaci&oacute;n general de Enfermedades Poco Frecuentes (EPOF)</h2>
+        <p>En Argentina, la <strong>Ley 26.689</strong> define como poco frecuentes a las enfermedades cuya prevalencia es
+          <strong>igual o inferior a 1 persona cada 2.000 habitantes</strong>. Abarcan <strong>m&aacute;s de 8.000 patolog&iacute;as</strong> reconocidas,
+          en su mayor&iacute;a de origen gen&eacute;tico, cr&oacute;nico y progresivo, y suelen habilitar la tramitaci&oacute;n del
+          <strong>Certificado &Uacute;nico de Discapacidad (CUD)</strong>.</p>
+        <p class="muted">* Las descripciones individuales de cada patolog&iacute;a est&aacute;n pendientes de revisi&oacute;n profesional.
+          Por ahora se listan agrupadas por categor&iacute;a.</p>
+      </div>
+
+      <div class="card">
+        <h2>🧠 Neurol&oacute;gicas y neuromusculares</h2>
+        <p>Con impacto en la discapacidad motora y cognitiva.</p>
+        <ul style="margin:.4rem 0 .6rem 1.2rem;font-size:.9rem">
+          <li>Atrofia Muscular Espinal (AME)</li>
+          <li>Distrofia Muscular de Duchenne (DMD)</li>
+          <li>Esclerosis Lateral Amiotr&oacute;fica (ELA)</li>
+          <li>Enfermedad de Huntington</li>
+          <li>S&iacute;ndrome de Angelman</li>
+          <li>S&iacute;ndrome del Cromosoma X Fr&aacute;gil</li>
+          <li>S&iacute;ndrome de West</li>
+          <li>S&iacute;ndrome de Lennox-Gastaut</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>🧬 Gen&eacute;ticas y del desarrollo multisist&eacute;mico</h2>
+        <ul style="margin:.4rem 0 .6rem 1.2rem;font-size:.9rem">
+          <li>S&iacute;ndrome de Prader-Willi</li>
+          <li>S&iacute;ndrome de Williams</li>
+          <li>Osteog&eacute;nesis Imperfecta (&laquo;huesos de cristal&raquo;)</li>
+          <li>Acondroplasia y otras displasias esquel&eacute;ticas</li>
+          <li>Esclerosis Tuberosa</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>⚗️ Metab&oacute;licas y lisosomales</h2>
+        <ul style="margin:.4rem 0 .6rem 1.2rem;font-size:.9rem">
+          <li>Mucopolisacaridosis (MPS)</li>
+          <li>Enfermedad de Gaucher</li>
+          <li>Enfermedad de Fabry</li>
+          <li>Adrenoleucodistrofia (ALD)</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>👁️ Sensoriales y autoinmunes con impacto funcional</h2>
+        <ul style="margin:.4rem 0 .6rem 1.2rem;font-size:.9rem">
+          <li>S&iacute;ndrome de Usher</li>
+          <li>Retinosis Pigmentaria</li>
+          <li>Enfermedad de Stargardt</li>
+          <li>Esclerodermia Sist&eacute;mica</li>
+          <li>Lupus Eritematoso Sist&eacute;mico grave</li>
+        </ul>
+        <button class="go-btn" onclick="switchTab('epof-ley')">Ver ley argentina y CUD</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Subpestaña 2: Diagnóstico y Tratamientos -->
+  <div class="panel" id="panel-epof-dx">
+    <div class="wrap">
+      <div class="aviso-medico" role="note" style="margin:0 0 1.2rem">
+        <strong>Informaci&oacute;n orientativa.</strong>
+        Esta secci&oacute;n es informativa y no reemplaza la evaluaci&oacute;n, el diagn&oacute;stico
+        ni el tratamiento de profesionales de la salud. Ante cualquier duda, consult&aacute; con tu equipo m&eacute;dico.
+      </div>
+
+      <div class="card" style="border-left:4px solid #1a6aa8">
+        <h2>🩺 Diagn&oacute;stico del S&iacute;ndrome de Rett</h2>
+        <p>El diagn&oacute;stico se realiza en dos pasos:</p>
+        <ol style="margin:.4rem 0 .6rem 1.2rem;font-size:.9rem">
+          <li><strong>Observaci&oacute;n cl&iacute;nica</strong> de los s&iacute;ntomas (por ejemplo, la regresi&oacute;n de habilidades motoras y del lenguaje
+            y la p&eacute;rdida del uso funcional de las manos).</li>
+          <li><strong>Confirmaci&oacute;n mediante un estudio gen&eacute;tico</strong> para detectar la mutaci&oacute;n en el <strong>gen MECP2</strong>.</li>
+        </ol>
+      </div>
+
+      <div class="card">
+        <h2>🤝 Tratamiento: abordaje temprano y multidisciplinario</h2>
+        <p>No existe actualmente una cura definitiva, pero el <strong>abordaje temprano y multidisciplinario mejora notablemente la calidad de vida</strong>. Incluye:</p>
+        <ul style="margin:.4rem 0 .6rem 1.2rem;font-size:.9rem">
+          <li><strong>Fisioterapia.</strong></li>
+          <li><strong>Terapia ocupacional.</strong></li>
+          <li><strong>Fonoaudiolog&iacute;a</strong>, incluida la comunicaci&oacute;n aumentativa y alternativa.</li>
+          <li><strong>Medicaci&oacute;n</strong> para controlar las convulsiones o los problemas respiratorios.</li>
+          <li><strong>Seguimiento nutricional y ortop&eacute;dico.</strong></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>💊 Terapias farmacol&oacute;gicas espec&iacute;ficas</h2>
+        <p>En algunos pa&iacute;ses (como Estados Unidos) tambi&eacute;n se han aprobado terapias farmacol&oacute;gicas espec&iacute;ficas
+          orientadas a modular los s&iacute;ntomas neurol&oacute;gicos del trastorno.</p>
+        <p class="muted">Cualquier indicaci&oacute;n de tratamiento corresponde al equipo m&eacute;dico tratante.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Subpestaña 3: Ley Argentina y CUD -->
+  <div class="panel" id="panel-epof-ley">
+    <div class="wrap">
+      <div class="aviso-medico" role="note" style="margin:0 0 1.2rem">
+        <strong>Informaci&oacute;n orientativa.</strong>
+        Esta secci&oacute;n es informativa y no reemplaza la evaluaci&oacute;n, el diagn&oacute;stico
+        ni el tratamiento de profesionales de la salud. Ante cualquier duda, consult&aacute; con tu equipo m&eacute;dico.
+      </div>
+
+      <div class="card" style="border-left:4px solid #1a6aa8">
+        <h2>⚖️ Ley Nacional 26.689</h2>
+        <p>Define como <strong>Enfermedades Poco Frecuentes (EPOF)</strong> a aquellas cuya prevalencia es
+          <strong>igual o inferior a 1 persona cada 2.000 habitantes</strong>, y garantiza el
+          <strong>acceso integral a la salud y la cobertura de tratamientos</strong>.</p>
+      </div>
+
+      <div class="card">
+        <h2>📑 Listado Oficial de EPOF (Resoluci&oacute;n 307/2023)</h2>
+        <p>El <strong>Ministerio de Salud de la Naci&oacute;n</strong> mantiene actualizado el <strong>Listado de Enfermedades Poco Frecuentes</strong>,
+          aprobado por la <strong>Resoluci&oacute;n 307/2023</strong> y sus actualizaciones, en el marco de la Ley Nacional 26.689.</p>
+      </div>
+
+      <div class="card">
+        <h2>🪪 Criterio para el Certificado &Uacute;nico de Discapacidad (CUD)</h2>
+        <p>En Argentina, el CUD <strong>no se otorga autom&aacute;ticamente por el solo nombre del diagn&oacute;stico</strong>.
+          Lo otorga una <strong>Junta Evaluadora Interdisciplinaria</strong>, que eval&uacute;a:</p>
+        <ul style="margin:.4rem 0 .6rem 1.2rem;font-size:.9rem">
+          <li>La <strong>secuela funcional</strong>: motora, mental/intelectual, sensorial o visceral.</li>
+          <li>El <strong>impacto en la participaci&oacute;n social</strong> de la persona.</li>
+        </ul>
+        <button class="go-btn" onclick="switchTab('cud')">Ver CUD y juntas evaluadoras</button>
+      </div>
+    </div>
+  </div>
+
   <!-- ====================== COMUNA_07 ====================== -->
   <div class="panel" id="panel-comuna_07">
     <div class="wrap wrap-wide">
@@ -4357,13 +4546,20 @@ Por lo expuesto, pido que se haga lugar a la rehabilitación y se reanude el pag
     const subnav = document.getElementById('subnav-condiciones');
     const subButtons = document.querySelectorAll('.sub-btn');
     let ultimaCondicion = 'tea';
+    // Pestaña "Enfermedades No Tradicionales (EPOF)": tres sub-pestañas con su propio panel.
+    const EPOF = ['epof-info', 'epof-dx', 'epof-ley'];
+    const subnavEpof = document.getElementById('subnav-epof');
+    let ultimaEpof = 'epof-info';
 
     function mostrarPanel(target) {
-      const principal = CONDICIONES.includes(target) ? 'condiciones' : target;
+      if (target === 'epof') target = ultimaEpof;
+      const principal = CONDICIONES.includes(target) ? 'condiciones' : (EPOF.includes(target) ? 'epof' : target);
+      if (principal === 'epof') ultimaEpof = target;
       if (principal === 'condiciones') ultimaCondicion = target;
       buttons.forEach(b => b.classList.toggle('active', b.dataset.panel === principal));
       subButtons.forEach(b => b.classList.toggle('active', b.dataset.sub === target));
       if (subnav) subnav.style.display = principal === 'condiciones' ? '' : 'none';
+      if (subnavEpof) subnavEpof.style.display = principal === 'epof' ? '' : 'none';
       panels.forEach(p => p.classList.toggle('visible', p.id === 'panel-' + target));
       window.scrollTo({ top: 0, behavior: 'smooth' });
       detenerLectura();
@@ -4389,7 +4585,7 @@ Por lo expuesto, pido que se haga lugar a la rehabilitación y se reanude el pag
     window.addEventListener('load', ajustarAltoMenu);
 
     function switchTab(name) {
-      if (CONDICIONES.includes(name) || document.querySelector('.tab-btn[data-panel="' + name + '"]')) {
+      if (CONDICIONES.includes(name) || EPOF.includes(name) || document.querySelector('.tab-btn[data-panel="' + name + '"]')) {
         mostrarPanel(name);
       }
     }
