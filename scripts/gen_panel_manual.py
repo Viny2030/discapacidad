@@ -257,7 +257,7 @@ MANUAL_TABS = {
         ("Normativa", "Normas sobre discapacidad publicadas cada día hábil en el Boletín Oficial (aranceles, pensiones, CUD, asignaciones), con buscador, resumen y enlace oficial."),
         ("Hogares", "Hogares para personas con discapacidad (Pequeños Cottolengos y otros) con mapa, direcciones y el organismo de cada provincia para pedir vacante."),
         ("Manual", "Esta guía, en español e inglés, con los dos grafos."),
-        ("Derechos y Trámites", "Siete subpestañas: transporte gratuito, vehículo y estacionamiento, educación inclusiva, reclamos a obra social o prepaga, asignaciones de ANSES, turismo accesible y deporte adaptado. Las marcadas con * esperan revisión profesional."),
+        ("Derechos y Trámites", "Ocho subpestañas: transporte gratuito, vehículo y estacionamiento, educación inclusiva, reclamos a obra social o prepaga, asignaciones de ANSES, turismo accesible, deporte adaptado y sexualidad, ESI y violencia. Las marcadas con * esperan revisión profesional."),
         ("Comuna_07", "Relevamiento vecinal de la Comuna 7 de CABA y su encuesta."),
     ],
     "en": [
@@ -280,7 +280,7 @@ MANUAL_TABS = {
         ("Normativa", "Disability-related rules published every working day in the Official Gazette (fees, pensions, CUD, allowances), searchable, with a summary and the official link."),
         ("Hogares", "Residential homes for people with disabilities (Pequeños Cottolengos and others) with a map, addresses and each province's agency for requesting a place."),
         ("Manual", "This guide, in Spanish and English, with both graphs."),
-        ("Derechos y Trámites", "Seven sub-tabs: free public transport, vehicles and parking, inclusive education, complaints to health insurers, ANSES allowances, accessible tourism and adapted sport. Those marked * await professional review."),
+        ("Derechos y Trámites", "Eight sub-tabs: free public transport, vehicles and parking, inclusive education, complaints to health insurers, ANSES allowances, accessible tourism, adapted sport, and sexuality, sex education and violence. Those marked * await professional review."),
         ("Comuna_07", "Neighbourhood survey of Comuna 7 in Buenos Aires City."),
     ],
 }
