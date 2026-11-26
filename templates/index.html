@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>Observatorio de Discapacidad</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232f80c0'/%3E%3Ctext x='32' y='45' font-family='Arial,sans-serif' font-size='38' font-weight='700' text-anchor='middle' fill='%23fff'%3EOD%3C/text%3E%3C/svg%3E">
   <meta name="description" content="Asesoría, derechos y datos oficiales para personas con discapacidad en Argentina: CUD, pensiones, hogares, inclusión laboral y estadísticas.">
 
   <!-- Google Analytics (GA4) -->
@@ -47,6 +48,13 @@
     @media (min-width:701px) and (max-width:1180px){
       nav{gap:.3rem .35rem}
       nav button{padding:.5rem .55rem}
+    }
+    /* Entre 701 y 1120 px la segunda fila (con API Docs) no entraba y API Docs caía a una
+       tercera fila: se achica un poco la letra y el relleno para mantener dos filas desde 1000 px. */
+    @media (min-width:701px) and (max-width:1120px){
+      nav{padding:.4rem .5rem}
+      nav button{font-size:.8rem;padding:.5rem .45rem}
+      nav a.docs{margin-left:0}
     }
     @media (max-width:700px){
       nav{position:static;gap:.2rem .3rem;padding:.4rem .5rem}

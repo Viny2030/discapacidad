@@ -31,3 +31,6 @@ exportar_pdf.py
 Claude outputs/
 
 repomix-output.xml
+
+# Capturas y logs del navegador de prueba (Playwright MCP)
+.playwright-mcp/
