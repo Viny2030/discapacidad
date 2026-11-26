@@ -40,12 +40,19 @@ async def lifespan(app: FastAPI):
     log.info("Scheduler detenido")
 
 
+# La documentación interactiva (/docs, /redoc, /openapi.json) queda apagada por seguridad.
+# Para verla en local: ENABLE_API_DOCS=1 uvicorn main:app --reload --port 8001
+_API_DOCS = os.getenv("ENABLE_API_DOCS") == "1"
+
 app = FastAPI(
     title="Observatorio de Discapacidad",
     description="API integral: tramite del CUD, evidencia medica (PubMed/ClinicalTrials) "
                  "y estadisticas oficiales de discapacidad en Argentina (ANDIS/INDEC).",
     version="1.0.0",
     lifespan=lifespan,
+    docs_url="/docs" if _API_DOCS else None,
+    redoc_url="/redoc" if _API_DOCS else None,
+    openapi_url="/openapi.json" if _API_DOCS else None,
 )
 
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])

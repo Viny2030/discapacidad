@@ -241,7 +241,8 @@ uvicorn main:app --reload --port 8001
 ```
 
 - **Sitio:** `http://localhost:8001`
-- **Docs interactivas (Swagger):** `http://localhost:8001/docs`
+- **Docs interactivas (Swagger):** apagadas por seguridad; para verlas en local, arrancar con
+  `ENABLE_API_DOCS=1 uvicorn main:app --reload --port 8001` y abrir `http://localhost:8001/docs`
 - **Health check:** `http://localhost:8001/health`
 
 ### 4. Correr tests

@@ -100,9 +100,9 @@ def test_menu_no_esconde_pestanas():
     assert "flex-wrap:wrap" in regla_nav
     assert "overflow-x:auto" not in regla_nav
     assert 'class="nav-break"' in html
-    # API Docs queda al final del menu y el alto real del menu se usa como padding
+    # API Docs ya no está en el menú (se sacó por seguridad); el alto real del menu se usa como padding
     nav = html[html.index("<nav>"):html.index("</nav>")]
-    assert nav.rstrip().endswith('API Docs</a>')
+    assert 'href="/docs"' not in nav
     assert "--nav-h" in html and "function ajustarAltoMenu(" in html
 
 
@@ -349,7 +349,7 @@ def test_pestana_manual_generada_bilingue_y_con_nodos_nombrados():
         assert all(t[0].strip() for t in flow.values()) and all(all(x.strip() for x in t) for t in uso.values())
         assert len(g.MANUAL_TABS[lang]) == len(g.MANUAL_TABS["es"])
     nav = html[html.index("<nav>"):html.index("</nav>")]
-    destinos = set(re.findall(r'data-panel="([^"]+)"', nav)) | {"docs"}
+    destinos = set(re.findall(r'data-panel="([^"]+)"', nav))
     assert {d for _, d in g.USO_FILAS} <= destinos                # cada nodo de pestaña abre una que existe
 
 

@@ -38,7 +38,6 @@ FLOW_NODES = [
     ("health", 650, 95, _W, _H, "control"),
     ("api", 650, 188, _W, _H, "endpoint"),
     ("sitio", 860, 132, _W, _H, "output"),
-    ("docs", 860, 245, _W, _H, "output"),
     ("forms", 860, 320, _W, _H, "input"),
     ("email", 860, 395, _W, _H, "output"),
 ]
@@ -59,7 +58,6 @@ FLOW_EDGES = [
     "M620 424 L640 424 L640 240 L650 240",
     "M740 153 L740 188",
     "M830 207 L845 207 L845 161 L860 161",
-    "M830 227 L845 227 L845 274 L860 274",
     "M950 378 L950 395",
 ]
 FLOW_VIEWBOX = (1060, 470)
@@ -70,7 +68,7 @@ USO_FILAS = [
     ("cud", "cud"), ("sube", "cud"), ("beneficios", "calculadora"), ("pension", "pensiones"),
     ("condicion", "condiciones"), ("tratamiento", "tratamientos"), ("hogar", "hogares"),
     ("trabajo", "laboral"), ("normas", "normativa"), ("mayores", "mayores"), ("senas", "senas"), ("datos", "estadistico"),
-    ("caba", "gcba"), ("dev", "docs"),
+    ("caba", "gcba"),
 ]
 _UX, _UW, _UH, _USTEP = (20, 380, 690), (300, 230, 310), 44, 52
 USO_VIEWBOX = (1020, 20 + _USTEP * len(USO_FILAS))
@@ -94,7 +92,6 @@ GRAPH_TEXT = {
             "health": ("Controles", ["diario y frescura mensual"]),
             "api": ("API FastAPI", ["/api/cud, /api/provincias…"]),
             "sitio": ("Sitio web", ["pestañas y mapas"]),
-            "docs": ("API Docs", ["/docs, datos abiertos"]),
             "forms": ("Formularios", ["contacto y encuesta"]),
             "email": ("Correo del equipo", ["no se guarda en el sitio"]),
         },
@@ -114,7 +111,6 @@ GRAPH_TEXT = {
             "senas": ("Lengua de señas", "Lengua de Señas", "LSA, Ley 27.710 y cursos"),
             "datos": ("Ver datos o comparar", "Estadístico · Comparador", "CUD por provincia y tipo"),
             "caba": ("Vivo en CABA", "GCBA · Comuna_07", "escuelas, salud y la Comuna 7"),
-            "dev": ("Usar los datos en mi app", "API Docs", "endpoints abiertos en JSON"),
         },
         "legend_uso": {"input": "Qué necesitás", "output": "Pestaña (tocala para abrirla)", "signal": "Qué encontrás"},
         "aria_flow": "Grafo de funcionamiento: de las fuentes oficiales y científicas a las pestañas del sitio",
@@ -138,7 +134,6 @@ GRAPH_TEXT = {
             "health": ("Checks", ["daily and monthly freshness"]),
             "api": ("FastAPI API", ["/api/cud, /api/provincias…"]),
             "sitio": ("Website", ["tabs and maps"]),
-            "docs": ("API Docs", ["/docs, open data"]),
             "forms": ("Forms", ["contact and survey"]),
             "email": ("Team mailbox", ["not stored on the site"]),
         },
@@ -158,7 +153,6 @@ GRAPH_TEXT = {
             "senas": ("Sign language", "Lengua de Señas", "LSA, Law 27,710 and courses"),
             "datos": ("See or compare data", "Estadístico · Comparador", "CUD by province and type"),
             "caba": ("I live in Buenos Aires City", "GCBA · Comuna_07", "schools, health and Comuna 7"),
-            "dev": ("Use the data in my app", "API Docs", "open JSON endpoints"),
         },
         "legend_uso": {"input": "What you need", "output": "Tab (tap it to open)", "signal": "What you get"},
         "aria_flow": "Operation graph: from official and scientific sources to the site's tabs",
@@ -303,7 +297,6 @@ TEXTOS = {
             "El botón <strong>«Escuchar esta página»</strong> (abajo a la izquierda) lee en voz alta la sección abierta.",
             "El botón de <strong>sobre</strong> (abajo a la derecha) abre el formulario de contacto.",
             "En los mapas, tocá un punto para ver sus datos. Las tablas que no entran en la pantalla se deslizan de costado.",
-            "<strong>API Docs</strong> (al final del menú) muestra los datos abiertos en formato JSON para desarrolladores.",
             "En <strong>Inicio</strong>, la tabla <strong>«Fuentes y antigüedad de los datos»</strong> dice de dónde sale cada sección y qué tan reciente es; el pie de página tiene un enlace directo.",
         ],
         "uso_t": "Grafo de uso: ¿qué necesitás?",
@@ -334,7 +327,6 @@ TEXTOS = {
             "The <strong>«Escuchar esta página»</strong> button (bottom left) reads the open section aloud (in Spanish).",
             "The <strong>envelope</strong> button (bottom right) opens the contact form.",
             "On the maps, tap a point to see its details. Tables wider than the screen scroll sideways.",
-            "<strong>API Docs</strong> (end of the menu) exposes the open data as JSON for developers.",
             "On <strong>Inicio</strong>, the <strong>«Fuentes y antigüedad de los datos»</strong> table shows where each section comes from and how recent it is; the footer links straight to it.",
         ],
         "uso_t": "Usage graph: what do you need?",
@@ -414,7 +406,6 @@ def panel():
       try {{ localStorage.setItem('manual-lang', lang); }} catch (e) {{}}
     }}
     function mnIr(destino) {{
-      if (destino === 'docs') {{ window.open('/docs', '_blank', 'noopener'); return; }}
       switchTab(destino);
     }}
     function initManual() {{
