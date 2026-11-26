@@ -13,3 +13,12 @@ def test_turismo_accesible_registrada():
     panel = html[a:html.index('<div class="panel"', a + 1)]
     assert "Contenido pendiente de revisi&oacute;n profesional" in panel
     assert "Ley 25.643" in panel and "CUD" in panel
+
+
+def test_turismo_aclara_vuelos():
+    html = (ROOT / "templates" / "index.html").read_text(encoding="utf-8")
+    a = html.index('<div class="panel" id="panel-dt-turismo">')
+    panel = html[a:html.index('<div class="panel"', a + 1)]
+    assert "Viajar en avi&oacute;n" in panel
+    assert "transporte colectivo terrestre" in panel
+    assert "Ley 26.858" in panel
